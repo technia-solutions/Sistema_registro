@@ -16,7 +16,7 @@ public class Sistema_registro {
      */
     public static void main(String[] args) {
         System.out.println("Hola Mundo");
-        System.out.println("Prueba 1111");
+        System.out.println("Prueba 1");
     }
     
 }
