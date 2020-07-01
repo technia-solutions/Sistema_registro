@@ -5,16 +5,22 @@
  */
 package sistema_registro;
 
+import com.sun.jdi.connect.spi.Connection;
+import java.sql.SQLException;
+import sistema_registro.SQL.ConectorSQL;
+
 /**
  *
  * @author Mitsuki
  */
 public class Empleado extends javax.swing.JFrame {
+    Connection con;
 
     /**
      * Creates new form RegistroEmpleado
      */
-    public Empleado() {
+    public Empleado() throws SQLException {
+        this.con = (Connection) ConectorSQL.obtenerConexion();
         initComponents();
     }
 
