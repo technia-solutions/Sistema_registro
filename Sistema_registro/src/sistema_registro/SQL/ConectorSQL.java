@@ -25,7 +25,7 @@ public class ConectorSQL {
     private ConectorSQL() throws SQLException{
         
        String url = "jdbc:sqlserver://CARLOS:1433;"
-               + "databaseName=TechD;user=admin;"
+               + "databaseName=Technia;user=admin;"
                + "password=admin";
        String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
       
