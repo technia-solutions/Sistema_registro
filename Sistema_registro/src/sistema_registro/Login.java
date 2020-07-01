@@ -5,6 +5,10 @@
  */
 package sistema_registro;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Carlos
@@ -14,7 +18,8 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Sistema_registro2
      */
-    public Login() {
+    public Login() throws SQLException {
+    
         initComponents();
     }
 
@@ -80,8 +85,15 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
-            }
+               
+                try {
+                    new Login().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                }
         });
     }
 
