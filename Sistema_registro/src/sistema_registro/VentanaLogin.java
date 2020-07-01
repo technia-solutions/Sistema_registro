@@ -5,27 +5,16 @@
  */
 package sistema_registro;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-import sistema_registro.SQL.ConectorSQL;
-
 /**
  *
  * @author Carlos
  */
 public class VentanaLogin extends javax.swing.JFrame {
-    Connection con;
 
     /**
-     * Creates new form PantallaPrincipal
+     * Creates new form Sistema_registro2
      */
-    public VentanaLogin() throws SQLException {
-        this.con = ConectorSQL.obtenerConexion();
+    public VentanaLogin() {
         initComponents();
     }
 
@@ -38,90 +27,21 @@ public class VentanaLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        User = new javax.swing.JTextField();
-        Pass = new javax.swing.JTextField();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jButton1.setText("jButton1");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(417, 417, 417)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(330, 330, 330)
-                        .addComponent(User, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(149, 149, 149)
-                        .addComponent(Pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(619, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(96, 96, 96)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(User, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(86, 86, 86)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(423, Short.MAX_VALUE))
-        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-
-      int res = 0; 
-        try {
-       String usuario = User.getText();
-       String pass = String.valueOf(Pass.getText());
-       String sql = "SELECT * from Login where UserName ='" +usuario+ "' and Pass='"+pass+"'";
-        Statement st = con.createStatement();
-       ResultSet rs = st.executeQuery(sql);
-       if(isEmpty()){
-        JOptionPane.showMessageDialog(null, "Por favor llene todos los campos", "Error", JOptionPane.INFORMATION_MESSAGE);
-        return;
-       }
-        if(rs.next()){  
-        VentanaLogin pantallaPrincipal = new VentanaLogin();
-        pantallaPrincipal.setVisible(true);
-        this.dispose();
-        }
-                else{
-                    getToolkit().beep();
-                    JOptionPane.showMessageDialog(null, "Las credenciales no concuerdan", "Error", JOptionPane.ERROR_MESSAGE);
-                }
-       
-    } catch (SQLException e) {
-         JOptionPane.showMessageDialog(null,e.getMessage());
-    }
-    
-    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -150,29 +70,17 @@ public class VentanaLogin extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new VentanaLogin().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(VentanaLogin.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new VentanaLogin().setVisible(true);
             }
         });
     }
 
-     private boolean isEmpty(){
-        if("".equals(User.getText()) || "".equals(Pass.getText()))
-        return true;
-        else
-            return false;
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Pass;
-    private javax.swing.JTextField User;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
