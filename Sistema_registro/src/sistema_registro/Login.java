@@ -5,22 +5,26 @@
  */
 package sistema_registro;
 
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import java.sql.*;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import sistema_registro.SQL.ConectorSQL;
 /**
  *
  * @author Carlos
  */
 public class Login extends javax.swing.JFrame {
-
+    Connection con;
     /**
      * Creates new form Sistema_registro2
      */
     public Login() throws SQLException {
-    
+        setTitle("Login");
+        this.con = ConectorSQL.obtenerConexion();
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -32,22 +36,204 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        kGradientPanel1 = new keeptoo.KGradientPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        usericon = new javax.swing.JLabel();
+        passIcon = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        txt_contraseña = new javax.swing.JPasswordField();
+        txt_usuario = new javax.swing.JTextField();
+        logoicon = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(986, 643));
+
+        kGradientPanel1.setkEndColor(new java.awt.Color(0, 153, 53));
+        kGradientPanel1.setkStartColor(new java.awt.Color(0, 153, 151));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jButton1.setBackground(new java.awt.Color(0, 153, 51));
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Ingresar");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jButton1FocusGained(evt);
+            }
+        });
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerfomed(evt);
+            }
+        });
+
+        usericon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User_Circle2.png"))); // NOI18N
+
+        passIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pass.png"))); // NOI18N
+
+        jCheckBox1.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox1.setText("Mostrar contraseña");
+        jCheckBox1.setActionCommand("jCheckBox1");
+        jCheckBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+
+        txt_usuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_usuarioKeyTyped(evt);
+            }
+        });
+
+        logoicon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Titulo.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(43, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(passIcon)
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(usericon)
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(109, 109, 109))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(logoicon, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(188, 188, 188))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jCheckBox1)
+                        .addGap(199, 199, 199))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addComponent(logoicon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(2, 2, 2)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(passIcon)
+                        .addGap(214, 214, 214))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(usericon))
+                        .addGap(19, 19, 19)
+                        .addComponent(txt_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jCheckBox1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(90, 90, 90))))
+        );
+
+        javax.swing.GroupLayout kGradientPanel1Layout = new javax.swing.GroupLayout(kGradientPanel1);
+        kGradientPanel1.setLayout(kGradientPanel1Layout);
+        kGradientPanel1Layout.setHorizontalGroup(
+            kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, kGradientPanel1Layout.createSequentialGroup()
+                .addContainerGap(242, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(218, 218, 218))
+        );
+        kGradientPanel1Layout.setVerticalGroup(
+            kGradientPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(kGradientPanel1Layout.createSequentialGroup()
+                .addGap(84, 84, 84)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(91, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(kGradientPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(kGradientPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jButton1FocusGained
+
+    }//GEN-LAST:event_jButton1FocusGained
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton1ActionPerfomed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerfomed
+        try {
+            String usuario = txt_usuario.getText();
+            String contraseña = String.valueOf(txt_contraseña.getText());
+            String sql = "SELECT * from Acceso where nombre_usuario ='" +usuario+ "' and clave_acceso='"+contraseña+"'";
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            if(isEmpty()){
+                getToolkit().beep();
+                JOptionPane.showMessageDialog(null, "Por favor llene todos los campos", "Ingrese sus datos", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+            if(rs.next()){
+                Principal principal = new Principal();
+                principal.setVisible(true);
+                this.dispose();
+            }
+            else{
+                getToolkit().beep();
+                JOptionPane.showMessageDialog(null, "El nombre de usuario o contraseña no coinciden", "Las credenciales no concuerdan", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerfomed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        if(jCheckBox1.isSelected()){
+            txt_contraseña.setEchoChar((char)0);
+        }
+        else{
+            txt_contraseña.setEchoChar('*');
+        }
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    
+    private void txt_usuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_usuarioKeyTyped
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_usuarioKeyTyped
+
+       private boolean isEmpty(){
+        if("".equals(txt_usuario.getText()) || "".equals(txt_contraseña.getText()))
+        return true;
+        else
+            return false;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -71,5 +257,14 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JPanel jPanel1;
+    private keeptoo.KGradientPanel kGradientPanel1;
+    private javax.swing.JLabel logoicon;
+    private javax.swing.JLabel passIcon;
+    private javax.swing.JPasswordField txt_contraseña;
+    private javax.swing.JTextField txt_usuario;
+    private javax.swing.JLabel usericon;
     // End of variables declaration//GEN-END:variables
 }
