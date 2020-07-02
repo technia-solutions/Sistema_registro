@@ -8,7 +8,7 @@ package sistema_registro.SQL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+import javax.swing.JOptionPane;
 /**
  *
  * @author Carlos
@@ -24,7 +24,7 @@ public class ConectorSQL {
     
     private ConectorSQL() throws SQLException{
         
-       String url = "jdbc:sqlserver://CARLOS:1433;"
+       String url = "jdbc:sqlserver://WIL212027:1433;"
                + "databaseName=Technia;user=admin;"
                + "password=admin";
        String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
