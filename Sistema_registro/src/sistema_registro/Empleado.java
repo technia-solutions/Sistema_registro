@@ -24,6 +24,8 @@ public class Empleado extends javax.swing.JFrame {
         this.con = ConectorSQL.obtenerConexion();
         initComponents();
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -64,9 +66,31 @@ public class Empleado extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
+        txt_Nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_NombreActionPerformed(evt);
+            }
+        });
+        txt_Nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_NombreKeyTyped(evt);
+            }
+        });
+
+        txt_Apellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_ApellidoKeyTyped(evt);
+            }
+        });
+
         txt_idEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_idEmpleadoActionPerformed(evt);
+            }
+        });
+        txt_idEmpleado.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_idEmpleadoKeyTyped(evt);
             }
         });
 
@@ -83,12 +107,22 @@ public class Empleado extends javax.swing.JFrame {
                 txt_SalarioActionPerformed(evt);
             }
         });
+        txt_Salario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_SalarioKeyTyped(evt);
+            }
+        });
 
         jLabel8.setText("Nombre De Usuario");
 
         jLabel9.setText("Contraseña");
 
         BotonGuardar.setText("Guardar");
+        BotonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonGuardarActionPerformed(evt);
+            }
+        });
 
         BotonActualizar.setText("Actualizar");
 
@@ -97,6 +131,12 @@ public class Empleado extends javax.swing.JFrame {
         jLabel10.setText("Teléfono");
 
         jLabel11.setText("ID Campus");
+
+        txt_Telefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_TelefonoKeyTyped(evt);
+            }
+        });
 
         cBox_idCampus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -256,12 +296,10 @@ public class Empleado extends javax.swing.JFrame {
                         .addComponent(jLabel10)
                         .addGap(26, 26, 26)
                         .addComponent(jLabel11)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(BotonGuardar)
                             .addComponent(BotonActualizar)
@@ -292,6 +330,55 @@ public class Empleado extends javax.swing.JFrame {
     private void cBox_tipoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBox_tipoUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cBox_tipoUsuarioActionPerformed
+
+    private void BotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGuardarActionPerformed
+        String cadena2, cadena3, cadena4, cadena5, cadena6, cadena7, cadena8, cadena9, cadena10;
+        cadena2 = txt_idEmpleado.getText();
+        cadena3 = txt_Nombre.getText();
+        cadena4 = txt_Apellido.getText();
+        cadena5 = txt_Salario.getText();
+        cadena6 = txt_Telefono.getText();
+        cadena7 = cBox_idCampus.getSelectedItem().toString();
+        cadena8 = txt_NombreUsuario.getText();
+        cadena9 = txt_Contraseña.getText().toString();
+        cadena10 = cBox_tipoUsuario.getSelectedItem().toString();
+        
+        if (txt_idEmpleado.getText().equals("") || (txt_Nombre.getText().equals("")) || (txt_Apellido.getText().equals("")) || (txt_Salario.getText().equals(""))
+         || (txt_Telefono.getText().equals("")) || (cBox_idCampus.getSelectedItem().equals(null)) || (txt_NombreUsuario.getText().equals("")) || (txt_Contraseña.getText().equals("")) || (cBox_tipoUsuario.getSelectedItem().equals(null)) ) {
+            
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe llenar todos los campos \n","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_Nombre.requestFocus();
+        }    
+    }//GEN-LAST:event_BotonGuardarActionPerformed
+
+    private void txt_NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NombreKeyTyped
+       char c = evt.getKeyChar();
+       if((c < 'a' || c > 'z') && (c < 'A' || c >'Z') && (c > ' ' || c > ' '))evt.consume();
+    }//GEN-LAST:event_txt_NombreKeyTyped
+
+    private void txt_ApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_ApellidoKeyTyped
+       char c = evt.getKeyChar();
+       if((c < 'a' || c > 'z') && (c < 'A' || c >'Z') && (c > ' ' || c > ' '))evt.consume();
+    }//GEN-LAST:event_txt_ApellidoKeyTyped
+
+    private void txt_idEmpleadoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_idEmpleadoKeyTyped
+       char c = evt.getKeyChar();
+       if((c < '0' || c > '9'))evt.consume();
+    }//GEN-LAST:event_txt_idEmpleadoKeyTyped
+
+    private void txt_TelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_TelefonoKeyTyped
+        char c = evt.getKeyChar();
+        if((c < '0' || c > '9'))evt.consume();
+    }//GEN-LAST:event_txt_TelefonoKeyTyped
+
+    private void txt_SalarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_SalarioKeyTyped
+      char c = evt.getKeyChar();
+      if((c < '0' || c > '9'))evt.consume();
+    }//GEN-LAST:event_txt_SalarioKeyTyped
+
+    private void txt_NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_NombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -361,4 +448,7 @@ public class Empleado extends javax.swing.JFrame {
     private javax.swing.JTextField txt_Telefono;
     private javax.swing.JTextField txt_idEmpleado;
     // End of variables declaration//GEN-END:variables
+
+  
+
 }
