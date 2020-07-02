@@ -36,6 +36,7 @@ public class Empleado extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         txt_Nombre = new javax.swing.JTextField();
         txt_Apellido = new javax.swing.JTextField();
         txt_idEmpleado = new javax.swing.JTextField();
@@ -62,6 +63,12 @@ public class Empleado extends javax.swing.JFrame {
         chBox_mostrar = new javax.swing.JCheckBox();
         jLabel12 = new javax.swing.JLabel();
         cBox_tipoUsuario = new javax.swing.JComboBox<>();
+        jButton2 = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -129,7 +136,7 @@ public class Empleado extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel9.setText("Contraseña");
 
-        BotonGuardar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        BotonGuardar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         BotonGuardar.setText("Guardar");
         BotonGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,10 +144,10 @@ public class Empleado extends javax.swing.JFrame {
             }
         });
 
-        BotonActualizar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        BotonActualizar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         BotonActualizar.setText("Actualizar");
 
-        BotonEliminar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        BotonEliminar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         BotonEliminar.setText("Eliminar");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -166,7 +173,7 @@ public class Empleado extends javax.swing.JFrame {
             }
         });
 
-        BotonLimpiar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        BotonLimpiar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         BotonLimpiar.setText("Limpiar");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -190,6 +197,29 @@ public class Empleado extends javax.swing.JFrame {
                 cBox_tipoUsuarioActionPerformed(evt);
             }
         });
+
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton2.setText("Consultar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jMenu1.setText("Inicio");
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setText("Menu Principal");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -231,7 +261,7 @@ public class Empleado extends javax.swing.JFrame {
                                         .addComponent(jLabel11)
                                         .addGap(65, 65, 65)
                                         .addComponent(cBox_idCampus, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -259,7 +289,9 @@ public class Empleado extends javax.swing.JFrame {
                                 .addComponent(BotonLimpiar)
                                 .addGap(18, 18, 18)
                                 .addComponent(BotonEliminar)
-                                .addGap(298, 298, 298))
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2)
+                                .addGap(187, 187, 187))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(397, 397, 397))))))
@@ -315,12 +347,13 @@ public class Empleado extends javax.swing.JFrame {
                                     .addComponent(cBox_tipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(28, 28, 28)
                                 .addComponent(chBox_mostrar)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(BotonActualizar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
                     .addComponent(BotonLimpiar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BotonEliminar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BotonGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(BotonGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(133, 133, 133)
                 .addComponent(jLabel2))
         );
@@ -394,8 +427,25 @@ public class Empleado extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_SalarioKeyTyped
 
     private void txt_NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NombreActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txt_NombreActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        this.dispose();
+        
+        ConsultasEmpleados u = new ConsultasEmpleados();
+        
+        u.setVisible(true);
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        this.dispose();
+        
+        Principal p = new Principal();
+        p.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -445,6 +495,8 @@ public class Empleado extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cBox_idCampus;
     private javax.swing.JComboBox<String> cBox_tipoUsuario;
     private javax.swing.JCheckBox chBox_mostrar;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -457,6 +509,9 @@ public class Empleado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JTextField txt_Apellido;
     private javax.swing.JPasswordField txt_Contraseña;
     private javax.swing.JTextField txt_Nombre;
