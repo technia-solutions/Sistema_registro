@@ -30,29 +30,11 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
     public ConsultasEmpleados()  throws SQLException {
         this.con = ConectorSQL.obtenerConexion();
         initComponents();
-        
-             this.setTitle("Consulta Empleados");
+        this.setTitle("Consulta Empleados");
         this.setLocation(335,200);
         this.setResizable(false);
-        ImageIcon icono = new ImageIcon("C:\\Users\\wianp\\Documents\\NetBeansProjects\\Sistema_registro\\Sistema_registro\\src\\Imagenes\\Titulo.png");
-        this.setIconImage(icono.getImage());
-
-        try {
-            
-            String url = "jdbc:sqlserver://WIL212027:1433;"
-               + "databaseName=Technia;user=admin;"
-               + "password=admin";
-            
-               String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-      
-       try{
-       Class.forName(driver);
-       con = DriverManager.getConnection(url);
-       } catch(ClassNotFoundException | SQLException e){
-                e.printStackTrace();
-        }
-                   System.out.println("Se ha establecido una conexion a la base de datos"+"\n"+url);
-               
+     
+  
                stmt = con.createStatement();
                ResultSet rs = stmt.executeQuery("select* from Empleados");
                
@@ -84,15 +66,9 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
                 TableColumn ctipo = Tabla_Empleados.getColumn("Tipo Usuario");
                 ctipo.setMaxWidth(95);
                
-        }
-        catch (Exception e) {
-            
-            JOptionPane.showMessageDialog(null,"Error al extraer los datos de la tabla");
-        }
-
-
-        
-    }
+            }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -158,9 +134,15 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MenuRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRegistroActionPerformed
-        
+
         this.dispose();
-        
+        ConsultasEmpleados consultasEmpleados = null;
+     try {
+         consultasEmpleados = new ConsultasEmpleados();
+     } catch (SQLException ex) {
+         Logger.getLogger(ConsultasEmpleados.class.getName()).log(Level.SEVERE, null, ex);
+     }
+        consultasEmpleados.setVisible(true);
         Empleado E = null;
      try {
          E = new Empleado();
