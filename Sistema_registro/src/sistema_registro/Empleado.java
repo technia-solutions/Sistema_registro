@@ -176,7 +176,7 @@ public class Empleado extends javax.swing.JFrame {
         BotonLimpiar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         BotonLimpiar.setText("Limpiar");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel6.setText("Registro de Empleado");
 
         chBox_mostrar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -280,21 +280,20 @@ public class Empleado extends javax.swing.JFrame {
                                 .addGap(56, 56, 56))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(BotonGuardar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(BotonActualizar)
-                                .addGap(20, 20, 20)
-                                .addComponent(BotonLimpiar)
-                                .addGap(18, 18, 18)
-                                .addComponent(BotonEliminar)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton2)
-                                .addGap(187, 187, 187))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(397, 397, 397))))))
+                        .addComponent(BotonGuardar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(BotonActualizar)
+                        .addGap(20, 20, 20)
+                        .addComponent(BotonLimpiar)
+                        .addGap(18, 18, 18)
+                        .addComponent(BotonEliminar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)
+                        .addGap(187, 187, 187))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(359, 359, 359))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -304,9 +303,9 @@ public class Empleado extends javax.swing.JFrame {
                         .addGap(163, 163, 163)
                         .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
+                        .addGap(40, 40, 40)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62)
+                        .addGap(63, 63, 63)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
