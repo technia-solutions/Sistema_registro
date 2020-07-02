@@ -5,22 +5,30 @@
  */
 package sistema_registro;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Mitsuki
  */
 public class Principal extends javax.swing.JFrame {
+    
 
-    /**
-     * Creates new form Usuario
-     */
+     
     public Principal() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        
+    
+        
     }
+  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,14 +39,113 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btn_RegistrarEmpleado = new javax.swing.JButton();
+        btn_RegistrarAlumno = new javax.swing.JButton();
+        btn_IngresarNotas = new javax.swing.JButton();
+        btn_Matricular = new javax.swing.JButton();
+        btn_AgregarSeccion = new javax.swing.JButton();
+        btn_AgregarAsignatura = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jButton1.setText("jButton1");
+        btn_RegistrarEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_empleados.png"))); // NOI18N
+        btn_RegistrarEmpleado.setContentAreaFilled(false);
+        btn_RegistrarEmpleado.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_empleados (1).png"))); // NOI18N
+        btn_RegistrarEmpleado.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_empleados (1).png"))); // NOI18N
+        btn_RegistrarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_RegistrarEmpleadoMouseClicked(evt);
+            }
+        });
+        btn_RegistrarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_RegistrarEmpleadoActionPerformed(evt);
+            }
+        });
+
+        btn_RegistrarAlumno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_alumno (1).png"))); // NOI18N
+        btn_RegistrarAlumno.setContentAreaFilled(false);
+        btn_RegistrarAlumno.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_alumno (2).png"))); // NOI18N
+        btn_RegistrarAlumno.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_alumno (2).png"))); // NOI18N
+        btn_RegistrarAlumno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_RegistrarAlumnoMouseClicked(evt);
+            }
+        });
+        btn_RegistrarAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_RegistrarAlumnoActionPerformed(evt);
+            }
+        });
+
+        btn_IngresarNotas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_notas.png"))); // NOI18N
+        btn_IngresarNotas.setContentAreaFilled(false);
+        btn_IngresarNotas.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_notas (1).png"))); // NOI18N
+        btn_IngresarNotas.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_notas (1).png"))); // NOI18N
+        btn_IngresarNotas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_IngresarNotasMouseClicked(evt);
+            }
+        });
+
+        btn_Matricular.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_matricula.png"))); // NOI18N
+        btn_Matricular.setContentAreaFilled(false);
+        btn_Matricular.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_matricula (1).png"))); // NOI18N
+        btn_Matricular.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_MatricularMouseClicked(evt);
+            }
+        });
+        btn_Matricular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_MatricularActionPerformed(evt);
+            }
+        });
+
+        btn_AgregarSeccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_secciones.png"))); // NOI18N
+        btn_AgregarSeccion.setContentAreaFilled(false);
+        btn_AgregarSeccion.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_secciones (1).png"))); // NOI18N
+        btn_AgregarSeccion.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_secciones (1).png"))); // NOI18N
+        btn_AgregarSeccion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_AgregarSeccionMouseClicked(evt);
+            }
+        });
+        btn_AgregarSeccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_AgregarSeccionActionPerformed(evt);
+            }
+        });
+
+        btn_AgregarAsignatura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_asignaturas.png"))); // NOI18N
+        btn_AgregarAsignatura.setContentAreaFilled(false);
+        btn_AgregarAsignatura.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_asignaturas (1).png"))); // NOI18N
+        btn_AgregarAsignatura.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_asignaturas (1).png"))); // NOI18N
+        btn_AgregarAsignatura.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_AgregarAsignaturaMouseClicked(evt);
+            }
+        });
+        btn_AgregarAsignatura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_AgregarAsignaturaActionPerformed(evt);
+            }
+        });
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_cerrar-sesion.png"))); // NOI18N
+        jButton1.setContentAreaFilled(false);
+        jButton1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_cerrar-sesion (1).png"))); // NOI18N
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_cerrar-sesion (1).png"))); // NOI18N
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -47,30 +154,136 @@ public class Principal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(410, 410, 410)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(460, Short.MAX_VALUE))
+                .addGap(133, 133, 133)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_Matricular, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_RegistrarAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_RegistrarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 271, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_IngresarNotas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_AgregarSeccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_AgregarAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(183, 183, 183))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(177, 177, 177)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(315, Short.MAX_VALUE))
+                .addContainerGap(141, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btn_RegistrarEmpleado)
+                        .addGap(51, 51, 51)
+                        .addComponent(btn_RegistrarAlumno)
+                        .addGap(59, 59, 59)
+                        .addComponent(btn_Matricular))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btn_IngresarNotas, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51)
+                        .addComponent(btn_AgregarSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59)
+                        .addComponent(btn_AgregarAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(68, 68, 68)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-     Empleado empleado = null;
+    private void btn_AgregarAsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AgregarAsignaturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_AgregarAsignaturaActionPerformed
+
+    private void btn_AgregarAsignaturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_AgregarAsignaturaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_AgregarAsignaturaMouseClicked
+
+    private void btn_AgregarSeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AgregarSeccionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_AgregarSeccionActionPerformed
+
+    private void btn_AgregarSeccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_AgregarSeccionMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_AgregarSeccionMouseClicked
+
+    private void btn_MatricularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MatricularActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_MatricularActionPerformed
+
+    private void btn_MatricularMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_MatricularMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_MatricularMouseClicked
+
+    private void btn_IngresarNotasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_IngresarNotasMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_IngresarNotasMouseClicked
+
+    private void btn_RegistrarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegistrarAlumnoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_RegistrarAlumnoActionPerformed
+
+    private void btn_RegistrarAlumnoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_RegistrarAlumnoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_RegistrarAlumnoMouseClicked
+
+    private void btn_RegistrarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegistrarEmpleadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_RegistrarEmpleadoActionPerformed
+
+    private void btn_RegistrarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_RegistrarEmpleadoMouseClicked
+        Empleado empleado = null;
         try {
             empleado = new Empleado();
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
-     empleado.setVisible(true);
-     this.dispose();
+        empleado.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_RegistrarEmpleadoMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+  
+             
+        
+         JFrame principal=new JFrame("EXIT");
+
+        try {
+            Login login=new Login();
+            
+            if(JOptionPane.showConfirmDialog(principal,"Estas seguro que quieres cerrar sesión"
+        )==JOptionPane.YES_OPTION){
+            dispose();
+            login.setVisible(true);
+            
+        }
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+           
+            
+        
+
+     
+        /* try {
+            login = new Login();
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        login.setVisible(true);
+        this.dispose();*/
+  
+        
+       
     }//GEN-LAST:event_jButton1MouseClicked
 
     /**
@@ -110,6 +323,13 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_AgregarAsignatura;
+    private javax.swing.JButton btn_AgregarSeccion;
+    private javax.swing.JButton btn_IngresarNotas;
+    private javax.swing.JButton btn_Matricular;
+    private javax.swing.JButton btn_RegistrarAlumno;
+    private javax.swing.JButton btn_RegistrarEmpleado;
     private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
+
 }
