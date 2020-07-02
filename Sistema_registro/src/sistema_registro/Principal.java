@@ -51,6 +51,7 @@ public class Principal extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btn_RegistrarEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_empleados.png"))); // NOI18N
+        btn_RegistrarEmpleado.setBorder(null);
         btn_RegistrarEmpleado.setContentAreaFilled(false);
         btn_RegistrarEmpleado.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_empleados (1).png"))); // NOI18N
         btn_RegistrarEmpleado.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_empleados (1).png"))); // NOI18N
@@ -178,7 +179,7 @@ public class Principal extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(141, Short.MAX_VALUE)
+                .addContainerGap(147, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btn_RegistrarEmpleado)
