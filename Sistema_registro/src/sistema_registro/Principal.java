@@ -5,6 +5,10 @@
  */
 package sistema_registro;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Mitsuki
@@ -59,7 +63,12 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-     Empleado empleado = new Empleado();
+     Empleado empleado = null;
+        try {
+            empleado = new Empleado();
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
      empleado.setVisible(true);
      this.dispose();
     }//GEN-LAST:event_jButton1MouseClicked
