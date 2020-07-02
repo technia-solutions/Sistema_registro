@@ -89,6 +89,11 @@ public class Principal extends javax.swing.JFrame {
                 btn_IngresarNotasMouseClicked(evt);
             }
         });
+        btn_IngresarNotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_IngresarNotasActionPerformed(evt);
+            }
+        });
 
         btn_Matricular.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_matricula.png"))); // NOI18N
         btn_Matricular.setContentAreaFilled(false);
@@ -285,6 +290,10 @@ public class Principal extends javax.swing.JFrame {
         
        
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void btn_IngresarNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarNotasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_IngresarNotasActionPerformed
 
     /**
      * @param args the command line arguments
