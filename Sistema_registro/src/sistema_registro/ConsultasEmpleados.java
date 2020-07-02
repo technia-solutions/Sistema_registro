@@ -28,7 +28,7 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
 
    
     public ConsultasEmpleados()  throws SQLException {
-        this.con = ConectorSQL.obtenerConexion();{
+        this.con = ConectorSQL.obtenerConexion();
         initComponents();
         
              this.setTitle("Consulta Empleados");
@@ -161,7 +161,12 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
         
         this.dispose();
         
-        Empleado E = new Empleado();
+        Empleado E = null;
+     try {
+         E = new Empleado();
+     } catch (SQLException ex) {
+         Logger.getLogger(ConsultasEmpleados.class.getName()).log(Level.SEVERE, null, ex);
+     }
         
         E.setVisible(true);
         

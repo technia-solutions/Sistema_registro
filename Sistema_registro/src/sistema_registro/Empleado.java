@@ -434,7 +434,12 @@ public class Empleado extends javax.swing.JFrame {
         
         this.dispose();
         
-        ConsultasEmpleados u = new ConsultasEmpleados();
+        ConsultasEmpleados u = null;
+        try {
+            u = new ConsultasEmpleados();
+        } catch (SQLException ex) {
+            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         u.setVisible(true);
         
