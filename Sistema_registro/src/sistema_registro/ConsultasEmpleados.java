@@ -81,6 +81,9 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_Empleados = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        btn_modificar = new javax.swing.JButton();
+        btn_eliminar = new javax.swing.JButton();
         BarraMenu = new javax.swing.JMenuBar();
         MenuArchivo = new javax.swing.JMenu();
         MenuRegistro = new javax.swing.JMenuItem();
@@ -102,6 +105,15 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(Tabla_Empleados);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setText("Consulta de empleados");
+
+        btn_modificar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_modificar.setText("Modificar");
+
+        btn_eliminar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_eliminar.setText("Eliminar");
+
         MenuArchivo.setText("Archivo");
 
         MenuRegistro.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
@@ -121,13 +133,36 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(385, 385, 385)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(343, 343, 343)
+                                .addComponent(btn_modificar)
+                                .addGap(97, 97, 97)
+                                .addComponent(btn_eliminar)))
+                        .addGap(0, 342, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_modificar)
+                    .addComponent(btn_eliminar))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
 
         pack();
@@ -191,6 +226,9 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
     private javax.swing.JMenu MenuArchivo;
     private javax.swing.JMenuItem MenuRegistro;
     private javax.swing.JTable Tabla_Empleados;
+    private javax.swing.JButton btn_eliminar;
+    private javax.swing.JButton btn_modificar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 

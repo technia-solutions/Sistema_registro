@@ -6,9 +6,6 @@
     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
       <Color id="Default Cursor"/>
     </Property>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[986, 642]"/>
-    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -32,21 +29,21 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btn_Matricular" alignment="0" min="-2" pref="181" max="-2" attributes="0"/>
-                  <Component id="btn_RegistrarAlumno" alignment="0" min="-2" pref="183" max="-2" attributes="0"/>
-                  <Component id="btn_RegistrarEmpleado" min="-2" pref="183" max="-2" attributes="0"/>
+                  <Component id="btn_Matricula" alignment="0" min="-2" pref="181" max="-2" attributes="0"/>
+                  <Component id="btn_Alumno" alignment="0" min="-2" pref="183" max="-2" attributes="0"/>
+                  <Component id="btn_Empleados" min="-2" pref="183" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="291" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btn_IngresarNotas" alignment="1" min="-2" pref="196" max="-2" attributes="0"/>
-                  <Component id="btn_AgregarSeccion" alignment="1" min="-2" pref="196" max="-2" attributes="0"/>
-                  <Component id="btn_AgregarAsignatura" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
+                  <Component id="btn_Notas" alignment="1" min="-2" pref="196" max="-2" attributes="0"/>
+                  <Component id="btn_Secciones" alignment="1" min="-2" pref="196" max="-2" attributes="0"/>
+                  <Component id="btn_Asignaturas" alignment="0" min="-2" pref="196" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="183" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="jButton1" min="-2" pref="145" max="-2" attributes="0"/>
+              <Component id="btn_cerrarSesion" min="-2" pref="145" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -57,29 +54,29 @@
               <EmptySpace pref="156" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="btn_RegistrarEmpleado" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_Empleados" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                      <Component id="btn_RegistrarAlumno" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_Alumno" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                      <Component id="btn_Matricular" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_Matricula" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="btn_IngresarNotas" min="-2" pref="75" max="-2" attributes="0"/>
+                      <Component id="btn_Notas" min="-2" pref="75" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                      <Component id="btn_AgregarSeccion" min="-2" pref="75" max="-2" attributes="0"/>
+                      <Component id="btn_Secciones" min="-2" pref="75" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
-                      <Component id="btn_AgregarAsignatura" min="-2" pref="75" max="-2" attributes="0"/>
+                      <Component id="btn_Asignaturas" min="-2" pref="75" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" pref="41" max="-2" attributes="0"/>
+              <Component id="btn_cerrarSesion" min="-2" pref="41" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="btn_RegistrarEmpleado">
+    <Component class="javax.swing.JButton" name="btn_Empleados">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Imagenes/button_empleados.png"/>
@@ -96,11 +93,11 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_RegistrarEmpleadoMouseClicked"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_RegistrarEmpleadoActionPerformed"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_EmpleadosMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_EmpleadosActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btn_RegistrarAlumno">
+    <Component class="javax.swing.JButton" name="btn_Alumno">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Imagenes/button_alumno (1).png"/>
@@ -114,11 +111,11 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_RegistrarAlumnoMouseClicked"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_RegistrarAlumnoActionPerformed"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_AlumnoMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_AlumnoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btn_IngresarNotas">
+    <Component class="javax.swing.JButton" name="btn_Notas">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Imagenes/button_notas.png"/>
@@ -132,11 +129,11 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_IngresarNotasMouseClicked"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_IngresarNotasActionPerformed"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_NotasMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_NotasActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btn_Matricular">
+    <Component class="javax.swing.JButton" name="btn_Matricula">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Imagenes/button_matricula.png"/>
@@ -147,11 +144,11 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_MatricularMouseClicked"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_MatricularActionPerformed"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_MatriculaMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_MatriculaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btn_AgregarSeccion">
+    <Component class="javax.swing.JButton" name="btn_Secciones">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Imagenes/button_secciones.png"/>
@@ -165,11 +162,11 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_AgregarSeccionMouseClicked"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_AgregarSeccionActionPerformed"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_SeccionesMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_SeccionesActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btn_AgregarAsignatura">
+    <Component class="javax.swing.JButton" name="btn_Asignaturas">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Imagenes/button_asignaturas.png"/>
@@ -183,11 +180,11 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_AgregarAsignaturaMouseClicked"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_AgregarAsignaturaActionPerformed"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_AsignaturasMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_AsignaturasActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="btn_cerrarSesion">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Imagenes/button_cerrar-sesion.png"/>
@@ -201,8 +198,8 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseClicked"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_cerrarSesionMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_cerrarSesionActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

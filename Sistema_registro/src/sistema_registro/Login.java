@@ -38,13 +38,13 @@ public class Login extends javax.swing.JFrame {
 
         kGradientPanel1 = new keeptoo.KGradientPanel();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        usericon = new javax.swing.JLabel();
-        passIcon = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        txt_contraseña = new javax.swing.JPasswordField();
+        btn_ingresar = new javax.swing.JButton();
+        lbl_usuario = new javax.swing.JLabel();
+        lbl_contraseña = new javax.swing.JLabel();
+        chb_mostrarContraseña = new javax.swing.JCheckBox();
+        pwd_contraseña = new javax.swing.JPasswordField();
         txt_usuario = new javax.swing.JTextField();
-        logoicon = new javax.swing.JLabel();
+        lbl_logo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(986, 643));
@@ -54,38 +54,38 @@ public class Login extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 51));
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Ingresar");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addFocusListener(new java.awt.event.FocusAdapter() {
+        btn_ingresar.setBackground(new java.awt.Color(0, 153, 51));
+        btn_ingresar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_ingresar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_ingresar.setText("Ingresar");
+        btn_ingresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_ingresar.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                jButton1FocusGained(evt);
+                btn_ingresarFocusGained(evt);
             }
         });
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_ingresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                btn_ingresarMouseClicked(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_ingresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerfomed(evt);
+                btn_ingresarActionPerfomed(evt);
             }
         });
 
-        usericon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User_Circle2.png"))); // NOI18N
+        lbl_usuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User_Circle2.png"))); // NOI18N
 
-        passIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pass.png"))); // NOI18N
+        lbl_contraseña.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pass.png"))); // NOI18N
 
-        jCheckBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jCheckBox1.setText("Mostrar contraseña");
-        jCheckBox1.setActionCommand("jCheckBox1");
-        jCheckBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        chb_mostrarContraseña.setBackground(new java.awt.Color(255, 255, 255));
+        chb_mostrarContraseña.setText("Mostrar contraseña");
+        chb_mostrarContraseña.setActionCommand("jCheckBox1");
+        chb_mostrarContraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_mostrarContraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                chb_mostrarContraseñaActionPerformed(evt);
             }
         });
 
@@ -95,7 +95,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        logoicon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Titulo.png"))); // NOI18N
+        lbl_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Titulo.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -107,41 +107,41 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(passIcon)
+                                .addComponent(lbl_contraseña)
                                 .addGap(18, 18, 18)
-                                .addComponent(txt_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(pwd_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(usericon)
+                                .addComponent(lbl_usuario)
                                 .addGap(18, 18, 18)
                                 .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btn_ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(109, 109, 109))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(logoicon, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(188, 188, 188))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jCheckBox1)
+                        .addComponent(chb_mostrarContraseña)
                         .addGap(199, 199, 199))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(logoicon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_logo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(2, 2, 2)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(passIcon)
+                        .addComponent(lbl_contraseña)
                         .addGap(214, 214, 214))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(usericon))
+                            .addComponent(lbl_usuario))
                         .addGap(19, 19, 19)
-                        .addComponent(txt_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pwd_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jCheckBox1)
+                        .addComponent(chb_mostrarContraseña)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(90, 90, 90))))
         );
 
@@ -176,18 +176,18 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jButton1FocusGained
+    private void btn_ingresarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btn_ingresarFocusGained
 
-    }//GEN-LAST:event_jButton1FocusGained
+    }//GEN-LAST:event_btn_ingresarFocusGained
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void btn_ingresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ingresarMouseClicked
 
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_btn_ingresarMouseClicked
 
-    private void jButton1ActionPerfomed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerfomed
+    private void btn_ingresarActionPerfomed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarActionPerfomed
         try {
             String usuario = txt_usuario.getText();
-            String contraseña = String.valueOf(txt_contraseña.getText());
+            String contraseña = String.valueOf(pwd_contraseña.getText());
             String sql = "SELECT * from Acceso where nombre_usuario ='" +usuario+ "' and clave_acceso='"+contraseña+"'";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -210,16 +210,16 @@ public class Login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,e.getMessage());
         }
 
-    }//GEN-LAST:event_jButton1ActionPerfomed
+    }//GEN-LAST:event_btn_ingresarActionPerfomed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        if(jCheckBox1.isSelected()){
-            txt_contraseña.setEchoChar((char)0);
+    private void chb_mostrarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_mostrarContraseñaActionPerformed
+        if(chb_mostrarContraseña.isSelected()){
+            pwd_contraseña.setEchoChar((char)0);
         }
         else{
-            txt_contraseña.setEchoChar('*');
+            pwd_contraseña.setEchoChar('*');
         }
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_chb_mostrarContraseñaActionPerformed
 
     
     private void txt_usuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_usuarioKeyTyped
@@ -228,7 +228,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_usuarioKeyTyped
 
        private boolean isEmpty(){
-        if("".equals(txt_usuario.getText()) || "".equals(txt_contraseña.getText()))
+        if("".equals(txt_usuario.getText()) || "".equals(pwd_contraseña.getText()))
         return true;
         else
             return false;
@@ -257,14 +257,14 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JButton btn_ingresar;
+    private javax.swing.JCheckBox chb_mostrarContraseña;
     private javax.swing.JPanel jPanel1;
     private keeptoo.KGradientPanel kGradientPanel1;
-    private javax.swing.JLabel logoicon;
-    private javax.swing.JLabel passIcon;
-    private javax.swing.JPasswordField txt_contraseña;
+    private javax.swing.JLabel lbl_contraseña;
+    private javax.swing.JLabel lbl_logo;
+    private javax.swing.JLabel lbl_usuario;
+    private javax.swing.JPasswordField pwd_contraseña;
     private javax.swing.JTextField txt_usuario;
-    private javax.swing.JLabel usericon;
     // End of variables declaration//GEN-END:variables
 }
