@@ -39,6 +39,10 @@ public class Asignaturas extends javax.swing.JFrame {
         btn_actualizar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
         cbo_carrera = new javax.swing.JComboBox<>();
+        lbl_requisito1 = new javax.swing.JLabel();
+        lbl_requisito2 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,6 +88,16 @@ public class Asignaturas extends javax.swing.JFrame {
 
         cbo_carrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        lbl_requisito1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_requisito1.setText("Requisito 1:");
+
+        lbl_requisito2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_requisito2.setText("Requisito 2:");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -106,13 +120,17 @@ public class Asignaturas extends javax.swing.JFrame {
                             .addComponent(lbl_codigoAsignatura)
                             .addComponent(lbl_nombreAsignatura)
                             .addComponent(lbl_unidadValorativa)
-                            .addComponent(lbl_carrera))
+                            .addComponent(lbl_carrera)
+                            .addComponent(lbl_requisito1)
+                            .addComponent(lbl_requisito2))
                         .addGap(64, 64, 64)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txt_idAsignatura)
                             .addComponent(txt_NombreAsignatura)
                             .addComponent(txt_UnidadValorativa)
-                            .addComponent(cbo_carrera, 0, 183, Short.MAX_VALUE))))
+                            .addComponent(cbo_carrera, 0, 183, Short.MAX_VALUE)
+                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(241, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -136,14 +154,22 @@ public class Asignaturas extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbl_carrera)
-                        .addGap(0, 8, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(cbo_carrera))
-                .addGap(104, 104, 104)
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_requisito1)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_requisito2)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_guardar)
                     .addComponent(btn_actualizar)
                     .addComponent(btn_eliminar))
-                .addGap(105, 105, 105))
+                .addGap(56, 56, 56))
         );
 
         pack();
@@ -197,9 +223,13 @@ public class Asignaturas extends javax.swing.JFrame {
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_guardar;
     private javax.swing.JComboBox<String> cbo_carrera;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel lbl_carrera;
     private javax.swing.JLabel lbl_codigoAsignatura;
     private javax.swing.JLabel lbl_nombreAsignatura;
+    private javax.swing.JLabel lbl_requisito1;
+    private javax.swing.JLabel lbl_requisito2;
     private javax.swing.JLabel lbl_titulo;
     private javax.swing.JLabel lbl_unidadValorativa;
     private javax.swing.JTextField txt_NombreAsignatura;
