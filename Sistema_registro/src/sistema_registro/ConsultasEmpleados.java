@@ -20,11 +20,13 @@ import sistema_registro.SQL.ConectorSQL;
  */
 public class ConsultasEmpleados extends javax.swing.JFrame {
 
- Connection con = null;
-   Statement stmt = null;
-   String titulos[] = {"id","Nombres","Apellidos", "Campus","Telefono", "Password","Tipo usuario"};
-   String fila[] = new String [7];
-   DefaultTableModel modelo;
+   
+    String titulos [] = {"Nombre","Apellido", "Salario", "Telefono", "idCampus", "NombreUsuario", "contraseña", "tipoUsuario"};
+    String fila [] = new String[7];
+    DefaultTableModel modelo;
+    Connection con = null;
+    Statement stmt = null;
+    String var, var2;
 
    
     public ConsultasEmpleados()  throws SQLException {
@@ -84,6 +86,7 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btn_modificar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
+        btn_ConsultaIndividual = new javax.swing.JButton();
         BarraMenu = new javax.swing.JMenuBar();
         MenuArchivo = new javax.swing.JMenu();
         MenuRegistro = new javax.swing.JMenuItem();
@@ -110,9 +113,22 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
 
         btn_modificar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_modificar.setText("Modificar");
+        btn_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modificarActionPerformed(evt);
+            }
+        });
 
         btn_eliminar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_eliminar.setText("Eliminar");
+
+        btn_ConsultaIndividual.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_ConsultaIndividual.setText("Consulta Ind");
+        btn_ConsultaIndividual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ConsultaIndividualActionPerformed(evt);
+            }
+        });
 
         MenuArchivo.setText("Archivo");
 
@@ -139,17 +155,18 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(385, 385, 385)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(343, 343, 343)
-                                .addComponent(btn_modificar)
-                                .addGap(97, 97, 97)
-                                .addComponent(btn_eliminar)))
-                        .addGap(0, 342, Short.MAX_VALUE)))
+                        .addGap(385, 385, 385)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(278, 278, 278)
+                .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btn_ConsultaIndividual)
+                .addGap(18, 18, 18)
+                .addComponent(btn_eliminar)
+                .addContainerGap(302, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,16 +175,24 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
+                .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_modificar)
-                    .addComponent(btn_eliminar))
-                .addContainerGap(107, Short.MAX_VALUE))
+                    .addComponent(btn_eliminar)
+                    .addComponent(btn_ConsultaIndividual))
+                .addContainerGap(108, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+     
+     
+    
+
+    
+    
     private void MenuRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRegistroActionPerformed
 
         this.dispose();
@@ -188,6 +213,73 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
         E.setVisible(true);
         
     }//GEN-LAST:event_MenuRegistroActionPerformed
+
+    private void btn_ConsultaIndividualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ConsultaIndividualActionPerformed
+        
+            String cap="";
+        ResultSet rs = null; 
+var = javax.swing.JOptionPane.showInputDialog(this,"Nombre del usuario","Consulta de Usuario",javax.swing.JOptionPane.QUESTION_MESSAGE);
+        String sql="SELECT* FROM  usuarios WHERE nombre = '"+var+"'";
+if(var == null)  
+javax.swing.JOptionPane.showMessageDialog(this,"La accion fue cancelada","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+      else {
+        if (var.equals("")) {
+javax.swing.JOptionPane.showMessageDialog(this,"Favor de ingresar el nombre de usuario\nque desea consultar","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        }
+         else {
+        try {
+
+String url = "jdbc:sqlserver://WIL212027:1433;";
+String usuario = "admin";
+            String contraseña = "admin";
+
+Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance(); 
+             con = DriverManager.getConnection(url); 
+if( con != null ) 
+System.out.println("Se ha establecido una conexión a la base de datos " +  
+"\n " + url ); 
+
+stmt = con.createStatement(); 
+rs = stmt.executeQuery(sql);
+
+          while(rs.next()) {
+
+               cap = rs.getString("tipousuario"); 
+
+          if (cap.equals("invitado") || cap.equals("administrador") || cap.equals("manager") || cap.equals("servidor")) {
+
+consulta();           
+          }
+}   // fin del bucle While
+
+        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException ex) {
+Logger.getLogger(portada.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+finally {
+            if (con != null) {
+                try {
+con.close();
+stmt.close();
+                } catch ( Exception e ) { 
+System.out.println( e.getMessage());
+                }
+              }
+            }
+           if (!cap.equals("invitado") && !cap.equals("administrador") && !cap.equals("manager") && !cap.equals("servidor")) {
+javax.swing.JOptionPane.showMessageDialog(this,"El Usuario no fue encontrado \n","ERROR!", javax.swing.JOptionPane.ERROR_MESSAGE);
+
+          }
+        }
+      }  
+        
+    }//GEN-LAST:event_btn_ConsultaIndividualActionPerformed
+
+    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
+        
+         
+                
+    }//GEN-LAST:event_btn_modificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -226,6 +318,7 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
     private javax.swing.JMenu MenuArchivo;
     private javax.swing.JMenuItem MenuRegistro;
     private javax.swing.JTable Tabla_Empleados;
+    private javax.swing.JButton btn_ConsultaIndividual;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_modificar;
     private javax.swing.JLabel jLabel1;
