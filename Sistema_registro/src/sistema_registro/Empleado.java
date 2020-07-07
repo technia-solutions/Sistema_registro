@@ -41,11 +41,19 @@ public class Empleado extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     
-     public void consulta() {
+    
+  //  public void AutoCompletar () {
+//ResultSet rs= null;
+//TextAutoCompletar tac = new TextAutompletar (txt_Nombre);
+//}
+
+    
+    
+     public void ConsultaIndividual() {
         String cap="";
-ResultSet ObjectObject Object rs = null;
+ResultSet  rs = null;
         var2 = var;
-        String sql2="Select  Nombre, Apellido, Salario, Telefono, idCampus, NombreUsuario, contraseña, tipoUsuario FROM Empleados where Nombre = '"+var2+"'";
+        String sql2="Select  Nombre, Apellido, Salario, Telefono, Identidad, idCampus, NombreUsuario, contraseña, tipoUsuario FROM Empleados where Nombre = '"+var2+"'";
 
    try { 
 
@@ -63,7 +71,7 @@ if( con != null )
 	                                       "\n " + url ); 
 	
 	stmt = con.createStatement(); 
-            ResultSet rs = stmt.executeQuery(sql2); 
+                rs = stmt.executeQuery(sql2); 
 
 	int i=1; 
 	   while ( rs.next() ) { 
@@ -72,6 +80,7 @@ if( con != null )
 	           String Apellido = rs.getString("Apellido"); 
                    String Salario= rs.getString("Salario"); 
                    String Telefono = rs.getString("Telefono"); 
+                   String Identidad = rs.getString("Identidad");
                    String idCampus = rs.getString("idCampus");
                    String NombreUsuario = rs.getString("NombreUsuario");
                      //String contraseña = rs.getString("contraseña");
@@ -82,6 +91,7 @@ if( con != null )
                            + Apellido + "\n" 
                            + Salario+ "\n"
 	          + Telefono + "\n"
+                           + Identidad + "\n"
                            + idCampus + "\n"
                           + NombreUsuario+ "\n"
                            + contraseña + "\n"
@@ -92,6 +102,7 @@ txt_Nombre.setText(Nombre);
 txt_Apellido.setText(Apellido);
 txt_Salario.setText(Salario);
 txt_Telefono.setText(Telefono);
+txt_Identidad.setText(Identidad);
 cbo_idCampus.setSelectedItem(idCampus);
 txt_NombreUsuario.setText(NombreUsuario);
 pwd_contraseña.setText(contraseña);
@@ -135,32 +146,38 @@ ex.printStackTrace();
          } 
        }
      }    
+    
+             
     }
      
-      public void modificar() {
+     
+     
+     
+      public void Modificar() {
 
-String cadena1,cadena2,cadena3,cadena4,cadena5,cadena6,cadena7,cadena8;
+String cadena1,cadena2,cadena3,cadena4,cadena5,cadena6,cadena7,cadena8,cadena9;
 
        cadena1 = txt_Nombre.getText();
        cadena2 = txt_Apellido.getText();
        cadena3 = txt_Salario.getText();
        cadena4 = txt_Telefono.getText();
-       cadena5 = (String) cbo_idCampus.getSelectedItem();
-       cadena6 = txt_NombreUsuario.getText();
-       cadena7 = pwd_contraseña.getText();
-       cadena8 = cbo_tipoUsuario.getSelectedItem().toString();
+       cadena5 = txt_Identidad.getText();
+       cadena6 = (String) cbo_idCampus.getSelectedItem();
+       cadena7 = txt_NombreUsuario.getText();
+       cadena8 = pwd_contraseña.getText();
+       cadena9 = cbo_tipoUsuario.getSelectedItem().toString();
 
 
      if (txt_Nombre.getText().equals("")) {
 
-javax.swing.JOptionPane.showMessageDialog(this,"1-. Consulte el nombre del cliente\n 2-. Actualice el dato deseado en el campo correspondiente","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+javax.swing.JOptionPane.showMessageDialog(this,"1-. Consulte el nombre del empleado\n 2-. Actualice el dato deseado en el campo correspondiente","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
 }
      else {   
 
      try { 
 String url = "jdbc:sqlserver://WIL212027:1433;"; 
-String usuario = "root"; 
-                  String contraseña = "tu_contraseña"; 
+String usuario = "admin"; 
+                  String contraseña = "admin"; 
 
 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance(); 
                   con = DriverManager.getConnection(url,usuario,contraseña); 
@@ -199,10 +216,11 @@ this.txt_Nombre.setText("");
 this.txt_Apellido.setText("");
 this.txt_Salario.setText("");
 this.txt_Telefono.setText("");
+this.txt_Identidad.setText("");
 this.cbo_idCampus.setSelectedItem("");
 this:txt_NombreUsuario.setText("");
 this.pwd_contraseña.setText("");
-this.cbo_tipoUsuario.setSelected Item("");
+this.cbo_tipoUsuario.setSelectedItem("");
     }
      
      
@@ -232,9 +250,12 @@ this.cbo_tipoUsuario.setSelected Item("");
         cbo_tipoUsuario = new javax.swing.JComboBox<>();
         btn_consultar = new javax.swing.JButton();
         btn_Modificar = new javax.swing.JButton();
+        lbl_identidad = new javax.swing.JLabel();
+        txt_Identidad = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        cbo_MenuPrincipal = new javax.swing.JMenuItem();
+        cbo_ConsultaIndividual = new javax.swing.JCheckBoxMenuItem();
 
         jButton1.setText("jButton1");
 
@@ -351,7 +372,7 @@ this.cbo_tipoUsuario.setSelected Item("");
         });
 
         btn_consultar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_consultar.setText("Consultar");
+        btn_consultar.setText("Consulta");
         btn_consultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_consultarActionPerformed(evt);
@@ -366,16 +387,36 @@ this.cbo_tipoUsuario.setSelected Item("");
             }
         });
 
-        jMenu1.setText("Inicio");
+        lbl_identidad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_identidad.setText("Identidad");
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem1.setText("Menu Principal");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+        txt_Identidad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_Identidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_IdentidadKeyTyped(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+
+        jMenu1.setText("Inicio");
+
+        cbo_MenuPrincipal.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        cbo_MenuPrincipal.setText("Menu Principal");
+        cbo_MenuPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbo_MenuPrincipalActionPerformed(evt);
+            }
+        });
+        jMenu1.add(cbo_MenuPrincipal);
+
+        cbo_ConsultaIndividual.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
+        cbo_ConsultaIndividual.setSelected(true);
+        cbo_ConsultaIndividual.setText("Consulta Individual");
+        cbo_ConsultaIndividual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbo_ConsultaIndividualActionPerformed(evt);
+            }
+        });
+        jMenu1.add(cbo_ConsultaIndividual);
 
         jMenuBar1.add(jMenu1);
 
@@ -386,10 +427,9 @@ this.cbo_tipoUsuario.setSelected Item("");
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lbl_apellidos)
                             .addComponent(lbl_nombres, javax.swing.GroupLayout.Alignment.LEADING))
@@ -400,37 +440,44 @@ this.cbo_tipoUsuario.setSelected Item("");
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lbl_telefono)
-                            .addComponent(lbl_salario)
-                            .addComponent(lbl_idCampus))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txt_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(1, 1, 1))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(64, 64, 64)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_Salario)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(cbo_idCampus, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE)))))))
-                .addGap(194, 194, 194)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(chb_mostrarContraseña)
-                        .addGap(78, 78, 78))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbl_contraseña)
-                            .addComponent(lbl_tipoUsuario)
-                            .addComponent(lbl_nombreUsuario))
-                        .addGap(69, 69, 69)
+                            .addComponent(lbl_identidad)
+                            .addComponent(lbl_salario))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbo_tipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(pwd_contraseña)
-                                .addComponent(txt_NombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(56, 56, 56))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(64, 64, 64)
+                                .addComponent(txt_Salario))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_Telefono, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_Identidad, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(149, 149, 149)
+                        .addComponent(lbl_tipoUsuario)
+                        .addGap(69, 69, 69)
+                        .addComponent(cbo_tipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addComponent(lbl_contraseña)
+                        .addGap(18, 18, 18)
+                        .addComponent(pwd_contraseña))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lbl_nombreUsuario)
+                                .addGap(69, 69, 69)
+                                .addComponent(txt_NombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(chb_mostrarContraseña)
+                                .addGap(138, 138, 138))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(lbl_idCampus)
+                                .addGap(64, 64, 64)
+                                .addComponent(cbo_idCampus, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(155, 155, 155))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -452,49 +499,49 @@ this.cbo_tipoUsuario.setSelected Item("");
                 .addGap(40, 40, 40)
                 .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(96, 96, 96)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_nombreUsuario)
-                            .addComponent(txt_NombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_contraseña)
-                            .addComponent(pwd_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_tipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbo_tipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28)
-                        .addComponent(chb_mostrarContraseña))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_telefono)
-                            .addComponent(txt_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_nombres, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_apellidos))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_Salario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_salario))
-                        .addGap(78, 78, 78)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_nombres, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_nombreUsuario)
+                    .addComponent(txt_NombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_apellidos)
+                    .addComponent(lbl_contraseña)
+                    .addComponent(pwd_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_Salario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbo_idCampus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_idCampus))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
+                            .addComponent(lbl_idCampus)))
+                    .addComponent(lbl_salario))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_tipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbo_tipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_telefono)
+                            .addComponent(txt_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_identidad)
+                    .addComponent(txt_Identidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chb_mostrarContraseña)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_consultar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_Modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(93, 93, 93))
+                .addGap(73, 73, 73))
         );
 
         pack();
@@ -517,18 +564,19 @@ this.cbo_tipoUsuario.setSelected Item("");
     }//GEN-LAST:event_cbo_tipoUsuarioActionPerformed
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
-        String cadena3, cadena4, cadena5, cadena6, cadena7, cadena8, cadena9, cadena10;
+        String cadena3, cadena4, cadena5, cadena6, cadena7, cadena8, cadena9, cadena10, cadena11;
         cadena3 = txt_Nombre.getText();
         cadena4 = txt_Apellido.getText();
         cadena5 = txt_Salario.getText();
         cadena6 = txt_Telefono.getText();
-        cadena7 = cbo_idCampus.getSelectedItem().toString();
-        cadena8 = txt_NombreUsuario.getText();
-        cadena9 = pwd_contraseña.getText();
-        cadena10 = cbo_tipoUsuario.getSelectedItem().toString();
+        cadena7 = txt_Identidad.getText();
+        cadena8 = cbo_idCampus.getSelectedItem().toString();
+        cadena9 = txt_NombreUsuario.getText();
+        cadena10 = pwd_contraseña.getText();
+        cadena11 = cbo_tipoUsuario.getSelectedItem().toString();
         
         if ((txt_Nombre.getText().equals("")) || (txt_Apellido.getText().equals("")) || (txt_Salario.getText().equals(""))
-         || (txt_Telefono.getText().equals("")) || (cbo_idCampus.getSelectedItem().equals(null)) || (txt_NombreUsuario.getText().equals(""))|| (pwd_contraseña.getText().equals("")) || (cbo_tipoUsuario.getSelectedItem().equals(null)) ) {
+         || (txt_Telefono.getText().equals(""))   || (txt_Identidad.getText().equals("")) || (cbo_idCampus.getSelectedItem().equals(null)) || (txt_NombreUsuario.getText().equals(""))|| (pwd_contraseña.getText().equals("")) || (cbo_tipoUsuario.getSelectedItem().equals(null)) ) {
             
             javax.swing.JOptionPane.showMessageDialog(this,"Debe llenar todos los campos \n","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_Nombre.requestFocus();
@@ -577,12 +625,12 @@ this.cbo_tipoUsuario.setSelected Item("");
         
     }//GEN-LAST:event_btn_consultarActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void cbo_MenuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_MenuPrincipalActionPerformed
         this.dispose();
         
         Principal p = new Principal();
         p.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_cbo_MenuPrincipalActionPerformed
 
     private void cbo_idCampusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_idCampusActionPerformed
         // TODO add your handling code here:
@@ -590,9 +638,75 @@ this.cbo_tipoUsuario.setSelected Item("");
 
     private void btn_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ModificarActionPerformed
        
-            modificar ();   
+            Modificar ();   
         
     }//GEN-LAST:event_btn_ModificarActionPerformed
+
+    private void cbo_ConsultaIndividualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_ConsultaIndividualActionPerformed
+        
+        String cap="";
+        ResultSet rs = null; 
+var = javax.swing.JOptionPane.showInputDialog(this,"Nombre del Usuario","Consultausuario",javax.swing.JOptionPane.QUESTION_MESSAGE);
+        String sql="SELECT* FROM  usuarios WHERE nombre = '"+var+"'";
+if(var == null)  
+javax.swing.JOptionPane.showMessageDialog(this,"La accion fue cancelada","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+      else {
+        if (var.equals("")) {
+javax.swing.JOptionPane.showMessageDialog(this,"Favor de ingresar el nombre del empleado\nquedesea consultar","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        }
+         else {
+        try {
+
+String url = "jdbc:sqlserver://WIL212027:1433;";
+String usuario = "admin";
+            String contraseña = "admin";
+
+Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance(); 
+             con = DriverManager.getConnection(url,usuario,contraseña); 
+if( con != null ) 
+System.out.println("Se ha establecido una conexión a la base de datos " +  
+"\n " + url ); 
+
+stmt = con.createStatement(); 
+rs = stmt.executeQuery(sql);
+
+          while(rs.next()) {
+
+               cap = rs.getString("tipoUsuario"); 
+
+          if (cap.equals("administrador") || cap.equals("manager") || cap.equals("servidor")) {
+
+ConsultaIndividual();           
+          }
+}   // fin del bucle While
+
+        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException ex) {
+Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+finally {
+            if (con != null) {
+                try {
+con.close();
+stmt.close();
+                } catch ( Exception e ) { 
+System.out.println( e.getMessage());
+                }
+              }
+            }
+           if ( !cap.equals("administrador") && !cap.equals("manager") && !cap.equals("servidor")) {
+javax.swing.JOptionPane.showMessageDialog(this,"Elusuario no fueencontrado\n","ERROR!", javax.swing.JOptionPane.ERROR_MESSAGE);
+
+          }
+        }
+      }  
+
+        
+    }//GEN-LAST:event_cbo_ConsultaIndividualActionPerformed
+
+    private void txt_IdentidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_IdentidadKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_IdentidadKeyTyped
 
     /**
      * @param args the command line arguments
@@ -639,16 +753,18 @@ this.cbo_tipoUsuario.setSelected Item("");
     private javax.swing.JButton btn_consultar;
     private javax.swing.JButton btn_guardar;
     private javax.swing.JButton btn_limpiar;
+    private javax.swing.JCheckBoxMenuItem cbo_ConsultaIndividual;
+    private javax.swing.JMenuItem cbo_MenuPrincipal;
     private javax.swing.JComboBox<String> cbo_idCampus;
     private javax.swing.JComboBox<String> cbo_tipoUsuario;
     private javax.swing.JCheckBox chb_mostrarContraseña;
     private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JLabel lbl_apellidos;
     private javax.swing.JLabel lbl_contraseña;
     private javax.swing.JLabel lbl_idCampus;
+    private javax.swing.JLabel lbl_identidad;
     private javax.swing.JLabel lbl_nombreUsuario;
     private javax.swing.JLabel lbl_nombres;
     private javax.swing.JLabel lbl_salario;
@@ -657,6 +773,7 @@ this.cbo_tipoUsuario.setSelected Item("");
     private javax.swing.JLabel lbl_titulo;
     private javax.swing.JPasswordField pwd_contraseña;
     private javax.swing.JTextField txt_Apellido;
+    private javax.swing.JTextField txt_Identidad;
     private javax.swing.JTextField txt_Nombre;
     private javax.swing.JTextField txt_NombreUsuario;
     private javax.swing.JTextField txt_Salario;

@@ -21,12 +21,13 @@ import sistema_registro.SQL.ConectorSQL;
 public class ConsultasEmpleados extends javax.swing.JFrame {
 
    
-    String titulos [] = {"Nombre","Apellido", "Salario", "Telefono", "idCampus", "NombreUsuario", "contraseña", "tipoUsuario"};
+    String titulos [] = {"Nombre","Apellido", "Salario", "Telefono", "Identidad", "idCampus", "NombreUsuario", "contraseña", "tipoUsuario"};
     String fila [] = new String[7];
     DefaultTableModel modelo;
     Connection con = null;
     Statement stmt = null;
     String var, var2;
+     private String driver;
 
    
     public ConsultasEmpleados()  throws SQLException {
@@ -36,6 +37,19 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
         this.setLocation(335,200);
         this.setResizable(false);
      
+        try {
+        
+        String url = "jdbc:sqlserver://WIL212027:1433;";
+            String usuario = "admin";
+            String contraseña = "admin";  
+            
+                    
+           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance(); 
+        
+               con = DriverManager.getConnection(url);
+               if (con!= null)
+                   System.out.println("Se ha establecido una conexion a la base de datos"+"\n"+url);
+
   
                stmt = con.createStatement();
                ResultSet rs = stmt.executeQuery("select* from Empleados");
@@ -46,11 +60,12 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
                    
                    fila[0] = rs.getString("id");
                    fila[1] = rs.getString("Nombres");
-                   fila[1] = rs.getString("Apellidos");
-                   fila[2] = rs.getString("Campus");
-                   fila[3] = rs.getString("Telefono");
-                   fila[5] = rs.getString("Password");
-                   fila[6] = rs.getString("Tipo Usuario");
+                   fila[2] = rs.getString("Apellidos");
+                   fila[3] = rs.getString("Campus");
+                   fila[4] = rs.getString("Telefono");
+                   fila[5] = rs.getString("Identidad");
+                   fila[6] = rs.getString("Password");
+                   fila[7] = rs.getString("Tipo Usuario");
                    
                    modelo.addRow(fila);     
                }
@@ -63,12 +78,20 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
                 cd.setMaxWidth(160);
                 TableColumn ct = Tabla_Empleados.getColumn("Telefono");
                 ct.setMaxWidth(90);
+              //  TableColumn ct = Tabla_Empleados.getColumn("Identidad");
+                //ct.setMaxWidth(90);
                 TableColumn cp = Tabla_Empleados.getColumn("Password");
                 cp.setMaxWidth(72);
                 TableColumn ctipo = Tabla_Empleados.getColumn("Tipo Usuario");
                 ctipo.setMaxWidth(95);
                
             }
+                catch (Exception e) {
+            
+            JOptionPane.showMessageDialog(null,"Error al extraer los datos de la tabla");
+        }
+
+    }
     
     
 
@@ -150,22 +173,21 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(385, 385, 385)
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap()
+                .addComponent(jScrollPane1)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(278, 278, 278)
-                .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btn_ConsultaIndividual)
-                .addGap(18, 18, 18)
-                .addComponent(btn_eliminar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(385, 385, 385)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(278, 278, 278)
+                        .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_ConsultaIndividual)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_eliminar)))
                 .addContainerGap(302, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -174,8 +196,8 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_modificar)
                     .addComponent(btn_eliminar)
@@ -195,86 +217,28 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
     
     private void MenuRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuRegistroActionPerformed
 
-        this.dispose();
-        ConsultasEmpleados consultasEmpleados = null;
-     try {
-         consultasEmpleados = new ConsultasEmpleados();
-     } catch (SQLException ex) {
-         Logger.getLogger(ConsultasEmpleados.class.getName()).log(Level.SEVERE, null, ex);
-     }
-        consultasEmpleados.setVisible(true);
-        Empleado E = null;
-     try {
-         E = new Empleado();
-     } catch (SQLException ex) {
-         Logger.getLogger(ConsultasEmpleados.class.getName()).log(Level.SEVERE, null, ex);
-     }
-        
-        E.setVisible(true);
+        try {
+            this.dispose();
+            Empleado E = new Empleado();
+            E.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(ConsultasEmpleados.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_MenuRegistroActionPerformed
 
     private void btn_ConsultaIndividualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ConsultaIndividualActionPerformed
+
+       
+        //   this.dispose();
         
-            String cap="";
-        ResultSet rs = null; 
-var = javax.swing.JOptionPane.showInputDialog(this,"Nombre del usuario","Consulta de Usuario",javax.swing.JOptionPane.QUESTION_MESSAGE);
-        String sql="SELECT* FROM  usuarios WHERE nombre = '"+var+"'";
-if(var == null)  
-javax.swing.JOptionPane.showMessageDialog(this,"La accion fue cancelada","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-      else {
-        if (var.equals("")) {
-javax.swing.JOptionPane.showMessageDialog(this,"Favor de ingresar el nombre de usuario\nque desea consultar","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-        }
-         else {
-        try {
-
-String url = "jdbc:sqlserver://WIL212027:1433;";
-String usuario = "admin";
-            String contraseña = "admin";
-
-Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance(); 
-             con = DriverManager.getConnection(url); 
-if( con != null ) 
-System.out.println("Se ha establecido una conexión a la base de datos " +  
-"\n " + url ); 
-
-stmt = con.createStatement(); 
-rs = stmt.executeQuery(sql);
-
-          while(rs.next()) {
-
-               cap = rs.getString("tipousuario"); 
-
-          if (cap.equals("invitado") || cap.equals("administrador") || cap.equals("manager") || cap.equals("servidor")) {
-
-consulta();           
-          }
-}   // fin del bucle While
-
-        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException ex) {
-Logger.getLogger(portada.class.getName()).log(Level.SEVERE, null, ex);
-       }
-
-finally {
-            if (con != null) {
-                try {
-con.close();
-stmt.close();
-                } catch ( Exception e ) { 
-System.out.println( e.getMessage());
-                }
-              }
-            }
-           if (!cap.equals("invitado") && !cap.equals("administrador") && !cap.equals("manager") && !cap.equals("servidor")) {
-javax.swing.JOptionPane.showMessageDialog(this,"El Usuario no fue encontrado \n","ERROR!", javax.swing.JOptionPane.ERROR_MESSAGE);
-
-          }
-        }
-      }  
+       ConsultaIndividual ci = new ConsultaIndividual();
+        ci.setVisible(true);
+        
         
     }//GEN-LAST:event_btn_ConsultaIndividualActionPerformed
 
+    
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
         
          

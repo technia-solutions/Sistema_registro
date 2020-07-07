@@ -58,7 +58,7 @@ public class Login extends javax.swing.JFrame {
         btn_ingresar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btn_ingresar.setForeground(new java.awt.Color(255, 255, 255));
         btn_ingresar.setText("Ingresar");
-        btn_ingresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_ingresar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btn_ingresar.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 btn_ingresarFocusGained(evt);
@@ -82,7 +82,7 @@ public class Login extends javax.swing.JFrame {
         chb_mostrarContraseña.setBackground(new java.awt.Color(255, 255, 255));
         chb_mostrarContraseña.setText("Mostrar contraseña");
         chb_mostrarContraseña.setActionCommand("jCheckBox1");
-        chb_mostrarContraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_mostrarContraseña.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_mostrarContraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_mostrarContraseñaActionPerformed(evt);
