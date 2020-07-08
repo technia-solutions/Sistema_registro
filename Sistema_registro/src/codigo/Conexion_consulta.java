@@ -26,7 +26,6 @@ public class Conexion_consulta {
        
     }
     
-    
     public ArrayList<String> llenar_combo() throws SQLException{
          ArrayList<String> lista = new ArrayList<String>();
          String q= "SELECT * from Campus";
@@ -34,17 +33,13 @@ public class Conexion_consulta {
          st = con.createStatement();
          try{
             rs=st.executeQuery(q);
-         }
-        catch(Exception e){ 
-              }
-         try{
             while(rs.next()){
                 lista.add(rs.getString("id_campus") + " - " + rs.getString("nombre_campus"));
             }
          }
-         catch(Exception e){
-             
-         }
+        catch(Exception e){ 
+            
+              }
           return lista;
         
     }

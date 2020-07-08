@@ -47,7 +47,6 @@ public class Empleado extends javax.swing.JFrame {
     public Empleado() throws SQLException {
         this.con = ConectorSQL.obtenerConexion();
         initComponents();
-           Statement st;
              ArrayList<String> lista = new ArrayList<String>();
              lista = new Conexion_consulta().llenar_combo();
             for(int i = 0; i<lista.size();i++){
@@ -607,6 +606,82 @@ this.cbo_tipoUsuario.setSelectedItem("");
         // TODO add your handling code here:
     }//GEN-LAST:event_cbo_tipoUsuarioActionPerformed
 
+    public boolean existeUsuario(){
+        try {
+            Statement st = con.createStatement();
+            String sql = "Select nombre_usuario from Acceso where nombre_usuario = '"+txt_NombreUsuario.getText()+"'";
+            ResultSet rs = st.executeQuery(sql);
+            if(rs.next()){
+                JOptionPane.showMessageDialog(null, "Ya existe usuario", "Usuarios", JOptionPane.INFORMATION_MESSAGE);
+                return true;
+            }
+            else{
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
+    public boolean existeEmpleado(){
+        try {
+            Statement st = con.createStatement();
+            String sql = "Select numero_identidad from Empleados where numero_identidad = '"+txt_Identidad.getText()+"'";
+            ResultSet rs = st.executeQuery(sql);
+            if(rs.next()){
+                JOptionPane.showMessageDialog(null, "Ya existe empleado", "empleados", JOptionPane.INFORMATION_MESSAGE);
+                return true;
+            }
+            else{
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
+    public boolean validarContraseñas(String contraseña){
+        if(contraseña.length() > 7){
+             if(politicasContraseña(contraseña)){
+                 return true;
+             }
+             else{
+                 JOptionPane.showMessageDialog(null, "La contraseña no cumple las directrices", "Politicas contraseñas", JOptionPane.ERROR_MESSAGE);
+                 return false;
+             }
+        }
+        else{;
+            JOptionPane.showMessageDialog(null, "La contraseña es muy pequeña", "Longitud", JOptionPane.ERROR_MESSAGE); 
+           return false; 
+        }    
+    }
+    
+    public boolean politicasContraseña(String contraseña){
+        boolean tieneNumero = false; 
+        boolean tieneMayusculas = false; 
+        boolean tieneMinusculas = false;
+        char c;
+        
+        for(int i=0; i<contraseña.length();i++){
+            c = contraseña.charAt(i);
+            if(Character.isDigit(c)){
+                tieneNumero = true;
+            }
+            else if(Character.isUpperCase(c)){
+                tieneMayusculas = true;
+            }
+            else if(Character.isLowerCase(c)){
+                tieneMinusculas = true;
+            }
+            if(tieneNumero && tieneMayusculas && tieneMinusculas){
+                return true;
+            }
+        }
+        return false;
+    }
+    
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
         String cadena3, cadena4, cadena5, cadena6, cadena7, cadena8, cadena9, cadena10, cadena11;
         cadena3 = txt_Nombre.getText();
@@ -621,10 +696,23 @@ this.cbo_tipoUsuario.setSelectedItem("");
        String tipoUsuario = cbo_tipoUsuario.getSelectedItem().toString().substring(0,1);
         
         if ((txt_Nombre.getText().equals("")) || (txt_Apellido.getText().equals("")) || (txt_Salario.getText().equals(""))
-         || (txt_Telefono.getText().equals(""))   || (txt_Identidad.getText().equals("")) || (cbo_idCampus.getSelectedItem().equals(null)) || (txt_NombreUsuario.getText().equals(""))|| (pwd_contraseña.getText().equals("")) || (cbo_tipoUsuario.getSelectedItem().equals(null)) ) {
+         || (txt_Telefono.getText().equals(""))   || (txt_Identidad.getText().equals("")) || (cbo_idCampus.getSelectedItem().equals("Seleccione un campus")) || (txt_NombreUsuario.getText().equals(""))|| (pwd_contraseña.getText().equals("")) 
+                || (cbo_tipoUsuario.getSelectedItem().equals("Seleccione un tipo de usuario")) ) {
             
             javax.swing.JOptionPane.showMessageDialog(this,"Debe llenar todos los campos \n","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_Nombre.requestFocus();
+            return;
+        }
+        
+        if(existeEmpleado()){
+            return;
+        }
+        
+        if(existeUsuario()){
+            return;
+        }
+        
+        if(!validarContraseñas(cadena10)){
             return;
         }
        
@@ -641,7 +729,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
                   ps.setString(6, txt_Identidad.getText());
                   int res= ps.executeUpdate();
                   if(res > 0){
-                      JOptionPane.showMessageDialog(null, "Se a Guardado la informacion correctamente");
+                      
                   }else {
                       JOptionPane.showMessageDialog(null, "Error al Guardar la informacion"); 
                   }
@@ -653,13 +741,11 @@ this.cbo_tipoUsuario.setSelectedItem("");
              Statement st2=con.createStatement();
               String sql ="Insert into Acceso(nombre_usuario,clave_acceso,tipo_usuario) values('"+txt_NombreUsuario.getText()+"','"+pwd_contraseña.getText()+"','"+tipoUsuario+"')";
                int rs2 = st2.executeUpdate(sql);
-              JOptionPane.showMessageDialog(null, "Se ha Guardado el usuario");
+              JOptionPane.showMessageDialog(null, "Se ha guardado la informacion correctamente");
           }catch ( Exception e) {
            JOptionPane.showMessageDialog(null, e.getMessage()); 
         }
-           
-        
-        
+            
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void txt_NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NombreKeyTyped
