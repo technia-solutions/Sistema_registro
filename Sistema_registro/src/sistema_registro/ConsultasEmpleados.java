@@ -16,18 +16,26 @@ import sistema_registro.SQL.ConectorSQL;
 
 /**
  *
- * @author wianp
+ * @author William P.
  */
+
+
+ 
 public class ConsultasEmpleados extends javax.swing.JFrame {
 
-   
+  
     String titulos [] = {"Nombre","Apellido", "Salario", "Telefono", "Identidad", "idCampus", "NombreUsuario", "contraseña", "tipoUsuario"};
     String fila [] = new String[7];
-    DefaultTableModel modelo;
+    DefaultTableModel modelo = new DefaultTableModel();
     Connection con = null;
     Statement stmt = null;
     String var, var2;
      private String driver;
+      initComponents();
+      this.Tabla_Empleados.setModel(modelo);
+     this.modelo.addComumn("");
+    
+      
 
    
     public ConsultasEmpleados()  throws SQLException {
@@ -129,6 +137,11 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        Tabla_Empleados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tabla_EmpleadosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(Tabla_Empleados);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -144,6 +157,11 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
 
         btn_eliminar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_eliminar.setText("Eliminar");
+        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarActionPerformed(evt);
+            }
+        });
 
         btn_ConsultaIndividual.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_ConsultaIndividual.setText("Consulta Ind");
@@ -173,22 +191,24 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(385, 385, 385)
-                        .addComponent(jLabel1))
+                        .addContainerGap()
+                        .addComponent(jScrollPane1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(278, 278, 278)
-                        .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_ConsultaIndividual)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_eliminar)))
-                .addContainerGap(302, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(385, 385, 385)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(278, 278, 278)
+                                .addComponent(btn_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_ConsultaIndividual)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_eliminar)))
+                        .addGap(0, 287, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,17 +252,43 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
        
         //   this.dispose();
         
-       ConsultaIndividual ci = new ConsultaIndividual();
-        ci.setVisible(true);
+    //   ConsultaIndividual ci = new ConsultaIndividual();
+       // ci.setVisible(true);
         
         
     }//GEN-LAST:event_btn_ConsultaIndividualActionPerformed
 
     
-    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
+    private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
+       
+        int fila_seleccionada=Tabla_Empleados.getSelectedRow();
+        if (fila_seleccionada>=0) {
+            modelo.removeRow(fila_seleccionada);
+            }else{
+                JOptionPane.showMessageDialog(null, "Seleccione una fila por favor");
+        }   
         
-         
-                
+    }//GEN-LAST:event_btn_eliminarActionPerformed
+
+    private void Tabla_EmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_EmpleadosMouseClicked
+        
+        int fila_seleccionada= Tabla_Empleados.getSelectedRow();
+        txt_Nombre.setText(Tabla_Empleados.getValueAt(fila_seleccionada,0).toString());
+        
+       txt_Apellido.setText(Apellido);
+       txt_Salario.setText(Salario);
+       txt_Telefono.setText(Telefono);
+       txt_Identidad.setText(Identidad);
+       cbo_idCampus.setSelectedItem(idCampus);
+       txt_NombreUsuario.setText(NombreUsuario);
+       pwd_contraseña.setText(contraseña);
+       cbo_tipoUsuario.setSelectedItem(tipoUsuario);
+       filas = fila_seleccionada;
+        
+    }//GEN-LAST:event_Tabla_EmpleadosMouseClicked
+
+    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
+
     }//GEN-LAST:event_btn_modificarActionPerformed
 
     /**
