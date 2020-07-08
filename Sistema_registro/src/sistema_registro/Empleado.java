@@ -6,10 +6,13 @@
 package sistema_registro;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import sistema_registro.SQL.ConectorSQL;
+import codigo.Conexion_consulta;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,6 +26,20 @@ public class Empleado extends javax.swing.JFrame {
     Connection con = null;
     Statement stmt = null;
     String var, var2;
+    
+    
+    private void LimpiarCajas(){
+        txt_Nombre.setText(null);
+        txt_Apellido.setText(null);
+        txt_Telefono.setText(null);
+        txt_Salario.setText(null);
+        txt_Identidad.setText(null);
+       cbo_idCampus.setSelectedIndex(0);
+        txt_NombreUsuario.setText(null);
+        pwd_contraseña.setText(null);
+
+    }
+    
 
     /**
      * Creates new form RegistroEmpleado
@@ -30,10 +47,27 @@ public class Empleado extends javax.swing.JFrame {
     public Empleado() throws SQLException {
         this.con = ConectorSQL.obtenerConexion();
         initComponents();
+           Statement st;
+             ArrayList<String> lista = new ArrayList<String>();
+             lista = new Conexion_consulta().llenar_combo();
+            for(int i = 0; i<lista.size();i++){
+                cbo_idCampus.addItem(lista.get(i));
+            }
+             
+        /*try {
+            st = con.createStatement();
+             ResultSet rs=st.executeQuery("show databases");
+        cbo_idCampus.removeAllItems();
+        
+       while(rs.next()){
+            cbo_idCampus.addItem(rs.getString(1));
+       }
+        } catch (SQLException ex) {
+            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+  
     } 
     
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -332,8 +366,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         });
 
         cbo_idCampus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cbo_idCampus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione:", "Comayagua ", "Tegucigalpa ", "Choluteca" }));
-        cbo_idCampus.setToolTipText("");
+        cbo_idCampus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un campus" }));
         cbo_idCampus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbo_idCampusActionPerformed(evt);
@@ -349,11 +382,6 @@ this.cbo_tipoUsuario.setSelectedItem("");
 
         btn_limpiar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_limpiar.setText("Limpiar");
-        btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_limpiarActionPerformed(evt);
-            }
-        });
 
         lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lbl_titulo.setText("Registro de Empleado");
@@ -370,7 +398,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         lbl_tipoUsuario.setText("Tipo Usuario");
 
         cbo_tipoUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cbo_tipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione:", "Empleado", "Administrador" }));
+        cbo_tipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un tipo de usuario", "Empleado", "Administrador", "Supervisor" }));
         cbo_tipoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbo_tipoUsuarioActionPerformed(evt);
@@ -397,11 +425,6 @@ this.cbo_tipoUsuario.setSelectedItem("");
         lbl_identidad.setText("Identidad");
 
         txt_Identidad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_Identidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_IdentidadActionPerformed(evt);
-            }
-        });
         txt_Identidad.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_IdentidadKeyTyped(evt);
@@ -479,8 +502,8 @@ this.cbo_tipoUsuario.setSelectedItem("");
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(lbl_nombreUsuario)
-                                .addGap(69, 69, 69)
-                                .addComponent(txt_NombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_NombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(chb_mostrarContraseña)
                                 .addGap(138, 138, 138))
@@ -555,8 +578,6 @@ this.cbo_tipoUsuario.setSelectedItem("");
                 .addGap(73, 73, 73))
         );
 
-        cbo_idCampus.getAccessibleContext().setAccessibleName("");
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -589,9 +610,10 @@ this.cbo_tipoUsuario.setSelectedItem("");
         cadena6 = txt_Telefono.getText();
         cadena7 = txt_Identidad.getText();
         cadena8 = cbo_idCampus.getSelectedItem().toString();
+        String id_campus = cbo_idCampus.getSelectedItem().toString().substring(0, 4);
         cadena9 = txt_NombreUsuario.getText();
         cadena10 = pwd_contraseña.getText();
-        cadena11 = cbo_tipoUsuario.getSelectedItem().toString();
+       String tipoUsuario = cbo_tipoUsuario.getSelectedItem().toString();
         
         if ((txt_Nombre.getText().equals("")) || (txt_Apellido.getText().equals("")) || (txt_Salario.getText().equals(""))
          || (txt_Telefono.getText().equals(""))   || (txt_Identidad.getText().equals("")) || (cbo_idCampus.getSelectedItem().equals(null)) || (txt_NombreUsuario.getText().equals(""))|| (pwd_contraseña.getText().equals("")) || (cbo_tipoUsuario.getSelectedItem().equals(null)) ) {
@@ -599,6 +621,52 @@ this.cbo_tipoUsuario.setSelectedItem("");
             javax.swing.JOptionPane.showMessageDialog(this,"Debe llenar todos los campos \n","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_Nombre.requestFocus();
         }
+       
+      try{
+          PreparedStatement ps;
+          ResultSet rs;
+          ps=con.prepareStatement("INSERT INTO Empleados (nombres_empleado, apellido_empleado, telefono_empleado, id_campus, salario, numero_identidad)"
+                  + "                VALUES(?,?,?,?,?,?)");
+                  ps.setString(1, txt_Nombre.getText());
+                  ps.setString(2, txt_Apellido.getText());
+                  ps.setString(3, txt_Telefono.getText());
+                  ps.setString(4, id_campus);
+                  ps.setString(5, txt_Salario.getText());
+                  ps.setString(6, txt_Identidad.getText());
+                  int res= ps.executeUpdate();
+                  
+                  if(res > 0){
+                      JOptionPane.showMessageDialog(null, "Se a Guardado la informacion correctamente");
+                  }else {
+                      JOptionPane.showMessageDialog(null, "Error al Guardar la informacion"); 
+                  }
+                  con.close();
+       
+      } catch ( Exception e) {
+            System.out.println(e);
+        }
+         try{
+          PreparedStatement ps;
+          ResultSet rs;
+              ps=con.prepareStatement("INSERT INTO Acceso (nombre_usuario, clave_acceso, tipo_usuario)"
+                  + " VALUES(?,?,?)");
+                 ps.setString(2, txt_NombreUsuario.getText());
+                  ps.setString(3, pwd_contraseña.getText());
+                  ps.setString(4, tipoUsuario);
+               int res= ps.executeUpdate();
+               if(res > 0){
+                      JOptionPane.showMessageDialog(null, "Se a Guardado la informacion correctamente");
+                      LimpiarCajas();
+                  }else {
+                      JOptionPane.showMessageDialog(null, "Error al Guardar la informacion"); 
+                  }
+                  con.close();
+          }catch ( Exception e) {
+            System.out.println(e);
+        }
+           
+        
+        
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void txt_NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NombreKeyTyped
@@ -651,7 +719,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
     }//GEN-LAST:event_cbo_MenuPrincipalActionPerformed
 
     private void cbo_idCampusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_idCampusActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_cbo_idCampusActionPerformed
 
     private void btn_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ModificarActionPerformed
