@@ -382,6 +382,11 @@ this.cbo_tipoUsuario.setSelectedItem("");
 
         btn_limpiar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_limpiar.setText("Limpiar");
+        btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_limpiarActionPerformed(evt);
+            }
+        });
 
         lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lbl_titulo.setText("Registro de Empleado");
@@ -613,13 +618,14 @@ this.cbo_tipoUsuario.setSelectedItem("");
         String id_campus = cbo_idCampus.getSelectedItem().toString().substring(0, 4);
         cadena9 = txt_NombreUsuario.getText();
         cadena10 = pwd_contraseña.getText();
-       String tipoUsuario = cbo_tipoUsuario.getSelectedItem().toString();
+       String tipoUsuario = cbo_tipoUsuario.getSelectedItem().toString().substring(0,1);
         
         if ((txt_Nombre.getText().equals("")) || (txt_Apellido.getText().equals("")) || (txt_Salario.getText().equals(""))
          || (txt_Telefono.getText().equals(""))   || (txt_Identidad.getText().equals("")) || (cbo_idCampus.getSelectedItem().equals(null)) || (txt_NombreUsuario.getText().equals(""))|| (pwd_contraseña.getText().equals("")) || (cbo_tipoUsuario.getSelectedItem().equals(null)) ) {
             
             javax.swing.JOptionPane.showMessageDialog(this,"Debe llenar todos los campos \n","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_Nombre.requestFocus();
+            return;
         }
        
       try{
@@ -634,35 +640,22 @@ this.cbo_tipoUsuario.setSelectedItem("");
                   ps.setString(5, txt_Salario.getText());
                   ps.setString(6, txt_Identidad.getText());
                   int res= ps.executeUpdate();
-                  
                   if(res > 0){
                       JOptionPane.showMessageDialog(null, "Se a Guardado la informacion correctamente");
                   }else {
                       JOptionPane.showMessageDialog(null, "Error al Guardar la informacion"); 
                   }
-                  con.close();
        
       } catch ( Exception e) {
             System.out.println(e);
         }
          try{
-          PreparedStatement ps;
-          ResultSet rs;
-              ps=con.prepareStatement("INSERT INTO Acceso (nombre_usuario, clave_acceso, tipo_usuario)"
-                  + " VALUES(?,?,?)");
-                 ps.setString(2, txt_NombreUsuario.getText());
-                  ps.setString(3, pwd_contraseña.getText());
-                  ps.setString(4, tipoUsuario);
-               int res= ps.executeUpdate();
-               if(res > 0){
-                      JOptionPane.showMessageDialog(null, "Se a Guardado la informacion correctamente");
-                      LimpiarCajas();
-                  }else {
-                      JOptionPane.showMessageDialog(null, "Error al Guardar la informacion"); 
-                  }
-                  con.close();
+             Statement st2=con.createStatement();
+              String sql ="Insert into Acceso(nombre_usuario,clave_acceso,tipo_usuario) values('"+txt_NombreUsuario.getText()+"','"+pwd_contraseña.getText()+"','"+tipoUsuario+"')";
+               int rs2 = st2.executeUpdate(sql);
+              JOptionPane.showMessageDialog(null, "Se ha Guardado el usuario");
           }catch ( Exception e) {
-            System.out.println(e);
+           JOptionPane.showMessageDialog(null, e.getMessage()); 
         }
            
         
@@ -805,12 +798,6 @@ javax.swing.JOptionPane.showMessageDialog(this,"Elusuario no fueencontrado\n","E
         pwd_contraseña.setText(null);
         cbo_idCampus.setSelectedIndex(0);
         cbo_tipoUsuario.setSelectedIndex(0);
-        
-        
-        
-        
-        
-        
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
     private void txt_IdentidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_IdentidadActionPerformed
