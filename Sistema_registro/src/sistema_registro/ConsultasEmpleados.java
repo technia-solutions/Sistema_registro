@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import sistema_registro.SQL.ConectorSQL;
+import sistema_registro.Empleado;
 
 /**
  *
@@ -39,7 +40,7 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
      
         try {
         
-        String url = "jdbc:sqlserver://WIL212027:1433;";
+        String url = "jdbc:sqlserver://DESKTOP-C3H4LER\\SQLEXPRESS;";
             String usuario = "admin";
             String contraseña = "admin";  
             
@@ -232,18 +233,72 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
        
         //   this.dispose();
         
-       ConsultaIndividual ci = new ConsultaIndividual();
-        ci.setVisible(true);
-        
-        
-    }//GEN-LAST:event_btn_ConsultaIndividualActionPerformed
+       //ConsultaIndividual ci = new ConsultaIndividual();
+       //ci.setVisible(true);
+       
+       String cap="";
+        ResultSet rs = null; 
+var = javax.swing.JOptionPane.showInputDialog(this,"Nombre del Usuario","Consultausuario",javax.swing.JOptionPane.QUESTION_MESSAGE);
+        String sql="SELECT* FROM  usuarios WHERE nombre = '"+var+"'";
+if(var == null)  
+javax.swing.JOptionPane.showMessageDialog(this,"La accion fue cancelada","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+      else {
+        if (var.equals("")) {
+javax.swing.JOptionPane.showMessageDialog(this,"Favor de ingresar el nombre del empleado\nquedesea consultar","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        }
+         else {
+        try {
 
-    
-    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
+String url = "jdbc:sqlserver://DESKTOP-C3H4LER\\SQLEXPRESS;";
+String usuario = "admin";
+            String contraseña = "admin";
+
+Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance(); 
+             con = DriverManager.getConnection(url,usuario,contraseña); 
+if( con != null ) 
+System.out.println("Se ha establecido una conexión a la base de datos " +  
+"\n " + url ); 
+
+stmt = con.createStatement(); 
+rs = stmt.executeQuery(sql);
+
+          while(rs.next()) {
+
+               cap = rs.getString("tipoUsuario"); 
+
+          if (cap.equals("administrador") || cap.equals("manager") || cap.equals("servidor")) {
+
+ConsultaIndividual();           
+          }
+}   // fin del bucle While
+
+        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException ex) {
+Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+       }
+
+finally {
+            if (con != null) {
+                try {
+con.close();
+stmt.close();
+                } catch ( Exception e ) { 
+System.out.println( e.getMessage());
+                }
+              }
+            }
+           if ( !cap.equals("Empleado") && !cap.equals("Administrador")) {
+javax.swing.JOptionPane.showMessageDialog(this,"Elusuario no fueencontrado\n","ERROR!", javax.swing.JOptionPane.ERROR_MESSAGE);
+
+          }
+        }
+      }  
+
         
-         
-                
-    }//GEN-LAST:event_btn_modificarActionPerformed
+    }                                                      
+
+    private void txt_IdentidadKeyTyped(java.awt.event.KeyEvent evt) {                                       
+        // TODO add your handling code here:
+    }                                      
 
     /**
      * @param args the command line arguments
@@ -262,20 +317,45 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConsultasEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Empleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConsultasEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Empleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConsultasEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Empleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConsultasEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Empleado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
-  
-    }
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    new Empleado().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        
+        
+      
+        
+        
+    }//GEN-LAST:event_btn_ConsultaIndividualActionPerformed
+
+    
+    private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
+        
+         
+                
+    }//GEN-LAST:event_btn_modificarActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar BarraMenu;
@@ -288,6 +368,10 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    private void ConsultaIndividual() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
   
 }

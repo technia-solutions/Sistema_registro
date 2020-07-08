@@ -57,7 +57,7 @@ ResultSet  rs = null;
 
    try { 
 
-String url = "jdbc:sqlserver://WIL212027:1433;"; 
+String url = "jdbc:sqlserver://DESKTOP-C3H4LER\\SQLEXPRESS;"; 
 String usuario = "admin"; 
  String contraseña = "admin";
 
@@ -175,7 +175,7 @@ javax.swing.JOptionPane.showMessageDialog(this,"1-. Consulte el nombre del emple
      else {   
 
      try { 
-String url = "jdbc:sqlserver://WIL212027:1433;"; 
+String url = "jdbc:sqlserver://DESKTOP-C3H4LER\\SQLEXPRESS;"; 
 String usuario = "admin"; 
                   String contraseña = "admin"; 
 
@@ -332,7 +332,8 @@ this.cbo_tipoUsuario.setSelectedItem("");
         });
 
         cbo_idCampus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cbo_idCampus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbo_idCampus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione:", "Comayagua ", "Tegucigalpa ", "Choluteca" }));
+        cbo_idCampus.setToolTipText("");
         cbo_idCampus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbo_idCampusActionPerformed(evt);
@@ -348,6 +349,11 @@ this.cbo_tipoUsuario.setSelectedItem("");
 
         btn_limpiar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_limpiar.setText("Limpiar");
+        btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_limpiarActionPerformed(evt);
+            }
+        });
 
         lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lbl_titulo.setText("Registro de Empleado");
@@ -364,7 +370,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         lbl_tipoUsuario.setText("Tipo Usuario");
 
         cbo_tipoUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cbo_tipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbo_tipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione:", "Empleado", "Administrador" }));
         cbo_tipoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbo_tipoUsuarioActionPerformed(evt);
@@ -391,6 +397,11 @@ this.cbo_tipoUsuario.setSelectedItem("");
         lbl_identidad.setText("Identidad");
 
         txt_Identidad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_Identidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_IdentidadActionPerformed(evt);
+            }
+        });
         txt_Identidad.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_IdentidadKeyTyped(evt);
@@ -512,11 +523,11 @@ this.cbo_tipoUsuario.setSelectedItem("");
                     .addComponent(pwd_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txt_Salario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbo_idCampus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_idCampus)))
+                            .addComponent(lbl_idCampus))
+                        .addComponent(txt_Salario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lbl_salario))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -544,6 +555,8 @@ this.cbo_tipoUsuario.setSelectedItem("");
                 .addGap(73, 73, 73))
         );
 
+        cbo_idCampus.getAccessibleContext().setAccessibleName("");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -552,7 +565,12 @@ this.cbo_tipoUsuario.setSelectedItem("");
     }//GEN-LAST:event_txt_SalarioActionPerformed
 
     private void chb_mostrarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_mostrarContraseñaActionPerformed
-        // TODO add your handling code here:
+          if(chb_mostrarContraseña.isSelected()){
+            pwd_contraseña.setEchoChar((char)0);
+        }
+        else{
+            pwd_contraseña.setEchoChar('*');
+        }
     }//GEN-LAST:event_chb_mostrarContraseñaActionPerformed
 
     private void pwd_contraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwd_contraseñaActionPerformed
@@ -694,7 +712,7 @@ System.out.println( e.getMessage());
                 }
               }
             }
-           if ( !cap.equals("administrador") && !cap.equals("manager") && !cap.equals("servidor")) {
+           if ( !cap.equals("Empleado") && !cap.equals("Administrador")) {
 javax.swing.JOptionPane.showMessageDialog(this,"Elusuario no fueencontrado\n","ERROR!", javax.swing.JOptionPane.ERROR_MESSAGE);
 
           }
@@ -705,8 +723,31 @@ javax.swing.JOptionPane.showMessageDialog(this,"Elusuario no fueencontrado\n","E
     }//GEN-LAST:event_cbo_ConsultaIndividualActionPerformed
 
     private void txt_IdentidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_IdentidadKeyTyped
-        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+       if((c < '0' || c > '9') && (c < '-' || c >'-'))evt.consume();
     }//GEN-LAST:event_txt_IdentidadKeyTyped
+
+    private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
+        txt_Nombre.setText(null);
+        txt_Apellido.setText(null);
+        txt_Salario.setText(null);
+        txt_Telefono.setText(null);
+        txt_Identidad.setText(null);
+        txt_NombreUsuario.setText(null);
+        pwd_contraseña.setText(null);
+        cbo_idCampus.setSelectedIndex(0);
+        cbo_tipoUsuario.setSelectedIndex(0);
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_btn_limpiarActionPerformed
+
+    private void txt_IdentidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_IdentidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_IdentidadActionPerformed
 
     /**
      * @param args the command line arguments
