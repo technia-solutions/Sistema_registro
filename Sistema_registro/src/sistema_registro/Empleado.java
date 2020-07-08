@@ -42,10 +42,10 @@ public class Empleado extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     
     
-  //  public void AutoCompletar () {
+   // public void AutoCompletar () {
 //ResultSet rs= null;
 //TextAutoCompletar tac = new TextAutompletar (txt_Nombre);
-//}
+   // }
 
     
     
@@ -512,11 +512,11 @@ this.cbo_tipoUsuario.setSelectedItem("");
                     .addComponent(pwd_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txt_Salario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbo_idCampus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_idCampus)))
+                            .addComponent(lbl_idCampus))
+                        .addComponent(txt_Salario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lbl_salario))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -674,7 +674,7 @@ rs = stmt.executeQuery(sql);
 
                cap = rs.getString("tipoUsuario"); 
 
-          if (cap.equals("administrador") || cap.equals("manager") || cap.equals("servidor")) {
+          if (cap.equals("administrador") || cap.equals("empleado") ) {
 
 ConsultaIndividual();           
           }
