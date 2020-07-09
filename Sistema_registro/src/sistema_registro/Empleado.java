@@ -881,7 +881,7 @@ rs = stmt.executeQuery(sql);
 
                cap = rs.getString("tipoUsuario"); 
 
-          if (cap.equals("administrador") || cap.equals("manager") || cap.equals("servidor")) {
+          if (cap.equals("Empleado") || cap.equals("Administrador") || cap.equals("Supervisor")) {
 
 ConsultaIndividual();           
           }
@@ -901,7 +901,7 @@ System.out.println( e.getMessage());
                 }
               }
             }
-           if ( !cap.equals("Empleado") && !cap.equals("Administrador")) {
+           if ( !cap.equals("Empleado") && !cap.equals("Administrador") || cap.equals("Supervisor")) {
 javax.swing.JOptionPane.showMessageDialog(this,"Elusuario no fueencontrado\n","ERROR!", javax.swing.JOptionPane.ERROR_MESSAGE);
 
           }
