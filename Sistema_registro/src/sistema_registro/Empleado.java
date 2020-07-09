@@ -52,7 +52,7 @@ public class Empleado extends javax.swing.JFrame {
             for(int i = 0; i<lista.size();i++){
                 cbo_idCampus.addItem(lista.get(i));
             }
-             
+                  
         /*try {
             st = con.createStatement();
              ResultSet rs=st.executeQuery("show databases");
@@ -66,7 +66,7 @@ public class Empleado extends javax.swing.JFrame {
         }*/
   
     } 
-    
+       
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

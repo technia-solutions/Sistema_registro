@@ -196,9 +196,14 @@ public class Login extends javax.swing.JFrame {
                 return;
             }
             if(rs.next()){
-                Principal principal = new Principal();
-                principal.setVisible(true);
+                String sql2 = "Select nombres_empleado + ' ' + apellido_empleado from Empleados where id_empleado = (select id_empleado from Acceso where nombre_usuario = '"+usuario+"')";
+                Statement st2 = con.createStatement();
+                ResultSet rs2 = st2.executeQuery(sql2);
+                if(rs2.next()){
+                Principal principal = new Principal(usuario,rs2.getString(1));
+                principal.setVisible(true); 
                 this.dispose();
+                }
             }
             else{
                 getToolkit().beep();
