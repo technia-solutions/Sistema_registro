@@ -559,10 +559,11 @@ this.cbo_tipoUsuario.setSelectedItem("");
                     .addComponent(pwd_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lbl_salario)
-                        .addComponent(txt_Salario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbl_idCampus))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txt_Salario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_salario)
+                            .addComponent(lbl_idCampus)))
                     .addComponent(cbo_idCampus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -657,16 +658,21 @@ this.cbo_tipoUsuario.setSelectedItem("");
     }//GEN-LAST:event_txt_NombreActionPerformed
 
     private void btn_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultarActionPerformed
+     
+
+        
+        
+        
         
           
          //this.dispose();
         
-        ConsultasEmpleados u = null;
-        try {
-            u = new ConsultasEmpleados();
-        } catch (SQLException ex) {
-            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
-        }
+      //  ConsultaIndividual u = null;
+        //try {
+          //  u = new ConsultaIndividual();
+        //} catch (SQLException ex) {
+          //  Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+       // }
         
       //  u.setVisible(true);
         
