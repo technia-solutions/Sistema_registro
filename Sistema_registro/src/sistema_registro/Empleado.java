@@ -5,6 +5,7 @@
  */
 package sistema_registro;
 
+import Atxy2k.CustomTextField.RestrictedTextField;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -13,6 +14,8 @@ import javax.swing.table.DefaultTableModel;
 import sistema_registro.SQL.ConectorSQL;
 import codigo.Conexion_consulta;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 /**
  *
@@ -64,8 +67,51 @@ public class Empleado extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
         }*/
+        
+        /*Restricciones*/
+        
+        restringirTexto(txt_Nombre,50);
+        restringirTexto(txt_Apellido,50);
+        restringirAlfanumerico(txt_NombreUsuario,25);
+        restringirPassword(pwd_contraseña, 8);
+        restringirNumero(txt_Identidad,14);
+        restringirNumero(txt_Salario,6);
+        restringirNumero(txt_Telefono,8);
+        
+        
   
     } 
+    
+    public void restringirTexto(JTextField texto, int cantidad){
+        RestrictedTextField r = new RestrictedTextField(texto);
+        r.setOnlyText(true);
+        r.setAcceptSpace(true);
+        r.setLimit(cantidad);
+        
+    }
+    
+    
+    public void restringirAlfanumerico(JTextField texto, int cantidad){
+        RestrictedTextField r = new RestrictedTextField(texto);
+        r.setOnlyAlphaNumeric(true);
+        r.setAcceptSpace(true);
+        r.setLimit(cantidad);
+    
+    }
+    
+    public void restringirPassword(JPasswordField texto, int cantidad){
+        RestrictedTextField r = new RestrictedTextField(texto);
+        r.setOnlyAlphaNumeric(true);
+        r.setLimit(cantidad);
+    }
+    
+     public void restringirNumero(JTextField texto, int cantidad){
+        RestrictedTextField r = new RestrictedTextField(texto);
+        r.setOnlyNums(true);
+        r.setLimit(cantidad);
+    }
+    
+    
        
     /**
      * This method is called from within the constructor to initialize the form.
@@ -749,23 +795,19 @@ this.cbo_tipoUsuario.setSelectedItem("");
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void txt_NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NombreKeyTyped
-       char c = evt.getKeyChar();
-       if((c < 'a' || c > 'z') && (c < 'A' || c >'Z') && (c > ' ' || c > ' '))evt.consume();
+       
     }//GEN-LAST:event_txt_NombreKeyTyped
 
     private void txt_ApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_ApellidoKeyTyped
-       char c = evt.getKeyChar();
-       if((c < 'a' || c > 'z') && (c < 'A' || c >'Z') && (c > ' ' || c > ' '))evt.consume();
+       
     }//GEN-LAST:event_txt_ApellidoKeyTyped
 
     private void txt_TelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_TelefonoKeyTyped
-        char c = evt.getKeyChar();
-        if((c < '0' || c > '9'))evt.consume();
+       
     }//GEN-LAST:event_txt_TelefonoKeyTyped
 
     private void txt_SalarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_SalarioKeyTyped
-      char c = evt.getKeyChar();
-      if((c < '0' || c > '9'))evt.consume();
+ 
     }//GEN-LAST:event_txt_SalarioKeyTyped
 
     private void txt_NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NombreActionPerformed
@@ -822,7 +864,7 @@ javax.swing.JOptionPane.showMessageDialog(this,"Favor de ingresar el nombre del 
          else {
         try {
 
-String url = "jdbc:sqlserver://WIL212027:1433;";
+String url = "jdbc:sqlserver://DESKTOP-C3H4LER\\SQLEXPRESS;";
 String usuario = "admin";
             String contraseña = "admin";
 
@@ -870,8 +912,7 @@ javax.swing.JOptionPane.showMessageDialog(this,"Elusuario no fueencontrado\n","E
     }//GEN-LAST:event_cbo_ConsultaIndividualActionPerformed
 
     private void txt_IdentidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_IdentidadKeyTyped
-        char c = evt.getKeyChar();
-       if((c < '0' || c > '9') && (c < '-' || c >'-'))evt.consume();
+   
     }//GEN-LAST:event_txt_IdentidadKeyTyped
 
     private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
