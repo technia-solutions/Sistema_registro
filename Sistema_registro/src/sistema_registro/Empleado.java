@@ -695,6 +695,8 @@ this.cbo_tipoUsuario.setSelectedItem("");
     
     private void btn_ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ActualizarActionPerformed
        
+        JOptionPane.showMessageDialog(this, "Actualizar");
+        
             String []datos= new String[8];
         datos[0] =txt_Nombre.getText();
          datos[1] =txt_Apellido.getText();

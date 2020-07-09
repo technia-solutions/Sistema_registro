@@ -25,15 +25,15 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
 
   
     String titulos [] = {"Nombre","Apellido", "Salario", "Telefono", "Identidad", "idCampus", "NombreUsuario", "contraseña", "tipoUsuario"};
-    String fila [] = new String[7];
+    String fila [] = new String[8];
     DefaultTableModel modelo = new DefaultTableModel();
     Connection con = null;
     Statement stmt = null;
     String var, var2;
      private String driver;
-      initComponents();
-      this.Tabla_Empleados.setModel(modelo);
-     this.modelo.addComumn("");
+  //    initComponents();
+     // this.Tabla_Empleados.setModel(modelo);
+     //this.modelo.addColumn("");
     
       
 
@@ -45,6 +45,7 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
         this.setLocation(335,200);
         this.setResizable(false);
      
+           
         try {
         
         String url = "jdbc:sqlserver://WIL212027:1433;";
@@ -66,30 +67,35 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
             
                while(rs.next()) {
                    
-                   fila[0] = rs.getString("id");
-                   fila[1] = rs.getString("Nombres");
-                   fila[2] = rs.getString("Apellidos");
-                   fila[3] = rs.getString("Campus");
-                   fila[4] = rs.getString("Telefono");
-                   fila[5] = rs.getString("Identidad");
-                   fila[6] = rs.getString("Password");
-                   fila[7] = rs.getString("Tipo Usuario");
+                   fila[0] = rs.getString("Nombres");
+                   fila[1] = rs.getString("Apellidos");
+                   fila[2] = rs.getString("Salario");
+                   fila[3] = rs.getString("Telefono ");
+                   fila[4] = rs.getString("Identidad");
+                   fila[5] = rs.getString("Campus");
+                   fila[6] = rs.getString("Nombre Usuario");
+                   fila[7] = rs.getString("Contraseña");
+                   fila[8] = rs.getString("Tipo Usuario");
                    
                    modelo.addRow(fila);     
                }
                Tabla_Empleados.setModel(modelo);
-                TableColumn ci = Tabla_Empleados.getColumn("id");
-                ci.setMaxWidth(25);
-                TableColumn cn = Tabla_Empleados.getColumn("Nombre");
-                cn.setMaxWidth(165);
-                TableColumn cd = Tabla_Empleados.getColumn("Domicilio");
-                cd.setMaxWidth(160);
+                TableColumn cn= Tabla_Empleados.getColumn("NombreS");
+                cn.setMaxWidth(25);
+                TableColumn ca = Tabla_Empleados.getColumn("Apellidos");
+                ca.setMaxWidth(165);
+                TableColumn cs= Tabla_Empleados.getColumn("Salario");
+                cs.setMaxWidth(160);
                 TableColumn ct = Tabla_Empleados.getColumn("Telefono");
                 ct.setMaxWidth(90);
-              //  TableColumn ct = Tabla_Empleados.getColumn("Identidad");
-                //ct.setMaxWidth(90);
-                TableColumn cp = Tabla_Empleados.getColumn("Password");
-                cp.setMaxWidth(72);
+              TableColumn ci = Tabla_Empleados.getColumn("Identidad");
+                ci.setMaxWidth(90);
+                TableColumn cc = Tabla_Empleados.getColumn("Campus");
+                cc.setMaxWidth(95);
+                TableColumn cnu = Tabla_Empleados.getColumn("Nombre Usuario");
+                cnu.setMaxWidth(90);
+                TableColumn ccon= Tabla_Empleados.getColumn("Contraseña");
+                ccon.setMaxWidth(72);
                 TableColumn ctipo = Tabla_Empleados.getColumn("Tipo Usuario");
                 ctipo.setMaxWidth(95);
                
@@ -98,7 +104,6 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(null,"Error al extraer los datos de la tabla");
         }
-
     }
     
     
@@ -273,17 +278,17 @@ public class ConsultasEmpleados extends javax.swing.JFrame {
     private void Tabla_EmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_EmpleadosMouseClicked
         
         int fila_seleccionada= Tabla_Empleados.getSelectedRow();
-        txt_Nombre.setText(Tabla_Empleados.getValueAt(fila_seleccionada,0).toString());
+    //    txt_Nombre.setText(Tabla_Empleados.getValueAt(fila_seleccionada,0).toString());
         
-       txt_Apellido.setText(Apellido);
-       txt_Salario.setText(Salario);
-       txt_Telefono.setText(Telefono);
-       txt_Identidad.setText(Identidad);
-       cbo_idCampus.setSelectedItem(idCampus);
-       txt_NombreUsuario.setText(NombreUsuario);
-       pwd_contraseña.setText(contraseña);
-       cbo_tipoUsuario.setSelectedItem(tipoUsuario);
-       filas = fila_seleccionada;
+       //txt_Apellido.setText(Apellido);
+       //txt_Salario.setText(Salario);
+       //txt_Telefono.setText(Telefono);
+       //txt_Identidad.setText(Identidad);
+       //cbo_idCampus.setSelectedItem(idCampus);
+       //txt_NombreUsuario.setText(NombreUsuario);
+       //pwd_contraseña.setText(contraseña);
+       //cbo_tipoUsuario.setSelectedItem(tipoUsuario);
+       //filas = fila_seleccionada;
         
     }//GEN-LAST:event_Tabla_EmpleadosMouseClicked
 
