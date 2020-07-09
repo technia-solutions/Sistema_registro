@@ -8,7 +8,6 @@ package sistema_registro;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.*;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import sistema_registro.SQL.ConectorSQL;
 /**
@@ -188,7 +187,7 @@ public class Login extends javax.swing.JFrame {
         try {
             String usuario = txt_usuario.getText();
             String contraseña = String.valueOf(pwd_contraseña.getText());
-            String sql = "SELECT * from Acceso where nombre_usuario ='" +usuario+ "' and clave_acceso='"+contraseña+"'";
+            String sql = "SELECT * from Acceso where nombre_usuario ='" +usuario+ "' and clave_acceso='"+contraseña+"' COLLATE Latin1_General_CS_AS";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
             if(isEmpty()){
@@ -197,9 +196,14 @@ public class Login extends javax.swing.JFrame {
                 return;
             }
             if(rs.next()){
-                Principal principal = new Principal();
-                principal.setVisible(true);
+                String sql2 = "Select nombres_empleado + ' ' + apellido_empleado from Empleados where id_empleado = (select id_empleado from Acceso where nombre_usuario = '"+usuario+"')";
+                Statement st2 = con.createStatement();
+                ResultSet rs2 = st2.executeQuery(sql2);
+                if(rs2.next()){
+                Principal principal = new Principal(usuario,rs2.getString(1));
+                principal.setVisible(true); 
                 this.dispose();
+                }
             }
             else{
                 getToolkit().beep();
