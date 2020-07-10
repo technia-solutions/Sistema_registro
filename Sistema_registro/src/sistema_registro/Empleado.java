@@ -63,7 +63,7 @@ public class Empleado extends javax.swing.JFrame {
             for(int i = 0; i<lista.size();i++){
                 cbo_idCampus.addItem(lista.get(i));
             }
-   
+            this.setLocationRelativeTo(null);
     } 
     
     public Empleado(String nombreUsuario) throws SQLException {
@@ -76,6 +76,7 @@ public class Empleado extends javax.swing.JFrame {
             }
         String usuario = nombreUsuario;
         this.lbl_usuario.setText(usuario);
+        this.setLocationRelativeTo(null);
     } 
     
     /**
@@ -1063,7 +1064,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         
     }
     private void cbo_ConsultaIndividualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_ConsultaIndividualActionPerformed
-        
+
         try {
             Statement st = con.createStatement();
             String consulta = "Select tipo_usuario from Acceso where nombre_usuario = '"+lbl_usuario.getText()+"'";
