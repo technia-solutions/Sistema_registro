@@ -5,6 +5,7 @@
  */
 package sistema_registro;
 
+import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.*;
@@ -46,7 +47,6 @@ public class Login extends javax.swing.JFrame {
         lbl_logo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(986, 643));
 
         kGradientPanel1.setkEndColor(new java.awt.Color(0, 153, 53));
         kGradientPanel1.setkStartColor(new java.awt.Color(0, 153, 151));
@@ -85,6 +85,12 @@ public class Login extends javax.swing.JFrame {
         chb_mostrarContraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_mostrarContraseñaActionPerformed(evt);
+            }
+        });
+
+        pwd_contraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pwd_contraseñaKeyTyped(evt);
             }
         });
 
@@ -227,9 +233,21 @@ public class Login extends javax.swing.JFrame {
 
     
     private void txt_usuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_usuarioKeyTyped
-
-        // TODO add your handling code here:
+    if(txt_usuario.getText().length() >=25){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Numero maximo de caracteres admitidos");
+        }
+        char a=evt.getKeyChar();
     }//GEN-LAST:event_txt_usuarioKeyTyped
+
+    private void pwd_contraseñaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pwd_contraseñaKeyTyped
+      if(pwd_contraseña.getText().length() >=25){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Numero maximo de caracteres admitidos");
+        }
+    }//GEN-LAST:event_pwd_contraseñaKeyTyped
 
        private boolean isEmpty(){
         if("".equals(txt_usuario.getText()) || "".equals(pwd_contraseña.getText()))

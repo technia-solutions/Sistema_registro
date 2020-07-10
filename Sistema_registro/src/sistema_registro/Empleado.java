@@ -754,6 +754,35 @@ this.cbo_tipoUsuario.setSelectedItem("");
             return;
         }
         
+        if(!validarLongitud(txt_Nombre,5)){
+            JOptionPane.showMessageDialog(null, "Los nombres son muy pequeños el minimo es de 5 caracteres", "Longitud Nombre", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+         if(!validarLongitud(txt_Apellido,5)){
+            JOptionPane.showMessageDialog(null, "El apellido son muy pequeños el minimo es de 5 caracteres", "Longitud Apellido", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+         
+         if(!validarLongitud(txt_Salario,2)){
+            JOptionPane.showMessageDialog(null, "El salario debe ser de minimo 2 caracteres", "Longitud Salario", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+         
+         if(!validarLongitud(txt_Telefono,8)){
+            JOptionPane.showMessageDialog(null, "El numero telefonico debe ser de 8 digitos", "Longitud Telefono", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+         
+          if(!validarLongitud(txt_Identidad,13)){
+            JOptionPane.showMessageDialog(null, "El numero de identidad debe ser de 13 digitos", "Longitud Numero Identidad", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+          if(!validarLongitud(txt_NombreUsuario,8)){
+            JOptionPane.showMessageDialog(null, "El nombre de usuario debe ser de minimo 8 caracteres", "Longitud Nombre Usuario", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
         if(!validarContraseñas(cadena9)){
             return;
         }
@@ -790,6 +819,14 @@ this.cbo_tipoUsuario.setSelectedItem("");
         limpiar();   
     }//GEN-LAST:event_btn_guardarActionPerformed
 
+    private boolean validarLongitud(JTextField texto, int longitud){
+       if(texto.getText().length() >= longitud){
+           return true;
+       }
+       else{
+           return false;
+       }
+    }
     private void txt_NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NombreKeyTyped
         if(txt_Nombre.getText().length() >=100){
             evt.consume();
@@ -928,7 +965,12 @@ this.cbo_tipoUsuario.setSelectedItem("");
     private void cbo_MenuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_MenuPrincipalActionPerformed
         this.dispose();
         
-        Principal p = new Principal();
+        Principal p = null;
+        try {
+            p = new Principal();
+        } catch (SQLException ex) {
+            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
         p.setVisible(true);
     }//GEN-LAST:event_cbo_MenuPrincipalActionPerformed
 
@@ -1001,7 +1043,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             ResultSet rs = st.executeQuery(consulta);
             
             if(rs.next()){
-                if(rs.getString("tipo_usuario").equals("A")){
+                if(rs.getString("tipo_usuario").equals("A") || rs.getString("tipo_usuario").equals("S")){
                     try{
                     String cap="";
                     ResultSet rs2 = null;
@@ -1071,7 +1113,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             ResultSet rs = st.executeQuery(consulta);
             
             if(rs.next()){
-                if(rs.getString("tipo_usuario").equals("A")){
+                if(rs.getString("tipo_usuario").equals("A") || rs.getString("tipo_usuario").equals("S")){
                     try{
                     String cap="";
                     ResultSet rs2 = null;

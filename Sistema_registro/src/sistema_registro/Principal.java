@@ -7,22 +7,27 @@ package sistema_registro;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import sistema_registro.SQL.ConectorSQL;
 
 /**
  *
  * @author Mitsuki
  */
 public class Principal extends javax.swing.JFrame {
-    
+    Connection con;
 
      
-    public Principal() {
+    public Principal() throws SQLException {
+        this.con = ConectorSQL.obtenerConexion();
         
         try {
             Login login=new Login();
@@ -37,7 +42,8 @@ public class Principal extends javax.swing.JFrame {
  
  
     }
-    public Principal(String nombreUsuario,String nombreEmpleado){
+    public Principal(String nombreUsuario,String nombreEmpleado) throws SQLException{
+        this.con = ConectorSQL.obtenerConexion();
         
           initComponents();
         this.setLocationRelativeTo(null);
@@ -388,16 +394,43 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_EmpleadosActionPerformed
 
     private void btn_EmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_EmpleadosMouseClicked
+        Statement st;
+  
+        try {
+            st = con.createStatement();
+            String consulta = "Select tipo_usuario from Acceso where nombre_usuario = '"+lbl_NombreUsuario.getText()+"'";
+            ResultSet rs = st.executeQuery(consulta);
+            if(rs.next()){
+                if(rs.getString("tipo_usuario").equals("A")){
+                     
         Empleado empleado = null;
         try {
+            
             empleado = new Empleado(lbl_NombreUsuario.getText());
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
         empleado.setVisible(true);
         this.dispose();
+                }
+                 else{
+                JOptionPane.showMessageDialog(null,"Solo los administradores tienen acceso a esta pantalla");
+            }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+           
+             
+       
+            
+            
+           
+       
     }//GEN-LAST:event_btn_EmpleadosMouseClicked
 
+      
+    
     private void btn_cerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cerrarSesionActionPerformed
        
     }//GEN-LAST:event_btn_cerrarSesionActionPerformed
@@ -484,7 +517,11 @@ public class Principal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Principal().setVisible(true);
+                try {
+                    new Principal().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
         
