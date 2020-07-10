@@ -1098,13 +1098,13 @@ this.cbo_tipoUsuario.setSelectedItem("");
                                 txt_Identidad.setText(rs2.getString("numero_identidad"));
                                 cbo_idCampus.setSelectedItem((rs2.getString("id_campus") + " - " + rs2.getString("nombre_campus")));
                                 txt_NombreUsuario.setText(rs2.getString("nombre_usuario"));
-                                if(rs2.getString("id_campus").equals("A")){
+                                if(rs2.getString("tipo_usuario").equals("A")){
                                     cbo_tipoUsuario.setSelectedItem("Administrador");
                                 }
-                                else if(rs2.getString("id_campus").equals("E")){
+                                else if(rs2.getString("tipo_usuario").equals("E")){
                                     cbo_tipoUsuario.setSelectedItem("Empleado");
                                 }
-                                else if(rs2.getString("id_campus").equals("S")){
+                                else if(rs2.getString("tipo_usuario").equals("S")){
                                     cbo_tipoUsuario.setSelectedItem("Supervisor");
                                 }
                       
