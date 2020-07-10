@@ -16,6 +16,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import sistema_registro.SQL.ConectorSQL;
 import codigo.Conexion_consulta;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -26,9 +27,9 @@ import javax.swing.JTextField;
  */
 public class Empleado extends javax.swing.JFrame {
      
-    String titulos [] = {"Nombre","Apellido", "Salario", "Telefono", "Identidad", " idCampus", "NombreUsuario", "Contraseña", "tipoUsuario"};
-    String fila [] = new String[7];
-    DefaultTableModel modelo =  new DefaultTableModel();;
+    String titulos [] = {"Id Empleado","Nombre","Apellido", "Salario", "Telefono", "Identidad", " idCampus", "NombreUsuario", "tipoUsuario"};
+    //String fila [] = new String[9];
+    DefaultTableModel modelo =  new DefaultTableModel();
     Connection con = null;
     Statement stmt = null;
     String var, var2;
@@ -59,65 +60,21 @@ public class Empleado extends javax.swing.JFrame {
             for(int i = 0; i<lista.size();i++){
                 cbo_idCampus.addItem(lista.get(i));
             }
-                  
-        /*try {
-            st = con.createStatement();
-             ResultSet rs=st.executeQuery("show databases");
-        cbo_idCampus.removeAllItems();
-        
-       while(rs.next()){
-            cbo_idCampus.addItem(rs.getString(1));
-       }
-        } catch (SQLException ex) {
-            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-        
-        /*Restricciones*/
-        
-        restringirTexto(txt_Nombre,50);
-        restringirTexto(txt_Apellido,50);
-        restringirAlfanumerico(txt_NombreUsuario,25);
-        restringirPassword(pwd_contraseña, 25);
-        restringirNumero(txt_Identidad,14);
-        restringirNumero(txt_Salario,6);
-        restringirNumero(txt_Telefono,8);
-        
-        
-  
+   
     } 
     
-    public void restringirTexto(JTextField texto, int cantidad){
-        RestrictedTextField r = new RestrictedTextField(texto);
-        r.setOnlyText(true);
-        r.setAcceptSpace(true);
-        r.setLimit(cantidad);
-        
-    }
+    public Empleado(String nombreUsuario) throws SQLException {
+        this.con = ConectorSQL.obtenerConexion();
+        initComponents();
+             ArrayList<String> lista = new ArrayList<String>();
+             lista = new Conexion_consulta().llenar_combo();
+            for(int i = 0; i<lista.size();i++){
+                cbo_idCampus.addItem(lista.get(i));
+            }
+        String usuario = nombreUsuario;
+        this.lbl_usuario.setText(usuario);
+    } 
     
-    
-    public void restringirAlfanumerico(JTextField texto, int cantidad){
-        RestrictedTextField r = new RestrictedTextField(texto);
-        r.setOnlyAlphaNumeric(true);
-        r.setAcceptSpace(true);
-        r.setLimit(cantidad);
-    
-    }
-    
-    public void restringirPassword(JPasswordField texto, int cantidad){
-        RestrictedTextField r = new RestrictedTextField(texto,".");
-        r.setOnlyAlphaNumeric(true);
-        r.setLimit(cantidad);
-        r.setAcceptCharacters(".");
-    }
-    
-     public void restringirNumero(JTextField texto, int cantidad){
-        RestrictedTextField r = new RestrictedTextField(texto);
-        r.setOnlyNums(true);
-        r.setLimit(cantidad);
-    }
-    
-    
-       
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -132,66 +89,36 @@ public class Empleado extends javax.swing.JFrame {
    // }
 
     
-    
+   /* 
      public void ConsultaIndividual() {
         String cap="";
-ResultSet  rs = null;
+        ResultSet  rs = null;
         var2 = var;
-        String sql2="Select  Nombre, Apellido, Salario, Telefono, Identidad, idCampus, NombreUsuario, contraseña, tipoUsuario FROM Empleados where Nombre = '"+var2+"'";
+        String sql= "select nombres_empleado,apellido_empleado,salario,telefono_empleado,numero_identidad,nombre_usuario,id_campus,tipo_usuario  from Empleados as e join\n" +
+        "Acceso as a on e.id_empleado = a.id_empleado";
 
    try { 
-
-String url = "jdbc:sqlserver://WIL212027:1433;"; 
-String usuario = "admin"; 
- String contraseña = "admin";
-
-Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance(); 
-
-
-     con = DriverManager.getConnection(url,usuario,contraseña); 
-
-if( con != null ) 
-	System.out.println("Se ha establecido una conexión a la base de datos " + 
-	                                       "\n " + url ); 
-
 	stmt = con.createStatement(); 
-                rs = stmt.executeQuery(sql2); 
+        rs = stmt.executeQuery(sql); 
 
 	int i=1; 
 	   while ( rs.next() ) { 
-
-	           String Nombre = rs.getString("Nombre"); 
-	           String Apellido = rs.getString("Apellido"); 
-                   String Salario= rs.getString("Salario"); 
-                   String Telefono = rs.getString("Telefono"); 
-                   String Identidad = rs.getString("Identidad");
-                   String idCampus = rs.getString("idCampus");
-                   String NombreUsuario = rs.getString("NombreUsuario");
-                     //String contraseña = rs.getString("contraseña");
-                       String tipoUsuario = rs.getString("tipoUsuario");
-	System.out.println("Sitio Web "+ (i++) + ":\n" 
-	
-                           + Nombre + "\n" 
-                           + Apellido + "\n" 
-                           + Salario+ "\n"
-	          + Telefono + "\n"
-                           + Identidad + "\n"
-                           + idCampus + "\n"
-                          + NombreUsuario+ "\n"
-                           + contraseña + "\n"
-                           + tipoUsuario + "\n\n" ); 
-
-
-txt_Nombre.setText(Nombre);
-txt_Apellido.setText(Apellido);
-txt_Salario.setText(Salario);
-txt_Telefono.setText(Telefono);
-txt_Identidad.setText(Identidad);
-cbo_idCampus.setSelectedItem(idCampus);
-txt_NombreUsuario.setText(NombreUsuario);
-pwd_contraseña.setText(contraseña);
-cbo_tipoUsuario.setSelectedItem(tipoUsuario);
-
+	           String Nombre = rs.getString("nombres_empleado"); 
+	           String Apellido = rs.getString("apellido_empleado"); 
+                   String Salario= rs.getString("salario"); 
+                   String Telefono = rs.getString("telefono_empleado"); 
+                   String Identidad = rs.getString("numero_identidad");
+                   String idCampus = rs.getString("id_campus");
+                   String NombreUsuario = rs.getString("tipo_usuario");
+                    txt_Nombre.setText(Nombre);
+                    txt_Apellido.setText(Apellido);
+                    txt_Salario.setText(Salario);
+                    txt_Telefono.setText(Telefono);
+                    txt_Identidad.setText(Identidad);
+                    cbo_idCampus.setSelectedItem(idCampus);
+                    txt_NombreUsuario.setText(NombreUsuario);
+                    pwd_contraseña.setText(contraseña);
+                    cbo_tipoUsuario.setSelectedItem(tipoUsuario);
 	         } 
 	        } 
 catch( SQLException ex ) { 
@@ -233,13 +160,13 @@ ex.printStackTrace();
     
              
     }
-     
+     */
      
      
      
       public void Actualizar() {
 
-String cadena1,cadena2,cadena3,cadena4,cadena5,cadena6,cadena7,cadena8,cadena9;
+    String cadena1,cadena2,cadena3,cadena4,cadena5,cadena6,cadena7,cadena8,cadena9;
 
        cadena1 = txt_Nombre.getText();
        cadena2 = txt_Apellido.getText();
@@ -259,16 +186,7 @@ javax.swing.JOptionPane.showMessageDialog(this,"1-. Consulte el nombre del emple
      else {   
 
      try { 
-String url = "jdbc:sqlserver://WIL212027:1433;"; 
-String usuario = "admin"; 
-                  String contraseña = "admin"; 
-
-Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance(); 
-                  con = DriverManager.getConnection(url,usuario,contraseña); 
-if( con != null ) 
-System.out.println("Se ha establecido una conexión a la base de datos " +  
-"\n " + url ); 
-
+         
 stmt = con.createStatement(); 
 stmt.executeUpdate("update ignore usuarios set Nombre= '"+cadena1+"' , Apellido = '"+cadena2+"',Salario = '"+cadena3+"',Telefono = '"+cadena4+"', idCampus = '"+cadena5+"', NombreUsuario = "+cadena6+": contraseña = '"+cadena7+"', tipoUsuario = '"+cadena8+"' where Nombre= '"+txt_Nombre.getText()+"' || Apellido = '"+txt_Apellido.getText()+"' || Salario = '"+txt_Salario.getText()+"' || Telefono = '"+txt_Telefono.getText()+"' || idCampus = '"+cbo_idCampus.getSelectedItem()+"' || contraseña= '"+pwd_contraseña.getText()+"' || tipoUsuario = '"+cbo_tipoUsuario.getSelectedItem()+"'"); 
 
@@ -276,13 +194,7 @@ System.out.println("Los valores han sido Actualizados");
 } 
 catch( SQLException e ) { 
 e.printStackTrace(); 
-                  } catch (ClassNotFoundException ex) { 
-            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+                  } 
 
 finally { 
                   if ( con != null ) { 
@@ -339,6 +251,8 @@ this.cbo_tipoUsuario.setSelectedItem("");
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_Empleados = new javax.swing.JTable();
         btn_Limpiar = new javax.swing.JButton();
+        lbl_usuario = new javax.swing.JLabel();
+        btn_rellenarCampos = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         cbo_MenuPrincipal = new javax.swing.JMenuItem();
@@ -393,6 +307,11 @@ this.cbo_tipoUsuario.setSelectedItem("");
         lbl_nombreUsuario.setText("Nombre De Usuario");
 
         txt_NombreUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_NombreUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_NombreUsuarioKeyTyped(evt);
+            }
+        });
 
         lbl_contraseña.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_contraseña.setText("Contraseña");
@@ -430,6 +349,11 @@ this.cbo_tipoUsuario.setSelectedItem("");
         pwd_contraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pwd_contraseñaActionPerformed(evt);
+            }
+        });
+        pwd_contraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pwd_contraseñaKeyTyped(evt);
             }
         });
 
@@ -490,7 +414,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         });
 
         Tabla_Empleados.setBackground(new java.awt.Color(204, 204, 204));
-        Tabla_Empleados.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), javax.swing.BorderFactory.createEtchedBorder()));
+        Tabla_Empleados.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(0, 0, 0), null)));
         Tabla_Empleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -502,6 +426,8 @@ this.cbo_tipoUsuario.setSelectedItem("");
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        Tabla_Empleados.setToolTipText("Presiona consulta para ver todos los empleados");
+        Tabla_Empleados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Tabla_Empleados.setMaximumSize(new java.awt.Dimension(60, 64));
         Tabla_Empleados.setPreferredSize(new java.awt.Dimension(200, 64));
         Tabla_Empleados.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -516,6 +442,16 @@ this.cbo_tipoUsuario.setSelectedItem("");
         btn_Limpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_Limpiarbtn_limpiarActionPerformed(evt);
+            }
+        });
+
+        lbl_usuario.setText("jLabel1");
+
+        btn_rellenarCampos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_rellenarCampos.setText("Rellenar campos");
+        btn_rellenarCampos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_rellenarCamposMouseClicked(evt);
             }
         });
 
@@ -548,10 +484,11 @@ this.cbo_tipoUsuario.setSelectedItem("");
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
+                        .addGap(183, 183, 183)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(1, 1, 1)
@@ -586,42 +523,47 @@ this.cbo_tipoUsuario.setSelectedItem("");
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(pwd_contraseña)
                                     .addComponent(txt_NombreUsuario)
-                                    .addComponent(cbo_idCampus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbo_tipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(cbo_tipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbo_idCampus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(50, 50, 50)
                                 .addComponent(chb_mostrarContraseña))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(322, 322, 322)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbl_titulo))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 842, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(84, 84, 84)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(228, 228, 228)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btn_guardar)
+                                .addGap(38, 38, 38)
+                                .addComponent(btn_Actualizar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(302, 302, 302)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btn_rellenarCampos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btn_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(36, 36, 36)
+                                .addComponent(btn_consultar)))
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_Limpiar))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_guardar)
-                        .addGap(38, 38, 38)
-                        .addComponent(btn_Actualizar))
+                        .addGap(21, 21, 21)
+                        .addComponent(lbl_usuario))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(302, 302, 302)
-                        .addComponent(btn_Eliminar)
-                        .addGap(36, 36, 36)
-                        .addComponent(btn_consultar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_Limpiar)
-                .addGap(93, 93, 93))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl_usuario)
+                .addGap(5, 5, 5)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbl_titulo)
-                .addGap(18, 18, 18)
+                .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -665,14 +607,16 @@ this.cbo_tipoUsuario.setSelectedItem("");
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(chb_mostrarContraseña)))
-                .addGap(58, 58, 58)
+                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_guardar)
                     .addComponent(btn_Actualizar)
                     .addComponent(btn_Eliminar)
                     .addComponent(btn_consultar)
                     .addComponent(btn_Limpiar))
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(btn_rellenarCampos)
+                .addGap(47, 47, 47))
         );
 
         pack();
@@ -776,9 +720,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
     }
     
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
-        
-        
-        
+
         String cadena1, cadena2, cadena3, cadena4, cadena5, cadena6, cadena7, cadena8, cadena9;
         cadena1 = txt_Nombre.getText();
         cadena2 = txt_Apellido.getText();
@@ -845,19 +787,59 @@ this.cbo_tipoUsuario.setSelectedItem("");
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void txt_NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NombreKeyTyped
-       
+        if(txt_Nombre.getText().length() >=100){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Numero maximo de caracteres admitidos");
+        }
+        char a=evt.getKeyChar();
+        if(Character.isDigit(a)){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Solo letras");
+        }
     }//GEN-LAST:event_txt_NombreKeyTyped
 
     private void txt_ApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_ApellidoKeyTyped
-       
+       if(txt_Apellido.getText().length() >=100){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Numero maximo de caracteres admitidos");
+        }
+        char a=evt.getKeyChar();
+        if(Character.isDigit(a)){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Solo letras");
+        }
     }//GEN-LAST:event_txt_ApellidoKeyTyped
 
     private void txt_TelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_TelefonoKeyTyped
-       
+       if(txt_Telefono.getText().length() >=8){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Numero maximo de caracteres admitidos");
+        }
+        char a=evt.getKeyChar();
+        if(Character.isLetter(a)){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Solo numeros");
+        }
     }//GEN-LAST:event_txt_TelefonoKeyTyped
 
     private void txt_SalarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_SalarioKeyTyped
- 
+        if(txt_Salario.getText().length() >=8){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Numero maximo de caracteres admitidos");
+        }
+        char a=evt.getKeyChar();
+        if(Character.isLetter(a)){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Solo numeros");
+        }
     }//GEN-LAST:event_txt_SalarioKeyTyped
 
     private void txt_NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NombreActionPerformed
@@ -865,81 +847,66 @@ this.cbo_tipoUsuario.setSelectedItem("");
     }//GEN-LAST:event_txt_NombreActionPerformed
 
     private void btn_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultarActionPerformed
-     
 
         try {
             
-            String url = "jdbc:mysql://localhost:3306/tutorialproyecto";
-            String usuario = "root";
-            String contraseña = "contraseña";  
-            
-               Class.forName("com.mysql.jdbc.Driver").newInstance();
-               con = DriverManager.getConnection(url,usuario,contraseña);
-               if (con!= null)
-                   System.out.println("Se ha establecido una conexion a la base de datos"+"\n"+url);
-               
+               String sql = "select * from Empleados as e join Acceso as a on e.id_empleado = a.id_empleado join \n" +
+                "Campus as c on c.id_campus = e.id_campus";
                stmt = con.createStatement();
-               ResultSet rs = stmt.executeQuery("select* from usuarios");
+               ResultSet rs = stmt.executeQuery(sql);
                
                modelo = new DefaultTableModel(null,titulos);
-            
-               while(rs.next()) {
-                   
-                       String []datos= new String[8];
-        datos[0] =txt_Nombre.getText();
-         datos[1] =txt_Apellido.getText();
-           datos[2] =txt_Salario.getText();
-             datos[3] =txt_Telefono.getText();
-               datos[4] =txt_Identidad.getText();
-                 datos[5] =txt_NombreUsuario.getText();
-                   datos[6] =pwd_contraseña.getText();
-                     datos[7] =(String) cbo_idCampus.getSelectedItem();
-                        datos[8] =(String)cbo_tipoUsuario.getSelectedItem();
-                   
-                   modelo.addRow(fila);     
-               }
                Tabla_Empleados.setModel(modelo);
-                TableColumn cn = Tabla_Empleados.getColumn("Nombres");
+                 while(rs.next()) {
+                   
+                      String []datos= new String[9];
+                      datos[0] =rs.getString("id_empleado");
+                      datos[1] =rs.getString("nombres_empleado");
+                      datos[2] =rs.getString("apellido_empleado");
+                      datos[3] =rs.getString("salario");
+                      datos[4] =rs.getString("telefono_empleado");
+                      datos[5] =rs.getString("numero_identidad");
+                      datos[6] =rs.getString("id_campus") + " - " + rs.getString("nombre_campus");
+                      datos[7] =rs.getString("nombre_usuario");
+                      
+                      if(rs.getString(10).equals("A")){
+                          datos[8] = "Administrador";
+                      }
+                      else if(rs.getString(10).equals("E")){
+                          datos[8] = "Empleado";
+                      }
+                      else if(rs.getString(10).equals("S")){
+                          datos[8] = "Supervisor";
+                      }
+                      
+                     // datos[8] =rs.getString(10);
+                      modelo.addRow(datos);     
+               }
+                TableColumn idE = Tabla_Empleados.getColumn(titulos[0]);
+                idE.setMaxWidth(125);
+                idE.setIdentifier(ICONIFIED);
+                TableColumn cn = Tabla_Empleados.getColumn(titulos[1]);
                 cn.setMaxWidth(165);
-                TableColumn ca = Tabla_Empleados.getColumn("Apellidos");
+                TableColumn ca = Tabla_Empleados.getColumn(titulos[2]);
                 ca.setMaxWidth(165);
-                TableColumn cs = Tabla_Empleados.getColumn("Salario");
-                cs.setMaxWidth(25);
-                TableColumn ct = Tabla_Empleados.getColumn("Telefono");
+                TableColumn cs = Tabla_Empleados.getColumn(titulos[3]);
+                cs.setMaxWidth(55);
+                TableColumn ct = Tabla_Empleados.getColumn(titulos[4]);
                 ct.setMaxWidth(90);
-                TableColumn cid = Tabla_Empleados.getColumn("Identidad");
+                TableColumn cid = Tabla_Empleados.getColumn(titulos[5]);
                 cid.setMaxWidth(72);
-                TableColumn cnomu = Tabla_Empleados.getColumn("Nombre Usuario");
+                TableColumn cnomu = Tabla_Empleados.getColumn(titulos[6]);
                 cnomu.setMaxWidth(165);
-                TableColumn cc = Tabla_Empleados.getColumn("Contraseña");
-                cc.setMaxWidth(72);
-                TableColumn cidc = Tabla_Empleados.getColumn("id Campus");
-                cidc.setMaxWidth(95);
-                TableColumn ctipou = Tabla_Empleados.getColumn("Tipo usuario");
+                TableColumn cidc = Tabla_Empleados.getColumn(titulos[7]);
+                cidc.setMaxWidth(150);
+                TableColumn ctipou = Tabla_Empleados.getColumn(titulos[8]);
                 ctipou.setMaxWidth(95);
-               
+    
         }
         catch (Exception e) {
-            
-            JOptionPane.showMessageDialog(null,"Error al extraer los datos de la tabla");
+            JOptionPane.showMessageDialog(null,e.getMessage());
         }
 
-        
-        
-        
-        
-          
-         //this.dispose();
-        
-      //  ConsultaIndividual u = null;
-        //try {
-          //  u = new ConsultaIndividual();
-        //} catch (SQLException ex) {
-          //  Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
-       // }
-        
-      //  u.setVisible(true);
-        
         
         
     }//GEN-LAST:event_btn_consultarActionPerformed
@@ -958,123 +925,279 @@ this.cbo_tipoUsuario.setSelectedItem("");
     int filas;
     
     private void btn_ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ActualizarActionPerformed
+
+        if(JOptionPane.showConfirmDialog(null,"Estas seguro que quieres actualizar el registro"
+        )==JOptionPane.YES_OPTION){
+           
+            
+     String id_campus = cbo_idCampus.getSelectedItem().toString().substring(0, 4);
+     String tipoUsuario = cbo_tipoUsuario.getSelectedItem().toString().substring(0,1);
+      try{
+          PreparedStatement ps;
+          ResultSet rs;
+          ps=con.prepareStatement("Update Empleados "
+                  + "set nombres_empleado = ?,"
+                  + "apellido_empleado = ?, "
+                  + "telefono_empleado = ?, "
+                  + "id_campus = ?, "
+                  + "salario = ?, "
+                  + "numero_identidad = ? "
+                  + "where numero_identidad = '"+var+"' "
+                          + "or nombres_empleado = '"+var+"' "
+                                  + "or apellido_empleado = '"+var+"'");
+                  ps.setString(1, txt_Nombre.getText());
+                  ps.setString(2, txt_Apellido.getText());
+                  ps.setString(3, txt_Telefono.getText());
+                  ps.setString(4, id_campus);
+                  ps.setString(5, txt_Salario.getText());
+                  ps.setString(6, txt_Identidad.getText());
+                  int res= ps.executeUpdate();
+                  if(res > 0){
+                      
+                  }else {
+                      JOptionPane.showMessageDialog(null, "Error al Guardar la informacion"); 
+                  }
        
-        
-        
-            String []datos= new String[8];
-        datos[0] =txt_Nombre.getText();
-         datos[1] =txt_Apellido.getText();
-           datos[2] =txt_Salario.getText();
-             datos[3] =txt_Telefono.getText();
-               datos[4] =txt_Identidad.getText();
-                 datos[5] =txt_NombreUsuario.getText();
-                   datos[6] =pwd_contraseña.getText();
-                     datos[7] =(String) cbo_idCampus.getSelectedItem();
-                        datos[8] =(String)cbo_tipoUsuario.getSelectedItem();
-                        
-                        for(int i=0; i <Tabla_Empleados.getColumnCount(); i++){
-                            modelo.setValueAt(datos[i], filas, i);
-                        }
+      } catch ( Exception e) {
+            System.out.println(e);
+        }
+         try{
+             Statement st2=con.createStatement();
+              String sql ="Update Acceso "
+                      + "set nombre_usuario = '"+txt_NombreUsuario.getText()+"'"
+                      + ",clave_acceso = '"+pwd_contraseña.getText()+"',"
+                      + "tipo_usuario = '"+tipoUsuario+"'"
+                      + "where id_empleado = (Select id_empleado from Acceso where nombre_usuario = '"+txt_NombreUsuario.getText()+"')";
+               int rs2 = st2.executeUpdate(sql);
+              JOptionPane.showMessageDialog(null, "Se ha guardado la informacion correctamente");
+          }catch ( Exception e) {
+           JOptionPane.showMessageDialog(null, e.getMessage()); 
+        }
+
+         }
+
     }//GEN-LAST:event_btn_ActualizarActionPerformed
 
+    
+    public void rellenar(){
+            
+        try {
+            Statement st = con.createStatement();
+            String consulta = "Select tipo_usuario from Acceso where nombre_usuario = '"+lbl_usuario.getText()+"'";
+            ResultSet rs = st.executeQuery(consulta);
+            
+            if(rs.next()){
+                if(rs.getString("tipo_usuario").equals("A")){
+                    try{
+                    String cap="";
+                    ResultSet rs2 = null;
+                    var = javax.swing.JOptionPane.showInputDialog(this,"Ingrese sus nombres, sus apellidos o su numero de identidad","Consulta Usuario",javax.swing.JOptionPane.QUESTION_MESSAGE);
+                    if(var == null)
+                        javax.swing.JOptionPane.showMessageDialog(this,"La accion fue cancelada","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                    else {
+                        if (var.equals("")) {
+                            javax.swing.JOptionPane.showMessageDialog(this,"Favor de ingresar el nombre del empleado\nquedesea consultar","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                        }
+                        else{
+                            String sql = "select * from Empleados as e join Acceso as a on e.id_empleado = a.id_empleado join \n" +
+                                    "Campus as c on c.id_campus = e.id_campus where numero_identidad = '"+var+"' or nombres_empleado = '"+var+"' or apellido_empleado = '"+var+"'";
+                            stmt = con.createStatement();
+                            rs2 = stmt.executeQuery(sql);
+                           
+                            if(rs2.next()) {
+                                txt_Nombre.setText(rs2.getString("nombres_empleado"));
+                                txt_Apellido.setText(rs2.getString("apellido_empleado"));
+                                txt_Salario.setText(rs2.getString("salario"));
+                                txt_Telefono.setText(rs2.getString("telefono_empleado"));
+                                txt_Identidad.setText(rs2.getString("numero_identidad"));
+                                cbo_idCampus.setSelectedItem((rs2.getString("id_campus") + " - " + rs2.getString("nombre_campus")));
+                                txt_NombreUsuario.setText(rs2.getString("nombre_usuario"));
+                                switch (rs2.getString("tipo_usuario")) {
+                                    case "A":
+                                        cbo_tipoUsuario.setSelectedItem("Administrador");
+                                        break;
+                                    case "E":
+                                        cbo_tipoUsuario.setSelectedItem("Empleado");
+                                        break;
+                                    case "S":
+                                        cbo_tipoUsuario.setSelectedItem("Supervisor");
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(null,"No se encuentra el empleado por favor verifique si lo escribio correctamente");
+                            }
+                            
+                        }
+                        
+                    }
+                    }catch (Exception e) {
+                            JOptionPane.showMessageDialog(null,e.getMessage());
+                            }
+                }
+                 else{
+                            JOptionPane.showMessageDialog(null,"Solo los administradores tienen acceso");
+                            }
+                
+                
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     private void cbo_ConsultaIndividualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_ConsultaIndividualActionPerformed
         
-        String cap="";
-        ResultSet rs = null; 
-var = javax.swing.JOptionPane.showInputDialog(this,"Nombre del Usuario","Consulta Usuario",javax.swing.JOptionPane.QUESTION_MESSAGE);
-        String sql="SELECT* FROM  usuarios WHERE nombre = '"+var+"'";
-if(var == null)  
-javax.swing.JOptionPane.showMessageDialog(this,"La accion fue cancelada","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-      else {
-        if (var.equals("")) {
-javax.swing.JOptionPane.showMessageDialog(this,"Favor de ingresar el nombre del empleado\nquedesea consultar","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-        }
-         else {
         try {
-
-String url = "jdbc:sqlserver://WIL212027:1433;";
-String usuario = "admin";
-            String contraseña = "admin";
-
-Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance(); 
-             con = DriverManager.getConnection(url,usuario,contraseña); 
-if( con != null ) 
-System.out.println("Se ha establecido una conexión a la base de datos " +  
-"\n " + url ); 
-
-stmt = con.createStatement(); 
-rs = stmt.executeQuery(sql);
-
-          while(rs.next()) {
-
-               cap = rs.getString("tipoUsuario"); 
-
-          if (cap.equals("Empleado") || cap.equals("Administrador") || cap.equals("Supervisor")) {
-
-ConsultaIndividual();           
-          }
-}   // fin del bucle While
-
-        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException ex) {
-Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-       }
-
-finally {
-            if (con != null) {
-                try {
-con.close();
-stmt.close();
-                } catch ( Exception e ) { 
-System.out.println( e.getMessage());
+            Statement st = con.createStatement();
+            String consulta = "Select tipo_usuario from Acceso where nombre_usuario = '"+lbl_usuario.getText()+"'";
+            ResultSet rs = st.executeQuery(consulta);
+            
+            if(rs.next()){
+                if(rs.getString("tipo_usuario").equals("A")){
+                    try{
+                    String cap="";
+                    ResultSet rs2 = null;
+                    var = javax.swing.JOptionPane.showInputDialog(this,"Ingrese sus nombres, sus apellidos o su numero de identidad","Consulta Usuario",javax.swing.JOptionPane.QUESTION_MESSAGE);
+                    if(var == null)
+                        javax.swing.JOptionPane.showMessageDialog(this,"La accion fue cancelada","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                    else {
+                        if (var.equals("")) {
+                            javax.swing.JOptionPane.showMessageDialog(this,"Favor de ingresar el nombre del empleado\nquedesea consultar","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                        }
+                        else{
+                            String sql = "select * from Empleados as e join Acceso as a on e.id_empleado = a.id_empleado join \n" +
+                                    "Campus as c on c.id_campus = e.id_campus where numero_identidad = '"+var+"' or nombres_empleado = '"+var+"' or apellido_empleado = '"+var+"'";
+                            stmt = con.createStatement();
+                            rs2 = stmt.executeQuery(sql);
+                           
+                            if(rs2.next()) {
+                                String []datos= new String[9];
+                                datos[0] =rs2.getString("id_empleado");
+                                txt_Nombre.setText(rs2.getString("nombres_empleado"));
+                                txt_Apellido.setText(rs2.getString("apellido_empleado"));
+                                txt_Salario.setText(rs2.getString("salario"));
+                                txt_Telefono.setText(rs2.getString("telefono_empleado"));
+                                txt_Identidad.setText(rs2.getString("numero_identidad"));
+                                cbo_idCampus.setSelectedItem((rs2.getString("id_campus") + " - " + rs2.getString("nombre_campus")));
+                                txt_NombreUsuario.setText(rs2.getString("nombre_usuario"));
+                                if(rs2.getString("id_campus").equals("A")){
+                                    cbo_tipoUsuario.setSelectedItem("Administrador");
+                                }
+                                else if(rs2.getString("id_campus").equals("E")){
+                                    cbo_tipoUsuario.setSelectedItem("Empleado");
+                                }
+                                else if(rs2.getString("id_campus").equals("S")){
+                                    cbo_tipoUsuario.setSelectedItem("Supervisor");
+                                }
+                      
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(null,"No se encuentra el empleado por favor verifique si lo escribio correctamente");
+                            }
+                            
+                        }
+                        
+                    }
+                    }catch (Exception e) {
+                            JOptionPane.showMessageDialog(null,e.getMessage());
+                            }
+                   
                 }
-              }
+                 else{
+                            JOptionPane.showMessageDialog(null,"Solo los administradores tienen acceso");
+                            }
+                
+                
             }
-           if ( !cap.equals("Empleado") && !cap.equals("Administrador") || cap.equals("Supervisor")) {
-javax.swing.JOptionPane.showMessageDialog(this,"Elusuario no fueencontrado\n","ERROR!", javax.swing.JOptionPane.ERROR_MESSAGE);
-
-          }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
         }
-      }  
+        
 
         
     }//GEN-LAST:event_cbo_ConsultaIndividualActionPerformed
 
     private void txt_IdentidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_IdentidadKeyTyped
-   
+     if(txt_Identidad.getText().length() >=8){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Numero maximo de caracteres admitidos");
+        }
+        char a=evt.getKeyChar();
+        if(Character.isLetter(a)){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Solo numeros");
+        }
     }//GEN-LAST:event_txt_IdentidadKeyTyped
 
     private void Tabla_EmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_EmpleadosMouseClicked
-
-        int fila_seleccionada = Tabla_Empleados.getSelectedRow();
-        txt_Nombre.setText(Tabla_Empleados.getValueAt(fila_seleccionada, 0).toString());
-        txt_Apellido.setText(Tabla_Empleados.getValueAt(fila_seleccionada, 1).toString());
-        txt_Salario.setText(Tabla_Empleados.getValueAt(fila_seleccionada, 2).toString());
-        txt_Telefono.setText(Tabla_Empleados.getValueAt(fila_seleccionada, 3).toString());
-        txt_Identidad.setText(Tabla_Empleados.getValueAt(fila_seleccionada, 4).toString());
-        txt_NombreUsuario.setText(Tabla_Empleados.getValueAt(fila_seleccionada, 5).toString());
-        pwd_contraseña.setText(Tabla_Empleados.getValueAt(fila_seleccionada, 6).toString());
-        cbo_idCampus.setSelectedItem(Tabla_Empleados.getValueAt(fila_seleccionada, 7).toString());
-         cbo_tipoUsuario.setSelectedItem(Tabla_Empleados.getValueAt(fila_seleccionada, 8).toString());
-         filas= fila_seleccionada;
+     
+       llenarCampos();
+       
     }//GEN-LAST:event_Tabla_EmpleadosMouseClicked
 
+    private void llenarCampos(){
+        int i = Tabla_Empleados.getSelectedRow();
+        txt_Nombre.setText(Tabla_Empleados.getValueAt(i, 1).toString());
+        txt_Apellido.setText(Tabla_Empleados.getValueAt(i, 2).toString());
+        txt_Salario.setText(Tabla_Empleados.getValueAt(i, 3).toString());
+        txt_Telefono.setText(Tabla_Empleados.getValueAt(i, 4).toString());
+        txt_Identidad.setText(Tabla_Empleados.getValueAt(i, 5).toString());
+        txt_NombreUsuario.setText(Tabla_Empleados.getValueAt(i, 7).toString());
+        cbo_idCampus.setSelectedItem(Tabla_Empleados.getValueAt(i, 6).toString());
+        cbo_tipoUsuario.setSelectedItem(Tabla_Empleados.getValueAt(i, 8).toString());
+    }
+    
     private void btn_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EliminarActionPerformed
-        
-        int fila_seleccionada= Tabla_Empleados.getSelectedRow();
-        if(fila_seleccionada>=0){
-            modelo.removeRow(fila_seleccionada);
-            
-         
-            
-        }else{
-            
-            JOptionPane.showMessageDialog(null, "Porfavor Seleccione una fila ");
-        }
+
         
     }//GEN-LAST:event_btn_EliminarActionPerformed
 
+    
+    
     private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
-     
+        
+           if(JOptionPane.showConfirmDialog(null,"Estas seguro que quieres eliminar el registro"
+            )==JOptionPane.YES_OPTION){
+           
+            
+     String id_campus = cbo_idCampus.getSelectedItem().toString().substring(0, 4);
+     String tipoUsuario = cbo_tipoUsuario.getSelectedItem().toString().substring(0,1);
+       try{
+             Statement st2=con.createStatement();
+              String sql ="Delete Acceso "
+                      + "where id_empleado = (Select id_empleado from Acceso where nombre_usuario = '"+txt_NombreUsuario.getText()+"')";
+               int rs2 = st2.executeUpdate(sql);
+              
+          }catch ( Exception e) {
+           JOptionPane.showMessageDialog(null, e.getMessage()); 
+        }
+      try{
+          PreparedStatement ps;
+          ResultSet rs;
+          ps=con.prepareStatement("Delete Empleados "
+                  + "where numero_identidad = '"+var+"' "
+                  + "or nombres_empleado = '"+var+"' "
+                  + "or apellido_empleado = '"+var+"'");
+                  int res= ps.executeUpdate();
+                  JOptionPane.showMessageDialog(null, "Se ha borrado la informacion correctamente");
+                  if(res > 0){
+                      
+                  }else {
+                      JOptionPane.showMessageDialog(null, "Error al eliminar la informacion"); 
+                  }
+       
+      } catch ( Exception e) {
+            System.out.println(e);
+        }
+         }
+        
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
     private void txt_IdentidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_IdentidadActionPerformed
@@ -1094,6 +1217,38 @@ javax.swing.JOptionPane.showMessageDialog(this,"Elusuario no fueencontrado\n","E
         cbo_tipoUsuario.setSelectedIndex(0);
         
     }//GEN-LAST:event_btn_Limpiarbtn_limpiarActionPerformed
+
+    private void btn_rellenarCamposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_rellenarCamposMouseClicked
+       rellenar();
+    }//GEN-LAST:event_btn_rellenarCamposMouseClicked
+
+    private void txt_NombreUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NombreUsuarioKeyTyped
+        if(txt_NombreUsuario.getText().length() >=25){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Numero maximo de caracteres admitidos");
+        }
+        char a=evt.getKeyChar();
+        if(!Character.isLetterOrDigit(a)){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Solo letras y numeros");
+        }
+    }//GEN-LAST:event_txt_NombreUsuarioKeyTyped
+
+    private void pwd_contraseñaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pwd_contraseñaKeyTyped
+        if(txt_NombreUsuario.getText().length() >=25){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Numero maximo de caracteres admitidos");
+        }
+        char a=evt.getKeyChar();
+        if(!Character.isLetterOrDigit(a)){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Solo letras y numeros");
+        }
+    }//GEN-LAST:event_pwd_contraseñaKeyTyped
 
     /**
      * @param args the command line arguments
@@ -1142,6 +1297,7 @@ javax.swing.JOptionPane.showMessageDialog(this,"Elusuario no fueencontrado\n","E
     private javax.swing.JButton btn_Limpiar;
     private javax.swing.JButton btn_consultar;
     private javax.swing.JButton btn_guardar;
+    private javax.swing.JButton btn_rellenarCampos;
     private javax.swing.JCheckBoxMenuItem cbo_ConsultaIndividual;
     private javax.swing.JMenuItem cbo_MenuPrincipal;
     private javax.swing.JComboBox<String> cbo_idCampus;
@@ -1161,6 +1317,7 @@ javax.swing.JOptionPane.showMessageDialog(this,"Elusuario no fueencontrado\n","E
     private javax.swing.JLabel lbl_telefono;
     private javax.swing.JLabel lbl_tipoUsuario;
     private javax.swing.JLabel lbl_titulo;
+    private javax.swing.JLabel lbl_usuario;
     private javax.swing.JPasswordField pwd_contraseña;
     private javax.swing.JTextField txt_Apellido;
     private javax.swing.JTextField txt_Identidad;

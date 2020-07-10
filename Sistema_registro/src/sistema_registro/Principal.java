@@ -390,7 +390,7 @@ public class Principal extends javax.swing.JFrame {
     private void btn_EmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_EmpleadosMouseClicked
         Empleado empleado = null;
         try {
-            empleado = new Empleado();
+            empleado = new Empleado(lbl_NombreUsuario.getText());
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
