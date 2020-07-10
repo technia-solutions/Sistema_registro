@@ -16,10 +16,13 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import sistema_registro.SQL.ConectorSQL;
 import codigo.Conexion_consulta;
+import java.awt.Color;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  *
@@ -368,7 +371,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lbl_titulo.setText("Registro de Empleado");
 
-        chb_mostrarContraseña.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        chb_mostrarContraseña.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         chb_mostrarContraseña.setText("Mostrar contraseña");
         chb_mostrarContraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -414,7 +417,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         });
 
         Tabla_Empleados.setBackground(new java.awt.Color(204, 204, 204));
-        Tabla_Empleados.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(0, 0, 0), null)));
+        Tabla_Empleados.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Tabla_Empleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -427,7 +430,11 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         ));
         Tabla_Empleados.setToolTipText("Presiona consulta para ver todos los empleados");
+        Tabla_Empleados.setAlignmentX(15.0F);
+        Tabla_Empleados.setAlignmentY(15.0F);
         Tabla_Empleados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Tabla_Empleados.setGridColor(new java.awt.Color(0, 0, 0));
+        Tabla_Empleados.setIntercellSpacing(new java.awt.Dimension(3, 3));
         Tabla_Empleados.setMaximumSize(new java.awt.Dimension(60, 64));
         Tabla_Empleados.setPreferredSize(new java.awt.Dimension(200, 64));
         Tabla_Empleados.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -484,31 +491,38 @@ this.cbo_tipoUsuario.setSelectedItem("");
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(183, 183, 183)
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbl_usuario)
+                                .addGap(427, 427, 427)
+                                .addComponent(lbl_titulo))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(216, 216, 216)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(lbl_identidad)
-                                .addGap(15, 15, 15)
-                                .addComponent(txt_Identidad, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lbl_salario)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lbl_nombres)
-                                    .addComponent(lbl_apellidos)
-                                    .addComponent(lbl_telefono))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txt_Apellido)
-                                    .addComponent(txt_Nombre)
-                                    .addComponent(txt_Salario)
-                                    .addComponent(txt_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(1, 1, 1)
+                                        .addComponent(lbl_identidad)
+                                        .addGap(15, 15, 15)
+                                        .addComponent(txt_Identidad, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lbl_salario)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(lbl_nombres)
+                                            .addComponent(lbl_apellidos)
+                                            .addComponent(lbl_telefono))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txt_Apellido)
+                                            .addComponent(txt_Nombre)
+                                            .addComponent(txt_Salario)
+                                            .addComponent(txt_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(70, 70, 70)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lbl_nombreUsuario)
@@ -524,46 +538,37 @@ this.cbo_tipoUsuario.setSelectedItem("");
                                     .addComponent(pwd_contraseña)
                                     .addComponent(txt_NombreUsuario)
                                     .addComponent(cbo_tipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbo_idCampus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(50, 50, 50)
-                                .addComponent(chb_mostrarContraseña))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lbl_titulo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(228, 228, 228)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btn_guardar)
-                                .addGap(38, 38, 38)
-                                .addComponent(btn_Actualizar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(302, 302, 302)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btn_rellenarCampos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btn_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(36, 36, 36)
-                                .addComponent(btn_consultar)))
+                                    .addComponent(cbo_idCampus, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btn_guardar)
+                                        .addGap(38, 38, 38)
+                                        .addComponent(btn_Actualizar))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(302, 302, 302)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btn_rellenarCampos)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(btn_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(36, 36, 36)
+                                                .addComponent(btn_consultar)))))
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_Limpiar)))
                         .addGap(18, 18, 18)
-                        .addComponent(btn_Limpiar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(lbl_usuario))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1174, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(26, 26, 26))
+                        .addComponent(chb_mostrarContraseña)))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(lbl_usuario)
-                .addGap(5, 5, 5)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbl_titulo)
-                .addGap(7, 7, 7)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbl_usuario)
+                        .addGap(15, 15, 15))
+                    .addComponent(lbl_titulo, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -585,10 +590,11 @@ this.cbo_tipoUsuario.setSelectedItem("");
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_nombreUsuario)
                             .addComponent(txt_NombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_contraseña)
-                            .addComponent(pwd_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(pwd_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chb_mostrarContraseña))
                         .addGap(23, 23, 23)
                         .addComponent(cbo_idCampus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
@@ -598,25 +604,22 @@ this.cbo_tipoUsuario.setSelectedItem("");
                         .addComponent(lbl_idCampus)
                         .addGap(29, 29, 29)
                         .addComponent(lbl_tipoUsuario)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_Identidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_identidad)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(chb_mostrarContraseña)))
-                .addGap(44, 44, 44)
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_Identidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_identidad))
+                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_guardar)
                     .addComponent(btn_Actualizar)
                     .addComponent(btn_Eliminar)
                     .addComponent(btn_consultar)
                     .addComponent(btn_Limpiar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
                 .addComponent(btn_rellenarCampos)
-                .addGap(47, 47, 47))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
 
         pack();
@@ -783,7 +786,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
           }catch ( Exception e) {
            JOptionPane.showMessageDialog(null, e.getMessage()); 
         }
-            
+        limpiar();   
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void txt_NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NombreKeyTyped
@@ -880,7 +883,9 @@ this.cbo_tipoUsuario.setSelectedItem("");
                       }
                       
                      // datos[8] =rs.getString(10);
-                      modelo.addRow(datos);     
+                      modelo.addRow(datos);
+                      
+                      centrar_datos();
                }
                 TableColumn idE = Tabla_Empleados.getColumn(titulos[0]);
                 idE.setMaxWidth(125);
@@ -890,17 +895,19 @@ this.cbo_tipoUsuario.setSelectedItem("");
                 TableColumn ca = Tabla_Empleados.getColumn(titulos[2]);
                 ca.setMaxWidth(165);
                 TableColumn cs = Tabla_Empleados.getColumn(titulos[3]);
-                cs.setMaxWidth(55);
+                cs.setMaxWidth(75);
                 TableColumn ct = Tabla_Empleados.getColumn(titulos[4]);
                 ct.setMaxWidth(90);
                 TableColumn cid = Tabla_Empleados.getColumn(titulos[5]);
-                cid.setMaxWidth(72);
+                cid.setMaxWidth(170);
                 TableColumn cnomu = Tabla_Empleados.getColumn(titulos[6]);
                 cnomu.setMaxWidth(165);
                 TableColumn cidc = Tabla_Empleados.getColumn(titulos[7]);
                 cidc.setMaxWidth(150);
                 TableColumn ctipou = Tabla_Empleados.getColumn(titulos[8]);
                 ctipou.setMaxWidth(95);
+                
+                
     
         }
         catch (Exception e) {
@@ -911,6 +918,12 @@ this.cbo_tipoUsuario.setSelectedItem("");
         
     }//GEN-LAST:event_btn_consultarActionPerformed
 
+    public void centrar_datos(){
+ 
+        DefaultTableCellRenderer modelocentrar = new DefaultTableCellRenderer();
+        modelocentrar.setHorizontalAlignment(SwingConstants.CENTER);
+        Tabla_Empleados.getColumnModel().getColumn(2).setCellRenderer(modelocentrar);
+    }
     private void cbo_MenuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_MenuPrincipalActionPerformed
         this.dispose();
         
@@ -975,7 +988,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         }
 
          }
-
+        limpiar();
     }//GEN-LAST:event_btn_ActualizarActionPerformed
 
     
@@ -991,7 +1004,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
                     try{
                     String cap="";
                     ResultSet rs2 = null;
-                    var = javax.swing.JOptionPane.showInputDialog(this,"Ingrese sus nombres, sus apellidos o su numero de identidad","Consulta Usuario",javax.swing.JOptionPane.QUESTION_MESSAGE);
+                    var = javax.swing.JOptionPane.showInputDialog(this,"Ingrese sus nombres o sus apellidos o su numero de identidad","Rellenar campos",javax.swing.JOptionPane.QUESTION_MESSAGE);
                     if(var == null)
                         javax.swing.JOptionPane.showMessageDialog(this,"La accion fue cancelada","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
                     else {
@@ -1123,7 +1136,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
     }//GEN-LAST:event_cbo_ConsultaIndividualActionPerformed
 
     private void txt_IdentidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_IdentidadKeyTyped
-     if(txt_Identidad.getText().length() >=8){
+     if(txt_Identidad.getText().length() >=13){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Numero maximo de caracteres admitidos");
@@ -1197,7 +1210,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             System.out.println(e);
         }
          }
-        
+        limpiar();
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
     private void txt_IdentidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_IdentidadActionPerformed
@@ -1206,6 +1219,15 @@ this.cbo_tipoUsuario.setSelectedItem("");
 
     private void btn_Limpiarbtn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Limpiarbtn_limpiarActionPerformed
         
+        limpiar();
+        
+    }//GEN-LAST:event_btn_Limpiarbtn_limpiarActionPerformed
+
+    private void btn_rellenarCamposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_rellenarCamposMouseClicked
+       rellenar();
+    }//GEN-LAST:event_btn_rellenarCamposMouseClicked
+
+    private void limpiar(){
         txt_Nombre.setText(null);
         txt_Apellido.setText(null);
         txt_Salario.setText(null);
@@ -1216,12 +1238,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         cbo_idCampus.setSelectedIndex(0);
         cbo_tipoUsuario.setSelectedIndex(0);
         
-    }//GEN-LAST:event_btn_Limpiarbtn_limpiarActionPerformed
-
-    private void btn_rellenarCamposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_rellenarCamposMouseClicked
-       rellenar();
-    }//GEN-LAST:event_btn_rellenarCamposMouseClicked
-
+    }
     private void txt_NombreUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NombreUsuarioKeyTyped
         if(txt_NombreUsuario.getText().length() >=25){
             evt.consume();
@@ -1229,11 +1246,6 @@ this.cbo_tipoUsuario.setSelectedItem("");
             JOptionPane.showMessageDialog(null, "Numero maximo de caracteres admitidos");
         }
         char a=evt.getKeyChar();
-        if(!Character.isLetterOrDigit(a)){
-            evt.consume();
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Solo letras y numeros");
-        }
     }//GEN-LAST:event_txt_NombreUsuarioKeyTyped
 
     private void pwd_contraseñaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pwd_contraseñaKeyTyped
@@ -1241,12 +1253,6 @@ this.cbo_tipoUsuario.setSelectedItem("");
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Numero maximo de caracteres admitidos");
-        }
-        char a=evt.getKeyChar();
-        if(!Character.isLetterOrDigit(a)){
-            evt.consume();
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Solo letras y numeros");
         }
     }//GEN-LAST:event_pwd_contraseñaKeyTyped
 
