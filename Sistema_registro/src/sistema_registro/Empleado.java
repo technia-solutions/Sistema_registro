@@ -960,15 +960,22 @@ this.cbo_tipoUsuario.setSelectedItem("");
         Tabla_Empleados.getColumnModel().getColumn(2).setCellRenderer(modelocentrar);
     }
     private void cbo_MenuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_MenuPrincipalActionPerformed
-        this.dispose();
-        
-        Principal p = null;
+
         try {
-            p = new Principal();
+            String sql2 = "Select nombres_empleado + ' ' + apellido_empleado from Empleados where id_empleado = (select id_empleado from Acceso where nombre_usuario = '"+lbl_usuario.getText()+"')";
+                Statement st2 = con.createStatement();
+                ResultSet rs2 = st2.executeQuery(sql2);
+                if(rs2.next()){
+                Principal principal = new Principal(lbl_usuario.getText(),rs2.getString(1));
+                principal.setVisible(true); 
+                this.dispose();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Error");
+                }
         } catch (SQLException ex) {
             Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
         }
-        p.setVisible(true);
     }//GEN-LAST:event_cbo_MenuPrincipalActionPerformed
 
     private void cbo_idCampusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_idCampusActionPerformed

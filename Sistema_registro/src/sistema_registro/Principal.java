@@ -128,6 +128,7 @@ public class Principal extends javax.swing.JFrame {
         });
 
         btn_Asignaturas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_asignaturas.png"))); // NOI18N
+        btn_Asignaturas.setBorder(null);
         btn_Asignaturas.setContentAreaFilled(false);
         btn_Asignaturas.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_asignaturas (1).png"))); // NOI18N
         btn_Asignaturas.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/button_asignaturas (1).png"))); // NOI18N
