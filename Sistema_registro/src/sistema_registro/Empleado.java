@@ -421,10 +421,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         Tabla_Empleados.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         Tabla_Empleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Id Empleado", "Nombres", "Apellidos", "Salario", "Telefono", "Numero identidad", "idCampus", "NombreUsuario", "tipoUsuario"
@@ -1036,7 +1033,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
 
     
     public void rellenar(){
-            
+     
         try {
             Statement st = con.createStatement();
             String consulta = "Select tipo_usuario from Acceso where nombre_usuario = '"+lbl_usuario.getText()+"'";
@@ -1193,9 +1190,9 @@ this.cbo_tipoUsuario.setSelectedItem("");
     }//GEN-LAST:event_txt_IdentidadKeyTyped
 
     private void Tabla_EmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_EmpleadosMouseClicked
-     
-       llenarCampos();
-       
+        if(Tabla_Empleados.getSelectedRow() >= 0){
+        llenarCampos();
+        }
     }//GEN-LAST:event_Tabla_EmpleadosMouseClicked
 
     private void llenarCampos(){
@@ -1268,6 +1265,8 @@ this.cbo_tipoUsuario.setSelectedItem("");
 
     private void btn_rellenarCamposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_rellenarCamposMouseClicked
        rellenar();
+       this.jScrollPane1.setEnabled(true);
+       this.Tabla_Empleados.setEnabled(true);
     }//GEN-LAST:event_btn_rellenarCamposMouseClicked
 
     private void limpiar(){
