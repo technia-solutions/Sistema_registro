@@ -385,7 +385,11 @@ public class Principal extends javax.swing.JFrame {
 
     private void btn_AlumnoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_AlumnoMouseClicked
          Alumno alumno = null;
-         alumno = new Alumno();
+        try {
+            alumno = new Alumno();
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         alumno.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_AlumnoMouseClicked
