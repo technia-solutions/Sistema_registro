@@ -18,11 +18,14 @@ import sistema_registro.SQL.ConectorSQL;
 import codigo.Conexion_consulta;
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
+import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  *
@@ -30,7 +33,7 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class Empleado extends javax.swing.JFrame {
      
-    String titulos [] = {"Id Empleado","Nombre","Apellido", "Salario", "Telefono", "Identidad", " idCampus", "NombreUsuario", "tipoUsuario"};
+    String titulos [] = {"Id Empleado","Nombre","Apellido", "Salario", "Teléfono", "Número de Identidad", "Campus", "Nombre de Usuario", "Tipo de Usuario"};
     //String fila [] = new String[9];
     DefaultTableModel modelo =  new DefaultTableModel();
     Connection con = null;
@@ -257,6 +260,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         btn_Limpiar = new javax.swing.JButton();
         lbl_usuario = new javax.swing.JLabel();
         btn_rellenarCampos = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         cbo_MenuPrincipal = new javax.swing.JMenuItem();
@@ -308,7 +312,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         });
 
         lbl_nombreUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_nombreUsuario.setText("Nombre De Usuario");
+        lbl_nombreUsuario.setText("Nombre de Usuario");
 
         txt_NombreUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_NombreUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -322,6 +326,12 @@ this.cbo_tipoUsuario.setSelectedItem("");
 
         btn_guardar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_guardar.setText("Guardar");
+        btn_guardar.setBorderPainted(false);
+        btn_guardar.setContentAreaFilled(false);
+        btn_guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_guardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_guardar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btn_guardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btn_guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_guardarActionPerformed(evt);
@@ -332,7 +342,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         lbl_telefono.setText("Teléfono");
 
         lbl_idCampus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_idCampus.setText("ID Campus");
+        lbl_idCampus.setText("Campus");
 
         txt_Telefono.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_Telefono.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -381,7 +391,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         });
 
         lbl_tipoUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_tipoUsuario.setText("Tipo Usuario");
+        lbl_tipoUsuario.setText("Tipo de Usuario");
 
         cbo_tipoUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cbo_tipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un tipo de usuario", "Empleado", "Administrador", "Supervisor" }));
@@ -424,7 +434,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
 
             },
             new String [] {
-                "Id Empleado", "Nombres", "Apellidos", "Salario", "Telefono", "Numero identidad", "idCampus", "NombreUsuario", "tipoUsuario"
+                "Id Empleado", "Nombres", "Apellidos", "Salario", "Télefono", "Numero de Identidad", "Campus", "Nombre de Usuario", "Tipo de Usuario"
             }
         ));
         Tabla_Empleados.setToolTipText("Presiona consulta para ver todos los empleados");
@@ -453,10 +463,17 @@ this.cbo_tipoUsuario.setSelectedItem("");
         lbl_usuario.setText("jLabel1");
 
         btn_rellenarCampos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_rellenarCampos.setText("Rellenar campos");
+        btn_rellenarCampos.setText("Rellenar Campos");
         btn_rellenarCampos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_rellenarCamposMouseClicked(evt);
+            }
+        });
+
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -489,133 +506,138 @@ this.cbo_tipoUsuario.setSelectedItem("");
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(lbl_telefono)
+                                            .addComponent(lbl_identidad))
+                                        .addComponent(lbl_salario, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addComponent(lbl_apellidos, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lbl_nombres, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_Identidad, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_Salario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(65, 65, 65)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lbl_contraseña)
+                                    .addComponent(lbl_nombreUsuario)
+                                    .addComponent(lbl_idCampus)
+                                    .addComponent(lbl_tipoUsuario)))
+                            .addComponent(lbl_titulo))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(pwd_contraseña)
+                            .addComponent(txt_NombreUsuario)
+                            .addComponent(cbo_tipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbo_idCampus, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbl_usuario)
-                                .addGap(427, 427, 427)
-                                .addComponent(lbl_titulo))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1174, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(216, 216, 216)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btn_guardar)
+                                .addGap(38, 38, 38)
+                                .addComponent(btn_Actualizar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(302, 302, 302)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(1, 1, 1)
-                                        .addComponent(lbl_identidad)
-                                        .addGap(15, 15, 15)
-                                        .addComponent(txt_Identidad, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(lbl_salario)
+                                    .addComponent(btn_rellenarCampos)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lbl_nombres)
-                                            .addComponent(lbl_apellidos)
-                                            .addComponent(lbl_telefono))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txt_Apellido)
-                                            .addComponent(txt_Nombre)
-                                            .addComponent(txt_Salario)
-                                            .addComponent(txt_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(70, 70, 70)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbl_nombreUsuario)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(25, 25, 25)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lbl_tipoUsuario)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(lbl_idCampus)
-                                                .addComponent(lbl_contraseña)))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(pwd_contraseña)
-                                    .addComponent(txt_NombreUsuario)
-                                    .addComponent(cbo_tipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbo_idCampus, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btn_guardar)
-                                        .addGap(38, 38, 38)
-                                        .addComponent(btn_Actualizar))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(302, 302, 302)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(btn_rellenarCampos)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(btn_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(36, 36, 36)
-                                                .addComponent(btn_consultar)))))
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_Limpiar)))
+                                        .addComponent(btn_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(36, 36, 36)
+                                        .addComponent(btn_consultar)))))
                         .addGap(18, 18, 18)
-                        .addComponent(chb_mostrarContraseña)))
+                        .addComponent(btn_Limpiar)))
+                .addGap(18, 18, 18)
+                .addComponent(chb_mostrarContraseña)
+                .addGap(103, 103, 103))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_usuario)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1174, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbl_usuario)
-                        .addGap(15, 15, 15))
-                    .addComponent(lbl_titulo, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addContainerGap()
+                        .addComponent(lbl_usuario))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_nombres)
-                            .addComponent(txt_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_apellidos)
-                            .addComponent(txt_Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_Salario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_salario))
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_telefono)))
+                        .addGap(21, 21, 21)
+                        .addComponent(lbl_titulo)))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_nombreUsuario)
                             .addComponent(txt_NombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_contraseña)
-                            .addComponent(pwd_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(chb_mostrarContraseña))
-                        .addGap(23, 23, 23)
-                        .addComponent(cbo_idCampus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(cbo_tipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(chb_mostrarContraseña)
+                                .addGap(85, 85, 85))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(pwd_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbl_contraseña))
+                                .addGap(19, 19, 19)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(cbo_idCampus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbl_idCampus))
+                                .addGap(18, 18, 18)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbo_tipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_tipoUsuario)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(lbl_idCampus)
-                        .addGap(29, 29, 29)
-                        .addComponent(lbl_tipoUsuario)))
-                .addGap(14, 14, 14)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_Identidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_identidad))
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_guardar)
-                    .addComponent(btn_Actualizar)
-                    .addComponent(btn_Eliminar)
-                    .addComponent(btn_consultar)
-                    .addComponent(btn_Limpiar))
-                .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_nombres))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_apellidos))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_Salario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_salario))
+                        .addGap(24, 24, 24)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_telefono))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_Identidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_identidad))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_guardar)
+                            .addComponent(btn_Actualizar)
+                            .addComponent(btn_Eliminar)
+                            .addComponent(btn_consultar)
+                            .addComponent(btn_Limpiar))
+                        .addGap(29, 29, 29))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2)
+                        .addGap(35, 35, 35)))
                 .addComponent(btn_rellenarCampos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
         );
@@ -650,7 +672,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             String sql = "Select nombre_usuario from Acceso where nombre_usuario = '"+txt_NombreUsuario.getText()+"'";
             ResultSet rs = st.executeQuery(sql);
             if(rs.next()){
-                JOptionPane.showMessageDialog(null, "Ya existe usuario", "Usuarios", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Ya existe el nombre de usuario: "+txt_NombreUsuario.getText()+" ", "Nombre de usuario ¡Ya existe!", JOptionPane.INFORMATION_MESSAGE);
                 return true;
             }
             else{
@@ -668,7 +690,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             String sql = "Select numero_identidad from Empleados where numero_identidad = '"+txt_Identidad.getText()+"'";
             ResultSet rs = st.executeQuery(sql);
             if(rs.next()){
-                JOptionPane.showMessageDialog(null, "Ya existe empleado", "empleados", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El número de identidad: "+txt_Identidad.getText()+" ya existe", "Número de identidad ¡Ya existe!", JOptionPane.INFORMATION_MESSAGE);
                 return true;
             }
             else{
@@ -686,12 +708,13 @@ this.cbo_tipoUsuario.setSelectedItem("");
                  return true;
              }
              else{
-                 JOptionPane.showMessageDialog(null, "La contraseña no cumple las directrices", "Politicas contraseñas", JOptionPane.ERROR_MESSAGE);
+                 JOptionPane.showMessageDialog(null, "La contraseña no cumple las siguientes directrices: \n 1. Debe contener al menos una letra minúscula (a-z)"
+                         + "\n 2. Debe contener al menos una letra mayúscula (A-Z) \n 3. Debe contener al menos un número (0-9)", "¡Directrices de contraseña no cumplidas!", JOptionPane.ERROR_MESSAGE);
                  return false;
              }
         }
-        else{;
-            JOptionPane.showMessageDialog(null, "La contraseña es muy pequeña", "Longitud", JOptionPane.ERROR_MESSAGE); 
+        else{
+            JOptionPane.showMessageDialog(null, "La contraseña es muy pequeña debe ser de al menos 8 caracteres.", "Longitud de contraseña menor al requerido", JOptionPane.ERROR_MESSAGE); 
            return false; 
         }    
     }
@@ -721,7 +744,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
     }
     
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
-
+        
         String cadena1, cadena2, cadena3, cadena4, cadena5, cadena6, cadena7, cadena8, cadena9;
         cadena1 = txt_Nombre.getText();
         cadena2 = txt_Apellido.getText();
@@ -733,12 +756,13 @@ this.cbo_tipoUsuario.setSelectedItem("");
         cadena8 = txt_NombreUsuario.getText();
         cadena9 = pwd_contraseña.getText();
        String tipoUsuario = cbo_tipoUsuario.getSelectedItem().toString().substring(0,1);
+         String nombreEmpleado = txt_Nombre.getText() + " " + txt_Apellido.getText();
         
         if ((txt_Nombre.getText().equals("")) || (txt_Apellido.getText().equals("")) || (txt_Salario.getText().equals(""))
          || (txt_Telefono.getText().equals(""))   || (txt_Identidad.getText().equals("")) || (cbo_idCampus.getSelectedItem().equals("Seleccione un campus")) || (txt_NombreUsuario.getText().equals(""))|| (pwd_contraseña.getText().equals("")) 
                 || (cbo_tipoUsuario.getSelectedItem().equals("Seleccione un tipo de usuario")) ) {
             
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe llenar todos los campos \n","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe llenar todos los campos! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_Nombre.requestFocus();
             return;
         }
@@ -752,31 +776,30 @@ this.cbo_tipoUsuario.setSelectedItem("");
         }
         
         if(!validarLongitud(txt_Nombre,5)){
-            JOptionPane.showMessageDialog(null, "Los nombres son muy pequeños el minimo es de 5 caracteres", "Longitud Nombre", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Los nombres ingresados son muy pequeños el mínimo es de 5 caracteres", "Longitud de los nombres", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
         
          if(!validarLongitud(txt_Apellido,5)){
-            JOptionPane.showMessageDialog(null, "El apellido son muy pequeños el minimo es de 5 caracteres", "Longitud Apellido", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Los apellidos ingresados son muy pequeños el mínimo es de 5 caracteres", "Longitud de los apellidos", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
          
-         if(!validarLongitud(txt_Salario,2)){
-            JOptionPane.showMessageDialog(null, "El salario debe ser de minimo 2 caracteres", "Longitud Salario", JOptionPane.INFORMATION_MESSAGE);
+         if(!validarLongitud(txt_Salario,4)){
+            JOptionPane.showMessageDialog(null, "El salario debe ser de mínimo 4 dígitos", "Longitud del salario", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
          
-         if(!validarLongitud(txt_Telefono,8)){
-            JOptionPane.showMessageDialog(null, "El numero telefonico debe ser de 8 digitos", "Longitud Telefono", JOptionPane.INFORMATION_MESSAGE);
+         if(!validarLongitudTelefono(txt_Telefono,8)){
             return;
         }
          
           if(!validarLongitud(txt_Identidad,13)){
-            JOptionPane.showMessageDialog(null, "El numero de identidad debe ser de 13 digitos", "Longitud Numero Identidad", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El número de identidad debe ser de 13 dígitos", "Longitud del número de identidad", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
           if(!validarLongitud(txt_NombreUsuario,8)){
-            JOptionPane.showMessageDialog(null, "El nombre de usuario debe ser de minimo 8 caracteres", "Longitud Nombre Usuario", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El nombre de usuario debe ser de mínimo 8 caracteres", "Longitud del nombre de usuario", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
         
@@ -787,6 +810,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
       try{
           PreparedStatement ps;
           ResultSet rs;
+        
           ps=con.prepareStatement("INSERT INTO Empleados (nombres_empleado, apellido_empleado, telefono_empleado, id_campus, salario, numero_identidad)"
                   + "                VALUES(?,?,?,?,?,?)");
                   ps.setString(1, txt_Nombre.getText());
@@ -796,24 +820,30 @@ this.cbo_tipoUsuario.setSelectedItem("");
                   ps.setString(5, txt_Salario.getText());
                   ps.setString(6, txt_Identidad.getText());
                   int res= ps.executeUpdate();
-                  if(res > 0){
-                      
-                  }else {
-                      JOptionPane.showMessageDialog(null, "Error al Guardar la informacion"); 
-                  }
-       
       } catch ( Exception e) {
             System.out.println(e);
         }
          try{
              Statement st2=con.createStatement();
-              String sql ="Insert into Acceso(nombre_usuario,clave_acceso,tipo_usuario) values('"+txt_NombreUsuario.getText()+"','"+pwd_contraseña.getText()+"','"+tipoUsuario+"')";
-               int rs2 = st2.executeUpdate(sql);
-              JOptionPane.showMessageDialog(null, "Se ha guardado la informacion correctamente");
+            String contraseña=DigestUtils.md5Hex(pwd_contraseña.getText());
+            String estadoDelUsuario = "";
+            if(cbo_tipoUsuario.getSelectedItem().toString().substring(0,1).equals("A")){
+                estadoDelUsuario = "Administrador";
+            }
+            else if(cbo_tipoUsuario.getSelectedItem().toString().substring(0,1).equals("E")){
+                 estadoDelUsuario = "Activo";
+            }
+            else if(cbo_tipoUsuario.getSelectedItem().toString().substring(0,1).equals("S")){
+                 estadoDelUsuario = "Activo";
+            }
+            String sql ="Insert into Acceso(nombre_usuario,clave_acceso,tipo_usuario,estado) values('"+txt_NombreUsuario.getText()+"','"+contraseña+"','"+tipoUsuario+"','"+estadoDelUsuario+"')";
+            int rs2 = st2.executeUpdate(sql);
+            JOptionPane.showMessageDialog(null, "Se ha guardado la informacion del empleado "+nombreEmpleado+" correctamente");
           }catch ( Exception e) {
            JOptionPane.showMessageDialog(null, e.getMessage()); 
         }
-        limpiar();   
+        limpiar();
+        actualizarDatos();
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private boolean validarLongitud(JTextField texto, int longitud){
@@ -824,17 +854,41 @@ this.cbo_tipoUsuario.setSelectedItem("");
            return false;
        }
     }
+    private boolean validarLongitudTelefono(JTextField texto, int longitud){
+       if(texto.getText().length() == longitud){
+                Pattern pattern = Pattern.compile("[23789]");
+                Matcher matcher=pattern.matcher(texto.getText().substring(0,1));
+                if(matcher.matches()){ 
+                        return true;
+                    }else{
+                        JOptionPane.showMessageDialog(null, "El número de teléfono debe comenzar con: 2,3,7,8 o 9");
+                        return false;
+                    } 
+       }
+        else{
+       }
+       JOptionPane.showMessageDialog(null, "El número de teléfono debe ser de 8 dígitos", "Longitud del número de telefono",JOptionPane.INFORMATION_MESSAGE);
+       return false;
+    }
+    
+  
+    
     private void txt_NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NombreKeyTyped
         if(txt_Nombre.getText().length() >=100){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Numero maximo de caracteres admitidos");
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
+        }
+         if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
+                 || evt.getKeyChar() == 32 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+        return;
         }
         char a=evt.getKeyChar();
-        if(Character.isDigit(a)){
+        if(Character.isDigit(a) ){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Solo letras");
+            JOptionPane.showMessageDialog(null, "Sólo letras");
         }
     }//GEN-LAST:event_txt_NombreKeyTyped
 
@@ -842,13 +896,20 @@ this.cbo_tipoUsuario.setSelectedItem("");
        if(txt_Apellido.getText().length() >=100){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Numero maximo de caracteres admitidos");
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
         }
         char a=evt.getKeyChar();
-        if(Character.isDigit(a)){
+
+         if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
+                 || evt.getKeyChar() == 32 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+        return;
+        }
+         
+        if(Character.isDigit(a) || !Character.isLetterOrDigit(a)){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Solo letras");
+            JOptionPane.showMessageDialog(null, "Sólo letras");
         }
     }//GEN-LAST:event_txt_ApellidoKeyTyped
 
@@ -856,13 +917,13 @@ this.cbo_tipoUsuario.setSelectedItem("");
        if(txt_Telefono.getText().length() >=8){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Numero maximo de caracteres admitidos");
+            JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
         }
         char a=evt.getKeyChar();
         if(Character.isLetter(a)){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Solo numeros");
+            JOptionPane.showMessageDialog(null, "Sólo números");
         }
     }//GEN-LAST:event_txt_TelefonoKeyTyped
 
@@ -870,13 +931,18 @@ this.cbo_tipoUsuario.setSelectedItem("");
         if(txt_Salario.getText().length() >=8){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Numero maximo de caracteres admitidos");
+            JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
+        }
+         if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
+                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+        return;
         }
         char a=evt.getKeyChar();
-        if(Character.isLetter(a)){
+        if(Character.isLetter(a) || !Character.isLetterOrDigit(a)){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Solo numeros");
+            JOptionPane.showMessageDialog(null, "Sólo numeros");
         }
     }//GEN-LAST:event_txt_SalarioKeyTyped
 
@@ -885,9 +951,11 @@ this.cbo_tipoUsuario.setSelectedItem("");
     }//GEN-LAST:event_txt_NombreActionPerformed
 
     private void btn_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultarActionPerformed
+        actualizarDatos();
+    }//GEN-LAST:event_btn_consultarActionPerformed
 
+    public void actualizarDatos(){
         try {
-            
                String sql = "select * from Empleados as e join Acceso as a on e.id_empleado = a.id_empleado join \n" +
                 "Campus as c on c.id_campus = e.id_campus";
                stmt = con.createStatement();
@@ -941,18 +1009,12 @@ this.cbo_tipoUsuario.setSelectedItem("");
                 cidc.setMaxWidth(150);
                 TableColumn ctipou = Tabla_Empleados.getColumn(titulos[8]);
                 ctipou.setMaxWidth(95);
-                
-                
-    
         }
         catch (Exception e) {
             JOptionPane.showMessageDialog(null,e.getMessage());
         }
-
-        
-        
-    }//GEN-LAST:event_btn_consultarActionPerformed
-
+    }
+    
     public void centrar_datos(){
  
         DefaultTableCellRenderer modelocentrar = new DefaultTableCellRenderer();
@@ -985,13 +1047,16 @@ this.cbo_tipoUsuario.setSelectedItem("");
     int filas;
     
     private void btn_ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ActualizarActionPerformed
-
-        if(JOptionPane.showConfirmDialog(null,"Estas seguro que quieres actualizar el registro"
-        )==JOptionPane.YES_OPTION){
-           
-            
+        String nombreEmpleado = txt_Nombre.getText() + " " + txt_Apellido.getText();
+        
+        if(JOptionPane.showConfirmDialog(null,"¿Está seguro que desea actualizar el registro del empleado "+nombreEmpleado+"?","Confirmación de actualización",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE
+        )==JOptionPane.YES_OPTION){ 
      String id_campus = cbo_idCampus.getSelectedItem().toString().substring(0, 4);
      String tipoUsuario = cbo_tipoUsuario.getSelectedItem().toString().substring(0,1);
+     String contraseña=DigestUtils.md5Hex(pwd_contraseña.getText());
+       if(!validarContraseñas(contraseña)){
+            return;
+        }
       try{
           PreparedStatement ps;
           ResultSet rs;
@@ -1003,8 +1068,8 @@ this.cbo_tipoUsuario.setSelectedItem("");
                   + "salario = ?, "
                   + "numero_identidad = ? "
                   + "where numero_identidad = '"+var+"' "
-                          + "or nombres_empleado = '"+var+"' "
-                                  + "or apellido_empleado = '"+var+"'");
+                  + "or nombres_empleado = '"+var+"' "
+                  + "or apellido_empleado = '"+var+"'");
                   ps.setString(1, txt_Nombre.getText());
                   ps.setString(2, txt_Apellido.getText());
                   ps.setString(3, txt_Telefono.getText());
@@ -1012,24 +1077,19 @@ this.cbo_tipoUsuario.setSelectedItem("");
                   ps.setString(5, txt_Salario.getText());
                   ps.setString(6, txt_Identidad.getText());
                   int res= ps.executeUpdate();
-                  if(res > 0){
-                      
-                  }else {
-                      JOptionPane.showMessageDialog(null, "Error al Guardar la informacion"); 
-                  }
-       
-      } catch ( Exception e) {
+        } catch ( Exception e) {
             System.out.println(e);
         }
          try{
              Statement st2=con.createStatement();
+            
               String sql ="Update Acceso "
                       + "set nombre_usuario = '"+txt_NombreUsuario.getText()+"'"
-                      + ",clave_acceso = '"+pwd_contraseña.getText()+"',"
+                      + ",clave_acceso = '"+contraseña+"',"
                       + "tipo_usuario = '"+tipoUsuario+"'"
                       + "where id_empleado = (Select id_empleado from Acceso where nombre_usuario = '"+txt_NombreUsuario.getText()+"')";
                int rs2 = st2.executeUpdate(sql);
-              JOptionPane.showMessageDialog(null, "Se ha guardado la informacion correctamente");
+              JOptionPane.showMessageDialog(null, "Se ha actualizado la información del empleado "+nombreEmpleado+" correctamente.");
           }catch ( Exception e) {
            JOptionPane.showMessageDialog(null, e.getMessage()); 
         }
@@ -1038,9 +1098,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         limpiar();
     }//GEN-LAST:event_btn_ActualizarActionPerformed
 
-    
     public void rellenar(){
-     
         try {
             Statement st = con.createStatement();
             String consulta = "Select tipo_usuario from Acceso where nombre_usuario = '"+lbl_usuario.getText()+"'";
@@ -1051,12 +1109,12 @@ this.cbo_tipoUsuario.setSelectedItem("");
                     try{
                     String cap="";
                     ResultSet rs2 = null;
-                    var = javax.swing.JOptionPane.showInputDialog(this,"Ingrese sus nombres o sus apellidos o su numero de identidad","Rellenar campos",javax.swing.JOptionPane.QUESTION_MESSAGE);
+                    var = JOptionPane.showInputDialog(this,"Ingrese los nombres, los apellidos o el número de identidad del empleado que desea consultar","Consulta de empleado",JOptionPane.QUESTION_MESSAGE);
                     if(var == null)
-                        javax.swing.JOptionPane.showMessageDialog(this,"La accion fue cancelada","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(this,"La acción fue cancelada","¡AVISO!",JOptionPane.INFORMATION_MESSAGE);
                     else {
                         if (var.equals("")) {
-                            javax.swing.JOptionPane.showMessageDialog(this,"Favor de ingresar el nombre del empleado\nquedesea consultar","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(this,"Favor de ingresar los datos del empleado\n que desea consultar","¡AVISO!",JOptionPane.INFORMATION_MESSAGE);
                         }
                         else{
                             String sql = "select * from Empleados as e join Acceso as a on e.id_empleado = a.id_empleado join \n" +
@@ -1087,7 +1145,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
                                 }
                             }
                             else{
-                                JOptionPane.showMessageDialog(null,"No se encuentra el empleado por favor verifique si lo escribio correctamente");
+                               JOptionPane.showMessageDialog(null,"¡No se encuentra el empleado! Por favor verifique sí, lo escribio correctamente");
                             }
                             
                         }
@@ -1098,7 +1156,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
                             }
                 }
                  else{
-                            JOptionPane.showMessageDialog(null,"Solo los administradores tienen acceso");
+                            JOptionPane.showMessageDialog(null,"¡Sólo los administradores tienen acceso a esta función!");
                             }
                 
                 
@@ -1115,18 +1173,17 @@ this.cbo_tipoUsuario.setSelectedItem("");
             Statement st = con.createStatement();
             String consulta = "Select tipo_usuario from Acceso where nombre_usuario = '"+lbl_usuario.getText()+"'";
             ResultSet rs = st.executeQuery(consulta);
-            
             if(rs.next()){
                 if(rs.getString("tipo_usuario").equals("A") || rs.getString("tipo_usuario").equals("S")){
                     try{
                     String cap="";
                     ResultSet rs2 = null;
-                    var = javax.swing.JOptionPane.showInputDialog(this,"Ingrese sus nombres, sus apellidos o su numero de identidad","Consulta Usuario",javax.swing.JOptionPane.QUESTION_MESSAGE);
+                    var = JOptionPane.showInputDialog(this,"Ingrese los nombres, los apellidos o el número de identidad del empleado que desea consultar","Consulta de empleado",JOptionPane.QUESTION_MESSAGE);
                     if(var == null)
-                        javax.swing.JOptionPane.showMessageDialog(this,"La accion fue cancelada","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(this,"La acción fue cancelada","¡AVISO!",JOptionPane.INFORMATION_MESSAGE);
                     else {
                         if (var.equals("")) {
-                            javax.swing.JOptionPane.showMessageDialog(this,"Favor de ingresar el nombre del empleado\nquedesea consultar","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(this,"Favor de ingresar los datos del empleado\n que desea consultar","¡AVISO!",JOptionPane.INFORMATION_MESSAGE);
                         }
                         else{
                             String sql = "select * from Empleados as e join Acceso as a on e.id_empleado = a.id_empleado join \n" +
@@ -1156,7 +1213,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
                       
                             }
                             else{
-                                JOptionPane.showMessageDialog(null,"No se encuentra el empleado por favor verifique si lo escribio correctamente");
+                                JOptionPane.showMessageDialog(null,"¡No se encuentra el empleado! Por favor verifique sí, lo escribio correctamente");
                             }
                             
                         }
@@ -1168,7 +1225,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
                    
                 }
                  else{
-                            JOptionPane.showMessageDialog(null,"Solo los administradores tienen acceso");
+                            JOptionPane.showMessageDialog(null,"¡Sólo los administradores tienen acceso a esta función!");
                             }
                 
                 
@@ -1186,13 +1243,18 @@ this.cbo_tipoUsuario.setSelectedItem("");
      if(txt_Identidad.getText().length() >=13){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Numero maximo de caracteres admitidos");
+            JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
         }
         char a=evt.getKeyChar();
-        if(Character.isLetter(a)){
+         if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
+                  || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+        return;
+        }
+        if(Character.isLetter(a) || !Character.isLetterOrDigit(a)){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Solo numeros");
+            JOptionPane.showMessageDialog(null, "Solo números");
         }
     }//GEN-LAST:event_txt_IdentidadKeyTyped
 
@@ -1222,11 +1284,10 @@ this.cbo_tipoUsuario.setSelectedItem("");
     
     
     private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
-        
-           if(JOptionPane.showConfirmDialog(null,"Estas seguro que quieres eliminar el registro"
-            )==JOptionPane.YES_OPTION){
-           
-            
+         String nombreEmpleado = txt_Nombre.getText() + " " + txt_Apellido.getText();
+           if(JOptionPane.showConfirmDialog(null,"¿Está seguro que desea eliminar el registro del empleado "+nombreEmpleado+"","Confirmación de eliminación",
+                   JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE
+            )==JOptionPane.YES_OPTION){   
      String id_campus = cbo_idCampus.getSelectedItem().toString().substring(0, 4);
      String tipoUsuario = cbo_tipoUsuario.getSelectedItem().toString().substring(0,1);
        try{
@@ -1234,7 +1295,6 @@ this.cbo_tipoUsuario.setSelectedItem("");
               String sql ="Delete Acceso "
                       + "where id_empleado = (Select id_empleado from Acceso where nombre_usuario = '"+txt_NombreUsuario.getText()+"')";
                int rs2 = st2.executeUpdate(sql);
-              
           }catch ( Exception e) {
            JOptionPane.showMessageDialog(null, e.getMessage()); 
         }
@@ -1246,13 +1306,11 @@ this.cbo_tipoUsuario.setSelectedItem("");
                   + "or nombres_empleado = '"+var+"' "
                   + "or apellido_empleado = '"+var+"'");
                   int res= ps.executeUpdate();
-                  JOptionPane.showMessageDialog(null, "Se ha borrado la informacion correctamente");
-                  if(res > 0){
-                      
+                  JOptionPane.showMessageDialog(null, "Se ha borrado la información del empleado "+nombreEmpleado+" correctamente");
+                  if(res > 0){ 
                   }else {
-                      JOptionPane.showMessageDialog(null, "Error al eliminar la informacion"); 
+                      JOptionPane.showMessageDialog(null, "¡Error al eliminar la información!"); 
                   }
-       
       } catch ( Exception e) {
             System.out.println(e);
         }
@@ -1265,9 +1323,9 @@ this.cbo_tipoUsuario.setSelectedItem("");
     }//GEN-LAST:event_txt_IdentidadActionPerformed
 
     private void btn_Limpiarbtn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Limpiarbtn_limpiarActionPerformed
-        
+ 
         limpiar();
-        
+
     }//GEN-LAST:event_btn_Limpiarbtn_limpiarActionPerformed
 
     private void btn_rellenarCamposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_rellenarCamposMouseClicked
@@ -1292,7 +1350,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         if(txt_NombreUsuario.getText().length() >=25){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Numero maximo de caracteres admitidos");
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
         }
         char a=evt.getKeyChar();
     }//GEN-LAST:event_txt_NombreUsuarioKeyTyped
@@ -1301,10 +1359,16 @@ this.cbo_tipoUsuario.setSelectedItem("");
         if(txt_NombreUsuario.getText().length() >=25){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Numero maximo de caracteres admitidos");
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
         }
     }//GEN-LAST:event_pwd_contraseñaKeyTyped
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+  
+           validarLongitudTelefono(txt_Telefono,8);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+   
     /**
      * @param args the command line arguments
      */
@@ -1359,6 +1423,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
     private javax.swing.JComboBox<String> cbo_tipoUsuario;
     private javax.swing.JCheckBox chb_mostrarContraseña;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;

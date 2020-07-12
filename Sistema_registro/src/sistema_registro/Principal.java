@@ -445,7 +445,7 @@ public class Principal extends javax.swing.JFrame {
         try {
             Login login=new Login();
             
-            if(JOptionPane.showConfirmDialog(principal,"Estas seguro que quieres cerrar sesión"
+            if(JOptionPane.showConfirmDialog(principal,"¿Esta seguro que desea cerrar sesión?"
         )==JOptionPane.YES_OPTION){
             dispose();
             login.setVisible(true);

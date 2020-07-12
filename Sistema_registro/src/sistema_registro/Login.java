@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.*;
 import javax.swing.JOptionPane;
+import org.apache.commons.codec.digest.DigestUtils;
 import sistema_registro.SQL.ConectorSQL;
 /**
  *
@@ -17,6 +18,7 @@ import sistema_registro.SQL.ConectorSQL;
  */
 public class Login extends javax.swing.JFrame {
     Connection con;
+    int intentos = 3;
     /**
      * Creates new form Sistema_registro2
      */
@@ -193,7 +195,8 @@ public class Login extends javax.swing.JFrame {
         try {
             String usuario = txt_usuario.getText();
             String contraseña = String.valueOf(pwd_contraseña.getText());
-            String sql = "SELECT * from Acceso where nombre_usuario ='" +usuario+ "' and clave_acceso='"+contraseña+"' COLLATE Latin1_General_CS_AS";
+            String contraseñaEncriptada=DigestUtils.md5Hex(contraseña);
+            String sql = "SELECT * from Acceso where nombre_usuario ='" +usuario+ "' and clave_acceso='"+contraseñaEncriptada+"' COLLATE Latin1_General_CS_AS";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
             if(isEmpty()){
@@ -202,6 +205,10 @@ public class Login extends javax.swing.JFrame {
                 return;
             }
             if(rs.next()){
+                if(rs.getString("estado").equals("Bloqueado")){
+                    JOptionPane.showMessageDialog(null, "El usuario: "+usuario+" está bloqueado por favor comuníquese con el administrador", "Usuario bloqueado", JOptionPane.INFORMATION_MESSAGE);
+                }
+                if(rs.getString("estado").equals("Activo") || rs.getString("estado").equals("Administrador")){
                 String sql2 = "Select nombres_empleado + ' ' + apellido_empleado from Empleados where id_empleado = (select id_empleado from Acceso where nombre_usuario = '"+usuario+"')";
                 Statement st2 = con.createStatement();
                 ResultSet rs2 = st2.executeQuery(sql2);
@@ -211,10 +218,32 @@ public class Login extends javax.swing.JFrame {
                 this.dispose();
                 }
             }
-            else{
-                getToolkit().beep();
-                JOptionPane.showMessageDialog(null, "El nombre de usuario o contraseña no coinciden", "Las credenciales no concuerdan", JOptionPane.ERROR_MESSAGE);
-            }
+             else{
+                    try {
+                         String sql3 = "SELECT * from Acceso where nombre_usuario ='"+usuario+"'";
+                         Statement st3 = con.createStatement();
+                         ResultSet rs3 = st3.executeQuery(sql3);
+                        if(rs3.next()){
+                            if(rs3.getString("nombre_usuario").equals(usuario)){
+                                getToolkit().beep();
+                                intentos--;
+                                if(intentos == 0){
+                                    Statement st2 = con.createStatement();
+                                    String sql2 = "Update Acceso set estado = 'Bloqueado'";
+                                    int columnas = st2.executeUpdate(sql2);
+                                    JOptionPane.showMessageDialog(null, "El usuario: "+usuario+" ha sido bloqueado por favor comuníquese con el administrador", "Usuario bloqueado", JOptionPane.INFORMATION_MESSAGE);
+                                }
+                                JOptionPane.showMessageDialog(null, "El nombre de usuario o contraseña no coinciden, todavia tiene "+intentos+" intentos", "Las credenciales no concuerdan", JOptionPane.ERROR_MESSAGE);
+                                pwd_contraseña.setText("");
+                            }
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null, "El nombre de usuario o contraseña no coinciden", "Las credenciales no concuerdan", JOptionPane.ERROR_MESSAGE);
+                        }   } catch (SQLException ex) {
+                        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    }
+                }
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,e.getMessage());
@@ -236,7 +265,7 @@ public class Login extends javax.swing.JFrame {
     if(txt_usuario.getText().length() >=25){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Numero maximo de caracteres admitidos");
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
         }
         char a=evt.getKeyChar();
     }//GEN-LAST:event_txt_usuarioKeyTyped
@@ -245,7 +274,7 @@ public class Login extends javax.swing.JFrame {
       if(pwd_contraseña.getText().length() >=25){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Numero maximo de caracteres admitidos");
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
         }
     }//GEN-LAST:event_pwd_contraseñaKeyTyped
 

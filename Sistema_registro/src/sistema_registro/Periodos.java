@@ -37,11 +37,9 @@ public class Periodos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btn_agregarPeriodo = new javax.swing.JButton();
         btn_eliminarUltimoPeriodo = new javax.swing.JButton();
-        rad_PeriodoI = new javax.swing.JRadioButton();
-        rad_PeriodoII = new javax.swing.JRadioButton();
-        rad_PeriodoIII = new javax.swing.JRadioButton();
         lbl_nombrePeriodo = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        cbo_periodo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,7 +53,7 @@ public class Periodos extends javax.swing.JFrame {
         lbl_fechaFinal.setText("Fecha final:");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Periodo");
+        jLabel1.setText("Período Histórico");
 
         btn_agregarPeriodo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btn_agregarPeriodo.setText("Agregar periodo");
@@ -63,16 +61,13 @@ public class Periodos extends javax.swing.JFrame {
         btn_eliminarUltimoPeriodo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btn_eliminarUltimoPeriodo.setText("Eliminar ultimo periodo creado");
 
-        rad_PeriodoI.setText("Periodo I");
-
-        rad_PeriodoII.setText("Periodo II");
-
-        rad_PeriodoIII.setText("Periodo III");
-
         lbl_nombrePeriodo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_nombrePeriodo.setText("Nombre del periodo:");
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        cbo_periodo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cbo_periodo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,48 +77,38 @@ public class Periodos extends javax.swing.JFrame {
                 .addContainerGap(315, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(440, 440, 440))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lbl_nombrePeriodo)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lbl_periodo)
                                 .addComponent(lbl_fechaInicial)
                                 .addComponent(lbl_fechaFinal, javax.swing.GroupLayout.Alignment.TRAILING)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(rad_PeriodoI)
-                                .addGap(18, 18, 18)
-                                .addComponent(rad_PeriodoII)
-                                .addGap(18, 18, 18)
-                                .addComponent(rad_PeriodoIII))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(59, 59, 59)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cld_fechaInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cld_fechaFinal, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                                    .addComponent(jTextField1))))
-                        .addGap(244, 244, 244))
+                        .addGap(59, 59, 59)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cld_fechaInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cld_fechaFinal, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                            .addComponent(jTextField1)
+                            .addComponent(cbo_periodo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(301, 301, 301))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(btn_agregarPeriodo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btn_eliminarUltimoPeriodo))
-                        .addGap(325, 325, 325))))
+                        .addGap(325, 325, 325))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(368, 368, 368))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(96, 96, 96)
+                .addGap(94, 94, 94)
                 .addComponent(jLabel1)
-                .addGap(84, 84, 84)
+                .addGap(86, 86, 86)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_periodo)
-                    .addComponent(rad_PeriodoI)
-                    .addComponent(rad_PeriodoII)
-                    .addComponent(rad_PeriodoIII))
-                .addGap(29, 29, 29)
+                    .addComponent(cbo_periodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_fechaInicial)
                     .addComponent(cld_fechaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -139,7 +124,7 @@ public class Periodos extends javax.swing.JFrame {
                 .addComponent(btn_agregarPeriodo)
                 .addGap(31, 31, 31)
                 .addComponent(btn_eliminarUltimoPeriodo)
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
 
         pack();
@@ -182,6 +167,7 @@ public class Periodos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_agregarPeriodo;
     private javax.swing.JButton btn_eliminarUltimoPeriodo;
+    private javax.swing.JComboBox<String> cbo_periodo;
     private com.toedter.calendar.JDateChooser cld_fechaFinal;
     private com.toedter.calendar.JDateChooser cld_fechaInicial;
     private javax.swing.JLabel jLabel1;
@@ -190,8 +176,5 @@ public class Periodos extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_fechaInicial;
     private javax.swing.JLabel lbl_nombrePeriodo;
     private javax.swing.JLabel lbl_periodo;
-    private javax.swing.JRadioButton rad_PeriodoI;
-    private javax.swing.JRadioButton rad_PeriodoII;
-    private javax.swing.JRadioButton rad_PeriodoIII;
     // End of variables declaration//GEN-END:variables
 }
