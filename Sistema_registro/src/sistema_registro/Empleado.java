@@ -231,36 +231,41 @@ this.cbo_tipoUsuario.setSelectedItem("");
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        txt_Nombre = new javax.swing.JTextField();
-        txt_Apellido = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Tabla_Empleados = new javax.swing.JTable();
+        lbl_usuario = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        btn_guardar = new javax.swing.JButton();
+        btn_Actualizar = new javax.swing.JButton();
+        btn_Eliminar = new javax.swing.JButton();
+        btn_consultar = new javax.swing.JButton();
+        btn_Limpiar = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        chb_mostrarContraseña = new javax.swing.JCheckBox();
         lbl_nombres = new javax.swing.JLabel();
+        txt_Nombre = new javax.swing.JTextField();
         lbl_apellidos = new javax.swing.JLabel();
+        txt_Apellido = new javax.swing.JTextField();
         lbl_salario = new javax.swing.JLabel();
         txt_Salario = new javax.swing.JTextField();
+        lbl_telefono = new javax.swing.JLabel();
+        txt_Telefono = new javax.swing.JTextField();
+        lbl_identidad = new javax.swing.JLabel();
+        txt_Identidad = new javax.swing.JTextField();
         lbl_nombreUsuario = new javax.swing.JLabel();
         txt_NombreUsuario = new javax.swing.JTextField();
         lbl_contraseña = new javax.swing.JLabel();
-        btn_guardar = new javax.swing.JButton();
-        lbl_telefono = new javax.swing.JLabel();
-        lbl_idCampus = new javax.swing.JLabel();
-        txt_Telefono = new javax.swing.JTextField();
-        cbo_idCampus = new javax.swing.JComboBox<>();
         pwd_contraseña = new javax.swing.JPasswordField();
-        btn_Eliminar = new javax.swing.JButton();
-        lbl_titulo = new javax.swing.JLabel();
-        chb_mostrarContraseña = new javax.swing.JCheckBox();
+        lbl_idCampus = new javax.swing.JLabel();
+        cbo_idCampus = new javax.swing.JComboBox<>();
         lbl_tipoUsuario = new javax.swing.JLabel();
         cbo_tipoUsuario = new javax.swing.JComboBox<>();
-        btn_consultar = new javax.swing.JButton();
-        btn_Actualizar = new javax.swing.JButton();
-        lbl_identidad = new javax.swing.JLabel();
-        txt_Identidad = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Tabla_Empleados = new javax.swing.JTable();
-        btn_Limpiar = new javax.swing.JButton();
-        lbl_usuario = new javax.swing.JLabel();
         btn_rellenarCampos = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        lbl_titulo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         cbo_MenuPrincipal = new javax.swing.JMenuItem();
@@ -268,164 +273,11 @@ this.cbo_tipoUsuario.setSelectedItem("");
 
         jButton1.setText("jButton1");
 
+        jLabel3.setText("jLabel3");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
-
-        txt_Nombre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_Nombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_NombreActionPerformed(evt);
-            }
-        });
-        txt_Nombre.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_NombreKeyTyped(evt);
-            }
-        });
-
-        txt_Apellido.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_Apellido.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_ApellidoKeyTyped(evt);
-            }
-        });
-
-        lbl_nombres.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_nombres.setText("Nombres");
-
-        lbl_apellidos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_apellidos.setText("Apellidos");
-
-        lbl_salario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_salario.setText("Salario");
-
-        txt_Salario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_Salario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_SalarioActionPerformed(evt);
-            }
-        });
-        txt_Salario.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_SalarioKeyTyped(evt);
-            }
-        });
-
-        lbl_nombreUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_nombreUsuario.setText("Nombre de Usuario");
-
-        txt_NombreUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_NombreUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_NombreUsuarioKeyTyped(evt);
-            }
-        });
-
-        lbl_contraseña.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_contraseña.setText("Contraseña");
-
-        btn_guardar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_guardar.setText("Guardar");
-        btn_guardar.setBorderPainted(false);
-        btn_guardar.setContentAreaFilled(false);
-        btn_guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_guardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btn_guardar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        btn_guardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btn_guardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_guardarActionPerformed(evt);
-            }
-        });
-
-        lbl_telefono.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_telefono.setText("Teléfono");
-
-        lbl_idCampus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_idCampus.setText("Campus");
-
-        txt_Telefono.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_Telefono.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_TelefonoKeyTyped(evt);
-            }
-        });
-
-        cbo_idCampus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cbo_idCampus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un campus" }));
-        cbo_idCampus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbo_idCampusActionPerformed(evt);
-            }
-        });
-
-        pwd_contraseña.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        pwd_contraseña.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pwd_contraseñaActionPerformed(evt);
-            }
-        });
-        pwd_contraseña.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                pwd_contraseñaKeyTyped(evt);
-            }
-        });
-
-        btn_Eliminar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_Eliminar.setText("Eliminar");
-        btn_Eliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_limpiarActionPerformed(evt);
-            }
-        });
-
-        lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lbl_titulo.setText("Registro de Empleado");
-
-        chb_mostrarContraseña.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        chb_mostrarContraseña.setText("Mostrar contraseña");
-        chb_mostrarContraseña.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chb_mostrarContraseñaActionPerformed(evt);
-            }
-        });
-
-        lbl_tipoUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_tipoUsuario.setText("Tipo de Usuario");
-
-        cbo_tipoUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cbo_tipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un tipo de usuario", "Empleado", "Administrador", "Supervisor" }));
-        cbo_tipoUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbo_tipoUsuarioActionPerformed(evt);
-            }
-        });
-
-        btn_consultar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_consultar.setText("Consulta");
-        btn_consultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_consultarActionPerformed(evt);
-            }
-        });
-
-        btn_Actualizar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_Actualizar.setText("Actualizar");
-        btn_Actualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ActualizarActionPerformed(evt);
-            }
-        });
-
-        lbl_identidad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_identidad.setText("Identidad");
-
-        txt_Identidad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_Identidad.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_IdentidadKeyTyped(evt);
-            }
-        });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Tabla_Empleados.setBackground(new java.awt.Color(204, 204, 204));
         Tabla_Empleados.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -440,7 +292,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         Tabla_Empleados.setToolTipText("Presiona consulta para ver todos los empleados");
         Tabla_Empleados.setAlignmentX(15.0F);
         Tabla_Empleados.setAlignmentY(15.0F);
-        Tabla_Empleados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Tabla_Empleados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Tabla_Empleados.setGridColor(new java.awt.Color(0, 0, 0));
         Tabla_Empleados.setIntercellSpacing(new java.awt.Dimension(3, 3));
         Tabla_Empleados.setMaximumSize(new java.awt.Dimension(60, 64));
@@ -452,15 +304,245 @@ this.cbo_tipoUsuario.setSelectedItem("");
         });
         jScrollPane1.setViewportView(Tabla_Empleados);
 
-        btn_Limpiar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 1280, 118));
+
+        lbl_usuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbl_usuario.setText("Nombre de Usuario");
+        getContentPane().add(lbl_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 180, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, 70));
+
+        jPanel1.setBackground(new java.awt.Color(215, 236, 233));
+        jPanel1.setLayout(null);
+
+        btn_guardar.setBackground(new java.awt.Color(235, 250, 251));
+        btn_guardar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Guardar.png"))); // NOI18N
+        btn_guardar.setText("  Guardar");
+        btn_guardar.setBorderPainted(false);
+        btn_guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_guardar.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        btn_guardar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btn_guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_guardar);
+        btn_guardar.setBounds(40, 80, 140, 41);
+
+        btn_Actualizar.setBackground(new java.awt.Color(235, 250, 251));
+        btn_Actualizar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_Actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
+        btn_Actualizar.setText(" Actualizar");
+        btn_Actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ActualizarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_Actualizar);
+        btn_Actualizar.setBounds(40, 130, 140, 41);
+
+        btn_Eliminar.setBackground(new java.awt.Color(235, 250, 251));
+        btn_Eliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_Eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Eliminar.png"))); // NOI18N
+        btn_Eliminar.setText(" Eliminar");
+        btn_Eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_limpiarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_Eliminar);
+        btn_Eliminar.setBounds(40, 180, 140, 41);
+
+        btn_consultar.setBackground(new java.awt.Color(235, 250, 251));
+        btn_consultar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_consultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Consulta.png"))); // NOI18N
+        btn_consultar.setText("Consulta");
+        btn_consultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_consultarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_consultar);
+        btn_consultar.setBounds(40, 230, 140, 41);
+
+        btn_Limpiar.setBackground(new java.awt.Color(235, 250, 251));
+        btn_Limpiar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_Limpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Limpiar.png"))); // NOI18N
         btn_Limpiar.setText("Limpiar");
         btn_Limpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_Limpiarbtn_limpiarActionPerformed(evt);
             }
         });
+        jPanel1.add(btn_Limpiar);
+        btn_Limpiar.setBounds(40, 280, 140, 41);
+        btn_Limpiar.getAccessibleContext().setAccessibleDescription("Limpiar Todos los campos");
 
-        lbl_usuario.setText("jLabel1");
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2);
+        jButton2.setBounds(70, 380, 79, 25);
+
+        chb_mostrarContraseña.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        chb_mostrarContraseña.setText("Mostrar contraseña");
+        chb_mostrarContraseña.setContentAreaFilled(false);
+        chb_mostrarContraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chb_mostrarContraseñaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(chb_mostrarContraseña);
+        chb_mostrarContraseña.setBounds(1030, 160, 147, 25);
+
+        lbl_nombres.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_nombres.setText("Nombres");
+        jPanel1.add(lbl_nombres);
+        lbl_nombres.setBounds(360, 70, 70, 22);
+
+        txt_Nombre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_Nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_NombreActionPerformed(evt);
+            }
+        });
+        txt_Nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_NombreKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txt_Nombre);
+        txt_Nombre.setBounds(440, 70, 200, 28);
+
+        lbl_apellidos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_apellidos.setText("Apellidos");
+        jPanel1.add(lbl_apellidos);
+        lbl_apellidos.setBounds(360, 110, 70, 22);
+
+        txt_Apellido.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_Apellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_ApellidoKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txt_Apellido);
+        txt_Apellido.setBounds(440, 110, 200, 28);
+
+        lbl_salario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_salario.setText("Salario");
+        jPanel1.add(lbl_salario);
+        lbl_salario.setBounds(370, 160, 52, 22);
+
+        txt_Salario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_Salario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_SalarioActionPerformed(evt);
+            }
+        });
+        txt_Salario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_SalarioKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txt_Salario);
+        txt_Salario.setBounds(440, 160, 200, 28);
+
+        lbl_telefono.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_telefono.setText("Teléfono");
+        jPanel1.add(lbl_telefono);
+        lbl_telefono.setBounds(360, 210, 69, 22);
+
+        txt_Telefono.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_Telefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_TelefonoKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txt_Telefono);
+        txt_Telefono.setBounds(440, 210, 200, 28);
+
+        lbl_identidad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_identidad.setText("Identidad");
+        jPanel1.add(lbl_identidad);
+        lbl_identidad.setBounds(350, 260, 75, 22);
+
+        txt_Identidad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_Identidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_IdentidadKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txt_Identidad);
+        txt_Identidad.setBounds(440, 260, 200, 28);
+
+        lbl_nombreUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_nombreUsuario.setText("Nombre de Usuario");
+        jPanel1.add(lbl_nombreUsuario);
+        lbl_nombreUsuario.setBounds(700, 80, 152, 22);
+
+        txt_NombreUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_NombreUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_NombreUsuarioKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txt_NombreUsuario);
+        txt_NombreUsuario.setBounds(880, 80, 250, 28);
+
+        lbl_contraseña.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_contraseña.setText("Contraseña");
+        jPanel1.add(lbl_contraseña);
+        lbl_contraseña.setBounds(770, 130, 88, 22);
+
+        pwd_contraseña.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        pwd_contraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pwd_contraseñaActionPerformed(evt);
+            }
+        });
+        pwd_contraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pwd_contraseñaKeyTyped(evt);
+            }
+        });
+        jPanel1.add(pwd_contraseña);
+        pwd_contraseña.setBounds(880, 130, 250, 28);
+
+        lbl_idCampus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_idCampus.setText("Campus");
+        jPanel1.add(lbl_idCampus);
+        lbl_idCampus.setBounds(780, 190, 80, 22);
+
+        cbo_idCampus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cbo_idCampus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un campus" }));
+        cbo_idCampus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbo_idCampusActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cbo_idCampus);
+        cbo_idCampus.setBounds(880, 190, 250, 28);
+
+        lbl_tipoUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_tipoUsuario.setText("Tipo de Usuario");
+        jPanel1.add(lbl_tipoUsuario);
+        lbl_tipoUsuario.setBounds(740, 230, 130, 22);
+
+        cbo_tipoUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cbo_tipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un tipo de usuario", "Empleado", "Administrador", "Supervisor" }));
+        cbo_tipoUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbo_tipoUsuarioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cbo_tipoUsuario);
+        cbo_tipoUsuario.setBounds(880, 230, 250, 28);
 
         btn_rellenarCampos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_rellenarCampos.setText("Rellenar Campos");
@@ -469,13 +551,43 @@ this.cbo_tipoUsuario.setSelectedItem("");
                 btn_rellenarCamposMouseClicked(evt);
             }
         });
-
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_rellenarCampos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_rellenarCamposActionPerformed(evt);
             }
         });
+        jPanel1.add(btn_rellenarCampos);
+        btn_rellenarCampos.setBounds(630, 320, 185, 31);
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 1240, 360));
+
+        jPanel2.setBackground(new java.awt.Color(232, 251, 249));
+
+        lbl_titulo.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
+        lbl_titulo.setText("Registro de Empleado");
+        lbl_titulo.setAutoscrolls(true);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(500, Short.MAX_VALUE)
+                .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(440, 440, 440))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_titulo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, 50));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 670));
 
         jMenu1.setText("Inicio");
 
@@ -501,146 +613,6 @@ this.cbo_tipoUsuario.setSelectedItem("");
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lbl_telefono)
-                                            .addComponent(lbl_identidad))
-                                        .addComponent(lbl_salario, javax.swing.GroupLayout.Alignment.TRAILING))
-                                    .addComponent(lbl_apellidos, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lbl_nombres, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_Identidad, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_Salario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(65, 65, 65)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lbl_contraseña)
-                                    .addComponent(lbl_nombreUsuario)
-                                    .addComponent(lbl_idCampus)
-                                    .addComponent(lbl_tipoUsuario)))
-                            .addComponent(lbl_titulo))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(pwd_contraseña)
-                            .addComponent(txt_NombreUsuario)
-                            .addComponent(cbo_tipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbo_idCampus, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btn_guardar)
-                                .addGap(38, 38, 38)
-                                .addComponent(btn_Actualizar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(302, 302, 302)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btn_rellenarCampos)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btn_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(36, 36, 36)
-                                        .addComponent(btn_consultar)))))
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_Limpiar)))
-                .addGap(18, 18, 18)
-                .addComponent(chb_mostrarContraseña)
-                .addGap(103, 103, 103))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_usuario)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(45, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lbl_usuario))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(lbl_titulo)))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_nombreUsuario)
-                            .addComponent(txt_NombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(chb_mostrarContraseña)
-                                .addGap(85, 85, 85))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(pwd_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbl_contraseña))
-                                .addGap(19, 19, 19)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(cbo_idCampus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lbl_idCampus))
-                                .addGap(18, 18, 18)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbo_tipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_tipoUsuario)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_nombres))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_apellidos))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_Salario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_salario))
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_telefono))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_Identidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_identidad))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_guardar)
-                            .addComponent(btn_Actualizar)
-                            .addComponent(btn_Eliminar)
-                            .addComponent(btn_consultar)
-                            .addComponent(btn_Limpiar))
-                        .addGap(29, 29, 29))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
-                        .addGap(35, 35, 35)))
-                .addComponent(btn_rellenarCampos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1258,12 +1230,6 @@ this.cbo_tipoUsuario.setSelectedItem("");
         }
     }//GEN-LAST:event_txt_IdentidadKeyTyped
 
-    private void Tabla_EmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_EmpleadosMouseClicked
-        if(Tabla_Empleados.getSelectedRow() >= 0){
-        llenarCampos();
-        }
-    }//GEN-LAST:event_Tabla_EmpleadosMouseClicked
-
     private void llenarCampos(){
         int i = Tabla_Empleados.getSelectedRow();
         txt_Nombre.setText(Tabla_Empleados.getValueAt(i, 1).toString());
@@ -1368,6 +1334,16 @@ this.cbo_tipoUsuario.setSelectedItem("");
            validarLongitudTelefono(txt_Telefono,8);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void btn_rellenarCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_rellenarCamposActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_rellenarCamposActionPerformed
+
+    private void Tabla_EmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_EmpleadosMouseClicked
+        if(Tabla_Empleados.getSelectedRow() >= 0){
+            llenarCampos();
+        }
+    }//GEN-LAST:event_Tabla_EmpleadosMouseClicked
+
    
     /**
      * @param args the command line arguments
@@ -1424,8 +1400,13 @@ this.cbo_tipoUsuario.setSelectedItem("");
     private javax.swing.JCheckBox chb_mostrarContraseña;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_apellidos;
     private javax.swing.JLabel lbl_contraseña;
