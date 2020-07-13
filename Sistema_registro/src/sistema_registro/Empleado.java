@@ -315,6 +315,11 @@ this.cbo_tipoUsuario.setSelectedItem("");
 
         btn_desbloquear.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btn_desbloquear.setText("Desbloquear usuario");
+        btn_desbloquear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_desbloquearActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_desbloquear, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 30, 180, 30));
 
         lbl_usuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -1391,6 +1396,33 @@ this.cbo_tipoUsuario.setSelectedItem("");
         tipoDeEmpleado.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_administrarTipoUsuarioActionPerformed
+
+    private void btn_desbloquearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_desbloquearActionPerformed
+    var = JOptionPane.showInputDialog(this,"Ingrese el nombre de usuario del empleado que desea desbloquar","Desbloqueo de usuarios",JOptionPane.QUESTION_MESSAGE);
+            if(var == null){
+                JOptionPane.showMessageDialog(this,"La acción fue cancelada","¡AVISO!",JOptionPane.INFORMATION_MESSAGE);
+            }
+                else if (var.equals("")) {
+                        JOptionPane.showMessageDialog(this,"¡Por favor ingrese el nombre de usuario que desea desbloquear!","¡AVISO!",JOptionPane.INFORMATION_MESSAGE);
+                                    }
+                else{
+                    try {
+                        String sql = "update Acceso \n" +
+                                     "set estado ='Activo'\n" +
+                                     "where nombre_usuario ='"+var+"'";
+                    stmt = con.createStatement();
+                    int rs = stmt.executeUpdate(sql);
+                    if(rs >0){
+                        JOptionPane.showMessageDialog(null,"Se ha desbloqueado exitosamente al usuario: "+var+"","Usuario desbloquedo satisfactoriamente",JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    else{
+                               JOptionPane.showMessageDialog(null,"¡No se encuentra el nombre de usuario! Por favor verifique sí, lo escribió correctamente","Nombre de usuario no encontrado",JOptionPane.ERROR_MESSAGE);
+                            }
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+    }//GEN-LAST:event_btn_desbloquearActionPerformed
 
    
     /**
