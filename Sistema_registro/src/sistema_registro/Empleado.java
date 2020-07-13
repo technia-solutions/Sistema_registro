@@ -756,7 +756,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         String id_campus = cbo_idCampus.getSelectedItem().toString().substring(0, 4);
         cadena8 = txt_NombreUsuario.getText();
         cadena9 = pwd_contraseña.getText();
-       String tipoUsuario = cbo_tipoUsuario.getSelectedItem().toString().substring(0,1);
+        String tipoUsuario = cbo_tipoUsuario.getSelectedItem().toString().substring(0,1);
          String nombreEmpleado = txt_Nombre.getText() + " " + txt_Apellido.getText();
         
         if ((txt_Nombre.getText().equals("")) || (txt_Apellido.getText().equals("")) || (txt_Salario.getText().equals(""))
@@ -836,8 +836,9 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
             else if(cbo_tipoUsuario.getSelectedItem().toString().substring(0,1).equals("S")){
                  estadoDelUsuario = "Activo";
+                 
             }
-            String sql ="Insert into Acceso(nombre_usuario,clave_acceso,tipo_usuario,estado) values('"+txt_NombreUsuario.getText()+"','"+contraseña+"','"+tipoUsuario+"','"+estadoDelUsuario+"')";
+            String sql ="Insert into Acceso(nombre_usuario,clave_acceso,id_tipoUsuario,estado) values('"+txt_NombreUsuario.getText()+"','"+contraseña+"','"+tipoUsuario+"','"+estadoDelUsuario+"')";
             int rs2 = st2.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Se ha guardado la informacion del empleado "+nombreEmpleado+" correctamente");
           }catch ( Exception e) {
@@ -920,8 +921,13 @@ this.cbo_tipoUsuario.setSelectedItem("");
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
         }
+       if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
+                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+        return;
+        }
         char a=evt.getKeyChar();
-        if(Character.isLetter(a)){
+        if(Character.isLetter(a) || !Character.isLetterOrDigit(a)){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Sólo números");
@@ -1087,7 +1093,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
               String sql ="Update Acceso "
                       + "set nombre_usuario = '"+txt_NombreUsuario.getText()+"'"
                       + ",clave_acceso = '"+contraseña+"',"
-                      + "tipo_usuario = '"+tipoUsuario+"'"
+                      + "id_tipoUsuario= '"+tipoUsuario+"'"
                       + "where id_empleado = (Select id_empleado from Acceso where nombre_usuario = '"+txt_NombreUsuario.getText()+"')";
                int rs2 = st2.executeUpdate(sql);
               JOptionPane.showMessageDialog(null, "Se ha actualizado la información del empleado "+nombreEmpleado+" correctamente.");
@@ -1106,7 +1112,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             ResultSet rs = st.executeQuery(consulta);
             
             if(rs.next()){
-                if(rs.getString("tipo_usuario").equals("A") || rs.getString("tipo_usuario").equals("S")){
+                if(rs.getString("id_tipoUsuario").equals("A") || rs.getString("id_tipoUsuario").equals("S")){
                     try{
                     String cap="";
                     ResultSet rs2 = null;
@@ -1131,7 +1137,8 @@ this.cbo_tipoUsuario.setSelectedItem("");
                                 txt_Identidad.setText(rs2.getString("numero_identidad"));
                                 cbo_idCampus.setSelectedItem((rs2.getString("id_campus") + " - " + rs2.getString("nombre_campus")));
                                 txt_NombreUsuario.setText(rs2.getString("nombre_usuario"));
-                                switch (rs2.getString("tipo_usuario")) {
+                                
+                                switch (rs2.getString("id_tipoUsuario")) {
                                     case "A":
                                         cbo_tipoUsuario.setSelectedItem("Administrador");
                                         break;
