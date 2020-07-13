@@ -485,8 +485,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_periodosActionPerformed
 
     private void btn_periodosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_periodosMouseClicked
-         Periodos periodo = null;
-         periodo = new Periodos();
+         PeriodoHistorico periodo = null;
+         periodo = new PeriodoHistorico();
         periodo.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_periodosMouseClicked

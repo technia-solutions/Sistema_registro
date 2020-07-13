@@ -11,12 +11,12 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author Carlos
  */
-public class Periodos extends javax.swing.JFrame {
+public class PeriodoHistorico extends javax.swing.JFrame {
 
     /**
      * Creates new form Periodos
      */
-    public Periodos() {
+    public PeriodoHistorico() {
         initComponents();
     }
 
@@ -147,18 +147,18 @@ public class Periodos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Periodos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PeriodoHistorico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Periodos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PeriodoHistorico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Periodos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PeriodoHistorico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
        
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Periodos().setVisible(true);
+                new PeriodoHistorico().setVisible(true);
             }
         });
     }

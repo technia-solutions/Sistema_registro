@@ -199,51 +199,71 @@ public class Login extends javax.swing.JFrame {
             String sql = "SELECT * from Acceso where nombre_usuario ='" +usuario+ "' and clave_acceso='"+contraseñaEncriptada+"' COLLATE Latin1_General_CS_AS";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
+            String verificar = "Select estado from acceso where nombre_usuario = '"+usuario+"'";
+            Statement stmt = con.createStatement();
+            ResultSet r2 = stmt.executeQuery(verificar);
             if(isEmpty()){
                 getToolkit().beep();
                 JOptionPane.showMessageDialog(null, "Por favor llene todos los campos", "Ingrese sus datos", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
+           if(r2.next()){
+              if(r2.getString("estado").equals("Bloqueado")){
+                    JOptionPane.showMessageDialog(null, "El usuario: "+usuario+" está bloqueado por favor comuníquese con el administrador", "Usuario bloqueado", JOptionPane.INFORMATION_MESSAGE);
+                    return;
+                }
+            }
+            
             if(rs.next()){
                 if(rs.getString("estado").equals("Bloqueado")){
                     JOptionPane.showMessageDialog(null, "El usuario: "+usuario+" está bloqueado por favor comuníquese con el administrador", "Usuario bloqueado", JOptionPane.INFORMATION_MESSAGE);
+                    return;
                 }
                 if(rs.getString("estado").equals("Activo") || rs.getString("estado").equals("Administrador")){
                 String sql2 = "Select nombres_empleado + ' ' + apellido_empleado from Empleados where id_empleado = (select id_empleado from Acceso where nombre_usuario = '"+usuario+"')";
                 Statement st2 = con.createStatement();
                 ResultSet rs2 = st2.executeQuery(sql2);
-                if(rs2.next()){
-                Principal principal = new Principal(usuario,rs2.getString(1));
-                principal.setVisible(true); 
-                this.dispose();
+                        if(rs2.next()){
+                        Principal principal = new Principal(usuario,rs2.getString(1));
+                        principal.setVisible(true); 
+                        this.dispose();
+                        }
+                    }
                 }
-            }
              else{
                     try {
-                         String sql3 = "SELECT * from Acceso where nombre_usuario ='"+usuario+"'";
+                         String consulta = "SELECT * from Acceso where nombre_usuario ='"+usuario+"'";
                          Statement st3 = con.createStatement();
-                         ResultSet rs3 = st3.executeQuery(sql3);
+                         ResultSet rs3 = st3.executeQuery(consulta);
                         if(rs3.next()){
-                            if(rs3.getString("nombre_usuario").equals(usuario)){
-                                getToolkit().beep();
-                                intentos--;
-                                if(intentos == 0){
-                                    Statement st2 = con.createStatement();
-                                    String sql2 = "Update Acceso set estado = 'Bloqueado'";
-                                    int columnas = st2.executeUpdate(sql2);
-                                    JOptionPane.showMessageDialog(null, "El usuario: "+usuario+" ha sido bloqueado por favor comuníquese con el administrador", "Usuario bloqueado", JOptionPane.INFORMATION_MESSAGE);
+                            if(!rs3.getString("estado").equals("Administrador")){
+                                if(rs3.getString("nombre_usuario").equals(usuario)){
+                                    getToolkit().beep();
+                                    intentos--;
+                                    if(intentos == 0){
+                                        Statement st2 = con.createStatement();
+                                        String sql2 = "Update Acceso set estado = 'Bloqueado' where nombre_usuario ='"+usuario+"'";
+                                        int columnas = st2.executeUpdate(sql2);
+                                        JOptionPane.showMessageDialog(null, "El usuario: "+usuario+" ha sido bloqueado por favor comuníquese con el administrador", "Usuario bloqueado", JOptionPane.INFORMATION_MESSAGE);
+                                        this.dispose();
+                                        return;
+                                    }
+                                    JOptionPane.showMessageDialog(null, "El nombre de usuario o contraseña no coinciden, todavia tiene "+intentos+" intentos", "Las credenciales no concuerdan", JOptionPane.ERROR_MESSAGE);
+                                    pwd_contraseña.setText("");
                                 }
-                                JOptionPane.showMessageDialog(null, "El nombre de usuario o contraseña no coinciden, todavia tiene "+intentos+" intentos", "Las credenciales no concuerdan", JOptionPane.ERROR_MESSAGE);
-                                pwd_contraseña.setText("");
-                            }
-                        }
-                        else{
+                             }
+                            else{
                             JOptionPane.showMessageDialog(null, "El nombre de usuario o contraseña no coinciden", "Las credenciales no concuerdan", JOptionPane.ERROR_MESSAGE);
-                        }   } catch (SQLException ex) {
+                        }
+                        
+                        }  
+                    } catch (SQLException ex) {
                         Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     }
-                }
+          /* else{
+                 JOptionPane.showMessageDialog(null, "El nombre de usuario o contraseña no coinciden", "Las credenciales no concuerdan", JOptionPane.ERROR_MESSAGE);
+            } */
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,e.getMessage());

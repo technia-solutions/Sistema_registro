@@ -67,6 +67,8 @@ public class Empleado extends javax.swing.JFrame {
                 cbo_idCampus.addItem(lista.get(i));
             }
             this.setLocationRelativeTo(null);
+            this.setTitle("Empleados");
+            this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
     } 
     
     public Empleado(String nombreUsuario) throws SQLException {
@@ -79,6 +81,7 @@ public class Empleado extends javax.swing.JFrame {
             }
         String usuario = nombreUsuario;
         this.lbl_usuario.setText(usuario);
+        this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
         this.setLocationRelativeTo(null);
     } 
     
@@ -234,6 +237,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_Empleados = new javax.swing.JTable();
+        btn_desbloquear = new javax.swing.JButton();
         lbl_usuario = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -263,6 +267,8 @@ this.cbo_tipoUsuario.setSelectedItem("");
         lbl_tipoUsuario = new javax.swing.JLabel();
         cbo_tipoUsuario = new javax.swing.JComboBox<>();
         btn_rellenarCampos = new javax.swing.JButton();
+        btn_administrarCampus = new javax.swing.JButton();
+        btn_administrarTipoUsuario = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -276,6 +282,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         jLabel3.setText("jLabel3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(getIconImage());
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -286,7 +293,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
 
             },
             new String [] {
-                "Id Empleado", "Nombres", "Apellidos", "Salario", "Télefono", "Numero de Identidad", "Campus", "Nombre de Usuario", "Tipo de Usuario"
+                "Id Empleado", "Nombres", "Apellidos", "Salario", "Télefono", "Número de Identidad", "Campus", "Nombre de Usuario", "Tipo de Usuario"
             }
         ));
         Tabla_Empleados.setToolTipText("Presiona consulta para ver todos los empleados");
@@ -305,6 +312,10 @@ this.cbo_tipoUsuario.setSelectedItem("");
         jScrollPane1.setViewportView(Tabla_Empleados);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 1280, 118));
+
+        btn_desbloquear.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_desbloquear.setText("Desbloquear usuario");
+        getContentPane().add(btn_desbloquear, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 30, 180, 30));
 
         lbl_usuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_usuario.setText("Nombre de Usuario");
@@ -330,7 +341,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jPanel1.add(btn_guardar);
-        btn_guardar.setBounds(40, 80, 140, 41);
+        btn_guardar.setBounds(40, 50, 140, 41);
 
         btn_Actualizar.setBackground(new java.awt.Color(235, 250, 251));
         btn_Actualizar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -342,7 +353,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jPanel1.add(btn_Actualizar);
-        btn_Actualizar.setBounds(40, 130, 140, 41);
+        btn_Actualizar.setBounds(40, 100, 140, 41);
 
         btn_Eliminar.setBackground(new java.awt.Color(235, 250, 251));
         btn_Eliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -354,7 +365,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jPanel1.add(btn_Eliminar);
-        btn_Eliminar.setBounds(40, 180, 140, 41);
+        btn_Eliminar.setBounds(40, 150, 140, 41);
 
         btn_consultar.setBackground(new java.awt.Color(235, 250, 251));
         btn_consultar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -366,7 +377,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jPanel1.add(btn_consultar);
-        btn_consultar.setBounds(40, 230, 140, 41);
+        btn_consultar.setBounds(40, 200, 140, 41);
 
         btn_Limpiar.setBackground(new java.awt.Color(235, 250, 251));
         btn_Limpiar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -378,7 +389,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jPanel1.add(btn_Limpiar);
-        btn_Limpiar.setBounds(40, 280, 140, 41);
+        btn_Limpiar.setBounds(40, 250, 140, 41);
         btn_Limpiar.getAccessibleContext().setAccessibleDescription("Limpiar Todos los campos");
 
         jButton2.setText("jButton2");
@@ -388,7 +399,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(70, 380, 79, 25);
+        jButton2.setBounds(70, 380, 73, 23);
 
         chb_mostrarContraseña.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         chb_mostrarContraseña.setText("Mostrar contraseña");
@@ -399,7 +410,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jPanel1.add(chb_mostrarContraseña);
-        chb_mostrarContraseña.setBounds(1030, 160, 147, 25);
+        chb_mostrarContraseña.setBounds(940, 160, 147, 23);
 
         lbl_nombres.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_nombres.setText("Nombres");
@@ -484,7 +495,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         lbl_nombreUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_nombreUsuario.setText("Nombre de Usuario");
         jPanel1.add(lbl_nombreUsuario);
-        lbl_nombreUsuario.setBounds(700, 80, 152, 22);
+        lbl_nombreUsuario.setBounds(710, 80, 152, 22);
 
         txt_NombreUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_NombreUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -545,7 +556,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         cbo_tipoUsuario.setBounds(880, 230, 250, 28);
 
         btn_rellenarCampos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_rellenarCampos.setText("Rellenar Campos");
+        btn_rellenarCampos.setText("Buscar");
         btn_rellenarCampos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_rellenarCamposMouseClicked(evt);
@@ -557,7 +568,25 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jPanel1.add(btn_rellenarCampos);
-        btn_rellenarCampos.setBounds(630, 320, 185, 31);
+        btn_rellenarCampos.setBounds(630, 320, 95, 31);
+
+        btn_administrarCampus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
+        btn_administrarCampus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_administrarCampusActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_administrarCampus);
+        btn_administrarCampus.setBounds(1150, 190, 60, 30);
+
+        btn_administrarTipoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
+        btn_administrarTipoUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_administrarTipoUsuarioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_administrarTipoUsuario);
+        btn_administrarTipoUsuario.setBounds(1150, 230, 60, 30);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 1240, 360));
 
@@ -1344,6 +1373,18 @@ this.cbo_tipoUsuario.setSelectedItem("");
         }
     }//GEN-LAST:event_Tabla_EmpleadosMouseClicked
 
+    private void btn_administrarCampusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_administrarCampusActionPerformed
+        Campus campus = new Campus();
+        campus.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_administrarCampusActionPerformed
+
+    private void btn_administrarTipoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_administrarTipoUsuarioActionPerformed
+        TipoDeUsuario tipoDeEmpleado = new TipoDeUsuario();
+        tipoDeEmpleado.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_administrarTipoUsuarioActionPerformed
+
    
     /**
      * @param args the command line arguments
@@ -1390,7 +1431,10 @@ this.cbo_tipoUsuario.setSelectedItem("");
     private javax.swing.JButton btn_Actualizar;
     private javax.swing.JButton btn_Eliminar;
     private javax.swing.JButton btn_Limpiar;
+    private javax.swing.JButton btn_administrarCampus;
+    private javax.swing.JButton btn_administrarTipoUsuario;
     private javax.swing.JButton btn_consultar;
+    private javax.swing.JButton btn_desbloquear;
     private javax.swing.JButton btn_guardar;
     private javax.swing.JButton btn_rellenarCampos;
     private javax.swing.JCheckBoxMenuItem cbo_ConsultaIndividual;
