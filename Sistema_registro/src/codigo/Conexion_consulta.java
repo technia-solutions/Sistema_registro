@@ -40,8 +40,7 @@ public class Conexion_consulta {
         catch(Exception e){ 
             
               }
-          return lista;
-        
+          return lista;  
     }
     
         public ArrayList<String> llenar_combo2() throws SQLException{
@@ -60,8 +59,5 @@ public class Conexion_consulta {
               }
           return lista;
         
-    }
-
-  
-    
+    }   
 }

@@ -892,7 +892,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         return;
         }
         char a=evt.getKeyChar();
-        if(Character.isDigit(a) ){
+        if(Character.isDigit(a) || !Character.isLetterOrDigit(a) ){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Sólo letras");
@@ -1360,6 +1360,18 @@ this.cbo_tipoUsuario.setSelectedItem("");
             JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
         }
         char a=evt.getKeyChar();
+        
+        if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
+                 || evt.getKeyChar() == 46 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+        return;
+        }
+        
+        if(!Character.isLetterOrDigit(a) ){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Sólo letras y numeros");
+        }
     }//GEN-LAST:event_txt_NombreUsuarioKeyTyped
 
     private void pwd_contraseñaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pwd_contraseñaKeyTyped
