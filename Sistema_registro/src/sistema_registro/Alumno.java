@@ -38,8 +38,82 @@ public class Alumno extends javax.swing.JFrame {
             for(int i = 0; i<lista.size();i++){
                 cbo_carrera.addItem(lista.get(i));
             }
+            
+    
+       Calendar f;
+       
+       f=Calendar.getInstance();
+       
+       int d=f.get(Calendar.DATE), mes=1+(f.get(Calendar.MONTH)), año=f.get(Calendar.YEAR);
+       
+       fechaHoy.setText(d+"-"+mes+"-"+año);
+      
+            
+    }
+    
+    public void Alumno2(String nombreUsuario) throws SQLException {
+        initComponents();
+        this.con = ConectorSQL.obtenerConexion();
+            String usuario = nombreUsuario;
+        this.lbl_usuario.setText(usuario);
+    }
+    
+    public boolean existeAlumno(){
+       try {
+            Statement st = con.createStatement();
+            String sql = "Select numero_cuenta_alumno from Alumno where numero_cuenta_alumno = '"+txt_numeroCuenta.getText()+"'";
+            ResultSet rs = st.executeQuery(sql);
+            if(rs.next()){
+           javax.swing.JOptionPane.showMessageDialog(this,"El número de cuenta "+txt_numeroCuenta.getText()+" ya existe","AVISO",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                return true;
+            }
+            else{
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    
+   }
+    
+    public boolean ValidarNumeroCuenta(String cuenta){
+    Calendar f=Calendar.getInstance();
+    int año=f.get(Calendar.YEAR);
+      
+        int numeroCuenta=Integer.parseInt(cuenta);
+        if(numeroCuenta >= año){
+            javax.swing.JOptionPane.showMessageDialog(this,"El número de cuenta es Incorrecto","AVISO",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return true;
+        }
+        else{
+            return false;
+        }
+       
+        
+        
+        /*Calendar f=Calendar.getInstance();
+    int año=f.get(Calendar.YEAR);
+    
+      String cuenta=txt_numeroCuenta.getText().toString().substring(0,3);
+      String cuenta2=txt_numeroCuenta.getText().toString().substring(4,6);
+      
+      int numeroCuenta, numeroCuenta2;
+      
+      numeroCuenta=Integer.parseInt(cuenta);
+      numeroCuenta2=Integer.parseInt(cuenta2);
+      
+      if(numeroCuenta > año){
+           javax.swing.JOptionPane.showMessageDialog(this,"El número de cuenta es Incorrecto","AVISO",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+          return true;
+      }else{
+          return false;
+      }*/
+      
+     
         
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,24 +124,73 @@ public class Alumno extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lbl_titulo = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        btn_agregarAlumnos = new javax.swing.JButton();
+        btn_Limpiar = new javax.swing.JButton();
+        btn_actualizar = new javax.swing.JButton();
         lbl_numeroCuenta = new javax.swing.JLabel();
         lbl_nombre = new javax.swing.JLabel();
         lbl_apellido = new javax.swing.JLabel();
         lbl_telefono = new javax.swing.JLabel();
-        lbl_fechaNacimiento = new javax.swing.JLabel();
-        lbl_carrera = new javax.swing.JLabel();
-        txt_numeroCuenta = new javax.swing.JTextField();
-        txt_nombres = new javax.swing.JTextField();
-        txt_apellidos = new javax.swing.JTextField();
         txt_telefono = new javax.swing.JTextField();
-        btn_agregarAlumnos = new javax.swing.JButton();
-        btn_Limpiar = new javax.swing.JButton();
-        lbl_titulo = new javax.swing.JLabel();
+        txt_apellidos = new javax.swing.JTextField();
+        txt_nombres = new javax.swing.JTextField();
+        txt_numeroCuenta = new javax.swing.JTextField();
+        lbl_fechaNacimiento = new javax.swing.JLabel();
         cld_fechaNacimiento = new com.toedter.calendar.JDateChooser();
         cbo_carrera = new javax.swing.JComboBox<>();
-        btn_actualizar = new javax.swing.JButton();
+        lbl_carrera = new javax.swing.JLabel();
+        lbl_usuario = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        fechaHoy = new javax.swing.JLabel();
+        iconodeUsuario = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lbl_titulo.setText("Registro de alumnos");
+        getContentPane().add(lbl_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, -1, -1));
+
+        jPanel1.setBackground(new java.awt.Color(215, 236, 233));
+
+        btn_agregarAlumnos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_agregarAlumnos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Guardar.png"))); // NOI18N
+        btn_agregarAlumnos.setText("Guardar");
+        btn_agregarAlumnos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_agregarAlumnosMouseClicked(evt);
+            }
+        });
+        btn_agregarAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_agregarAlumnosActionPerformed(evt);
+            }
+        });
+
+        btn_Limpiar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_Limpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Limpiar.png"))); // NOI18N
+        btn_Limpiar.setText("Limpiar");
+        btn_Limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_LimpiarActionPerformed(evt);
+            }
+        });
+
+        btn_actualizar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
+        btn_actualizar.setText("Actualizar");
+        btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_actualizarActionPerformed(evt);
+            }
+        });
 
         lbl_numeroCuenta.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_numeroCuenta.setText("Numero de Cuenta:");
@@ -81,16 +204,22 @@ public class Alumno extends javax.swing.JFrame {
         lbl_telefono.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_telefono.setText("Telefono:");
 
-        lbl_fechaNacimiento.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_fechaNacimiento.setText("Fecha de nacimiento:");
+        txt_telefono.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_telefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_telefonoActionPerformed(evt);
+            }
+        });
+        txt_telefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_telefonoKeyTyped(evt);
+            }
+        });
 
-        lbl_carrera.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_carrera.setText("Carrera:");
-
-        txt_numeroCuenta.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_numeroCuenta.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txt_numeroCuentaKeyPressed(evt);
+        txt_apellidos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_apellidos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_apellidosKeyTyped(evt);
             }
         });
 
@@ -100,41 +229,39 @@ public class Alumno extends javax.swing.JFrame {
                 txt_nombresActionPerformed(evt);
             }
         });
+        txt_nombres.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_nombresKeyTyped(evt);
+            }
+        });
 
-        txt_apellidos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        txt_telefono.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_telefono.addActionListener(new java.awt.event.ActionListener() {
+        txt_numeroCuenta.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_numeroCuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_telefonoActionPerformed(evt);
+                txt_numeroCuentaActionPerformed(evt);
+            }
+        });
+        txt_numeroCuenta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_numeroCuentaKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_numeroCuentaKeyTyped(evt);
             }
         });
 
-        btn_agregarAlumnos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_agregarAlumnos.setText("Agregar alumno");
-        btn_agregarAlumnos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_agregarAlumnosMouseClicked(evt);
-            }
-        });
-        btn_agregarAlumnos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_agregarAlumnosActionPerformed(evt);
-            }
-        });
+        lbl_fechaNacimiento.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_fechaNacimiento.setText("Fecha de nacimiento:");
 
-        btn_Limpiar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_Limpiar.setText("Limpiar");
-        btn_Limpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_LimpiarActionPerformed(evt);
-            }
-        });
-
-        lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lbl_titulo.setText("Registro de alumnos");
-
+        cld_fechaNacimiento.setBackground(new java.awt.Color(170, 226, 218));
+        cld_fechaNacimiento.setAutoscrolls(true);
         cld_fechaNacimiento.setDateFormatString("yyyy-MM-dd");
+        cld_fechaNacimiento.setMaxSelectableDate(new java.util.Date(1104562870000L));
+        cld_fechaNacimiento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cld_fechaNacimientoKeyTyped(evt);
+            }
+        });
 
         cbo_carrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una carrera" }));
         cbo_carrera.addActionListener(new java.awt.event.ActionListener() {
@@ -143,86 +270,136 @@ public class Alumno extends javax.swing.JFrame {
             }
         });
 
-        btn_actualizar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_actualizar.setText("Actualizar");
-        btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_actualizarActionPerformed(evt);
-            }
-        });
+        lbl_carrera.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_carrera.setText("Carrera:");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_titulo)
-                .addGap(386, 386, 386))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(247, 247, 247)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbl_carrera)
-                            .addComponent(lbl_fechaNacimiento)
-                            .addComponent(lbl_telefono)
-                            .addComponent(lbl_apellido)
-                            .addComponent(lbl_numeroCuenta)
-                            .addComponent(lbl_nombre))
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_numeroCuenta)
-                            .addComponent(txt_nombres)
-                            .addComponent(txt_apellidos)
-                            .addComponent(txt_telefono)
-                            .addComponent(cld_fechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                            .addComponent(cbo_carrera, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(209, 209, 209)
-                        .addComponent(btn_agregarAlumnos)
-                        .addGap(32, 32, 32)
-                        .addComponent(btn_Limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(213, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(lbl_titulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(82, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btn_agregarAlumnos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_actualizar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_Limpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(105, 105, 105)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_numeroCuenta)
-                    .addComponent(txt_numeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_nombre)
-                    .addComponent(txt_nombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_apellido)
-                    .addComponent(txt_apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_telefono)
-                    .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_fechaNacimiento)
-                    .addComponent(cld_fechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_carrera)
-                    .addComponent(cbo_carrera, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_Limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_agregarAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(lbl_nombre))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(lbl_apellido))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(lbl_telefono)))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_numeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_nombres, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lbl_fechaNacimiento)
+                        .addGap(13, 13, 13)
+                        .addComponent(cld_fechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(lbl_carrera)
+                        .addGap(18, 18, 18)
+                        .addComponent(cbo_carrera, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(78, 78, 78))
         );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(btn_agregarAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_Limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(lbl_numeroCuenta)
+                        .addGap(8, 8, 8)
+                        .addComponent(lbl_nombre)
+                        .addGap(18, 18, 18)
+                        .addComponent(lbl_apellido)
+                        .addGap(18, 18, 18)
+                        .addComponent(lbl_telefono))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txt_numeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(txt_nombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(txt_apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_fechaNacimiento)
+                            .addComponent(cld_fechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(51, 51, 51)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_carrera)
+                            .addComponent(cbo_carrera, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(134, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+
+        lbl_usuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbl_usuario.setText("Nombre Usuario");
+        getContentPane().add(lbl_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 190, -1));
+
+        jPanel3.setBackground(new java.awt.Color(232, 251, 249));
+        jPanel3.setLayout(null);
+
+        fechaHoy.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        fechaHoy.setText("Fecha hoy");
+        jPanel3.add(fechaHoy);
+        fechaHoy.setBounds(20, 10, 80, 16);
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 50, 120, 40));
+
+        iconodeUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User.png"))); // NOI18N
+        getContentPane().add(iconodeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 50, 70));
+
+        jPanel2.setBackground(new java.awt.Color(232, 251, 249));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1240, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 1240, 60));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 670));
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -236,7 +413,7 @@ public class Alumno extends javax.swing.JFrame {
     }//GEN-LAST:event_cbo_carreraActionPerformed
 
     private void txt_nombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombresActionPerformed
-        // TODO add your handling code here:
+   
     }//GEN-LAST:event_txt_nombresActionPerformed
 
     private void btn_agregarAlumnosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_agregarAlumnosMouseClicked
@@ -244,7 +421,7 @@ public class Alumno extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_agregarAlumnosMouseClicked
 
     private void btn_agregarAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarAlumnosActionPerformed
-         String numeroDeCuenta,nombreAlumno, apellidoAlumno, telefonoAlumno, idCarrera;
+        String numeroDeCuenta,nombreAlumno, apellidoAlumno, telefonoAlumno, idCarrera;
          
         numeroDeCuenta = txt_numeroCuenta.getText();
         nombreAlumno = txt_nombres.getText();
@@ -264,35 +441,43 @@ public class Alumno extends javax.swing.JFrame {
             return;
         }
         
-    /*   if(existeEmpleado()){
+        if(existeAlumno()){
             return;
         }
         
-        if(existeUsuario()){
-            return;
-        }
-        
-        if(!validarContraseñas(cadena10)){
+       /* String cuenta=txt_numeroCuenta.getText().toString().substring(0,3);
+          if(!ValidarNumeroCuenta(cuenta)){
             return;
         }*/
+
        
       try{
           PreparedStatement ps;
           ResultSet rs;
           ps=con.prepareStatement("INSERT INTO Alumno (numero_cuenta_alumno,nombres_alumno, apellidos_alumno, telefono_alumno, fecha_nacimiento, id_carrera, fecha_inscripcion)"
-                  + "                VALUES(?,?,?,?,?,?,?)");
-          int dia,mes,año;
+                  + "   "
+                  + "             VALUES(?,?,?,?,?,?,?)");
+          Calendar f;
+       
+       f=Calendar.getInstance();
+       
+       int d=f.get(Calendar.DATE), mes=1+(f.get(Calendar.MONTH)), año=f.get(Calendar.YEAR);
+       
+       String fecha2=(año+"-"+mes+"-"+d);
+       fechaHoy.setText(fecha2);
                   ps.setString(1, txt_numeroCuenta.getText());
                   ps.setString(2, txt_nombres.getText());
                   ps.setString(3, txt_apellidos.getText());
                   ps.setString(4, txt_telefono.getText());
-                /*  dia=cld_fechaNacimiento.getCalendar().get(Calendar.DAY_OF_MONTH);
-                  mes=cld_fechaNacimiento.getCalendar().get(Calendar.MONTH);
-                  año=cld_fechaNacimiento.getCalendar().get(Calendar.YEAR);*/
+               
           
                    ps.setString(5,((JTextField)cld_fechaNacimiento.getDateEditor().getUiComponent()).getText());
                   ps.setString(6, idCarrera);
-                   ps.setString(7,((JTextField)cld_fechaNacimiento.getDateEditor().getUiComponent()).getText());
+                  ps.setString(7,fechaHoy.getText());
+                  
+                   
+                   
+                  // ps.setString(7,((JTextField)cld_fechaNacimiento.getDateEditor().getUiComponent()).getText());
                   
                    // ps.setString(5,  cld_fechaNacimiento.getDateFormatString());
                   /* String fecha;
@@ -312,6 +497,111 @@ public class Alumno extends javax.swing.JFrame {
       } catch ( Exception e) {
             System.out.println(e);
         }
+        
+        
+        
+        
+        
+        
+        
+        /* String numeroDeCuenta,nombreAlumno, apellidoAlumno, telefonoAlumno, idCarrera;
+         
+        numeroDeCuenta = txt_numeroCuenta.getText();
+        nombreAlumno = txt_nombres.getText();
+        apellidoAlumno = txt_apellidos.getText();
+        telefonoAlumno = txt_telefono.getText();
+        Date date = cld_fechaNacimiento.getDate();
+     
+        idCarrera = cbo_carrera.getSelectedItem().toString().substring(0, 4);
+        String id_campus = cbo_carrera.getSelectedItem().toString().substring(0, 4);
+       
+        
+        if  ((txt_numeroCuenta.getText().equals("")) || ((txt_nombres.getText().equals("")) || (txt_apellidos.getText().equals("")) || (txt_telefono.getText().equals(""))
+         ||  (cld_fechaNacimiento.getDate().equals("")) || (cbo_carrera.getSelectedItem().equals("Seleccione un campus")) )) {
+            
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe llenar todos los campos \n","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_nombres.requestFocus();
+            return;
+        }
+        
+      if(existeAlumno()){
+            return;
+        }
+        
+      /* if(ValidarNumeroCuenta(numeroDeCuenta)){
+            return;
+        }*/
+       
+       
+   
+      
+           
+       
+     
+        
+       /* if(!validarContraseñas(cadena10)){
+            return;
+        }*/
+       
+     /* try{
+          
+          PreparedStatement ps;
+          ResultSet rs;
+          ps=con.prepareStatement("INSERT INTO Alumno (numero_cuenta_alumno,nombres_alumno, apellidos_alumno, telefono_alumno, fecha_nacimiento, id_carrera, fecha_inscripcion)"
+                  + "                VALUES(?,?,?,?,?,?,?)");
+    
+        Calendar f;
+       
+       f=Calendar.getInstance();
+       
+       int d=f.get(Calendar.DATE), mes=1+(f.get(Calendar.MONTH)), año=f.get(Calendar.YEAR);
+       
+       String fecha2=(año+"-"+mes+"-"+d);
+       fechaHoy.setText(fecha2);
+                
+                 ps.setString(1, txt_numeroCuenta.getText());
+                /*  String cuenta=txt_numeroCuenta.getText().toString().substring(0,3);
+                   int numeroCuenta=Integer.parseInt(cuenta);
+                 if(cuenta)*/
+                 
+                 /* ps.setString(2, txt_nombres.getText());
+                  ps.setString(3, txt_apellidos.getText());
+                  ps.setString(4, txt_telefono.getText());
+                /*  dia=cld_fechaNacimiento.getCalendar().get(Calendar.DAY_OF_MONTH);
+                  mes=cld_fechaNacimiento.getCalendar().get(Calendar.MONTH);
+                  año=cld_fechaNacimiento.getCalendar().get(Calendar.YEAR);*/
+          
+                  /* ps.setString(5,((JTextField)cld_fechaNacimiento.getDateEditor().getUiComponent()).getText());
+                  ps.setString(6, idCarrera);
+                   ps.setString(7,fechaHoy.getText());
+                   // ps.setString(5,  cld_fechaNacimiento.getDateFormatString());
+                  /* String f;
+                  f= año+"/"+mes+"/"+dia;
+                  ps.setString(5, f);*/
+                 // ps.setString(7, f);
+                  //ps.setString(7,  cld_fecha.getDateFormatString());
+                 // ps.setString(7,  cld_fechaNacimiento.getDateFormatString());
+                
+         
+      
+     
+                /* int res= ps.executeUpdate();
+                    
+                  if(res > 0){
+                       JOptionPane.showMessageDialog(null, "Se ha Guardado con Exito"); 
+                  }else {
+                      JOptionPane.showMessageDialog(null, "Error al Guardar la información"); 
+                  }
+                  
+       
+      } catch ( Exception e) {
+   
+          JOptionPane.showMessageDialog(null, "Error al Guardar la información"); 
+            System.out.println(e);
+             
+        }*/
+      
+      
        
           
         
@@ -326,10 +616,16 @@ public class Alumno extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
     private void txt_numeroCuentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_numeroCuentaKeyPressed
-    /* if(txt_numeroCuenta.getText().length() >=13){
+    if(txt_numeroCuenta.getText().length() >=10){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Numero maximo de caracteres admitidos");
+            
+        }
+     if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
+                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+        return;
         }
         char a=evt.getKeyChar();
         if(Character.isLetter(a)){
@@ -337,8 +633,113 @@ public class Alumno extends javax.swing.JFrame {
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Solo numeros");
         }
-    }*/                                    
+     
+
+     
     }//GEN-LAST:event_txt_numeroCuentaKeyPressed
+
+    private void txt_nombresKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nombresKeyTyped
+      if(txt_nombres.getText().length() >=100){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
+        }
+         if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
+                 || evt.getKeyChar() == 32 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+        return;
+        }
+        char a=evt.getKeyChar();
+        if(Character.isDigit(a) || !Character.isLetterOrDigit(a)){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Sólo letras");
+        }
+            
+    }//GEN-LAST:event_txt_nombresKeyTyped
+
+    private void txt_numeroCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_numeroCuentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_numeroCuentaActionPerformed
+
+    private void txt_numeroCuentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_numeroCuentaKeyTyped
+       
+              if(txt_numeroCuenta.getText().length() >=10){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
+        }
+       if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
+                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+        return;
+        }
+        char a=evt.getKeyChar();
+        if(Character.isLetter(a) || !Character.isLetterOrDigit(a)){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Sólo números");
+        }
+      
+    }//GEN-LAST:event_txt_numeroCuentaKeyTyped
+
+    private void txt_apellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_apellidosKeyTyped
+           if(txt_apellidos.getText().length() >=100){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
+        }
+         if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
+                 || evt.getKeyChar() == 32 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+        return;
+        }
+        char a=evt.getKeyChar();
+           if(Character.isDigit(a) || !Character.isLetterOrDigit(a)){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Sólo letras");
+        }
+    }//GEN-LAST:event_txt_apellidosKeyTyped
+
+    private void cld_fechaNacimientoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cld_fechaNacimientoKeyTyped
+           if(txt_numeroCuenta.getText().length() >=13){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Numero maximo de caracteres admitidos");
+            
+        }
+     if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
+                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+        return;
+        }
+        char a=evt.getKeyChar();
+        if(Character.isLetter(a)){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Solo numeros");
+        }
+    }//GEN-LAST:event_cld_fechaNacimientoKeyTyped
+
+    private void txt_telefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_telefonoKeyTyped
+      if(txt_telefono.getText().length() >=8){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
+        }
+       if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
+                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+        return;
+        }
+        char a=evt.getKeyChar();
+        if(Character.isLetter(a) || !Character.isLetterOrDigit(a)){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Sólo números");
+        }
+    }//GEN-LAST:event_txt_telefonoKeyTyped
 
         private void limpiar(){
         txt_nombres.setText(null);
@@ -391,6 +792,15 @@ public class Alumno extends javax.swing.JFrame {
     private javax.swing.JButton btn_agregarAlumnos;
     private javax.swing.JComboBox<String> cbo_carrera;
     private com.toedter.calendar.JDateChooser cld_fechaNacimiento;
+    private javax.swing.JLabel fechaHoy;
+    private javax.swing.JLabel iconodeUsuario;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lbl_apellido;
     private javax.swing.JLabel lbl_carrera;
     private javax.swing.JLabel lbl_fechaNacimiento;
@@ -398,6 +808,7 @@ public class Alumno extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_numeroCuenta;
     private javax.swing.JLabel lbl_telefono;
     private javax.swing.JLabel lbl_titulo;
+    private javax.swing.JLabel lbl_usuario;
     private javax.swing.JTextField txt_apellidos;
     private javax.swing.JTextField txt_nombres;
     private javax.swing.JTextField txt_numeroCuenta;
