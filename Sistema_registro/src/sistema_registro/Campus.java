@@ -44,7 +44,7 @@ public class Campus extends javax.swing.JFrame {
     public Campus() throws SQLException {
         this.con = ConectorSQL.obtenerConexion();
         initComponents();
-
+        actualizarDatos(); 
     }
 
     public void Actualizar() {
@@ -80,7 +80,7 @@ public class Campus extends javax.swing.JFrame {
         }
         this.txt_idCampus.setText("");
         this.txt_NombreCampus.setText("");
-
+        actualizarDatos(); 
     }
 
     /**
@@ -168,6 +168,7 @@ public class Campus extends javax.swing.JFrame {
         });
 
         btn_buscar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Consulta.png"))); // NOI18N
         btn_buscar.setText("Buscar");
         btn_buscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -196,10 +197,19 @@ public class Campus extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(255, 255, 255)
+                        .addGap(23, 23, 23)
+                        .addComponent(btn_guardar)
+                        .addGap(46, 46, 46)
+                        .addComponent(btn_actualizar)
+                        .addGap(33, 33, 33)
+                        .addComponent(btn_buscar)
+                        .addGap(37, 37, 37)
+                        .addComponent(btn_eliminar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(324, 324, 324)
                         .addComponent(lbl_titulo))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
+                        .addGap(185, 185, 185)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_nombreCampus)
                             .addComponent(lbl_idCampus))
@@ -209,25 +219,17 @@ public class Campus extends javax.swing.JFrame {
                                 .addComponent(txt_idCampus, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(txt_NombreCampus))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(btn_guardar)
-                        .addGap(40, 40, 40)
-                        .addComponent(btn_actualizar)
-                        .addGap(33, 33, 33)
-                        .addComponent(btn_buscar)
-                        .addGap(37, 37, 37)
-                        .addComponent(btn_eliminar)))
+                                .addComponent(txt_NombreCampus, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(133, 133, 133))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(48, 48, 48)
                 .addComponent(lbl_titulo)
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -237,15 +239,15 @@ public class Campus extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_nombreCampus)
                     .addComponent(txt_NombreCampus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70)
+                .addGap(40, 40, 40)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_guardar)
                     .addComponent(btn_actualizar)
                     .addComponent(btn_buscar)
                     .addComponent(btn_eliminar))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addGap(35, 35, 35))
         );
 
         pack();
@@ -354,7 +356,7 @@ public class Campus extends javax.swing.JFrame {
             } catch (Exception e) {
                 System.out.println(e);
             }
-           
+           actualizarDatos(); 
         }
         
        
@@ -368,8 +370,6 @@ public class Campus extends javax.swing.JFrame {
 
     private void btn_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buscarMouseClicked
         rellenar();
-        this.jScrollPane1.setEnabled(true);
-        this.Tabla_Campus.setEnabled(true);
     }//GEN-LAST:event_btn_buscarMouseClicked
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
@@ -416,8 +416,7 @@ public class Campus extends javax.swing.JFrame {
       } catch ( Exception e) {
             System.out.println(e);
         }*/
-            
-
+            actualizarDatos(); 
         }
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
@@ -433,13 +432,12 @@ public class Campus extends javax.swing.JFrame {
                 datos[0] = rs.getString("id_campus");
                 datos[1] = rs.getString("nombre_campus");
                 modelo.addRow(datos);
-                centrar_datos();
             }
             TableColumn idC = Tabla_Campus.getColumn(titulos[0]);
-            idC.setMaxWidth(125);
+            idC.setMaxWidth(150);
             idC.setIdentifier(ICONIFIED);
             TableColumn cn = Tabla_Campus.getColumn(titulos[1]);
-            cn.setMaxWidth(205);
+            cn.setMaxWidth(300);
         } catch (Exception e) {
            /* JOptionPane.showMessageDialog(null, e.getMessage());*/
             System.err.println(e);
@@ -539,53 +537,33 @@ public class Campus extends javax.swing.JFrame {
     }
   
 
-    private void rellenar() {
-        System.out.println(lbl_idCampus.getText());
-        try {
-            System.out.println(lbl_nombreCampus.getText());
-            Statement st = con.createStatement();
-            String consulta = "Select * from Campus where id_campus = '" + lbl_idCampus.getText() + "'";
-            ResultSet rs = st.executeQuery(consulta);
-            System.out.println(rs.next());
-
-            if (rs.next()) {
+private void rellenar() {
                 try {
                     String cap = "";
                     ResultSet rs2 = null;
-                   var = JOptionPane.showInputDialog(this, "Ingrese el campus que desea consultar", "Consulta el campus", JOptionPane.QUESTION_MESSAGE);
+                   var = JOptionPane.showInputDialog(this, "Ingrese el nombre del campus que desea consultar", "Consulta de campus", JOptionPane.QUESTION_MESSAGE);
                     if (var == null) {
                         JOptionPane.showMessageDialog(this, "La acción fue cancelada", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
                     } else {
                         if (var.equals("")) {
-                            JOptionPane.showMessageDialog(this, "Favor de ingresar los datos del campus\n que desea consultar", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(this, "Favor de ingresar el nombre del campus \n que desea consultar", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
                         } else {
-                            String sql = "SELECT * FROM Campus where id_campus=\'"+txt_idCampus.getText()+"\' ";
+                            String sql = "SELECT * FROM Campus where id_campus='"+var+"' or nombre_campus ='"+var+"'";
                             stmt = con.createStatement();
                             rs2 = stmt.executeQuery(sql);
 
                             if (rs2.next()) {
                                 txt_idCampus.setText(rs2.getString("id_campus"));
                                 txt_NombreCampus.setText(rs2.getString("nombre_campus"));
-
                             } else {
-                                JOptionPane.showMessageDialog(null, "¡No se encuentra el campus! Por favor verifique sí, lo escribio correctamente");
+                                JOptionPane.showMessageDialog(null, "¡No se encuentra los datos: "+var+" ! Por favor verifique sí, lo escribio correctamente");
                             }
-
                         }
 
                     }
-                } catch (HeadlessException | SQLException e) {
+                } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e.getMessage());
                 }
-            } else {
-               /* JOptionPane.showMessageDialog(null, "¡Sólo los administradores tienen acceso a esta función!");*/
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(Campus.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    
     }
 
 }
