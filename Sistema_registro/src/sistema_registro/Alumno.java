@@ -19,6 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import org.apache.commons.codec.digest.DigestUtils;
 import sistema_registro.SQL.ConectorSQL;
 
 /**
@@ -28,6 +29,7 @@ import sistema_registro.SQL.ConectorSQL;
 public class Alumno extends javax.swing.JFrame {
 
     Connection con=null;
+    String var;
     
 
     public Alumno() throws SQLException {
@@ -141,6 +143,7 @@ public class Alumno extends javax.swing.JFrame {
         cld_fechaNacimiento = new com.toedter.calendar.JDateChooser();
         cbo_carrera = new javax.swing.JComboBox<>();
         lbl_carrera = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         lbl_usuario = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         fechaHoy = new javax.swing.JLabel();
@@ -255,7 +258,6 @@ public class Alumno extends javax.swing.JFrame {
 
         cld_fechaNacimiento.setBackground(new java.awt.Color(170, 226, 218));
         cld_fechaNacimiento.setAutoscrolls(true);
-        cld_fechaNacimiento.setDateFormatString("yyyy-MM-dd");
         cld_fechaNacimiento.setMaxSelectableDate(new java.util.Date(1104562870000L));
         cld_fechaNacimiento.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -273,86 +275,93 @@ public class Alumno extends javax.swing.JFrame {
         lbl_carrera.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_carrera.setText("Carrera:");
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Consulta.png"))); // NOI18N
+        jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(82, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btn_agregarAlumnos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_actualizar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_Limpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_agregarAlumnos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_actualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_Limpiar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(105, 105, 105)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_numeroCuenta)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(80, 80, 80)
-                        .addComponent(lbl_nombre))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(lbl_apellido))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(lbl_telefono)))
-                .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_numeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_nombres, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_nombre)
+                            .addComponent(lbl_apellido)
+                            .addComponent(lbl_telefono))))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lbl_fechaNacimiento)
-                        .addGap(13, 13, 13)
-                        .addComponent(cld_fechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(80, 80, 80)
-                        .addComponent(lbl_carrera)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_nombres, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_numeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(49, 49, 49)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbl_carrera)
+                            .addComponent(lbl_fechaNacimiento))
                         .addGap(18, 18, 18)
-                        .addComponent(cbo_carrera, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(78, 78, 78))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cld_fechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbo_carrera, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(90, 90, 90))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(80, 80, 80)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
+                        .addGap(90, 90, 90)
                         .addComponent(btn_agregarAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_Limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_Limpiar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(lbl_numeroCuenta)
-                        .addGap(8, 8, 8)
-                        .addComponent(lbl_nombre)
-                        .addGap(18, 18, 18)
-                        .addComponent(lbl_apellido)
-                        .addGap(18, 18, 18)
-                        .addComponent(lbl_telefono))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txt_numeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(txt_nombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(txt_apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
+                        .addGap(87, 87, 87)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_fechaNacimiento)
-                            .addComponent(cld_fechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(51, 51, 51)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_carrera)
-                            .addComponent(cbo_carrera, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(134, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(cld_fechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(cbo_carrera, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbl_carrera)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lbl_numeroCuenta)
+                                    .addComponent(txt_numeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbl_fechaNacimiento))
+                                .addGap(9, 9, 9)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lbl_nombre)
+                                    .addComponent(txt_nombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lbl_apellido)
+                                    .addComponent(txt_apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_telefono)
+                            .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(140, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
@@ -469,14 +478,9 @@ public class Alumno extends javax.swing.JFrame {
                   ps.setString(2, txt_nombres.getText());
                   ps.setString(3, txt_apellidos.getText());
                   ps.setString(4, txt_telefono.getText());
-               
-          
-                   ps.setString(5,((JTextField)cld_fechaNacimiento.getDateEditor().getUiComponent()).getText());
+                  ps.setString(5,((JTextField)cld_fechaNacimiento.getDateEditor().getUiComponent()).getText());
                   ps.setString(6, idCarrera);
                   ps.setString(7,fechaHoy.getText());
-                  
-                   
-                   
                   // ps.setString(7,((JTextField)cld_fechaNacimiento.getDateEditor().getUiComponent()).getText());
                   
                    // ps.setString(5,  cld_fechaNacimiento.getDateFormatString());
@@ -489,7 +493,7 @@ public class Alumno extends javax.swing.JFrame {
                 
                   int res= ps.executeUpdate();
                   if(res > 0){
-                       JOptionPane.showMessageDialog(null, "Se ha Guardado con Exito"); 
+                       JOptionPane.showMessageDialog(null, "Se ha guardado con éxito el alumno: "+txt_nombres.getText()+" "+txt_apellidos.getText()+""); 
                   }else {
                       JOptionPane.showMessageDialog(null, "Error al Guardar la informacion"); 
                   }
@@ -612,9 +616,75 @@ public class Alumno extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_LimpiarActionPerformed
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
-
+         String nombreAlumno = txt_nombres.getText() + " " + txt_apellidos.getText();
+        
+        if(JOptionPane.showConfirmDialog(null,"¿Está seguro que desea actualizar el registro del empleado "+nombreAlumno+"?","Confirmación de actualización",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE
+        )==JOptionPane.YES_OPTION){ 
+            String idCarrera = cbo_carrera.getSelectedItem().toString().substring(0, 4);
+            String id_campus = cbo_carrera.getSelectedItem().toString().substring(0, 4);
+          try{
+              PreparedStatement ps;
+              ResultSet rs;
+              ps=con.prepareStatement("Update Alumno "
+                      + "set numero_cuenta_alumno = ?, "
+                      + "nombres_alumno = ?, "
+                      + "apellidos_alumno = ?, "
+                      + "telefono_alumno = ?, "
+                      + "fecha_nacimiento = ?, "
+                      + "id_carrera = ? "
+                      + "where numero_identidad = '"+var+"' "
+                      + "or nombres_empleado = '"+var+"' "
+                      + "or apellido_empleado = '"+var+"'");
+                      ps.setString(1, txt_numeroCuenta.getText());
+                      ps.setString(2, txt_nombres.getText());
+                      ps.setString(3, txt_apellidos.getText());
+                      ps.setString(4, txt_telefono.getText());
+                      ps.setString(5,((JTextField)cld_fechaNacimiento.getDateEditor().getUiComponent()).getText());
+                      ps.setString(6, idCarrera);
+                      int res= ps.executeUpdate();
+                      JOptionPane.showMessageDialog(null, "Se ha actualizado la información del empleado "+nombreAlumno+" correctamente.");
+            } catch ( Exception e) {
+                System.out.println(e);
+            limpiar();
+            }
+         }
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
+    public void rellenar(){
+                    try{
+                    String cap="";
+                    ResultSet rs2 = null;
+                    var = JOptionPane.showInputDialog(this,"Ingrese los nombres, los apellidos o el número de identidad del empleado que desea consultar","Consulta de empleado",JOptionPane.QUESTION_MESSAGE);
+                    if(var == null)
+                        JOptionPane.showMessageDialog(this,"La acción fue cancelada","¡AVISO!",JOptionPane.INFORMATION_MESSAGE);
+                    else {
+                        if (var.equals("")) {
+                            JOptionPane.showMessageDialog(this,"Favor de ingresar los datos del empleado\n que desea consultar","¡AVISO!",JOptionPane.INFORMATION_MESSAGE);
+                        }
+                        else{
+                            String sql = "Select * from alumno as a join Carrera as c on a.id_carrera = c.id_carrera\n" +
+                            "where numero_cuenta_alumno = '"+var+"' or nombres_alumno = '"+var+"' or apellidos_alumno = '"+var+"'";
+                            Statement stmt = con.createStatement();
+                            rs2 = stmt.executeQuery(sql);
+                            if(rs2.next()) {
+                                txt_numeroCuenta.setText(rs2.getString("numero_cuenta_alumno"));
+                                txt_nombres.setText(rs2.getString("nombres_alumno"));
+                                txt_apellidos.setText(rs2.getString("apellidos_alumno"));
+                                txt_telefono.setText(rs2.getString("telefono_alumno"));
+                                cld_fechaNacimiento.setDate(rs2.getDate("fecha_nacimiento"));
+                                cbo_carrera.setSelectedItem(rs2.getString("id_carrera") + " - " + rs2.getString("nombre_carrera"));
+                            }
+                            else{
+                               JOptionPane.showMessageDialog(null,"¡No se encuentra el alumno! Por favor verifique sí, lo escribio correctamente");
+                            }
+                        }  
+                    }
+                    }catch (Exception e) {
+                            JOptionPane.showMessageDialog(null,e.getMessage());
+                            }
+     
+        
+    }
     private void txt_numeroCuentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_numeroCuentaKeyPressed
     if(txt_numeroCuenta.getText().length() >=10){
             evt.consume();
@@ -664,7 +734,7 @@ public class Alumno extends javax.swing.JFrame {
 
     private void txt_numeroCuentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_numeroCuentaKeyTyped
        
-              if(txt_numeroCuenta.getText().length() >=10){
+            if(txt_numeroCuenta.getText().length() >=10){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
@@ -674,6 +744,7 @@ public class Alumno extends javax.swing.JFrame {
                  || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
         return;
         }
+       
         char a=evt.getKeyChar();
         if(Character.isLetter(a) || !Character.isLetterOrDigit(a)){
             evt.consume();
@@ -741,6 +812,10 @@ public class Alumno extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txt_telefonoKeyTyped
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        rellenar();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
         private void limpiar(){
         txt_nombres.setText(null);
         txt_apellidos.setText(null);
@@ -794,6 +869,7 @@ public class Alumno extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser cld_fechaNacimiento;
     private javax.swing.JLabel fechaHoy;
     private javax.swing.JLabel iconodeUsuario;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

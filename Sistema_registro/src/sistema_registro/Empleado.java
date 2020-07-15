@@ -1398,7 +1398,12 @@ this.cbo_tipoUsuario.setSelectedItem("");
     }//GEN-LAST:event_Tabla_EmpleadosMouseClicked
 
     private void btn_administrarCampusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_administrarCampusActionPerformed
-        Campus campus = new Campus();
+        Campus campus = null;
+        try {
+            campus = new Campus();
+        } catch (SQLException ex) {
+            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
         campus.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_administrarCampusActionPerformed

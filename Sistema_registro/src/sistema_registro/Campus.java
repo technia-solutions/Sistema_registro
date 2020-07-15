@@ -6,6 +6,7 @@
 package sistema_registro;
 
 import static java.awt.Frame.ICONIFIED;
+import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -135,10 +136,7 @@ public class Campus extends javax.swing.JFrame {
 
         Tabla_Campus.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Id Campus", "Nombre Campus"
@@ -292,8 +290,6 @@ public class Campus extends javax.swing.JFrame {
 
         }
         actualizarDatos();
-
-
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void txt_NombreCampusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NombreCampusActionPerformed
@@ -427,28 +423,23 @@ public class Campus extends javax.swing.JFrame {
 
     public void actualizarDatos() {
         try {
-            String sql = "SELECT * FROM Campus where id_campus=\'"+txt_idCampus.getText()+"\'";
+            String sql = "SELECT * FROM Campus";
             stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-
             modelo = new DefaultTableModel(null, titulos);
             Tabla_Campus.setModel(modelo);
             while (rs.next()) {
-
                 String[] datos = new String[2];
                 datos[0] = rs.getString("id_campus");
                 datos[1] = rs.getString("nombre_campus");
-
                 modelo.addRow(datos);
-
                 centrar_datos();
             }
             TableColumn idC = Tabla_Campus.getColumn(titulos[0]);
             idC.setMaxWidth(125);
             idC.setIdentifier(ICONIFIED);
             TableColumn cn = Tabla_Campus.getColumn(titulos[1]);
-            cn.setMaxWidth(165);
-
+            cn.setMaxWidth(205);
         } catch (Exception e) {
            /* JOptionPane.showMessageDialog(null, e.getMessage());*/
             System.err.println(e);
@@ -456,7 +447,6 @@ public class Campus extends javax.swing.JFrame {
     }
 
     public void centrar_datos() {
-
         DefaultTableCellRenderer modelocentrar = new DefaultTableCellRenderer();
         modelocentrar.setHorizontalAlignment(SwingConstants.CENTER);
         Tabla_Campus.getColumnModel().getColumn(1).setCellRenderer(modelocentrar);
@@ -584,7 +574,7 @@ public class Campus extends javax.swing.JFrame {
                         }
 
                     }
-                } catch (Exception e) {
+                } catch (HeadlessException | SQLException e) {
                     JOptionPane.showMessageDialog(null, e.getMessage());
                 }
             } else {
