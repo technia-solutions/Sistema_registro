@@ -686,40 +686,22 @@ public class Alumno extends javax.swing.JFrame {
         
     }
     private void txt_numeroCuentaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_numeroCuentaKeyPressed
-    if(txt_numeroCuenta.getText().length() >=10){
-            evt.consume();
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Numero maximo de caracteres admitidos");
-            
-        }
-     if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
-                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
-                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
-        return;
-        }
-        char a=evt.getKeyChar();
-        if(Character.isLetter(a)){
-            evt.consume();
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Solo numeros");
-        }
-     
 
-     
     }//GEN-LAST:event_txt_numeroCuentaKeyPressed
 
     private void txt_nombresKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nombresKeyTyped
-      if(txt_nombres.getText().length() >=100){
+        char a=evt.getKeyChar();
+            if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
+                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24 || evt.getKeyChar() == 32) {
+        return;
+        }
+        if(txt_nombres.getText().length() >=100){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
         }
-         if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
-                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
-                 || evt.getKeyChar() == 32 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
-        return;
-        }
-        char a=evt.getKeyChar();
+        
         if(Character.isDigit(a) || !Character.isLetterOrDigit(a)){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
@@ -733,19 +715,20 @@ public class Alumno extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_numeroCuentaActionPerformed
 
     private void txt_numeroCuentaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_numeroCuentaKeyTyped
-       
-            if(txt_numeroCuenta.getText().length() >=10){
-            evt.consume();
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
-        }
-       if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+            
+        char a=evt.getKeyChar();
+            if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
                  evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
                  || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
         return;
         }
-       
-        char a=evt.getKeyChar();
+            if(txt_numeroCuenta.getText().length() >=10){
+                
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
+        }
+        
         if(Character.isLetter(a) || !Character.isLetterOrDigit(a)){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
@@ -755,17 +738,17 @@ public class Alumno extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_numeroCuentaKeyTyped
 
     private void txt_apellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_apellidosKeyTyped
-           if(txt_apellidos.getText().length() >=100){
+        char a=evt.getKeyChar();
+            if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
+                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24 || evt.getKeyChar() == 32) {
+        return;
+        }   
+        if(txt_apellidos.getText().length() >=100){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
         }
-         if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
-                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
-                 || evt.getKeyChar() == 32 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
-        return;
-        }
-        char a=evt.getKeyChar();
            if(Character.isDigit(a) || !Character.isLetterOrDigit(a)){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
@@ -794,17 +777,18 @@ public class Alumno extends javax.swing.JFrame {
     }//GEN-LAST:event_cld_fechaNacimientoKeyTyped
 
     private void txt_telefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_telefonoKeyTyped
-      if(txt_telefono.getText().length() >=8){
-            evt.consume();
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
-        }
-       if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+        char a=evt.getKeyChar();
+            if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
                  evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
                  || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
         return;
         }
-        char a=evt.getKeyChar();
+        if(txt_telefono.getText().length() >=8){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
+        }
+      
         if(Character.isLetter(a) || !Character.isLetterOrDigit(a)){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();

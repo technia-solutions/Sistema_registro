@@ -881,17 +881,18 @@ this.cbo_tipoUsuario.setSelectedItem("");
   
     
     private void txt_NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NombreKeyTyped
+       char a=evt.getKeyChar();
+            if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
+                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24 || evt.getKeyChar() == 32) {
+        return;
+        }
         if(txt_Nombre.getText().length() >=100){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
         }
-         if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
-                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
-                 || evt.getKeyChar() == 32 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
-        return;
-        }
-        char a=evt.getKeyChar();
+        
         if(Character.isDigit(a) || !Character.isLetterOrDigit(a) ){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
@@ -900,19 +901,18 @@ this.cbo_tipoUsuario.setSelectedItem("");
     }//GEN-LAST:event_txt_NombreKeyTyped
 
     private void txt_ApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_ApellidoKeyTyped
-       if(txt_Apellido.getText().length() >=100){
+        char a=evt.getKeyChar();
+            if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
+                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24 || evt.getKeyChar() == 32) {
+        return;
+        }
+        if(txt_Apellido.getText().length() >=100){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
         }
-        char a=evt.getKeyChar();
-
-         if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
-                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
-                 || evt.getKeyChar() == 32 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
-        return;
-        }
-         
+ 
         if(Character.isDigit(a) || !Character.isLetterOrDigit(a)){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
@@ -921,17 +921,18 @@ this.cbo_tipoUsuario.setSelectedItem("");
     }//GEN-LAST:event_txt_ApellidoKeyTyped
 
     private void txt_TelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_TelefonoKeyTyped
-       if(txt_Telefono.getText().length() >=8){
-            evt.consume();
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
-        }
-       if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+        char a=evt.getKeyChar();
+            if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
                  evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
                  || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
         return;
         }
-        char a=evt.getKeyChar();
+        if(txt_Telefono.getText().length() >=8){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
+        }
+     
         if(Character.isLetter(a) || !Character.isLetterOrDigit(a)){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
@@ -940,17 +941,17 @@ this.cbo_tipoUsuario.setSelectedItem("");
     }//GEN-LAST:event_txt_TelefonoKeyTyped
 
     private void txt_SalarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_SalarioKeyTyped
+        char a=evt.getKeyChar();
+            if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
+                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+        return;
+        }
         if(txt_Salario.getText().length() >=8){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
         }
-         if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
-                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
-                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
-        return;
-        }
-        char a=evt.getKeyChar();
         if(Character.isLetter(a) || !Character.isLetterOrDigit(a)){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
@@ -1253,16 +1254,16 @@ this.cbo_tipoUsuario.setSelectedItem("");
     }//GEN-LAST:event_cbo_ConsultaIndividualActionPerformed
 
     private void txt_IdentidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_IdentidadKeyTyped
-     if(txt_Identidad.getText().length() >=13){
+        char a=evt.getKeyChar();
+            if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
+                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+        return;
+        }
+        if(txt_Identidad.getText().length() >=13){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
-        }
-        char a=evt.getKeyChar();
-         if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
-                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
-                  || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
-        return;
         }
         if(Character.isLetter(a) || !Character.isLetterOrDigit(a)){
             evt.consume();
@@ -1354,19 +1355,18 @@ this.cbo_tipoUsuario.setSelectedItem("");
         
     }
     private void txt_NombreUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NombreUsuarioKeyTyped
-        if(txt_NombreUsuario.getText().length() >=25){
-            evt.consume();
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
-        }
-        char a=evt.getKeyChar();
-        
-        if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+       char a=evt.getKeyChar();
+            if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
                  evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
                  || evt.getKeyChar() == 46 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
         return;
         }
         
+        if(txt_NombreUsuario.getText().length() >=25){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
+        } 
         if(!Character.isLetterOrDigit(a) ){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
@@ -1375,6 +1375,12 @@ this.cbo_tipoUsuario.setSelectedItem("");
     }//GEN-LAST:event_txt_NombreUsuarioKeyTyped
 
     private void pwd_contraseñaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pwd_contraseñaKeyTyped
+       char a=evt.getKeyChar();
+            if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
+                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+        return;
+            }
         if(txt_NombreUsuario.getText().length() >=25){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
