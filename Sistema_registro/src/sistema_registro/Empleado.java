@@ -1528,9 +1528,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
     private javax.swing.JTextField txt_Telefono;
     // End of variables declaration//GEN-END:variables
 
-    private void Item(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
    // private void consulta() {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

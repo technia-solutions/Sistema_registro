@@ -43,6 +43,7 @@ public class TipoUsuario extends javax.swing.JFrame {
     public TipoUsuario() throws SQLException {
         this.con = ConectorSQL.obtenerConexion ();
         initComponents();
+        consultarDatos();
     }
     
     
@@ -94,13 +95,10 @@ public class TipoUsuario extends javax.swing.JFrame {
 
         Tabla_TipoUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2"
+                "Id Tipo de Usuario", "Nombre del Tipo de Usuario"
             }
         ));
         Tabla_TipoUsuarios.setToolTipText("Presiona consulta para ver todos los empleados");
@@ -185,14 +183,11 @@ public class TipoUsuario extends javax.swing.JFrame {
                             .addComponent(lbl_idTipo))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(txt_idTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(txt_TipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txt_TipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(txt_idTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addComponent(btn_guardar)
@@ -204,7 +199,10 @@ public class TipoUsuario extends javax.swing.JFrame {
                         .addComponent(btn_eliminar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(222, 222, 222)
-                        .addComponent(lbl_titulo)))
+                        .addComponent(lbl_titulo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(196, 196, 196)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -220,9 +218,9 @@ public class TipoUsuario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_TipoUsuario)
                     .addComponent(txt_TipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_guardar)
                     .addComponent(btn_actualizar)
@@ -311,35 +309,27 @@ this.txt_TipoUsuario.setText("");
        }
     }
            
-           public void ConsultarDatos(){
-        try {
-               //String sql = "select * from Tipo_Usuarios where id_tipoUsuario='"+txt_idTipo.getText()+"\'";
-               String sql = "SELECT * FROM Tipo_Usuarios where id_tipoUsuario=\'"+txt_idTipo.getText()+"\'";
+           public void consultarDatos(){
+                try {
+               String sql = "SELECT * FROM Tipo_Usuarios";
                stmt = con.createStatement();
                ResultSet rs = stmt.executeQuery(sql);
-               
                modelo = new DefaultTableModel(null, titulos);
                Tabla_TipoUsuarios.setModel(modelo);
                  while(rs.next()) {
-                     
-                          String []datos= new String[2];
+                      String []datos= new String[2];
                       datos[0] =rs.getString("id_tipoUsuario");
-                      datos[1] =rs.getString("Tipo_Usuario");
-                      
-                                          
-                     modelo.addRow(datos);
-                      
-                      centrar_datos();
+                      datos[1] =rs.getString("Tipo_Usuario");                 
+                      modelo.addRow(datos);
                  }
-                       TableColumn idTi = Tabla_TipoUsuarios.getColumn(titulos[0]);
-            idTi.setMaxWidth(125);
+            TableColumn idTi = Tabla_TipoUsuarios.getColumn(titulos[0]);
+            idTi.setMaxWidth(175);
             idTi.setIdentifier(ICONIFIED);
             TableColumn cTU = Tabla_TipoUsuarios.getColumn(titulos[1]);
-            cTU.setMaxWidth(165);
+            cTU.setMaxWidth(175);
         }
         catch (Exception e) {
-           
-            System.err.println(e);
+           JOptionPane.showMessageDialog(null, e.getMessage());
         }
            }
            
@@ -347,16 +337,17 @@ this.txt_TipoUsuario.setText("");
  
         DefaultTableCellRenderer modelocentrar = new DefaultTableCellRenderer();
         modelocentrar.setHorizontalAlignment(SwingConstants.CENTER);
-        Tabla_TipoUsuarios.getColumnModel().getColumn(2).setCellRenderer(modelocentrar);
+        for(int i=0; i < modelo.getRowCount();i++){
+        Tabla_TipoUsuarios.getColumnModel().getColumn(i).setCellRenderer(modelocentrar);
+        }
     }
-        
-     
+    
+
     
        private void llenarCampos(){
         int i = Tabla_TipoUsuarios.getSelectedRow();
-        txt_idTipo.setText(Tabla_TipoUsuarios.getValueAt(i, 1).toString());
-        txt_TipoUsuario.setText(Tabla_TipoUsuarios.getValueAt(i, 2).toString());
-        
+        txt_idTipo.setText(Tabla_TipoUsuarios.getValueAt(i,0).toString());
+        txt_TipoUsuario.setText(Tabla_TipoUsuarios.getValueAt(i, 1).toString());
     }
     
     private void cbo_menuprincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_menuprincipalActionPerformed
@@ -417,7 +408,7 @@ this.txt_TipoUsuario.setText("");
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
 
-        ConsultarDatos();
+        consultarDatos();
 
     }//GEN-LAST:event_btn_guardarActionPerformed
 
@@ -483,19 +474,19 @@ this.txt_TipoUsuario.setText("");
             } catch ( Exception e) {
                 System.out.println(e);
             }
+           consultarDatos(); 
         }
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
 
-        ConsultarDatos();
-
+        rellenar();
     }//GEN-LAST:event_btn_buscarActionPerformed
 
     
     
     private void Tabla_TipoUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_TipoUsuariosMouseClicked
-        
+
           if(Tabla_TipoUsuarios.getSelectedRow () >= 0){
             llenarCampos();
         }
@@ -503,10 +494,7 @@ this.txt_TipoUsuario.setText("");
     }//GEN-LAST:event_Tabla_TipoUsuariosMouseClicked
 
     private void btn_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buscarMouseClicked
-       
-          rellenar();
-        this.jScrollPane1.setEnabled(true);
-        this.Tabla_TipoUsuarios.setEnabled(true);
+
         
     }//GEN-LAST:event_btn_buscarMouseClicked
 
@@ -539,8 +527,7 @@ this.txt_TipoUsuario.setText("");
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }
-           
-
+           consultarDatos();
         }
         
     }//GEN-LAST:event_btn_eliminarActionPerformed
@@ -607,15 +594,6 @@ this.txt_TipoUsuario.setText("");
     // End of variables declaration//GEN-END:variables
 
  private void rellenar() {
-        System.out.println(lbl_idTipo.getText());
-        try {
-            System.out.println(lbl_TipoUsuario.getText());
-            Statement st = con.createStatement();
-            String consulta = "Select * from Tipo_Usuarios where id_tipoUsuario = '" + lbl_idTipo.getText() + "'";
-            ResultSet rs = st.executeQuery(consulta);
-            System.out.println(rs.next());
-
-            if (rs.next()) {
                 try {
                     String cap = "";
                     ResultSet rs2 = null;
@@ -626,33 +604,22 @@ this.txt_TipoUsuario.setText("");
                         if (var.equals("")) {
                             JOptionPane.showMessageDialog(this, "Favor de ingresar los datos del  Tipo de Usuario \n que desea consultar", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
                         } else {
-                            String sql = "SELECT * FROM Tipo_Usuarios where id_tipoUsuario=\'"+txt_idTipo.getText()+"\' ";
+                            String sql = "SELECT * FROM Tipo_Usuarios where id_tipoUsuario='"+var+"' or Tipo_Usuario ='"+var+"'";
                             stmt = con.createStatement();
                             rs2 = stmt.executeQuery(sql);
 
                             if (rs2.next()) {
-                                txt_idTipo.setText(rs2.getString("idTipo"));
-                                txt_TipoUsuario.setText(rs2.getString("TipoUsuario"));
-
+                                txt_idTipo.setText(rs2.getString("id_tipoUsuario"));
+                                txt_TipoUsuario.setText(rs2.getString("Tipo_Usuario"));
                             } else {
                                 JOptionPane.showMessageDialog(null, "¡No se encuentra los datos de Tipo Usuario ! Por favor verifique sí, lo escribio correctamente");
                             }
-
                         }
 
                     }
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e.getMessage());
                 }
-            } else {
-               /* JOptionPane.showMessageDialog(null, "¡Sólo los administradores tienen acceso a esta función!");*/
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(Campus.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    
     }
 
 }
