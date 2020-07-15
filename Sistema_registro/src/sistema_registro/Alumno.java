@@ -17,6 +17,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -116,6 +118,24 @@ public class Alumno extends javax.swing.JFrame {
         
     }
     
+    
+     private boolean validarLongitudTelefono(JTextField texto, int longitud){
+       if(texto.getText().length() == longitud){
+                Pattern pattern = Pattern.compile("[23789]");
+                Matcher matcher=pattern.matcher(texto.getText().substring(0,1));
+                if(matcher.matches()){ 
+                        return true;
+                    }else{
+                        JOptionPane.showMessageDialog(null, "El número de teléfono debe comenzar con: 2,3,7,8 o 9");
+                        return false;
+                    } 
+       }
+        else{
+       }
+       JOptionPane.showMessageDialog(null, "El número de teléfono debe ser de 8 dígitos", "Longitud del número de telefono",JOptionPane.INFORMATION_MESSAGE);
+       return false;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -152,7 +172,7 @@ public class Alumno extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -259,6 +279,7 @@ public class Alumno extends javax.swing.JFrame {
         cld_fechaNacimiento.setBackground(new java.awt.Color(170, 226, 218));
         cld_fechaNacimiento.setAutoscrolls(true);
         cld_fechaNacimiento.setMaxSelectableDate(new java.util.Date(1104562870000L));
+        cld_fechaNacimiento.setMinSelectableDate(new java.util.Date(-1893430711000L));
         cld_fechaNacimiento.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 cld_fechaNacimientoKeyTyped(evt);
@@ -402,11 +423,21 @@ public class Alumno extends javax.swing.JFrame {
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 670));
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
+        jMenu1.setContentAreaFilled(false);
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem2.setBackground(new java.awt.Color(255, 255, 255));
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio.png"))); // NOI18N
+        jMenuItem2.setText("Menú Principal");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -443,7 +474,7 @@ public class Alumno extends javax.swing.JFrame {
        
         
         if  ((txt_numeroCuenta.getText().equals("")) || ((txt_nombres.getText().equals("")) || (txt_apellidos.getText().equals("")) || (txt_telefono.getText().equals(""))
-         ||  (cld_fechaNacimiento.getDate().equals("")) || (cbo_carrera.getSelectedItem().equals("Seleccione un campus")) )) {
+         ||  (cld_fechaNacimiento.getDateFormatString().equals(" ")) || (cbo_carrera.getSelectedItem().equals("Seleccione una carrera")) )) {
             
             javax.swing.JOptionPane.showMessageDialog(this,"Debe llenar todos los campos \n","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_nombres.requestFocus();
@@ -454,6 +485,11 @@ public class Alumno extends javax.swing.JFrame {
             return;
         }
         
+        
+         if(!validarLongitudTelefono(txt_telefono,8)){
+            return;
+        }
+         
        /* String cuenta=txt_numeroCuenta.getText().toString().substring(0,3);
           if(!ValidarNumeroCuenta(cuenta)){
             return;
@@ -804,6 +840,26 @@ public class Alumno extends javax.swing.JFrame {
         rellenar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+           try {
+            String sql2 = "Select nombres_empleado + ' ' + apellido_empleado from Empleados where id_empleado = (select id_empleado from Acceso where nombre_usuario = '"+lbl_usuario.getText()+"')";
+                Statement st2 = con.createStatement();
+                ResultSet rs2 = st2.executeQuery(sql2);
+                if(rs2.next()){
+                Principal principal = new Principal(lbl_usuario.getText(),rs2.getString(1));
+                principal.setVisible(true); 
+                this.dispose();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Error");
+                }
+        } catch (SQLException ex) {
+            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+      
+
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
         private void limpiar(){
         txt_nombres.setText(null);
         txt_apellidos.setText(null);
@@ -860,8 +916,8 @@ public class Alumno extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
