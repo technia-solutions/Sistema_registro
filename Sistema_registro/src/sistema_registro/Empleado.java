@@ -66,6 +66,11 @@ public class Empleado extends javax.swing.JFrame {
             for(int i = 0; i<lista.size();i++){
                 cbo_idCampus.addItem(lista.get(i));
             }
+            ArrayList<String> lista2 = new ArrayList<String>();
+             lista2 = new Conexion_consulta().llenar_tipoUsuario();
+            for(int i = 0; i<lista2.size();i++){
+                cbo_tipoUsuario.addItem(lista2.get(i));
+            }
             this.setLocationRelativeTo(null);
             this.setTitle("Empleados");
             this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
@@ -78,6 +83,12 @@ public class Empleado extends javax.swing.JFrame {
              lista = new Conexion_consulta().llenar_combo();
             for(int i = 0; i<lista.size();i++){
                 cbo_idCampus.addItem(lista.get(i));
+            }
+            
+             ArrayList<String> lista2 = new ArrayList<String>();
+             lista2 = new Conexion_consulta().llenar_tipoUsuario();
+            for(int i = 0; i<lista2.size();i++){
+                cbo_tipoUsuario.addItem(lista2.get(i));
             }
         String usuario = nombreUsuario;
         this.lbl_usuario.setText(usuario);
@@ -551,7 +562,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         lbl_tipoUsuario.setBounds(740, 230, 130, 22);
 
         cbo_tipoUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cbo_tipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un tipo de usuario", "Empleado", "Administrador", "Supervisor" }));
+        cbo_tipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un tipo de usuario" }));
         cbo_tipoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbo_tipoUsuarioActionPerformed(evt);
@@ -836,13 +847,10 @@ this.cbo_tipoUsuario.setSelectedItem("");
             if(cbo_tipoUsuario.getSelectedItem().toString().substring(0,1).equals("A")){
                 estadoDelUsuario = "Administrador";
             }
-            else if(cbo_tipoUsuario.getSelectedItem().toString().substring(0,1).equals("E")){
+            else{
                  estadoDelUsuario = "Activo";
             }
-            else if(cbo_tipoUsuario.getSelectedItem().toString().substring(0,1).equals("S")){
-                 estadoDelUsuario = "Activo";
-                 
-            }
+            
             String sql ="Insert into Acceso(nombre_usuario,clave_acceso,id_tipoUsuario,estado) values('"+txt_NombreUsuario.getText()+"','"+contraseña+"','"+tipoUsuario+"','"+estadoDelUsuario+"')";
             int rs2 = st2.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Se ha guardado la informacion del empleado "+nombreEmpleado+" correctamente");

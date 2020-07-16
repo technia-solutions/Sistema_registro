@@ -622,6 +622,10 @@ public class Alumno extends javax.swing.JFrame {
         )==JOptionPane.YES_OPTION){ 
             String idCarrera = cbo_carrera.getSelectedItem().toString().substring(0, 4);
             String id_campus = cbo_carrera.getSelectedItem().toString().substring(0, 4);
+            int mes = cld_fechaNacimiento.getDate().getMonth() + 1;
+            int año = cld_fechaNacimiento.getDate().getYear() +1900;
+            int dia = cld_fechaNacimiento.getDate().getDate();
+            String fecha = año + "-" + mes +"-"+ dia;
           try{
               PreparedStatement ps;
               ResultSet rs;
@@ -632,14 +636,14 @@ public class Alumno extends javax.swing.JFrame {
                       + "telefono_alumno = ?, "
                       + "fecha_nacimiento = ?, "
                       + "id_carrera = ? "
-                      + "where numero_identidad = '"+var+"' "
-                      + "or nombres_empleado = '"+var+"' "
-                      + "or apellido_empleado = '"+var+"'");
+                      + "where numero_cuenta_alumno = '"+var+"' "
+                      + "or nombres_alumno = '"+var+"' "
+                      + "or apellidos_alumno = '"+var+"'");
                       ps.setString(1, txt_numeroCuenta.getText());
                       ps.setString(2, txt_nombres.getText());
                       ps.setString(3, txt_apellidos.getText());
                       ps.setString(4, txt_telefono.getText());
-                      ps.setString(5,((JTextField)cld_fechaNacimiento.getDateEditor().getUiComponent()).getText());
+                      ps.setString(5,fecha);
                       ps.setString(6, idCarrera);
                       int res= ps.executeUpdate();
                       JOptionPane.showMessageDialog(null, "Se ha actualizado la información del empleado "+nombreAlumno+" correctamente.");
