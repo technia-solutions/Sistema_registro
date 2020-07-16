@@ -45,6 +45,7 @@ public class Campus extends javax.swing.JFrame {
         this.con = ConectorSQL.obtenerConexion();
         initComponents();
         actualizarDatos(); 
+        this.setTitle("Campus");
     }
 
     public void Actualizar() {
@@ -194,22 +195,19 @@ public class Campus extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(72, 72, 72)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_actualizar)
+                    .addComponent(btn_guardar)
+                    .addComponent(btn_buscar)
+                    .addComponent(btn_eliminar))
+                .addGap(86, 86, 86)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(btn_guardar)
-                        .addGap(46, 46, 46)
-                        .addComponent(btn_actualizar)
-                        .addGap(33, 33, 33)
-                        .addComponent(btn_buscar)
-                        .addGap(37, 37, 37)
-                        .addComponent(btn_eliminar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(324, 324, 324)
+                        .addGap(139, 139, 139)
                         .addComponent(lbl_titulo))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(185, 185, 185)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_nombreCampus)
                             .addComponent(lbl_idCampus))
@@ -219,35 +217,37 @@ public class Campus extends javax.swing.JFrame {
                                 .addComponent(txt_idCampus, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addComponent(txt_NombreCampus, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(133, 133, 133))
+                                .addComponent(txt_NombreCampus, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(lbl_titulo)
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_idCampus)
-                    .addComponent(txt_idCampus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_nombreCampus)
-                    .addComponent(txt_NombreCampus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_guardar)
-                    .addComponent(btn_actualizar)
-                    .addComponent(btn_buscar)
-                    .addComponent(btn_eliminar))
-                .addGap(35, 35, 35))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(lbl_titulo)
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_idCampus)
+                            .addComponent(txt_idCampus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_nombreCampus)
+                            .addComponent(txt_NombreCampus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(115, 115, 115)
+                        .addComponent(btn_guardar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_actualizar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_buscar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_eliminar)))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         pack();
@@ -292,6 +292,7 @@ public class Campus extends javax.swing.JFrame {
 
         }
         actualizarDatos();
+        LimpiarCajas();
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void txt_NombreCampusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NombreCampusActionPerformed
@@ -357,6 +358,7 @@ public class Campus extends javax.swing.JFrame {
                 System.out.println(e);
             }
            actualizarDatos(); 
+           LimpiarCajas();
         }
         
        
@@ -375,6 +377,7 @@ public class Campus extends javax.swing.JFrame {
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
 
         actualizarDatos(); 
+        LimpiarCajas();
     }//GEN-LAST:event_btn_buscarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
@@ -417,6 +420,7 @@ public class Campus extends javax.swing.JFrame {
             System.out.println(e);
         }*/
             actualizarDatos(); 
+            LimpiarCajas();
         }
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
@@ -564,6 +568,12 @@ private void rellenar() {
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e.getMessage());
                 }
+    }
+
+  private void LimpiarCajas(){
+        txt_NombreCampus.setText(null);
+        txt_idCampus.setText(null);
+        
     }
 
 }

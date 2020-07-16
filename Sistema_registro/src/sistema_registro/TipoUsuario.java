@@ -44,6 +44,7 @@ public class TipoUsuario extends javax.swing.JFrame {
         this.con = ConectorSQL.obtenerConexion ();
         initComponents();
         consultarDatos();
+         this.setTitle("Tipos de Usuario");
     }
     
     
@@ -409,6 +410,7 @@ this.txt_TipoUsuario.setText("");
         }
 
         consultarDatos();
+        LimpiarCajas();
 
     }//GEN-LAST:event_btn_guardarActionPerformed
 
@@ -475,6 +477,7 @@ this.txt_TipoUsuario.setText("");
                 System.out.println(e);
             }
            consultarDatos(); 
+           LimpiarCajas();
         }
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
@@ -528,6 +531,7 @@ this.txt_TipoUsuario.setText("");
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }
            consultarDatos();
+           LimpiarCajas();
         }
         
     }//GEN-LAST:event_btn_eliminarActionPerformed
@@ -620,6 +624,13 @@ this.txt_TipoUsuario.setText("");
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e.getMessage());
                 }
+    }
+ 
+   private void LimpiarCajas(){
+        txt_TipoUsuario.setText(null);
+        txt_idTipo.setText(null);
+      
+        
     }
 
 }
