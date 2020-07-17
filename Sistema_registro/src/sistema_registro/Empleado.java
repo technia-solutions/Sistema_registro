@@ -1089,9 +1089,9 @@ this.cbo_tipoUsuario.setSelectedItem("");
                   + "id_campus = ?, "
                   + "salario = ?, "
                   + "numero_identidad = ? "
-                  + "where numero_identidad = '"+var+"' "
-                  + "or nombres_empleado = '"+var+"' "
-                  + "or apellido_empleado = '"+var+"'");
+                  + "where numero_identidad = '"+txt_Identidad.getText()+"' or numero_identidad = '"+var+"'"
+                  + "or nombres_empleado = '"+var+"' or nombres_empleado = '"+txt_Nombre.getText()+"'"
+                  + "or apellido_empleado = '"+var+"' or apellido_empleado = '"+txt_Apellido.getText()+"'");
                   ps.setString(1, txt_Nombre.getText());
                   ps.setString(2, txt_Apellido.getText());
                   ps.setString(3, txt_Telefono.getText());
@@ -1118,14 +1118,15 @@ this.cbo_tipoUsuario.setSelectedItem("");
 
          }
         limpiar();
+        actualizarDatos();
     }//GEN-LAST:event_btn_ActualizarActionPerformed
 
     public void rellenar(){
         try {
             Statement st = con.createStatement();
-            String consulta = "Select tipo_usuario from Acceso where nombre_usuario = '"+lbl_usuario.getText()+"'";
-            ResultSet rs = st.executeQuery(consulta);
-            
+            String consulta = "Select id_tipoUsuario from Tipo_Usuarios\n" +
+                              "where id_tipoUsuario = (Select id_tipoUsuario from Acceso where nombre_usuario ='"+lbl_usuario.getText()+"')";
+            ResultSet rs = st.executeQuery(consulta);           
             if(rs.next()){
                 if(rs.getString("id_tipoUsuario").equals("A") || rs.getString("id_tipoUsuario").equals("S")){
                     try{
@@ -1178,12 +1179,13 @@ this.cbo_tipoUsuario.setSelectedItem("");
                             JOptionPane.showMessageDialog(null,e.getMessage());
                             }
                 }
-                 else{
-                            JOptionPane.showMessageDialog(null,"¡Sólo los administradores tienen acceso a esta función!");
-                            }
                 
                 
             }
+             else{
+                            JOptionPane.showMessageDialog(null,"¡Sólo los administradores tienen acceso a esta función!");
+                            }
+                
             
         } catch (SQLException ex) {
             Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
@@ -1194,10 +1196,11 @@ this.cbo_tipoUsuario.setSelectedItem("");
 
         try {
             Statement st = con.createStatement();
-            String consulta = "Select tipo_usuario from Acceso where nombre_usuario = '"+lbl_usuario.getText()+"'";
+            String consulta = "Select id_tipoUsuario from Tipo_Usuarios\n" +
+                              "where id_tipoUsuario = (Select id_tipoUsuario from Acceso where nombre_usuario ='"+lbl_usuario.getText()+"')";
             ResultSet rs = st.executeQuery(consulta);
             if(rs.next()){
-                if(rs.getString("tipo_usuario").equals("A") || rs.getString("tipo_usuario").equals("S")){
+                if(rs.getString("id_tipoUsuario").equals("A") || rs.getString("tipo_usuario").equals("S")){
                     try{
                     String cap="";
                     ResultSet rs2 = null;
@@ -1246,13 +1249,11 @@ this.cbo_tipoUsuario.setSelectedItem("");
                             JOptionPane.showMessageDialog(null,e.getMessage());
                             }
                    
-                }
-                 else{
+                }       
+            }
+               else{
                             JOptionPane.showMessageDialog(null,"¡Sólo los administradores tienen acceso a esta función!");
                             }
-                
-                
-            }
             
         } catch (SQLException ex) {
             Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
@@ -1306,7 +1307,6 @@ this.cbo_tipoUsuario.setSelectedItem("");
                    JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE
             )==JOptionPane.YES_OPTION){   
      String id_campus = cbo_idCampus.getSelectedItem().toString().substring(0, 4);
-     String tipoUsuario = cbo_tipoUsuario.getSelectedItem().toString().substring(0,1);
        try{
              Statement st2=con.createStatement();
               String sql ="Delete Acceso "
@@ -1318,11 +1318,10 @@ this.cbo_tipoUsuario.setSelectedItem("");
       try{
           PreparedStatement ps;
           ResultSet rs;
-          ps=con.prepareStatement("Delete Empleados "
-                  + "where numero_identidad = '"+var+"' "
-                  + "or nombres_empleado = '"+var+"' "
-                  + "or apellido_empleado = '"+var+"'");
-                  int res= ps.executeUpdate();
+         Statement st=con.createStatement();
+         String sql ="Delete Empleado "
+                      + "where id_empleado = (Select id_empleado from Acceso where nombre_usuario = '"+txt_NombreUsuario.getText()+"')";
+                  int res=st.executeUpdate(sql);
                   JOptionPane.showMessageDialog(null, "Se ha borrado la información del empleado "+nombreEmpleado+" correctamente");
                   if(res > 0){ 
                   }else {
@@ -1333,6 +1332,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         }
          }
         limpiar();
+        actualizarDatos();
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
     private void txt_IdentidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_IdentidadActionPerformed
