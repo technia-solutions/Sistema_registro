@@ -1320,7 +1320,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
           ResultSet rs;
          Statement st=con.createStatement();
          String sql ="Delete Empleado "
-                      + "where id_empleado = (Select id_empleado from Acceso where nombre_usuario = '"+txt_NombreUsuario.getText()+"')";
+                      + "where numero_identidad = "+txt_Identidad.getText()+"";
                   int res=st.executeUpdate(sql);
                   JOptionPane.showMessageDialog(null, "Se ha borrado la información del empleado "+nombreEmpleado+" correctamente");
                   if(res > 0){ 
