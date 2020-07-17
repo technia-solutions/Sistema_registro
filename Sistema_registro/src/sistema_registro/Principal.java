@@ -403,11 +403,11 @@ public class Principal extends javax.swing.JFrame {
   
         try {
             st = con.createStatement();
-            String consulta = "Select tipo_usuario from Acceso where nombre_usuario = '"+lbl_NombreUsuario.getText()+"'";
+            String consulta = "Select Tipo_Usuario from Tipo_Usuarios\n" +
+                              "where id_tipoUsuario = (Select id_tipoUsuario from Acceso where nombre_usuario ='"+lbl_NombreUsuario.getText()+"')";
             ResultSet rs = st.executeQuery(consulta);
             if(rs.next()){
-                if(rs.getString("tipo_usuario").equals("A")){
-                     
+                if(rs.getString("Tipo_Usuario").equals("Administrador")){
         Empleado empleado = null;
         try {
             

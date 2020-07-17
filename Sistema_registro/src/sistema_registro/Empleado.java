@@ -1075,7 +1075,8 @@ this.cbo_tipoUsuario.setSelectedItem("");
      String id_campus = cbo_idCampus.getSelectedItem().toString().substring(0, 4);
      String tipoUsuario = cbo_tipoUsuario.getSelectedItem().toString().substring(0,1);
      String contraseña=DigestUtils.md5Hex(pwd_contraseña.getText());
-       if(!validarContraseñas(contraseña)){
+     String contraseña2 = pwd_contraseña.getText();
+       if(!validarContraseñas(contraseña2)){
             return;
         }
       try{
