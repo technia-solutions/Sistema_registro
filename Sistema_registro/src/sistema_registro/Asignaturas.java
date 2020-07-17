@@ -5,17 +5,49 @@
  */
 package sistema_registro;
 
+import codigo.Conexion_consulta;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import sistema_registro.SQL.ConectorSQL;
+
 /**
  *
- * @author Carlos
+ * @author William
  */
 public class Asignaturas extends javax.swing.JFrame {
 
+Connection con = null;
+    String titulos [] = {"Codigo de Asignatura", "Nombre de la Asignatura", "Unidades Valorativas", "Id Carrera"};
+   
+    DefaultTableModel modelo =  new DefaultTableModel();
+    Statement stmt = null;
+    String var, var2;
+/**
     /**
      * Creates new form Asignaturas
      */
-    public Asignaturas() {
+    public Asignaturas() throws SQLException {
+        this.con = ConectorSQL.obtenerConexion ();
         initComponents();
+        ArrayList<String> lista = new ArrayList<String>();
+             lista = new Conexion_consulta().llenar_combo2();
+            for(int i = 0; i<lista.size();i++){
+                cbo_IdCarrera.addItem(lista.get(i));
+            }
+             this.setLocationRelativeTo(null);
+            this.setTitle("Asignaturas");
     }
 
     /**
@@ -27,161 +59,374 @@ public class Asignaturas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbl_codigoAsignatura = new javax.swing.JLabel();
-        lbl_nombreAsignatura = new javax.swing.JLabel();
-        lbl_unidadValorativa = new javax.swing.JLabel();
-        lbl_carrera = new javax.swing.JLabel();
-        txt_idAsignatura = new javax.swing.JTextField();
-        txt_NombreAsignatura = new javax.swing.JTextField();
-        txt_UnidadValorativa = new javax.swing.JTextField();
-        lbl_titulo = new javax.swing.JLabel();
+        lbl_codA = new javax.swing.JLabel();
+        lbl_NombreA = new javax.swing.JLabel();
+        lbl_UniVal = new javax.swing.JLabel();
+        lbl_IdCarrera = new javax.swing.JLabel();
+        txt_codA = new javax.swing.JTextField();
+        txt_NombreA = new javax.swing.JTextField();
+        txt_UniVal = new javax.swing.JTextField();
         btn_guardar = new javax.swing.JButton();
         btn_actualizar = new javax.swing.JButton();
-        btn_eliminar = new javax.swing.JButton();
-        cbo_carrera = new javax.swing.JComboBox<>();
-        lbl_requisito1 = new javax.swing.JLabel();
-        lbl_requisito2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        btn_buscar = new javax.swing.JButton();
+        cbo_IdCarrera = new javax.swing.JComboBox<>();
+        btn_eliminar1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Tabla_RegistroAsignatura = new javax.swing.JTable();
+        btn_AdmCarrera = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(894, 294));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_codigoAsignatura.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_codigoAsignatura.setText("Codigo de la Asignatura");
+        lbl_codA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_codA.setText("Codigo de la Asignatura");
+        getContentPane().add(lbl_codA, new org.netbeans.lib.awtextra.AbsoluteConstraints(443, 139, -1, -1));
 
-        lbl_nombreAsignatura.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_nombreAsignatura.setText("Nombre de la Asigntura");
+        lbl_NombreA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_NombreA.setText("Nombre de la Asigntura");
+        getContentPane().add(lbl_NombreA, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 193, -1, -1));
 
-        lbl_unidadValorativa.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_unidadValorativa.setText("Unidad Valorativa");
+        lbl_UniVal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_UniVal.setText("Unidad Valorativa");
+        getContentPane().add(lbl_UniVal, new org.netbeans.lib.awtextra.AbsoluteConstraints(447, 254, -1, -1));
 
-        lbl_carrera.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_carrera.setText("Carrera");
+        lbl_IdCarrera.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_IdCarrera.setText("Carrera");
+        getContentPane().add(lbl_IdCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(447, 322, -1, -1));
 
-        txt_idAsignatura.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_codA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_codA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_codAActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txt_codA, new org.netbeans.lib.awtextra.AbsoluteConstraints(671, 130, 183, -1));
 
-        txt_NombreAsignatura.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_NombreA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        getContentPane().add(txt_NombreA, new org.netbeans.lib.awtextra.AbsoluteConstraints(671, 190, 183, -1));
 
-        txt_UnidadValorativa.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lbl_titulo.setText("Registro de Asignatura");
+        txt_UniVal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        getContentPane().add(txt_UniVal, new org.netbeans.lib.awtextra.AbsoluteConstraints(671, 254, 183, -1));
 
         btn_guardar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Guardar.png"))); // NOI18N
         btn_guardar.setText("Guardar");
         btn_guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_guardarActionPerformed(evt);
             }
         });
+        getContentPane().add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 130, -1, -1));
 
         btn_actualizar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
         btn_actualizar.setText("Actualizar");
-
-        btn_eliminar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_eliminar.setText("Eliminar");
-        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
+        btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_eliminarActionPerformed(evt);
+                btn_actualizarActionPerformed(evt);
             }
         });
+        getContentPane().add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 193, -1, -1));
 
-        cbo_carrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        btn_buscar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Consulta.png"))); // NOI18N
+        btn_buscar.setText("Buscar");
+        btn_buscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_buscarMouseClicked(evt);
+            }
+        });
+        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 313, 151, -1));
 
-        lbl_requisito1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_requisito1.setText("Requisito 1:");
+        cbo_IdCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una asignatura" }));
+        getContentPane().add(cbo_IdCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(671, 318, 183, 45));
 
-        lbl_requisito2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_requisito2.setText("Requisito 2:");
+        btn_eliminar1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_eliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Eliminar.png"))); // NOI18N
+        btn_eliminar1.setText("Eliminar");
+        btn_eliminar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminar1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_eliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 252, 151, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Tabla_RegistroAsignatura.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+            },
+            new String [] {
+                "Código Asinatura", "Asignatura", "UV", "Id Carrera"
+            }
+        ));
+        Tabla_RegistroAsignatura.setToolTipText("Presiona consulta para ver todas las asignaturas\n");
+        Tabla_RegistroAsignatura.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tabla_RegistroAsignaturaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(Tabla_RegistroAsignatura);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, 860, 106));
+
+        btn_AdmCarrera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
+        btn_AdmCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_AdmCarreraActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_AdmCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(753, 220, -1, 25));
+
+        jPanel1.setBackground(new java.awt.Color(232, 251, 249));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setText(" Registro Asignatura");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(299, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(287, 287, 287))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_titulo)
-                .addGap(386, 386, 386))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(271, 271, 271)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(74, 74, 74)
-                        .addComponent(btn_actualizar)
-                        .addGap(63, 63, 63)
-                        .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_codigoAsignatura)
-                            .addComponent(lbl_nombreAsignatura)
-                            .addComponent(lbl_unidadValorativa)
-                            .addComponent(lbl_carrera)
-                            .addComponent(lbl_requisito1)
-                            .addComponent(lbl_requisito2))
-                        .addGap(64, 64, 64)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_idAsignatura)
-                            .addComponent(txt_NombreAsignatura)
-                            .addComponent(txt_UnidadValorativa)
-                            .addComponent(cbo_carrera, 0, 183, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(241, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(lbl_titulo)
-                .addGap(89, 89, 89)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_codigoAsignatura)
-                    .addComponent(txt_idAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_nombreAsignatura)
-                    .addComponent(txt_NombreAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_unidadValorativa)
-                    .addComponent(txt_UnidadValorativa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbl_carrera)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(cbo_carrera))
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_requisito1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_requisito2)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_guardar)
-                    .addComponent(btn_actualizar)
-                    .addComponent(btn_eliminar))
-                .addGap(56, 56, 56))
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, 70));
+
+        jPanel2.setBackground(new java.awt.Color(215, 236, 233));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 840, Short.MAX_VALUE)
         );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 330, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -1, 1140, 670));
+
+        jMenu1.setText("Regresar");
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setText("Menu Principal");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
+         ConsultarDatos();
+    }//GEN-LAST:event_btn_buscarActionPerformed
+
+    private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
+          String Asignaturas = txt_codA.getText() + " " + txt_NombreA.getText();
+
+        if(JOptionPane.showConfirmDialog(null,"¿Está seguro que desea actualizar el registro de Asignatura "+txt_NombreA+"?","Confirmación de actualización",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE
+        )==JOptionPane.YES_OPTION){
+
+             String id_carrera = cbo_IdCarrera.getSelectedItem().toString().substring(0, 4);
+    
+      
+            
+            try{
+                PreparedStatement ps;
+                ResultSet rs;
+                ps=con.prepareStatement("Update Asignaturas "
+                    + "set cod_asignaturas = ?,"
+                    + "nombre_asignaturas = ? ,"
+                        + "UV = ? ,"
+                        + "id_carrera = ? "
+                        
+                    + " where cod_asignaturas =\'"+txt_codA.getText()+"\'"
+                          + "or nombre_asignaturas = '"+var+"' ");
+
+                ps.setString(1, txt_codA.getText());
+                ps.setString(2, txt_NombreA.getText());
+                 ps.setString(3, txt_UniVal.getText());
+                  ps.setString(4, id_carrera);
+                 
+                int res= ps.executeUpdate();
+            } catch ( Exception e) {
+                System.out.println(e);
+            } try{
+             Statement st2=con.createStatement();
+            
+              String sql ="Update Asignaturas "
+                      + "set cod_asignaturas = '"+txt_codA.getText()+"'"
+                       + "set nombre_asignaturas = '"+txt_NombreA.getText()+"'"
+                    + "set UV = '"+txt_UniVal.getText()+"'"
+                      + "where cod_asignaturas = (Select cod_asignaturas from Asignaturas where nombre_asignaturas = '"+txt_NombreA.getText()+"')";
+               int rs2 = st2.executeUpdate(sql);
+              JOptionPane.showMessageDialog(null, "Se ha actualizado la información del registro de asignatura "+txt_NombreA+" correctamente.");
+          }catch ( Exception e) {
+           JOptionPane.showMessageDialog(null, e.getMessage()); 
+        }
+        }
+    }//GEN-LAST:event_btn_actualizarActionPerformed
+
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
-        // TODO add your handling code here:
+        
+        String cadena1, cadena2, cadena3, cadena4;
+        cadena1 = txt_codA.getText();
+        cadena2 = txt_NombreA.getText();
+        cadena3 = txt_UniVal.getText();
+        String id_carrera = cbo_IdCarrera.getSelectedItem().toString().substring(0, 4);
+  
+
+        if ((txt_codA.getText().equals("")) || (txt_NombreA.getText().equals(""))  || (txt_UniVal.getText().equals(""))  
+                ||  (cbo_IdCarrera.getSelectedItem().equals("Seleccione un carrera")) ) {
+
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe llenar todos los campos! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_codA.requestFocus();
+            return;
+        }
+
+        if(existeAsignatura()){
+            return;
+        }
+
+        if(!validarLongitud(txt_codA,3)){
+            JOptionPane.showMessageDialog(null, "El codigo de asignaturas tiene que ser minimo de 3 caracteres", "Longitud de codigo de asignatura", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        if(!validarLongitud(txt_NombreA,7)){
+            JOptionPane.showMessageDialog(null, "El Nombre de la asignatura es muy corto el mínimo es de 7 caracteres", "Longitud del nombre de asignatura", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+       
+         if(!validarLongitud(txt_UniVal,1)){
+            JOptionPane.showMessageDialog(null, "La unidades valorativas debe ser de un mínimo de 1 caracter", "Longitud de las unidades valorativas", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+         
+        
+
+        try{
+            PreparedStatement ps;
+            ResultSet rs;
+
+            ps=con.prepareStatement("Insert into Asignaturas (cod_asignaturas, nombre_asignaturas, UV, id_carrera )"
+                + "                VALUES(?,?,?,?)");
+            ps.setString(1, txt_codA.getText());
+            ps.setString(2, txt_NombreA.getText());
+            ps.setString(3, txt_UniVal.getText());
+            ps.setString(4, id_carrera);
+            int res= ps.executeUpdate(); 
+            JOptionPane.showMessageDialog(null, "Se ha guardado la información en Registro de Asignatura");
+             } catch ( Exception e) {
+            System.out.println(e);
+        
+             JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+
+        ConsultarDatos();
     }//GEN-LAST:event_btn_guardarActionPerformed
 
-    private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
+    private void btn_eliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminar1ActionPerformed
+          String TipoUsuario = txt_NombreA.getText() + " " + txt_codA.getText();
+        if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de asignatura " + TipoUsuario + "", "Confirmación de eliminación",
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
+        ) == JOptionPane.YES_OPTION) {
+
+            try {
+                Statement st2 = con.createStatement();
+                String sql = "Delete Asignaturas "
+                + "where cod_asignaturas = (Select cod_asignaturas from Asignaturas where nombre_asignaturas = '"+txt_NombreA.getText()+"')";
+
+                int rs2 = st2.executeUpdate(sql);
+                System.out.println(rs2);
+                if(rs2 > 0){
+                    JOptionPane.showMessageDialog(null, "Se ha borrado la información de la asignatura " + TipoUsuario + " correctamente");
+
+                }else {
+                    JOptionPane.showMessageDialog(null, "¡Error al eliminar la información!");
+
+                }
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+
+        }
+
+    }//GEN-LAST:event_btn_eliminar1ActionPerformed
+
+    private void btn_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buscarMouseClicked
+        rellenar();
+        this.jScrollPane1.setEnabled(true);
+        this.Tabla_RegistroAsignatura.setEnabled(true);
+    }//GEN-LAST:event_btn_buscarMouseClicked
+
+    private void btn_AdmCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AdmCarreraActionPerformed
+        Carrera cc = null;
+        try {
+            cc = new Carrera();
+        } catch (SQLException ex) {
+            Logger.getLogger(Carrera.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        cc.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_AdmCarreraActionPerformed
+
+    private void Tabla_RegistroAsignaturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_RegistroAsignaturaMouseClicked
+        if(Tabla_RegistroAsignatura.getSelectedRow () >= 0){
+            llenarCampos();
+        }
+    }//GEN-LAST:event_Tabla_RegistroAsignaturaMouseClicked
+
+    private void txt_codAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_codAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_eliminarActionPerformed
+    }//GEN-LAST:event_txt_codAActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+         this.dispose();
+        Principal pa = null;
+         try {
+             pa = new Principal();
+         } catch (SQLException ex) {
+             Logger.getLogger(Carrera.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        pa.setVisible(true);
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,27 +458,174 @@ public class Asignaturas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Asignaturas().setVisible(true);
+                try {
+                    new Asignaturas().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Asignaturas.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable Tabla_RegistroAsignatura;
+    private javax.swing.JButton btn_AdmCarrera;
     private javax.swing.JButton btn_actualizar;
-    private javax.swing.JButton btn_eliminar;
+    private javax.swing.JButton btn_buscar;
+    private javax.swing.JButton btn_eliminar1;
     private javax.swing.JButton btn_guardar;
-    private javax.swing.JComboBox<String> cbo_carrera;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel lbl_carrera;
-    private javax.swing.JLabel lbl_codigoAsignatura;
-    private javax.swing.JLabel lbl_nombreAsignatura;
-    private javax.swing.JLabel lbl_requisito1;
-    private javax.swing.JLabel lbl_requisito2;
-    private javax.swing.JLabel lbl_titulo;
-    private javax.swing.JLabel lbl_unidadValorativa;
-    private javax.swing.JTextField txt_NombreAsignatura;
-    private javax.swing.JTextField txt_UnidadValorativa;
-    private javax.swing.JTextField txt_idAsignatura;
+    private javax.swing.JComboBox<String> cbo_IdCarrera;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbl_IdCarrera;
+    private javax.swing.JLabel lbl_NombreA;
+    private javax.swing.JLabel lbl_UniVal;
+    private javax.swing.JLabel lbl_codA;
+    private javax.swing.JTextField txt_NombreA;
+    private javax.swing.JTextField txt_UniVal;
+    private javax.swing.JTextField txt_codA;
     // End of variables declaration//GEN-END:variables
+
+
+public boolean existeAsignatura(){
+        try {
+            Statement st = con.createStatement();
+            String sql = "Select cod_asignaturas from Asignaturas where cod_asignaturas = '"+txt_codA.getText()+"'";
+            ResultSet rs = st.executeQuery(sql);
+            if(rs.next()){
+                JOptionPane.showMessageDialog(null, "Ya existe esta Asignatura: "+txt_codA.getText()+" ", "Codigo de asignatura ¡Ya existe!", JOptionPane.INFORMATION_MESSAGE);
+                return true;
+            }
+            else{
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+       
+           private boolean validarLongitud(JTextField texto, int longitud){
+       if(texto.getText().length() >= longitud){
+           return true;
+       }
+       else{
+           return false;
+       }
+    }
+         
+              public void ConsultarDatos(){
+        try {
+               
+               String sql = "SELECT * FROM Asignaturas where cod_asignaturas=\'"+txt_codA.getText()+"\'";
+               stmt = con.createStatement();
+               ResultSet rs = stmt.executeQuery(sql);
+               
+               modelo = new DefaultTableModel(null, titulos);
+               Tabla_RegistroAsignatura.setModel(modelo);
+                 while(rs.next()) {
+                     
+                          String []datos= new String[4];
+                      datos[0] =rs.getString("cod_asignaturas");
+                      datos[1] =rs.getString("nombre_asignaturas");
+                      datos[2] =rs.getString("UV");
+                      datos[3] =rs.getString("id_carrera");
+                      
+                     modelo.addRow(datos);
+                      
+                      centrar_datos();
+                 }
+            TableColumn TaRA = Tabla_RegistroAsignatura.getColumn(titulos[0]);
+            TaRA.setMaxWidth(125);
+            TableColumn cRA= Tabla_RegistroAsignatura.getColumn(titulos[1]);
+            cRA.setMaxWidth(165);
+            TableColumn UV= Tabla_RegistroAsignatura.getColumn(titulos[2]);
+            UV.setMaxWidth(125);            
+            TableColumn idC= Tabla_RegistroAsignatura.getColumn(titulos[3]);
+           idC.setMaxWidth(165);
+        }
+        catch (Exception e) {
+           
+            System.err.println(e);
+        }
+           }
+           
+     public void centrar_datos() {
+ 
+        DefaultTableCellRenderer modelocentrar = new DefaultTableCellRenderer();
+        modelocentrar.setHorizontalAlignment(SwingConstants.CENTER);
+         for (int i = 0; i <modelo.getRowCount(); i++) {
+              Tabla_RegistroAsignatura.getColumnModel().getColumn(i).setCellRenderer(modelocentrar);
+             
+         }
+     
+    }
+        
+     
+    
+       private void llenarCampos(){
+        int i = Tabla_RegistroAsignatura.getSelectedRow();
+        txt_codA.setText(Tabla_RegistroAsignatura.getValueAt(i, 0).toString());
+        txt_NombreA.setText(Tabla_RegistroAsignatura.getValueAt(i, 1).toString());
+        txt_UniVal.setText(Tabla_RegistroAsignatura.getValueAt(i, 2).toString());
+         cbo_IdCarrera.setSelectedItem(Tabla_RegistroAsignatura.getValueAt(i, 3).toString());
+         
+    }
+    
+        private void rellenar() {
+        System.out.println(lbl_codA.getText());
+        try {
+            System.out.println(lbl_NombreA.getText());
+            Statement st = con.createStatement();
+            String consulta = "Select * from Asignaturas where cod_asignaturas = '" + lbl_codA.getText() + "'";
+            ResultSet rs = st.executeQuery(consulta);
+            System.out.println(rs.next());
+
+            if (rs.next()) {
+                try {
+                    String cap = "";
+                    ResultSet rs2 = null;
+                   var = JOptionPane.showInputDialog(this, "Ingrese el nombre de asignatura que desea consultar", "Consulta de asignatura", JOptionPane.QUESTION_MESSAGE);
+                    if (var == null) {
+                        JOptionPane.showMessageDialog(this, "La acción fue cancelada", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        if (var.equals("")) {
+                            JOptionPane.showMessageDialog(this, "Favor de ingresar los datos de la asignatura \n que desea consultar", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
+                        } else {
+                            String sql = "SELECT * FROM Asignaturas where nombre_asignaturas =\'"+txt_NombreA.getText()+"\' ";
+                            stmt = con.createStatement();
+                            rs2 = stmt.executeQuery(sql);
+
+                            if (rs2.next()) {
+                                txt_codA.setText(rs2.getString("idTipo"));
+                                txt_NombreA.setText(rs2.getString("TipoUsuario"));
+
+                            } else {
+                                JOptionPane.showMessageDialog(null, "¡No se encuentra los datos de la asignatura ! Por favor verifique sí, lo escribio correctamente");
+                            }
+
+                        }
+
+                    }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e.getMessage());
+                }
+            } else {
+               /* JOptionPane.showMessageDialog(null, "¡Sólo los administradores tienen acceso a esta función!");*/
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Campus.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    
+    }
+
+
 }
