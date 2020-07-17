@@ -474,7 +474,10 @@ public class Facultad extends javax.swing.JFrame {
     public void centrar_datos() {
         DefaultTableCellRenderer modelocentrar = new DefaultTableCellRenderer();
         modelocentrar.setHorizontalAlignment(SwingConstants.CENTER);
-        Tabla_Facultad.getColumnModel().getColumn(1).setCellRenderer(modelocentrar);
+        for (int i = 0; i <modelo.getRowCount(); i++) {
+              Tabla_Facultad.getColumnModel().getColumn(i).setCellRenderer(modelocentrar);
+             
+         }
     }
 
    

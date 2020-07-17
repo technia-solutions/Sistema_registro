@@ -470,8 +470,8 @@ public class Campus extends javax.swing.JFrame {
             return;
         }
 
-        if (!validarLongitud(txt_idCampus, 2)) {
-            JOptionPane.showMessageDialog(null, "Los nombres ingresados son muy pequeños el mínimo es de 2 caracteres", "Longitud de los nombres", JOptionPane.INFORMATION_MESSAGE);
+        if (!validarLongitud(txt_idCampus, 3)) {
+            JOptionPane.showMessageDialog(null, "Los nombres ingresados son muy pequeños el mínimo es de 3 caracteres", "Longitud de los nombres", JOptionPane.INFORMATION_MESSAGE);
             return;
 
         }
@@ -530,7 +530,9 @@ public class Campus extends javax.swing.JFrame {
     public void centrar_datos() {
         DefaultTableCellRenderer modelocentrar = new DefaultTableCellRenderer();
         modelocentrar.setHorizontalAlignment(SwingConstants.CENTER);
-        Tabla_Campus.getColumnModel().getColumn(1).setCellRenderer(modelocentrar);
+        for (int i = 0; i <modelo.getRowCount(); i++) {
+              Tabla_Campus.getColumnModel().getColumn(i).setCellRenderer(modelocentrar);   
+         }
     }
 
     /**

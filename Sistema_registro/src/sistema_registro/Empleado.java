@@ -1424,8 +1424,13 @@ this.cbo_tipoUsuario.setSelectedItem("");
     }//GEN-LAST:event_btn_administrarCampusActionPerformed
 
     private void btn_administrarTipoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_administrarTipoUsuarioActionPerformed
-        TipoDeUsuario tipoDeEmpleado = new TipoDeUsuario();
-        tipoDeEmpleado.setVisible(true);
+        TipoUsuario tipoEmpleado = null;
+        try {
+            tipoEmpleado = new TipoUsuario();
+        } catch (SQLException ex) {
+            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        tipoEmpleado.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_administrarTipoUsuarioActionPerformed
 

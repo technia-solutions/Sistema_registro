@@ -256,7 +256,7 @@ public class Carrera extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_idCarreraActionPerformed
 
     private void txt_idCarreraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_idCarreraKeyTyped
-        if (txt_idCarrera.getText().length() >=3) {
+        if (txt_idCarrera.getText().length() >=4) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
@@ -322,8 +322,8 @@ public class Carrera extends javax.swing.JFrame {
             return;
         }
 
-        if (!validarLongitud(txt_idCarrera, 2)) {
-            JOptionPane.showMessageDialog(null, "El id ingresado es muy pequeños el mínimo es de 2 caracteres", "Longitud de id carrera", JOptionPane.INFORMATION_MESSAGE);
+        if (!validarLongitud(txt_idCarrera, 4)) {
+            JOptionPane.showMessageDialog(null, "El id ingresado es muy pequeños el mínimo es de 4 caracteres", "Longitud de id carrera", JOptionPane.INFORMATION_MESSAGE);
             return;
 
         }
@@ -431,7 +431,12 @@ public class Carrera extends javax.swing.JFrame {
     private void Regresar_AsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Regresar_AsignaturaActionPerformed
         
          this.dispose();
-        Asignaturas aa = new Asignaturas();
+        Asignaturas aa = null;
+         try {
+             aa = new Asignaturas();
+         } catch (SQLException ex) {
+             Logger.getLogger(Carrera.class.getName()).log(Level.SEVERE, null, ex);
+         }
         aa.setVisible(true);
         
     
