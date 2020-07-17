@@ -574,7 +574,9 @@ public class Carrera extends javax.swing.JFrame {
  
         DefaultTableCellRenderer modelocentrar = new DefaultTableCellRenderer();
         modelocentrar.setHorizontalAlignment(SwingConstants.CENTER);
-        Tabla_Carrera.getColumnModel().getColumn(2).setCellRenderer(modelocentrar);
+         for (int i = 0; i <modelo.getRowCount(); i++) {
+              Tabla_Carrera.getColumnModel().getColumn(i).setCellRenderer(modelocentrar);   
+         }
     }
      
       public void actualizarDatos() {
@@ -592,12 +594,12 @@ public class Carrera extends javax.swing.JFrame {
                 modelo.addRow(datos);
             }
             TableColumn idC = Tabla_Carrera.getColumn(titulos[0]);
-            idC.setMaxWidth(150);
+            idC.setMaxWidth(300);
             idC.setIdentifier(ICONIFIED);
             TableColumn cnombre = Tabla_Carrera.getColumn(titulos[1]);
             cnombre.setMaxWidth(300);
             TableColumn cfacultad = Tabla_Empleados.getColumn(titulos[2]);
-                cfacultad.setMaxWidth(95);
+                cfacultad.setMaxWidth(150);
         } catch (Exception e) {
            /* JOptionPane.showMessageDialog(null, e.getMessage());*/
             System.err.println(e);

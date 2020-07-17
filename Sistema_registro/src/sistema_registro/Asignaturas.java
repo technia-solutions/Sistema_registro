@@ -83,7 +83,6 @@ Connection con = null;
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(894, 294));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_codA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -151,7 +150,7 @@ Connection con = null;
         });
         getContentPane().add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 313, 151, -1));
 
-        cbo_IdCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una asignatura" }));
+        cbo_IdCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una carrera" }));
         getContentPane().add(cbo_IdCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(671, 318, 183, 45));
 
         btn_eliminar1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
