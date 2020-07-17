@@ -52,54 +52,34 @@ public class Facultad extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btn_buscar = new javax.swing.JButton();
-        btn_eliminar = new javax.swing.JButton();
-        lbl_titulo = new javax.swing.JLabel();
         lbl_idfacultad = new javax.swing.JLabel();
         lbl_nombreFacultad = new javax.swing.JLabel();
         txt_idfacultad = new javax.swing.JTextField();
         txt_NombreFacultad = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_Facultad = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
         btn_guardar = new javax.swing.JButton();
         btn_actualizar = new javax.swing.JButton();
+        btn_buscar = new javax.swing.JButton();
+        btn_eliminar = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        lbl_titulo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        Carrera = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        btn_buscar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Consulta.png"))); // NOI18N
-        btn_buscar.setText("Buscar");
-        btn_buscar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_buscarMouseClicked(evt);
-            }
-        });
-        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_buscarActionPerformed(evt);
-            }
-        });
-
-        btn_eliminar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Eliminar.png"))); // NOI18N
-        btn_eliminar.setText("Eliminar");
-        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_eliminarActionPerformed(evt);
-            }
-        });
-
-        lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lbl_titulo.setText("Facultad");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_idfacultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_idfacultad.setText("ID Facultad");
+        getContentPane().add(lbl_idfacultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, -1, -1));
 
         lbl_nombreFacultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_nombreFacultad.setText("Facultad");
+        getContentPane().add(lbl_nombreFacultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, -1, -1));
 
         txt_idfacultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_idfacultad.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -107,6 +87,7 @@ public class Facultad extends javax.swing.JFrame {
                 txt_idfacultadKeyTyped(evt);
             }
         });
+        getContentPane().add(txt_idfacultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, 180, -1));
 
         txt_NombreFacultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_NombreFacultad.addActionListener(new java.awt.event.ActionListener() {
@@ -119,6 +100,7 @@ public class Facultad extends javax.swing.JFrame {
                 txt_NombreFacultadKeyTyped(evt);
             }
         });
+        getContentPane().add(txt_NombreFacultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, 182, -1));
 
         Tabla_Facultad.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -135,6 +117,11 @@ public class Facultad extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Tabla_Facultad);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, -1, 142));
+
+        jPanel1.setBackground(new java.awt.Color(215, 236, 233));
+        jPanel1.setLayout(null);
+
         btn_guardar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Guardar.png"))); // NOI18N
         btn_guardar.setText("Guardar");
@@ -143,6 +130,8 @@ public class Facultad extends javax.swing.JFrame {
                 btn_guardarActionPerformed(evt);
             }
         });
+        jPanel1.add(btn_guardar);
+        btn_guardar.setBounds(24, 55, 143, 41);
 
         btn_actualizar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
@@ -152,85 +141,80 @@ public class Facultad extends javax.swing.JFrame {
                 btn_actualizarActionPerformed(evt);
             }
         });
+        jPanel1.add(btn_actualizar);
+        btn_actualizar.setBounds(24, 107, 159, 41);
+
+        btn_buscar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Consulta.png"))); // NOI18N
+        btn_buscar.setText("Buscar");
+        btn_buscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_buscarMouseClicked(evt);
+            }
+        });
+        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_buscar);
+        btn_buscar.setBounds(24, 159, 131, 41);
+
+        btn_eliminar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Eliminar.png"))); // NOI18N
+        btn_eliminar.setText("Eliminar");
+        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_eliminar);
+        btn_eliminar.setBounds(24, 211, 143, 41);
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 830, 340));
+
+        jPanel2.setBackground(new java.awt.Color(232, 251, 249));
+
+        lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lbl_titulo.setText("Facultad");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(354, 354, 354)
+                .addComponent(lbl_titulo)
+                .addContainerGap(387, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addComponent(lbl_titulo)
+                .addContainerGap())
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 830, 60));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 500));
 
         jMenu1.setText("Regresar");
 
-        jMenu2.setText("Carrera");
-        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+        Carrera.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        Carrera.setText("Carrera");
+        Carrera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu2ActionPerformed(evt);
+                CarreraActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenu2);
+        jMenu1.add(Carrera);
 
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_buscar)
-                    .addComponent(btn_eliminar)
-                    .addComponent(btn_guardar)
-                    .addComponent(btn_actualizar))
-                .addGap(114, 114, 114)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(139, 139, 139)
-                                .addComponent(lbl_titulo))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbl_nombreFacultad)
-                                    .addComponent(lbl_idfacultad))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(20, 20, 20)
-                                        .addComponent(txt_idfacultad, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txt_NombreFacultad, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addContainerGap(138, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(lbl_titulo)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_idfacultad)
-                            .addComponent(txt_idfacultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(btn_guardar)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_nombreFacultad)
-                            .addComponent(txt_NombreFacultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(40, 40, 40)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(btn_actualizar)
-                        .addGap(29, 29, 29)
-                        .addComponent(btn_buscar)
-                        .addGap(27, 27, 27)
-                        .addComponent(btn_eliminar)))
-                .addContainerGap(122, Short.MAX_VALUE))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -390,9 +374,20 @@ public class Facultad extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
-    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
-       
-    }//GEN-LAST:event_jMenu2ActionPerformed
+    private void CarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CarreraActionPerformed
+        
+          this.dispose();
+       Carrera cc;
+         try {
+             cc = new Carrera();
+             cc.setVisible(true);
+         } catch (SQLException ex) {
+             Logger.getLogger(Facultad.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        
+        
+        
+    }//GEN-LAST:event_CarreraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -434,14 +429,17 @@ public class Facultad extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Carrera;
     private javax.swing.JTable Tabla_Facultad;
     private javax.swing.JButton btn_actualizar;
     private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_guardar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_idfacultad;
     private javax.swing.JLabel lbl_nombreFacultad;

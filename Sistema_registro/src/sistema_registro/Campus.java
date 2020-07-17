@@ -93,62 +93,38 @@ public class Campus extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbl_titulo = new javax.swing.JLabel();
-        lbl_idCampus = new javax.swing.JLabel();
-        lbl_nombreCampus = new javax.swing.JLabel();
-        txt_idCampus = new javax.swing.JTextField();
-        txt_NombreCampus = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Tabla_Campus = new javax.swing.JTable();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jPanel1 = new javax.swing.JPanel();
         btn_guardar = new javax.swing.JButton();
         btn_actualizar = new javax.swing.JButton();
         btn_buscar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Tabla_Campus = new javax.swing.JTable();
+        lbl_nombreCampus = new javax.swing.JLabel();
+        txt_NombreCampus = new javax.swing.JTextField();
+        txt_idCampus = new javax.swing.JTextField();
+        lbl_idCampus = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        lbl_titulo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        JMenuRegrear = new javax.swing.JMenu();
+        JMIEmpleados = new javax.swing.JMenuItem();
+
+        jMenu1.setText("File");
+        jMenuBar2.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar2.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(204, 255, 255));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lbl_titulo.setText("Campus");
-
-        lbl_idCampus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_idCampus.setText("ID Campus");
-
-        lbl_nombreCampus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_nombreCampus.setText("Nombre del Campus");
-
-        txt_idCampus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_idCampus.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_idCampusKeyTyped(evt);
-            }
-        });
-
-        txt_NombreCampus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_NombreCampus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_NombreCampusActionPerformed(evt);
-            }
-        });
-        txt_NombreCampus.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_NombreCampusKeyTyped(evt);
-            }
-        });
-
-        Tabla_Campus.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Id Campus", "Nombre Campus"
-            }
-        ));
-        Tabla_Campus.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Tabla_CampusMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(Tabla_Campus);
+        jPanel1.setBackground(new java.awt.Color(215, 236, 233));
 
         btn_guardar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Guardar.png"))); // NOI18N
@@ -191,67 +167,295 @@ public class Campus extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_actualizar)
+        Tabla_Campus.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id Campus", "Nombre Campus"
+            }
+        ));
+        Tabla_Campus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tabla_CampusMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(Tabla_Campus);
+
+        lbl_nombreCampus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_nombreCampus.setText("Nombre del Campus");
+
+        txt_NombreCampus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_NombreCampus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_NombreCampusActionPerformed(evt);
+            }
+        });
+        txt_NombreCampus.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_NombreCampusKeyTyped(evt);
+            }
+        });
+
+        txt_idCampus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_idCampus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_idCampusActionPerformed(evt);
+            }
+        });
+        txt_idCampus.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_idCampusKeyTyped(evt);
+            }
+        });
+
+        lbl_idCampus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_idCampus.setText("ID Campus");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_guardar)
+                    .addComponent(btn_actualizar)
                     .addComponent(btn_buscar)
                     .addComponent(btn_eliminar))
-                .addGap(86, 86, 86)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addComponent(lbl_titulo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_nombreCampus)
-                            .addComponent(lbl_idCampus))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(txt_idCampus, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(txt_NombreCampus, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lbl_nombreCampus)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txt_NombreCampus, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lbl_idCampus)
+                                .addGap(100, 100, 100)
+                                .addComponent(txt_idCampus, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(280, 280, 280))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(lbl_titulo)
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_idCampus)
-                            .addComponent(txt_idCampus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_nombreCampus)
-                            .addComponent(txt_NombreCampus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(40, 40, 40)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btn_guardar)
                         .addGap(18, 18, 18)
-                        .addComponent(btn_actualizar)
-                        .addGap(18, 18, 18)
+                        .addComponent(btn_actualizar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_idCampus)
+                            .addComponent(txt_idCampus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_nombreCampus)
+                            .addComponent(txt_NombreCampus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btn_buscar)
                         .addGap(18, 18, 18)
-                        .addComponent(btn_eliminar)))
-                .addContainerGap(81, Short.MAX_VALUE))
+                        .addComponent(btn_eliminar))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 880, 390));
+
+        jPanel2.setBackground(new java.awt.Color(232, 251, 249));
+
+        lbl_titulo.setBackground(new java.awt.Color(232, 251, 249));
+        lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lbl_titulo.setText("Campus");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(431, 431, 431)
+                .addComponent(lbl_titulo)
+                .addContainerGap(365, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_titulo)
+                .addGap(21, 21, 21))
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 880, 70));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 500));
+
+        jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        JMenuRegrear.setText("Regresar");
+
+        JMIEmpleados.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        JMIEmpleados.setText("Empleados");
+        JMIEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMIEmpleadosActionPerformed(evt);
+            }
+        });
+        JMenuRegrear.add(JMIEmpleados);
+
+        jMenuBar1.add(JMenuRegrear);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void JMIEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMIEmpleadosActionPerformed
+           Empleado empleados = null;
+        try {
+            empleados = new Empleado();
+        } catch (SQLException ex) {
+            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        empleados.setVisible(true);
+        this.dispose();
+
+    }//GEN-LAST:event_JMIEmpleadosActionPerformed
+
+    private void txt_idCampusKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_idCampusKeyTyped
+        if (txt_idCampus.getText().length() >= 4) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
+        }
+        if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127
+            || evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22
+            || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+            return;
+        }
+        char a = evt.getKeyChar();
+        if (!Character.isLetterOrDigit(a)) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Sólo letras y numeros");
+        }
+    }//GEN-LAST:event_txt_idCampusKeyTyped
+
+    private void txt_NombreCampusKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NombreCampusKeyTyped
+        if (txt_NombreCampus.getText().length() >= 35) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
+        }
+        if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127
+            || evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22
+            || evt.getKeyChar() == 32 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+            return;
+        }
+        char a = evt.getKeyChar();
+        if (Character.isDigit(a)) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Sólo letras");
+        }
+    }//GEN-LAST:event_txt_NombreCampusKeyTyped
+
+    private void txt_NombreCampusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NombreCampusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_NombreCampusActionPerformed
+
+    private void Tabla_CampusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_CampusMouseClicked
+        if (Tabla_Campus.getSelectedRow() >= 0) {
+            llenarCampos();
+        }
+    }//GEN-LAST:event_Tabla_CampusMouseClicked
+
+    private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
+        String nombreCampus = txt_NombreCampus.getText() + " " + txt_idCampus.getText();
+        if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de campus " + nombreCampus + "", "Confirmación de eliminación",
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
+        ) == JOptionPane.YES_OPTION) {
+
+            try {
+                Statement st2 = con.createStatement();
+                String sql = "Delete Campus "
+                + "where id_campus = (Select id_campus from Campus where nombre_campus = '"+txt_NombreCampus.getText()+"')";
+
+                int rs2 = st2.executeUpdate(sql);
+                System.out.println(rs2);
+                if(rs2 > 0){
+                    JOptionPane.showMessageDialog(null, "Se ha borrado la información del campus " + nombreCampus + " correctamente");
+
+                }else {
+                    JOptionPane.showMessageDialog(null, "¡Error al eliminar la información!");
+
+                }
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+
+            /* try{
+                PreparedStatement ps;
+                ResultSet rs;
+                ps=con.prepareStatement("Delete Campus "
+                    + "where nombre_campus = '"+var+"' ");
+                int res= ps.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Se ha borrado la información del empleado "+nombreCampus+" correctamente");
+                if(res > 0){
+                }else {
+                    JOptionPane.showMessageDialog(null, "¡Error al eliminar la información!");
+                }
+            } catch ( Exception e) {
+                System.out.println(e);
+            }*/
+            actualizarDatos();
+            LimpiarCajas();
+        }
+    }//GEN-LAST:event_btn_eliminarActionPerformed
+
+    private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
+
+        actualizarDatos();
+        LimpiarCajas();
+    }//GEN-LAST:event_btn_buscarActionPerformed
+
+    private void btn_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buscarMouseClicked
+        rellenar();
+    }//GEN-LAST:event_btn_buscarMouseClicked
+
+    private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
+        String nombreCampus = txt_NombreCampus.getText() + " ";
+
+        if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro del empleado " + nombreCampus + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
+        ) == JOptionPane.YES_OPTION) {
+            try {
+                PreparedStatement ps;
+                ResultSet rs;
+                ps = con.prepareStatement("Update Campus set"
+                    + " nombre_campus = ? ,"
+                    + "id_campus = ? "
+                    + " where id_campus =\'"+txt_idCampus.getText()+"\'");
+                /*ps.setString(1, txt_NombreCampus.getText());*/
+                ps.setString(1, txt_NombreCampus.getText());
+                ps.setString(2, txt_idCampus.getText());
+                int res = ps.executeUpdate();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+            actualizarDatos();
+            LimpiarCajas();
+        }
+
+    }//GEN-LAST:event_btn_actualizarActionPerformed
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
         String cadena1, cadena2;
@@ -282,7 +486,7 @@ public class Campus extends javax.swing.JFrame {
             PreparedStatement ps;
             ResultSet rs;
             ps = con.prepareStatement("INSERT INTO Campus (id_campus, nombre_campus)"
-                    + "                VALUES(?,?)");
+                + "                VALUES(?,?)");
             ps.setString(1, txt_idCampus.getText());
             ps.setString(2, txt_NombreCampus.getText());
             int res = ps.executeUpdate();
@@ -295,134 +499,9 @@ public class Campus extends javax.swing.JFrame {
         LimpiarCajas();
     }//GEN-LAST:event_btn_guardarActionPerformed
 
-    private void txt_NombreCampusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NombreCampusActionPerformed
+    private void txt_idCampusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idCampusActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_NombreCampusActionPerformed
-
-    private void txt_NombreCampusKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NombreCampusKeyTyped
-        if (txt_NombreCampus.getText().length() >= 35) {
-            evt.consume();
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
-        }
-        if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127
-                || evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22
-                || evt.getKeyChar() == 32 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
-            return;
-        }
-        char a = evt.getKeyChar();
-        if (Character.isDigit(a)) {
-            evt.consume();
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Sólo letras");
-        }
-    }//GEN-LAST:event_txt_NombreCampusKeyTyped
-
-    private void txt_idCampusKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_idCampusKeyTyped
-        if (txt_idCampus.getText().length() >= 4) {
-            evt.consume();
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
-        }
-        if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127
-                || evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22
-                || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
-            return;
-        }
-        char a = evt.getKeyChar();
-        if (!Character.isLetterOrDigit(a)) {
-            evt.consume();
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Sólo letras y numeros");
-        }
-
-    }//GEN-LAST:event_txt_idCampusKeyTyped
-
-    private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
-        String nombreCampus = txt_NombreCampus.getText() + " ";
-        
-        if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro del empleado " + nombreCampus + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
-        ) == JOptionPane.YES_OPTION) {
-            try {
-                PreparedStatement ps;
-                ResultSet rs;
-                ps = con.prepareStatement("Update Campus set"
-                        + " nombre_campus = ? ,"
-                        + "id_campus = ? "
-                        + " where id_campus =\'"+txt_idCampus.getText()+"\'");
-                /*ps.setString(1, txt_NombreCampus.getText());*/
-                ps.setString(1, txt_NombreCampus.getText());
-                ps.setString(2, txt_idCampus.getText());
-                int res = ps.executeUpdate();
-            } catch (Exception e) {
-                System.out.println(e);
-            }
-           actualizarDatos(); 
-           LimpiarCajas();
-        }
-        
-       
-    }//GEN-LAST:event_btn_actualizarActionPerformed
-
-    private void Tabla_CampusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_CampusMouseClicked
-        if (Tabla_Campus.getSelectedRow() >= 0) {
-            llenarCampos();
-        }
-    }//GEN-LAST:event_Tabla_CampusMouseClicked
-
-    private void btn_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buscarMouseClicked
-        rellenar();
-    }//GEN-LAST:event_btn_buscarMouseClicked
-
-    private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
-
-        actualizarDatos(); 
-        LimpiarCajas();
-    }//GEN-LAST:event_btn_buscarActionPerformed
-
-    private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        String nombreCampus = txt_NombreCampus.getText() + " " + txt_idCampus.getText();
-        if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de campus " + nombreCampus + "", "Confirmación de eliminación",
-                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
-        ) == JOptionPane.YES_OPTION) {
-            
-            try {
-                Statement st2 = con.createStatement();
-                String sql = "Delete Campus " 
-                        + "where id_campus = (Select id_campus from Campus where nombre_campus = '"+txt_NombreCampus.getText()+"')";
-                
-                int rs2 = st2.executeUpdate(sql);
-                System.out.println(rs2);
-                if(rs2 > 0){ 
-                    JOptionPane.showMessageDialog(null, "Se ha borrado la información del campus " + nombreCampus + " correctamente");
-
-                  }else {
-                      JOptionPane.showMessageDialog(null, "¡Error al eliminar la información!"); 
-                      
-                  }
-                
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getMessage());
-            }
-
-            /* try{
-          PreparedStatement ps;
-          ResultSet rs;
-          ps=con.prepareStatement("Delete Campus "
-                  + "where nombre_campus = '"+var+"' ");
-                  int res= ps.executeUpdate();
-                  JOptionPane.showMessageDialog(null, "Se ha borrado la información del empleado "+nombreCampus+" correctamente");
-                  if(res > 0){ 
-                  }else {
-                      JOptionPane.showMessageDialog(null, "¡Error al eliminar la información!"); 
-                  }
-      } catch ( Exception e) {
-            System.out.println(e);
-        }*/
-            actualizarDatos(); 
-            LimpiarCajas();
-        }
-    }//GEN-LAST:event_btn_eliminarActionPerformed
+    }//GEN-LAST:event_txt_idCampusActionPerformed
 
     public void actualizarDatos() {
         try {
@@ -495,11 +574,20 @@ public class Campus extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem JMIEmpleados;
+    private javax.swing.JMenu JMenuRegrear;
     private javax.swing.JTable Tabla_Campus;
     private javax.swing.JButton btn_actualizar;
     private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_guardar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_idCampus;
     private javax.swing.JLabel lbl_nombreCampus;

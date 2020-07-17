@@ -59,56 +59,28 @@ public class TipoUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbl_titulo = new javax.swing.JLabel();
-        lbl_idTipo = new javax.swing.JLabel();
-        lbl_TipoUsuario = new javax.swing.JLabel();
-        txt_idTipo = new javax.swing.JTextField();
-        txt_TipoUsuario = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Tabla_TipoUsuarios = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
         btn_guardar = new javax.swing.JButton();
         btn_actualizar = new javax.swing.JButton();
         btn_buscar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Tabla_TipoUsuarios = new javax.swing.JTable();
+        txt_TipoUsuario = new javax.swing.JTextField();
+        txt_idTipo = new javax.swing.JTextField();
+        lbl_idTipo = new javax.swing.JLabel();
+        lbl_TipoUsuario = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        lbl_titulo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         cbo_menuprincipal = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
-        lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lbl_titulo.setText("Tipo de Usuario");
-
-        lbl_idTipo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_idTipo.setText("Id Tipo de Usuario");
-
-        lbl_TipoUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_TipoUsuario.setText("Tipo de Usuario");
-
-        txt_idTipo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        txt_TipoUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_TipoUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_TipoUsuarioActionPerformed(evt);
-            }
-        });
-
-        Tabla_TipoUsuarios.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Id Tipo de Usuario", "Nombre del Tipo de Usuario"
-            }
-        ));
-        Tabla_TipoUsuarios.setToolTipText("Presiona consulta para ver todos los empleados");
-        Tabla_TipoUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Tabla_TipoUsuariosMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(Tabla_TipoUsuarios);
+        jPanel1.setBackground(new java.awt.Color(215, 236, 233));
 
         btn_guardar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Guardar.png"))); // NOI18N
@@ -156,10 +128,145 @@ public class TipoUsuario extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("File");
+        Tabla_TipoUsuarios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        cbo_menuprincipal.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-        cbo_menuprincipal.setText("Menu Principal");
+            },
+            new String [] {
+                "Id Tipo de Usuario", "Nombre del Tipo de Usuario"
+            }
+        ));
+        Tabla_TipoUsuarios.setToolTipText("Presiona consulta para ver todos los empleados");
+        Tabla_TipoUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tabla_TipoUsuariosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(Tabla_TipoUsuarios);
+
+        txt_TipoUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_TipoUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_TipoUsuarioActionPerformed(evt);
+            }
+        });
+
+        txt_idTipo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_idTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_idTipoActionPerformed(evt);
+            }
+        });
+
+        lbl_idTipo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_idTipo.setText("Id Tipo de Usuario");
+
+        lbl_TipoUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_TipoUsuario.setText("Tipo de Usuario");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(66, 66, 66)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_buscar)
+                            .addComponent(btn_eliminar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_actualizar)
+                            .addComponent(btn_guardar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(lbl_idTipo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lbl_TipoUsuario)
+                                .addGap(33, 33, 33)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_idTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_TipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)))
+                .addGap(26, 26, 26))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_guardar)
+                            .addComponent(lbl_idTipo))
+                        .addGap(17, 17, 17))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txt_idTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(16, 16, 16)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_TipoUsuario)
+                            .addComponent(txt_TipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btn_actualizar))
+                .addGap(11, 11, 11)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(57, 57, 57))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_buscar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_eliminar)
+                        .addContainerGap(85, Short.MAX_VALUE))))
+        );
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(90, 90, 700, 360);
+
+        jPanel2.setBackground(new java.awt.Color(232, 251, 249));
+
+        lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lbl_titulo.setText("Tipo de Usuario");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(273, Short.MAX_VALUE)
+                .addComponent(lbl_titulo)
+                .addGap(260, 260, 260))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addComponent(lbl_titulo)
+                .addContainerGap())
+        );
+
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(90, 30, 700, 60);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 840, 490);
+
+        jMenu1.setText("Regresar");
+
+        cbo_menuprincipal.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        cbo_menuprincipal.setText("Empleados");
         cbo_menuprincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbo_menuprincipalActionPerformed(evt);
@@ -170,65 +277,6 @@ public class TipoUsuario extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_TipoUsuario)
-                            .addComponent(lbl_idTipo))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(txt_TipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(txt_idTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(btn_guardar)
-                        .addGap(35, 35, 35)
-                        .addComponent(btn_actualizar)
-                        .addGap(44, 44, 44)
-                        .addComponent(btn_buscar)
-                        .addGap(42, 42, 42)
-                        .addComponent(btn_eliminar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(222, 222, 222)
-                        .addComponent(lbl_titulo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(196, 196, 196)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_titulo)
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_idTipo)
-                    .addComponent(txt_idTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_TipoUsuario)
-                    .addComponent(txt_TipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_guardar)
-                    .addComponent(btn_actualizar)
-                    .addComponent(btn_buscar)
-                    .addComponent(btn_eliminar))
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -353,14 +401,15 @@ this.txt_TipoUsuario.setText("");
     
     private void cbo_menuprincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_menuprincipalActionPerformed
  
-        this.dispose();
-        Principal pp;
+          this.dispose();
+        Empleado ee;
      try {
-         pp = new Principal();
-          pp.setVisible(true);
+         ee = new Empleado();
+          ee.setVisible(true);
      } catch (SQLException ex) {
          Logger.getLogger(TipoUsuario.class.getName()).log(Level.SEVERE, null, ex);
      }   
+    
     
     }//GEN-LAST:event_cbo_menuprincipalActionPerformed
 
@@ -536,6 +585,10 @@ this.txt_TipoUsuario.setText("");
         
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
+    private void txt_idTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_idTipoActionPerformed
+
     private void limpiar(){
         txt_idTipo.setText(null);
         txt_TipoUsuario.setText(null);
@@ -587,8 +640,11 @@ this.txt_TipoUsuario.setText("");
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_guardar;
     private javax.swing.JMenuItem cbo_menuprincipal;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_TipoUsuario;
     private javax.swing.JLabel lbl_idTipo;

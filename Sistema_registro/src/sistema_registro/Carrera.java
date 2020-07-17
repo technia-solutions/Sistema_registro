@@ -67,25 +67,31 @@ public class Carrera extends javax.swing.JFrame {
         txt_NombreCarrera = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_Carrera = new javax.swing.JTable();
-        lbl_titulo = new javax.swing.JLabel();
-        btn_guardar = new javax.swing.JButton();
-        btn_buscar = new javax.swing.JButton();
-        btn_eliminar = new javax.swing.JButton();
         lbl_facultad = new javax.swing.JLabel();
         cbo_idfacultad = new javax.swing.JComboBox<>();
-        btn_actualizar1 = new javax.swing.JButton();
         btn_AdmFacultades = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        btn_guardar = new javax.swing.JButton();
+        btn_actualizar1 = new javax.swing.JButton();
+        btn_buscar = new javax.swing.JButton();
+        btn_eliminar = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        lbl_titulo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        Regresar_Asignatura = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_idCarrera.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_idCarrera.setText("ID Carrera");
+        getContentPane().add(lbl_idCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 114, -1, -1));
 
         lbl_nombreCarrera.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_nombreCarrera.setText("Carrera");
+        getContentPane().add(lbl_nombreCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 173, -1, -1));
 
         txt_idCarrera.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_idCarrera.addActionListener(new java.awt.event.ActionListener() {
@@ -98,6 +104,7 @@ public class Carrera extends javax.swing.JFrame {
                 txt_idCarreraKeyTyped(evt);
             }
         });
+        getContentPane().add(txt_idCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(457, 111, 278, -1));
 
         txt_NombreCarrera.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_NombreCarrera.addActionListener(new java.awt.event.ActionListener() {
@@ -110,6 +117,7 @@ public class Carrera extends javax.swing.JFrame {
                 txt_NombreCarreraKeyTyped(evt);
             }
         });
+        getContentPane().add(txt_NombreCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 170, 280, -1));
 
         Tabla_Carrera.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -126,8 +134,25 @@ public class Carrera extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Tabla_Carrera);
 
-        lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lbl_titulo.setText("Carrera");
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 360, 870, 110));
+
+        lbl_facultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_facultad.setText("Facultad");
+        getContentPane().add(lbl_facultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 220, -1, -1));
+
+        cbo_idfacultad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una facultad" }));
+        getContentPane().add(cbo_idfacultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 223, 280, 22));
+
+        btn_AdmFacultades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
+        btn_AdmFacultades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_AdmFacultadesActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_AdmFacultades, new org.netbeans.lib.awtextra.AbsoluteConstraints(753, 220, -1, 25));
+
+        jPanel1.setBackground(new java.awt.Color(215, 236, 233));
+        jPanel1.setLayout(null);
 
         btn_guardar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Guardar.png"))); // NOI18N
@@ -137,6 +162,19 @@ public class Carrera extends javax.swing.JFrame {
                 btn_guardarActionPerformed(evt);
             }
         });
+        jPanel1.add(btn_guardar);
+        btn_guardar.setBounds(25, 11, 159, 41);
+
+        btn_actualizar1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_actualizar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
+        btn_actualizar1.setText("Actualizar");
+        btn_actualizar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_actualizar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_actualizar1);
+        btn_actualizar1.setBounds(25, 70, 159, 41);
 
         btn_buscar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Consulta.png"))); // NOI18N
@@ -151,6 +189,8 @@ public class Carrera extends javax.swing.JFrame {
                 btn_buscarActionPerformed(evt);
             }
         });
+        jPanel1.add(btn_buscar);
+        btn_buscar.setBounds(25, 129, 159, 41);
 
         btn_eliminar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Eliminar.png"))); // NOI18N
@@ -160,114 +200,53 @@ public class Carrera extends javax.swing.JFrame {
                 btn_eliminarActionPerformed(evt);
             }
         });
+        jPanel1.add(btn_eliminar);
+        btn_eliminar.setBounds(25, 188, 159, 41);
 
-        lbl_facultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_facultad.setText("Facultad");
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 870, 250));
 
-        cbo_idfacultad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una facultad" }));
+        jPanel2.setBackground(new java.awt.Color(232, 251, 249));
 
-        btn_actualizar1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_actualizar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
-        btn_actualizar1.setText("Actualizar");
-        btn_actualizar1.addActionListener(new java.awt.event.ActionListener() {
+        lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lbl_titulo.setText("Carrera");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(417, Short.MAX_VALUE)
+                .addComponent(lbl_titulo)
+                .addGap(373, 373, 373))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(lbl_titulo)
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 870, 70));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 480));
+
+        jMenu1.setText("Regresar");
+
+        Regresar_Asignatura.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        Regresar_Asignatura.setText("Asignaturas");
+        Regresar_Asignatura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_actualizar1ActionPerformed(evt);
+                Regresar_AsignaturaActionPerformed(evt);
             }
         });
+        jMenu1.add(Regresar_Asignatura);
 
-        btn_AdmFacultades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
-        btn_AdmFacultades.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_AdmFacultadesActionPerformed(evt);
-            }
-        });
-
-        jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_actualizar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_guardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_nombreCarrera)
-                            .addComponent(lbl_idCarrera)
-                            .addComponent(lbl_facultad))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(cbo_idfacultad, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_NombreCarrera, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_idCarrera, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_AdmFacultades)
-                        .addGap(76, 76, 76))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(93, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_titulo)
-                .addGap(381, 381, 381))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(lbl_titulo)
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_idCarrera)
-                            .addComponent(txt_idCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(123, 123, 123)
-                        .addComponent(btn_guardar)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_nombreCarrera)
-                            .addComponent(txt_NombreCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_facultad)
-                            .addComponent(cbo_idfacultad, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_AdmFacultades, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_actualizar1)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_buscar)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_eliminar)))
-                .addContainerGap(53, Short.MAX_VALUE))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -449,6 +428,18 @@ public class Carrera extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btn_AdmFacultadesActionPerformed
 
+    private void Regresar_AsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Regresar_AsignaturaActionPerformed
+        
+         this.dispose();
+        Asignaturas aa = new Asignaturas();
+        aa.setVisible(true);
+        
+    
+
+
+        
+    }//GEN-LAST:event_Regresar_AsignaturaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -489,6 +480,7 @@ public class Carrera extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Regresar_Asignatura;
     private javax.swing.JTable Tabla_Carrera;
     private javax.swing.JButton btn_AdmFacultades;
     private javax.swing.JButton btn_actualizar1;
@@ -496,9 +488,11 @@ public class Carrera extends javax.swing.JFrame {
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_guardar;
     private javax.swing.JComboBox<String> cbo_idfacultad;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_facultad;
     private javax.swing.JLabel lbl_idCarrera;
