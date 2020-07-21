@@ -29,7 +29,7 @@ import sistema_registro.SQL.ConectorSQL;
 public class Asignaturas extends javax.swing.JFrame {
 
 Connection con = null;
-    String titulos [] = {"Codigo de Asignatura", "Nombre de la Asignatura", "Unidades Valorativas", "Id Carrera"};
+    String titulos [] = {"Codigo de Asignatura", "Nombre de la Asignatura", "Unidades Valorativas", "Id Carrera", "Requisito1", "Requisito2"};
    
     DefaultTableModel modelo =  new DefaultTableModel();
     Statement stmt = null;
@@ -59,24 +59,29 @@ Connection con = null;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbl_codA = new javax.swing.JLabel();
-        lbl_NombreA = new javax.swing.JLabel();
-        lbl_UniVal = new javax.swing.JLabel();
-        lbl_IdCarrera = new javax.swing.JLabel();
-        txt_codA = new javax.swing.JTextField();
-        txt_NombreA = new javax.swing.JTextField();
-        txt_UniVal = new javax.swing.JTextField();
-        btn_guardar = new javax.swing.JButton();
-        btn_actualizar = new javax.swing.JButton();
-        btn_buscar = new javax.swing.JButton();
-        cbo_IdCarrera = new javax.swing.JComboBox<>();
-        btn_eliminar1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_RegistroAsignatura = new javax.swing.JTable();
-        btn_AdmCarrera = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        btn_AdmCarrera = new javax.swing.JButton();
+        lbl_UniVal = new javax.swing.JLabel();
+        lbl_IdCarrera = new javax.swing.JLabel();
+        cbo_Req1 = new javax.swing.JComboBox<>();
+        cbo_Req2 = new javax.swing.JComboBox<>();
+        lbl_Req1 = new javax.swing.JLabel();
+        lbl_Req2 = new javax.swing.JLabel();
+        cbo_IdCarrera = new javax.swing.JComboBox<>();
+        txt_UniVal = new javax.swing.JTextField();
+        txt_NombreA = new javax.swing.JTextField();
+        txt_codA = new javax.swing.JTextField();
+        lbl_NombreA = new javax.swing.JLabel();
+        lbl_codA = new javax.swing.JLabel();
+        btn_buscar = new javax.swing.JButton();
+        btn_eliminar1 = new javax.swing.JButton();
+        btn_actualizar = new javax.swing.JButton();
+        btn_guardar = new javax.swing.JButton();
+        btn_requisitos = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -85,92 +90,22 @@ Connection con = null;
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_codA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_codA.setText("Codigo de la Asignatura");
-        getContentPane().add(lbl_codA, new org.netbeans.lib.awtextra.AbsoluteConstraints(443, 139, -1, -1));
-
-        lbl_NombreA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_NombreA.setText("Nombre de la Asigntura");
-        getContentPane().add(lbl_NombreA, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 193, -1, -1));
-
-        lbl_UniVal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_UniVal.setText("Unidad Valorativa");
-        getContentPane().add(lbl_UniVal, new org.netbeans.lib.awtextra.AbsoluteConstraints(447, 254, -1, -1));
-
-        lbl_IdCarrera.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_IdCarrera.setText("Carrera");
-        getContentPane().add(lbl_IdCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(447, 322, -1, -1));
-
-        txt_codA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_codA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_codAActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txt_codA, new org.netbeans.lib.awtextra.AbsoluteConstraints(671, 130, 183, -1));
-
-        txt_NombreA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        getContentPane().add(txt_NombreA, new org.netbeans.lib.awtextra.AbsoluteConstraints(671, 190, 183, -1));
-
-        txt_UniVal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        getContentPane().add(txt_UniVal, new org.netbeans.lib.awtextra.AbsoluteConstraints(671, 254, 183, -1));
-
-        btn_guardar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Guardar.png"))); // NOI18N
-        btn_guardar.setText("Guardar");
-        btn_guardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_guardarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 130, -1, -1));
-
-        btn_actualizar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
-        btn_actualizar.setText("Actualizar");
-        btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_actualizarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 193, -1, -1));
-
-        btn_buscar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Consulta.png"))); // NOI18N
-        btn_buscar.setText("Buscar");
-        btn_buscar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_buscarMouseClicked(evt);
-            }
-        });
-        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_buscarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 313, 151, -1));
-
-        cbo_IdCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una carrera" }));
-        getContentPane().add(cbo_IdCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(671, 318, 183, 45));
-
-        btn_eliminar1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_eliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Eliminar.png"))); // NOI18N
-        btn_eliminar1.setText("Eliminar");
-        btn_eliminar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_eliminar1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_eliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 252, 151, -1));
-
         Tabla_RegistroAsignatura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Código Asinatura", "Asignatura", "UV", "Id Carrera"
+                "Código Asinatura", "Asignatura", "UV", "Id Carrera", "Requisito 1", "Requisito 2"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         Tabla_RegistroAsignatura.setToolTipText("Presiona consulta para ver todas las asignaturas\n");
         Tabla_RegistroAsignatura.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -179,15 +114,7 @@ Connection con = null;
         });
         jScrollPane1.setViewportView(Tabla_RegistroAsignatura);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 430, 860, 106));
-
-        btn_AdmCarrera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
-        btn_AdmCarrera.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_AdmCarreraActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_AdmCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(753, 220, -1, 25));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 590, 840, 106));
 
         jPanel1.setBackground(new java.awt.Color(232, 251, 249));
 
@@ -215,22 +142,203 @@ Connection con = null;
 
         jPanel2.setBackground(new java.awt.Color(215, 236, 233));
 
+        btn_AdmCarrera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
+        btn_AdmCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_AdmCarreraActionPerformed(evt);
+            }
+        });
+
+        lbl_UniVal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_UniVal.setText("Unidad Valorativa");
+
+        lbl_IdCarrera.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_IdCarrera.setText("Carrera");
+
+        cbo_Req1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione la asignatura1:" }));
+        cbo_Req1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbo_Req1ActionPerformed(evt);
+            }
+        });
+
+        cbo_Req2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione la asignatura2:" }));
+        cbo_Req2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbo_Req2ActionPerformed(evt);
+            }
+        });
+
+        lbl_Req1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_Req1.setText("Requisito 1:");
+
+        lbl_Req2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_Req2.setText("Requisito 2:");
+
+        cbo_IdCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una carrera" }));
+
+        txt_UniVal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        txt_NombreA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        txt_codA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_codA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_codAActionPerformed(evt);
+            }
+        });
+
+        lbl_NombreA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_NombreA.setText("Nombre de la Asigntura");
+
+        lbl_codA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_codA.setText("Codigo de la Asignatura");
+
+        btn_buscar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Consulta.png"))); // NOI18N
+        btn_buscar.setText("Buscar");
+        btn_buscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_buscarMouseClicked(evt);
+            }
+        });
+        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscarActionPerformed(evt);
+            }
+        });
+
+        btn_eliminar1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_eliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Eliminar.png"))); // NOI18N
+        btn_eliminar1.setText("Eliminar");
+        btn_eliminar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminar1ActionPerformed(evt);
+            }
+        });
+
+        btn_actualizar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
+        btn_actualizar.setText("Actualizar");
+        btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_actualizarActionPerformed(evt);
+            }
+        });
+
+        btn_guardar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Guardar.png"))); // NOI18N
+        btn_guardar.setText("Guardar");
+        btn_guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardarActionPerformed(evt);
+            }
+        });
+
+        btn_requisitos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_requisitos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Eliminar.png"))); // NOI18N
+        btn_requisitos.setText("Requisitos");
+        btn_requisitos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_requisitosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 840, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_actualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_guardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_eliminar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_requisitos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(103, 103, 103)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_UniVal)
+                            .addComponent(lbl_NombreA)
+                            .addComponent(lbl_codA))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_codA, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
+                            .addComponent(txt_NombreA)
+                            .addComponent(txt_UniVal))
+                        .addGap(119, 119, 119))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(lbl_IdCarrera)
+                        .addGap(156, 156, 156)
+                        .addComponent(cbo_IdCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                        .addComponent(btn_AdmCarrera)
+                        .addContainerGap())
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(lbl_Req1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cbo_Req1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(lbl_Req2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cbo_Req2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(96, 96, 96))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 330, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_codA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_codA))
+                .addGap(26, 26, 26)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_NombreA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_NombreA)
+                    .addComponent(btn_guardar))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_UniVal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_UniVal))
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lbl_IdCarrera)
+                                .addComponent(cbo_IdCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btn_AdmCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24)
+                        .addComponent(cbo_Req1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(cbo_Req2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btn_actualizar)
+                        .addGap(36, 36, 36)
+                        .addComponent(btn_eliminar1)
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(lbl_Req1)
+                                .addGap(49, 49, 49))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(btn_buscar)
+                                .addGap(15, 15, 15)))
+                        .addComponent(lbl_Req2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_requisitos)
+                .addContainerGap())
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, -1, -1));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 840, 470));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -1, 1140, 670));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -1, 1240, 740));
 
         jMenu1.setText("Regresar");
 
@@ -261,7 +369,8 @@ Connection con = null;
         )==JOptionPane.YES_OPTION){
 
              String id_carrera = cbo_IdCarrera.getSelectedItem().toString().substring(0, 4);
-    
+             String requisito1= cbo_Req1.getSelectedItem().toString().substring(0,5);
+              String requisito2= cbo_Req2.getSelectedItem().toString().substring(0,6);
       
             
             try{
@@ -272,6 +381,8 @@ Connection con = null;
                     + "nombre_asignaturas = ? ,"
                         + "UV = ? ,"
                         + "id_carrera = ? "
+                         + "requisito1 = ? "
+                         + "requisito2 = ? "
                         
                     + " where cod_asignaturas =\'"+txt_codA.getText()+"\'"
                           + "or nombre_asignaturas = '"+var+"' ");
@@ -280,11 +391,14 @@ Connection con = null;
                 ps.setString(2, txt_NombreA.getText());
                  ps.setString(3, txt_UniVal.getText());
                   ps.setString(4, id_carrera);
+                  ps.setString(5, requisito1);
+                  ps.setString(6, requisito2);
+                  
                  
                 int res= ps.executeUpdate();
             } catch ( Exception e) {
                 System.out.println(e);
-            } try{
+            } /*try{
              Statement st2=con.createStatement();
             
               String sql ="Update Asignaturas "
@@ -292,25 +406,29 @@ Connection con = null;
                        + "set nombre_asignaturas = '"+txt_NombreA.getText()+"'"
                     + "set UV = '"+txt_UniVal.getText()+"'"
                       + "where cod_asignaturas = (Select cod_asignaturas from Asignaturas where nombre_asignaturas = '"+txt_NombreA.getText()+"')";
-               int rs2 = st2.executeUpdate(sql);
+              int rs2 = st2.executeUpdate(sql);           
               JOptionPane.showMessageDialog(null, "Se ha actualizado la información del registro de asignatura "+txt_NombreA+" correctamente.");
           }catch ( Exception e) {
            JOptionPane.showMessageDialog(null, e.getMessage()); 
-        }
+        }*/
         }
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
         
-        String cadena1, cadena2, cadena3, cadena4;
+        String cadena1, cadena2, cadena3, cadena4, cadena5, cadena6;
         cadena1 = txt_codA.getText();
         cadena2 = txt_NombreA.getText();
         cadena3 = txt_UniVal.getText();
         String id_carrera = cbo_IdCarrera.getSelectedItem().toString().substring(0, 4);
+         String requisito1= cbo_Req1.getSelectedItem().toString().substring(0,5);
+              String requisito2= cbo_Req2.getSelectedItem().toString().substring(0,6);
   
 
         if ((txt_codA.getText().equals("")) || (txt_NombreA.getText().equals(""))  || (txt_UniVal.getText().equals(""))  
-                ||  (cbo_IdCarrera.getSelectedItem().equals("Seleccione un carrera")) ) {
+                ||  (cbo_IdCarrera.getSelectedItem().equals("Seleccione un carrera")) 
+               //||  (cbo_Req1.getSelectedItem().equals("Seleccione un asignatura")) 
+                ) {
 
             javax.swing.JOptionPane.showMessageDialog(this,"¡Debe llenar todos los campos! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_codA.requestFocus();
@@ -342,12 +460,14 @@ Connection con = null;
             PreparedStatement ps;
             ResultSet rs;
 
-            ps=con.prepareStatement("Insert into Asignaturas (cod_asignaturas, nombre_asignaturas, UV, id_carrera )"
+            ps=con.prepareStatement("Insert into Asignaturas (cod_asignaturas, nombre_asignaturas, UV, id_carrera, requisito1, requisito2 )"
                 + "                VALUES(?,?,?,?)");
             ps.setString(1, txt_codA.getText());
             ps.setString(2, txt_NombreA.getText());
             ps.setString(3, txt_UniVal.getText());
             ps.setString(4, id_carrera);
+            ps.setString(5, requisito1);
+            ps.setString(6, requisito2);
             int res= ps.executeUpdate(); 
             JOptionPane.showMessageDialog(null, "Se ha guardado la información en Registro de Asignatura");
              } catch ( Exception e) {
@@ -427,6 +547,27 @@ Connection con = null;
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void cbo_Req2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_Req2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbo_Req2ActionPerformed
+
+    private void cbo_Req1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_Req1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbo_Req1ActionPerformed
+
+    private void btn_requisitosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_requisitosActionPerformed
+        
+        this.dispose();
+        RequisitosAsignaturas req = null;
+    try {
+        req = new RequisitosAsignaturas();
+    } catch (SQLException ex) {
+        Logger.getLogger(Asignaturas.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        req.setVisible(true);
+        
+    }//GEN-LAST:event_btn_requisitosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -473,7 +614,10 @@ Connection con = null;
     private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_eliminar1;
     private javax.swing.JButton btn_guardar;
+    private javax.swing.JButton btn_requisitos;
     private javax.swing.JComboBox<String> cbo_IdCarrera;
+    private javax.swing.JComboBox<String> cbo_Req1;
+    private javax.swing.JComboBox<String> cbo_Req2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
@@ -484,6 +628,8 @@ Connection con = null;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_IdCarrera;
     private javax.swing.JLabel lbl_NombreA;
+    private javax.swing.JLabel lbl_Req1;
+    private javax.swing.JLabel lbl_Req2;
     private javax.swing.JLabel lbl_UniVal;
     private javax.swing.JLabel lbl_codA;
     private javax.swing.JTextField txt_NombreA;
@@ -530,11 +676,13 @@ public boolean existeAsignatura(){
                Tabla_RegistroAsignatura.setModel(modelo);
                  while(rs.next()) {
                      
-                          String []datos= new String[4];
+                          String []datos= new String[5];
                       datos[0] =rs.getString("cod_asignaturas");
                       datos[1] =rs.getString("nombre_asignaturas");
                       datos[2] =rs.getString("UV");
                       datos[3] =rs.getString("id_carrera");
+                      datos[4] =rs.getString("requisito1");
+                      datos[5] =rs.getString("requisito2");
                       
                      modelo.addRow(datos);
                       
@@ -548,6 +696,10 @@ public boolean existeAsignatura(){
             UV.setMaxWidth(125);            
             TableColumn idC= Tabla_RegistroAsignatura.getColumn(titulos[3]);
            idC.setMaxWidth(165);
+           TableColumn req1C= Tabla_RegistroAsignatura.getColumn(titulos[4]);
+           req1C.setMaxWidth(165);
+            TableColumn req2C= Tabla_RegistroAsignatura.getColumn(titulos[5]);
+           req2C.setMaxWidth(165);
         }
         catch (Exception e) {
            
@@ -565,8 +717,7 @@ public boolean existeAsignatura(){
          }
      
     }
-        
-     
+             
     
        private void llenarCampos(){
         int i = Tabla_RegistroAsignatura.getSelectedRow();
@@ -574,7 +725,9 @@ public boolean existeAsignatura(){
         txt_NombreA.setText(Tabla_RegistroAsignatura.getValueAt(i, 1).toString());
         txt_UniVal.setText(Tabla_RegistroAsignatura.getValueAt(i, 2).toString());
          cbo_IdCarrera.setSelectedItem(Tabla_RegistroAsignatura.getValueAt(i, 3).toString());
-         
+         cbo_Req1.setSelectedItem(Tabla_RegistroAsignatura.getValueAt(i, 4).toString());
+         cbo_Req2.setSelectedItem(Tabla_RegistroAsignatura.getValueAt(i, 5).toString());
+                      
     }
     
         private void rellenar() {
@@ -602,8 +755,9 @@ public boolean existeAsignatura(){
                             rs2 = stmt.executeQuery(sql);
 
                             if (rs2.next()) {
-                                txt_codA.setText(rs2.getString("idTipo"));
-                                txt_NombreA.setText(rs2.getString("TipoUsuario"));
+                            
+                                 txt_codA.setText(rs2.getString("cod_asignaturas"));
+                                txt_NombreA.setText(rs2.getString("nombre_asignaturas"));
 
                             } else {
                                 JOptionPane.showMessageDialog(null, "¡No se encuentra los datos de la asignatura ! Por favor verifique sí, lo escribio correctamente");
