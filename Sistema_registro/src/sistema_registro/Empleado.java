@@ -18,6 +18,8 @@ import sistema_registro.SQL.ConectorSQL;
 import codigo.Conexion_consulta;
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -74,6 +76,8 @@ public class Empleado extends javax.swing.JFrame {
             this.setLocationRelativeTo(null);
             this.setTitle("Empleados");
             this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+            this.btn_Actualizar.setEnabled(false);
+            this.btn_Eliminar.setEnabled(false);
     } 
     
     public Empleado(String nombreUsuario) throws SQLException {
@@ -94,6 +98,8 @@ public class Empleado extends javax.swing.JFrame {
         this.lbl_usuario.setText(usuario);
         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
         this.setLocationRelativeTo(null);
+        this.btn_Actualizar.setEnabled(false);
+        this.btn_Eliminar.setEnabled(false);
     } 
     
     /**
@@ -486,6 +492,11 @@ this.cbo_tipoUsuario.setSelectedItem("");
         lbl_telefono.setBounds(360, 210, 69, 22);
 
         txt_Telefono.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_Telefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_TelefonoActionPerformed(evt);
+            }
+        });
         txt_Telefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_TelefonoKeyTyped(evt);
@@ -514,6 +525,11 @@ this.cbo_tipoUsuario.setSelectedItem("");
         lbl_nombreUsuario.setBounds(710, 80, 152, 22);
 
         txt_NombreUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_NombreUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_NombreUsuarioActionPerformed(evt);
+            }
+        });
         txt_NombreUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_NombreUsuarioKeyTyped(evt);
@@ -803,6 +819,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         }
          
          if(!validarLongitud(txt_Salario,4)){
+             
             JOptionPane.showMessageDialog(null, "El salario debe ser de mínimo 4 dígitos", "Longitud del salario", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
@@ -851,7 +868,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
                  estadoDelUsuario = "Activo";
             }
             
-            String sql ="Insert into Acceso(nombre_usuario,clave_acceso,id_tipoUsuario,estado) values('"+txt_NombreUsuario.getText()+"','"+contraseña+"','"+tipoUsuario+"','"+estadoDelUsuario+"')";
+            String sql ="Insert into Acceso(nombre_usuario,clave_acceso,id_tipoUsuario,estado,intentos) values('"+txt_NombreUsuario.getText()+"','"+contraseña+"','"+tipoUsuario+"','"+estadoDelUsuario+"',0)";
             int rs2 = st2.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Se ha guardado la informacion del empleado "+nombreEmpleado+" correctamente");
           }catch ( Exception e) {
@@ -886,15 +903,43 @@ this.cbo_tipoUsuario.setSelectedItem("");
        return false;
     }
     
+    private boolean validarLongitudSalario(JTextField texto, int longitud){
+       if(texto.getText().length() == longitud){
+                Pattern pattern = Pattern.compile("[123456789]");
+                Matcher matcher=pattern.matcher(texto.getText().substring(0,1));
+                if(matcher.matches()){ 
+                        return true;
+                    }else{
+                        JOptionPane.showMessageDialog(null, "El salario no puede comenzar con 0");
+                        return false;
+                    } 
+       }
+        else{
+       }
+       JOptionPane.showMessageDialog(null, "El salario debe ser de mínimo 4 dígitos", "Longitud del salario", JOptionPane.INFORMATION_MESSAGE);
+       return false;
+    }
   
-    
     private void txt_NombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NombreKeyTyped
        char a=evt.getKeyChar();
+   
             if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
                  evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
-                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24 || evt.getKeyChar() == 32) {
+                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
         return;
         }
+         if(evt.getKeyChar() == 32){
+             if(txt_Nombre.getText().length() == 0){
+                 evt.consume();
+                 Toolkit.getDefaultToolkit().beep();
+                 return;
+             }
+             if(txt_Nombre.getText().substring(txt_Nombre.getText().length() - 1).equals(" ")){
+                 evt.consume();
+                 Toolkit.getDefaultToolkit().beep();
+             }
+             return; 
+         }
         if(txt_Nombre.getText().length() >=100){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
@@ -912,9 +957,23 @@ this.cbo_tipoUsuario.setSelectedItem("");
         char a=evt.getKeyChar();
             if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
                  evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
-                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24 || evt.getKeyChar() == 32) {
+                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
         return;
         }
+        if(evt.getKeyChar() == 32){
+             if(txt_Apellido.getText().length() == 0){
+                 evt.consume();
+                 Toolkit.getDefaultToolkit().beep();
+                 return;
+             }
+             if(txt_Apellido.getText().substring(txt_Apellido.getText().length() - 1).equals(" ")){
+                 evt.consume();
+                 Toolkit.getDefaultToolkit().beep();
+             }
+             return; 
+         }
+            
+            
         if(txt_Apellido.getText().length() >=100){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
@@ -954,7 +1013,8 @@ this.cbo_tipoUsuario.setSelectedItem("");
                  evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
                  || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
         return;
-        }
+            }
+       
         if(txt_Salario.getText().length() >=8){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
@@ -977,35 +1037,29 @@ this.cbo_tipoUsuario.setSelectedItem("");
 
     public void actualizarDatos(){
         try {
-               String sql = "select * from Empleados as e join Acceso as a on e.id_empleado = a.id_empleado join \n" +
-                "Campus as c on c.id_campus = e.id_campus";
+               String sql = "select * from Empleados as e join Acceso as a on e.id_empleado = a.id_empleado join\n" +
+"                Campus as c on c.id_campus = e.id_campus join \n" +
+"               Tipo_Usuarios as t on a.id_tipoUsuario =  t.id_tipoUsuario";
                stmt = con.createStatement();
                ResultSet rs = stmt.executeQuery(sql);
                
                modelo = new DefaultTableModel(null,titulos);
                Tabla_Empleados.setModel(modelo);
+               Locale locale = new Locale("es", "HN");      
+               NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
+               NumberFormat formatter = NumberFormat.getCurrencyInstance();
                  while(rs.next()) {
-                   
+                      JOptionPane.showMessageDialog(null, currencyFormatter.format(rs.getDouble("salario")));
                       String []datos= new String[9];
                       datos[0] =rs.getString("id_empleado");
                       datos[1] =rs.getString("nombres_empleado");
                       datos[2] =rs.getString("apellido_empleado");
-                      datos[3] =rs.getString("salario");
+                      datos[3] =currencyFormatter.format(rs.getDouble("salario"));
                       datos[4] =rs.getString("telefono_empleado");
                       datos[5] =rs.getString("numero_identidad");
                       datos[6] =rs.getString("id_campus") + " - " + rs.getString("nombre_campus");
                       datos[7] =rs.getString("nombre_usuario");
-                      
-                      if(rs.getString(10).equals("A")){
-                          datos[8] = "Administrador";
-                      }
-                      else if(rs.getString(10).equals("E")){
-                          datos[8] = "Empleado";
-                      }
-                      else if(rs.getString(10).equals("S")){
-                          datos[8] = "Supervisor";
-                      }
-                      
+                      datos[8] = rs.getString("Tipo_Usuario");
                      // datos[8] =rs.getString(10);
                       modelo.addRow(datos);
                       
@@ -1140,11 +1194,12 @@ this.cbo_tipoUsuario.setSelectedItem("");
                             JOptionPane.showMessageDialog(this,"Favor de ingresar los datos del empleado\n que desea consultar","¡AVISO!",JOptionPane.INFORMATION_MESSAGE);
                         }
                         else{
-                            String sql = "select * from Empleados as e join Acceso as a on e.id_empleado = a.id_empleado join \n" +
-                                    "Campus as c on c.id_campus = e.id_campus where numero_identidad = '"+var+"' or nombres_empleado = '"+var+"' or apellido_empleado = '"+var+"'";
+                            String sql = "select * from Empleados as e join Acceso as a on e.id_empleado = a.id_empleado join\n" +
+"                Campus as c on c.id_campus = e.id_campus join \n" +
+"               Tipo_Usuarios as t on a.id_tipoUsuario =  t.id_tipoUsuario where numero_identidad = '"+var+"' or nombres_empleado = '"+var+"' or apellido_empleado = '"+var+"'";
                             stmt = con.createStatement();
                             rs2 = stmt.executeQuery(sql);
-                           
+                        
                             if(rs2.next()) {
                                 txt_Nombre.setText(rs2.getString("nombres_empleado"));
                                 txt_Apellido.setText(rs2.getString("apellido_empleado"));
@@ -1153,20 +1208,9 @@ this.cbo_tipoUsuario.setSelectedItem("");
                                 txt_Identidad.setText(rs2.getString("numero_identidad"));
                                 cbo_idCampus.setSelectedItem((rs2.getString("id_campus") + " - " + rs2.getString("nombre_campus")));
                                 txt_NombreUsuario.setText(rs2.getString("nombre_usuario"));
-                                
-                                switch (rs2.getString("id_tipoUsuario")) {
-                                    case "A":
-                                        cbo_tipoUsuario.setSelectedItem("Administrador");
-                                        break;
-                                    case "E":
-                                        cbo_tipoUsuario.setSelectedItem("Empleado");
-                                        break;
-                                    case "S":
-                                        cbo_tipoUsuario.setSelectedItem("Supervisor");
-                                        break;
-                                    default:
-                                        break;
-                                }
+                                cbo_tipoUsuario.setSelectedItem(rs2.getString("Tipo_Usuario"));   
+                                this.btn_Actualizar.setEnabled(true);
+                                  this.btn_Eliminar.setEnabled(true);
                             }
                             else{
                                JOptionPane.showMessageDialog(null,"¡No se encuentra el empleado! Por favor verifique sí, lo escribio correctamente");
@@ -1390,7 +1434,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
                  || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
         return;
             }
-        if(txt_NombreUsuario.getText().length() >=25){
+        if(pwd_contraseña.getText().length() >=25){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
@@ -1409,6 +1453,8 @@ this.cbo_tipoUsuario.setSelectedItem("");
     private void Tabla_EmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_EmpleadosMouseClicked
         if(Tabla_Empleados.getSelectedRow() >= 0){
             llenarCampos();
+            this.btn_Actualizar.setEnabled(true);
+            this.btn_Eliminar.setEnabled(true);
         }
     }//GEN-LAST:event_Tabla_EmpleadosMouseClicked
 
@@ -1445,8 +1491,9 @@ this.cbo_tipoUsuario.setSelectedItem("");
                 else{
                     try {
                         String sql = "update Acceso \n" +
-                                     "set estado ='Activo'\n" +
-                                     "where nombre_usuario ='"+var+"'";
+                                     "set estado ='Activo',\n" +
+                                     "intentos = 0"
+                                     +"where nombre_usuario ='"+var+"'";
                     stmt = con.createStatement();
                     int rs = stmt.executeUpdate(sql);
                     if(rs >0){
@@ -1460,6 +1507,14 @@ this.cbo_tipoUsuario.setSelectedItem("");
                     }
                 }
     }//GEN-LAST:event_btn_desbloquearActionPerformed
+
+    private void txt_TelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_TelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_TelefonoActionPerformed
+
+    private void txt_NombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NombreUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_NombreUsuarioActionPerformed
 
    
     /**

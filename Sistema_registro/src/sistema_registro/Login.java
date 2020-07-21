@@ -18,7 +18,7 @@ import sistema_registro.SQL.ConectorSQL;
  */
 public class Login extends javax.swing.JFrame {
     Connection con;
-    int intentos = 3;
+    int intentos = 2;
     /**
      * Creates new form Sistema_registro2
      */
@@ -224,6 +224,11 @@ public class Login extends javax.swing.JFrame {
                 Statement st2 = con.createStatement();
                 ResultSet rs2 = st2.executeQuery(sql2);
                         if(rs2.next()){
+                        String consul = "update Acceso \n" +
+                                        "set intentos = 0\n" +
+                                        "where nombre_usuario = '"+txt_usuario.getText()+"'";
+                        Statement ss = con.createStatement();
+                        int actualizarIntentos = ss.executeUpdate(consul);
                         Principal principal = new Principal(usuario,rs2.getString(1));
                         principal.setVisible(true); 
                         this.dispose();
@@ -239,8 +244,13 @@ public class Login extends javax.swing.JFrame {
                             if(!rs3.getString("estado").equals("Administrador")){
                                 if(rs3.getString("nombre_usuario").equals(usuario)){
                                     getToolkit().beep();
-                                    intentos--;
-                                    if(intentos == 0){
+                                    int in = Integer.parseInt(rs3.getString("intentos")) + 1 ;
+                                    String sql4 = "update Acceso \n" +
+                                                  "set intentos = '"+in+"'\n" +
+                                                  "where nombre_usuario = '"+usuario+"' ";
+                                    Statement st4 = con.createStatement();
+                                    int rs4 = st4.executeUpdate(sql4);
+                                    if(rs3.getString("intentos").equals("2")){
                                         Statement st2 = con.createStatement();
                                         String sql2 = "Update Acceso set estado = 'Bloqueado' where nombre_usuario ='"+usuario+"'";
                                         int columnas = st2.executeUpdate(sql2);
@@ -248,7 +258,8 @@ public class Login extends javax.swing.JFrame {
                                         this.dispose();
                                         return;
                                     }
-                                    JOptionPane.showMessageDialog(null, "El nombre de usuario o contraseña no coinciden, todavia tiene "+intentos+" intentos", "Las credenciales no concuerdan", JOptionPane.ERROR_MESSAGE);
+                                    int intentosRestantes = intentos - Integer.parseInt(rs3.getString("intentos"));
+                                    JOptionPane.showMessageDialog(null, "El nombre de usuario o contraseña no coinciden, todavia tiene "+intentosRestantes+" intentos", "Las credenciales no concuerdan", JOptionPane.ERROR_MESSAGE);
                                     pwd_contraseña.setText("");
                                 }
                              }
