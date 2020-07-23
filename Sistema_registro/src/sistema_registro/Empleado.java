@@ -363,7 +363,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jPanel1.add(btn_guardar);
-        btn_guardar.setBounds(40, 50, 140, 41);
+        btn_guardar.setBounds(40, 50, 150, 41);
 
         btn_Actualizar.setBackground(new java.awt.Color(235, 250, 251));
         btn_Actualizar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -375,7 +375,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jPanel1.add(btn_Actualizar);
-        btn_Actualizar.setBounds(40, 100, 140, 41);
+        btn_Actualizar.setBounds(40, 100, 150, 41);
 
         btn_Eliminar.setBackground(new java.awt.Color(235, 250, 251));
         btn_Eliminar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -387,7 +387,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jPanel1.add(btn_Eliminar);
-        btn_Eliminar.setBounds(40, 150, 140, 41);
+        btn_Eliminar.setBounds(40, 150, 150, 41);
 
         btn_consultar.setBackground(new java.awt.Color(235, 250, 251));
         btn_consultar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -399,7 +399,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jPanel1.add(btn_consultar);
-        btn_consultar.setBounds(40, 200, 140, 41);
+        btn_consultar.setBounds(40, 200, 150, 41);
 
         btn_Limpiar.setBackground(new java.awt.Color(235, 250, 251));
         btn_Limpiar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -411,7 +411,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jPanel1.add(btn_Limpiar);
-        btn_Limpiar.setBounds(40, 250, 140, 41);
+        btn_Limpiar.setBounds(40, 250, 150, 41);
         btn_Limpiar.getAccessibleContext().setAccessibleDescription("Limpiar Todos los campos");
 
         jButton2.setText("jButton2");
@@ -421,7 +421,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(70, 380, 79, 25);
+        jButton2.setBounds(70, 380, 73, 23);
 
         chb_mostrarContraseña.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         chb_mostrarContraseña.setText("Mostrar contraseña");
@@ -432,7 +432,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jPanel1.add(chb_mostrarContraseña);
-        chb_mostrarContraseña.setBounds(940, 160, 147, 25);
+        chb_mostrarContraseña.setBounds(940, 160, 147, 23);
 
         lbl_nombres.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_nombres.setText("Nombres:");
@@ -600,7 +600,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jPanel1.add(btn_rellenarCampos);
-        btn_rellenarCampos.setBounds(630, 320, 95, 31);
+        btn_rellenarCampos.setBounds(610, 320, 110, 31);
 
         btn_administrarCampus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
         btn_administrarCampus.addActionListener(new java.awt.event.ActionListener() {
@@ -1049,7 +1049,6 @@ this.cbo_tipoUsuario.setSelectedItem("");
                NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
                NumberFormat formatter = NumberFormat.getCurrencyInstance();
                  while(rs.next()) {
-                      JOptionPane.showMessageDialog(null, currencyFormatter.format(rs.getDouble("salario")));
                       String []datos= new String[9];
                       datos[0] =rs.getString("id_empleado");
                       datos[1] =rs.getString("nombres_empleado");
