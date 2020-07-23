@@ -421,7 +421,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(70, 380, 73, 23);
+        jButton2.setBounds(70, 380, 79, 25);
 
         chb_mostrarContraseña.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         chb_mostrarContraseña.setText("Mostrar contraseña");
@@ -432,12 +432,12 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jPanel1.add(chb_mostrarContraseña);
-        chb_mostrarContraseña.setBounds(940, 160, 147, 23);
+        chb_mostrarContraseña.setBounds(940, 160, 147, 25);
 
         lbl_nombres.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_nombres.setText("Nombres");
+        lbl_nombres.setText("Nombres:");
         jPanel1.add(lbl_nombres);
-        lbl_nombres.setBounds(360, 70, 70, 22);
+        lbl_nombres.setBounds(350, 70, 90, 22);
 
         txt_Nombre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_Nombre.addActionListener(new java.awt.event.ActionListener() {
@@ -454,9 +454,9 @@ this.cbo_tipoUsuario.setSelectedItem("");
         txt_Nombre.setBounds(440, 70, 200, 28);
 
         lbl_apellidos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_apellidos.setText("Apellidos");
+        lbl_apellidos.setText("Apellidos:");
         jPanel1.add(lbl_apellidos);
-        lbl_apellidos.setBounds(360, 110, 70, 22);
+        lbl_apellidos.setBounds(350, 110, 80, 22);
 
         txt_Apellido.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_Apellido.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -468,9 +468,9 @@ this.cbo_tipoUsuario.setSelectedItem("");
         txt_Apellido.setBounds(440, 110, 200, 28);
 
         lbl_salario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_salario.setText("Salario");
+        lbl_salario.setText("Salario:");
         jPanel1.add(lbl_salario);
-        lbl_salario.setBounds(370, 160, 52, 22);
+        lbl_salario.setBounds(370, 160, 90, 22);
 
         txt_Salario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_Salario.addActionListener(new java.awt.event.ActionListener() {
@@ -487,9 +487,9 @@ this.cbo_tipoUsuario.setSelectedItem("");
         txt_Salario.setBounds(440, 160, 200, 28);
 
         lbl_telefono.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_telefono.setText("Teléfono");
+        lbl_telefono.setText("  Teléfono:");
         jPanel1.add(lbl_telefono);
-        lbl_telefono.setBounds(360, 210, 69, 22);
+        lbl_telefono.setBounds(343, 210, 87, 22);
 
         txt_Telefono.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_Telefono.addActionListener(new java.awt.event.ActionListener() {
@@ -506,9 +506,9 @@ this.cbo_tipoUsuario.setSelectedItem("");
         txt_Telefono.setBounds(440, 210, 200, 28);
 
         lbl_identidad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_identidad.setText("Identidad");
+        lbl_identidad.setText("Identidad:");
         jPanel1.add(lbl_identidad);
-        lbl_identidad.setBounds(350, 260, 75, 22);
+        lbl_identidad.setBounds(350, 260, 90, 22);
 
         txt_Identidad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_Identidad.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -520,9 +520,9 @@ this.cbo_tipoUsuario.setSelectedItem("");
         txt_Identidad.setBounds(440, 260, 200, 28);
 
         lbl_nombreUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_nombreUsuario.setText("Nombre de Usuario");
+        lbl_nombreUsuario.setText("Nombre de Usuario:");
         jPanel1.add(lbl_nombreUsuario);
-        lbl_nombreUsuario.setBounds(710, 80, 152, 22);
+        lbl_nombreUsuario.setBounds(710, 80, 158, 22);
 
         txt_NombreUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_NombreUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -539,9 +539,9 @@ this.cbo_tipoUsuario.setSelectedItem("");
         txt_NombreUsuario.setBounds(880, 80, 250, 28);
 
         lbl_contraseña.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_contraseña.setText("Contraseña");
+        lbl_contraseña.setText("Contraseña:");
         jPanel1.add(lbl_contraseña);
-        lbl_contraseña.setBounds(770, 130, 88, 22);
+        lbl_contraseña.setBounds(770, 130, 94, 22);
 
         pwd_contraseña.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         pwd_contraseña.addActionListener(new java.awt.event.ActionListener() {
@@ -558,9 +558,9 @@ this.cbo_tipoUsuario.setSelectedItem("");
         pwd_contraseña.setBounds(880, 130, 250, 28);
 
         lbl_idCampus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_idCampus.setText("Campus");
+        lbl_idCampus.setText("Campus:");
         jPanel1.add(lbl_idCampus);
-        lbl_idCampus.setBounds(780, 190, 80, 22);
+        lbl_idCampus.setBounds(790, 190, 80, 22);
 
         cbo_idCampus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cbo_idCampus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un campus" }));
@@ -573,9 +573,9 @@ this.cbo_tipoUsuario.setSelectedItem("");
         cbo_idCampus.setBounds(880, 190, 250, 28);
 
         lbl_tipoUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_tipoUsuario.setText("Tipo de Usuario");
+        lbl_tipoUsuario.setText("Tipo de Usuario:");
         jPanel1.add(lbl_tipoUsuario);
-        lbl_tipoUsuario.setBounds(740, 230, 130, 22);
+        lbl_tipoUsuario.setBounds(740, 230, 140, 22);
 
         cbo_tipoUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cbo_tipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un tipo de usuario" }));
