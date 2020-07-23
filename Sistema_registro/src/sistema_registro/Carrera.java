@@ -16,6 +16,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -49,7 +50,7 @@ public class Carrera extends javax.swing.JFrame {
             }
              this.setLocationRelativeTo(null);
             this.setTitle("Carrera");
-            
+             this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
     }
 
     /**
@@ -62,12 +63,10 @@ public class Carrera extends javax.swing.JFrame {
     private void initComponents() {
 
         lbl_idCarrera = new javax.swing.JLabel();
-        lbl_nombreCarrera = new javax.swing.JLabel();
         txt_idCarrera = new javax.swing.JTextField();
         txt_NombreCarrera = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_Carrera = new javax.swing.JTable();
-        lbl_facultad = new javax.swing.JLabel();
         cbo_idfacultad = new javax.swing.JComboBox<>();
         btn_AdmFacultades = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -75,6 +74,8 @@ public class Carrera extends javax.swing.JFrame {
         btn_actualizar1 = new javax.swing.JButton();
         btn_buscar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
+        lbl_nombreCarrera = new javax.swing.JLabel();
+        lbl_facultad = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -86,12 +87,8 @@ public class Carrera extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_idCarrera.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_idCarrera.setText("ID Carrera");
+        lbl_idCarrera.setText("ID Carrera:");
         getContentPane().add(lbl_idCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 114, -1, -1));
-
-        lbl_nombreCarrera.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_nombreCarrera.setText("Carrera");
-        getContentPane().add(lbl_nombreCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 173, -1, -1));
 
         txt_idCarrera.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_idCarrera.addActionListener(new java.awt.event.ActionListener() {
@@ -135,10 +132,6 @@ public class Carrera extends javax.swing.JFrame {
         jScrollPane1.setViewportView(Tabla_Carrera);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 360, 870, 110));
-
-        lbl_facultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_facultad.setText("Facultad");
-        getContentPane().add(lbl_facultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 220, -1, -1));
 
         cbo_idfacultad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una facultad" }));
         getContentPane().add(cbo_idfacultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 223, 280, 22));
@@ -202,6 +195,16 @@ public class Carrera extends javax.swing.JFrame {
         });
         jPanel1.add(btn_eliminar);
         btn_eliminar.setBounds(25, 188, 159, 41);
+
+        lbl_nombreCarrera.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_nombreCarrera.setText("Carrera: ");
+        jPanel1.add(lbl_nombreCarrera);
+        lbl_nombreCarrera.setBounds(370, 80, 68, 22);
+
+        lbl_facultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_facultad.setText("Facultad:");
+        jPanel1.add(lbl_facultad);
+        lbl_facultad.setBounds(360, 130, 71, 22);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 870, 250));
 
@@ -339,9 +342,9 @@ public class Carrera extends javax.swing.JFrame {
             ResultSet rs;
             ps = con.prepareStatement("INSERT INTO Carrera (id_carrera, nombre_carrera,id_facultad)"
                 + "                VALUES(?,?,?)");
-            ps.setString(1, txt_idCarrera.getText());
-            ps.setString(2, txt_NombreCarrera.getText());
-             ps.setString(3, id_facultad);
+            ps.setString(0, txt_idCarrera.getText());
+            ps.setString(1, txt_NombreCarrera.getText());
+             ps.setString(2, id_facultad);
             int res = ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Se ha guradod la información del carrera");
         } catch (Exception e) {
@@ -362,12 +365,19 @@ public class Carrera extends javax.swing.JFrame {
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
         actualizarDatos();
-        LimpiarCajas();
     }//GEN-LAST:event_btn_buscarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
           String nombreCarrera = txt_NombreCarrera.getText();
-           if(JOptionPane.showConfirmDialog(null,"¿Está seguro que desea eliminar el registro de la carrera "+nombreCarrera+"","Confirmación de eliminación",
+          
+          if ((txt_idCarrera.getText().equals("")) || (txt_NombreCarrera.getText().equals("")) || 
+          (cbo_idfacultad.getSelectedItem().equals("Seleccione la facultad"))) {
+            
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe llenar todos los campos! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_NombreCarrera.requestFocus();
+            return;
+        }
+          else if(JOptionPane.showConfirmDialog(null,"¿Está seguro que desea eliminar el registro de la carrera "+nombreCarrera+"","Confirmación de eliminación",
                    JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE
             )==JOptionPane.YES_OPTION){   
                 String id_facultad = cbo_idfacultad.getSelectedItem().toString().substring(0, 2);
@@ -377,7 +387,7 @@ public class Carrera extends javax.swing.JFrame {
           ps=con.prepareStatement("Delete Carrera "
                   + "where id_carrera = (Select id_carrera from Carrera where nombre_carrera = '"+txt_NombreCarrera.getText()+"')");
                   int res= ps.executeUpdate();
-                  JOptionPane.showMessageDialog(null, "Se ha borrado la información del empleado "+nombreCarrera+" correctamente");
+                  JOptionPane.showMessageDialog(null, "Se ha borrado la información de la carrera "+nombreCarrera+" correctamente");
                   if(res > 0){ 
                   }else {
                       JOptionPane.showMessageDialog(null, "¡Error al eliminar la información!"); 
@@ -391,9 +401,17 @@ public class Carrera extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void btn_actualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizar1ActionPerformed
-            String nombreCarrera = txt_NombreCarrera.getText() + " ";
+            
         
-        if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de carrera" + nombreCarrera + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
+        String nombreCarrera = txt_NombreCarrera.getText() + " ";
+            if ((txt_idCarrera.getText().equals("")) || (txt_NombreCarrera.getText().equals("")) || 
+          (cbo_idfacultad.getSelectedItem().equals("Seleccione la facultad"))) {
+            
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe llenar todos los campos! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_NombreCarrera.requestFocus();
+            return;
+        }
+            else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de carrera" + nombreCarrera + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
            String id_facultad = cbo_idfacultad.getSelectedItem().toString().substring(0, 2);
             try {
@@ -404,8 +422,8 @@ public class Carrera extends javax.swing.JFrame {
                         + " id_carrera = ? "
                         + " where id_carrera =\'"+txt_idCarrera.getText()+"\'");
                 
-                ps.setString(1, txt_NombreCarrera.getText());
-                ps.setString(2, txt_idCarrera.getText());
+                ps.setString(0, txt_NombreCarrera.getText());
+                ps.setString(1, txt_idCarrera.getText());
                /* ps.setString(3, id_facultad);*/
                 int res = ps.executeUpdate();
             } catch (Exception e) {

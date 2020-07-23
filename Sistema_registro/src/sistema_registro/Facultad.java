@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -41,6 +42,7 @@ public class Facultad extends javax.swing.JFrame {
          this.con = ConectorSQL.obtenerConexion();
          actualizarDatos(); 
          this.setTitle("Facultad");
+          this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
     }
 
     /**
@@ -52,8 +54,6 @@ public class Facultad extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbl_idfacultad = new javax.swing.JLabel();
-        lbl_nombreFacultad = new javax.swing.JLabel();
         txt_idfacultad = new javax.swing.JTextField();
         txt_NombreFacultad = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -63,6 +63,8 @@ public class Facultad extends javax.swing.JFrame {
         btn_actualizar = new javax.swing.JButton();
         btn_buscar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
+        lbl_nombreFacultad = new javax.swing.JLabel();
+        lbl_idfacultad = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -72,14 +74,6 @@ public class Facultad extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lbl_idfacultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_idfacultad.setText("ID Facultad");
-        getContentPane().add(lbl_idfacultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 150, -1, -1));
-
-        lbl_nombreFacultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_nombreFacultad.setText("Facultad");
-        getContentPane().add(lbl_nombreFacultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, -1, -1));
 
         txt_idfacultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_idfacultad.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -131,7 +125,7 @@ public class Facultad extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_guardar);
-        btn_guardar.setBounds(24, 55, 143, 41);
+        btn_guardar.setBounds(24, 55, 160, 41);
 
         btn_actualizar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
@@ -158,7 +152,7 @@ public class Facultad extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_buscar);
-        btn_buscar.setBounds(24, 159, 131, 41);
+        btn_buscar.setBounds(24, 159, 160, 41);
 
         btn_eliminar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Eliminar.png"))); // NOI18N
@@ -169,7 +163,17 @@ public class Facultad extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btn_eliminar);
-        btn_eliminar.setBounds(24, 211, 143, 41);
+        btn_eliminar.setBounds(24, 211, 160, 41);
+
+        lbl_nombreFacultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_nombreFacultad.setText("Facultad:");
+        jPanel1.add(lbl_nombreFacultad);
+        lbl_nombreFacultad.setBounds(340, 90, 71, 22);
+
+        lbl_idfacultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_idfacultad.setText("ID Facultad:");
+        jPanel1.add(lbl_idfacultad);
+        lbl_idfacultad.setBounds(310, 30, 96, 22);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 830, 340));
 
@@ -226,12 +230,14 @@ public class Facultad extends javax.swing.JFrame {
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
 
         actualizarDatos();
-        LimpiarCajas();
     }//GEN-LAST:event_btn_buscarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         String nombreFacultad = txt_NombreFacultad.getText() + " " + txt_idfacultad.getText();
-        if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de facultad " + nombreFacultad + "", "Confirmación de eliminación",
+         if ((txt_idfacultad.getText().equals("") || (txt_NombreFacultad.getText().equals("")))) {
+            JOptionPane.showMessageDialog(this, "¡Debe llenar todos los campos!");
+        }
+         else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de facultad " + nombreFacultad + "", "Confirmación de eliminación",
             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
 
@@ -350,8 +356,12 @@ public class Facultad extends javax.swing.JFrame {
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
         String nombreCampus = txt_NombreFacultad.getText() + " ";
+         
+        if ((txt_idfacultad.getText().equals("") || (txt_NombreFacultad.getText().equals("")))) {
+            JOptionPane.showMessageDialog(this, "¡Debe llenar todos los campos!");
+        }
 
-        if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de facultad " + nombreCampus + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
+       else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de facultad " + nombreCampus + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
             try {
                 PreparedStatement ps;

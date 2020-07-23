@@ -46,6 +46,12 @@ Connection con = null;
             for(int i = 0; i<lista.size();i++){
                 cbo_IdCarrera.addItem(lista.get(i));
             }
+             ArrayList<String> lista2 = new ArrayList<String>();
+             lista2 = new Conexion_consulta().llenar_requisito();
+            for(int i = 0; i<lista2.size();i++){
+               cbo_Req1.addItem(lista2.get(i));
+               cbo_Req2.addItem(lista2.get(i));
+            }
              this.setLocationRelativeTo(null);
             this.setTitle("Asignaturas");
     }
@@ -150,10 +156,10 @@ Connection con = null;
         });
 
         lbl_UniVal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_UniVal.setText("Unidad Valorativa");
+        lbl_UniVal.setText("Unidad Valorativa:");
 
         lbl_IdCarrera.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_IdCarrera.setText("Carrera");
+        lbl_IdCarrera.setText("Carrera:");
 
         cbo_Req1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione la asignatura1:" }));
         cbo_Req1.addActionListener(new java.awt.event.ActionListener() {
@@ -189,10 +195,10 @@ Connection con = null;
         });
 
         lbl_NombreA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_NombreA.setText("Nombre de la Asigntura");
+        lbl_NombreA.setText("Nombre de la Asigntura:");
 
         lbl_codA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_codA.setText("Codigo de la Asignatura");
+        lbl_codA.setText("Codigo de la Asignatura:");
 
         btn_buscar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Consulta.png"))); // NOI18N
@@ -250,91 +256,101 @@ Connection con = null;
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(56, 56, 56)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_actualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_guardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_eliminar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_requisitos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(103, 103, 103)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btn_actualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_guardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_requisitos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_eliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(101, 101, 101)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_UniVal)
-                            .addComponent(lbl_NombreA)
-                            .addComponent(lbl_codA))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(lbl_codA)
+                                .addGap(26, 26, 26))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lbl_NombreA)
+                                    .addComponent(lbl_UniVal))
+                                .addGap(24, 24, 24)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txt_codA, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
                             .addComponent(txt_NombreA)
                             .addComponent(txt_UniVal))
                         .addGap(119, 119, 119))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(lbl_IdCarrera)
-                        .addGap(156, 156, 156)
-                        .addComponent(cbo_IdCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                        .addComponent(btn_AdmCarrera)
-                        .addContainerGap())
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(102, 102, 102)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbl_Req1)
+                            .addComponent(lbl_Req2)
+                            .addComponent(lbl_IdCarrera))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbo_Req1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbo_Req2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lbl_Req1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cbo_Req1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lbl_Req2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cbo_Req2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(96, 96, 96))))
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(cbo_IdCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(27, 27, 27)
+                        .addComponent(btn_AdmCarrera)
+                        .addContainerGap())))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_codA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_codA))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_NombreA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_NombreA)
-                    .addComponent(btn_guardar))
-                .addGap(29, 29, 29)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_codA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_codA))
+                        .addGap(32, 32, 32))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btn_guardar)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_NombreA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_NombreA))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(btn_actualizar)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_UniVal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_UniVal))
-                        .addGap(29, 29, 29)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lbl_IdCarrera)
-                                .addComponent(cbo_IdCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btn_AdmCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(24, 24, 24)
-                        .addComponent(cbo_Req1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(cbo_Req2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btn_actualizar)
-                        .addGap(36, 36, 36)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbl_IdCarrera)
+                                    .addComponent(btn_AdmCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbo_IdCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbo_Req1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_Req1))
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbo_Req2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_Req2)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addComponent(btn_eliminar1)
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lbl_Req1)
-                                .addGap(49, 49, 49))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(btn_buscar)
-                                .addGap(15, 15, 15)))
-                        .addComponent(lbl_Req2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_requisitos)
-                .addContainerGap())
+                        .addGap(19, 19, 19)
+                        .addComponent(btn_buscar)
+                        .addGap(29, 29, 29)
+                        .addComponent(btn_requisitos)))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 840, 470));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 840, 480));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -359,58 +375,47 @@ Connection con = null;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
-         ConsultarDatos();
+         actualizarDatos();
+         
     }//GEN-LAST:event_btn_buscarActionPerformed
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
-          String Asignaturas = txt_codA.getText() + " " + txt_NombreA.getText();
+        
+        String nombreAsignatura = txt_NombreA.getText() + " ";
+        if ((txt_codA.getText().equals("")) || (txt_NombreA.getText().equals("")) ||
+            (cbo_IdCarrera.getSelectedItem().equals("Seleccione la carrera"))) {
 
-        if(JOptionPane.showConfirmDialog(null,"¿Está seguro que desea actualizar el registro de Asignatura "+txt_NombreA+"?","Confirmación de actualización",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE
-        )==JOptionPane.YES_OPTION){
-
-             String id_carrera = cbo_IdCarrera.getSelectedItem().toString().substring(0, 4);
-             String requisito1= cbo_Req1.getSelectedItem().toString().substring(0,5);
-              String requisito2= cbo_Req2.getSelectedItem().toString().substring(0,6);
-      
-            
-            try{
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe llenar todos los campos! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_NombreA.requestFocus();
+            return;
+        }
+        else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de carrera" +nombreAsignatura + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
+        ) == JOptionPane.YES_OPTION) {
+            String id_carrera = cbo_IdCarrera.getSelectedItem().toString().substring(0, 4);
+            String requisito1 = cbo_Req1.getSelectedItem().toString().substring(0, 5);
+            String requisito2 = cbo_Req2.getSelectedItem().toString().substring(0, 6);
+            try {
                 PreparedStatement ps;
                 ResultSet rs;
-                ps=con.prepareStatement("Update Asignaturas "
-                    + "set cod_asignaturas = ?,"
-                    + "nombre_asignaturas = ? ,"
-                        + "UV = ? ,"
-                        + "id_carrera = ? "
-                         + "requisito1 = ? "
-                         + "requisito2 = ? "
-                        
-                    + " where cod_asignaturas =\'"+txt_codA.getText()+"\'"
-                          + "or nombre_asignaturas = '"+var+"' ");
-
-                ps.setString(1, txt_codA.getText());
-                ps.setString(2, txt_NombreA.getText());
-                 ps.setString(3, txt_UniVal.getText());
+                ps = con.prepareStatement("Update Requisito_Asignatura set"
+                    + " RequisitoAsignatura = ? ,"
+                    + " id_asignatura = ? , "
+                    + " requisito1 = ? , "
+                    + " requisito2 = ? "
+                    + " where id_asignatura =\'"+txt_codA.getText()+"\'");
+                  ps.setString(1, txt_codA.getText());
+                  ps.setString(2, txt_NombreA.getText());
+                  ps.setString(3, txt_UniVal.getText());
                   ps.setString(4, id_carrera);
                   ps.setString(5, requisito1);
                   ps.setString(6, requisito2);
-                  
-                 
-                int res= ps.executeUpdate();
-            } catch ( Exception e) {
+               
+                int res = ps.executeUpdate();
+            } catch (Exception e) {
                 System.out.println(e);
-            } /*try{
-             Statement st2=con.createStatement();
-            
-              String sql ="Update Asignaturas "
-                      + "set cod_asignaturas = '"+txt_codA.getText()+"'"
-                       + "set nombre_asignaturas = '"+txt_NombreA.getText()+"'"
-                    + "set UV = '"+txt_UniVal.getText()+"'"
-                      + "where cod_asignaturas = (Select cod_asignaturas from Asignaturas where nombre_asignaturas = '"+txt_NombreA.getText()+"')";
-              int rs2 = st2.executeUpdate(sql);           
-              JOptionPane.showMessageDialog(null, "Se ha actualizado la información del registro de asignatura "+txt_NombreA+" correctamente.");
-          }catch ( Exception e) {
-           JOptionPane.showMessageDialog(null, e.getMessage()); 
-        }*/
+            }
+
+        
         }
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
@@ -421,8 +426,8 @@ Connection con = null;
         cadena2 = txt_NombreA.getText();
         cadena3 = txt_UniVal.getText();
         String id_carrera = cbo_IdCarrera.getSelectedItem().toString().substring(0, 4);
-         String requisito1= cbo_Req1.getSelectedItem().toString().substring(0,5);
-              String requisito2= cbo_Req2.getSelectedItem().toString().substring(0,6);
+        String requisito1= cbo_Req1.getSelectedItem().toString().substring(0,5);
+        String requisito2= cbo_Req2.getSelectedItem().toString().substring(0,6);
   
 
         if ((txt_codA.getText().equals("")) || (txt_NombreA.getText().equals(""))  || (txt_UniVal.getText().equals(""))  
@@ -461,7 +466,7 @@ Connection con = null;
             ResultSet rs;
 
             ps=con.prepareStatement("Insert into Asignaturas (cod_asignaturas, nombre_asignaturas, UV, id_carrera, requisito1, requisito2 )"
-                + "                VALUES(?,?,?,?)");
+                + "                VALUES(?,?,?,?,?,?)");
             ps.setString(1, txt_codA.getText());
             ps.setString(2, txt_NombreA.getText());
             ps.setString(3, txt_UniVal.getText());
@@ -476,12 +481,13 @@ Connection con = null;
              JOptionPane.showMessageDialog(null, e.getMessage());
         }
 
-        ConsultarDatos();
+        actualizarDatos();
+        LimpiarCajas();
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void btn_eliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminar1ActionPerformed
-          String TipoUsuario = txt_NombreA.getText() + " " + txt_codA.getText();
-        if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de asignatura " + TipoUsuario + "", "Confirmación de eliminación",
+          String Asignatura = txt_NombreA.getText() + " " + txt_codA.getText();
+        if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de asignatura " + Asignatura + "", "Confirmación de eliminación",
             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
 
@@ -493,7 +499,7 @@ Connection con = null;
                 int rs2 = st2.executeUpdate(sql);
                 System.out.println(rs2);
                 if(rs2 > 0){
-                    JOptionPane.showMessageDialog(null, "Se ha borrado la información de la asignatura " + TipoUsuario + " correctamente");
+                    JOptionPane.showMessageDialog(null, "Se ha borrado la información de la asignatura " + Asignatura + " correctamente");
 
                 }else {
                     JOptionPane.showMessageDialog(null, "¡Error al eliminar la información!");
@@ -505,7 +511,8 @@ Connection con = null;
             }
 
         }
-
+        actualizarDatos();
+        LimpiarCajas();
     }//GEN-LAST:event_btn_eliminar1ActionPerformed
 
     private void btn_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buscarMouseClicked
@@ -558,9 +565,9 @@ Connection con = null;
     private void btn_requisitosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_requisitosActionPerformed
         
         this.dispose();
-        RequisitosAsignaturas req = null;
+        RequisitoAsignatura req = null;
     try {
-        req = new RequisitosAsignaturas();
+        req = new RequisitoAsignatura();
     } catch (SQLException ex) {
         Logger.getLogger(Asignaturas.class.getName()).log(Level.SEVERE, null, ex);
     }
@@ -665,7 +672,7 @@ public boolean existeAsignatura(){
        }
     }
          
-              public void ConsultarDatos(){
+              public void actualizarDatos(){
         try {
                
                String sql = "SELECT * FROM Asignaturas where cod_asignaturas=\'"+txt_codA.getText()+"\'";
@@ -717,68 +724,67 @@ public boolean existeAsignatura(){
          }
      
     }
+     
+    
              
     
-       private void llenarCampos(){
-        int i = Tabla_RegistroAsignatura.getSelectedRow();
-        txt_codA.setText(Tabla_RegistroAsignatura.getValueAt(i, 0).toString());
-        txt_NombreA.setText(Tabla_RegistroAsignatura.getValueAt(i, 1).toString());
-        txt_UniVal.setText(Tabla_RegistroAsignatura.getValueAt(i, 2).toString());
-         cbo_IdCarrera.setSelectedItem(Tabla_RegistroAsignatura.getValueAt(i, 3).toString());
-         cbo_Req1.setSelectedItem(Tabla_RegistroAsignatura.getValueAt(i, 4).toString());
-         cbo_Req2.setSelectedItem(Tabla_RegistroAsignatura.getValueAt(i, 5).toString());
-                      
-    }
-    
-        private void rellenar() {
-        System.out.println(lbl_codA.getText());
-        try {
-            System.out.println(lbl_NombreA.getText());
-            Statement st = con.createStatement();
-            String consulta = "Select * from Asignaturas where cod_asignaturas = '" + lbl_codA.getText() + "'";
-            ResultSet rs = st.executeQuery(consulta);
-            System.out.println(rs.next());
-
-            if (rs.next()) {
-                try {
+       private void rellenar(){
+            try {
                     String cap = "";
                     ResultSet rs2 = null;
-                   var = JOptionPane.showInputDialog(this, "Ingrese el nombre de asignatura que desea consultar", "Consulta de asignatura", JOptionPane.QUESTION_MESSAGE);
+                   var = JOptionPane.showInputDialog(this, "Ingrese el nombre de la carrera que desea consultar", "Consulta de carrera", JOptionPane.QUESTION_MESSAGE);
                     if (var == null) {
                         JOptionPane.showMessageDialog(this, "La acción fue cancelada", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
                     } else {
                         if (var.equals("")) {
-                            JOptionPane.showMessageDialog(this, "Favor de ingresar los datos de la asignatura \n que desea consultar", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(this, "Favor de ingresar el nombre de la carrera\n que desea consultar", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
                         } else {
-                            String sql = "SELECT * FROM Asignaturas where nombre_asignaturas =\'"+txt_NombreA.getText()+"\' ";
+                            String sql = "SELECT * FROM Asignaturas where cod_asignaturas='"+var+"' or nombre_asignaturas ='"+var+"'";
                             stmt = con.createStatement();
                             rs2 = stmt.executeQuery(sql);
 
                             if (rs2.next()) {
-                            
-                                 txt_codA.setText(rs2.getString("cod_asignaturas"));
+                                txt_codA.setText(rs2.getString("cod_asignaturas"));
                                 txt_NombreA.setText(rs2.getString("nombre_asignaturas"));
-
+                                txt_UniVal.setText(rs2.getString("UV"));
+                                cbo_IdCarrera.setSelectedItem(rs2.getString("id_carrera")); 
+                                cbo_Req1.setSelectedItem(rs2.getString("requisito1")); 
+                                cbo_Req2.setSelectedItem(rs2.getString("requisito2")); 
                             } else {
-                                JOptionPane.showMessageDialog(null, "¡No se encuentra los datos de la asignatura ! Por favor verifique sí, lo escribio correctamente");
+                                JOptionPane.showMessageDialog(null, "¡No se encuentra los datos: "+var+" ! Por favor verifique sí, lo escribio correctamente");
                             }
-
                         }
 
                     }
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e.getMessage());
                 }
-            } else {
-               /* JOptionPane.showMessageDialog(null, "¡Sólo los administradores tienen acceso a esta función!");*/
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(Campus.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
     
     }
+
+    private void LimpiarCajas() {
+       
+        txt_NombreA.setText(null);
+        txt_UniVal.setText(null);
+        txt_codA.setText(null);
+        cbo_IdCarrera.setSelectedIndex(0);
+        cbo_Req1.setSelectedIndex(0);
+        cbo_Req2.setSelectedIndex(0);
+       
+    }
+
+    private void llenarCampos() {
+         int i = Tabla_RegistroAsignatura.getSelectedRow();
+        txt_codA.setText(Tabla_RegistroAsignatura.getValueAt(i, 0).toString());
+        txt_NombreA.setText(Tabla_RegistroAsignatura.getValueAt(i, 1).toString());
+        txt_UniVal.setText(Tabla_RegistroAsignatura.getValueAt(i, 2).toString());
+        cbo_IdCarrera.setSelectedItem(Tabla_RegistroAsignatura.getValueAt(i, 3).toString());
+        cbo_Req1.setSelectedItem(Tabla_RegistroAsignatura.getValueAt(i, 4).toString());
+        cbo_Req2.setSelectedItem(Tabla_RegistroAsignatura.getValueAt(i, 5).toString());
+
+
+    }
+  
 
 
 }

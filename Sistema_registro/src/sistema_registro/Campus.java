@@ -17,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -46,6 +47,7 @@ public class Campus extends javax.swing.JFrame {
         initComponents();
         actualizarDatos(); 
         this.setTitle("Campus");
+         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
     }
 
     public void Actualizar() {
@@ -54,6 +56,7 @@ public class Campus extends javax.swing.JFrame {
 
         cadena1 = txt_idCampus.getText();
         cadena2 = txt_NombreCampus.getText();
+       
 
         if (txt_NombreCampus.getText().equals("")) {
 
@@ -63,7 +66,7 @@ public class Campus extends javax.swing.JFrame {
             try {
 
                 stmt = con.createStatement();
-                stmt.executeUpdate("update ignore campus set ID Campus= '" + cadena1 + "' , Nombre Campus = '" + cadena2 + "' where ID Campus= '" + txt_idCampus.getText() + "' || Nombre Campus = '" + txt_NombreCampus.getText() + "' ");
+                stmt.executeUpdate("update ignore campus set id_campus= '" + cadena1 + "' , nombre_campus = '" + cadena2 + "' where id_campus= '" + txt_idCampus.getText() + "' || nombre_campus = '" + txt_NombreCampus.getText() + "' ");
                 System.out.println("Los valores han sido Actualizados");
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -183,7 +186,7 @@ public class Campus extends javax.swing.JFrame {
         jScrollPane1.setViewportView(Tabla_Campus);
 
         lbl_nombreCampus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_nombreCampus.setText("Nombre del Campus");
+        lbl_nombreCampus.setText("Nombre del Campus:");
 
         txt_NombreCampus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_NombreCampus.addActionListener(new java.awt.event.ActionListener() {
@@ -210,7 +213,7 @@ public class Campus extends javax.swing.JFrame {
         });
 
         lbl_idCampus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_idCampus.setText("ID Campus");
+        lbl_idCampus.setText("ID Campus:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -219,22 +222,20 @@ public class Campus extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(58, 58, 58)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_guardar)
-                    .addComponent(btn_actualizar)
-                    .addComponent(btn_buscar)
-                    .addComponent(btn_eliminar))
+                    .addComponent(btn_actualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_guardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(90, 90, 90)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lbl_nombreCampus)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txt_NombreCampus, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lbl_idCampus)
-                                .addGap(100, 100, 100)
-                                .addComponent(txt_idCampus, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lbl_idCampus)
+                            .addComponent(lbl_nombreCampus))
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_idCampus, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_NombreCampus, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(66, 66, 66)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -380,7 +381,11 @@ public class Campus extends javax.swing.JFrame {
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         String nombreCampus = txt_NombreCampus.getText() + " " + txt_idCampus.getText();
-        if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de campus " + nombreCampus + "", "Confirmación de eliminación",
+        
+        if ((txt_idCampus.getText().equals("") || (txt_NombreCampus.getText().equals("")))) {
+            JOptionPane.showMessageDialog(this, "¡Debe llenar todos los campos!");
+        }
+        else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de campus " + nombreCampus + "", "Confirmación de eliminación",
             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
 
@@ -425,7 +430,7 @@ public class Campus extends javax.swing.JFrame {
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
 
         actualizarDatos();
-        LimpiarCajas();
+     
     }//GEN-LAST:event_btn_buscarActionPerformed
 
     private void btn_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buscarMouseClicked
@@ -434,8 +439,11 @@ public class Campus extends javax.swing.JFrame {
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
         String nombreCampus = txt_NombreCampus.getText() + " ";
-
-        if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro del empleado " + nombreCampus + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
+         if ((txt_idCampus.getText().equals("") || (txt_NombreCampus.getText().equals("")))) {
+            JOptionPane.showMessageDialog(this, "¡Debe llenar todos los campos!");
+        }
+           
+         else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro del campus " + nombreCampus + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
             try {
                 PreparedStatement ps;
