@@ -24,7 +24,7 @@ import sistema_registro.SQL.ConectorSQL;
 
 /**
  *
- * @author asus
+ * @author Genesis & Willliam P 
  */
 public class RequisitoAsignatura extends javax.swing.JFrame {
      String titulos[] = {"Id Requisitos", "Asignatura Requisito", "Id Carrera"};
@@ -62,7 +62,6 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbl_facultad = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btn_guardar = new javax.swing.JButton();
         btn_actualizar1 = new javax.swing.JButton();
@@ -74,19 +73,16 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         txt_idReqAsig = new javax.swing.JTextField();
         lbl_NombreReqAs = new javax.swing.JLabel();
         cbo_idCarrera = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Tabla_ReqAsignatura = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Tabla_ReqAsignatura = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        lbl_facultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_facultad.setText("Facultad");
 
         jPanel1.setBackground(new java.awt.Color(215, 236, 233));
         jPanel1.setLayout(null);
@@ -167,31 +163,6 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         jPanel1.add(cbo_idCarrera);
         cbo_idCarrera.setBounds(540, 160, 210, 30);
 
-        jPanel2.setBackground(new java.awt.Color(232, 251, 249));
-
-        lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lbl_titulo.setText("Requisito Asignatura");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(373, 373, 373)
-                .addComponent(lbl_titulo)
-                .addContainerGap(281, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(lbl_titulo)
-                .addContainerGap(36, Short.MAX_VALUE))
-        );
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
-
         Tabla_ReqAsignatura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -207,9 +178,45 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Tabla_ReqAsignatura);
 
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(60, 310, 736, 110);
+
+        jPanel2.setBackground(new java.awt.Color(232, 251, 249));
+
+        lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lbl_titulo.setText("Requisito Asignatura");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(316, 316, 316)
+                .addComponent(lbl_titulo)
+                .addContainerGap(338, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_titulo)
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
         jMenu1.setText("Regresar");
 
-        jMenuItem1.setText("jMenuItem1");
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio.png"))); // NOI18N
+        jMenuItem1.setText("Asignaturas");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
@@ -222,37 +229,25 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(35, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(356, 356, 356)
-                            .addComponent(lbl_facultad))
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 890, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 920, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(220, 504, Short.MAX_VALUE)
-                    .addComponent(lbl_facultad)
-                    .addGap(0, 68, Short.MAX_VALUE))
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -283,13 +278,13 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         }
 
         if (!validarLongitud(txt_idReqAsig, 4)) {
-            JOptionPane.showMessageDialog(null, "El id ingresado es muy pequeños el mínimo es de 4 caracteres", "Longitud de id carrera", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El id para la asignatura requisito ingresado es muy pequeño, el mínimo es de 4 caracteres", "Longitud de id la asignatura requisito", JOptionPane.INFORMATION_MESSAGE);
             return;
 
         }
 
         if (!validarLongitud(txt_NombreReqAsig,7 )) {
-            JOptionPane.showMessageDialog(null, "El  nombre ingresado es muy pequeños el mínimo es de 7 caracteres", "Longitud de nombre carrera", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El  nombre de la asignatura requisito ingresado es muy pequeño, el mínimo es de 7 caracteres", "Longitud de nombre de la asignatura requisito", JOptionPane.INFORMATION_MESSAGE);
             return;
 
         }
@@ -303,7 +298,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
             ps.setString(2, txt_NombreReqAsig.getText());
             ps.setString(3, id_facultad);
             int res = ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Se ha guradod la información del carrera");
+            JOptionPane.showMessageDialog(null, "Se ha guardado la información de la asignatura requisito");
         } catch (Exception e) {
             System.out.println(e);
 
@@ -323,7 +318,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
             txt_NombreReqAsig.requestFocus();
             return;
         }
-        else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de carrera" + nombreAsignaturaRequisito + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
+        else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de la asignatura requisito" + nombreAsignaturaRequisito + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
             String id_carrera = cbo_idCarrera.getSelectedItem().toString().substring(0, 3);
             try {
@@ -367,7 +362,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
             txt_NombreReqAsig.requestFocus();
             return;
         }
-        else if(JOptionPane.showConfirmDialog(null,"¿Está seguro que desea eliminar el registro de la carrera "+nombreAsignaturaRequisito+"","Confirmación de eliminación",
+        else if(JOptionPane.showConfirmDialog(null,"¿Está seguro que desea eliminar el registro de la asignatura requisito "+nombreAsignaturaRequisito+"","Confirmación de eliminación",
             JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE
         )==JOptionPane.YES_OPTION){
             String id_carrera = cbo_idCarrera.getSelectedItem().toString().substring(0, 3);
@@ -377,7 +372,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
                 ps=con.prepareStatement("Delete Requisito_Asignatura "
                     + "where id_asignatura = (Select id_asignatura from Requisito_Asignatura   where RequisitoAsignatura = '"+txt_NombreReqAsig.getText()+"')");
                 int res= ps.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Se ha borrado la información de asignatura requisito "+nombreAsignaturaRequisito+" correctamente");
+                JOptionPane.showMessageDialog(null, "Se ha borrado la información de la asignatura requisito "+nombreAsignaturaRequisito+" correctamente");
                 if(res > 0){
                 }else {
                     JOptionPane.showMessageDialog(null, "¡Error al eliminar la información!");
@@ -389,6 +384,19 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         actualizarDatos();
         LimpiarCajas();
     }//GEN-LAST:event_btn_eliminarActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        
+         this.dispose();
+        Asignaturas a = null;
+         try {
+             a = new Asignaturas();
+         } catch (SQLException ex) {
+             Logger.getLogger(Carrera.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        a.setVisible(true);
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -444,7 +452,6 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_NombreReqAs;
-    private javax.swing.JLabel lbl_facultad;
     private javax.swing.JLabel lbl_idCarrera;
     private javax.swing.JLabel lbl_idReqAs;
     private javax.swing.JLabel lbl_titulo;
@@ -459,7 +466,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
             String sql = "Select id_asignatura from Requisito_Asignatura where RequisitoAsignatura = '" + txt_NombreReqAsig.getText() + "'";
             ResultSet rs = st.executeQuery(sql);
             if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "El nombre campus: " + txt_NombreReqAsig.getText() + " ya existe", "El campus ¡Ya existe!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El nombre de la asignatura requisito " + txt_NombreReqAsig.getText() + " ya existe", "La asignatura requisito ¡Ya existe!", JOptionPane.INFORMATION_MESSAGE);
                 return true;
             } else {
                 return false;
@@ -491,12 +498,12 @@ private void rellenar() {
                 try {
                     String cap = "";
                     ResultSet rs2 = null;
-                   var = JOptionPane.showInputDialog(this, "Ingrese el nombre del campus que desea consultar", "Consulta de campus", JOptionPane.QUESTION_MESSAGE);
+                   var = JOptionPane.showInputDialog(this, "Ingrese el nombre de la asignatura requisito que desea consultar", "Consulta de la asignatura requisito", JOptionPane.QUESTION_MESSAGE);
                     if (var == null) {
                         JOptionPane.showMessageDialog(this, "La acción fue cancelada", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
                     } else {
                         if (var.equals("")) {
-                            JOptionPane.showMessageDialog(this, "Favor de ingresar el nombre del campus \n que desea consultar", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(this, "Favor de ingresar el nombre de la asignatura requisito \n que desea consultar", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
                         } else {
                             String sql = "SELECT * FROM Requisito_Asignatura where id_asignatura='"+var+"' or RequisitoAsignatura ='"+var+"'";
                             stmt = con.createStatement();

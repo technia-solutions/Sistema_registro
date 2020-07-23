@@ -498,8 +498,13 @@ this.txt_TipoUsuario.setText("");
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
 
         String TipoUsuario = txt_idTipo.getText() + " " + txt_TipoUsuario.getText();
+         if ((txt_idTipo.getText().equals("")) || (txt_TipoUsuario.getText().equals(""))) {
+            
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar el tipo usuario a actualizar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+           
+        }
 
-        if(JOptionPane.showConfirmDialog(null,"¿Está seguro que desea actualizar el registro del empleado "+TipoUsuario+"?","Confirmación de actualización",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE
+       else if(JOptionPane.showConfirmDialog(null,"¿Está seguro que desea actualizar el registro del empleado "+TipoUsuario+"?","Confirmación de actualización",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE
         )==JOptionPane.YES_OPTION){
             
 
@@ -550,7 +555,13 @@ this.txt_TipoUsuario.setText("");
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         
           String TipoUsuario = txt_TipoUsuario.getText() + " " + txt_idTipo.getText();
-        if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de Tipo de Usuario " + TipoUsuario + "", "Confirmación de eliminación",
+           if ((txt_idTipo.getText().equals("")) || (txt_TipoUsuario.getText().equals(""))) {
+            
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar el tipo usuario a eliminar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+           
+        }
+          
+       else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de Tipo de Usuario " + TipoUsuario + "", "Confirmación de eliminación",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
             

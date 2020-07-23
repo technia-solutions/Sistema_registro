@@ -314,7 +314,7 @@ public class Carrera extends javax.swing.JFrame {
 
          
         if ((txt_idCarrera.getText().equals("")) || (txt_NombreCarrera.getText().equals("")) || 
-          (cbo_idfacultad.getSelectedItem().equals("Seleccione la facultad"))) {
+          (cbo_idfacultad.getSelectedItem().equals("Seleccione la carrera"))) {
             
             javax.swing.JOptionPane.showMessageDialog(this,"¡Debe llenar todos los campos! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_NombreCarrera.requestFocus();
@@ -371,9 +371,9 @@ public class Carrera extends javax.swing.JFrame {
           String nombreCarrera = txt_NombreCarrera.getText();
           
           if ((txt_idCarrera.getText().equals("")) || (txt_NombreCarrera.getText().equals("")) || 
-          (cbo_idfacultad.getSelectedItem().equals("Seleccione la facultad"))) {
+          (cbo_idfacultad.getSelectedItem().equals("Seleccione la carrera"))) {
             
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe llenar todos los campos! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la carrera a eliminar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_NombreCarrera.requestFocus();
             return;
         }
@@ -405,11 +405,10 @@ public class Carrera extends javax.swing.JFrame {
         
         String nombreCarrera = txt_NombreCarrera.getText() + " ";
             if ((txt_idCarrera.getText().equals("")) || (txt_NombreCarrera.getText().equals("")) || 
-          (cbo_idfacultad.getSelectedItem().equals("Seleccione la facultad"))) {
+          (cbo_idfacultad.getSelectedItem().equals("Seleccione la carrera"))) {
             
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe llenar todos los campos! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            txt_NombreCarrera.requestFocus();
-            return;
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la carrera a actualizar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+           
         }
             else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de carrera" + nombreCarrera + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {

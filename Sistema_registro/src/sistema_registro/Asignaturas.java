@@ -6,6 +6,7 @@
 package sistema_registro;
 
 import codigo.Conexion_consulta;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -184,13 +185,28 @@ Connection con = null;
         cbo_IdCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una carrera" }));
 
         txt_UniVal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_UniVal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_UniValKeyTyped(evt);
+            }
+        });
 
         txt_NombreA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_NombreA.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_NombreAKeyTyped(evt);
+            }
+        });
 
         txt_codA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_codA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_codAActionPerformed(evt);
+            }
+        });
+        txt_codA.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_codAKeyTyped(evt);
             }
         });
 
@@ -242,7 +258,7 @@ Connection con = null;
         });
 
         btn_requisitos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_requisitos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Eliminar.png"))); // NOI18N
+        btn_requisitos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/writing-on-an-open-book_icon-icons.com_70325.png"))); // NOI18N
         btn_requisitos.setText("Requisitos");
         btn_requisitos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -288,8 +304,8 @@ Connection con = null;
                             .addComponent(lbl_IdCarrera))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbo_Req1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbo_Req2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbo_Req1, 0, 1, Short.MAX_VALUE)
+                            .addComponent(cbo_Req2, 0, 1, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(cbo_IdCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -356,9 +372,11 @@ Connection con = null;
         jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -1, 1240, 740));
 
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
         jMenu1.setText("Regresar");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio.png"))); // NOI18N
         jMenuItem1.setText("Menu Principal");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -383,13 +401,13 @@ Connection con = null;
         
         String nombreAsignatura = txt_NombreA.getText() + " ";
         if ((txt_codA.getText().equals("")) || (txt_NombreA.getText().equals("")) ||
-            (cbo_IdCarrera.getSelectedItem().equals("Seleccione la carrera"))) {
+            (cbo_IdCarrera.getSelectedItem().equals("Seleccione la asignatura"))) {
 
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe llenar todos los campos! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la asignatura a actualizar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_NombreA.requestFocus();
             return;
         }
-        else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de carrera" +nombreAsignatura + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
+        else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de asignatura" +nombreAsignatura + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
             String id_carrera = cbo_IdCarrera.getSelectedItem().toString().substring(0, 4);
             String requisito1 = cbo_Req1.getSelectedItem().toString().substring(0, 5);
@@ -431,7 +449,7 @@ Connection con = null;
   
 
         if ((txt_codA.getText().equals("")) || (txt_NombreA.getText().equals(""))  || (txt_UniVal.getText().equals(""))  
-                ||  (cbo_IdCarrera.getSelectedItem().equals("Seleccione un carrera")) 
+                ||  (cbo_IdCarrera.getSelectedItem().equals("Seleccione una asignatura")) 
                //||  (cbo_Req1.getSelectedItem().equals("Seleccione un asignatura")) 
                 ) {
 
@@ -487,7 +505,13 @@ Connection con = null;
 
     private void btn_eliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminar1ActionPerformed
           String Asignatura = txt_NombreA.getText() + " " + txt_codA.getText();
-        if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de asignatura " + Asignatura + "", "Confirmación de eliminación",
+          
+           if ((txt_NombreA.getText().equals("")) || (txt_codA.getText().equals(""))  || (txt_UniVal.getText().equals(""))  ) {
+
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la asignatura que desea eliminar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+           
+        }
+          else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de asignatura " + Asignatura + "", "Confirmación de eliminación",
             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
 
@@ -574,6 +598,63 @@ Connection con = null;
         req.setVisible(true);
         
     }//GEN-LAST:event_btn_requisitosActionPerformed
+
+    private void txt_codAKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_codAKeyTyped
+       if (txt_codA.getText().length() >= 6) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
+        }
+        if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127
+            || evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22
+            || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+            return;
+        }
+        char a = evt.getKeyChar();
+        if (!Character.isLetterOrDigit(a)) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Sólo letras y numeros");
+        }
+    }//GEN-LAST:event_txt_codAKeyTyped
+
+    private void txt_NombreAKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NombreAKeyTyped
+        if (txt_NombreA.getText().length() >= 50) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
+        }
+        if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127
+            || evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22
+            || evt.getKeyChar() == 32 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+            return;
+        }
+        char a = evt.getKeyChar();
+        if (Character.isDigit(a)) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Sólo letras");
+        }
+    }//GEN-LAST:event_txt_NombreAKeyTyped
+
+    private void txt_UniValKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_UniValKeyTyped
+        char a=evt.getKeyChar();
+            if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
+                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+        return;
+        }
+        if(txt_UniVal.getText().length() >=1){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
+        }
+        if(Character.isLetter(a) || !Character.isLetterOrDigit(a)){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Solo números");
+        }
+    }//GEN-LAST:event_txt_UniValKeyTyped
 
     /**
      * @param args the command line arguments
@@ -732,12 +813,12 @@ public boolean existeAsignatura(){
             try {
                     String cap = "";
                     ResultSet rs2 = null;
-                   var = JOptionPane.showInputDialog(this, "Ingrese el nombre de la carrera que desea consultar", "Consulta de carrera", JOptionPane.QUESTION_MESSAGE);
+                   var = JOptionPane.showInputDialog(this, "Ingrese el nombre de la asignatura  que desea consultar", "Consulta de carrera", JOptionPane.QUESTION_MESSAGE);
                     if (var == null) {
                         JOptionPane.showMessageDialog(this, "La acción fue cancelada", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
                     } else {
                         if (var.equals("")) {
-                            JOptionPane.showMessageDialog(this, "Favor de ingresar el nombre de la carrera\n que desea consultar", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(this, "Favor de ingresar el nombre de la asignatura\n que desea consultar", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
                         } else {
                             String sql = "SELECT * FROM Asignaturas where cod_asignaturas='"+var+"' or nombre_asignaturas ='"+var+"'";
                             stmt = con.createStatement();
