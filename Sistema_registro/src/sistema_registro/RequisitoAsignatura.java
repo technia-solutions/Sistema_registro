@@ -7,6 +7,7 @@ package sistema_registro;
 
 import codigo.Conexion_consulta;
 import static java.awt.Frame.ICONIFIED;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -139,29 +140,39 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         lbl_idCarrera.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_idCarrera.setText("Id Carrera:");
         jPanel1.add(lbl_idCarrera);
-        lbl_idCarrera.setBounds(420, 160, 190, 20);
+        lbl_idCarrera.setBounds(380, 220, 190, 20);
 
         lbl_idReqAs.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_idReqAs.setText("Id Requisito Asignatura:");
         jPanel1.add(lbl_idReqAs);
-        lbl_idReqAs.setBounds(310, 70, 200, 22);
+        lbl_idReqAs.setBounds(270, 80, 200, 22);
 
         txt_NombreReqAsig.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_NombreReqAsig.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_NombreReqAsigKeyTyped(evt);
+            }
+        });
         jPanel1.add(txt_NombreReqAsig);
-        txt_NombreReqAsig.setBounds(540, 120, 210, 28);
+        txt_NombreReqAsig.setBounds(510, 150, 210, 40);
 
         txt_idReqAsig.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_idReqAsig.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_idReqAsigKeyTyped(evt);
+            }
+        });
         jPanel1.add(txt_idReqAsig);
-        txt_idReqAsig.setBounds(540, 70, 210, 28);
+        txt_idReqAsig.setBounds(510, 80, 210, 40);
 
         lbl_NombreReqAs.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_NombreReqAs.setText(" Requisito Asignatura:");
         jPanel1.add(lbl_NombreReqAs);
-        lbl_NombreReqAs.setBounds(330, 120, 190, 20);
+        lbl_NombreReqAs.setBounds(290, 160, 190, 20);
 
         cbo_idCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una carrera:" }));
         jPanel1.add(cbo_idCarrera);
-        cbo_idCarrera.setBounds(540, 160, 210, 30);
+        cbo_idCarrera.setBounds(510, 210, 210, 40);
 
         Tabla_ReqAsignatura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -266,7 +277,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         String id_facultad = cbo_idCarrera.getSelectedItem().toString().substring(0, 4);
 
         if ((txt_idReqAsig.getText().equals("")) || (txt_NombreReqAsig.getText().equals("")) ||
-            (cbo_idCarrera.getSelectedItem().equals("Seleccione la carrera"))) {
+            (cbo_idCarrera.getSelectedItem().equals("Seleccione la asignatura requisito"))) {
 
             javax.swing.JOptionPane.showMessageDialog(this,"¡Debe llenar todos los campos! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_NombreReqAsig.requestFocus();
@@ -312,9 +323,9 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
 
         String nombreAsignaturaRequisito = txt_NombreReqAsig.getText() + " ";
         if ((txt_idReqAsig.getText().equals("")) || (txt_NombreReqAsig.getText().equals("")) ||
-            (cbo_idCarrera.getSelectedItem().equals("Seleccione la carrera"))) {
+            (cbo_idCarrera.getSelectedItem().equals("Seleccione la asignatura requisito"))) {
 
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe llenar todos los campos! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la asignatura requisito a actualizar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_NombreReqAsig.requestFocus();
             return;
         }
@@ -356,11 +367,11 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         String nombreAsignaturaRequisito = txt_NombreReqAsig.getText();
 
         if ((txt_idReqAsig.getText().equals("")) || (txt_NombreReqAsig.getText().equals("")) ||
-            (cbo_idCarrera.getSelectedItem().equals("Seleccione la carrera"))) {
+            (cbo_idCarrera.getSelectedItem().equals("Seleccione la asignatura requisito"))) {
 
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe llenar todos los campos! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            txt_NombreReqAsig.requestFocus();
-            return;
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la asignatura requisito a eliminar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            
+            
         }
         else if(JOptionPane.showConfirmDialog(null,"¿Está seguro que desea eliminar el registro de la asignatura requisito "+nombreAsignaturaRequisito+"","Confirmación de eliminación",
             JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE
@@ -397,6 +408,44 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         a.setVisible(true);
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void txt_idReqAsigKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_idReqAsigKeyTyped
+           if (txt_idReqAsig.getText().length() >= 6) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
+        }
+        if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127
+            || evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22
+            || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+            return;
+        }
+        char a = evt.getKeyChar();
+        if (!Character.isLetterOrDigit(a)) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Sólo letras y numeros");
+        }
+    }//GEN-LAST:event_txt_idReqAsigKeyTyped
+
+    private void txt_NombreReqAsigKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NombreReqAsigKeyTyped
+             if (txt_NombreReqAsig.getText().length() >= 50) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
+        }
+        if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127
+            || evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22
+            || evt.getKeyChar() == 32 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+            return;
+        }
+        char a = evt.getKeyChar();
+        if (Character.isDigit(a)) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Sólo letras");
+        }
+    }//GEN-LAST:event_txt_NombreReqAsigKeyTyped
 
     /**
      * @param args the command line arguments

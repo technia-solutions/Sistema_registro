@@ -183,7 +183,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="420" y="160" width="190" height="20"/>
+              <AbsoluteConstraints x="380" y="220" width="190" height="20"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -196,7 +196,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="310" y="70" width="200" height="-1"/>
+              <AbsoluteConstraints x="270" y="80" width="200" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -206,9 +206,12 @@
               <Font name="Tahoma" size="18" style="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_NombreReqAsigKeyTyped"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="540" y="120" width="210" height="-1"/>
+              <AbsoluteConstraints x="510" y="150" width="210" height="40"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -218,9 +221,12 @@
               <Font name="Tahoma" size="18" style="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_idReqAsigKeyTyped"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="540" y="70" width="210" height="-1"/>
+              <AbsoluteConstraints x="510" y="80" width="210" height="40"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -233,7 +239,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="330" y="120" width="190" height="20"/>
+              <AbsoluteConstraints x="290" y="160" width="190" height="20"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -250,7 +256,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="540" y="160" width="210" height="30"/>
+              <AbsoluteConstraints x="510" y="210" width="210" height="40"/>
             </Constraint>
           </Constraints>
         </Component>
