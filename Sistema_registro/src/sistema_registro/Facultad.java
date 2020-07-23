@@ -235,7 +235,7 @@ public class Facultad extends javax.swing.JFrame {
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         String nombreFacultad = txt_NombreFacultad.getText() + " " + txt_idfacultad.getText();
          if ((txt_idfacultad.getText().equals("") || (txt_NombreFacultad.getText().equals("")))) {
-            JOptionPane.showMessageDialog(this, "¡Debe llenar todos los campos!");
+            JOptionPane.showMessageDialog(this, "¡Debe seleccionar la facultad que desea eliminar!");
         }
          else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de facultad " + nombreFacultad + "", "Confirmación de eliminación",
             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
@@ -319,6 +319,8 @@ public class Facultad extends javax.swing.JFrame {
 
         if ((txt_idfacultad.getText().equals("") || (txt_NombreFacultad.getText().equals("")))) {
             JOptionPane.showMessageDialog(this, "¡Debe llenar todos los campos!");
+            txt_NombreFacultad.requestFocus();
+            return;
         }
 
         if (existeFacultad()) {
@@ -358,7 +360,7 @@ public class Facultad extends javax.swing.JFrame {
         String nombreCampus = txt_NombreFacultad.getText() + " ";
          
         if ((txt_idfacultad.getText().equals("") || (txt_NombreFacultad.getText().equals("")))) {
-            JOptionPane.showMessageDialog(this, "¡Debe llenar todos los campos!");
+            JOptionPane.showMessageDialog(this, "¡Debe seleccionar la facultad que desea actualizar!");
         }
 
        else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de facultad " + nombreCampus + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE

@@ -251,8 +251,8 @@ public class Campus extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btn_actualizar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_idCampus)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_idCampus, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txt_idCampus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -383,7 +383,8 @@ public class Campus extends javax.swing.JFrame {
         String nombreCampus = txt_NombreCampus.getText() + " " + txt_idCampus.getText();
         
         if ((txt_idCampus.getText().equals("") || (txt_NombreCampus.getText().equals("")))) {
-            JOptionPane.showMessageDialog(this, "¡Debe llenar todos los campos!");
+            JOptionPane.showMessageDialog(this, "¡Debe seleccionar el campo a eliminar!");
+            
         }
         else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de campus " + nombreCampus + "", "Confirmación de eliminación",
             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
@@ -440,7 +441,7 @@ public class Campus extends javax.swing.JFrame {
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
         String nombreCampus = txt_NombreCampus.getText() + " ";
          if ((txt_idCampus.getText().equals("") || (txt_NombreCampus.getText().equals("")))) {
-            JOptionPane.showMessageDialog(this, "¡Debe llenar todos los campos!");
+            JOptionPane.showMessageDialog(this, "¡Debe seleccionar el campus a actualizar!");
         }
            
          else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro del campus " + nombreCampus + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
@@ -472,6 +473,8 @@ public class Campus extends javax.swing.JFrame {
 
         if ((txt_idCampus.getText().equals("") || (txt_NombreCampus.getText().equals("")))) {
             JOptionPane.showMessageDialog(this, "¡Debe llenar todos los campos!");
+            txt_NombreCampus.requestFocus();
+            return;
         }
 
         if (existeCampus()) {

@@ -95,6 +95,24 @@ public class Conexion_consulta {
         
     }   
         
+      public ArrayList<String> llenar_requisito() throws SQLException{
+         ArrayList<String> lista = new ArrayList<String>();
+         String q= "SELECT * from Requisito_Asignatura";
+         Statement st;
+         st = con.createStatement();
+         try{
+            rs=st.executeQuery(q);
+            while(rs.next()){
+                lista.add(rs.getString("id_asignatura") + " - " + rs.getString("RequisitoAsignatura"));
+            }
+         }
+        catch(Exception e){ 
+            
+              }
+          return lista;
+        
+    }   
+        
         
          
 }
