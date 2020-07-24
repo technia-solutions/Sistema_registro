@@ -775,12 +775,33 @@ this.cbo_tipoUsuario.setSelectedItem("");
      public boolean validarSalario(String salario){
            String salario2; 
           //  salario2=txt_Salario.toString().substring(0,1)
-        if(salario.length() < 9){
+        if(salario.length() < 10){
              if(!"0".equals(salario.substring(0,1))){
                  return true;
              }
              else{
                  JOptionPane.showMessageDialog(null, "El campo salario no puede comenzar con 0 ", "Error en campo salario", JOptionPane.ERROR_MESSAGE);
+                 return false;
+             }
+        }
+        else{
+            
+           return false; 
+        }    
+    }
+     
+      public boolean validarIdentidad(String identidad){
+           String salario2; 
+          //  salario2=txt_Salario.toString().substring(0,1)
+        if(identidad.length() < 9){
+             if(!"0".equals(identidad.substring(0,1) )){
+                 return true;
+             }
+             if(!"1".equals(identidad.substring(0,1) )){
+                 return true;
+             }
+             else{
+                 JOptionPane.showMessageDialog(null, "El numero de identidad solo puede comenzar con 0 o 1 ", "Error en campo identidad", JOptionPane.ERROR_MESSAGE);
                  return false;
              }
         }
@@ -852,6 +873,12 @@ this.cbo_tipoUsuario.setSelectedItem("");
             return;
             
         }
+        
+        if(!validarIdentidad(txt_Identidad.getText())){
+            return;
+            
+        }
+        
         
         if(!validarLongitud(txt_Nombre,5)){
             JOptionPane.showMessageDialog(null, "Los nombres ingresados son muy pequeños el mínimo es de 5 caracteres", "Longitud de los nombres", JOptionPane.INFORMATION_MESSAGE);
@@ -1178,6 +1205,10 @@ this.cbo_tipoUsuario.setSelectedItem("");
             return;
         }
        if(!validarSalario(txt_Salario.getText())){
+            return;
+            
+        }
+       if(!validarIdentidad(txt_Identidad.getText())){
             return;
             
         }

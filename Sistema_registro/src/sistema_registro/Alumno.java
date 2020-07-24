@@ -566,6 +566,26 @@ public class Alumno extends javax.swing.JFrame {
       
     }//GEN-LAST:event_btn_agregarAlumnosMouseClicked
 
+    public boolean validarIdentidad(String identidad){
+           String salario2; 
+          //  salario2=txt_Salario.toString().substring(0,1)
+        if(identidad.length() < 13){
+             if(!"0".equals(identidad.substring(0,1) )){
+                 return true;
+             }
+             if(!"1".equals(identidad.substring(0,1) )){
+                 return true;
+             }
+             else{
+                 JOptionPane.showMessageDialog(null, "El numero de identidad solo puede comenzar con 0 o 1 ", "Error en campo identidad", JOptionPane.ERROR_MESSAGE);
+                 return false;
+             }
+        }
+        else{
+            
+           return false; 
+        }    
+    }
     private void btn_agregarAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarAlumnosActionPerformed
         String numeroDeCuenta,nombreAlumno, apellidoAlumno, telefonoAlumno, idCarrera, identidad;
         numeroDeCuenta = "";
@@ -598,6 +618,11 @@ public class Alumno extends javax.swing.JFrame {
         
          if(!validarLongitudTelefono(txt_telefono,8)){
             return;
+        }
+         
+         if(!validarIdentidad(txt_identidad.getText())){
+            return;
+            
         }
          
        /* String cuenta=txt_numeroCuenta.getText().toString().substring(0,3);
@@ -793,6 +818,10 @@ public class Alumno extends javax.swing.JFrame {
             int dia = cld_fechaNacimiento.getDate().getDate();
             String fecha = año + "-" + mes +"-"+ dia;
             String periodo = cbo_periodo.getSelectedItem().toString().substring(0, 1);
+            if(!validarIdentidad(txt_identidad.getText())){
+            return;
+            
+        }
           try{
               PreparedStatement ps;
               ResultSet rs;
