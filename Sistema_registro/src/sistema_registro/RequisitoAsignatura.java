@@ -221,7 +221,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         jMenu1.setText("Regresar");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/writing-on-an-open-book_icon-icons.com_70325.png"))); // NOI18N
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/books_3025.png"))); // NOI18N
         jMenuItem1.setText("Asignaturas");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -436,9 +436,21 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         }
         if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127
             || evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22
-            || evt.getKeyChar() == 32 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+            || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
             return;
         }
+         if(evt.getKeyChar() == 32){
+             if(txt_NombreReqAsig.getText().length() == 0){
+                 evt.consume();
+                 Toolkit.getDefaultToolkit().beep();
+                 return;
+             }
+             if(txt_NombreReqAsig.getText().substring(txt_NombreReqAsig.getText().length() - 1).equals(" ")){
+                 evt.consume();
+                 Toolkit.getDefaultToolkit().beep();
+             }
+             return; 
+         }
         char a = evt.getKeyChar();
         if (Character.isDigit(a)) {
             evt.consume();

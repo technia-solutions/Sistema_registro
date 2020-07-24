@@ -19,6 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -54,6 +55,8 @@ public class Alumno extends javax.swing.JFrame {
             for(int i = 0; i<lista3.size();i++){
                 cbo_periodo.addItem(lista3.get(i));
             }
+            this.setTitle("Registro Alumno");
+             this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
             
             
     
@@ -367,6 +370,11 @@ public class Alumno extends javax.swing.JFrame {
         jLabel3.setText("Número de Identidad:");
 
         txt_identidad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_identidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_identidadKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -979,6 +987,25 @@ public class Alumno extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbo_campusActionPerformed
 
+    private void txt_identidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_identidadKeyTyped
+          char a=evt.getKeyChar();
+            if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
+                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+        return;
+        }
+        if(txt_identidad.getText().length() >=13){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
+        }
+        if(Character.isLetter(a) || !Character.isLetterOrDigit(a)){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Solo números");
+        }
+    }//GEN-LAST:event_txt_identidadKeyTyped
+
         private void limpiar(){
         txt_nombres.setText(null);
         txt_apellidos.setText(null);
@@ -1061,4 +1088,8 @@ public class Alumno extends javax.swing.JFrame {
     private javax.swing.JTextField txt_nombres;
     private javax.swing.JTextField txt_telefono;
     // End of variables declaration//GEN-END:variables
+
+   
+
+
 }

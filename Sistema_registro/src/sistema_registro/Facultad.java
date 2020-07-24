@@ -209,6 +209,7 @@ public class Facultad extends javax.swing.JFrame {
         jMenu1.setText("Regresar");
 
         Carrera.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        Carrera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/mortarboard_icon-icons.com_64579.png"))); // NOI18N
         Carrera.setText("Carrera");
         Carrera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -297,9 +298,21 @@ public class Facultad extends javax.swing.JFrame {
         }
         if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127
             || evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22
-            || evt.getKeyChar() == 32 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+            || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
             return;
         }
+         if(evt.getKeyChar() == 32){
+             if(txt_NombreFacultad.getText().length() == 0){
+                 evt.consume();
+                 Toolkit.getDefaultToolkit().beep();
+                 return;
+             }
+             if(txt_NombreFacultad.getText().substring(txt_NombreFacultad.getText().length() - 1).equals(" ")){
+                 evt.consume();
+                 Toolkit.getDefaultToolkit().beep();
+             }
+             return; 
+         }
         char a = evt.getKeyChar();
         if (Character.isDigit(a)) {
             evt.consume();

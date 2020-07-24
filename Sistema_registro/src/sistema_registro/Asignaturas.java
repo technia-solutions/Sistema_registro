@@ -15,6 +15,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -53,7 +54,7 @@ Connection con = null;
                cbo_Req1.addItem(lista2.get(i));
                cbo_Req2.addItem(lista2.get(i));
             }
-            
+             this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
             this.setTitle("Asignaturas");
     }
 
@@ -162,14 +163,14 @@ Connection con = null;
         lbl_IdCarrera.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_IdCarrera.setText("Carrera:");
 
-        cbo_Req1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione la asignatura1:" }));
+        cbo_Req1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione la asignatura1:", "Sin requisito" }));
         cbo_Req1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbo_Req1ActionPerformed(evt);
             }
         });
 
-        cbo_Req2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione la asignatura2:" }));
+        cbo_Req2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione la asignatura2:", "Sin requisito" }));
         cbo_Req2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbo_Req2ActionPerformed(evt);
@@ -632,9 +633,21 @@ Connection con = null;
         }
         if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127
             || evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22
-            || evt.getKeyChar() == 32 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+            || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
             return;
         }
+         if(evt.getKeyChar() == 32){
+             if(txt_NombreA.getText().length() == 0){
+                 evt.consume();
+                 Toolkit.getDefaultToolkit().beep();
+                 return;
+             }
+             if(txt_NombreA.getText().substring(txt_NombreA.getText().length() - 1).equals(" ")){
+                 evt.consume();
+                 Toolkit.getDefaultToolkit().beep();
+             }
+             return; 
+         }
         char a = evt.getKeyChar();
         if (Character.isDigit(a)) {
             evt.consume();
@@ -833,6 +846,7 @@ public boolean existeAsignatura(){
                                 txt_codA.setText(rs2.getString("cod_asignaturas"));
                                 txt_NombreA.setText(rs2.getString("nombre_asignaturas"));
                                 txt_UniVal.setText(rs2.getString("UV"));
+                               
                                 
                             } else {
                                 JOptionPane.showMessageDialog(null, "¡No se encuentra los datos: "+var+" ! Por favor verifique sí, lo escribio correctamente");

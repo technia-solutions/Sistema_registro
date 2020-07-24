@@ -365,9 +365,21 @@ public class Campus extends javax.swing.JFrame {
         }
         if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127
             || evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22
-            || evt.getKeyChar() == 32 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+             || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
             return;
         }
+         if(evt.getKeyChar() == 32){
+             if(txt_NombreCampus.getText().length() == 0){
+                 evt.consume();
+                 Toolkit.getDefaultToolkit().beep();
+                 return;
+             }
+             if(txt_NombreCampus.getText().substring(txt_NombreCampus.getText().length() - 1).equals(" ")){
+                 evt.consume();
+                 Toolkit.getDefaultToolkit().beep();
+             }
+             return; 
+         }
         char a = evt.getKeyChar();
         if (Character.isDigit(a)) {
             evt.consume();
