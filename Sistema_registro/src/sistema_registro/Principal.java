@@ -390,12 +390,13 @@ public class Principal extends javax.swing.JFrame {
     private void btn_AlumnoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_AlumnoMouseClicked
          Alumno alumno = null;
         try {
-            alumno = new Alumno();
+            alumno = new Alumno(lbl_NombreUsuario.getText());
+            alumno.setVisible(true);
+            this.dispose();
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        alumno.setVisible(true);
-        this.dispose();
+        
     }//GEN-LAST:event_btn_AlumnoMouseClicked
 
     private void btn_EmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EmpleadosActionPerformed
@@ -449,11 +450,10 @@ public class Principal extends javax.swing.JFrame {
              
         
          JFrame principal=new JFrame("EXIT");
-
         try {
             Login login=new Login();
             
-            if(JOptionPane.showConfirmDialog(principal,"¿Esta seguro que desea cerrar sesión?"
+            if(JOptionPane.showConfirmDialog(principal,"¿Está seguro que desea cerrar sesión?","Cerrar sesión del usuario "+lbl_NombreUsuario.getText()+"",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE
         )==JOptionPane.YES_OPTION){
             dispose();
             login.setVisible(true);
