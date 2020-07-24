@@ -53,7 +53,7 @@ Connection con = null;
                cbo_Req1.addItem(lista2.get(i));
                cbo_Req2.addItem(lista2.get(i));
             }
-             this.setLocationRelativeTo(null);
+            
             this.setTitle("Asignaturas");
     }
 
@@ -149,7 +149,7 @@ Connection con = null;
 
         jPanel2.setBackground(new java.awt.Color(215, 236, 233));
 
-        btn_AdmCarrera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
+        btn_AdmCarrera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_Agregar_pantallaAparte.png"))); // NOI18N
         btn_AdmCarrera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_AdmCarreraActionPerformed(evt);
@@ -304,14 +304,14 @@ Connection con = null;
                             .addComponent(lbl_IdCarrera))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbo_Req1, 0, 1, Short.MAX_VALUE)
-                            .addComponent(cbo_Req2, 0, 1, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(cbo_IdCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(27, 27, 27)
-                        .addComponent(btn_AdmCarrera)
-                        .addContainerGap())))
+                                .addComponent(cbo_IdCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbo_Req1, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbo_Req2, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_AdmCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -342,13 +342,14 @@ Connection con = null;
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(29, 29, 29)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbl_IdCarrera)
-                                    .addComponent(btn_AdmCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(lbl_IdCarrera)
+                                .addGap(41, 41, 41))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbo_IdCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(cbo_IdCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btn_AdmCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbo_Req1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_Req1))
@@ -372,7 +373,7 @@ Connection con = null;
         jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -1, 1240, 740));
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_retroceder.png"))); // NOI18N
         jMenu1.setText("Regresar");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
@@ -491,6 +492,7 @@ Connection con = null;
             ps.setString(4, id_carrera);
             ps.setString(5, requisito1);
             ps.setString(6, requisito2);
+            
             int res= ps.executeUpdate(); 
             JOptionPane.showMessageDialog(null, "Se ha guardado la información en Registro de Asignatura");
              } catch ( Exception e) {
@@ -498,6 +500,7 @@ Connection con = null;
         
              JOptionPane.showMessageDialog(null, e.getMessage());
         }
+        
 
         actualizarDatos();
         LimpiarCajas();
@@ -583,7 +586,10 @@ Connection con = null;
     }//GEN-LAST:event_cbo_Req2ActionPerformed
 
     private void cbo_Req1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_Req1ActionPerformed
-        // TODO add your handling code here:
+      if(cbo_Req1.getSelectedItem().toString().length()==0){
+     System.out.println("No hay texto");
+    }
+
     }//GEN-LAST:event_cbo_Req1ActionPerformed
 
     private void btn_requisitosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_requisitosActionPerformed
@@ -753,18 +759,17 @@ public boolean existeAsignatura(){
        }
     }
          
-              public void actualizarDatos(){
+ public void actualizarDatos(){
         try {
                
-               String sql = "SELECT * FROM Asignaturas where cod_asignaturas=\'"+txt_codA.getText()+"\'";
+               String sql = "SELECT * FROM Asignaturas";
                stmt = con.createStatement();
                ResultSet rs = stmt.executeQuery(sql);
-               
                modelo = new DefaultTableModel(null, titulos);
                Tabla_RegistroAsignatura.setModel(modelo);
                  while(rs.next()) {
                      
-                          String []datos= new String[5];
+                          String []datos= new String[6];
                       datos[0] =rs.getString("cod_asignaturas");
                       datos[1] =rs.getString("nombre_asignaturas");
                       datos[2] =rs.getString("UV");
@@ -810,15 +815,15 @@ public boolean existeAsignatura(){
              
     
        private void rellenar(){
-            try {
+      try {
                     String cap = "";
                     ResultSet rs2 = null;
-                   var = JOptionPane.showInputDialog(this, "Ingrese el nombre de la asignatura  que desea consultar", "Consulta de carrera", JOptionPane.QUESTION_MESSAGE);
+                   var = JOptionPane.showInputDialog(this, "Ingrese el nombre de la asignatura que desea consultar", "Consulta de facultad", JOptionPane.QUESTION_MESSAGE);
                     if (var == null) {
                         JOptionPane.showMessageDialog(this, "La acción fue cancelada", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
                     } else {
                         if (var.equals("")) {
-                            JOptionPane.showMessageDialog(this, "Favor de ingresar el nombre de la asignatura\n que desea consultar", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(this, "Favor de ingresar el nombre de la asignatura \n que desea consultar", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
                         } else {
                             String sql = "SELECT * FROM Asignaturas where cod_asignaturas='"+var+"' or nombre_asignaturas ='"+var+"'";
                             stmt = con.createStatement();
@@ -828,9 +833,7 @@ public boolean existeAsignatura(){
                                 txt_codA.setText(rs2.getString("cod_asignaturas"));
                                 txt_NombreA.setText(rs2.getString("nombre_asignaturas"));
                                 txt_UniVal.setText(rs2.getString("UV"));
-                                cbo_IdCarrera.setSelectedItem(rs2.getString("id_carrera")); 
-                                cbo_Req1.setSelectedItem(rs2.getString("requisito1")); 
-                                cbo_Req2.setSelectedItem(rs2.getString("requisito2")); 
+                                
                             } else {
                                 JOptionPane.showMessageDialog(null, "¡No se encuentra los datos: "+var+" ! Por favor verifique sí, lo escribio correctamente");
                             }
@@ -855,14 +858,13 @@ public boolean existeAsignatura(){
     }
 
     private void llenarCampos() {
-         int i = Tabla_RegistroAsignatura.getSelectedRow();
+      int i = Tabla_RegistroAsignatura.getSelectedRow();
         txt_codA.setText(Tabla_RegistroAsignatura.getValueAt(i, 0).toString());
         txt_NombreA.setText(Tabla_RegistroAsignatura.getValueAt(i, 1).toString());
         txt_UniVal.setText(Tabla_RegistroAsignatura.getValueAt(i, 2).toString());
         cbo_IdCarrera.setSelectedItem(Tabla_RegistroAsignatura.getValueAt(i, 3).toString());
         cbo_Req1.setSelectedItem(Tabla_RegistroAsignatura.getValueAt(i, 4).toString());
         cbo_Req2.setSelectedItem(Tabla_RegistroAsignatura.getValueAt(i, 5).toString());
-
 
     }
   

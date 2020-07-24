@@ -7,7 +7,7 @@
         <Menu class="javax.swing.JMenu" name="jMenu1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/menu.png"/>
+              <Image iconType="3" name="/Imagenes/boton_retroceder.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Regresar"/>
           </Properties>
@@ -18,7 +18,7 @@
                   <KeyStroke key="Ctrl+A"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Imagenes/inicio.png"/>
+                  <Image iconType="3" name="/Imagenes/writing-on-an-open-book_icon-icons.com_70325.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Asignaturas"/>
               </Properties>

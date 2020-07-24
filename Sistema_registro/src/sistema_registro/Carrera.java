@@ -67,8 +67,6 @@ public class Carrera extends javax.swing.JFrame {
         txt_NombreCarrera = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_Carrera = new javax.swing.JTable();
-        cbo_idfacultad = new javax.swing.JComboBox<>();
-        btn_AdmFacultades = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         btn_guardar = new javax.swing.JButton();
         btn_actualizar1 = new javax.swing.JButton();
@@ -76,6 +74,8 @@ public class Carrera extends javax.swing.JFrame {
         btn_eliminar = new javax.swing.JButton();
         lbl_nombreCarrera = new javax.swing.JLabel();
         lbl_facultad = new javax.swing.JLabel();
+        cbo_idfacultad = new javax.swing.JComboBox<>();
+        btn_AdmFacultades = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -132,17 +132,6 @@ public class Carrera extends javax.swing.JFrame {
         jScrollPane1.setViewportView(Tabla_Carrera);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 360, 870, 110));
-
-        cbo_idfacultad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una facultad" }));
-        getContentPane().add(cbo_idfacultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 223, 280, 22));
-
-        btn_AdmFacultades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
-        btn_AdmFacultades.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_AdmFacultadesActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_AdmFacultades, new org.netbeans.lib.awtextra.AbsoluteConstraints(753, 220, -1, 25));
 
         jPanel1.setBackground(new java.awt.Color(215, 236, 233));
         jPanel1.setLayout(null);
@@ -204,7 +193,20 @@ public class Carrera extends javax.swing.JFrame {
         lbl_facultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_facultad.setText("Facultad:");
         jPanel1.add(lbl_facultad);
-        lbl_facultad.setBounds(360, 130, 71, 22);
+        lbl_facultad.setBounds(360, 140, 71, 22);
+
+        cbo_idfacultad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una facultad" }));
+        jPanel1.add(cbo_idfacultad);
+        cbo_idfacultad.setBounds(450, 130, 270, 40);
+
+        btn_AdmFacultades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_Agregar_pantallaAparte.png"))); // NOI18N
+        btn_AdmFacultades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_AdmFacultadesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_AdmFacultades);
+        btn_AdmFacultades.setBounds(740, 130, 30, 30);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 870, 250));
 
@@ -236,9 +238,11 @@ public class Carrera extends javax.swing.JFrame {
         jLabel1.setText("jLabel1");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 480));
 
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_retroceder.png"))); // NOI18N
         jMenu1.setText("Regresar");
 
         Regresar_Asignatura.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        Regresar_Asignatura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/writing-on-an-open-book_icon-icons.com_70325.png"))); // NOI18N
         Regresar_Asignatura.setText("Asignaturas");
         Regresar_Asignatura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -342,9 +346,9 @@ public class Carrera extends javax.swing.JFrame {
             ResultSet rs;
             ps = con.prepareStatement("INSERT INTO Carrera (id_carrera, nombre_carrera,id_facultad)"
                 + "                VALUES(?,?,?)");
-            ps.setString(0, txt_idCarrera.getText());
-            ps.setString(1, txt_NombreCarrera.getText());
-             ps.setString(2, id_facultad);
+            ps.setString(1, txt_idCarrera.getText());
+            ps.setString(2, txt_NombreCarrera.getText());
+             ps.setString(3, id_facultad);
             int res = ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Se ha guradod la información del carrera");
         } catch (Exception e) {
@@ -615,8 +619,8 @@ public class Carrera extends javax.swing.JFrame {
             idC.setIdentifier(ICONIFIED);
             TableColumn cnombre = Tabla_Carrera.getColumn(titulos[1]);
             cnombre.setMaxWidth(300);
-            TableColumn cfacultad = Tabla_Empleados.getColumn(titulos[2]);
-                cfacultad.setMaxWidth(150);
+            TableColumn cfacultad = Tabla_Carrera.getColumn(titulos[2]);
+                cfacultad.setMaxWidth(300);
         } catch (Exception e) {
            /* JOptionPane.showMessageDialog(null, e.getMessage());*/
             System.err.println(e);
