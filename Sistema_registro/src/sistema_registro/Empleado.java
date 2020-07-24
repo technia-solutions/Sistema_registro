@@ -293,9 +293,6 @@ this.cbo_tipoUsuario.setSelectedItem("");
         lbl_tipoUsuario = new javax.swing.JLabel();
         cbo_tipoUsuario = new javax.swing.JComboBox<>();
         btn_rellenarCampos = new javax.swing.JButton();
-        btn_administrarCampus = new javax.swing.JButton();
-        btn_administrarTipoUsuario = new javax.swing.JButton();
-        btn_desbloquear = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -606,36 +603,6 @@ this.cbo_tipoUsuario.setSelectedItem("");
         });
         jPanel1.add(btn_rellenarCampos);
         btn_rellenarCampos.setBounds(610, 320, 110, 31);
-
-        btn_administrarCampus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_Agregar_pantallaAparte.png"))); // NOI18N
-        btn_administrarCampus.setContentAreaFilled(false);
-        btn_administrarCampus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_administrarCampusActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btn_administrarCampus);
-        btn_administrarCampus.setBounds(1140, 190, 40, 30);
-
-        btn_administrarTipoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_Agregar_pantallaAparte.png"))); // NOI18N
-        btn_administrarTipoUsuario.setContentAreaFilled(false);
-        btn_administrarTipoUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_administrarTipoUsuarioActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btn_administrarTipoUsuario);
-        btn_administrarTipoUsuario.setBounds(1140, 230, 40, 30);
-
-        btn_desbloquear.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btn_desbloquear.setText("Desbloquear usuario");
-        btn_desbloquear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_desbloquearActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btn_desbloquear);
-        btn_desbloquear.setBounds(220, 290, 180, 30);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 1240, 360));
 
@@ -1466,56 +1433,6 @@ this.cbo_tipoUsuario.setSelectedItem("");
         }
     }//GEN-LAST:event_Tabla_EmpleadosMouseClicked
 
-    private void btn_administrarCampusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_administrarCampusActionPerformed
-        Campus campus = null;
-        try {
-            campus = new Campus();
-        } catch (SQLException ex) {
-            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        campus.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btn_administrarCampusActionPerformed
-
-    private void btn_administrarTipoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_administrarTipoUsuarioActionPerformed
-        TipoUsuario tipoEmpleado = null;
-        try {
-            tipoEmpleado = new TipoUsuario();
-        } catch (SQLException ex) {
-            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        tipoEmpleado.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btn_administrarTipoUsuarioActionPerformed
-
-    private void btn_desbloquearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_desbloquearActionPerformed
-    var = JOptionPane.showInputDialog(this,"Ingrese el nombre de usuario del empleado que desea desbloquar","Desbloqueo de usuarios",JOptionPane.QUESTION_MESSAGE);
-            if(var == null){
-                JOptionPane.showMessageDialog(this,"La acción fue cancelada","¡AVISO!",JOptionPane.INFORMATION_MESSAGE);
-            }
-                else if (var.equals("")) {
-                        JOptionPane.showMessageDialog(this,"¡Por favor ingrese el nombre de usuario que desea desbloquear!","¡AVISO!",JOptionPane.INFORMATION_MESSAGE);
-                                    }
-                else{
-                    try {
-                        String sql = "update Acceso \n" +
-                                     "set estado ='Activo',\n" +
-                                     "intentos = 0"
-                                     +"where nombre_usuario ='"+var+"'";
-                    stmt = con.createStatement();
-                    int rs = stmt.executeUpdate(sql);
-                    if(rs >0){
-                        JOptionPane.showMessageDialog(null,"Se ha desbloqueado exitosamente al usuario: "+var+"","Usuario desbloquedo satisfactoriamente",JOptionPane.INFORMATION_MESSAGE);
-                    }
-                    else{
-                               JOptionPane.showMessageDialog(null,"¡No se encuentra el nombre de usuario! Por favor verifique sí, lo escribió correctamente","Nombre de usuario no encontrado",JOptionPane.ERROR_MESSAGE);
-                            }
-                    } catch (SQLException ex) {
-                        Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-    }//GEN-LAST:event_btn_desbloquearActionPerformed
-
     private void txt_TelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_TelefonoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_TelefonoActionPerformed
@@ -1620,10 +1537,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
     private javax.swing.JButton btn_Actualizar;
     private javax.swing.JButton btn_Eliminar;
     private javax.swing.JButton btn_Limpiar;
-    private javax.swing.JButton btn_administrarCampus;
-    private javax.swing.JButton btn_administrarTipoUsuario;
     private javax.swing.JButton btn_consultar;
-    private javax.swing.JButton btn_desbloquear;
     private javax.swing.JButton btn_guardar;
     private javax.swing.JButton btn_rellenarCampos;
     private javax.swing.JComboBox<String> cbo_idCampus;
