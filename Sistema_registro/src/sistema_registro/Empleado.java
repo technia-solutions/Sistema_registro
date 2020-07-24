@@ -357,8 +357,6 @@ this.cbo_tipoUsuario.setSelectedItem("");
         btn_guardar.setText("  Guardar");
         btn_guardar.setBorderPainted(false);
         btn_guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btn_guardar.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        btn_guardar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btn_guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_guardarActionPerformed(evt);
@@ -1062,7 +1060,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         return;
             }
        
-        if(txt_Salario.getText().length() >=8){
+        if(txt_Salario.getText().length() >=10){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
@@ -1178,6 +1176,10 @@ this.cbo_tipoUsuario.setSelectedItem("");
      String contraseña2 = pwd_contraseña.getText();
        if(!validarContraseñas(contraseña2)){
             return;
+        }
+       if(!validarSalario(txt_Salario.getText())){
+            return;
+            
         }
       try{
           PreparedStatement ps;
@@ -1305,7 +1307,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         int i = Tabla_Empleados.getSelectedRow();
         txt_Nombre.setText(Tabla_Empleados.getValueAt(i, 1).toString());
         txt_Apellido.setText(Tabla_Empleados.getValueAt(i, 2).toString());
-        txt_Salario.setText(Tabla_Empleados.getValueAt(i, 3).toString());
+        txt_Salario.setText(Tabla_Empleados.getValueAt(i, 3).toString().substring(1));
         txt_Telefono.setText(Tabla_Empleados.getValueAt(i, 4).toString());
         txt_Identidad.setText(Tabla_Empleados.getValueAt(i, 5).toString());
         txt_NombreUsuario.setText(Tabla_Empleados.getValueAt(i, 7).toString());
@@ -1472,7 +1474,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
     private void menu_CampusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_CampusActionPerformed
          Campus campus = null;
         try {
-            campus = new Campus();
+            campus = new Campus(lbl_usuario.getText());
         } catch (SQLException ex) {
             Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1483,7 +1485,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
     private void menu_tipoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_tipoUsuarioActionPerformed
         TipoUsuario tipoEmpleado = null;
         try {
-            tipoEmpleado = new TipoUsuario();
+            tipoEmpleado = new TipoUsuario(lbl_usuario.getText());
         } catch (SQLException ex) {
             Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
         }

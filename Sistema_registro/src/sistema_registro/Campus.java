@@ -50,6 +50,14 @@ public class Campus extends javax.swing.JFrame {
          this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
     }
 
+    public Campus(String nombreUsuario) throws SQLException {
+        this.con = ConectorSQL.obtenerConexion();
+        initComponents();
+        actualizarDatos(); 
+        this.setTitle("Campus");
+        this.lbl_usuario.setText(nombreUsuario);
+         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+    }
     public void Actualizar() {
 
         String cadena1, cadena2;
@@ -99,6 +107,8 @@ public class Campus extends javax.swing.JFrame {
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        iconodeUsuario = new javax.swing.JLabel();
+        lbl_usuario = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btn_guardar = new javax.swing.JButton();
         btn_actualizar = new javax.swing.JButton();
@@ -126,6 +136,13 @@ public class Campus extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        iconodeUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User.png"))); // NOI18N
+        getContentPane().add(iconodeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 50, 70));
+
+        lbl_usuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbl_usuario.setText("Nombre Usuario");
+        getContentPane().add(lbl_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 190, -1));
 
         jPanel1.setBackground(new java.awt.Color(215, 236, 233));
 
@@ -268,10 +285,10 @@ public class Campus extends javax.swing.JFrame {
                         .addComponent(btn_buscar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_eliminar)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 880, 390));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 880, 390));
 
         jPanel2.setBackground(new java.awt.Color(232, 251, 249));
 
@@ -283,24 +300,24 @@ public class Campus extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(431, 431, 431)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(406, Short.MAX_VALUE)
                 .addComponent(lbl_titulo)
-                .addContainerGap(365, Short.MAX_VALUE))
+                .addGap(390, 390, 390))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
                 .addComponent(lbl_titulo)
-                .addGap(21, 21, 21))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 880, 70));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 880, 70));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 530));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 580));
 
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -329,7 +346,7 @@ public class Campus extends javax.swing.JFrame {
     private void JMIEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMIEmpleadosActionPerformed
            Empleado empleados = null;
         try {
-            empleados = new Empleado();
+            empleados = new Empleado(lbl_usuario.getText());
         } catch (SQLException ex) {
             Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -405,7 +422,7 @@ public class Campus extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "¡Debe seleccionar el campo a eliminar!");
             
         }
-        else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de campus " + nombreCampus + "", "Confirmación de eliminación",
+        else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro del campus " + nombreCampus + "", "Confirmación de eliminación",
             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
 
@@ -501,13 +518,13 @@ public class Campus extends javax.swing.JFrame {
         }
 
         if (!validarLongitud(txt_idCampus, 3)) {
-            JOptionPane.showMessageDialog(null, "Los nombres ingresados son muy pequeños el mínimo es de 3 caracteres", "Longitud de los nombres", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El ID del Campus es muy pequeño el mínimo es de 3 caracteres", "Longitud del ID del Campus", JOptionPane.INFORMATION_MESSAGE);
             return;
 
         }
 
         if (!validarLongitud(txt_NombreCampus, 5)) {
-            JOptionPane.showMessageDialog(null, "Los nombres ingresados son muy pequeños el mínimo es de 5 caracteres", "Longitud de los nombres", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El nombre del campus ingresado es muy pequeños el mínimo es de 5 caracteres", "Longitud del nombre", JOptionPane.INFORMATION_MESSAGE);
             return;
 
         }
@@ -520,7 +537,7 @@ public class Campus extends javax.swing.JFrame {
             ps.setString(1, txt_idCampus.getText());
             ps.setString(2, txt_NombreCampus.getText());
             int res = ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Se ha guradod la información del campus");
+            JOptionPane.showMessageDialog(null, "Se ha guardado la información del campus: "+txt_NombreCampus.getText()+"");
         } catch (Exception e) {
             System.out.println(e);
 
@@ -613,6 +630,7 @@ public class Campus extends javax.swing.JFrame {
     private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_guardar;
+    private javax.swing.JLabel iconodeUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -624,6 +642,7 @@ public class Campus extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_idCampus;
     private javax.swing.JLabel lbl_nombreCampus;
     private javax.swing.JLabel lbl_titulo;
+    private javax.swing.JLabel lbl_usuario;
     private javax.swing.JTextField txt_NombreCampus;
     private javax.swing.JTextField txt_idCampus;
     // End of variables declaration//GEN-END:variables

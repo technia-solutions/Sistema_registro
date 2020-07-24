@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -39,8 +40,8 @@ public class Principal extends javax.swing.JFrame {
 
         initComponents();
         this.setLocationRelativeTo(null);
- 
- 
+        this.setTitle("Menú Principal");
+        this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
     }
     public Principal(String nombreUsuario,String nombreEmpleado) throws SQLException{
         this.con = ConectorSQL.obtenerConexion();
@@ -53,6 +54,9 @@ public class Principal extends javax.swing.JFrame {
         
         String b=nombreEmpleado;
         this.lbl_NombreEmpleado.setText(b);
+        
+        this.setTitle("Menú Principal");
+        this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
         
     }
   

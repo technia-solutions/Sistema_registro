@@ -50,6 +50,14 @@ public class TipoUsuario extends javax.swing.JFrame {
     }
     
     
+    public TipoUsuario(String nombreUsuario) throws SQLException {
+        this.con = ConectorSQL.obtenerConexion ();
+        initComponents();
+        consultarDatos();
+         this.setTitle("Tipos de Usuario");
+         this.lbl_usuario.setText(nombreUsuario);
+          this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+    }
         
 
     /**
@@ -62,6 +70,8 @@ public class TipoUsuario extends javax.swing.JFrame {
     private void initComponents() {
 
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        iconodeUsuario = new javax.swing.JLabel();
+        lbl_usuario = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btn_guardar = new javax.swing.JButton();
         btn_actualizar = new javax.swing.JButton();
@@ -85,6 +95,13 @@ public class TipoUsuario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        iconodeUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User.png"))); // NOI18N
+        getContentPane().add(iconodeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 50, 70));
+
+        lbl_usuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbl_usuario.setText("Nombre Usuario");
+        getContentPane().add(lbl_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 190, -1));
 
         jPanel1.setBackground(new java.awt.Color(215, 236, 233));
 
@@ -216,7 +233,7 @@ public class TipoUsuario extends javax.swing.JFrame {
                         .addComponent(btn_guardar)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -229,7 +246,7 @@ public class TipoUsuario extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 700, 360));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 700, 360));
 
         jPanel2.setBackground(new java.awt.Color(232, 251, 249));
 
@@ -253,11 +270,11 @@ public class TipoUsuario extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, -1, -1));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 490));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 580));
 
         jMenu1.setBackground(new java.awt.Color(255, 255, 255));
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_retroceder.png"))); // NOI18N
@@ -403,7 +420,7 @@ this.txt_TipoUsuario.setText("");
           this.dispose();
         Empleado ee;
      try {
-         ee = new Empleado();
+         ee = new Empleado(lbl_usuario.getText());
           ee.setVisible(true);
      } catch (SQLException ex) {
          Logger.getLogger(TipoUsuario.class.getName()).log(Level.SEVERE, null, ex);
@@ -650,6 +667,7 @@ this.txt_TipoUsuario.setText("");
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_guardar;
     private javax.swing.JMenuItem cbo_menuprincipal;
+    private javax.swing.JLabel iconodeUsuario;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
@@ -660,6 +678,7 @@ this.txt_TipoUsuario.setText("");
     private javax.swing.JLabel lbl_TipoUsuario;
     private javax.swing.JLabel lbl_idTipo;
     private javax.swing.JLabel lbl_titulo;
+    private javax.swing.JLabel lbl_usuario;
     private javax.swing.JTextField txt_TipoUsuario;
     private javax.swing.JTextField txt_idTipo;
     // End of variables declaration//GEN-END:variables
