@@ -569,7 +569,7 @@ public class Alumno extends javax.swing.JFrame {
     public boolean validarIdentidad(String identidad){
            String salario2; 
           //  salario2=txt_Salario.toString().substring(0,1)
-        if(identidad.length() < 13){
+        if(identidad.length() <= 13){
              if(!"0".equals(identidad.substring(0,1) )){
                  return true;
              }
