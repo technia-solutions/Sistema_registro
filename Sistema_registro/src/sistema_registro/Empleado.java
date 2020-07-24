@@ -19,6 +19,7 @@ import codigo.Conexion_consulta;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.text.NumberFormat;
+import java.util.Calendar;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -78,6 +79,15 @@ public class Empleado extends javax.swing.JFrame {
             this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
             this.btn_Actualizar.setEnabled(false);
             this.btn_Eliminar.setEnabled(false);
+            
+              Calendar f;
+       
+       f=Calendar.getInstance();
+       
+       int d=f.get(Calendar.DATE), mes=1+(f.get(Calendar.MONTH)), año=f.get(Calendar.YEAR);
+       
+       fechaHoy.setText(d+"-"+mes+"-"+año);
+      
     } 
     
     public Empleado(String nombreUsuario) throws SQLException {
@@ -254,7 +264,6 @@ this.cbo_tipoUsuario.setSelectedItem("");
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_Empleados = new javax.swing.JTable();
-        btn_desbloquear = new javax.swing.JButton();
         lbl_usuario = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -286,13 +295,19 @@ this.cbo_tipoUsuario.setSelectedItem("");
         btn_rellenarCampos = new javax.swing.JButton();
         btn_administrarCampus = new javax.swing.JButton();
         btn_administrarTipoUsuario = new javax.swing.JButton();
+        button1 = new java.awt.Button();
+        btn_desbloquear = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        fechaHoy = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        cbo_MenuPrincipal = new javax.swing.JMenuItem();
-        cbo_ConsultaIndividual = new javax.swing.JCheckBoxMenuItem();
+        menu_MenuPrincipal = new javax.swing.JMenuItem();
+        menu_desbloquearUsuario = new javax.swing.JMenuItem();
+        menu_Campus = new javax.swing.JMenuItem();
+        menu_tipoUsuario = new javax.swing.JMenuItem();
 
         jButton1.setText("jButton1");
 
@@ -329,15 +344,6 @@ this.cbo_tipoUsuario.setSelectedItem("");
         jScrollPane1.setViewportView(Tabla_Empleados);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 1280, 118));
-
-        btn_desbloquear.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btn_desbloquear.setText("Desbloquear usuario");
-        btn_desbloquear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_desbloquearActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_desbloquear, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 30, 180, 30));
 
         lbl_usuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_usuario.setText("Nombre de Usuario");
@@ -421,7 +427,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(70, 380, 73, 23);
+        jButton2.setBounds(70, 380, 79, 25);
 
         chb_mostrarContraseña.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         chb_mostrarContraseña.setText("Mostrar contraseña");
@@ -432,7 +438,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jPanel1.add(chb_mostrarContraseña);
-        chb_mostrarContraseña.setBounds(940, 160, 147, 23);
+        chb_mostrarContraseña.setBounds(1020, 160, 147, 25);
 
         lbl_nombres.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_nombres.setText("Nombres:");
@@ -602,23 +608,44 @@ this.cbo_tipoUsuario.setSelectedItem("");
         jPanel1.add(btn_rellenarCampos);
         btn_rellenarCampos.setBounds(610, 320, 110, 31);
 
-        btn_administrarCampus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
+        btn_administrarCampus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_Agregar_pantallaAparte.png"))); // NOI18N
+        btn_administrarCampus.setContentAreaFilled(false);
         btn_administrarCampus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_administrarCampusActionPerformed(evt);
             }
         });
         jPanel1.add(btn_administrarCampus);
-        btn_administrarCampus.setBounds(1150, 190, 60, 30);
+        btn_administrarCampus.setBounds(1210, 180, 40, 30);
 
-        btn_administrarTipoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
+        btn_administrarTipoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_Agregar_pantallaAparte.png"))); // NOI18N
+        btn_administrarTipoUsuario.setContentAreaFilled(false);
         btn_administrarTipoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_administrarTipoUsuarioActionPerformed(evt);
             }
         });
         jPanel1.add(btn_administrarTipoUsuario);
-        btn_administrarTipoUsuario.setBounds(1150, 230, 60, 30);
+        btn_administrarTipoUsuario.setBounds(1140, 250, 40, 30);
+
+        button1.setLabel("button1");
+        button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(button1);
+        button1.setBounds(800, 330, 57, 24);
+
+        btn_desbloquear.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_desbloquear.setText("Desbloquear usuario");
+        btn_desbloquear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_desbloquearActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_desbloquear);
+        btn_desbloquear.setBounds(220, 290, 180, 30);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 1240, 360));
 
@@ -647,29 +674,67 @@ this.cbo_tipoUsuario.setSelectedItem("");
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, 50));
 
+        jPanel3.setBackground(new java.awt.Color(232, 251, 249));
+        jPanel3.setLayout(null);
+
+        fechaHoy.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        fechaHoy.setText("Fecha hoy");
+        jPanel3.add(fechaHoy);
+        fechaHoy.setBounds(20, 10, 90, 17);
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 10, 120, 30));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 670));
 
-        jMenu1.setText("Inicio");
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
+        jMenu1.setText("Menú");
 
-        cbo_MenuPrincipal.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-        cbo_MenuPrincipal.setText("Menu Principal");
-        cbo_MenuPrincipal.addActionListener(new java.awt.event.ActionListener() {
+        menu_MenuPrincipal.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        menu_MenuPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+        menu_MenuPrincipal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        menu_MenuPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio.png"))); // NOI18N
+        menu_MenuPrincipal.setText("Menu Principal");
+        menu_MenuPrincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbo_MenuPrincipalActionPerformed(evt);
+                menu_MenuPrincipalActionPerformed(evt);
             }
         });
-        jMenu1.add(cbo_MenuPrincipal);
+        jMenu1.add(menu_MenuPrincipal);
 
-        cbo_ConsultaIndividual.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
-        cbo_ConsultaIndividual.setSelected(true);
-        cbo_ConsultaIndividual.setText("Consulta Individual");
-        cbo_ConsultaIndividual.addActionListener(new java.awt.event.ActionListener() {
+        menu_desbloquearUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
+        menu_desbloquearUsuario.setBackground(new java.awt.Color(255, 255, 255));
+        menu_desbloquearUsuario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        menu_desbloquearUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton__UsuarioDesbloqueado2.png"))); // NOI18N
+        menu_desbloquearUsuario.setText("Desbloquear Usuario");
+        menu_desbloquearUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbo_ConsultaIndividualActionPerformed(evt);
+                menu_desbloquearUsuarioActionPerformed(evt);
             }
         });
-        jMenu1.add(cbo_ConsultaIndividual);
+        jMenu1.add(menu_desbloquearUsuario);
+
+        menu_Campus.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
+        menu_Campus.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        menu_Campus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_campus.png"))); // NOI18N
+        menu_Campus.setText("Administrar Campus");
+        menu_Campus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_CampusActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menu_Campus);
+
+        menu_tipoUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_MASK));
+        menu_tipoUsuario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        menu_tipoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_TipoUsuario.png"))); // NOI18N
+        menu_tipoUsuario.setText("Administrar Tipo de Usuario");
+        menu_tipoUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_tipoUsuarioActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menu_tipoUsuario);
 
         jMenuBar1.add(jMenu1);
 
@@ -752,6 +817,26 @@ this.cbo_tipoUsuario.setSelectedItem("");
         }    
     }
     
+     public boolean validarSalario(String salario){
+           String salario2; 
+          //  salario2=txt_Salario.toString().substring(0,1)
+        if(salario.length() < 9){
+             if(!"0".equals(salario.substring(0,1))){
+                 return true;
+             }
+             else{
+                 JOptionPane.showMessageDialog(null, "El campo salario no puede comenzar con 0 ", "Error en campo salario", JOptionPane.ERROR_MESSAGE);
+                 return false;
+             }
+        }
+        else{
+            
+           return false; 
+        }    
+    }
+    
+    
+    
     public boolean politicasContraseña(String contraseña){
         boolean tieneNumero = false; 
         boolean tieneMayusculas = false; 
@@ -806,6 +891,11 @@ this.cbo_tipoUsuario.setSelectedItem("");
         
         if(existeUsuario()){
             return;
+        }
+        
+        if(!validarSalario(txt_Salario.getText())){
+            return;
+            
         }
         
         if(!validarLongitud(txt_Nombre,5)){
@@ -1095,7 +1185,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         modelocentrar.setHorizontalAlignment(SwingConstants.CENTER);
         Tabla_Empleados.getColumnModel().getColumn(2).setCellRenderer(modelocentrar);
     }
-    private void cbo_MenuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_MenuPrincipalActionPerformed
+    private void menu_MenuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_MenuPrincipalActionPerformed
 
         try {
             String sql2 = "Select nombres_empleado + ' ' + apellido_empleado from Empleados where id_empleado = (select id_empleado from Acceso where nombre_usuario = '"+lbl_usuario.getText()+"')";
@@ -1112,7 +1202,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         } catch (SQLException ex) {
             Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_cbo_MenuPrincipalActionPerformed
+    }//GEN-LAST:event_menu_MenuPrincipalActionPerformed
 
     private void cbo_idCampusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_idCampusActionPerformed
 
@@ -1235,77 +1325,6 @@ this.cbo_tipoUsuario.setSelectedItem("");
         }
         
     }
-    private void cbo_ConsultaIndividualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_ConsultaIndividualActionPerformed
-
-        try {
-            Statement st = con.createStatement();
-            String consulta = "Select id_tipoUsuario from Tipo_Usuarios\n" +
-                              "where id_tipoUsuario = (Select id_tipoUsuario from Acceso where nombre_usuario ='"+lbl_usuario.getText()+"')";
-            ResultSet rs = st.executeQuery(consulta);
-            if(rs.next()){
-                if(rs.getString("id_tipoUsuario").equals("A") || rs.getString("tipo_usuario").equals("S")){
-                    try{
-                    String cap="";
-                    ResultSet rs2 = null;
-                    var = JOptionPane.showInputDialog(this,"Ingrese los nombres, los apellidos o el número de identidad del empleado que desea consultar","Consulta de empleado",JOptionPane.QUESTION_MESSAGE);
-                    if(var == null)
-                        JOptionPane.showMessageDialog(this,"La acción fue cancelada","¡AVISO!",JOptionPane.INFORMATION_MESSAGE);
-                    else {
-                        if (var.equals("")) {
-                            JOptionPane.showMessageDialog(this,"Favor de ingresar los datos del empleado\n que desea consultar","¡AVISO!",JOptionPane.INFORMATION_MESSAGE);
-                        }
-                        else{
-                            String sql = "select * from Empleados as e join Acceso as a on e.id_empleado = a.id_empleado join \n" +
-                                    "Campus as c on c.id_campus = e.id_campus where numero_identidad = '"+var+"' or nombres_empleado = '"+var+"' or apellido_empleado = '"+var+"'";
-                            stmt = con.createStatement();
-                            rs2 = stmt.executeQuery(sql);
-                           
-                            if(rs2.next()) {
-                                String []datos= new String[9];
-                                datos[0] =rs2.getString("id_empleado");
-                                txt_Nombre.setText(rs2.getString("nombres_empleado"));
-                                txt_Apellido.setText(rs2.getString("apellido_empleado"));
-                                txt_Salario.setText(rs2.getString("salario"));
-                                txt_Telefono.setText(rs2.getString("telefono_empleado"));
-                                txt_Identidad.setText(rs2.getString("numero_identidad"));
-                                cbo_idCampus.setSelectedItem((rs2.getString("id_campus") + " - " + rs2.getString("nombre_campus")));
-                                txt_NombreUsuario.setText(rs2.getString("nombre_usuario"));
-                                if(rs2.getString("tipo_usuario").equals("A")){
-                                    cbo_tipoUsuario.setSelectedItem("Administrador");
-                                }
-                                else if(rs2.getString("tipo_usuario").equals("E")){
-                                    cbo_tipoUsuario.setSelectedItem("Empleado");
-                                }
-                                else if(rs2.getString("tipo_usuario").equals("S")){
-                                    cbo_tipoUsuario.setSelectedItem("Supervisor");
-                                }
-                      
-                            }
-                            else{
-                                JOptionPane.showMessageDialog(null,"¡No se encuentra el empleado! Por favor verifique sí, lo escribio correctamente");
-                            }
-                            
-                        }
-                        
-                    }
-                    }catch (Exception e) {
-                            JOptionPane.showMessageDialog(null,e.getMessage());
-                            }
-                   
-                }       
-            }
-               else{
-                            JOptionPane.showMessageDialog(null,"¡Sólo los administradores tienen acceso a esta función!");
-                            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-
-        
-    }//GEN-LAST:event_cbo_ConsultaIndividualActionPerformed
-
     private void txt_IdentidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_IdentidadKeyTyped
         char a=evt.getKeyChar();
             if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
@@ -1515,6 +1534,68 @@ this.cbo_tipoUsuario.setSelectedItem("");
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_NombreUsuarioActionPerformed
 
+    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+ 
+        String cadena3;
+        cadena3 = txt_Salario.getText();       
+        
+        
+        
+        if(!validarSalario(cadena3)){
+            return;
+        }
+    }//GEN-LAST:event_button1ActionPerformed
+
+    private void menu_desbloquearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_desbloquearUsuarioActionPerformed
+         var = JOptionPane.showInputDialog(this,"Ingrese el nombre de usuario del empleado que desea desbloquar","Desbloqueo de usuarios",JOptionPane.QUESTION_MESSAGE);
+            if(var == null){
+                JOptionPane.showMessageDialog(this,"La acción fue cancelada","¡AVISO!",JOptionPane.INFORMATION_MESSAGE);
+            }
+                else if (var.equals("")) {
+                        JOptionPane.showMessageDialog(this,"¡Por favor ingrese el nombre de usuario que desea desbloquear!","¡AVISO!",JOptionPane.INFORMATION_MESSAGE);
+                                    }
+                else{
+                    try {
+                        String sql = "update Acceso \n" +
+                                     "set estado ='Activo',\n" +
+                                     "intentos = 0"
+                                     +"where nombre_usuario ='"+var+"'";
+                    stmt = con.createStatement();
+                    int rs = stmt.executeUpdate(sql);
+                    if(rs >0){
+                        JOptionPane.showMessageDialog(null,"Se ha desbloqueado exitosamente al usuario: "+var+"","Usuario desbloquedo satisfactoriamente",JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    else{
+                               JOptionPane.showMessageDialog(null,"¡No se encuentra el nombre de usuario! Por favor verifique sí, lo escribió correctamente","Nombre de usuario no encontrado",JOptionPane.ERROR_MESSAGE);
+                            }
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+    }//GEN-LAST:event_menu_desbloquearUsuarioActionPerformed
+
+    private void menu_CampusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_CampusActionPerformed
+         Campus campus = null;
+        try {
+            campus = new Campus();
+        } catch (SQLException ex) {
+            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        campus.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_menu_CampusActionPerformed
+
+    private void menu_tipoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_tipoUsuarioActionPerformed
+        TipoUsuario tipoEmpleado = null;
+        try {
+            tipoEmpleado = new TipoUsuario();
+        } catch (SQLException ex) {
+            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        tipoEmpleado.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_menu_tipoUsuarioActionPerformed
+
    
     /**
      * @param args the command line arguments
@@ -1567,11 +1648,11 @@ this.cbo_tipoUsuario.setSelectedItem("");
     private javax.swing.JButton btn_desbloquear;
     private javax.swing.JButton btn_guardar;
     private javax.swing.JButton btn_rellenarCampos;
-    private javax.swing.JCheckBoxMenuItem cbo_ConsultaIndividual;
-    private javax.swing.JMenuItem cbo_MenuPrincipal;
+    private java.awt.Button button1;
     private javax.swing.JComboBox<String> cbo_idCampus;
     private javax.swing.JComboBox<String> cbo_tipoUsuario;
     private javax.swing.JCheckBox chb_mostrarContraseña;
+    private javax.swing.JLabel fechaHoy;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -1581,6 +1662,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_apellidos;
     private javax.swing.JLabel lbl_contraseña;
@@ -1593,6 +1675,10 @@ this.cbo_tipoUsuario.setSelectedItem("");
     private javax.swing.JLabel lbl_tipoUsuario;
     private javax.swing.JLabel lbl_titulo;
     private javax.swing.JLabel lbl_usuario;
+    private javax.swing.JMenuItem menu_Campus;
+    private javax.swing.JMenuItem menu_MenuPrincipal;
+    private javax.swing.JMenuItem menu_desbloquearUsuario;
+    private javax.swing.JMenuItem menu_tipoUsuario;
     private javax.swing.JPasswordField pwd_contraseña;
     private javax.swing.JTextField txt_Apellido;
     private javax.swing.JTextField txt_Identidad;
