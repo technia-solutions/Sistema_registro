@@ -560,7 +560,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         lbl_idCampus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_idCampus.setText("Campus:");
         jPanel1.add(lbl_idCampus);
-        lbl_idCampus.setBounds(790, 190, 80, 22);
+        lbl_idCampus.setBounds(790, 190, 69, 22);
 
         cbo_idCampus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cbo_idCampus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un campus" }));
@@ -575,7 +575,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         lbl_tipoUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_tipoUsuario.setText("Tipo de Usuario:");
         jPanel1.add(lbl_tipoUsuario);
-        lbl_tipoUsuario.setBounds(740, 230, 140, 22);
+        lbl_tipoUsuario.setBounds(730, 230, 140, 22);
 
         cbo_tipoUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cbo_tipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un tipo de usuario" }));
