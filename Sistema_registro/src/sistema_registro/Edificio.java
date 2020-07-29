@@ -396,7 +396,7 @@ public class Edificio extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_idEdificioKeyTyped
 
     private void txt_nombreEdificioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nombreEdificioKeyTyped
-       if (txt_nombreEdificio.getText().length() >= 10) {
+       if (txt_nombreEdificio.getText().length() >= 40) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
