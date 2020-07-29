@@ -5,6 +5,8 @@
  */
 package sistema_registro;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Carlos
@@ -65,6 +67,11 @@ public class Secciones extends javax.swing.JFrame {
 
         btn_guardar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_guardar.setText("Guardar");
+        btn_guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardarActionPerformed(evt);
+            }
+        });
 
         btn_actualizar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_actualizar.setText("Actualizar");
@@ -242,6 +249,26 @@ public class Secciones extends javax.swing.JFrame {
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_eliminarActionPerformed
+
+    private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
+     String dias ="";
+     
+     if(cbo_lunes.isSelected()){
+         dias = dias+ "Lu";
+     }
+     
+     if(cbo_martes.isSelected()){
+         dias = dias+ "Ma";
+     }
+     
+     if(cbo_miercoles.isSelected()){
+         dias = dias+ "Mie";
+     }
+     
+     
+     JOptionPane.showMessageDialog(null, dias);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_guardarActionPerformed
 
     /**
      * @param args the command line arguments
