@@ -218,6 +218,11 @@ public class Campus extends javax.swing.JFrame {
         });
 
         txt_idCampus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_idCampus.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_idCampusFocusLost(evt);
+            }
+        });
         txt_idCampus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_idCampusActionPerformed(evt);
@@ -513,6 +518,10 @@ public class Campus extends javax.swing.JFrame {
             return;
         }
 
+        if (existeidCampus()) {
+            return;
+        }
+        
         if (existeCampus()) {
             return;
         }
@@ -549,6 +558,12 @@ public class Campus extends javax.swing.JFrame {
     private void txt_idCampusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idCampusActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_idCampusActionPerformed
+
+    private void txt_idCampusFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_idCampusFocusLost
+        String id = txt_idCampus.getText();
+        String upper = id.toUpperCase();
+        txt_idCampus.setText(upper); 
+    }//GEN-LAST:event_txt_idCampusFocusLost
 
     public void actualizarDatos() {
         try {
@@ -647,10 +662,27 @@ public class Campus extends javax.swing.JFrame {
     private javax.swing.JTextField txt_idCampus;
     // End of variables declaration//GEN-END:variables
 
+    private boolean existeidCampus() {
+        try {
+            Statement st = con.createStatement();
+            String sql = "Select id_campus from Campus where id_campus = '" + txt_idCampus.getText() + "'";
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null, "El id: " + txt_idCampus.getText() + " ya existe", "El id del campus ¡Ya existe!", JOptionPane.INFORMATION_MESSAGE);
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Campus.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
     private boolean existeCampus() {
         try {
             Statement st = con.createStatement();
-            String sql = "Select id_campus from Campus where nombre_campus = '" + txt_NombreCampus.getText() + "'";
+            String sql = "Select nombre_campus from Campus where nombre_campus = '" + txt_NombreCampus.getText() + "'";
             ResultSet rs = st.executeQuery(sql);
             if (rs.next()) {
                 JOptionPane.showMessageDialog(null, "El nombre campus: " + txt_NombreCampus.getText() + " ya existe", "El campus ¡Ya existe!", JOptionPane.INFORMATION_MESSAGE);

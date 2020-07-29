@@ -293,6 +293,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         lbl_tipoUsuario = new javax.swing.JLabel();
         cbo_tipoUsuario = new javax.swing.JComboBox<>();
         btn_rellenarCampos = new javax.swing.JButton();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -602,22 +603,26 @@ this.cbo_tipoUsuario.setSelectedItem("");
         jPanel1.add(btn_rellenarCampos);
         btn_rellenarCampos.setBounds(610, 320, 110, 31);
 
+        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("¤#,##0.00"))));
+        jPanel1.add(jFormattedTextField1);
+        jFormattedTextField1.setBounds(230, 310, 240, 40);
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 1240, 360));
 
         jPanel2.setBackground(new java.awt.Color(232, 251, 249));
 
         lbl_titulo.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
-        lbl_titulo.setText("Registro de Empleado");
+        lbl_titulo.setText("Empleado");
         lbl_titulo.setAutoscrolls(true);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(500, Short.MAX_VALUE)
-                .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(440, 440, 440))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(512, 512, 512)
+                .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(585, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -791,22 +796,24 @@ this.cbo_tipoUsuario.setSelectedItem("");
     }
      
       public boolean validarIdentidad(String identidad){
-           String salario2; 
-          //  salario2=txt_Salario.toString().substring(0,1)
-        if(identidad.length() <= 13){
-             if(!"0".equals(identidad.substring(0,1) )){
+        String id = identidad.substring(0, 1);
+        
+        if(identidad.length() < 13){
+             JOptionPane.showMessageDialog(null, "El número de identidad es de 13 dígitos, usted ha ingresado solamente "+identidad.length()+" dígitos.", "Número de identidad muy corto", JOptionPane.ERROR_MESSAGE);
+        }
+        if(identidad.length() == 13){
+             if("0".equals(id)){
                  return true;
              }
-             if(!"1".equals(identidad.substring(0,1) )){
+             else if("1".equals(id)){
                  return true;
              }
              else{
-                 JOptionPane.showMessageDialog(null, "El numero de identidad solo puede comenzar con 0 o 1 ", "Error en campo identidad", JOptionPane.ERROR_MESSAGE);
+                 JOptionPane.showMessageDialog(null, "El número de identidad sólo puede comenzar con 0 o 1 ", "Error en campo identidad", JOptionPane.ERROR_MESSAGE);
                  return false;
              }
         }
         else{
-            
            return false; 
         }    
     }
@@ -1012,7 +1019,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
              }
              return; 
          }
-        if(txt_Nombre.getText().length() >=100){
+        if(txt_Nombre.getText().length() >=40){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
@@ -1046,7 +1053,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
          }
             
             
-        if(txt_Apellido.getText().length() >=100){
+        if(txt_Apellido.getText().length() >=40){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
@@ -1245,6 +1252,9 @@ this.cbo_tipoUsuario.setSelectedItem("");
                       + "where id_empleado = (Select id_empleado from Acceso where nombre_usuario = '"+txt_NombreUsuario.getText()+"')";
                int rs2 = st2.executeUpdate(sql);
               JOptionPane.showMessageDialog(null, "Se ha actualizado la información del empleado "+nombreEmpleado+" correctamente.");
+              this.btn_guardar.setEnabled(true);
+              this.btn_Actualizar.setEnabled(false);
+              this.btn_Eliminar.setEnabled(false);
           }catch ( Exception e) {
            JOptionPane.showMessageDialog(null, e.getMessage()); 
         }
@@ -1371,11 +1381,14 @@ this.cbo_tipoUsuario.setSelectedItem("");
           PreparedStatement ps;
           ResultSet rs;
          Statement st=con.createStatement();
-         String sql ="Delete Empleado "
+         String sql ="Delete Empleados "
                       + "where numero_identidad = "+txt_Identidad.getText()+"";
                   int res=st.executeUpdate(sql);
-                  JOptionPane.showMessageDialog(null, "Se ha borrado la información del empleado "+nombreEmpleado+" correctamente");
+                  this.btn_guardar.setEnabled(true);
+                  this.btn_Actualizar.setEnabled(false);
+                  this.btn_Eliminar.setEnabled(false);
                   if(res > 0){ 
+                      JOptionPane.showMessageDialog(null, "Se ha borrado la información del empleado "+nombreEmpleado+" correctamente"); 
                   }else {
                       JOptionPane.showMessageDialog(null, "¡Error al eliminar la información!"); 
                   }
@@ -1394,6 +1407,9 @@ this.cbo_tipoUsuario.setSelectedItem("");
     private void btn_Limpiarbtn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Limpiarbtn_limpiarActionPerformed
  
         limpiar();
+        this.btn_guardar.setEnabled(true);
+        this.btn_Actualizar.setEnabled(false);
+        this.btn_Eliminar.setEnabled(false);
 
     }//GEN-LAST:event_btn_Limpiarbtn_limpiarActionPerformed
 
@@ -1401,6 +1417,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
        rellenar();
        this.jScrollPane1.setEnabled(true);
        this.Tabla_Empleados.setEnabled(true);
+       this.btn_guardar.setEnabled(false);
     }//GEN-LAST:event_btn_rellenarCamposMouseClicked
 
     private void limpiar(){
@@ -1442,6 +1459,10 @@ this.cbo_tipoUsuario.setSelectedItem("");
                  || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
         return;
             }
+        if(evt.getKeyChar() == 32 || evt.getKeyChar() == 124){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+        }
         if(pwd_contraseña.getText().length() >=25){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
@@ -1463,6 +1484,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             llenarCampos();
             this.btn_Actualizar.setEnabled(true);
             this.btn_Eliminar.setEnabled(true);
+            this.btn_guardar.setEnabled(false);
         }
     }//GEN-LAST:event_Tabla_EmpleadosMouseClicked
 
@@ -1579,6 +1601,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
     private javax.swing.JLabel fechaHoy;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

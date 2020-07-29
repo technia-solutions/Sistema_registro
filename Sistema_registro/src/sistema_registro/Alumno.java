@@ -567,22 +567,24 @@ public class Alumno extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_agregarAlumnosMouseClicked
 
     public boolean validarIdentidad(String identidad){
-           String salario2; 
-          //  salario2=txt_Salario.toString().substring(0,1)
-        if(identidad.length() <= 13){
-             if(!"0".equals(identidad.substring(0,1) )){
+        String id = identidad.substring(0, 1);
+        
+        if(identidad.length() < 13){
+             JOptionPane.showMessageDialog(null, "El número de identidad es de 13 dígitos, usted ha ingresado solamente "+identidad.length()+" dígitos.", "Número de identidad muy corto", JOptionPane.ERROR_MESSAGE);
+        }
+        if(identidad.length() == 13){
+             if("0".equals(id)){
                  return true;
              }
-             if(!"1".equals(identidad.substring(0,1) )){
+             else if("1".equals(id)){
                  return true;
              }
              else{
-                 JOptionPane.showMessageDialog(null, "El numero de identidad solo puede comenzar con 0 o 1 ", "Error en campo identidad", JOptionPane.ERROR_MESSAGE);
+                 JOptionPane.showMessageDialog(null, "El número de identidad sólo puede comenzar con 0 o 1 ", "Error en campo identidad", JOptionPane.ERROR_MESSAGE);
                  return false;
              }
         }
         else{
-            
            return false; 
         }    
     }
@@ -597,19 +599,60 @@ public class Alumno extends javax.swing.JFrame {
         String id_campus = cbo_campus.getSelectedItem().toString().substring(0, 4);
         String periodo = cbo_periodo.getSelectedItem().toString().substring(0, 2);
         String periodo2 = cbo_periodo.getSelectedItem().toString().substring(0, 1);
-        int mes1 = cld_fechaNacimiento.getDate().getMonth() + 1;
-            int año1 = cld_fechaNacimiento.getDate().getYear() +1900;
-            int dia1 = cld_fechaNacimiento.getDate().getDate();
-        String fecha = año1 + "-" + mes1 +"-"+ dia1;
+        
+        
         identidad = txt_identidad.getText();
         
-        if  (((txt_nombres.getText().equals("")) || (txt_apellidos.getText().equals("")) || (txt_telefono.getText().equals(""))
-         ||  (cld_fechaNacimiento.getDate().equals("")) || (txt_identidad.getText().equals("")) || (cbo_carrera.getSelectedItem().equals("Seleccione una carrera")) )) {
-            
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe llenar todos los campos \n","AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        if((txt_nombres.getText().equals(""))){
+             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar los nombres del alumno.","Nombres del alumno requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_nombres.requestFocus();
             return;
         }
+        
+        if((txt_apellidos.getText().equals(""))){
+             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar los apellidos del alumno.","Apellidos del alumno requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_apellidos.requestFocus();
+            return;
+        }
+        
+        if((txt_telefono.getText().equals(""))){
+             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el teléfono del alumno.","Teléfono del alumno requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_telefono.requestFocus();
+            return;
+        }
+        
+        if((txt_identidad.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el número de identidad del alumno.","Número de identidad del alumno requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_identidad.requestFocus();
+            return;
+         }
+        
+        
+        if((cbo_carrera.getSelectedItem().equals("Seleccione una carrera"))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar una carrera para el alumno.","Carrera del alumno requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+         if((cbo_periodo.getSelectedItem().equals("Seleccione el período"))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar el período de inscripción del alumno.","Período de inscripción del alumno requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+         
+          if((cbo_campus.getSelectedItem().equals("Seleccione un campus"))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un campus para el alumno.","Campus del alumno requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+          
+     
+        if((cld_fechaNacimiento.getDate()== null)){
+             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar la fecha de nacimiento del alumno.","Fecha de nacimiento del alumno requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+        int mes1 = cld_fechaNacimiento.getDate().getMonth() + 1;
+        int año1 = cld_fechaNacimiento.getDate().getYear() +1900;
+        int dia1 = cld_fechaNacimiento.getDate().getDate();
+        String fecha = año1 + "-" + mes1 +"-"+ dia1;
         
         if(existeAlumno()){
             return;
@@ -624,6 +667,7 @@ public class Alumno extends javax.swing.JFrame {
             return;
             
         }
+         
          
        /* String cuenta=txt_numeroCuenta.getText().toString().substring(0,3);
           if(!ValidarNumeroCuenta(cuenta)){
@@ -921,7 +965,7 @@ public class Alumno extends javax.swing.JFrame {
          }
               
             
-        if(txt_nombres.getText().length() >=100){
+        if(txt_nombres.getText().length() >=40){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
@@ -955,7 +999,7 @@ public class Alumno extends javax.swing.JFrame {
              return; 
          }
               
-        if(txt_apellidos.getText().length() >=100){
+        if(txt_apellidos.getText().length() >=40){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");

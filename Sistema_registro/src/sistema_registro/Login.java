@@ -9,6 +9,7 @@ import java.awt.Toolkit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.*;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.apache.commons.codec.digest.DigestUtils;
 import sistema_registro.SQL.ConectorSQL;
@@ -27,6 +28,7 @@ public class Login extends javax.swing.JFrame {
         this.con = ConectorSQL.obtenerConexion();
         initComponents();
         this.setLocationRelativeTo(null);
+         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
     }
 
     /**
@@ -204,19 +206,19 @@ public class Login extends javax.swing.JFrame {
             ResultSet r2 = stmt.executeQuery(verificar);
             if(isEmpty()){
                 getToolkit().beep();
-                JOptionPane.showMessageDialog(null, "Por favor llene todos los campos", "Ingrese sus datos", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Por favor llene todos los campos.", "Ingrese sus datos", JOptionPane.INFORMATION_MESSAGE);
                 return;
             }
            if(r2.next()){
               if(r2.getString("estado").equals("Bloqueado")){
-                    JOptionPane.showMessageDialog(null, "El usuario: "+usuario+" está bloqueado por favor comuníquese con el administrador", "Usuario bloqueado", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "El usuario: "+usuario+" está bloqueado por favor comuníquese con el administrador.", "Usuario bloqueado", JOptionPane.INFORMATION_MESSAGE);
                     return;
                 }
             }
             
             if(rs.next()){
                 if(rs.getString("estado").equals("Bloqueado")){
-                    JOptionPane.showMessageDialog(null, "El usuario: "+usuario+" está bloqueado por favor comuníquese con el administrador", "Usuario bloqueado", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "El usuario: "+usuario+" está bloqueado por favor comuníquese con el administrador.", "Usuario bloqueado", JOptionPane.INFORMATION_MESSAGE);
                     return;
                 }
                 if(rs.getString("estado").equals("Activo") || rs.getString("estado").equals("Administrador")){
@@ -254,12 +256,12 @@ public class Login extends javax.swing.JFrame {
                                         Statement st2 = con.createStatement();
                                         String sql2 = "Update Acceso set estado = 'Bloqueado' where nombre_usuario ='"+usuario+"'";
                                         int columnas = st2.executeUpdate(sql2);
-                                        JOptionPane.showMessageDialog(null, "El usuario: "+usuario+" ha sido bloqueado por favor comuníquese con el administrador", "Usuario bloqueado", JOptionPane.INFORMATION_MESSAGE);
+                                        JOptionPane.showMessageDialog(null, "El usuario: "+usuario+" ha sido bloqueado por favor comuníquese con el administrador.", "Usuario bloqueado", JOptionPane.INFORMATION_MESSAGE);
                                         this.dispose();
                                         return;
                                     }
                                     int intentosRestantes = intentos - Integer.parseInt(rs3.getString("intentos"));
-                                    JOptionPane.showMessageDialog(null, "El nombre de usuario o contraseña no coinciden, todavia tiene "+intentosRestantes+" intentos", "Las credenciales no concuerdan", JOptionPane.ERROR_MESSAGE);
+                                    JOptionPane.showMessageDialog(null, "El nombre de usuario o contraseña no coinciden, todavia tiene "+intentosRestantes+" intentos.", "Las credenciales no concuerdan", JOptionPane.ERROR_MESSAGE);
                                     pwd_contraseña.setText("");
                                 }
                              }
@@ -299,7 +301,7 @@ public class Login extends javax.swing.JFrame {
     if(txt_usuario.getText().length() >=25){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos.");
         }
         char a=evt.getKeyChar();
     }//GEN-LAST:event_txt_usuarioKeyTyped
@@ -308,7 +310,7 @@ public class Login extends javax.swing.JFrame {
       if(pwd_contraseña.getText().length() >=25){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos.");
         }
     }//GEN-LAST:event_pwd_contraseñaKeyTyped
 
