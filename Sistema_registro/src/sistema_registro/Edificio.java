@@ -94,6 +94,11 @@ public class Edificio extends javax.swing.JFrame {
         lbl_idEdificio.setText("Id Edificio:");
 
         txt_nombreEdificio.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_nombreEdificio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_nombreEdificioActionPerformed(evt);
+            }
+        });
         txt_nombreEdificio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_nombreEdificioKeyTyped(evt);
@@ -181,9 +186,7 @@ public class Edificio extends javax.swing.JFrame {
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(20, 20, 20)
                                     .addComponent(txt_idEdificio, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txt_nombreEdificio)))
+                                .addComponent(txt_nombreEdificio))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(cbo_idCampus, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -393,7 +396,7 @@ public class Edificio extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_idEdificioKeyTyped
 
     private void txt_nombreEdificioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nombreEdificioKeyTyped
-       if (txt_nombreEdificio.getText().length() >= 40) {
+       if (txt_nombreEdificio.getText().length() >= 10) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
@@ -434,6 +437,10 @@ public class Edificio extends javax.swing.JFrame {
         this.jScrollPane1.setEnabled(true);
         this.Tabla_Edificio.setEnabled(true);
     }//GEN-LAST:event_btn_buscarMouseClicked
+
+    private void txt_nombreEdificioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreEdificioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nombreEdificioActionPerformed
 
     /**
      * @param args the command line arguments

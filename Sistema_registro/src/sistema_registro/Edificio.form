@@ -40,7 +40,7 @@
                                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                   <Component id="txt_idEdificio" min="-2" pref="180" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="txt_nombreEdificio" alignment="0" pref="182" max="32767" attributes="0"/>
+                              <Component id="txt_nombreEdificio" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
@@ -146,6 +146,7 @@
         </Property>
       </Properties>
       <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_nombreEdificioActionPerformed"/>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_nombreEdificioKeyTyped"/>
       </Events>
     </Component>
