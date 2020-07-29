@@ -512,12 +512,16 @@ public class Campus extends javax.swing.JFrame {
         cadena1 = txt_idCampus.getText();
         cadena2 = txt_NombreCampus.getText();
 
-        if ((txt_idCampus.getText().equals("") || (txt_NombreCampus.getText().equals("")))) {
-            JOptionPane.showMessageDialog(this, "¡Debe llenar todos los campos!");
+        if((txt_idCampus.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id del campus.","Id campus  requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_idCampus.requestFocus();
+            return;
+        }
+        if((txt_NombreCampus.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre del campus."," nombre campus requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_NombreCampus.requestFocus();
             return;
         }
-
         if (existeidCampus()) {
             return;
         }
@@ -668,7 +672,7 @@ public class Campus extends javax.swing.JFrame {
             String sql = "Select id_campus from Campus where id_campus = '" + txt_idCampus.getText() + "'";
             ResultSet rs = st.executeQuery(sql);
             if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "El id: " + txt_idCampus.getText() + " ya existe", "El id del campus ¡Ya existe!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El id: " + txt_idCampus.getText() + " ya existe", "El id del campus ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
                 return true;
             } else {
                 return false;
@@ -685,7 +689,7 @@ public class Campus extends javax.swing.JFrame {
             String sql = "Select nombre_campus from Campus where nombre_campus = '" + txt_NombreCampus.getText() + "'";
             ResultSet rs = st.executeQuery(sql);
             if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "El nombre campus: " + txt_NombreCampus.getText() + " ya existe", "El campus ¡Ya existe!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El nombre campus: " + txt_NombreCampus.getText() + " ya existe", "El campus ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
                 return true;
             } else {
                 return false;

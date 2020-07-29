@@ -354,6 +354,24 @@ this.txt_TipoUsuario.setText("");
        public boolean existeUsuario(){
         try {
             Statement st = con.createStatement();
+            String sql = "Select Tipo_Usario from Tipo_Usuarios where Tipo_Usuario = '"+txt_TipoUsuario.getText()+"'";
+            ResultSet rs = st.executeQuery(sql);
+            if(rs.next()){
+                JOptionPane.showMessageDialog(null, "Ya existe este nombre de Usuario: "+txt_TipoUsuario.getText()+" ", "Nombre de usuario ¡Ya existe!", JOptionPane.INFORMATION_MESSAGE);
+                return true;
+            }
+            else{
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+       
+       public boolean existeidUsuario(){
+        try {
+            Statement st = con.createStatement();
             String sql = "Select id_tipoUsuario from Tipo_Usuarios where id_tipoUsuario = '"+txt_idTipo.getText()+"'";
             ResultSet rs = st.executeQuery(sql);
             if(rs.next()){
@@ -443,14 +461,25 @@ this.txt_TipoUsuario.setText("");
         cadena1 = txt_idTipo.getText();
         cadena2 = txt_TipoUsuario.getText();
 
-        if ((txt_idTipo.getText().equals("")) || (txt_TipoUsuario.getText().equals(""))  ) {
-
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe llenar todos los campos! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+       
+        if((txt_idTipo.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id del tipo de usuario.","Id tipo usuario requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_idTipo.requestFocus();
             return;
         }
-
+        
+         if((txt_TipoUsuario.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre del tipo de usuario.","Nombre tipo usuario requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_TipoUsuario.requestFocus();
+            return;
+        }
+        
+        
         if(existeUsuario()){
+            return;
+        }
+        
+        if(existeidUsuario()){
             return;
         }
 

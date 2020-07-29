@@ -91,6 +91,11 @@ public class Carrera extends javax.swing.JFrame {
         getContentPane().add(lbl_idCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 114, -1, -1));
 
         txt_idCarrera.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_idCarrera.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_idCarreraFocusLost(evt);
+            }
+        });
         txt_idCarrera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_idCarreraActionPerformed(evt);
@@ -316,16 +321,30 @@ public class Carrera extends javax.swing.JFrame {
         cadena2 = txt_NombreCarrera.getText();
        String id_facultad = cbo_idfacultad.getSelectedItem().toString().substring(0, 3);
 
-         
-        if ((txt_idCarrera.getText().equals("")) || (txt_NombreCarrera.getText().equals("")) || 
-          (cbo_idfacultad.getSelectedItem().equals("Seleccione la carrera"))) {
-            
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe llenar todos los campos! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        if((txt_idCarrera.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id de la carrera.","Id carrera requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_idCarrera.requestFocus();
+            return;
+        }
+        
+        if((txt_NombreCarrera.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre de la carrera.","Nombre carrera requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_NombreCarrera.requestFocus();
             return;
         }
+        
+          
+        if((cbo_idfacultad.getSelectedItem().equals("Seleccione una facultad"))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar una facultad para la carrea","Facultad de la carrera requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+       
 
         if (existeCarrera()) {
+            return;
+        }
+        
+          if (existeidCarrera()) {
             return;
         }
 
@@ -466,6 +485,12 @@ public class Carrera extends javax.swing.JFrame {
         
     }//GEN-LAST:event_Regresar_AsignaturaActionPerformed
 
+    private void txt_idCarreraFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_idCarreraFocusLost
+         String id = txt_idCarrera.getText();
+        String lower = id.toLowerCase();
+        txt_idCarrera.setText(lower); 
+    }//GEN-LAST:event_txt_idCarreraFocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -528,13 +553,30 @@ public class Carrera extends javax.swing.JFrame {
     private javax.swing.JTextField txt_idCarrera;
     // End of variables declaration//GEN-END:variables
 
-    private boolean existeCarrera() {
+    private boolean existeidCarrera() {
         try {
             Statement st = con.createStatement();
-            String sql = "Select id_carrera from Carrera where nombre_carrera = '" + txt_NombreCarrera.getText() + "'";
+            String sql = "Select id_carrera from Carrera where id_carrera = '" + txt_idCarrera.getText() + "'";
             ResultSet rs = st.executeQuery(sql);
             if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "La carrera: " + txt_NombreCarrera.getText() + " ya existe", "La  carrera ¡Ya existe!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El id carrera: " + txt_idCarrera.getText() + " ya existe", "El id  carrera ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Carrera.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
+      private boolean existeCarrera() {
+        try {
+            Statement st = con.createStatement();
+            String sql = "Select nombre_carrera from Carrera where nombre_carrera = '" + txt_NombreCarrera.getText() + "'";
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null, "La carrera: " + txt_NombreCarrera.getText() + " ya existe", "La  carrera ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
                 return true;
             } else {
                 return false;

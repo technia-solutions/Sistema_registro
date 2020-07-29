@@ -157,6 +157,11 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         txt_NombreReqAsig.setBounds(510, 150, 210, 40);
 
         txt_idReqAsig.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_idReqAsig.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_idReqAsigFocusLost(evt);
+            }
+        });
         txt_idReqAsig.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_idReqAsigKeyTyped(evt);
@@ -275,16 +280,31 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         cadena1 = txt_idReqAsig.getText();
         cadena2 = txt_NombreReqAsig.getText();
         String id_facultad = cbo_idCarrera.getSelectedItem().toString().substring(0, 4);
-
-        if ((txt_idReqAsig.getText().equals("")) || (txt_NombreReqAsig.getText().equals("")) ||
-            (cbo_idCarrera.getSelectedItem().equals("Seleccione la asignatura requisito"))) {
-
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe llenar todos los campos! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        
+        if((txt_idReqAsig.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el código de la asignatura requisito.","Código asignatura requisito requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_idReqAsig.requestFocus();
+            return;
+        }
+          
+        if((txt_NombreReqAsig.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre de la asignatura requisito.","Nombre asignatura requisito requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_NombreReqAsig.requestFocus();
             return;
         }
+        
+         if((cbo_idCarrera.getSelectedItem().equals("Seleccione una carrera"))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar una carrera para la asignatura requisito","Carrera de la asignatura requisito requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+        
 
         if (existeRequisitoAsignatura()) {
+            return;
+        }
+        
+        if (existeidRequisitoAsignatura()) {
             return;
         }
 
@@ -459,6 +479,12 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txt_NombreReqAsigKeyTyped
 
+    private void txt_idReqAsigFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_idReqAsigFocusLost
+        String id = txt_idReqAsig.getText();
+        String upper = id.toUpperCase();
+        txt_idReqAsig.setText(upper); 
+    }//GEN-LAST:event_txt_idReqAsigFocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -524,10 +550,10 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
     private boolean existeRequisitoAsignatura() {
         try {
             Statement st = con.createStatement();
-            String sql = "Select id_asignatura from Requisito_Asignatura where RequisitoAsignatura = '" + txt_NombreReqAsig.getText() + "'";
+            String sql = "Select RequisitoAsignatura from Requisito_Asignatura where RequisitoAsignatura = '" + txt_NombreReqAsig.getText() + "'";
             ResultSet rs = st.executeQuery(sql);
             if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "El nombre de la asignatura requisito " + txt_NombreReqAsig.getText() + " ya existe", "La asignatura requisito ¡Ya existe!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El nombre de la asignatura requisito." + txt_NombreReqAsig.getText() + " ya existe", "La asignatura requisito ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
                 return true;
             } else {
                 return false;
@@ -537,6 +563,24 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         }
         return false;
     }
+    
+     private boolean existeidRequisitoAsignatura() {
+        try {
+            Statement st = con.createStatement();
+            String sql = "Select id_asignatura from Requisito_Asignatura where id_asignatura = '" + txt_idReqAsig.getText() + "'";
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null, "El id de la asignatura requisito. " + txt_idReqAsig.getText() + " ya existe", "El id asignatura requisito ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Campus.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
 
     private boolean validarLongitud(JTextField texto, int longitud) {
         if (texto.getText().length() >= longitud) {

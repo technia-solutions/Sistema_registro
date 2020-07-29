@@ -205,6 +205,11 @@ Connection con = null;
         });
 
         txt_codA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_codA.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_codAFocusLost(evt);
+            }
+        });
         txt_codA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_codAActionPerformed(evt);
@@ -447,14 +452,36 @@ Connection con = null;
         String requisito1= cbo_Req1.getSelectedItem().toString().substring(0,5);
         String requisito2= cbo_Req2.getSelectedItem().toString().substring(0,6);
   
-
-        if ((txt_codA.getText().equals("")) || (txt_NombreA.getText().equals(""))  || (txt_UniVal.getText().equals(""))  
-                ||  (cbo_IdCarrera.getSelectedItem().equals("Seleccione una asignatura")) 
-               //||  (cbo_Req1.getSelectedItem().equals("Seleccione un asignatura")) 
-                ) {
-
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe llenar todos los campos! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        if((txt_codA.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el código de la asignatura.","Código asignatura requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_codA.requestFocus();
+            return;
+        }
+        
+          if((txt_NombreA.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre de la asignatura.","Nombre asignatura requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_NombreA.requestFocus();
+            return;
+        }
+         
+          if((txt_UniVal.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar la unidad valorativa de la asignatura.","Unidad valorativa de la asignatura requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_UniVal.requestFocus();
+            return;
+        }
+          
+         if((cbo_IdCarrera.getSelectedItem().equals("Seleccione una carrera"))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar una carrera para la asignatura","Carrera de la asignatura requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+         
+         if((cbo_Req1.getSelectedItem().equals("Seleccione requsito1"))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un requisito para la asignatura","Requisito1 de la asignatura requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+        if((cbo_Req2.getSelectedItem().equals("Seleccione requsito2"))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un requisito para la asignatura","Requisito2 de la asignatura requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 
@@ -677,6 +704,12 @@ Connection con = null;
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_NombreAActionPerformed
 
+    private void txt_codAFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_codAFocusLost
+         String id = txt_codA.getText();
+        String upper = id.toUpperCase();
+        txt_codA.setText(upper); 
+    }//GEN-LAST:event_txt_codAFocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -747,14 +780,31 @@ Connection con = null;
     // End of variables declaration//GEN-END:variables
 
 
-public boolean existeAsignatura(){
+public boolean existeidAsignatura(){
         try {
             Statement st = con.createStatement();
             String sql = "Select cod_asignaturas from Asignaturas where cod_asignaturas = '"+txt_codA.getText()+"'";
             ResultSet rs = st.executeQuery(sql);
             if(rs.next()){
-                JOptionPane.showMessageDialog(null, "Ya existe esta Asignatura: "+txt_codA.getText()+" ", "Codigo de asignatura ¡Ya existe!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Ya existe esta Asignatura: "+txt_codA.getText()+" ", "Codigo de asignatura ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
                 return true;
+            }
+            else{
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    public boolean existeAsignatura(){
+        try {
+            Statement st = con.createStatement();
+            String sql = "Select nombre_asignaturas from Asignaturas where nombre_asignaturas = '"+txt_NombreA.getText()+"'";
+            ResultSet rs = st.executeQuery(sql);
+            if(rs.next()){
+                JOptionPane.showMessageDialog(null, "Ya existe el de esta Asignatura: "+txt_NombreA.getText()+" ", "Nombre de asignatura ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
+                return true; 
             }
             else{
                 return false;

@@ -76,6 +76,11 @@ public class Facultad extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_idfacultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_idfacultad.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_idfacultadFocusLost(evt);
+            }
+        });
         txt_idfacultad.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_idfacultadKeyTyped(evt);
@@ -331,13 +336,25 @@ public class Facultad extends javax.swing.JFrame {
         cadena1 = txt_idfacultad.getText();
         cadena2 = txt_NombreFacultad.getText();
 
-        if ((txt_idfacultad.getText().equals("") || (txt_NombreFacultad.getText().equals("")))) {
-            JOptionPane.showMessageDialog(this, "¡Debe llenar todos los campos!");
+         
+        if((txt_NombreFacultad.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id de la facultad.","Id facultad requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_NombreFacultad.requestFocus();
             return;
         }
+        
+        if((txt_NombreFacultad.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre de la facultad.","Nombre facultad requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_NombreFacultad.requestFocus();
+            return;
+        }
+        
 
         if (existeFacultad()) {
+            return;
+        }
+        
+        if (existeidFacultad()) {
             return;
         }
 
@@ -414,6 +431,12 @@ public class Facultad extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_CarreraActionPerformed
+
+    private void txt_idfacultadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_idfacultadFocusLost
+          String id = txt_idfacultad.getText();
+        String upper = id.toUpperCase();
+        txt_idfacultad.setText(upper); 
+    }//GEN-LAST:event_txt_idfacultadFocusLost
 
     /**
      * @param args the command line arguments
@@ -512,10 +535,27 @@ public class Facultad extends javax.swing.JFrame {
     private boolean existeFacultad() {
         try {
             Statement st = con.createStatement();
-            String sql = "Select id_facultad from Facultad where nombre_facultad = '" + txt_NombreFacultad.getText() + "'";
+            String sql = "Select nombre_facultad from Facultad where nombre_facultad = '" + txt_NombreFacultad.getText() + "'";
             ResultSet rs = st.executeQuery(sql);
             if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "El nombre facultad: " + txt_NombreFacultad.getText() + " ya existe", "La facultad ¡Ya existe!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El nombre facultad: " + txt_NombreFacultad.getText() + " ya existe", "La facultad ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Facultad.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
+      private boolean existeidFacultad() {
+        try {
+            Statement st = con.createStatement();
+            String sql = "Select id_facultad from Facultad where id_facultad = '" + txt_idfacultad.getText() + "'";
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null, "El id facultad: " + txt_idfacultad.getText() + " ya existe", "El id facultad ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
                 return true;
             } else {
                 return false;
