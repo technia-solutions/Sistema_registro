@@ -717,7 +717,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
     }//GEN-LAST:event_chb_mostrarContraseñaActionPerformed
 
     private void pwd_contraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwd_contraseñaActionPerformed
-        // TODO add your handling code here:
+  
     }//GEN-LAST:event_pwd_contraseñaActionPerformed
 
     private void cbo_tipoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_tipoUsuarioActionPerformed
@@ -859,14 +859,59 @@ this.cbo_tipoUsuario.setSelectedItem("");
         String tipoUsuario = cbo_tipoUsuario.getSelectedItem().toString().substring(0,1);
          String nombreEmpleado = txt_Nombre.getText() + " " + txt_Apellido.getText();
         
-        if ((txt_Nombre.getText().equals("")) || (txt_Apellido.getText().equals("")) || (txt_Salario.getText().equals(""))
-         || (txt_Telefono.getText().equals(""))   || (txt_Identidad.getText().equals("")) || (cbo_idCampus.getSelectedItem().equals("Seleccione un campus")) || (txt_NombreUsuario.getText().equals(""))|| (pwd_contraseña.getText().equals("")) 
-                || (cbo_tipoUsuario.getSelectedItem().equals("Seleccione un tipo de usuario")) ) {
-            
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe llenar todos los campos! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+         
+         if((txt_Nombre.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar los nombres del empleado.","Nombres empleado requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_Nombre.requestFocus();
             return;
         }
+         
+         if((txt_Apellido.getText().equals(""))){
+             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar los apellidos del empleado.","Apellidos del empleado requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_Apellido.requestFocus();
+            return;
+        }
+         
+          if((txt_Salario.getText().equals(""))){
+             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el salario del empleado.","Salario del empleado requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_Salario.requestFocus();
+            return;
+        }
+          
+         if((txt_Telefono.getText().equals(""))){
+             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el teléfono del empleado.","Teléfono del empleado requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_Telefono.requestFocus();
+            return;
+        }
+         
+         if((txt_Identidad.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el número de identidad del empleadoo.","Número de identidad del empleado requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_Identidad.requestFocus();
+            return;
+         }
+         
+          if((txt_NombreUsuario.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre de usuario del empleadoo.","Nombre  de usuario del empleado requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_NombreUsuario.requestFocus();
+            return;
+         }
+        
+          if((pwd_contraseña.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar la contrseña del usuario de empleadoo.","Contraseña de usuario del empleado requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            pwd_contraseña.requestFocus();
+            return;
+         }
+          
+           if((cbo_idCampus.getSelectedItem().equals("Seleccione un campus"))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un campus para el empleado","Campus del empleado requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+           
+            if((cbo_tipoUsuario.getSelectedItem().equals("Seleccione un tipo usuario"))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un tipo de usuario para el empleado","Tipo de usuario del empleado requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+       
         
         if(existeEmpleado()){
             return;
