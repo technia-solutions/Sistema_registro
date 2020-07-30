@@ -6,6 +6,7 @@
 package sistema_registro;
 
 import codigo.Conexion_consulta;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -354,6 +355,11 @@ public class Secciones extends javax.swing.JFrame {
         lbl_IdSeccion.setText("Id sección:");
 
         txt_IdSeccion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_IdSeccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_IdSeccionKeyTyped(evt);
+            }
+        });
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_retroceder.png"))); // NOI18N
         jMenu1.setText("Regresar");
@@ -671,13 +677,15 @@ public class Secciones extends javax.swing.JFrame {
          while(Contador<0 ){
              Contador = Contador +1;
          }
+         
+         String CantidadAl =String.valueOf(Contador);
         
         String cadena1, cadena2, cadena3, cadena4, cadena5, cadena6, cadena7, cadena8, cadena9;
         cadena1 = txt_IdSeccion.getText();
         cadena2 = txt_NombreSeccion.getText();
        String id_carrera = cbo_IdAsignatura.getSelectedItem().toString().substring(0, 3);
         //cadena4 =txt_CantidadAl.getText();
-          String CantidadAl =String.valueOf(Contador);
+          
         String CantidadAl = txt_CantidadAl.equals(Contador);
         cadena5 = txt_HoraInicial.getText();
         cadena6 = txt_HoraFinal.getText();
@@ -757,6 +765,27 @@ public class Secciones extends javax.swing.JFrame {
         LimpiarCajas();
         
     }//GEN-LAST:event_btn_guardarActionPerformed
+
+    private void txt_IdSeccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_IdSeccionKeyTyped
+    
+             if (txt_IdSeccion.getText().length() >= 6) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
+        }
+        if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127
+            || evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22
+            || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+            return;
+        }
+        char a = evt.getKeyChar();
+        if (!Character.isLetterOrDigit(a)) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Sólo letras y numeros");
+        }
+        
+    }//GEN-LAST:event_txt_IdSeccionKeyTyped
 
     /**
      * @param args the command line arguments
