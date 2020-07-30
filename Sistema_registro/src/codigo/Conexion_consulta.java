@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import sistema_registro.SQL.ConectorSQL;
 /**
  *
@@ -114,13 +115,18 @@ public class Conexion_consulta {
         
        public ArrayList<String> llenar_periodo() throws SQLException{
          ArrayList<String> lista = new ArrayList<String>();
-         String q= "SELECT * from Periodo";
+         Calendar f;
+       f=Calendar.getInstance();
+       int d=f.get(Calendar.DATE), mes=1+(f.get(Calendar.MONTH)), año=f.get(Calendar.YEAR);
+         String fecha = d+"-"+mes+"-"+año;
+         String q= "select * from periodo_historico\n" +
+                "where fecha_inicial < '"+fecha+"' and fecha_final > '"+fecha+"'";
          Statement st;
          st = con.createStatement();
          try{
             rs=st.executeQuery(q);
             while(rs.next()){
-                lista.add(rs.getString("periodo") +"0"+ " - " + rs.getString("descripcion"));
+                lista.add(rs.getString("nombre_periodo_historico") + " Período");
             }
          }
         catch(Exception e){ 

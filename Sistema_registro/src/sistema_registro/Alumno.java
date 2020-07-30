@@ -592,8 +592,8 @@ public class Alumno extends javax.swing.JFrame {
         Date date = cld_fechaNacimiento.getDate();
         idCarrera = cbo_carrera.getSelectedItem().toString().substring(0, 4);
         String id_campus = cbo_campus.getSelectedItem().toString().substring(0, 4);
-        String periodo = cbo_periodo.getSelectedItem().toString().substring(0, 2);
-        String periodo2 = cbo_periodo.getSelectedItem().toString().substring(0, 1);
+        String periodo2 = cbo_periodo.getSelectedItem().toString().substring(5, 6);
+        String periodo = cbo_periodo.getSelectedItem().toString().substring(5, 6) + "0";
         
         
         identidad = txt_identidad.getText();

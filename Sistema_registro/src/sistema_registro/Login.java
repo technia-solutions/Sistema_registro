@@ -28,7 +28,7 @@ public class Login extends javax.swing.JFrame {
         this.con = ConectorSQL.obtenerConexion();
         initComponents();
         this.setLocationRelativeTo(null);
-         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+        this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
     }
 
     /**

@@ -405,11 +405,16 @@ Connection con = null;
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
         
         String nombreAsignatura = txt_NombreA.getText() + " ";
+        String uv = txt_UniVal.getText();
         if ((txt_codA.getText().equals("")) || (txt_NombreA.getText().equals("")) ||
             (cbo_IdCarrera.getSelectedItem().equals("Seleccione la asignatura"))) {
 
             javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la asignatura a actualizar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_NombreA.requestFocus();
+            return;
+        }
+        if(!validarUV(uv)){
+            JOptionPane.showMessageDialog(null, "La unidades solo pueden ser valores entre 1 y 15", "Valor de la unidad valorativa", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
         else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de asignatura" +nombreAsignatura + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
@@ -442,6 +447,30 @@ Connection con = null;
         }
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
+    private boolean validarUV(String uv){
+        int unidad = Integer.parseInt(uv);
+        if(unidad >= 1 && unidad <= 15){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    private boolean validarRequisitos(String requisitoA, String requisitoB){
+        if(requisitoA.equals("Sin requisito") || requisitoA.equals("Sin requisito")){
+            return true;
+        }
+       
+        if(!requisitoA.equals(requisitoB)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
         
         String cadena1, cadena2, cadena3, cadena4, cadena5, cadena6;
@@ -452,6 +481,7 @@ Connection con = null;
         String requisito1= cbo_Req1.getSelectedItem().toString().substring(0,5);
         String requisito2= cbo_Req2.getSelectedItem().toString().substring(0,6);
   
+        
         if((txt_codA.getText().equals(""))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el código de la asignatura.","Código asignatura requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_codA.requestFocus();
@@ -488,6 +518,7 @@ Connection con = null;
         if(existeAsignatura()){
             return;
         }
+        
 
         if(!validarLongitud(txt_codA,3)){
             JOptionPane.showMessageDialog(null, "El codigo de asignaturas tiene que ser minimo de 3 caracteres", "Longitud de codigo de asignatura", JOptionPane.INFORMATION_MESSAGE);
@@ -504,7 +535,16 @@ Connection con = null;
             return;
         }
          
+        if(!validarUV(cadena3)){
+            JOptionPane.showMessageDialog(null, "La unidades solo pueden ser valores entre 1 y 15", "Valor de la unidad valorativa", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
         
+        if(!validarRequisitos(cbo_Req1.getSelectedItem().toString(),cbo_Req2.getSelectedItem().toString())){
+            JOptionPane.showMessageDialog(null, "El requisito 1 no puede ser igual al requisito 2", "Requisitos iguales", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+         
 
         try{
             PreparedStatement ps;
@@ -688,7 +728,7 @@ Connection con = null;
                  || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
         return;
         }
-        if(txt_UniVal.getText().length() >=1){
+        if(txt_UniVal.getText().length() >=2){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
