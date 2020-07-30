@@ -857,9 +857,8 @@ this.cbo_tipoUsuario.setSelectedItem("");
         cadena8 = txt_NombreUsuario.getText();
         cadena9 = pwd_contraseña.getText();
         String tipoUsuario = cbo_tipoUsuario.getSelectedItem().toString().substring(0,1);
-         String nombreEmpleado = txt_Nombre.getText() + " " + txt_Apellido.getText();
+        String nombreEmpleado = txt_Nombre.getText() + " " + txt_Apellido.getText();
         
-         
          if((txt_Nombre.getText().equals(""))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar los nombres del empleado.","Nombres empleado requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_Nombre.requestFocus();
@@ -921,9 +920,8 @@ this.cbo_tipoUsuario.setSelectedItem("");
             return;
         }
         
-        if(!validarSalario(txt_Salario.getText())){
+        if(validarSalario(txt_Salario.getText())){
             return;
-            
         }
         
         if(!validarIdentidad(txt_Identidad.getText())){
@@ -1253,41 +1251,56 @@ this.cbo_tipoUsuario.setSelectedItem("");
      String tipoUsuario = cbo_tipoUsuario.getSelectedItem().toString().substring(0,1);
      String contraseña=DigestUtils.md5Hex(pwd_contraseña.getText());
      String contraseña2 = pwd_contraseña.getText();
-       if(!validarContraseñas(contraseña2)){
+     String identidad = txt_Identidad.getText();
+     
+        if(!pwd_contraseña.getText().equals("")){
+            if(!validarContraseñas(contraseña2)){
             return;
+            }
         }
-       if(!validarSalario(txt_Salario.getText())){
+        
+       if(validarSalario(txt_Salario.getText())){
             return;
-            
         }
        if(!validarIdentidad(txt_Identidad.getText())){
             return;
             
         }
+       
       try{
-          PreparedStatement ps;
-          ResultSet rs;
-          ps=con.prepareStatement("Update Empleados "
-                  + "set nombres_empleado = ?,"
-                  + "apellido_empleado = ?, "
-                  + "telefono_empleado = ?, "
-                  + "id_campus = ?, "
-                  + "salario = ?, "
-                  + "numero_identidad = ? "
-                  + "where numero_identidad = '"+txt_Identidad.getText()+"' or numero_identidad = '"+var+"'"
-                  + "or nombres_empleado = '"+var+"' or nombres_empleado = '"+txt_Nombre.getText()+"'"
-                  + "or apellido_empleado = '"+var+"' or apellido_empleado = '"+txt_Apellido.getText()+"'");
-                  ps.setString(1, txt_Nombre.getText());
-                  ps.setString(2, txt_Apellido.getText());
-                  ps.setString(3, txt_Telefono.getText());
-                  ps.setString(4, id_campus);
-                  ps.setString(5, txt_Salario.getText());
-                  ps.setString(6, txt_Identidad.getText());
-                  int res= ps.executeUpdate();
+          Statement ps = con.createStatement();
+          String cons = "Update Empleados "
+                  + "set nombres_empleado = '"+txt_Nombre.getText()+"',"
+                  + "apellido_empleado =  '"+txt_Apellido.getText()+"', "
+                  + "telefono_empleado = '"+txt_Telefono.getText()+"', "
+                  + "id_campus = '"+id_campus+"', "
+                  + "salario = '"+txt_Salario.getText()+"', "
+                  + "numero_identidad = '"+txt_Identidad.getText()+"'"
+                  + "where numero_identidad = '"+txt_Identidad.getText()+"'"
+                  + "or nombres_empleado = '"+txt_Nombre.getText()+"'"
+                  + "or apellido_empleado = '"+txt_Apellido.getText()+"'";
+          int re = ps.executeUpdate(cons);
         } catch ( Exception e) {
             System.out.println(e);
         }
          try{
+             if(contraseña2.equals("")){
+              Statement st2=con.createStatement();
+            
+              String sql ="Update Acceso "
+                      + "set nombre_usuario = '"+txt_NombreUsuario.getText()+"'"
+                      + ",id_tipoUsuario= '"+tipoUsuario+"'"
+                      + "where id_empleado = (Select id_empleado from Acceso where nombre_usuario = '"+txt_NombreUsuario.getText()+"')";
+               int rs2 = st2.executeUpdate(sql);
+              JOptionPane.showMessageDialog(null, "Se ha actualizado la información del empleado "+nombreEmpleado+" correctamente.");
+              this.btn_guardar.setEnabled(true);
+              this.btn_Actualizar.setEnabled(false);
+              this.btn_Eliminar.setEnabled(false);
+              limpiar();
+              actualizarDatos();
+              return;
+             }
+             
              Statement st2=con.createStatement();
             
               String sql ="Update Acceso "
@@ -1302,8 +1315,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
               this.btn_Eliminar.setEnabled(false);
           }catch ( Exception e) {
            JOptionPane.showMessageDialog(null, e.getMessage()); 
-        }
-
+            }
          }
         limpiar();
         actualizarDatos();
