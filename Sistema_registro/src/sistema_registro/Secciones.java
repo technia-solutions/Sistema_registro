@@ -267,6 +267,11 @@ public class Secciones extends javax.swing.JFrame {
         cbo_IdPeriodo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un periodo:" }));
 
         cbo_IdAsignatura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una asignatura:" }));
+        cbo_IdAsignatura.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cbo_IdAsignaturaKeyTyped(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Dias de Asignaturas"));
 
@@ -713,27 +718,27 @@ public class Secciones extends javax.swing.JFrame {
         }
 
         if(!validarLongitud(txt_IdSeccion,3)){
-            JOptionPane.showMessageDialog(null, "El codigo de asignaturas tiene que ser minimo de 3 caracteres", "Longitud de codigo de asignatura", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El Id de seccion tiene que ser minimo de 8 caracteres", "Longitud de codigo de asignatura", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 
         if(!validarLongitud(txt_NombreSeccion,7)){
-            JOptionPane.showMessageDialog(null, "El Nombre de la asignatura es muy corto el mínimo es de 7 caracteres", "Longitud del nombre de asignatura", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El Nombre de la seccion es muy corto el mínimo es de 6 caracteres", "Longitud del nombre de asignatura", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
        
          if(!validarLongitud(txt_CantidadAl,1)){
-            JOptionPane.showMessageDialog(null, "La unidades valorativas debe ser de un mínimo de 1 caracter", "Longitud de las unidades valorativas", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "La cantidad de alumnos debe ser de un mínimo de 2 caracter", "Longitud de las unidades valorativas", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
          
          if(!validarLongitud(txt_HoraInicial,7)){
-            JOptionPane.showMessageDialog(null, "El Nombre de la asignatura es muy corto el mínimo es de 5 caracteres", "Longitud del nombre de asignatura", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "La Hora inicial es muy corto el mínimo es de 5 caracteres", "Longitud del nombre de asignatura", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
        
          if(!validarLongitud(txt_HoraFinal,1)){
-            JOptionPane.showMessageDialog(null, "La unidades valorativas debe ser de un mínimo de 5 caracter", "Longitud de las unidades valorativas", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "La Hora Final valorativas debe ser de un mínimo de 5 caracter", "Longitud de las unidades valorativas", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 
@@ -786,6 +791,10 @@ public class Secciones extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_txt_IdSeccionKeyTyped
+
+    private void cbo_IdAsignaturaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbo_IdAsignaturaKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbo_IdAsignaturaKeyTyped
 
     /**
      * @param args the command line arguments
