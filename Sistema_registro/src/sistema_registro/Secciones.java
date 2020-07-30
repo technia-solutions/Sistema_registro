@@ -5,20 +5,111 @@
  */
 package sistema_registro;
 
+import codigo.Conexion_consulta;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableColumn;
+import sistema_registro.SQL.ConectorSQL;
 
 /**
  *
- * @author Carlos
+ * @author William P.
  */
 public class Secciones extends javax.swing.JFrame {
 
+    Connection con = null;
+     String titulos [] = {"Id Seccion","Nombre de la Seccion", " Codigo de la Seccion ", "Cantidad Alumnos","Hora Inicial", "Hora Final", "Aula", "Periodo","Dias de la Asignatura"};
+   
+    DefaultTableModel modelo =  new DefaultTableModel();
+    Statement stmt = null;
+    String var, var2;
+    //JCheckBox Mensaje = new JCheckBox();
+    
     /**
      * Creates new form Secciones
      */
-    public Secciones() {
+    
+        
+    String Mensaje = "";
+    
+    public Secciones() throws SQLException {
+        
+        this.con = ConectorSQL.obtenerConexion ();
         initComponents();
+        
+          
+                ArrayList<String> lista = new ArrayList<String>();
+             lista = new Conexion_consulta().llenar_combo2();
+            for(int i = 0; i<lista.size();i++){
+                cbo_IdAsignatura.addItem(lista.get(i));
+                }
+            
+                 ArrayList<String> lista2 = new ArrayList<String>();
+             lista2= new Conexion_consulta().llenar_periodo();
+            for(int i = 0; i<lista2.size();i++){
+               cbo_IdPeriodo.addItem(lista2.get(i));
+             }
+            
+            
+               ArrayList<String> lista5 = new ArrayList<String>();
+             lista5= new Conexion_consulta().llenar_aula();
+            for(int i = 0; i<lista5.size();i++){
+               cbo_IdAula.addItem(lista5.get(i));
+             }
+          
+            
+           
+            /*
+            ArrayList<String> Mensaje = new ArrayList<String>();
+             Mensaje = new Conexion_consulta().llenar_requisito();
+            for(int i = 0; i<Mensaje.size();i++){
+               chb_Lunes.isSelected(Mensaje.get(i));
+               chb_Martes.addItem(Mensaje.get(i));
+               chb_Miercoles.addItem(Mensaje.get(i));
+               chb_Jueves.addItem(Mensaje.get(i));
+              chb_Viernes.addItem(Mensaje.get(i));
+               cbo_Sabado.addItem(Mensaje.get(i));
+               chb_Domingo.addItem(Mensaje.get(i));
+            }*/
+       
+            
+        
+                    
+             this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+            this.setTitle("Secciones");
     }
+    
+    //Para Checkbox
+    
+   /* public void addCheckbox (int column, JTable Tabla_Seccion){
+        
+        TableColumn tc = Tabla_Seccion.getColumnModel().getColumn(column);
+        tc.setCellEditor(Tabla_Seccion.getDefaultEditor(Boolean.class));
+        tc.setCellEditor((TableCellEditor) Tabla_Seccion.getDefaultRenderer(Boolean.class));
+        
+    }
+    
+    public boolean IsSelected(int row, int column, JTable Tabla_Seccion){
+        
+        return Tabla_Seccion.getValueAt( row, column) != null;
+    }
+    */
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,42 +121,56 @@ public class Secciones extends javax.swing.JFrame {
     private void initComponents() {
 
         lbl_horaFinal = new javax.swing.JLabel();
-        txt_nombreSeccion = new javax.swing.JTextField();
-        txt_codigoAsignatura = new javax.swing.JTextField();
-        txt_horaInicial = new javax.swing.JTextField();
-        txt_horaFinal = new javax.swing.JTextField();
+        txt_NombreSeccion = new javax.swing.JTextField();
+        txt_HoraInicial = new javax.swing.JTextField();
+        txt_HoraFinal = new javax.swing.JTextField();
         btn_guardar = new javax.swing.JButton();
         btn_actualizar = new javax.swing.JButton();
-        lbl_nombreSeccion = new javax.swing.JLabel();
-        lbl_codigoAsignaturas = new javax.swing.JLabel();
+        lbl_NombreSeccion = new javax.swing.JLabel();
+        lbl_CodAsignatura = new javax.swing.JLabel();
         lbl_horaInicial = new javax.swing.JLabel();
         btn_eliminar = new javax.swing.JButton();
         lbl_aula = new javax.swing.JLabel();
-        txt_aula = new javax.swing.JTextField();
         lbl_titulo = new javax.swing.JLabel();
-        cbo_lunes = new javax.swing.JCheckBox();
-        cbo_martes = new javax.swing.JCheckBox();
-        cbo_miercoles = new javax.swing.JCheckBox();
-        cbo_jueves = new javax.swing.JCheckBox();
-        cbo_viernes = new javax.swing.JCheckBox();
-        cbo_sabado = new javax.swing.JCheckBox();
-        cbo_domingo = new javax.swing.JCheckBox();
-        lbl_dias = new javax.swing.JLabel();
+        lbl_CantidadAl = new javax.swing.JLabel();
+        txt_CantidadAl = new javax.swing.JTextField();
+        lbl_Periodo = new javax.swing.JLabel();
+        btn_buscar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Tabla_Seccion = new javax.swing.JTable();
+        cbo_IdPeriodo = new javax.swing.JComboBox<>();
+        cbo_IdAsignatura = new javax.swing.JComboBox<>();
+        jPanel1 = new javax.swing.JPanel();
+        chb_Lunes = new javax.swing.JCheckBox();
+        chb_Martes = new javax.swing.JCheckBox();
+        chb_Miercoles = new javax.swing.JCheckBox();
+        chb_Jueves = new javax.swing.JCheckBox();
+        chb_Viernes = new javax.swing.JCheckBox();
+        chb_Sabado = new javax.swing.JCheckBox();
+        chb_Domingo = new javax.swing.JCheckBox();
+        lbl_MensajeDias = new javax.swing.JLabel();
+        cbo_IdAula = new javax.swing.JComboBox<>();
+        lbl_IdSeccion = new javax.swing.JLabel();
+        txt_IdSeccion = new javax.swing.JTextField();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        Periodo = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        Aula = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lbl_horaFinal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_horaFinal.setText("Hora final:");
 
-        txt_nombreSeccion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_NombreSeccion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        txt_codigoAsignatura.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_HoraInicial.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        txt_horaInicial.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        txt_horaFinal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_HoraFinal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         btn_guardar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Guardar.png"))); // NOI18N
         btn_guardar.setText("Guardar");
         btn_guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,6 +179,7 @@ public class Secciones extends javax.swing.JFrame {
         });
 
         btn_actualizar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
         btn_actualizar.setText("Actualizar");
         btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,16 +187,17 @@ public class Secciones extends javax.swing.JFrame {
             }
         });
 
-        lbl_nombreSeccion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_nombreSeccion.setText("Nombre sección:");
+        lbl_NombreSeccion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_NombreSeccion.setText("Nombre sección:");
 
-        lbl_codigoAsignaturas.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_codigoAsignaturas.setText("Codigo asignatura:");
+        lbl_CodAsignatura.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_CodAsignatura.setText("Codigo Asignatura:");
 
         lbl_horaInicial.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_horaInicial.setText("Hora inicial:");
 
         btn_eliminar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Eliminar.png"))); // NOI18N
         btn_eliminar.setText("Eliminar");
         btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,173 +208,532 @@ public class Secciones extends javax.swing.JFrame {
         lbl_aula.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_aula.setText("Aula: ");
 
-        txt_aula.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
         lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lbl_titulo.setText("Registro de sección");
 
-        cbo_lunes.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cbo_lunes.setText("Lunes");
+        lbl_CantidadAl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_CantidadAl.setText("Cantidad Alumnos:");
 
-        cbo_martes.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cbo_martes.setText("Martes");
+        txt_CantidadAl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_CantidadAl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_CantidadAlActionPerformed(evt);
+            }
+        });
 
-        cbo_miercoles.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cbo_miercoles.setText("Miércoles");
+        lbl_Periodo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_Periodo.setText("Periodo:");
 
-        cbo_jueves.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cbo_jueves.setText("Jueves");
+        btn_buscar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Consulta.png"))); // NOI18N
+        btn_buscar.setText("Buscar");
+        btn_buscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_buscarMouseClicked(evt);
+            }
+        });
+        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscarActionPerformed(evt);
+            }
+        });
 
-        cbo_viernes.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cbo_viernes.setText("Viernes");
+        Tabla_Seccion.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Nombre Seccion", "Cod Asignatura", "Cantidad Alumnos", "Hora Inicial", "Hora Final", "Periodo", "Aula", "Dias"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
 
-        cbo_sabado.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cbo_sabado.setText("Sábado");
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(Tabla_Seccion);
 
-        cbo_domingo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cbo_domingo.setText("Domingo");
+        cbo_IdPeriodo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un periodo:" }));
 
-        lbl_dias.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_dias.setText("Dias de la asignatura");
+        cbo_IdAsignatura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una asignatura:" }));
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Dias de Asignaturas"));
+
+        chb_Lunes.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        chb_Lunes.setText("Lunes");
+
+        chb_Martes.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        chb_Martes.setText("Martes");
+        chb_Martes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chb_MartesActionPerformed(evt);
+            }
+        });
+
+        chb_Miercoles.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        chb_Miercoles.setText("Miércoles");
+
+        chb_Jueves.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        chb_Jueves.setText("Jueves");
+
+        chb_Viernes.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        chb_Viernes.setText("Viernes");
+
+        chb_Sabado.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        chb_Sabado.setText("Sábado");
+
+        chb_Domingo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        chb_Domingo.setText("Domingo");
+        chb_Domingo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chb_DomingoActionPerformed(evt);
+            }
+        });
+
+        lbl_MensajeDias.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chb_Lunes)
+                            .addComponent(chb_Jueves))
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chb_Domingo)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(chb_Martes)
+                                    .addComponent(chb_Viernes))
+                                .addGap(26, 26, 26)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(chb_Sabado)
+                                    .addComponent(chb_Miercoles))))
+                        .addGap(0, 20, Short.MAX_VALUE))
+                    .addComponent(lbl_MensajeDias, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chb_Lunes)
+                    .addComponent(chb_Martes)
+                    .addComponent(chb_Miercoles))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chb_Jueves)
+                    .addComponent(chb_Viernes)
+                    .addComponent(chb_Sabado))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(chb_Domingo)
+                .addGap(47, 47, 47)
+                .addComponent(lbl_MensajeDias, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(60, Short.MAX_VALUE))
+        );
+
+        cbo_IdAula.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un aula:" }));
+
+        lbl_IdSeccion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_IdSeccion.setText("Id sección:");
+
+        txt_IdSeccion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_retroceder.png"))); // NOI18N
+        jMenu1.setText("Regresar");
+
+        Periodo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
+        Periodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio.png"))); // NOI18N
+        Periodo.setText("Asignatura");
+        jMenu1.add(Periodo);
+
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio.png"))); // NOI18N
+        jMenuItem2.setText("Periodo");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        Aula.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
+        Aula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio.png"))); // NOI18N
+        Aula.setText("Aula");
+        jMenu1.add(Aula);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(132, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lbl_titulo)
-                        .addGap(383, 383, 383))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(200, 200, 200)
-                                .addComponent(btn_guardar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_actualizar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_eliminar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(380, 380, 380)
+                                .addComponent(lbl_titulo))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(92, 92, 92)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btn_guardar)
+                                    .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btn_eliminar))
+                                .addGap(91, 91, 91)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lbl_CantidadAl)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(txt_CantidadAl, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lbl_CodAsignatura)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(cbo_IdAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addGap(57, 57, 57)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(lbl_horaInicial)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(txt_HoraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(lbl_Periodo)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(cbo_IdPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(lbl_horaFinal)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(txt_HoraFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(lbl_aula)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(cbo_IdAula, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(1, 1, 1)))))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lbl_codigoAsignaturas)
-                                            .addComponent(lbl_nombreSeccion))
+                                        .addComponent(lbl_NombreSeccion)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(txt_codigoAsignatura, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txt_nombreSeccion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(45, 45, 45)
-                                            .addComponent(lbl_aula)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txt_aula))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(lbl_horaInicial)
-                                                .addComponent(lbl_horaFinal, javax.swing.GroupLayout.Alignment.TRAILING))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(txt_horaInicial)
-                                                .addComponent(txt_horaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addGap(274, 274, 274))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(298, 298, 298)
-                                    .addComponent(lbl_dias))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(cbo_lunes)
-                                    .addGap(39, 39, 39)
-                                    .addComponent(cbo_martes)
-                                    .addGap(39, 39, 39)
-                                    .addComponent(cbo_miercoles)
-                                    .addGap(29, 29, 29)
-                                    .addComponent(cbo_jueves)
-                                    .addGap(31, 31, 31)
-                                    .addComponent(cbo_viernes)
-                                    .addGap(35, 35, 35)
-                                    .addComponent(cbo_sabado)
-                                    .addGap(29, 29, 29)
-                                    .addComponent(cbo_domingo))))
-                        .addGap(60, 60, 60))))
+                                        .addComponent(txt_NombreSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lbl_IdSeccion)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txt_IdSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(40, 40, 40)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 55, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addContainerGap()
                 .addComponent(lbl_titulo)
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_nombreSeccion)
-                    .addComponent(txt_nombreSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_codigoAsignaturas)
-                    .addComponent(txt_codigoAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_horaInicial)
-                    .addComponent(txt_horaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_horaFinal)
-                    .addComponent(txt_horaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_aula)
-                    .addComponent(txt_aula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(63, 63, 63)
-                .addComponent(lbl_dias)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbo_lunes)
-                    .addComponent(cbo_martes)
-                    .addComponent(cbo_miercoles)
-                    .addComponent(cbo_jueves)
-                    .addComponent(cbo_viernes)
-                    .addComponent(cbo_sabado)
-                    .addComponent(cbo_domingo))
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(92, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_buscar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_IdSeccion)
+                            .addComponent(txt_IdSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_NombreSeccion)
+                            .addComponent(txt_NombreSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_CodAsignatura)
+                            .addComponent(cbo_IdAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(17, 17, 17)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_CantidadAl)
+                            .addComponent(txt_CantidadAl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_horaInicial)
+                            .addComponent(txt_HoraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_horaFinal)
+                            .addComponent(txt_HoraFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbo_IdPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_Periodo))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbo_IdAula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_aula)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(65, 65, 65)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
-        // TODO add your handling code here:
+    
+        String NombreSeccion = txt_NombreSeccion.getText() + " ";
+        if ((cbo_IdAsignatura.getSelectedItem().equals("")) || (txt_NombreSeccion.getText().equals("")) ||
+            (cbo_IdPeriodo.getSelectedItem().equals("Seleccione el periodo"))) {
+             /*Para Selecicon de Dias de Asignatura*/
+             
+            // String Mensaje = "dias"; 
+            //JCheckBox (String Mensaje )=new  JCheckBox();
+            if(chb_Lunes.isSelected()){
+                 Mensaje += "Lu";
+             } 
+             if(chb_Martes.isSelected()){
+                 Mensaje += "Ma";
+             }
+                if(chb_Miercoles.isSelected()){
+                 Mensaje += "Mi";
+             }
+                   if(chb_Jueves.isSelected()){
+                 Mensaje += "Ju";
+             }
+                      if(chb_Viernes.isSelected()){
+                 Mensaje += "Vi";
+             }
+                 if(chb_Sabado.isSelected()){
+                 Mensaje += "Sa";
+             }
+                    if(chb_Domingo.isSelected()){
+                 Mensaje += "Do";
+             }
+                    
+                    lbl_MensajeDias.setText(Mensaje);
+            
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la seccion que desea actualizar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+           txt_NombreSeccion.requestFocus();
+            return;
+        }
+        else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de secciones" +NombreSeccion + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
+        ) == JOptionPane.YES_OPTION) {
+            String id_asignatura = cbo_IdAsignatura.getSelectedItem().toString().substring(0, 2);
+            String id_periodo = cbo_IdPeriodo.getSelectedItem().toString().substring(0, 6);
+          String id_aula= cbo_IdAula.getSelectedItem().toString().substring(0, 7);
+          /*String  Dias =  (cbo_Lunes.getSelectedItem().toString().substring(0, 8) || cbo_Lunes.getSelectedItem().equals("")) || cbo_Marteses.getSelectedItem().equals("")) ||
+                                        || cbo_Miercoles.getSelectedItem().equals("") ) || cbo_Jueves.getSelectedItem().equals(""))  || cbo_Viernes.getSelectedItem().equals(""))
+                                                || cbo_Sabado.getSelectedItem().equals(""))  || cbo_Domingo.getSelectedItem().equals(""));*/
+        //   String Mensaje = lbl_MensajeDias.setText(Mensaje);
+        
+          
+          try {
+                PreparedStatement ps;
+                ResultSet rs;
+                ps = con.prepareStatement("Update Secciones set"
+                      + " id_seccion = ? ,"
+                    + " Nombre_seccion = ? ,"
+                    + " cod_asignatura = ? , "
+                    + " cantidad_alumnos = ? , "
+                    + " Hora_inicial = ? ,"
+                         + " Hora_final= ? ,"
+                          + " id_periodo= ? ,"
+                         + " id_aula = ? ,"
+                         + " dias= ? "
+                    + " where id_seccion =\'"+txt_IdSeccion.getText()+"\'");
+                ps.setString(1, txt_IdSeccion.getText());
+                  ps.setString(2, txt_NombreSeccion.getText());
+                  ps.setString(3, id_asignatura);
+                  ps.setString(4, txt_CantidadAl.getText());
+                  ps.setString(5, txt_HoraInicial.getText());
+                  ps.setString(6, txt_HoraFinal.getText());
+                  ps.setString(7, id_periodo);
+                  ps.setString(8, id_aula);
+                  ps.setString(9, Mensaje);
+               
+                int res = ps.executeUpdate();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+
+        
+        }
+        
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        // TODO add your handling code here:
+        
+         String Seccion = txt_NombreSeccion.getText() + " " + txt_IdSeccion.getText();
+          
+           if ((txt_NombreSeccion.getText().equals("")) || (txt_IdSeccion.getText().equals(""))  || (txt_CantidadAl.getText().equals("")) 
+                    || (txt_HoraInicial.getText().equals(""))   || (txt_HoraFinal.getText().equals(""))  ) {
+
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la seccion que desea eliminar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+           
+        }
+          else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de seccion" + Seccion+ "", "Confirmación de eliminación",
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
+        ) == JOptionPane.YES_OPTION) {
+
+            try {
+                Statement st2 = con.createStatement();
+                String sql = "Delete Secciones "
+                + "where id_seccion = (Select id_seccion from Secciones where Nombre_seccion = '"+txt_NombreSeccion.getText()+"')";
+
+                int rs2 = st2.executeUpdate(sql);
+                System.out.println(rs2);
+                if(rs2 > 0){
+                    JOptionPane.showMessageDialog(null, "Se ha borrado la información de la seccion" + Seccion+ " correctamente");
+
+                }else {
+                    JOptionPane.showMessageDialog(null, "¡Error al eliminar la información!");
+
+                }
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+
+        }
+        actualizarDatos();
+        LimpiarCajas();
+
+        
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
-    private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
-     String dias ="";
-     
-     if(cbo_lunes.isSelected()){
-         dias = dias+ "Lu";
-     }
-     
-     if(cbo_martes.isSelected()){
-         dias = dias+ "Ma";
-     }
-     
-     if(cbo_miercoles.isSelected()){
-         dias = dias+ "Mie";
-     }
-     
-     
-     JOptionPane.showMessageDialog(null, dias);
+    private void txt_CantidadAlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_CantidadAlActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_txt_CantidadAlActionPerformed
+
+    private void btn_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buscarMouseClicked
+        rellenar();
+        this.jScrollPane1.setEnabled(true);
+        this.Tabla_Seccion.setEnabled(true);
+    }//GEN-LAST:event_btn_buscarMouseClicked
+
+    private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
+        actualizarDatos();
+
+    }//GEN-LAST:event_btn_buscarActionPerformed
+
+    private void chb_DomingoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_DomingoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_DomingoActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void chb_MartesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_MartesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_MartesActionPerformed
+
+    private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
+        
+        String cadena1, cadena2, cadena3, cadena4, cadena5, cadena6, cadena7, cadena8, cadena9;
+        cadena1 = txt_IdSeccion.getText();
+        cadena2 = txt_NombreSeccion.getText();
+       String id_carrera = cbo_IdAsignatura.getSelectedItem().toString().substring(0, 3);
+        cadena4 =txt_CantidadAl.getText();
+        cadena5 = txt_HoraInicial.getText();
+        cadena6 = txt_HoraFinal.getText();
+        String id_periodo= cbo_IdPeriodo.getSelectedItem().toString().substring(0,7);
+        String id_aula= cbo_IdAula.getSelectedItem().toString().substring(0,8);
+        
+  
+
+        if ((txt_IdSeccion.getText().equals("")) || (txt_NombreSeccion.getText().equals(""))  ||  (cbo_IdAsignatura.getSelectedItem().equals("Seleccione una asignatura")) ||   (txt_CantidadAl.getText().equals(""))   
+                || (txt_CantidadAl.getText().equals(""))  || (txt_HoraInicial.getText().equals("")) 
+                || (txt_HoraFinal.getText().equals("")) ||  (cbo_IdPeriodo.getSelectedItem().equals("Seleccione una periodo")) ||  (cbo_IdAula.getSelectedItem().equals("Seleccione un aula")) 
+               
+               //||  (cbo_Req1.getSelectedItem().equals("Seleccione un asignatura")) 
+                ) {
+
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe llenar todos los campos! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_IdSeccion.requestFocus();
+            return;
+        }
+
+        if(existeSeccion()){
+            return;
+        }
+
+        if(!validarLongitud(txt_IdSeccion,3)){
+            JOptionPane.showMessageDialog(null, "El codigo de asignaturas tiene que ser minimo de 3 caracteres", "Longitud de codigo de asignatura", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        if(!validarLongitud(txt_NombreSeccion,7)){
+            JOptionPane.showMessageDialog(null, "El Nombre de la asignatura es muy corto el mínimo es de 7 caracteres", "Longitud del nombre de asignatura", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+       
+         if(!validarLongitud(txt_CantidadAl,1)){
+            JOptionPane.showMessageDialog(null, "La unidades valorativas debe ser de un mínimo de 1 caracter", "Longitud de las unidades valorativas", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+         
+         if(!validarLongitud(txt_HoraInicial,7)){
+            JOptionPane.showMessageDialog(null, "El Nombre de la asignatura es muy corto el mínimo es de 5 caracteres", "Longitud del nombre de asignatura", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+       
+         if(!validarLongitud(txt_HoraFinal,1)){
+            JOptionPane.showMessageDialog(null, "La unidades valorativas debe ser de un mínimo de 5 caracter", "Longitud de las unidades valorativas", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        try{
+            PreparedStatement ps;
+            ResultSet rs;
+
+            ps=con.prepareStatement("Insert into Secciones ( id_seccion, Nombre_seccion, cod_asignatura, cantidad_alumnos, Hora_inicial, Hora_final, id_periodo, id_aula, dias )"
+                + "                VALUES(?,?,?,?,?,?)");
+            ps.setString(1, txt_IdSeccion.getText());;
+            ps.setString(2, txt_NombreSeccion.getText());
+           ps.setString(3, cbo_IdAsignatura.getSelectedItem().toString().substring(0, 3));
+             ps.setString(4, txt_CantidadAl.getText());
+            ps.setString(5, txt_HoraInicial.getText());
+            ps.setString(6, txt_HoraFinal.getText());
+            ps.setString(7, cbo_IdPeriodo.getSelectedItem().toString().substring(0,7));
+            ps.setString(8, cbo_IdAula.getSelectedItem().toString().substring(0,8));
+            
+            int res= ps.executeUpdate(); 
+            JOptionPane.showMessageDialog(null, "Se ha guardado la información en Registro de Seccion");
+             } catch ( Exception e) {
+            System.out.println(e);
+        
+             JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        
+
+        actualizarDatos();
+        LimpiarCajas();
+        
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     /**
@@ -300,33 +766,206 @@ public class Secciones extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Secciones().setVisible(true);
+                try {
+                    new Secciones().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Secciones.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Aula;
+    private javax.swing.JMenuItem Periodo;
+    private javax.swing.JTable Tabla_Seccion;
     private javax.swing.JButton btn_actualizar;
+    private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_guardar;
-    private javax.swing.JCheckBox cbo_domingo;
-    private javax.swing.JCheckBox cbo_jueves;
-    private javax.swing.JCheckBox cbo_lunes;
-    private javax.swing.JCheckBox cbo_martes;
-    private javax.swing.JCheckBox cbo_miercoles;
-    private javax.swing.JCheckBox cbo_sabado;
-    private javax.swing.JCheckBox cbo_viernes;
+    private javax.swing.JComboBox<String> cbo_IdAsignatura;
+    private javax.swing.JComboBox<String> cbo_IdAula;
+    private javax.swing.JComboBox<String> cbo_IdPeriodo;
+    private javax.swing.JCheckBox chb_Domingo;
+    private javax.swing.JCheckBox chb_Jueves;
+    private javax.swing.JCheckBox chb_Lunes;
+    private javax.swing.JCheckBox chb_Martes;
+    private javax.swing.JCheckBox chb_Miercoles;
+    private javax.swing.JCheckBox chb_Sabado;
+    private javax.swing.JCheckBox chb_Viernes;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbl_CantidadAl;
+    private javax.swing.JLabel lbl_CodAsignatura;
+    private javax.swing.JLabel lbl_IdSeccion;
+    private javax.swing.JLabel lbl_MensajeDias;
+    private javax.swing.JLabel lbl_NombreSeccion;
+    private javax.swing.JLabel lbl_Periodo;
     private javax.swing.JLabel lbl_aula;
-    private javax.swing.JLabel lbl_codigoAsignaturas;
-    private javax.swing.JLabel lbl_dias;
     private javax.swing.JLabel lbl_horaFinal;
     private javax.swing.JLabel lbl_horaInicial;
-    private javax.swing.JLabel lbl_nombreSeccion;
     private javax.swing.JLabel lbl_titulo;
-    private javax.swing.JTextField txt_aula;
-    private javax.swing.JTextField txt_codigoAsignatura;
-    private javax.swing.JTextField txt_horaFinal;
-    private javax.swing.JTextField txt_horaInicial;
-    private javax.swing.JTextField txt_nombreSeccion;
+    private javax.swing.JTextField txt_CantidadAl;
+    private javax.swing.JTextField txt_HoraFinal;
+    private javax.swing.JTextField txt_HoraInicial;
+    private javax.swing.JTextField txt_IdSeccion;
+    private javax.swing.JTextField txt_NombreSeccion;
     // End of variables declaration//GEN-END:variables
+
+    
+    public boolean existeSeccion(){
+        try {
+            Statement st = con.createStatement();
+            String sql = "Select id_seccion from Secciones where id_seccion = '"+txt_IdSeccion.getText()+"'";
+            ResultSet rs = st.executeQuery(sql);
+            if(rs.next()){
+                JOptionPane.showMessageDialog(null, "Ya existe esta Seccion: "+txt_IdSeccion.getText()+" ", "Id de Seccion ¡Ya existe!", JOptionPane.INFORMATION_MESSAGE);
+                return true;
+            }
+            else{
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+       
+           private boolean validarLongitud(JTextField texto, int longitud){
+       if(texto.getText().length() >= longitud){
+           return true;
+       }
+       else{
+           return false;
+       }
+    }
+
+    
+    
+public void actualizarDatos(){
+        try {
+               
+               String sql = "SELECT * FROM Secciones";
+               stmt = con.createStatement();
+               ResultSet rs = stmt.executeQuery(sql);
+               modelo = new DefaultTableModel(null, titulos);
+               Tabla_Seccion.setModel(modelo);
+                 while(rs.next()) {
+                     
+                          String []datos= new String[8];
+                      datos[0] =rs.getString("id_seccion");
+                      datos[1] =rs.getString("Nombre_seccion");
+                      datos[2] =rs.getString("cod_asignatura");
+                      datos[3] =rs.getString("cantidad_alumnos");
+                      datos[4] =rs.getString("Hora_inicial");
+                      datos[5] =rs.getString("Hora_final");
+                      datos[6] =rs.getString("id_periodo");
+                     datos[7] =rs.getString("id_aula");
+                      datos[8] =rs.getString("dias");
+                      
+                     modelo.addRow(datos);
+                      
+                      centrar_datos();
+                 }
+            TableColumn ids = Tabla_Seccion.getColumn(titulos[0]);
+            ids.setMaxWidth(125);
+            TableColumn nse= Tabla_Seccion.getColumn(titulos[1]);
+            nse.setMaxWidth(165);
+            TableColumn coda= Tabla_Seccion.getColumn(titulos[2]);
+            coda.setMaxWidth(125);            
+            TableColumn cana= Tabla_Seccion.getColumn(titulos[3]);
+           cana.setMaxWidth(165);
+           TableColumn hin= Tabla_Seccion.getColumn(titulos[4]);
+           hin.setMaxWidth(165);
+            TableColumn hfi= Tabla_Seccion.getColumn(titulos[5]);
+           hfi.setMaxWidth(165);
+           TableColumn idp= Tabla_Seccion.getColumn(titulos[6]);
+           idp.setMaxWidth(165);
+           TableColumn idau= Tabla_Seccion.getColumn(titulos[7]);
+           idau.setMaxWidth(165);
+           TableColumn dias= Tabla_Seccion.getColumn(titulos[8]);
+           dias.setMaxWidth(165);
+        }
+        catch (Exception e) {
+           
+            System.err.println(e);
+        }
+           }
+
+ public void centrar_datos() {
+ 
+        DefaultTableCellRenderer modelocentrar = new DefaultTableCellRenderer();
+        modelocentrar.setHorizontalAlignment(SwingConstants.CENTER);
+         for (int i = 0; i <modelo.getRowCount(); i++) {
+              Tabla_Seccion.getColumnModel().getColumn(i).setCellRenderer(modelocentrar);
+             
+         }
+
+}
+ 
+ private void rellenar(){
+      try {
+                    String cap = "";
+                    ResultSet rs2 = null;
+                   var = JOptionPane.showInputDialog(this, "Ingrese el nombre de la seccion que desea consultar", "Consulta de secciones", JOptionPane.QUESTION_MESSAGE);
+                    if (var == null) {
+                        JOptionPane.showMessageDialog(this, "La acción fue cancelada", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        if (var.equals("")) {
+                            JOptionPane.showMessageDialog(this, "Favor de ingresar el nombre de la seccion \n que desea consultar", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
+                        } else {
+                            String sql = "SELECT * FROM Secciones where id_seccion='"+var+"' or nombre_seccion ='"+var+"'";
+                            stmt = con.createStatement();
+                            rs2 = stmt.executeQuery(sql);
+
+                            if (rs2.next()) {
+                                txt_IdSeccion.setText(rs2.getString("id_seccion"));
+                                txt_NombreSeccion.setText(rs2.getString("Nombre_seccion"));
+                                txt_CantidadAl.setText(rs2.getString("cantidad_alumnos"));
+                                txt_HoraInicial.setText(rs2.getString("Hora_inicial"));
+                                txt_HoraFinal.setText(rs2.getString("Hora_final"));
+                               
+                                
+                            } else {
+                                JOptionPane.showMessageDialog(null, "¡No se encuentra los datos: "+var+" ! Por favor verifique sí, lo escribio correctamente");
+                            }
+                        }
+
+                    }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e.getMessage());
+                }
+    
+    }
+
+     private void LimpiarCajas() {
+       
+         txt_IdSeccion.setText(null);
+        txt_NombreSeccion.setText(null);
+      txt_CantidadAl.setText(null);
+        txt_HoraInicial.setText(null);
+         txt_HoraFinal.setText(null);
+        cbo_IdAsignatura.setSelectedIndex(0);
+        cbo_IdPeriodo.setSelectedIndex(0);
+        cbo_IdAula.setSelectedIndex(0);
+       
+    }
+     
+     private void llenarCampos() {
+      int i = Tabla_Seccion.getSelectedRow();
+        txt_IdSeccion.setText(Tabla_Seccion.getValueAt(i, 0).toString());
+        txt_NombreSeccion.setText(Tabla_Seccion.getValueAt(i, 1).toString());
+        txt_CantidadAl.setText(Tabla_Seccion.getValueAt(i, 4).toString());
+        txt_HoraInicial.setText(Tabla_Seccion.getValueAt(i, 5).toString());
+          txt_HoraFinal.setText(Tabla_Seccion.getValueAt(i, 6).toString());      
+         cbo_IdAsignatura.setSelectedItem(Tabla_Seccion.getValueAt(i, 3).toString());
+          cbo_IdPeriodo.setSelectedItem(Tabla_Seccion.getValueAt(i, 7).toString());
+          cbo_IdAula.setSelectedItem(Tabla_Seccion.getValueAt(i, 8).toString());
+
+    }
+ 
+ 
 }

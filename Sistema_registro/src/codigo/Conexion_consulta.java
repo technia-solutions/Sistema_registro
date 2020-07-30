@@ -151,7 +151,26 @@ public class Conexion_consulta {
             
               }
           return lista;
-    }   
+    }  
+       
+       
+        
+       public ArrayList<String> llenar_aula() throws SQLException{
+         ArrayList<String> lista5 = new ArrayList<String>();
+         String q= "SELECT * from Aula";
+         Statement st;
+         st = con.createStatement();
+         try{
+            rs=st.executeQuery(q);
+            while(rs.next()){
+                lista5.add(rs.getString("id_aula") + " - " + rs.getString("nombre_aula"));
+            }
+         }
+        catch(Exception e){ 
+            
+              }
+          return lista5;
+    } 
         
          
 }
