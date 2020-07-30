@@ -128,6 +128,24 @@ public class Conexion_consulta {
               }
           return lista;
     }   
+       
+        
+       public ArrayList<String> llenar_edificio() throws SQLException{
+         ArrayList<String> lista = new ArrayList<String>();
+         String q= "SELECT * from Edificio";
+         Statement st;
+         st = con.createStatement();
+         try{
+            rs=st.executeQuery(q);
+            while(rs.next()){
+                lista.add(rs.getString("id_edificio") + " - " + rs.getString("nombre_edificio"));
+            }
+         }
+        catch(Exception e){ 
+            
+              }
+          return lista;
+    }   
         
          
 }
