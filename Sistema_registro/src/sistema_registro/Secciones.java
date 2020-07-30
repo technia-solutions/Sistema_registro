@@ -39,6 +39,10 @@ public class Secciones extends javax.swing.JFrame {
     DefaultTableModel modelo =  new DefaultTableModel();
     Statement stmt = null;
     String var, var2;
+    int Contador=0;
+    String CantidadAl =String.valueOf(Contador);
+    
+    
     //JCheckBox Mensaje = new JCheckBox();
     
     /**
@@ -580,7 +584,12 @@ public class Secciones extends javax.swing.JFrame {
                 System.out.println(e);
             }
 
-        
+          //Contador
+         int  Contador= 0;
+         
+         while(Contador<0 ){
+             Contador = Contador +1;
+         }
         }
         
     }//GEN-LAST:event_btn_actualizarActionPerformed
@@ -653,12 +662,23 @@ public class Secciones extends javax.swing.JFrame {
     }//GEN-LAST:event_chb_MartesActionPerformed
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
+               
+    
+       //Contador
+         int Contador=0;
+  
+    
+         while(Contador<0 ){
+             Contador = Contador +1;
+         }
         
         String cadena1, cadena2, cadena3, cadena4, cadena5, cadena6, cadena7, cadena8, cadena9;
         cadena1 = txt_IdSeccion.getText();
         cadena2 = txt_NombreSeccion.getText();
        String id_carrera = cbo_IdAsignatura.getSelectedItem().toString().substring(0, 3);
-        cadena4 =txt_CantidadAl.getText();
+        //cadena4 =txt_CantidadAl.getText();
+          String CantidadAl =String.valueOf(Contador);
+        String CantidadAl = txt_CantidadAl.equals(Contador);
         cadena5 = txt_HoraInicial.getText();
         cadena6 = txt_HoraFinal.getText();
         String id_periodo= cbo_IdPeriodo.getSelectedItem().toString().substring(0,7);
@@ -677,6 +697,8 @@ public class Secciones extends javax.swing.JFrame {
             txt_IdSeccion.requestFocus();
             return;
         }
+        
+        
 
         if(existeSeccion()){
             return;
