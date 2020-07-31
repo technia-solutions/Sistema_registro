@@ -292,12 +292,20 @@ public class Edificio extends javax.swing.JFrame {
         cadena2 = txt_nombreEdificio.getText();
         String id_campus = cbo_idCampus.getSelectedItem().toString().substring(0, 4);
         
-
-        if ((txt_idEdificio.getText().equals("")) || (txt_nombreEdificio.getText().equals("")) 
-                ||  (cbo_idCampus.getSelectedItem().equals("Seleccione una asignatura"))) {
-
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe llenar todos los campos! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        if((txt_idEdificio.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id del edificio.","Id edifico requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_idEdificio.requestFocus();
+            return;
+        }
+        
+         if((txt_nombreEdificio.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre del edificio.","Nombre edifico requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_nombreEdificio.requestFocus();
+            return;
+        }
+         
+         if((cbo_idCampus.getSelectedItem().equals("Seleccione un campus"))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un campus para el edifico.","Campus del edificio requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 
@@ -306,12 +314,12 @@ public class Edificio extends javax.swing.JFrame {
         }
 
         if(!validarLongitud(txt_idEdificio,1)){
-            JOptionPane.showMessageDialog(null, "El id del edificio debe ser de 1 caracter", "Longitud de id del edificio", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El id del edificio debe ser de 1 caracter.", "Longitud de id del edificio", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 
         if(!validarLongitud(txt_nombreEdificio,10)){
-            JOptionPane.showMessageDialog(null, "El Nombre de la asignatura es muy corto el mínimo es de 10 caracteres", "Longitud del nombre de asignatura", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El Nombre de la asignatura es muy corto el mínimo es de 10 caracteres.", "Longitud del nombre de asignatura", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
        
@@ -347,11 +355,11 @@ public class Edificio extends javax.swing.JFrame {
         if ((txt_idEdificio.getText().equals("")) || (txt_nombreEdificio.getText().equals("")) ||
             (cbo_idCampus.getSelectedItem().equals("Seleccione el campus"))) {
 
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar el edificio a actualizar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar el edificio a actualizar!. \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_nombreEdificio.requestFocus();
             return;
         }
-        else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro del edificio" +nombreEdificio + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
+        else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro del edificio." +nombreEdificio + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
             String id_campus = cbo_idCampus.getSelectedItem().toString().substring(0, 4);
             
@@ -388,10 +396,10 @@ public class Edificio extends javax.swing.JFrame {
           
            if ((txt_idEdificio.getText().equals("")) || (txt_nombreEdificio.getText().equals(""))  || (cbo_idCampus.getSelectedItem().equals(""))  ) {
 
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar el edificio que desea eliminar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar el edificio que desea eliminar!. \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
            
         }
-          else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro del edificio " + Edificio + "", "Confirmación de eliminación",
+          else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro del edificio " + Edificio + ".", "Confirmación de eliminación",
             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
 
@@ -403,10 +411,10 @@ public class Edificio extends javax.swing.JFrame {
                 int rs2 = st2.executeUpdate(sql);
                 System.out.println(rs2);
                 if(rs2 > 0){
-                    JOptionPane.showMessageDialog(null, "Se ha borrado la información del edificio " + Edificio + " correctamente");
+                    JOptionPane.showMessageDialog(null, "Se ha borrado la información del edificio " + Edificio + " correctamente.");
 
                 }else {
-                    JOptionPane.showMessageDialog(null, "¡Error al eliminar la información!");
+                    JOptionPane.showMessageDialog(null, "¡Error al eliminar la información!.");
 
                 }
 
@@ -424,7 +432,7 @@ public class Edificio extends javax.swing.JFrame {
         if (txt_idEdificio.getText().length() >= 2) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos.");
         }
         char a=evt.getKeyChar();
             if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
@@ -435,7 +443,7 @@ public class Edificio extends javax.swing.JFrame {
          if(Character.isDigit(a) || !Character.isLetterOrDigit(a)){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Sólo letras");
+            JOptionPane.showMessageDialog(null, "Sólo letras.");
         }
     }//GEN-LAST:event_txt_idEdificioKeyTyped
 
@@ -443,7 +451,7 @@ public class Edificio extends javax.swing.JFrame {
        if (txt_nombreEdificio.getText().length() >= 40) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos.");
         }
         if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127
             || evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22
@@ -466,7 +474,7 @@ public class Edificio extends javax.swing.JFrame {
         if (Character.isDigit(a)) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Sólo letras");
+            JOptionPane.showMessageDialog(null, "Sólo letras.");
         }
     }//GEN-LAST:event_txt_nombreEdificioKeyTyped
 
@@ -565,7 +573,7 @@ public class Edificio extends javax.swing.JFrame {
             String sql = "Select id_edificio from Edificio where id_edificio = '"+txt_idEdificio.getText()+"'";
             ResultSet rs = st.executeQuery(sql);
             if(rs.next()){
-                JOptionPane.showMessageDialog(null, "Ya existe esta Asignatura: "+txt_idEdificio.getText()+" ", "Codigo de asignatura ¡Ya existe!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Ya existe esta Asignatura: "+txt_idEdificio.getText()+".", "Codigo de asignatura ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
                 return true;
             }
             else{
@@ -635,12 +643,12 @@ public class Edificio extends javax.swing.JFrame {
       try {
                     String cap = "";
                     ResultSet rs2 = null;
-                   var = JOptionPane.showInputDialog(this, "Ingrese el nombre del edificio que desea consultar", "Consulta del edificio", JOptionPane.QUESTION_MESSAGE);
+                   var = JOptionPane.showInputDialog(this, "Ingrese el nombre del edificio que desea consultar.", "Consulta del edificio", JOptionPane.QUESTION_MESSAGE);
                     if (var == null) {
-                        JOptionPane.showMessageDialog(this, "La acción fue cancelada", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "La acción fue cancelada.", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
                     } else {
                         if (var.equals("")) {
-                            JOptionPane.showMessageDialog(this, "Favor de ingresar el nombre del edificio \n que desea consultar", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(this, "Favor de ingresar el nombre del edificio \n que desea consultar.", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
                         } else {
                             String sql = "SELECT * FROM Edifcio where id_edificio='"+var+"' or nombre_edificio ='"+var+"'";
                             stmt = con.createStatement();
@@ -653,7 +661,7 @@ public class Edificio extends javax.swing.JFrame {
                                
                                 
                             } else {
-                                JOptionPane.showMessageDialog(null, "¡No se encuentra los datos: "+var+" ! Por favor verifique sí, lo escribio correctamente");
+                                JOptionPane.showMessageDialog(null, "¡No se encuentra los datos: "+var+" ! Por favor verifique sí, lo escribio correctamente.");
                             }
                         }
 
