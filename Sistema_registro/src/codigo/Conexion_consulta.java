@@ -171,6 +171,23 @@ public class Conexion_consulta {
               }
           return lista5;
     } 
-        
-         
+        //Asignatura
+       public ArrayList<String> llenar_asignatura() throws SQLException{
+         ArrayList<String> lista = new ArrayList<String>();
+         String q= "SELECT * from Asignaturas";
+         Statement st;
+         st = con.createStatement();
+         try{
+            rs=st.executeQuery(q);
+            while(rs.next()){
+                lista.add(rs.getString("cod_asignaturas") + " - " + rs.getString("nombre_asignaturas"));
+            }
+         }
+        catch(Exception e){ 
+            
+              }
+          return lista;
+    }  
+       
+       
 }

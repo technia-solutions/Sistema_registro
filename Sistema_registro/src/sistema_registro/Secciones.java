@@ -309,6 +309,7 @@ public class Secciones extends javax.swing.JFrame {
 
         lbl_MensajeDias.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        btn_Aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/check.png"))); // NOI18N
         btn_Aceptar.setText("Aceptar");
         btn_Aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -754,7 +755,56 @@ public class Secciones extends javax.swing.JFrame {
             return;
         }
         
+        try{
+            ResultSet rs = st.executeQuery(sql);
+            String verificar = "Select cantidad_alumnos from Secciones where Nombre_seccion = '"+Seccion+"'";
+            Statement stmt = con.createStatement();
+            ResultSet rs2 = stmt.executeQuery(verificar);
+        }
+         catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
         
+      if(rs2.next()){
+                        String consul = "update Secciones \n" +
+                                        "set cantidad_alumnos = 0\n" +
+                                        "where Nombre_seccion = '"+txt_NombreSeccion.getText()+"'";
+                        Statement ss = con.createStatement();
+                        int actualizarcantidad_alumnos = ss.executeUpdate(consul);
+                        Secciones secciones = new Secciones(Seccion,rs2.getString(1));
+                        secciones.setVisible(true); 
+                        this.dispose();
+                        
+      }else{
+                    try {
+                         String consulta = "SELECT * from Secciones where Nombre_seccion ='"+Seccion+"'";
+                         Statement st3 = con.createStatement();
+                         ResultSet rs3 = st3.executeQuery(consulta);
+                        if(rs3.next()){
+                            if(!rs3.getString("cantidad_alumnos").equals("1")){
+                                if(rs3.getString("Nombre_seccion").equals(Seccion)){
+                                    getToolkit().beep();
+                                    int in = Integer.parseInt(rs3.getString("cantidad_alumnos")) + 1 ;
+                                    String sql4 = "update Secciones \n" +
+                                                  "set cantidad_alumnos = '"+in+"'\n" +
+                                                  "where Nombre_seccion = '"+Seccion+"' ";
+                                    Statement st4 = con.createStatement();
+                                    int rs4 = st4.executeUpdate(sql4);
+                                    if(rs3.getString("cantidad_alumnos").equals("70")){
+                                        Statement st2 = con.createStatement();
+                                        String sql2 = "Update Secciones set cantidad_alumnos = 'Cantidad Maxima' where Nombre_seccion ='"+Seccion+"'";
+                                        int columnas = st2.executeUpdate(sql2);
+                                        JOptionPane.showMessageDialog(null, "La Seccion: "+Seccion+" excede su capacidad por favor comuníquese con el coordinador de la carrera.", "Limite Cupos", JOptionPane.INFORMATION_MESSAGE);
+                                        this.dispose();
+                                        return;
+                                        
+                                    }
+                                }
+                            }
+                        }
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                    }
 
         if(existeSeccion()){
             return;
@@ -813,7 +863,9 @@ public class Secciones extends javax.swing.JFrame {
 
         actualizarDatos();
         LimpiarCajas();
-        
+      }
+
+      
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void txt_IdSeccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_IdSeccionKeyTyped
