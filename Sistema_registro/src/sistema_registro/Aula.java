@@ -461,7 +461,7 @@ public class Aula extends javax.swing.JFrame {
 
         if ((txt_idAula.getText().equals("")) || (txt_PisoAula.getText().equals(""))  || (cbo_idEdificio.getSelectedItem().equals(""))  ) {
 
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar el auls que desea eliminar!.\n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar el aula que desea eliminar!.\n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
         }
         else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro del aula " + Aula + ".", "Confirmación de eliminación",
