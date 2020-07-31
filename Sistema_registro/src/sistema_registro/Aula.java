@@ -411,7 +411,7 @@ public class Aula extends javax.swing.JFrame {
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
         String Aula = txt_nombreAula.getText() + " ";
         if ((txt_idAula.getText().equals("")) || (txt_PisoAula.getText().equals("")) ||
-            (cbo_idEdificio.getSelectedItem().equals("Seleccione el campus"))) {
+            (cbo_idEdificio.getSelectedItem().equals("Seleccione el edificio"))) {
 
             javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar el aula a actualizar!. \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_PisoAula.requestFocus();
