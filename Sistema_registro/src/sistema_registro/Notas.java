@@ -32,70 +32,58 @@ public class Notas extends javax.swing.JFrame {
         lbl_clase = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         btn_buscarClases = new javax.swing.JButton();
-        lbl_notaParcialI = new javax.swing.JLabel();
-        lbl_notaParcialII = new javax.swing.JLabel();
-        lbl_notaParcialIII = new javax.swing.JLabel();
-        lbl_notaFinal = new javax.swing.JLabel();
-        txt_notaParcialI = new javax.swing.JTextField();
-        txt_notaParcialII = new javax.swing.JTextField();
-        txt_notaParcialIII = new javax.swing.JTextField();
-        txt_notaFinal = new javax.swing.JTextField();
-        btn_actualizarNotas = new javax.swing.JButton();
         btn_generarReporte = new javax.swing.JButton();
-        lbl_titulo = new javax.swing.JLabel();
         rad_reposicionParcialI = new javax.swing.JRadioButton();
         rad_reposicionParcialII = new javax.swing.JRadioButton();
         lbl_reposiciones = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        lbl_titulo = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        lbl_notaParcialI = new javax.swing.JLabel();
+        txt_notaParcialI = new javax.swing.JTextField();
+        lbl_notaParcialII = new javax.swing.JLabel();
+        txt_notaParcialII = new javax.swing.JTextField();
+        lbl_notaParcialIII = new javax.swing.JLabel();
+        txt_notaParcialIII = new javax.swing.JTextField();
+        lbl_notaFinal = new javax.swing.JLabel();
+        txt_notaFinal = new javax.swing.JTextField();
+        btn_actualizarNotas = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         lbl_numeroCuenta.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_numeroCuenta.setText("Numero de cuenta:");
+        getContentPane().add(lbl_numeroCuenta);
+        lbl_numeroCuenta.setBounds(120, 190, 151, 22);
 
         txt_numeroCuenta.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        getContentPane().add(txt_numeroCuenta);
+        txt_numeroCuenta.setBounds(290, 190, 220, 28);
 
         lbl_clase.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_clase.setText("Clase:");
+        getContentPane().add(lbl_clase);
+        lbl_clase.setBounds(580, 190, 47, 22);
 
         jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jComboBox1);
+        jComboBox1.setBounds(650, 190, 220, 28);
 
         btn_buscarClases.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_buscarClases.setText("Buscar clases");
-
-        lbl_notaParcialI.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_notaParcialI.setText("Nota Parcial I:");
-
-        lbl_notaParcialII.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_notaParcialII.setText("Nota Parcial II:");
-
-        lbl_notaParcialIII.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_notaParcialIII.setText("Nota Parcial III:");
-
-        lbl_notaFinal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_notaFinal.setText("Nota Final:");
-
-        txt_notaParcialI.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        txt_notaParcialII.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        txt_notaParcialIII.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        txt_notaFinal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_notaFinal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_notaFinalActionPerformed(evt);
-            }
-        });
-
-        btn_actualizarNotas.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_actualizarNotas.setText("Actualizar notas");
+        getContentPane().add(btn_buscarClases);
+        btn_buscarClases.setBounds(970, 600, 174, 46);
 
         btn_generarReporte.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_generarReporte.setText("Generar historial academico");
-
-        lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lbl_titulo.setText("Registrar notas");
+        getContentPane().add(btn_generarReporte);
+        btn_generarReporte.setBounds(600, 590, 287, 56);
 
         rad_reposicionParcialI.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         rad_reposicionParcialI.setText("Realizó reposición del I Parcial");
@@ -104,6 +92,8 @@ public class Notas extends javax.swing.JFrame {
                 rad_reposicionParcialIActionPerformed(evt);
             }
         });
+        getContentPane().add(rad_reposicionParcialI);
+        rad_reposicionParcialI.setBounds(40, 590, 267, 31);
 
         rad_reposicionParcialII.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         rad_reposicionParcialII.setText("Realizó reposición del II Parcial");
@@ -112,104 +102,113 @@ public class Notas extends javax.swing.JFrame {
                 rad_reposicionParcialIIActionPerformed(evt);
             }
         });
+        getContentPane().add(rad_reposicionParcialII);
+        rad_reposicionParcialII.setBounds(40, 630, 273, 31);
 
         lbl_reposiciones.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_reposiciones.setText("Reposiciones");
+        getContentPane().add(lbl_reposiciones);
+        lbl_reposiciones.setBounds(130, 580, 101, 22);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btn_actualizarNotas)
-                .addGap(36, 36, 36)
-                .addComponent(btn_generarReporte)
-                .addGap(201, 201, 201))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(231, 231, 231)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbl_notaParcialII)
-                            .addComponent(lbl_notaParcialI)
-                            .addComponent(lbl_notaParcialIII)
-                            .addComponent(lbl_notaFinal))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_notaParcialI, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_notaParcialII, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_notaParcialIII, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_notaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(84, 84, 84)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(rad_reposicionParcialI)
-                                .addComponent(rad_reposicionParcialII))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lbl_reposiciones)
-                                .addGap(76, 76, 76))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbl_titulo)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lbl_numeroCuenta)
-                                    .addComponent(lbl_clase))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txt_numeroCuenta)
-                                    .addComponent(jComboBox1, 0, 220, Short.MAX_VALUE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_buscarClases)))
-                .addContainerGap(149, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(69, 69, 69)
+        jPanel1.setBackground(new java.awt.Color(232, 251, 249));
+
+        lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lbl_titulo.setText("Registrar notas");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(506, 506, 506)
                 .addComponent(lbl_titulo)
-                .addGap(70, 70, 70)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_numeroCuenta)
-                            .addComponent(txt_numeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_clase)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btn_buscarClases, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_notaParcialI)
-                            .addComponent(txt_notaParcialI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_notaParcialII)
-                            .addComponent(txt_notaParcialII, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_notaParcialIII)
-                            .addComponent(txt_notaParcialIII, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbl_reposiciones)
-                        .addGap(18, 18, 18)
-                        .addComponent(rad_reposicionParcialI)
-                        .addGap(18, 18, 18)
-                        .addComponent(rad_reposicionParcialII)))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_notaFinal)
-                    .addComponent(txt_notaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_generarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_actualizarNotas, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49))
+                .addContainerGap(522, Short.MAX_VALUE))
         );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(lbl_titulo)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(60, 90, 1190, 80);
+
+        jPanel2.setBackground(new java.awt.Color(215, 236, 233));
+        jPanel2.setLayout(null);
+
+        lbl_notaParcialI.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_notaParcialI.setText("Nota Parcial I:");
+        jPanel2.add(lbl_notaParcialI);
+        lbl_notaParcialI.setBounds(370, 50, 112, 22);
+
+        txt_notaParcialI.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jPanel2.add(txt_notaParcialI);
+        txt_notaParcialI.setBounds(510, 50, 50, 28);
+
+        lbl_notaParcialII.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_notaParcialII.setText("Nota Parcial II:");
+        jPanel2.add(lbl_notaParcialII);
+        lbl_notaParcialII.setBounds(640, 50, 119, 22);
+
+        txt_notaParcialII.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jPanel2.add(txt_notaParcialII);
+        txt_notaParcialII.setBounds(780, 50, 50, 28);
+
+        lbl_notaParcialIII.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_notaParcialIII.setText("Nota Parcial III:");
+        jPanel2.add(lbl_notaParcialIII);
+        lbl_notaParcialIII.setBounds(880, 50, 126, 22);
+
+        txt_notaParcialIII.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jPanel2.add(txt_notaParcialIII);
+        txt_notaParcialIII.setBounds(1020, 50, 50, 28);
+
+        lbl_notaFinal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_notaFinal.setText("Nota Final:");
+        jPanel2.add(lbl_notaFinal);
+        lbl_notaFinal.setBounds(400, 120, 85, 22);
+
+        txt_notaFinal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_notaFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_notaFinalActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txt_notaFinal);
+        txt_notaFinal.setBounds(500, 120, 60, 28);
+
+        btn_actualizarNotas.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_actualizarNotas.setText("Actualizar notas");
+        jPanel2.add(btn_actualizarNotas);
+        btn_actualizarNotas.setBounds(70, 40, 130, 40);
+
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(60, 230, 1190, 330);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1190, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel3);
+        jPanel3.setBounds(60, 170, 1190, 60);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 1310, 680);
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -266,6 +265,12 @@ public class Notas extends javax.swing.JFrame {
     private javax.swing.JButton btn_buscarClases;
     private javax.swing.JButton btn_generarReporte;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lbl_clase;
     private javax.swing.JLabel lbl_notaFinal;
     private javax.swing.JLabel lbl_notaParcialI;

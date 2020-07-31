@@ -422,7 +422,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(70, 380, 73, 23);
+        jButton2.setBounds(70, 380, 79, 25);
 
         chb_mostrarContraseña.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         chb_mostrarContraseña.setText("Mostrar contraseña");
@@ -433,7 +433,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jPanel1.add(chb_mostrarContraseña);
-        chb_mostrarContraseña.setBounds(1020, 160, 147, 23);
+        chb_mostrarContraseña.setBounds(1020, 160, 147, 25);
 
         lbl_nombres.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_nombres.setText("Nombres:");
@@ -603,9 +603,13 @@ this.cbo_tipoUsuario.setSelectedItem("");
         jPanel1.add(btn_rellenarCampos);
         btn_rellenarCampos.setBounds(610, 320, 110, 31);
 
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("¤#,##0.00"))));
+        try {
+            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         jPanel1.add(jFormattedTextField1);
-        jFormattedTextField1.setBounds(230, 310, 240, 40);
+        jFormattedTextField1.setBounds(260, 310, 240, 40);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 1240, 360));
 
