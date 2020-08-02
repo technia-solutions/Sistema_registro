@@ -524,11 +524,9 @@ public class Principal extends javax.swing.JFrame {
 
     private void btn_periodosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_periodosMouseClicked
          PeriodoHistorico periodo = null;
-        try {
+   
             periodo = new PeriodoHistorico();
-        } catch (SQLException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+      
         periodo.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_periodosMouseClicked
