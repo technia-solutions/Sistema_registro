@@ -60,7 +60,7 @@ public class Secciones extends javax.swing.JFrame {
         
           
                 ArrayList<String> lista = new ArrayList<String>();
-             lista = new Conexion_consulta().llenar_combo2();
+             lista = new Conexion_consulta().llenar_asignatura();
             for(int i = 0; i<lista.size();i++){
                 cbo_IdAsignatura.addItem(lista.get(i));
                 }
@@ -154,6 +154,7 @@ public class Secciones extends javax.swing.JFrame {
         chb_Sabado = new javax.swing.JCheckBox();
         chb_Domingo = new javax.swing.JCheckBox();
         lbl_MensajeDias = new javax.swing.JLabel();
+        btn_Aceptar = new javax.swing.JButton();
         cbo_IdAula = new javax.swing.JComboBox<>();
         lbl_IdSeccion = new javax.swing.JLabel();
         txt_IdSeccion = new javax.swing.JTextField();
@@ -308,6 +309,14 @@ public class Secciones extends javax.swing.JFrame {
 
         lbl_MensajeDias.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        btn_Aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/check.png"))); // NOI18N
+        btn_Aceptar.setText("Aceptar");
+        btn_Aceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_AceptarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -333,6 +342,10 @@ public class Secciones extends javax.swing.JFrame {
                         .addGap(0, 20, Short.MAX_VALUE))
                     .addComponent(lbl_MensajeDias, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_Aceptar)
+                .addGap(149, 149, 149))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -351,7 +364,9 @@ public class Secciones extends javax.swing.JFrame {
                 .addComponent(chb_Domingo)
                 .addGap(47, 47, 47)
                 .addComponent(lbl_MensajeDias, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btn_Aceptar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         cbo_IdAula.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un aula:" }));
@@ -512,7 +527,7 @@ public class Secciones extends javax.swing.JFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(65, 65, 65)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         pack();
@@ -525,8 +540,10 @@ public class Secciones extends javax.swing.JFrame {
             (cbo_IdPeriodo.getSelectedItem().equals("Seleccione el periodo"))) {
              /*Para Selecicon de Dias de Asignatura*/
              
-            // String Mensaje = "dias"; 
-            //JCheckBox (String Mensaje )=new  JCheckBox();
+            String Mensaje = "dias"; 
+            
+            //Mire la variable que deberia de funcionar seria esta: el detalle esta que esta la puse asi ya que me daba error
+        //   JCheckBox (String Mensaje )=new JCheckBox();
             if(chb_Lunes.isSelected()){
                  Mensaje += "Lu";
              } 
@@ -611,6 +628,32 @@ public class Secciones extends javax.swing.JFrame {
           
            if ((txt_NombreSeccion.getText().equals("")) || (txt_IdSeccion.getText().equals(""))  || (txt_CantidadAl.getText().equals("")) 
                     || (txt_HoraInicial.getText().equals(""))   || (txt_HoraFinal.getText().equals(""))  ) {
+               
+               String Mensaje = "dias"
+;               if(chb_Lunes.isSelected()){
+                 Mensaje += "Lu";
+             } 
+             if(chb_Martes.isSelected()){
+                 Mensaje += "Ma";
+             }
+                if(chb_Miercoles.isSelected()){
+                 Mensaje += "Mi";
+             }
+                   if(chb_Jueves.isSelected()){
+                 Mensaje += "Ju";
+             }
+                      if(chb_Viernes.isSelected()){
+                 Mensaje += "Vi";
+             }
+                 if(chb_Sabado.isSelected()){
+                 Mensaje += "Sa";
+             }
+                    if(chb_Domingo.isSelected()){
+                 Mensaje += "Do";
+             }
+                    
+                    lbl_MensajeDias.setText(Mensaje);
+            
 
             javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la seccion que desea eliminar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
            
@@ -696,22 +739,72 @@ public class Secciones extends javax.swing.JFrame {
         cadena6 = txt_HoraFinal.getText();
         String id_periodo= cbo_IdPeriodo.getSelectedItem().toString().substring(0,7);
         String id_aula= cbo_IdAula.getSelectedItem().toString().substring(0,8);
-        
+        String Mensaje = "dias";
   
 
         if ((txt_IdSeccion.getText().equals("")) || (txt_NombreSeccion.getText().equals(""))  ||  (cbo_IdAsignatura.getSelectedItem().equals("Seleccione una asignatura")) ||   (txt_CantidadAl.getText().equals(""))   
                 || (txt_CantidadAl.getText().equals(""))  || (txt_HoraInicial.getText().equals("")) 
                 || (txt_HoraFinal.getText().equals("")) ||  (cbo_IdPeriodo.getSelectedItem().equals("Seleccione una periodo")) ||  (cbo_IdAula.getSelectedItem().equals("Seleccione un aula")) 
                
-               //||  (cbo_Req1.getSelectedItem().equals("Seleccione un asignatura")) 
-                ) {
-
+               //||  (cbo_Req1.getSelectedItem().equals("Seleccione un asignatura"))                
+                         ) 
+                                
+       {
             javax.swing.JOptionPane.showMessageDialog(this,"¡Debe llenar todos los campos! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_IdSeccion.requestFocus();
             return;
         }
         
+      /*  try{
+            ResultSet rs = st.executeQuery(sql);
+            String verificar = "Select cantidad_alumnos from Secciones where Nombre_seccion = '"+Seccion+"'";
+            Statement stmt = con.createStatement();
+            ResultSet rs2 = stmt.executeQuery(verificar);
+        }
+         catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }*/
         
+      /*if(rs2.next()){
+                        String consul = "update Secciones \n" +
+                                        "set cantidad_alumnos = 0\n" +
+                                        "where Nombre_seccion = '"+txt_NombreSeccion.getText()+"'";
+                        Statement ss = con.createStatement();
+                        int actualizarcantidad_alumnos = ss.executeUpdate(consul);
+                        Secciones secciones = new Secciones(Seccion,rs2.getString(1));
+                        secciones.setVisible(true); 
+                        this.dispose();
+                        
+      }else{
+                    try {
+                         String consulta = "SELECT * from Secciones where Nombre_seccion ='"+Seccion+"'";
+                         Statement st3 = con.createStatement();
+                         ResultSet rs3 = st3.executeQuery(consulta);
+                        if(rs3.next()){
+                            if(!rs3.getString("cantidad_alumnos").equals("1")){
+                                if(rs3.getString("Nombre_seccion").equals(Seccion)){
+                                    getToolkit().beep();
+                                    int in = Integer.parseInt(rs3.getString("cantidad_alumnos")) + 1 ;
+                                    String sql4 = "update Secciones \n" +
+                                                  "set cantidad_alumnos = '"+in+"'\n" +
+                                                  "where Nombre_seccion = '"+Seccion+"' ";
+                                    Statement st4 = con.createStatement();
+                                    int rs4 = st4.executeUpdate(sql4);
+                                    if(rs3.getString("cantidad_alumnos").equals("70")){
+                                        Statement st2 = con.createStatement();
+                                        String sql2 = "Update Secciones set cantidad_alumnos = 'Cantidad Maxima' where Nombre_seccion ='"+Seccion+"'";
+                                        int columnas = st2.executeUpdate(sql2);
+                                        JOptionPane.showMessageDialog(null, "La Seccion: "+Seccion+" excede su capacidad por favor comuníquese con el coordinador de la carrera.", "Limite Cupos", JOptionPane.INFORMATION_MESSAGE);
+                                        this.dispose();
+                                        return;
+                                        
+                                    }
+                                }
+                            }
+                        }
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                    }
 
         if(existeSeccion()){
             return;
@@ -747,7 +840,7 @@ public class Secciones extends javax.swing.JFrame {
             ResultSet rs;
 
             ps=con.prepareStatement("Insert into Secciones ( id_seccion, Nombre_seccion, cod_asignatura, cantidad_alumnos, Hora_inicial, Hora_final, id_periodo, id_aula, dias )"
-                + "                VALUES(?,?,?,?,?,?)");
+                + "                VALUES(?,?,?,?,?,?,?,?,?)");
             ps.setString(1, txt_IdSeccion.getText());;
             ps.setString(2, txt_NombreSeccion.getText());
            ps.setString(3, cbo_IdAsignatura.getSelectedItem().toString().substring(0, 3));
@@ -755,7 +848,9 @@ public class Secciones extends javax.swing.JFrame {
             ps.setString(5, txt_HoraInicial.getText());
             ps.setString(6, txt_HoraFinal.getText());
             ps.setString(7, cbo_IdPeriodo.getSelectedItem().toString().substring(0,7));
-            ps.setString(8, cbo_IdAula.getSelectedItem().toString().substring(0,8));
+            ps.setString(8, cbo_IdPeriodo.getSelectedItem().toString().substring(0,8));
+            ps.setString(9, Mensaje);
+            
             
             int res= ps.executeUpdate(); 
             JOptionPane.showMessageDialog(null, "Se ha guardado la información en Registro de Seccion");
@@ -768,7 +863,9 @@ public class Secciones extends javax.swing.JFrame {
 
         actualizarDatos();
         LimpiarCajas();
-        
+      }*/
+
+      
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void txt_IdSeccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_IdSeccionKeyTyped
@@ -795,6 +892,29 @@ public class Secciones extends javax.swing.JFrame {
     private void cbo_IdAsignaturaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbo_IdAsignaturaKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_cbo_IdAsignaturaKeyTyped
+
+    private void btn_AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AceptarActionPerformed
+        String Mensaje = "Dias:";
+        if(chb_Lunes.isSelected()){
+            Mensaje +=  "Lunes";
+
+        }
+        if(chb_Martes.isSelected()){
+            Mensaje +=  "Martes";
+        }
+        if(chb_Miercoles.isSelected()){
+            Mensaje += "Miercoles";
+        }
+        if(chb_Jueves.isSelected()){
+            Mensaje +=  "Jueves";
+        }
+        if(chb_Viernes.isSelected()){
+            Mensaje +=  "Viernes";
+        }
+
+        lbl_MensajeDias.setText(Mensaje);
+
+    }//GEN-LAST:event_btn_AceptarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -839,6 +959,7 @@ public class Secciones extends javax.swing.JFrame {
     private javax.swing.JMenuItem Aula;
     private javax.swing.JMenuItem Periodo;
     private javax.swing.JTable Tabla_Seccion;
+    private javax.swing.JButton btn_Aceptar;
     private javax.swing.JButton btn_actualizar;
     private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_eliminar;
@@ -1024,6 +1145,7 @@ public void actualizarDatos(){
          cbo_IdAsignatura.setSelectedItem(Tabla_Seccion.getValueAt(i, 3).toString());
           cbo_IdPeriodo.setSelectedItem(Tabla_Seccion.getValueAt(i, 7).toString());
           cbo_IdAula.setSelectedItem(Tabla_Seccion.getValueAt(i, 8).toString());
+          
 
     }
  

@@ -171,6 +171,7 @@ public class Conexion_consulta {
               }
           return lista5;
     } 
+
         
          public ArrayList<String> llenar_asignatura() throws SQLException{
          ArrayList<String> lista = new ArrayList<String>();
@@ -188,4 +189,5 @@ public class Conexion_consulta {
               }
           return lista;
     } 
+
 }
