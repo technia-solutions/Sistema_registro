@@ -691,7 +691,7 @@ public class Secciones extends javax.swing.JFrame {
        String id_carrera = cbo_IdAsignatura.getSelectedItem().toString().substring(0, 3);
         //cadena4 =txt_CantidadAl.getText();
           
-        String CantidadAl = txt_CantidadAl.equals(Contador);
+       // String CantidadAl = txt_CantidadAl.equals(Contador);
         cadena5 = txt_HoraInicial.getText();
         cadena6 = txt_HoraFinal.getText();
         String id_periodo= cbo_IdPeriodo.getSelectedItem().toString().substring(0,7);
