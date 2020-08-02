@@ -394,7 +394,11 @@ public class Principal extends javax.swing.JFrame {
 
     private void btn_SeccionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SeccionesMouseClicked
          Secciones seccion = null;
-         seccion = new Secciones();
+        try {
+            seccion = new Secciones();
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         seccion.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_SeccionesMouseClicked
@@ -524,9 +528,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void btn_periodosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_periodosMouseClicked
          PeriodoHistorico periodo = null;
-   
-            periodo = new PeriodoHistorico();
-      
+         periodo = new PeriodoHistorico();
         periodo.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_periodosMouseClicked

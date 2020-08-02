@@ -524,7 +524,7 @@ Connection con = null;
             return;
         }
 
-        if(!validarLongitud(txt_NombreA,7)){
+       if(!validarLongitud(txt_NombreA,7)){
             JOptionPane.showMessageDialog(null, "El Nombre de la asignatura es muy corto el mínimo es de 7 caracteres", "Longitud del nombre de asignatura", JOptionPane.INFORMATION_MESSAGE);
             return;
         }

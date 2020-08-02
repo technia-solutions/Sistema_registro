@@ -114,25 +114,25 @@ public class Conexion_consulta {
     }   
         
        public ArrayList<String> llenar_periodo() throws SQLException{
-         ArrayList<String> lista = new ArrayList<String>();
+         ArrayList<String> lista4 = new ArrayList<String>();
          Calendar f;
-       f=Calendar.getInstance();
-       int d=f.get(Calendar.DATE), mes=1+(f.get(Calendar.MONTH)), año=f.get(Calendar.YEAR);
+          f=Calendar.getInstance();
+          int d=f.get(Calendar.DATE), mes=1+(f.get(Calendar.MONTH)), año=f.get(Calendar.YEAR);
          String fecha = d+"-"+mes+"-"+año;
-         String q= "select * from periodo_historico\n" +
+         String q= "select * from Periodo_historico\n" +
                 "where fecha_inicial < '"+fecha+"' and fecha_final > '"+fecha+"'";
          Statement st;
          st = con.createStatement();
          try{
             rs=st.executeQuery(q);
             while(rs.next()){
-                lista.add(rs.getString("nombre_periodo_historico") + " Período");
+                lista4.add(rs.getString("nombre_periodo_historico") + " Período");
             }
          }
         catch(Exception e){ 
             
               }
-          return lista;
+          return lista4;
     }   
        
         
@@ -171,8 +171,9 @@ public class Conexion_consulta {
               }
           return lista5;
     } 
-        //Asignatura
-       public ArrayList<String> llenar_asignatura() throws SQLException{
+
+        
+         public ArrayList<String> llenar_asignatura() throws SQLException{
          ArrayList<String> lista = new ArrayList<String>();
          String q= "SELECT * from Asignaturas";
          Statement st;
@@ -187,7 +188,6 @@ public class Conexion_consulta {
             
               }
           return lista;
-    }  
-       
-       
+    } 
+
 }

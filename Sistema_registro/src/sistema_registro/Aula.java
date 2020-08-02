@@ -60,28 +60,133 @@ public class Aula extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txt_PisoAula = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Tabla_Aula = new javax.swing.JTable();
         btn_guardar = new javax.swing.JButton();
         btn_actualizar = new javax.swing.JButton();
-        btn_buscar = new javax.swing.JButton();
-        btn_eliminar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
-        lbl_pisoAula = new javax.swing.JLabel();
-        lbl_nombreAula = new javax.swing.JLabel();
-        cbo_idEdificio = new javax.swing.JComboBox<>();
+        jPanel2 = new javax.swing.JPanel();
         txt_idAula = new javax.swing.JTextField();
-        lbl_idAula = new javax.swing.JLabel();
-        lbl_edificio = new javax.swing.JLabel();
         txt_nombreAula = new javax.swing.JTextField();
+        txt_PisoAula = new javax.swing.JTextField();
+        lbl_idAula = new javax.swing.JLabel();
+        lbl_nombreAula = new javax.swing.JLabel();
+        lbl_pisoAula = new javax.swing.JLabel();
+        lbl_edificio = new javax.swing.JLabel();
+        cbo_idEdificio = new javax.swing.JComboBox<>();
+        btn_buscar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Tabla_Aula = new javax.swing.JTable();
+        btn_eliminar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btn_guardar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Guardar.png"))); // NOI18N
+        btn_guardar.setText("Guardar");
+        btn_guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_guardarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 133, 170, -1));
+
+        btn_actualizar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
+        btn_actualizar.setText("Actualizar");
+        btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_actualizarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 186, 170, 50));
+
+        jPanel1.setBackground(new java.awt.Color(232, 251, 249));
+
+        lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lbl_titulo.setText("Aula");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(315, 315, 315)
+                .addComponent(lbl_titulo)
+                .addContainerGap(360, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_titulo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 720, 50));
+
+        jPanel2.setBackground(new java.awt.Color(215, 236, 233));
+
+        txt_idAula.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_idAula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_idAulaActionPerformed(evt);
+            }
+        });
+        txt_idAula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_idAulaKeyTyped(evt);
+            }
+        });
+
+        txt_nombreAula.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_nombreAula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_nombreAulaKeyTyped(evt);
+            }
+        });
 
         txt_PisoAula.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_PisoAula.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_PisoAulaKeyTyped(evt);
+            }
+        });
+
+        lbl_idAula.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_idAula.setText("Id Aula:");
+
+        lbl_nombreAula.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_nombreAula.setText("Nombre del Aula:");
+
+        lbl_pisoAula.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_pisoAula.setText("Piso Aula:");
+
+        lbl_edificio.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_edificio.setText("Edificio:");
+
+        cbo_idEdificio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un edificio" }));
+        cbo_idEdificio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbo_idEdificioActionPerformed(evt);
+            }
+        });
+
+        btn_buscar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Consulta.png"))); // NOI18N
+        btn_buscar.setText("Buscar");
+        btn_buscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_buscarMouseClicked(evt);
+            }
+        });
+        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscarActionPerformed(evt);
             }
         });
 
@@ -100,36 +205,8 @@ public class Aula extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Tabla_Aula);
 
-        btn_guardar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_guardar.setText("Guardar");
-        btn_guardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_guardarActionPerformed(evt);
-            }
-        });
-
-        btn_actualizar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_actualizar.setText("Actualizar");
-        btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_actualizarActionPerformed(evt);
-            }
-        });
-
-        btn_buscar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_buscar.setText("Buscar");
-        btn_buscar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_buscarMouseClicked(evt);
-            }
-        });
-        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_buscarActionPerformed(evt);
-            }
-        });
-
         btn_eliminar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Eliminar.png"))); // NOI18N
         btn_eliminar.setText("Eliminar");
         btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,116 +214,92 @@ public class Aula extends javax.swing.JFrame {
             }
         });
 
-        lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lbl_titulo.setText("Aula");
-
-        lbl_pisoAula.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_pisoAula.setText("Piso Aula:");
-
-        lbl_nombreAula.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_nombreAula.setText("Nombre del Aula:");
-
-        cbo_idEdificio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un edificio" }));
-        cbo_idEdificio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbo_idEdificioActionPerformed(evt);
-            }
-        });
-
-        txt_idAula.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_idAula.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_idAulaKeyTyped(evt);
-            }
-        });
-
-        lbl_idAula.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_idAula.setText("Id Aula:");
-
-        lbl_edificio.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_edificio.setText("Edificio:");
-
-        txt_nombreAula.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_nombreAula.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_nombreAulaKeyTyped(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lbl_pisoAula)
                             .addComponent(lbl_nombreAula)
-                            .addComponent(lbl_idAula)
-                            .addComponent(lbl_edificio))
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_idAula, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_PisoAula, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_nombreAula, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(130, 130, 130))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lbl_titulo)
-                        .addGap(293, 293, 293))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(btn_guardar)
-                        .addGap(40, 40, 40)
-                        .addComponent(btn_actualizar)
-                        .addGap(33, 33, 33)
-                        .addComponent(btn_buscar)
-                        .addGap(37, 37, 37)
-                        .addComponent(btn_eliminar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cbo_idEdificio, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(62, Short.MAX_VALUE))
+                            .addComponent(lbl_idAula)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
+                        .addComponent(lbl_edificio)))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txt_nombreAula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_PisoAula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txt_idAula, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbo_idEdificio, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(112, 112, 112))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(lbl_titulo)
-                .addGap(54, 54, 54)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_idAula)
-                    .addComponent(txt_idAula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_nombreAula)
-                    .addComponent(txt_nombreAula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_idAula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_idAula))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbl_pisoAula)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbo_idEdificio, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_edificio))
-                        .addGap(37, 37, 37)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_guardar)
-                            .addComponent(btn_actualizar)
-                            .addComponent(btn_buscar)
-                            .addComponent(btn_eliminar))
-                        .addGap(41, 41, 41))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txt_PisoAula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_nombreAula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_nombreAula))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_PisoAula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_pisoAula))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbl_edificio)
+                            .addComponent(cbo_idEdificio, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_eliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_buscar)
+                        .addGap(40, 40, 40)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
         );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 720, 400));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 790, 530));
+
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_retroceder.png"))); // NOI18N
+        jMenu1.setText("Regresar");
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Seccion.png"))); // NOI18N
+        jMenuItem1.setText("Sección");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -306,7 +359,7 @@ public class Aula extends javax.swing.JFrame {
         }
          
          if((cbo_idEdificio.getSelectedItem().equals("Seleccione un edificio"))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un edificio para el aula","Edificio del aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un edificio para el aula.","Edificio del aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 
@@ -315,17 +368,17 @@ public class Aula extends javax.swing.JFrame {
         }
 
         if(!validarLongitud(txt_idAula,4)){
-            JOptionPane.showMessageDialog(null, "El id del aula debe ser de 4 caracter", "Longitud de id del aula", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El id del aula debe ser de 4 caracter.", "Longitud de id del aula.", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 
         if(!validarLongitud(txt_nombreAula,3)){
-            JOptionPane.showMessageDialog(null, "El Nombre de la aula es muy corto el mínimo es de 3 caracteres", "Longitud del nombre de aula", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El Nombre de la aula es muy corto el mínimo es de 3 caracteres.", "Longitud del nombre de aula", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
         
          if(!validarLongitud(txt_PisoAula,1)){
-            JOptionPane.showMessageDialog(null, "El piso de la aula es muy corto el mínimo es de 1 caracteres", "Longitud del piso del aula", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El piso de la aula es muy corto el mínimo es de 1 caracteres.", "Longitud del piso del aula", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 
@@ -358,13 +411,13 @@ public class Aula extends javax.swing.JFrame {
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
         String Aula = txt_nombreAula.getText() + " ";
         if ((txt_idAula.getText().equals("")) || (txt_PisoAula.getText().equals("")) ||
-            (cbo_idEdificio.getSelectedItem().equals("Seleccione el campus"))) {
+            (cbo_idEdificio.getSelectedItem().equals("Seleccione el edificio"))) {
 
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar el aula a actualizar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar el aula a actualizar!. \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_PisoAula.requestFocus();
             return;
         }
-        else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro del edificio" +Aula + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
+        else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro del aula" +Aula + "?.", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
             String id_edificio = cbo_idEdificio.getSelectedItem().toString().substring(0, 2);
 
@@ -373,7 +426,7 @@ public class Aula extends javax.swing.JFrame {
                 ResultSet rs;
                 ps = con.prepareStatement("Update Aula set"
                     + " id_aula= ? ,"
-                   //+ " id_edificio = ? , "
+                  // + " id_edificio = ? , "
                     + " nombre_aula = ?  , "
                     + " piso_aula = ?  "
                     + " where id_aula =\'"+txt_idAula.getText()+"\'");
@@ -408,10 +461,10 @@ public class Aula extends javax.swing.JFrame {
 
         if ((txt_idAula.getText().equals("")) || (txt_PisoAula.getText().equals(""))  || (cbo_idEdificio.getSelectedItem().equals(""))  ) {
 
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar el edificio que desea eliminar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar el aula que desea eliminar!.\n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
         }
-        else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro del aula " + Aula + "", "Confirmación de eliminación",
+        else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro del aula " + Aula + ".", "Confirmación de eliminación",
             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
 
@@ -423,10 +476,10 @@ public class Aula extends javax.swing.JFrame {
                 int rs2 = st2.executeUpdate(sql);
                 System.out.println(rs2);
                 if(rs2 > 0){
-                    JOptionPane.showMessageDialog(null, "Se ha borrado la información del edificio " + Aula + " correctamente");
+                    JOptionPane.showMessageDialog(null, "Se ha borrado la información del aula " + Aula + " correctamente.");
 
                 }else {
-                    JOptionPane.showMessageDialog(null, "¡Error al eliminar la información!");
+                    JOptionPane.showMessageDialog(null, "¡Error al eliminar la información!.");
 
                 }
 
@@ -482,6 +535,21 @@ public class Aula extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txt_nombreAulaKeyTyped
 
+    private void txt_idAulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idAulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_idAulaActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+          Secciones ss = null;
+        try {
+            ss = new Secciones();
+        } catch (SQLException ex) {
+            Logger.getLogger(Aula.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          ss.setVisible(true);
+          this.dispose();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -528,6 +596,12 @@ public class Aula extends javax.swing.JFrame {
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_guardar;
     private javax.swing.JComboBox<String> cbo_idEdificio;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_edificio;
     private javax.swing.JLabel lbl_idAula;
@@ -554,7 +628,7 @@ public class Aula extends javax.swing.JFrame {
             String sql = "Select id_aula from Aula where id_aula = '"+txt_idAula.getText()+"'";
             ResultSet rs = st.executeQuery(sql);
             if(rs.next()){
-                JOptionPane.showMessageDialog(null, "Ya existe esta Aula: "+txt_idAula.getText()+" ", "Codigo de aula ¡Ya existe!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Ya existe esta Aula: "+txt_idAula.getText()+" ", "Codigo de aula ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
                 return true;
             }
             else{
@@ -618,12 +692,12 @@ public class Aula extends javax.swing.JFrame {
       try {
                     String cap = "";
                     ResultSet rs2 = null;
-                   var = JOptionPane.showInputDialog(this, "Ingrese el nombre del aula que desea consultar", "Consulta del aula", JOptionPane.QUESTION_MESSAGE);
+                   var = JOptionPane.showInputDialog(this, "Ingrese el nombre del aula que desea consultar.", "Consulta del aula", JOptionPane.QUESTION_MESSAGE);
                     if (var == null) {
                         JOptionPane.showMessageDialog(this, "La acción fue cancelada", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
                     } else {
                         if (var.equals("")) {
-                            JOptionPane.showMessageDialog(this, "Favor de ingresar el nombre del aula \n que desea consultar", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(this, "Favor de ingresar el nombre del aula \n que desea consultar.", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
                         } else {
                             String sql = "SELECT * FROM Aula where id_aula='"+var+"' or nombre_aula ='"+var+"'";
                             stmt = con.createStatement();
@@ -637,7 +711,7 @@ public class Aula extends javax.swing.JFrame {
                                
                                 
                             } else {
-                                JOptionPane.showMessageDialog(null, "¡No se encuentra los datos: "+var+" ! Por favor verifique sí, lo escribio correctamente");
+                                JOptionPane.showMessageDialog(null, "¡No se encuentra los datos: "+var+" ! Por favor verifique sí, lo escribio correctamente.");
                             }
                         }
 
@@ -660,10 +734,10 @@ public class Aula extends javax.swing.JFrame {
 
     private void llenarCampos() {
       int i = Tabla_Aula.getSelectedRow();
-        txt_idAula.setText(Tabla_Aula.getValueAt(i, 1).toString());
-        txt_nombreAula.setText(Tabla_Aula.getValueAt(i, 2).toString());
-       txt_PisoAula.setText(Tabla_Aula.getValueAt(i, 3).toString());
-       /*cbo_idEdificio.setSelectedItem(Tabla_Aula.getValueAt(i, 3).toString());*/
+        txt_idAula.setText(Tabla_Aula.getValueAt(i, 0).toString());
+        txt_nombreAula.setText(Tabla_Aula.getValueAt(i, 1).toString());
+       txt_PisoAula.setText(Tabla_Aula.getValueAt(i, 2).toString());
+       cbo_idEdificio.setSelectedItem(Tabla_Aula.getValueAt(i, 3).toString());
      
     }
 

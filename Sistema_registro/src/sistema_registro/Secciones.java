@@ -734,7 +734,7 @@ public class Secciones extends javax.swing.JFrame {
        String id_carrera = cbo_IdAsignatura.getSelectedItem().toString().substring(0, 3);
         //cadena4 =txt_CantidadAl.getText();
           
-     //  String CantidadAl = txt_CantidadAl.equals(Contador);
+       // String CantidadAl = txt_CantidadAl.equals(Contador);
         cadena5 = txt_HoraInicial.getText();
         cadena6 = txt_HoraFinal.getText();
         String id_periodo= cbo_IdPeriodo.getSelectedItem().toString().substring(0,7);
@@ -755,7 +755,7 @@ public class Secciones extends javax.swing.JFrame {
             return;
         }
         
-        try{
+      /*  try{
             ResultSet rs = st.executeQuery(sql);
             String verificar = "Select cantidad_alumnos from Secciones where Nombre_seccion = '"+Seccion+"'";
             Statement stmt = con.createStatement();
@@ -763,9 +763,9 @@ public class Secciones extends javax.swing.JFrame {
         }
          catch (SQLException e) {
             JOptionPane.showMessageDialog(null,e.getMessage());
-        }
+        }*/
         
-      if(rs2.next()){
+      /*if(rs2.next()){
                         String consul = "update Secciones \n" +
                                         "set cantidad_alumnos = 0\n" +
                                         "where Nombre_seccion = '"+txt_NombreSeccion.getText()+"'";
@@ -863,7 +863,7 @@ public class Secciones extends javax.swing.JFrame {
 
         actualizarDatos();
         LimpiarCajas();
-      }
+      }*/
 
       
     }//GEN-LAST:event_btn_guardarActionPerformed
