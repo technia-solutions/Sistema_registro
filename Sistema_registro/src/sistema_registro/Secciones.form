@@ -11,8 +11,11 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Regresar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenu1ActionPerformed"/>
+          </Events>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="Periodo">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_Asignatura">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+M"/>
@@ -23,10 +26,10 @@
                 <Property name="text" type="java.lang.String" value="Asignatura"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PeriodoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem_AsignaturaActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_Periodo">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+P"/>
@@ -37,10 +40,10 @@
                 <Property name="text" type="java.lang.String" value="Periodo"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem2ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem_PeriodoActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="Aula">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem_Aula">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="Ctrl+A"/>
@@ -51,7 +54,7 @@
                 <Property name="text" type="java.lang.String" value="Aula"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AulaActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem_AulaActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -114,13 +117,13 @@
                                       <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
                                       <Component id="lbl_horaInicial" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jFtxt_HoraInicial" min="-2" pref="223" max="-2" attributes="0"/>
+                                      <Component id="txt_HoraInicial" min="-2" pref="223" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
                                       <Component id="lbl_horaFinal" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jFtxt_HoraFinal" min="-2" pref="223" max="-2" attributes="0"/>
+                                      <Component id="txt_HoraFinal" min="-2" pref="223" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -186,12 +189,12 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lbl_horaInicial" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jFtxt_HoraInicial" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txt_HoraInicial" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lbl_horaFinal" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jFtxt_HoraFinal" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txt_HoraFinal" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -590,14 +593,14 @@
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_IdSeccionKeyTyped"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="jFtxt_HoraInicial">
+    <Component class="javax.swing.JFormattedTextField" name="txt_HoraInicial">
       <Properties>
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
           <Format format=":" subtype="-1" type="5"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JFormattedTextField" name="jFtxt_HoraFinal">
+    <Component class="javax.swing.JFormattedTextField" name="txt_HoraFinal">
       <Properties>
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
           <Format format=":" subtype="-1" type="5"/>
