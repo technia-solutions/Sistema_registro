@@ -99,6 +99,10 @@ public class Secciones extends javax.swing.JFrame {
              this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
             this.setTitle("Secciones");
     }
+
+    private Secciones(JTextField txt_NombreSeccion, String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     //Para Checkbox
     
@@ -127,8 +131,6 @@ public class Secciones extends javax.swing.JFrame {
 
         lbl_horaFinal = new javax.swing.JLabel();
         txt_NombreSeccion = new javax.swing.JTextField();
-        txt_HoraInicial = new javax.swing.JTextField();
-        txt_HoraFinal = new javax.swing.JTextField();
         btn_guardar = new javax.swing.JButton();
         btn_actualizar = new javax.swing.JButton();
         lbl_NombreSeccion = new javax.swing.JLabel();
@@ -158,6 +160,8 @@ public class Secciones extends javax.swing.JFrame {
         cbo_IdAula = new javax.swing.JComboBox<>();
         lbl_IdSeccion = new javax.swing.JLabel();
         txt_IdSeccion = new javax.swing.JTextField();
+        jFtxt_HoraInicial = new javax.swing.JFormattedTextField();
+        jFtxt_HoraFinal = new javax.swing.JFormattedTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         Periodo = new javax.swing.JMenuItem();
@@ -170,10 +174,6 @@ public class Secciones extends javax.swing.JFrame {
         lbl_horaFinal.setText("Hora final:");
 
         txt_NombreSeccion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        txt_HoraInicial.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-
-        txt_HoraFinal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         btn_guardar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Guardar.png"))); // NOI18N
@@ -381,16 +381,33 @@ public class Secciones extends javax.swing.JFrame {
             }
         });
 
+        try {
+            jFtxt_HoraInicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(":")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            jFtxt_HoraFinal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(":")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_retroceder.png"))); // NOI18N
         jMenu1.setText("Regresar");
 
         Periodo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
-        Periodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio.png"))); // NOI18N
+        Periodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/books_3025.png"))); // NOI18N
         Periodo.setText("Asignatura");
+        Periodo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PeriodoActionPerformed(evt);
+            }
+        });
         jMenu1.add(Periodo);
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio.png"))); // NOI18N
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/mortarboard_icon-icons.com_64579.png"))); // NOI18N
         jMenuItem2.setText("Periodo");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -400,8 +417,13 @@ public class Secciones extends javax.swing.JFrame {
         jMenu1.add(jMenuItem2);
 
         Aula.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
-        Aula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio.png"))); // NOI18N
+        Aula.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Aula.png"))); // NOI18N
         Aula.setText("Aula");
+        Aula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AulaActionPerformed(evt);
+            }
+        });
         jMenu1.add(Aula);
 
         jMenuBar1.add(jMenu1);
@@ -423,55 +445,56 @@ public class Secciones extends javax.swing.JFrame {
                                 .addGap(380, 380, 380)
                                 .addComponent(lbl_titulo))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(92, 92, 92)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btn_guardar)
-                                    .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btn_eliminar))
-                                .addGap(91, 91, 91)
+                                .addGap(124, 124, 124)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btn_guardar)
+                                            .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btn_eliminar))
+                                        .addGap(91, 91, 91)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(lbl_CantidadAl)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(txt_CantidadAl, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(lbl_CodAsignatura)
+                                                .addComponent(lbl_NombreSeccion)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(cbo_IdAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(txt_NombreSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(lbl_IdSeccion)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txt_IdSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(lbl_CantidadAl)
+                                            .addGap(7, 7, 7)
+                                            .addComponent(txt_CantidadAl, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(lbl_CodAsignatura)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(cbo_IdAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                             .addGap(57, 57, 57)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                                 .addGroup(layout.createSequentialGroup()
                                                     .addComponent(lbl_horaInicial)
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(txt_HoraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(lbl_Periodo)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(cbo_IdPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(lbl_horaFinal)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addComponent(txt_HoraFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(jFtxt_HoraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGroup(layout.createSequentialGroup()
                                                     .addComponent(lbl_aula)
                                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                     .addComponent(cbo_IdAula, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGap(1, 1, 1)))))
+                                                    .addGap(1, 1, 1))
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(lbl_horaFinal)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                    .addComponent(jFtxt_HoraFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lbl_NombreSeccion)
+                                        .addComponent(lbl_Periodo)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_NombreSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lbl_IdSeccion)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_IdSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(cbo_IdPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(40, 40, 40)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 55, Short.MAX_VALUE)))
+                        .addGap(0, 42, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -481,50 +504,52 @@ public class Secciones extends javax.swing.JFrame {
                 .addComponent(lbl_titulo)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
-                        .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_buscar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(82, 82, 82)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_IdSeccion)
-                            .addComponent(txt_IdSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_NombreSeccion)
-                            .addComponent(txt_NombreSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_CodAsignatura)
-                            .addComponent(cbo_IdAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(17, 17, 17)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_CantidadAl)
-                            .addComponent(txt_CantidadAl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_horaInicial)
-                            .addComponent(txt_HoraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_horaFinal)
-                            .addComponent(txt_HoraFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbo_IdPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_Periodo))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(82, 82, 82)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lbl_IdSeccion)
+                                    .addComponent(txt_IdSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lbl_NombreSeccion)
+                                    .addComponent(txt_NombreSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lbl_CodAsignatura)
+                                    .addComponent(cbo_IdAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(17, 17, 17)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lbl_CantidadAl)
+                                    .addComponent(txt_CantidadAl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lbl_horaInicial)
+                                    .addComponent(jFtxt_HoraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(19, 19, 19)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lbl_horaFinal)
+                                    .addComponent(jFtxt_HoraFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(cbo_IdPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbl_Periodo)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(77, 77, 77)
+                                .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_buscar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbo_IdAula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_aula)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lbl_aula))))
                 .addGap(65, 65, 65)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(61, Short.MAX_VALUE))
@@ -688,10 +713,6 @@ public class Secciones extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
-    private void txt_CantidadAlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_CantidadAlActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_CantidadAlActionPerformed
-
     private void btn_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buscarMouseClicked
         rellenar();
         this.jScrollPane1.setEnabled(true);
@@ -728,6 +749,7 @@ public class Secciones extends javax.swing.JFrame {
          
          String CantidadAl =String.valueOf(Contador);
         
+        
         String cadena1, cadena2, cadena3, cadena4, cadena5, cadena6, cadena7, cadena8, cadena9;
         cadena1 = txt_IdSeccion.getText();
         cadena2 = txt_NombreSeccion.getText();
@@ -755,46 +777,46 @@ public class Secciones extends javax.swing.JFrame {
             return;
         }
         
-      /*  try{
-            ResultSet rs = st.executeQuery(sql);
-            String verificar = "Select cantidad_alumnos from Secciones where Nombre_seccion = '"+Seccion+"'";
+       try{
+            
+       
+           
+           
+           //  ResultSet rs = st.executeQuery(sql);
+            String verificar = "Select cantidad_alumnos from Secciones where Nombre_seccion = '"+txt_NombreSeccion.getText()+"'";
             Statement stmt = con.createStatement();
             ResultSet rs2 = stmt.executeQuery(verificar);
-        }
-         catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,e.getMessage());
-        }*/
-        
-      /*if(rs2.next()){
+       if(rs2.next()){
                         String consul = "update Secciones \n" +
                                         "set cantidad_alumnos = 0\n" +
                                         "where Nombre_seccion = '"+txt_NombreSeccion.getText()+"'";
                         Statement ss = con.createStatement();
                         int actualizarcantidad_alumnos = ss.executeUpdate(consul);
-                        Secciones secciones = new Secciones(Seccion,rs2.getString(1));
+                        //Secciones secciones = new Secciones(txt_NombreSeccion,rs2.getString(1));
+                        Secciones secciones = new Secciones(txt_NombreSeccion,rs2.getString(1));
                         secciones.setVisible(true); 
                         this.dispose();
                         
       }else{
                     try {
-                         String consulta = "SELECT * from Secciones where Nombre_seccion ='"+Seccion+"'";
+                         String consulta = "SELECT * from Secciones where Nombre_seccion ='"+txt_NombreSeccion.getText()+"'";
                          Statement st3 = con.createStatement();
                          ResultSet rs3 = st3.executeQuery(consulta);
                         if(rs3.next()){
                             if(!rs3.getString("cantidad_alumnos").equals("1")){
-                                if(rs3.getString("Nombre_seccion").equals(Seccion)){
+                                if(rs3.getString("Nombre_seccion").equals(txt_NombreSeccion.getText())){
                                     getToolkit().beep();
                                     int in = Integer.parseInt(rs3.getString("cantidad_alumnos")) + 1 ;
                                     String sql4 = "update Secciones \n" +
                                                   "set cantidad_alumnos = '"+in+"'\n" +
-                                                  "where Nombre_seccion = '"+Seccion+"' ";
+                                                  "where Nombre_seccion = '"+txt_NombreSeccion.getText()+"' ";
                                     Statement st4 = con.createStatement();
                                     int rs4 = st4.executeUpdate(sql4);
                                     if(rs3.getString("cantidad_alumnos").equals("70")){
                                         Statement st2 = con.createStatement();
-                                        String sql2 = "Update Secciones set cantidad_alumnos = 'Cantidad Maxima' where Nombre_seccion ='"+Seccion+"'";
+                                        String sql2 = "Update Secciones set cantidad_alumnos = 'Cantidad Maxima' where Nombre_seccion ='"+txt_NombreSeccion.getText()+"'";
                                         int columnas = st2.executeUpdate(sql2);
-                                        JOptionPane.showMessageDialog(null, "La Seccion: "+Seccion+" excede su capacidad por favor comuníquese con el coordinador de la carrera.", "Limite Cupos", JOptionPane.INFORMATION_MESSAGE);
+                                        JOptionPane.showMessageDialog(null, "La Seccion: "+txt_NombreSeccion.getText()+" excede su capacidad por favor comuníquese con el coordinador de la carrera.", "Limite Cupos", JOptionPane.INFORMATION_MESSAGE);
                                         this.dispose();
                                         return;
                                         
@@ -837,7 +859,7 @@ public class Secciones extends javax.swing.JFrame {
 
         try{
             PreparedStatement ps;
-            ResultSet rs;
+
 
             ps=con.prepareStatement("Insert into Secciones ( id_seccion, Nombre_seccion, cod_asignatura, cantidad_alumnos, Hora_inicial, Hora_final, id_periodo, id_aula, dias )"
                 + "                VALUES(?,?,?,?,?,?,?,?,?)");
@@ -863,7 +885,12 @@ public class Secciones extends javax.swing.JFrame {
 
         actualizarDatos();
         LimpiarCajas();
-      }*/
+      } }
+         catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
+        
+     
 
       
     }//GEN-LAST:event_btn_guardarActionPerformed
@@ -915,6 +942,10 @@ public class Secciones extends javax.swing.JFrame {
         lbl_MensajeDias.setText(Mensaje);
 
     }//GEN-LAST:event_btn_AceptarActionPerformed
+
+    private void txt_CantidadAlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_CantidadAlActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_CantidadAlActionPerformed
 
     /**
      * @param args the command line arguments
@@ -974,6 +1005,8 @@ public class Secciones extends javax.swing.JFrame {
     private javax.swing.JCheckBox chb_Miercoles;
     private javax.swing.JCheckBox chb_Sabado;
     private javax.swing.JCheckBox chb_Viernes;
+    private javax.swing.JFormattedTextField jFtxt_HoraFinal;
+    private javax.swing.JFormattedTextField jFtxt_HoraInicial;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
@@ -990,8 +1023,6 @@ public class Secciones extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_horaInicial;
     private javax.swing.JLabel lbl_titulo;
     private javax.swing.JTextField txt_CantidadAl;
-    private javax.swing.JTextField txt_HoraFinal;
-    private javax.swing.JTextField txt_HoraInicial;
     private javax.swing.JTextField txt_IdSeccion;
     private javax.swing.JTextField txt_NombreSeccion;
     // End of variables declaration//GEN-END:variables
