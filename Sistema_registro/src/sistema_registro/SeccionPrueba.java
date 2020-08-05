@@ -277,6 +277,11 @@ public class SeccionPrueba extends javax.swing.JFrame {
         lbl_horaFinal.setText("Hora final:");
 
         txt_NombreSeccion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_NombreSeccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_NombreSeccionKeyTyped(evt);
+            }
+        });
 
         btn_guardar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Guardar.png"))); // NOI18N
@@ -321,20 +326,14 @@ public class SeccionPrueba extends javax.swing.JFrame {
             }
         });
 
-        try {
-            txt_HoraInicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(":")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        txt_HoraInicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        txt_HoraInicial.setText("");
 
         lbl_aula.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_aula.setText("Aula: ");
 
-        try {
-            txt_HoraFinal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter(":")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        txt_HoraFinal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        txt_HoraFinal.setText("");
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_retroceder.png"))); // NOI18N
         jMenu1.setText("Regresar");
@@ -385,56 +384,58 @@ public class SeccionPrueba extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(124, 124, 124)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btn_guardar)
-                                    .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btn_eliminar))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(91, 91, 91)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(lbl_NombreSeccion)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txt_NombreSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(lbl_IdSeccion)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txt_IdSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(128, 128, 128)
-                                        .addComponent(lbl_horaInicial)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_HoraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(140, 140, 140)
-                                        .addComponent(lbl_horaFinal)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txt_HoraFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbl_CodAsignatura)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbo_IdAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbl_Periodo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbo_IdPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbl_aula)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbo_IdAula, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(40, 40, 40)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(473, 473, 473)
-                        .addComponent(lbl_titulo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 480, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(124, 124, 124)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(btn_guardar)
+                                            .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(btn_eliminar))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(91, 91, 91)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(lbl_NombreSeccion)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(txt_NombreSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(lbl_IdSeccion)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(txt_IdSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(128, 128, 128)
+                                                .addComponent(lbl_horaInicial)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txt_HoraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(140, 140, 140)
+                                                .addComponent(lbl_horaFinal)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(txt_HoraFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lbl_CodAsignatura)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cbo_IdAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lbl_Periodo)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cbo_IdPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lbl_aula)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cbo_IdAula, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(40, 40, 40)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(473, 473, 473)
+                                .addComponent(lbl_titulo)))
+                        .addGap(32, 32, 32)))
                 .addGap(23, 23, 23))
         );
         layout.setVerticalGroup(
@@ -549,7 +550,7 @@ public class SeccionPrueba extends javax.swing.JFrame {
         String cadena1, cadena2, cadena3, cadena4, cadena5, cadena6, cadena7, cadena8;
         cadena1 = txt_IdSeccion.getText();
         cadena2 = txt_NombreSeccion.getText();
-        String id_carrera = cbo_IdAsignatura.getSelectedItem().toString().substring(0, 3);
+        String id_asignatura = cbo_IdAsignatura.getSelectedItem().toString().substring(0, 3);
         cadena4= txt_HoraInicial.getText();
         cadena5= txt_HoraFinal.getText();
         String id_periodo= cbo_IdPeriodo.getSelectedItem().toString().substring(0,6);
@@ -576,24 +577,24 @@ public class SeccionPrueba extends javax.swing.JFrame {
                     return;
                 }
 
-                if(!validarLongitud(txt_IdSeccion,3)){
-                    JOptionPane.showMessageDialog(null, "El Id de seccion tiene que ser minimo de 8 caracteres", "Longitud de codigo de la seccion", JOptionPane.INFORMATION_MESSAGE);
+                if(!validarLongitud(txt_IdSeccion,6)){
+                    JOptionPane.showMessageDialog(null, "El Id de seccion tiene que ser minimo de 6 caracteres", "Longitud de codigo de la seccion", JOptionPane.INFORMATION_MESSAGE);
                     return;
                 }
 
-                if(!validarLongitud(txt_NombreSeccion,7)){
-                    JOptionPane.showMessageDialog(null, "El Nombre de la seccion es muy corto el mínimo es de 6 caracteres", "Longitud del nombre dea seccion", JOptionPane.INFORMATION_MESSAGE);
+                if(!validarLongitud(txt_NombreSeccion,1)){
+                    JOptionPane.showMessageDialog(null, "El Nombre de la seccion es muy corto el mínimo es de 1 caracteres", "Longitud del nombre dea seccion", JOptionPane.INFORMATION_MESSAGE);
                     return;
                 }
 
                 
 
-                if(!validarLongitud(txt_HoraInicial,7)){
+                if(!validarLongitud(txt_HoraInicial,5)){
                     JOptionPane.showMessageDialog(null, "La Hora inicial es muy corto el mínimo es de 5 caracteres", "Longitud de la hora inicial de la seccion", JOptionPane.INFORMATION_MESSAGE);
                     return;
                 }
 
-                if(!validarLongitud(txt_HoraFinal,1)){
+                if(!validarLongitud(txt_HoraFinal,5)){
                     JOptionPane.showMessageDialog(null, "La Hora Final valorativas debe ser de un mínimo de 5 caracter", "Longitud de la hora final de la seccion", JOptionPane.INFORMATION_MESSAGE);
                     return;
                 }
@@ -605,7 +606,7 @@ public class SeccionPrueba extends javax.swing.JFrame {
                         + "                VALUES(?,?,?,?,?,?,?,?)");
                     ps.setString(1, txt_IdSeccion.getText());;
                     ps.setString(2, txt_NombreSeccion.getText());
-                    ps.setString(3, id_carrera);
+                    ps.setString(3, id_asignatura);
                     ps.setString(4, txt_HoraInicial.getText());
                     ps.setString(5, txt_HoraFinal.getText());
                     ps.setString(6, id_periodo);
@@ -639,7 +640,7 @@ public class SeccionPrueba extends javax.swing.JFrame {
 
     private void txt_IdSeccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_IdSeccionKeyTyped
 
-        if (txt_IdSeccion.getText().length() >= 6) {
+        if (txt_IdSeccion.getText().length() >= 8) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
@@ -690,6 +691,38 @@ public class SeccionPrueba extends javax.swing.JFrame {
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void txt_NombreSeccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NombreSeccionKeyTyped
+         char a=evt.getKeyChar();
+            if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
+                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+        return;
+        }
+         /*if(evt.getKeyChar() == 32){
+             if(txt_NombreSeccion.getText().length() == 0){
+                 evt.consume();
+                 Toolkit.getDefaultToolkit().beep();
+                 return;
+             }
+             if(txt_NombreSeccion.getText().substring(txt_NombreSeccion.getText().length() - 1).equals(" ")){
+                 evt.consume();
+                 Toolkit.getDefaultToolkit().beep();
+             }
+             return; 
+         }*/
+        if(txt_NombreSeccion.getText().length() >=1){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
+        }
+        
+        if(Character.isDigit(a) || !Character.isLetterOrDigit(a) ){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Sólo letras");
+        }
+    }//GEN-LAST:event_txt_NombreSeccionKeyTyped
 
     /**
      * @param args the command line arguments
