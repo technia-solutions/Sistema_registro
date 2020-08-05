@@ -65,10 +65,10 @@ public class Secciones extends javax.swing.JFrame {
                 cbo_Asignaturas.addItem(lista.get(i));
                 }
             
-                 ArrayList<String> lista2 = new ArrayList<String>();
-             lista2= new Conexion_consulta().llenar_periodo();
-            for(int i = 0; i<lista2.size();i++){
-               cbo_IdPeriodo.addItem(lista2.get(i));
+                 ArrayList<String> lista4 = new ArrayList<String>();
+             lista4= new Conexion_consulta().llenar_periodo();
+            for(int i = 0; i<lista4.size();i++){
+               cbo_IdPeriodo.addItem(lista4.get(i));
              }
             
             
@@ -256,6 +256,11 @@ public class Secciones extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        Tabla_Seccion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tabla_SeccionMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(Tabla_Seccion);
 
         cbo_IdPeriodo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un periodo:" }));
@@ -388,8 +393,8 @@ public class Secciones extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_retroceder.png"))); // NOI18N
-        jMenu1.setText("Regresar");
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
+        jMenu1.setText("Menú");
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenu1ActionPerformed(evt);
@@ -549,42 +554,22 @@ public class Secciones extends javax.swing.JFrame {
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
     
         String NombreSeccion = txt_NombreSeccion.getText() + " ";
-        if ((cbo_Asignaturas.getSelectedItem().equals("")) || (txt_NombreSeccion.getText().equals("")) ||
-            (cbo_IdPeriodo.getSelectedItem().equals("Seleccione el periodo"))) {
-             /*Para Selecicon de Dias de Asignatura*/
+           lbl_MensajeDias.setText(Mensaje);
+             String Mensaje = "dias"; 
              
-            String Mensaje = "dias"; 
+        if ((cbo_Asignaturas.getSelectedItem().equals("")) || (txt_NombreSeccion.getText().equals("")) ||(txt_HoraInicial.getText().equals("")) ||
+            (cbo_IdPeriodo.getSelectedItem().equals("Seleccione el periodo"))) {
             
-            //Mire la variable que deberia de funcionar seria esta: el detalle esta que esta la puse asi ya que me daba error
-        //   JCheckBox (String Mensaje )=new JCheckBox();
-            if(chb_Lunes.isSelected()){
-                 Mensaje += "Lu";
-             } 
-             if(chb_Martes.isSelected()){
-                 Mensaje += "Ma";
-             }
-                if(chb_Miercoles.isSelected()){
-                 Mensaje += "Mi";
-             }
-                   if(chb_Jueves.isSelected()){
-                 Mensaje += "Ju";
-             }
-                      if(chb_Viernes.isSelected()){
-                 Mensaje += "Vi";
-             }
-                 if(chb_Sabado.isSelected()){
-                 Mensaje += "Sa";
-             }
-                    if(chb_Domingo.isSelected()){
-                 Mensaje += "Do";
-             }
-                    
-                    lbl_MensajeDias.setText(Mensaje);
-            
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la seccion que desea actualizar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+   
+         
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la sección que desea actualizar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
            txt_NombreSeccion.requestFocus();
             return;
         }
+        
+          
+            
+        
         else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de secciones" +NombreSeccion + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
             String id_asignatura = cbo_Asignaturas.getSelectedItem().toString().substring(0, 2);
@@ -742,20 +727,59 @@ public class Secciones extends javax.swing.JFrame {
         String id_periodo= cbo_IdPeriodo.getSelectedItem().toString().substring(0,6);
         String id_aula= cbo_IdAula.getSelectedItem().toString().substring(0,7);
         String Mensaje = "dias";
-  
-
-        if ((txt_IdSeccion.getText().equals("")) || (txt_NombreSeccion.getText().equals(""))  ||  (cbo_Asignaturas.getSelectedItem().equals("Seleccione una asignatura")) 
-                  || (txt_HoraInicial.getText().equals("")) 
-                || (txt_HoraFinal.getText().equals("")) ||  (cbo_IdPeriodo.getSelectedItem().equals("Seleccione una periodo")) ||  (cbo_IdAula.getSelectedItem().equals("Seleccione un aula")) 
-               
-               //||  (cbo_Req1.getSelectedItem().equals("Seleccione un asignatura"))                
-                         ) 
-                                
-       {
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe llenar todos los campos! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        
+        if((txt_IdSeccion.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id de la sección.","Id sección requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_IdSeccion.requestFocus();
             return;
         }
+        
+            if((txt_NombreSeccion.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre de la sección.","Nombre sección requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_NombreSeccion.requestFocus();
+            return;
+        }
+            
+         if((cbo_Asignaturas.getSelectedItem().equals("Seleccione una asignatura"))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar una asignatura para la sección.","Asignatura de la sección requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+         
+          if((txt_HoraInicial.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar la hora inicial de la sección.","Hora inicial requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_HoraInicial.requestFocus();
+            return;
+        }
+        
+           if((txt_HoraFinal.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar la hora final de la sección.","Hora final requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_HoraFinal.requestFocus();
+            return;
+        }
+           
+         if((cbo_IdPeriodo.getSelectedItem().equals("Seleccione un período"))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un período para la sección.","Período de la sección requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+         
+           if((cbo_IdAula.getSelectedItem().equals("Seleccione un aula"))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar una para la sección.","Aula de la sección requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+           
+        if ((chb_Lunes.getText().equals("")) || (chb_Martes.getText().equals("")) || (chb_Miercoles.getText().equals("")) || (chb_Jueves.getText().equals("")) ||
+             (chb_Viernes.getText().equals("")) || (chb_Sabado.getText().equals("")) || (chb_Domingo.getText().equals(""))) {
+
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar el dia de la sección!. \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            chb_Lunes.requestFocus();
+            return;
+        }
+           
+           
+        
+        
+     
+
         
        try{
             
@@ -841,7 +865,7 @@ public class Secciones extends javax.swing.JFrame {
             PreparedStatement ps;
 
 
-            ps=con.prepareStatement("INSERT into Secciones ( id_seccion, Nombre_seccion, cod_asignaturas, Hora_inicial, Hora_final, id_periodo, id_aula, dias)"
+            ps=con.prepareStatement("INSERT INTO Secciones ( id_seccion, Nombre_seccion, cod_asignaturas, Hora_inicial, Hora_final, id_periodo, id_aula, dias)"
                 + "                VALUES(?,?,?,?,?,?,?,?)");
             ps.setString(1, txt_IdSeccion.getText());
             ps.setString(2, txt_NombreSeccion.getText());
@@ -852,6 +876,7 @@ public class Secciones extends javax.swing.JFrame {
             ps.setString(6, id_periodo);
             ps.setString(7,id_aula);
             ps.setString(8, Mensaje);
+            
             
             
             int res= ps.executeUpdate(); 
@@ -1002,6 +1027,12 @@ public class Secciones extends javax.swing.JFrame {
     private void cbo_IdPeriodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_IdPeriodoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbo_IdPeriodoActionPerformed
+
+    private void Tabla_SeccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_SeccionMouseClicked
+           if(Tabla_Seccion.getSelectedRow () >= 0){
+            llenarCampos();
+        }
+    }//GEN-LAST:event_Tabla_SeccionMouseClicked
 
     /**
      * @param args the command line arguments

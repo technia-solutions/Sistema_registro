@@ -7,9 +7,9 @@
         <Menu class="javax.swing.JMenu" name="jMenu1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/boton_retroceder.png"/>
+              <Image iconType="3" name="/Imagenes/menu.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Regresar"/>
+            <Property name="text" type="java.lang.String" value="Men&#xfa;"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenu1ActionPerformed"/>
@@ -373,6 +373,9 @@
               </Table>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Tabla_SeccionMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
