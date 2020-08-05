@@ -587,7 +587,7 @@ public class Secciones extends javax.swing.JFrame {
           
            if ((txt_NombreSeccion.getText().equals("")) || (txt_IdSeccion.getText().equals("")) || (txt_HoraInicial.getText().equals(""))   || (txt_HoraFinal.getText().equals(""))  ) {
           
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la seccion que desea eliminar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la sección que desea eliminar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
            
         }
           else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de sección" + Seccion+ "", "Confirmación de eliminación",
@@ -602,7 +602,7 @@ public class Secciones extends javax.swing.JFrame {
                 int rs2 = st2.executeUpdate(sql);
                 System.out.println(rs2);
                 if(rs2 > 0){
-                    JOptionPane.showMessageDialog(null, "Se ha borrado la información de la seccion" + Seccion+ " correctamente");
+                    JOptionPane.showMessageDialog(null, "Se ha borrado la información de la sección" + Seccion+ " correctamente");
 
                 }else {
                     JOptionPane.showMessageDialog(null, "¡Error al eliminar la información!");
@@ -705,7 +705,7 @@ public class Secciones extends javax.swing.JFrame {
         if ((chb_Lunes.getText().equals("")) || (chb_Martes.getText().equals("")) || (chb_Miercoles.getText().equals("")) || (chb_Jueves.getText().equals("")) ||
              (chb_Viernes.getText().equals("")) || (chb_Sabado.getText().equals("")) || (chb_Domingo.getText().equals(""))) {
 
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar el dia de la sección!. \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar el día de la sección!. \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             chb_Lunes.requestFocus();
             return;
         }
@@ -746,7 +746,7 @@ public class Secciones extends javax.swing.JFrame {
                                         Statement st2 = con.createStatement();
                                         String sql2 = "Update Secciones set cantidad_alumnos = 'Cantidad Maxima' where Nombre_seccion ='"+txt_NombreSeccion.getText()+"'";
                                         int columnas = st2.executeUpdate(sql2);
-                                        JOptionPane.showMessageDialog(null, "La Seccion: "+txt_NombreSeccion.getText()+" excede su capacidad por favor comuníquese con el coordinador de la carrera.", "Limite Cupos", JOptionPane.INFORMATION_MESSAGE);
+                                        JOptionPane.showMessageDialog(null, "La Sección: "+txt_NombreSeccion.getText()+" excede su capacidad por favor comuníquese con el coordinador de la carrera.", "Limite Cupos", JOptionPane.INFORMATION_MESSAGE);
                                         this.dispose();
                                         return;
                                         
@@ -763,7 +763,7 @@ public class Secciones extends javax.swing.JFrame {
         }
 
         if(!validarLongitud(txt_IdSeccion,6)){
-            JOptionPane.showMessageDialog(null, "El Id de seccion tiene que ser minimo de 6 caracteres", "Longitud de id sección", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El Id de sección tiene que ser minimo de 6 caracteres", "Longitud de id sección", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 
@@ -806,7 +806,7 @@ public class Secciones extends javax.swing.JFrame {
             
             
             int res= ps.executeUpdate(); 
-            JOptionPane.showMessageDialog(null, "Se ha guardado la información en Registro de Seccion");
+            JOptionPane.showMessageDialog(null, "Se ha guardado la información en Registro de Sección");
              } catch ( Exception e) {
             System.out.println(e);
         
@@ -1045,7 +1045,7 @@ public class Secciones extends javax.swing.JFrame {
             String sql = "Select id_seccion from Secciones where id_seccion = '"+txt_IdSeccion.getText()+"'";
             ResultSet rs = st.executeQuery(sql);
             if(rs.next()){
-                JOptionPane.showMessageDialog(null, "Ya existe esta Seccion: "+txt_IdSeccion.getText()+" ", "Id de Seccion ¡Ya existe!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Ya existe esta Sección: "+txt_IdSeccion.getText()+" ", "Id de Sección ¡Ya existe!", JOptionPane.INFORMATION_MESSAGE);
                 return true;
             }
             else{
@@ -1136,12 +1136,12 @@ public void actualizarDatos(){
       try {
                     String cap = "";
                     ResultSet rs2 = null;
-                   var = JOptionPane.showInputDialog(this, "Ingrese el nombre de la seccion que desea consultar", "Consulta de secciones", JOptionPane.QUESTION_MESSAGE);
+                   var = JOptionPane.showInputDialog(this, "Ingrese el nombre de la sección que desea consultar", "Consulta de secciones", JOptionPane.QUESTION_MESSAGE);
                     if (var == null) {
                         JOptionPane.showMessageDialog(this, "La acción fue cancelada", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
                     } else {
                         if (var.equals("")) {
-                            JOptionPane.showMessageDialog(this, "Favor de ingresar el nombre de la seccion \n que desea consultar", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(this, "Favor de ingresar el nombre de la sección \n que desea consultar", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
                         } else {
                             String sql = "SELECT * FROM Secciones where id_seccion='"+var+"' or nombre_seccion ='"+var+"'";
                             stmt = con.createStatement();
@@ -1156,7 +1156,7 @@ public void actualizarDatos(){
                                
                                 
                             } else {
-                                JOptionPane.showMessageDialog(null, "¡No se encuentra los datos: "+var+" ! Por favor verifique sí, lo escribio correctamente");
+                                JOptionPane.showMessageDialog(null, "¡No se encuentran los datos: "+var+" ! Por favor verifique sí, lo escribió correctamente");
                             }
                         }
 
