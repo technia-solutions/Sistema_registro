@@ -76,26 +76,7 @@ public class Secciones extends javax.swing.JFrame {
              lista5= new Conexion_consulta().llenar_aula();
             for(int i = 0; i<lista5.size();i++){
                cbo_IdAula.addItem(lista5.get(i));
-             }
-          
-            
-           
-            /*
-            ArrayList<String> Mensaje = new ArrayList<String>();
-             Mensaje = new Conexion_consulta().llenar_requisito();
-            for(int i = 0; i<Mensaje.size();i++){
-               chb_Lunes.isSelected(Mensaje.get(i));
-               chb_Martes.addItem(Mensaje.get(i));
-               chb_Miercoles.addItem(Mensaje.get(i));
-               chb_Jueves.addItem(Mensaje.get(i));
-              chb_Viernes.addItem(Mensaje.get(i));
-               cbo_Sabado.addItem(Mensaje.get(i));
-               chb_Domingo.addItem(Mensaje.get(i));
-            }*/
-       
-            
-        
-                    
+             }                    
              this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
             this.setTitle("Secciones");
     }
@@ -104,21 +85,7 @@ public class Secciones extends javax.swing.JFrame {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    //Para Checkbox
-    
-   /* public void addCheckbox (int column, JTable Tabla_Seccion){
-        
-        TableColumn tc = Tabla_Seccion.getColumnModel().getColumn(column);
-        tc.setCellEditor(Tabla_Seccion.getDefaultEditor(Boolean.class));
-        tc.setCellEditor((TableCellEditor) Tabla_Seccion.getDefaultRenderer(Boolean.class));
-        
-    }
-    
-    public boolean IsSelected(int row, int column, JTable Tabla_Seccion){
-        
-        return Tabla_Seccion.getValueAt( row, column) != null;
-    }
-    */
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -557,29 +524,23 @@ public class Secciones extends javax.swing.JFrame {
            lbl_MensajeDias.setText(Mensaje);
              String Mensaje = "dias"; 
              
-        if ((cbo_Asignaturas.getSelectedItem().equals("")) || (txt_NombreSeccion.getText().equals("")) ||(txt_HoraInicial.getText().equals("")) ||
-            (cbo_IdPeriodo.getSelectedItem().equals("Seleccione el periodo"))) {
+        if ((txt_NombreSeccion.getText().equals("")) || (txt_IdSeccion.getText().equals("")) || 
+            (cbo_Asignaturas.getSelectedItem().equals("")) ||  (txt_HoraInicial.getText().equals("")) 
+                    || (txt_HoraFinal.getText().equals(""))
+                || (cbo_IdPeriodo.getSelectedItem().equals("Seleccione el período"))){
             
    
-         
             javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la sección que desea actualizar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
            txt_NombreSeccion.requestFocus();
             return;
         }
-        
-          
-            
         
         else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de secciones" +NombreSeccion + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
             String id_asignatura = cbo_Asignaturas.getSelectedItem().toString().substring(0, 2);
             String id_periodo = cbo_IdPeriodo.getSelectedItem().toString().substring(0, 6);
           String id_aula= cbo_IdAula.getSelectedItem().toString().substring(0, 7);
-          /*String  Dias =  (cbo_Lunes.getSelectedItem().toString().substring(0, 8) || cbo_Lunes.getSelectedItem().equals("")) || cbo_Marteses.getSelectedItem().equals("")) ||
-                                        || cbo_Miercoles.getSelectedItem().equals("") ) || cbo_Jueves.getSelectedItem().equals(""))  || cbo_Viernes.getSelectedItem().equals(""))
-                                                || cbo_Sabado.getSelectedItem().equals(""))  || cbo_Domingo.getSelectedItem().equals(""));*/
-        //   String Mensaje = lbl_MensajeDias.setText(Mensaje);
-        
+          
           
           try {
                 PreparedStatement ps;
@@ -625,37 +586,11 @@ public class Secciones extends javax.swing.JFrame {
          String Seccion = txt_NombreSeccion.getText() + " " + txt_IdSeccion.getText();
           
            if ((txt_NombreSeccion.getText().equals("")) || (txt_IdSeccion.getText().equals("")) || (txt_HoraInicial.getText().equals(""))   || (txt_HoraFinal.getText().equals(""))  ) {
-               
-               String Mensaje = "dias"
-;               if(chb_Lunes.isSelected()){
-                 Mensaje += "Lu";
-             } 
-             if(chb_Martes.isSelected()){
-                 Mensaje += "Ma";
-             }
-                if(chb_Miercoles.isSelected()){
-                 Mensaje += "Mi";
-             }
-                   if(chb_Jueves.isSelected()){
-                 Mensaje += "Ju";
-             }
-                      if(chb_Viernes.isSelected()){
-                 Mensaje += "Vi";
-             }
-                 if(chb_Sabado.isSelected()){
-                 Mensaje += "Sa";
-             }
-                    if(chb_Domingo.isSelected()){
-                 Mensaje += "Do";
-             }
-                    
-                    lbl_MensajeDias.setText(Mensaje);
-            
-
+          
             javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la seccion que desea eliminar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
            
         }
-          else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de seccion" + Seccion+ "", "Confirmación de eliminación",
+          else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de sección" + Seccion+ "", "Confirmación de eliminación",
             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
 
@@ -775,16 +710,7 @@ public class Secciones extends javax.swing.JFrame {
             return;
         }
            
-           
-        
-        
-     
-
-        
        try{
-            
-       
-           
            
            //  ResultSet rs = st.executeQuery(sql);
             String verificar = "Select cantidad_alumnos from Secciones where Nombre_seccion = '"+txt_NombreSeccion.getText()+"'";
@@ -1152,17 +1078,20 @@ public void actualizarDatos(){
                Tabla_Seccion.setModel(modelo);
                  while(rs.next()) {
                      
-                          String []datos= new String[9];
+                     //Registro Anterior (Posible Error)//
+                       String []datos= new String[9];
                       datos[0] =rs.getString("id_seccion");
                       datos[1] =rs.getString("Nombre_seccion");
                       datos[2] =rs.getString("cod_asignaturas");
-                      datos[3] =rs.getString("cantidad_alumnos");
+                      //datos[3] =rs.getString("cantidad_alumnos");
                       datos[4] =rs.getString("Hora_inicial");
                       datos[5] =rs.getString("Hora_final");
                       datos[6] =rs.getString("id_periodo");
                      datos[7] =rs.getString("id_aula");
                       datos[8] =rs.getString("dias");
                       
+                   
+                   
                      modelo.addRow(datos);
                       
                       centrar_datos();
@@ -1173,7 +1102,7 @@ public void actualizarDatos(){
             nse.setMaxWidth(165);
             TableColumn coda= Tabla_Seccion.getColumn(titulos[2]);
             coda.setMaxWidth(125);            
-            TableColumn cana= Tabla_Seccion.getColumn(titulos[3]);
+            TableColumn cana= Tabla_Seccion.getColumn(titulos[3]); //Puede ser este un error//
            cana.setMaxWidth(165);
            TableColumn hin= Tabla_Seccion.getColumn(titulos[4]);
            hin.setMaxWidth(165);
@@ -1242,7 +1171,7 @@ public void actualizarDatos(){
        
          txt_IdSeccion.setText(null);
         txt_NombreSeccion.setText(null);
-      CantidadAl =String.valueOf(Contador);
+   //   CantidadAl =String.valueOf(Contador);
         txt_HoraInicial.setText(null);
          txt_HoraFinal.setText(null);
         cbo_Asignaturas.setSelectedIndex(0);
@@ -1255,7 +1184,7 @@ public void actualizarDatos(){
       int i = Tabla_Seccion.getSelectedRow();
         txt_IdSeccion.setText(Tabla_Seccion.getValueAt(i, 0).toString());
         txt_NombreSeccion.setText(Tabla_Seccion.getValueAt(i, 1).toString());
-        CantidadAl =String.valueOf(Contador).concat(Tabla_Seccion.getValueAt(i, 4).toString());
+       // CantidadAl =String.valueOf(Contador).concat(Tabla_Seccion.getValueAt(i, 4).toString());
         txt_HoraInicial.setText(Tabla_Seccion.getValueAt(i, 5).toString());
           txt_HoraFinal.setText(Tabla_Seccion.getValueAt(i, 6).toString());      
          cbo_Asignaturas.setSelectedItem(Tabla_Seccion.getValueAt(i, 3).toString());
