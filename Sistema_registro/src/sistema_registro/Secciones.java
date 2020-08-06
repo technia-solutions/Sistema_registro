@@ -852,9 +852,9 @@ public class Secciones extends javax.swing.JFrame {
     }//GEN-LAST:event_cbo_AsignaturasKeyTyped
 
     private void btn_AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AceptarActionPerformed
-        String Mensaje = "Dias:";
+       // String Mensaje = "Dias:";
         if(chb_Lunes.isSelected()){
-            Mensaje +=  "Lu";
+           Mensaje +=  "Lu";
 
         }
         if(chb_Martes.isSelected()){
@@ -876,10 +876,9 @@ public class Secciones extends javax.swing.JFrame {
         if(chb_Domingo.isSelected()){
             Mensaje +=  "Do";
         }
-
+       
         lbl_MensajeDias.setText(Mensaje);
         
-
     }//GEN-LAST:event_btn_AceptarActionPerformed
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
@@ -1257,6 +1256,7 @@ public void actualizarDatos(){
           cbo_IdPeriodo.setSelectedItem(Tabla_Seccion.getValueAt(i, 7).toString());
           cbo_IdAula.setSelectedItem(Tabla_Seccion.getValueAt(i, 8).toString());
          // txt_CantidadM.setText(Tabla_Seccion.getValueAt(i, 9).toString());
+         
           
           
           
