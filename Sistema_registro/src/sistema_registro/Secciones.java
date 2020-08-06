@@ -536,7 +536,7 @@ public class Secciones extends javax.swing.JFrame {
             return;
         }
             
-        else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de la sección" +Seccion + "?.", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
+        else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de la sección" +Seccion + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
             String id_seccion = cbo_Asignaturas.getSelectedItem().toString().substring(0, 6) + "-" +  txt_NombreSeccion.getText();
             String id_asignatura = cbo_Asignaturas.getSelectedItem().toString().substring(0, 3);
@@ -1145,7 +1145,7 @@ public void actualizarDatos(){
                       datos[0] =rs.getString("id_seccion");
                       datos[1] =rs.getString("Nombre_seccion");
                       datos[2] =rs.getString("cod_asignaturas");
-                      datos[3] =rs.getString("cantidad_alumnos");
+                      //datos[3] =rs.getString("cantidad_alumnos");
                       datos[4] =rs.getString("Hora_inicial");
                       datos[5] =rs.getString("Hora_final");
                       datos[6] =rs.getString("id_periodo");
