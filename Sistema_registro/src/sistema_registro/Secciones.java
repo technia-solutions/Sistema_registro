@@ -121,7 +121,7 @@ public class Secciones extends javax.swing.JFrame {
         chb_Viernes = new javax.swing.JCheckBox();
         chb_Sabado = new javax.swing.JCheckBox();
         chb_Domingo = new javax.swing.JCheckBox();
-        txt_MensajeDias = new javax.swing.JLabel();
+        lbl_MensajeDias = new javax.swing.JLabel();
         btn_Aceptar = new javax.swing.JButton();
         cbo_IdAula = new javax.swing.JComboBox<>();
         txt_HoraInicial = new javax.swing.JFormattedTextField();
@@ -275,7 +275,7 @@ public class Secciones extends javax.swing.JFrame {
             }
         });
 
-        txt_MensajeDias.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        lbl_MensajeDias.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         btn_Aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/check.png"))); // NOI18N
         btn_Aceptar.setText("Aceptar");
@@ -308,7 +308,7 @@ public class Secciones extends javax.swing.JFrame {
                                     .addComponent(chb_Sabado)
                                     .addComponent(chb_Miercoles))))
                         .addGap(0, 20, Short.MAX_VALUE))
-                    .addComponent(txt_MensajeDias, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lbl_MensajeDias, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -331,7 +331,7 @@ public class Secciones extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(chb_Domingo)
                 .addGap(47, 47, 47)
-                .addComponent(txt_MensajeDias, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbl_MensajeDias, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn_Aceptar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -513,7 +513,7 @@ public class Secciones extends javax.swing.JFrame {
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
     
         String NombreSeccion = txt_NombreSeccion.getText() + " ";
-           txt_MensajeDias.setText(Mensaje);
+           lbl_MensajeDias.setText(Mensaje);
              String Mensaje = "dias"; 
       String id_seccion = cbo_Asignaturas.getSelectedItem().toString().substring(0, 3) + "-" +  txt_NombreSeccion.getText();
              
@@ -638,7 +638,7 @@ public class Secciones extends javax.swing.JFrame {
         cadena5 = txt_HoraFinal.getText();
         String id_periodo= cbo_IdPeriodo.getSelectedItem().toString().substring(5,6);
         String id_aula= cbo_IdAula.getSelectedItem().toString().substring(0,4);
-       Cadena8 = txt_MensajeDias.getText();
+  //     Cadena8 = txt_MensajeDias.getText();
    //    txt_MensajeDias.setText(Mensaje);
       // makeLabel(Mensaje);
         cadena9 = txt_CantidadM.getText();
@@ -779,7 +779,7 @@ public class Secciones extends javax.swing.JFrame {
             ps.setString(1, id_seccion);
             ps.setString(2, txt_NombreSeccion.getText());
             ps.setString(3,codigo_asignatura);
-            ps.setString(4, "0");
+            ps.setString(4, "1");
             ps.setString(5, txt_HoraInicial.getText());
             ps.setString(6, txt_HoraFinal.getText());
             ps.setString(7, id_periodo);
@@ -861,7 +861,7 @@ public class Secciones extends javax.swing.JFrame {
             Mensaje +=  "Do";
         }
 
-        txt_MensajeDias.setText(Mensaje);
+        lbl_MensajeDias.setText(Mensaje);
         
 
     }//GEN-LAST:event_btn_AceptarActionPerformed
@@ -1014,6 +1014,7 @@ public class Secciones extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_CantidadM;
     private javax.swing.JLabel lbl_CodAsignatura;
+    private javax.swing.JLabel lbl_MensajeDias;
     private javax.swing.JLabel lbl_NombreSeccion1;
     private javax.swing.JLabel lbl_Periodo;
     private javax.swing.JLabel lbl_aula;
@@ -1023,7 +1024,6 @@ public class Secciones extends javax.swing.JFrame {
     private javax.swing.JTextField txt_CantidadM;
     private javax.swing.JFormattedTextField txt_HoraFinal;
     private javax.swing.JFormattedTextField txt_HoraInicial;
-    private javax.swing.JLabel txt_MensajeDias;
     private javax.swing.JTextField txt_NombreSeccion;
     // End of variables declaration//GEN-END:variables
 
@@ -1073,7 +1073,7 @@ public void actualizarDatos(){
                       datos[0] =rs.getString("id_seccion");
                       datos[1] =rs.getString("Nombre_seccion");
                       datos[2] =rs.getString("cod_asignaturas");
-                      //datos[3] =rs.getString("cantidad_alumnos");
+                      datos[3] =rs.getString("cantidad_alumnos");
                       datos[4] =rs.getString("Hora_inicial");
                       datos[5] =rs.getString("Hora_final");
                       datos[6] =rs.getString("id_periodo");
@@ -1092,8 +1092,8 @@ public void actualizarDatos(){
             nse.setMaxWidth(165);
             TableColumn coda= Tabla_Seccion.getColumn(titulos[2]);
             coda.setMaxWidth(125);            
-           // TableColumn cana= Tabla_Seccion.getColumn(titulos[3]); //Puede ser este un error//
-          // cana.setMaxWidth(165);
+            TableColumn cana= Tabla_Seccion.getColumn(titulos[3]); //Puede ser este un error//
+           cana.setMaxWidth(165);
            TableColumn hin= Tabla_Seccion.getColumn(titulos[4]);
            hin.setMaxWidth(165);
             TableColumn hfi= Tabla_Seccion.getColumn(titulos[5]);
