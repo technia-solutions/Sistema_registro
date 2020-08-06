@@ -130,6 +130,7 @@ public class Secciones extends javax.swing.JFrame {
         txt_HoraFinal = new javax.swing.JFormattedTextField();
         lbl_NombreSeccion1 = new javax.swing.JLabel();
         txt_CantidadM = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem_Asignatura = new javax.swing.JMenuItem();
@@ -137,9 +138,11 @@ public class Secciones extends javax.swing.JFrame {
         jMenuItem_Aula = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_horaFinal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_horaFinal.setText("Hora final:");
+        getContentPane().add(lbl_horaFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(464, 294, -1, -1));
 
         txt_NombreSeccion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_NombreSeccion.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -152,6 +155,7 @@ public class Secciones extends javax.swing.JFrame {
                 txt_NombreSeccionKeyTyped(evt);
             }
         });
+        getContentPane().add(txt_NombreSeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 123, 222, -1));
 
         btn_guardar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Guardar.png"))); // NOI18N
@@ -161,6 +165,7 @@ public class Secciones extends javax.swing.JFrame {
                 btn_guardarActionPerformed(evt);
             }
         });
+        getContentPane().add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 117, -1, -1));
 
         btn_actualizar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
@@ -170,15 +175,19 @@ public class Secciones extends javax.swing.JFrame {
                 btn_actualizarActionPerformed(evt);
             }
         });
+        getContentPane().add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 176, 143, -1));
 
         lbl_CantidadM.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_CantidadM.setText("Cantidad máxima:");
+        getContentPane().add(lbl_CantidadM, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 169, -1, -1));
 
         lbl_CodAsignatura.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_CodAsignatura.setText("Codigo Asignatura:");
+        getContentPane().add(lbl_CodAsignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(394, 203, -1, -1));
 
         lbl_horaInicial.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_horaInicial.setText("Hora inicial:");
+        getContentPane().add(lbl_horaInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(452, 252, -1, -1));
 
         btn_eliminar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Eliminar.png"))); // NOI18N
@@ -188,15 +197,19 @@ public class Secciones extends javax.swing.JFrame {
                 btn_eliminarActionPerformed(evt);
             }
         });
+        getContentPane().add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 294, -1, -1));
 
         lbl_aula.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_aula.setText("Aula: ");
+        getContentPane().add(lbl_aula, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 391, -1, -1));
 
         lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lbl_titulo.setText("Registro de sección");
+        getContentPane().add(lbl_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(589, 16, -1, -1));
 
         lbl_Periodo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_Periodo.setText("Periodo:");
+        getContentPane().add(lbl_Periodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(491, 347, -1, -1));
 
         btn_buscar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Consulta.png"))); // NOI18N
@@ -211,6 +224,7 @@ public class Secciones extends javax.swing.JFrame {
                 btn_buscarActionPerformed(evt);
             }
         });
+        getContentPane().add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 235, 143, -1));
 
         Tabla_Seccion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -235,12 +249,15 @@ public class Secciones extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Tabla_Seccion);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 509, 1387, 103));
+
         cbo_IdPeriodo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un periodo:" }));
         cbo_IdPeriodo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbo_IdPeriodoActionPerformed(evt);
             }
         });
+        getContentPane().add(cbo_IdPeriodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(562, 346, 222, -1));
 
         cbo_Asignaturas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una asignatura:" }));
         cbo_Asignaturas.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -248,6 +265,7 @@ public class Secciones extends javax.swing.JFrame {
                 cbo_AsignaturasKeyTyped(evt);
             }
         });
+        getContentPane().add(cbo_Asignaturas, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 203, 222, 30));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Dias de Asignaturas"));
 
@@ -297,9 +315,9 @@ public class Secciones extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(chb_Lunes)
                             .addComponent(chb_Jueves))
@@ -310,22 +328,22 @@ public class Secciones extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(chb_Martes)
                                     .addComponent(chb_Viernes))
-                                .addGap(26, 26, 26)
+                                .addGap(32, 32, 32)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(chb_Sabado)
-                                    .addComponent(chb_Miercoles))))
-                        .addGap(0, 20, Short.MAX_VALUE))
-                    .addComponent(lbl_MensajeDias, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_Aceptar)
-                .addGap(149, 149, 149))
+                                    .addComponent(chb_Miercoles)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(132, 132, 132)
+                        .addComponent(btn_Aceptar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbl_MensajeDias, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(chb_Lunes)
                     .addComponent(chb_Martes)
@@ -337,14 +355,17 @@ public class Secciones extends javax.swing.JFrame {
                     .addComponent(chb_Sabado))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(chb_Domingo)
-                .addGap(47, 47, 47)
-                .addComponent(lbl_MensajeDias, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(lbl_MensajeDias, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_Aceptar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 120, 400, 290));
+
         cbo_IdAula.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un aula:" }));
+        getContentPane().add(cbo_IdAula, new org.netbeans.lib.awtextra.AbsoluteConstraints(562, 390, 222, -1));
 
         txt_HoraInicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
         txt_HoraInicial.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -352,6 +373,7 @@ public class Secciones extends javax.swing.JFrame {
                 txt_HoraInicialKeyTyped(evt);
             }
         });
+        getContentPane().add(txt_HoraInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 251, 223, -1));
 
         txt_HoraFinal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
         txt_HoraFinal.addActionListener(new java.awt.event.ActionListener() {
@@ -364,9 +386,11 @@ public class Secciones extends javax.swing.JFrame {
                 txt_HoraFinalKeyTyped(evt);
             }
         });
+        getContentPane().add(txt_HoraFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(552, 293, 223, -1));
 
         lbl_NombreSeccion1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_NombreSeccion1.setText("Nombre sección:");
+        getContentPane().add(lbl_NombreSeccion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 128, -1, -1));
 
         txt_CantidadM.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_CantidadM.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -374,6 +398,11 @@ public class Secciones extends javax.swing.JFrame {
                 txt_CantidadMKeyTyped(evt);
             }
         });
+        getContentPane().add(txt_CantidadM, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 166, 222, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1400, 670));
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
         jMenu1.setText("Menú");
@@ -416,112 +445,6 @@ public class Secciones extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(181, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbl_aula)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbo_IdAula, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_guardar)
-                            .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_eliminar))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(140, 140, 140)
-                                .addComponent(lbl_horaFinal)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_HoraFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(70, 70, 70)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lbl_CantidadM)
-                                    .addComponent(lbl_horaInicial)
-                                    .addComponent(lbl_CodAsignatura)
-                                    .addComponent(lbl_NombreSeccion1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_NombreSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_HoraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbo_Asignaturas, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_CantidadM, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(9, 9, 9))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbl_Periodo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbo_IdPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(40, 40, 40)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(177, 177, 177))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(589, 589, 589)
-                .addComponent(lbl_titulo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_titulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(11, 11, 11)
-                                .addComponent(lbl_NombreSeccion1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lbl_CantidadM)
-                                    .addComponent(txt_CantidadM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbl_CodAsignatura)
-                                    .addComponent(cbo_Asignaturas, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lbl_horaInicial)
-                                    .addComponent(txt_HoraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lbl_horaFinal)
-                                    .addComponent(txt_HoraFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_NombreSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_buscar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(11, 11, 11)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbo_IdPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_Periodo))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbo_IdAula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_aula))))
-                .addGap(39, 39, 39)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1077,6 +1000,7 @@ public class Secciones extends javax.swing.JFrame {
     private javax.swing.JCheckBox chb_Miercoles;
     private javax.swing.JCheckBox chb_Sabado;
     private javax.swing.JCheckBox chb_Viernes;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem_Asignatura;
@@ -1254,11 +1178,10 @@ public void actualizarDatos(){
           cbo_IdPeriodo.setSelectedItem(Tabla_Seccion.getValueAt(i, 7).toString());
           cbo_IdAula.setSelectedItem(Tabla_Seccion.getValueAt(i, 8).toString());
          // txt_CantidadM.setText(Tabla_Seccion.getValueAt(i, 9).toString());
-         
+        
           
           
           
-
     }
  
  
