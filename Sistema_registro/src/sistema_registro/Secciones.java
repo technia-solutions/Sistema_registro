@@ -555,8 +555,8 @@ public class Secciones extends javax.swing.JFrame {
                           + " id_periodo= ? ,"
                          + " id_aula = ? ,"
                          + " dias= ? "
-                    + " where id_seccion =\'"+txt_IdSeccion.getText()+"\'");
-                ps.setString(1, txt_IdSeccion.getText());
+                    + " where id_seccion =\'"+id_seccion+"\'");
+                ps.setString(1, id_seccion);
                   ps.setString(2, txt_NombreSeccion.getText());
                   ps.setString(3, id_asignatura);
              //     ps.setString(4, txt_CantidadAl.getText());
@@ -571,19 +571,14 @@ public class Secciones extends javax.swing.JFrame {
                 System.out.println(e);
             }
 
-          //Contador
-         int  Contador= 0;
          
-         while(Contador<0 ){
-             Contador = Contador +1;
-         }
         }
         
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         
-         String Seccion = txt_NombreSeccion.getText() + " " + txt_IdSeccion.getText();
+         String Seccion = txt_NombreSeccion.getText() + " " +id_seccion;
           
            if ((txt_NombreSeccion.getText().equals("")) || (txt_IdSeccion.getText().equals("")) || (txt_HoraInicial.getText().equals(""))   || (txt_HoraFinal.getText().equals(""))  ) {
           
@@ -640,34 +635,23 @@ public class Secciones extends javax.swing.JFrame {
     }//GEN-LAST:event_chb_MartesActionPerformed
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
-               
-    
-       //Contador
-         int Contador=0;
-  
-    
-         while(Contador<0 ){
-             Contador = Contador +1;
-         }
-         
-         String CantidadAl =String.valueOf(Contador);
-        
-        
-        String cadena1, cadena2, cadena3, cadena4;
-        cadena1 = txt_IdSeccion.getText();
+       
+        String cadena2, cadena3, cadena4;
+        //Id Seccion
+        String id_seccion = cbo_Asignaturas.getSelectedItem().toString().substring(0, 3) + "-" +  txt_NombreSeccion.getText();
         cadena2 = txt_NombreSeccion.getText();
        String codigo_asignatura = cbo_Asignaturas.getSelectedItem().toString().substring(0, 3);
         cadena3 = txt_HoraInicial.getText();
         cadena4 = txt_HoraFinal.getText();
-        String id_periodo= cbo_IdPeriodo.getSelectedItem().toString().substring(0,6);
+        String id_periodo= cbo_IdPeriodo.getSelectedItem().toString().substring(5,6);
         String id_aula= cbo_IdAula.getSelectedItem().toString().substring(0,7);
         String Mensaje = "dias";
         
-        if((txt_IdSeccion.getText().equals(""))){
+        /*if((txt_IdSeccion.getText().equals(""))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id de la sección.","Id sección requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_IdSeccion.requestFocus();
             return;
-        }
+        }*/
         
             if((txt_NombreSeccion.getText().equals(""))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre de la sección.","Nombre sección requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
@@ -762,10 +746,10 @@ public class Secciones extends javax.swing.JFrame {
             return;
         }
 
-        if(!validarLongitud(txt_IdSeccion,6)){
+     /*   if(!validarLongitud(txt_IdSeccion,6)){
             JOptionPane.showMessageDialog(null, "El Id de sección tiene que ser minimo de 6 caracteres", "Longitud de id sección", JOptionPane.INFORMATION_MESSAGE);
             return;
-        }
+        }*/
 
         if(!validarLongitud(txt_NombreSeccion,1)){
             JOptionPane.showMessageDialog(null, "El Nombre de la sección es muy corto el mínimo es de 1 caracteres", "Longitud del nombre de la sección", JOptionPane.INFORMATION_MESSAGE);
@@ -793,7 +777,7 @@ public class Secciones extends javax.swing.JFrame {
 
             ps=con.prepareStatement("INSERT INTO Secciones ( id_seccion, Nombre_seccion, cod_asignaturas, Hora_inicial, Hora_final, id_periodo, id_aula, dias)"
                 + "                VALUES(?,?,?,?,?,?,?,?)");
-            ps.setString(1, txt_IdSeccion.getText());
+            ps.setString(1, id_seccion);
             ps.setString(2, txt_NombreSeccion.getText());
             ps.setString(3,codigo_asignatura);
             // CantidadAl =String.valueOf(Contador);
@@ -802,6 +786,7 @@ public class Secciones extends javax.swing.JFrame {
             ps.setString(6, id_periodo);
             ps.setString(7,id_aula);
             ps.setString(8, Mensaje);
+            ps.setString(9, "0");
             
             
             
@@ -1042,10 +1027,10 @@ public class Secciones extends javax.swing.JFrame {
     public boolean existeSeccion(){
         try {
             Statement st = con.createStatement();
-            String sql = "Select id_seccion from Secciones where id_seccion = '"+txt_IdSeccion.getText()+"'";
+            String sql = "Select id_seccion from Secciones where id_seccion = '"+id_seccion"'";
             ResultSet rs = st.executeQuery(sql);
             if(rs.next()){
-                JOptionPane.showMessageDialog(null, "Ya existe esta Sección: "+txt_IdSeccion.getText()+" ", "Id de Sección ¡Ya existe!", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Ya existe esta Sección: "+id_seccion" ", "Id de Sección ¡Ya existe!", JOptionPane.INFORMATION_MESSAGE);
                 return true;
             }
             else{
