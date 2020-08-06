@@ -81,6 +81,8 @@ public class Secciones extends javax.swing.JFrame {
              this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
             this.setTitle("Secciones");
     }
+    
+    
 
     private Secciones(JTextField txt_NombreSeccion, String string) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -140,6 +142,11 @@ public class Secciones extends javax.swing.JFrame {
         lbl_horaFinal.setText("Hora final:");
 
         txt_NombreSeccion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_NombreSeccion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_NombreSeccionFocusLost(evt);
+            }
+        });
         txt_NombreSeccion.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_NombreSeccionKeyTyped(evt);
@@ -340,11 +347,21 @@ public class Secciones extends javax.swing.JFrame {
         cbo_IdAula.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un aula:" }));
 
         txt_HoraInicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        txt_HoraInicial.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_HoraInicialKeyTyped(evt);
+            }
+        });
 
         txt_HoraFinal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
         txt_HoraFinal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_HoraFinalActionPerformed(evt);
+            }
+        });
+        txt_HoraFinal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_HoraFinalKeyTyped(evt);
             }
         });
 
@@ -410,10 +427,6 @@ public class Secciones extends javax.swing.JFrame {
                         .addGap(124, 124, 124)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbl_Periodo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbo_IdPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(lbl_aula)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cbo_IdAula, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -442,7 +455,11 @@ public class Secciones extends javax.swing.JFrame {
                                             .addComponent(txt_HoraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(cbo_Asignaturas, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txt_CantidadM, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(9, 9, 9)))
+                                .addGap(9, 9, 9))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbl_Periodo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbo_IdPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(40, 40, 40)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 219, Short.MAX_VALUE))
@@ -512,59 +529,58 @@ public class Secciones extends javax.swing.JFrame {
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
     
-        String NombreSeccion = txt_NombreSeccion.getText() + " ";
-           lbl_MensajeDias.setText(Mensaje);
-             String Mensaje = "dias"; 
-      String id_seccion = cbo_Asignaturas.getSelectedItem().toString().substring(0, 3) + "-" +  txt_NombreSeccion.getText();
-             
-        if ((txt_NombreSeccion.getText().equals("")) || (txt_CantidadM.getText().equals("")) || 
-            (cbo_Asignaturas.getSelectedItem().equals("")) ||  (txt_HoraInicial.getText().equals("")) 
-                    || (txt_HoraFinal.getText().equals(""))
-                || (cbo_IdPeriodo.getSelectedItem().equals("Seleccione el período"))){
-            
-   
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la sección que desea actualizar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-           txt_NombreSeccion.requestFocus();
+        String Seccion = txt_NombreSeccion.getText() + " ";
+        if ((txt_NombreSeccion.getText().equals("")) || (txt_HoraInicial.getText().equals("")) || (txt_HoraFinal.getText().equals(""))) {
+
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la sección a actualizar!. \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_NombreSeccion.requestFocus();
             return;
         }
-        
-        else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de secciones" +NombreSeccion + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
+        else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de la sección" +Seccion + "?.", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
-            String id_asignatura = cbo_Asignaturas.getSelectedItem().toString().substring(0, 2);
-            String id_periodo = cbo_IdPeriodo.getSelectedItem().toString().substring(0, 6);
-          String id_aula= cbo_IdAula.getSelectedItem().toString().substring(0, 7);
-          
-          
-          try {
+            String id_seccion = cbo_Asignaturas.getSelectedItem().toString().substring(0, 6) + "-" +  txt_NombreSeccion.getText();
+            String id_asignatura = cbo_Asignaturas.getSelectedItem().toString().substring(0, 3);
+            String id_periodo = cbo_IdPeriodo.getSelectedItem().toString().substring(5, 6);
+            String id_aula = cbo_IdAula.getSelectedItem().toString().substring(0, 4);
+            
+       
+            
+            try {
                 PreparedStatement ps;
                 ResultSet rs;
                 ps = con.prepareStatement("Update Secciones set"
-                      + " id_seccion = ? ,"
-                    + " Nombre_seccion = ? ,"
+                    + " id_seccion = ? ,"
+                    + " Nombre_seccion = ? , "
                     + " cod_asignaturas = ? , "
-                //    + " cantidad_alumnos = ? , "
-                    + " Hora_inicial = ? ,"
-                         + " Hora_final= ? ,"
-                          + " id_periodo= ? ,"
-                         + " id_aula = ? ,"
-                         + " dias= ? "
-                    + " where id_seccion =\'"+id_seccion+"\'");
-                  ps.setString(1, id_seccion);
+                    + " Hora_inicial= ? , "
+                    + " Hora_final= ? , "
+                    + " id_periodo= ? , "
+                    + " id_aula= ? , "
+                    + "dias= ? "
+                   //+ "cantidad_maxima = ? "
+                  + " where id_seccion =\'"+id_seccion+"\'");
+                  ps.setString(1,id_seccion);
                   ps.setString(2, txt_NombreSeccion.getText());
-                  ps.setString(3, id_asignatura);
-                  ps.setString(4, "1");
-                  ps.setString(5, txt_HoraInicial.getText());
-                  ps.setString(6, txt_HoraFinal.getText());
-                  ps.setString(7, id_periodo);
-                  ps.setString(8, id_aula);
-                  ps.setString(9, Mensaje);
-               
-                int res = ps.executeUpdate();
+                  ps.setString(3,id_asignatura);
+                  ps.setString(4, txt_HoraInicial.getText());
+                  ps.setString(5, txt_HoraFinal.getText());
+                  ps.setString(6,id_periodo);
+                  ps.setString(7,id_aula);
+                  ps.setString(8,Mensaje);
+                 // ps.setString(9, txt_CantidadM.getText());
+                  
+                    
+             int res = ps.executeUpdate();
+             
             } catch (Exception e) {
                 System.out.println(e);
+              
             }
+            
+            actualizarDatos();
+            LimpiarCajas();
 
-         
+        
         }
         
     }//GEN-LAST:event_btn_actualizarActionPerformed
@@ -573,7 +589,7 @@ public class Secciones extends javax.swing.JFrame {
         
          String Seccion = txt_NombreSeccion.getText();
           
-           if ((txt_NombreSeccion.getText().equals("")) || (txt_CantidadM.getText().equals("")) || (txt_HoraInicial.getText().equals(""))   || (txt_HoraFinal.getText().equals(""))  ) {
+           if ((txt_NombreSeccion.getText().equals("")) ||  (txt_HoraInicial.getText().equals(""))   || (txt_HoraFinal.getText().equals(""))  ) {
           
             javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la sección que desea eliminar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
            
@@ -585,7 +601,7 @@ public class Secciones extends javax.swing.JFrame {
             try {
                 Statement st2 = con.createStatement();
                 String sql = "Delete Secciones "
-                + "where id_seccion = (Select id_seccion from Secciones where Nombre_seccion = '"+txt_NombreSeccion.getText()+"')";
+                + "where Nombre_seccion = (Select Nombre_seccion from Secciones where Nombre_seccion = '"+txt_NombreSeccion.getText()+"')";
 
                 int rs2 = st2.executeUpdate(sql);
                 System.out.println(rs2);
@@ -638,7 +654,7 @@ public class Secciones extends javax.swing.JFrame {
         cadena5 = txt_HoraFinal.getText();
         String id_periodo= cbo_IdPeriodo.getSelectedItem().toString().substring(5,6);
         String id_aula= cbo_IdAula.getSelectedItem().toString().substring(0,4);
-  //     Cadena8 = txt_MensajeDias.getText();
+  //   Cadena8 = txt_MensajeDias.getText();
    //    txt_MensajeDias.setText(Mensaje);
       // makeLabel(Mensaje);
         cadena9 = txt_CantidadM.getText();
@@ -745,10 +761,10 @@ public class Secciones extends javax.swing.JFrame {
             return;
         }
 
-     /*   if(!validarLongitud(txt_IdSeccion,6)){
-            JOptionPane.showMessageDialog(null, "El Id de sección tiene que ser minimo de 6 caracteres", "Longitud de id sección", JOptionPane.INFORMATION_MESSAGE);
+        if(!validarLongitud(txt_CantidadM,1)){
+            JOptionPane.showMessageDialog(null, "La cantidad máxima tiene que ser minimo de 1 caracteres", "Longitud de cantidad máxima", JOptionPane.INFORMATION_MESSAGE);
             return;
-        }*/
+        }
 
         if(!validarLongitud(txt_NombreSeccion,1)){
             JOptionPane.showMessageDialog(null, "El Nombre de la sección es muy corto el mínimo es de 1 caracteres", "Longitud del nombre de la sección", JOptionPane.INFORMATION_MESSAGE);
@@ -760,12 +776,12 @@ public class Secciones extends javax.swing.JFrame {
             return;
         }*/
          
-         if(!validarLongitud(txt_HoraInicial,5)){
+         if(!validarLongitud(txt_HoraInicial,4)){
             JOptionPane.showMessageDialog(null, "La Hora inicial es muy corto el mínimo es de 5 caracteres", "Longitud de la hora inicial", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
        
-         if(!validarLongitud(txt_HoraFinal,5)){
+         if(!validarLongitud(txt_HoraFinal,4)){
             JOptionPane.showMessageDialog(null, "La Hora final  debe ser de un mínimo de 5 caracter", "Longitud de la hora final", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
@@ -779,7 +795,7 @@ public class Secciones extends javax.swing.JFrame {
             ps.setString(1, id_seccion);
             ps.setString(2, txt_NombreSeccion.getText());
             ps.setString(3,codigo_asignatura);
-            ps.setString(4, "1");
+            ps.setString(4, "0");
             ps.setString(5, txt_HoraInicial.getText());
             ps.setString(6, txt_HoraFinal.getText());
             ps.setString(7, id_periodo);
@@ -946,8 +962,67 @@ public class Secciones extends javax.swing.JFrame {
     }//GEN-LAST:event_Tabla_SeccionMouseClicked
 
     private void txt_CantidadMKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_CantidadMKeyTyped
-        // TODO add your handling code here:
+            char a=evt.getKeyChar();
+            if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
+                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+        return;
+        }
+        if(txt_CantidadM.getText().length() >=2){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
+        }
+        if(Character.isLetter(a) || !Character.isLetterOrDigit(a)){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Solo números");
+        }
     }//GEN-LAST:event_txt_CantidadMKeyTyped
+
+    private void txt_NombreSeccionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_NombreSeccionFocusLost
+         String id = txt_NombreSeccion.getText();
+         String upper = id.toUpperCase();
+         txt_NombreSeccion.setText(upper); 
+    }//GEN-LAST:event_txt_NombreSeccionFocusLost
+
+    private void txt_HoraInicialKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_HoraInicialKeyTyped
+         char a=evt.getKeyChar();
+            if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
+                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24 || evt.getKeyChar() == 58) {
+        return;
+        }
+        if(txt_CantidadM.getText().length() >=4){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
+        }
+        if(Character.isLetter(a) || !Character.isLetterOrDigit(a)){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Solo números");
+        }
+    }//GEN-LAST:event_txt_HoraInicialKeyTyped
+
+    private void txt_HoraFinalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_HoraFinalKeyTyped
+         char a=evt.getKeyChar();
+            if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
+                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24 || evt.getKeyChar() == 58) {
+        return;
+        }
+        if(txt_CantidadM.getText().length() >=4){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
+        }
+        if(Character.isLetter(a) || !Character.isLetterOrDigit(a)){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Solo números");
+        }
+    }//GEN-LAST:event_txt_HoraFinalKeyTyped
 
     /**
      * @param args the command line arguments
@@ -1069,7 +1144,7 @@ public void actualizarDatos(){
                  while(rs.next()) {
                      
                      //Registro Anterior (Posible Error)//
-                       String []datos= new String[9];
+                       String []datos= new String[10];
                       datos[0] =rs.getString("id_seccion");
                       datos[1] =rs.getString("Nombre_seccion");
                       datos[2] =rs.getString("cod_asignaturas");
@@ -1077,8 +1152,9 @@ public void actualizarDatos(){
                       datos[4] =rs.getString("Hora_inicial");
                       datos[5] =rs.getString("Hora_final");
                       datos[6] =rs.getString("id_periodo");
-                     datos[7] =rs.getString("id_aula");
+                      datos[7] =rs.getString("id_aula");
                       datos[8] =rs.getString("dias");
+                      datos[9] =rs.getString("cantidad_maxima");
                       
                    
                    
@@ -1086,14 +1162,12 @@ public void actualizarDatos(){
                       
                       centrar_datos();
                  }
-            TableColumn ids = Tabla_Seccion.getColumn(titulos[0]);
-            ids.setMaxWidth(125);
             TableColumn nse= Tabla_Seccion.getColumn(titulos[1]);
             nse.setMaxWidth(165);
             TableColumn coda= Tabla_Seccion.getColumn(titulos[2]);
-            coda.setMaxWidth(125);            
-            TableColumn cana= Tabla_Seccion.getColumn(titulos[3]); //Puede ser este un error//
-           cana.setMaxWidth(165);
+            coda.setMaxWidth(165);            
+            // TableColumn cana= Tabla_Seccion.getColumn(titulos[3]); //Puede ser este un error//
+             //cana.setMaxWidth(165);
            TableColumn hin= Tabla_Seccion.getColumn(titulos[4]);
            hin.setMaxWidth(165);
             TableColumn hfi= Tabla_Seccion.getColumn(titulos[5]);
@@ -1104,6 +1178,8 @@ public void actualizarDatos(){
            idau.setMaxWidth(165);
            TableColumn dias= Tabla_Seccion.getColumn(titulos[8]);
            dias.setMaxWidth(165);
+           TableColumn cm= Tabla_Seccion.getColumn(titulos[9]);
+           cm.setMaxWidth(165);
         }
         catch (Exception e) {
            
@@ -1144,7 +1220,7 @@ public void actualizarDatos(){
                                 txt_HoraFinal.setText(rs2.getString("Hora_final"));
                                cbo_IdPeriodo.setSelectedItem((rs2.getString("id_periodo")));
                                cbo_Asignaturas.setSelectedItem((rs2.getString("id_aula")));
-                               txt_CantidadM.setText(rs2.getString("Hora_final"));
+                               txt_CantidadM.setText(rs2.getString("cantidad_maxima"));
                             } else {
                                 JOptionPane.showMessageDialog(null, "¡No se encuentran los datos: "+var+" ! Por favor verifique sí, lo escribió correctamente");
                             }
@@ -1174,13 +1250,13 @@ public void actualizarDatos(){
      private void llenarCampos() {
       int i = Tabla_Seccion.getSelectedRow();
      
-            txt_NombreSeccion.setText(Tabla_Seccion.getValueAt(i, 1).toString());
-            txt_HoraInicial.setText(Tabla_Seccion.getValueAt(i, 5).toString());
-          txt_HoraFinal.setText(Tabla_Seccion.getValueAt(i, 6).toString());      
-          cbo_Asignaturas.setSelectedItem(Tabla_Seccion.getValueAt(i, 3).toString());
+          txt_NombreSeccion.setText(Tabla_Seccion.getValueAt(i, 1).toString());
+          txt_HoraInicial.setText(Tabla_Seccion.getValueAt(i,4 ).toString());
+          txt_HoraFinal.setText(Tabla_Seccion.getValueAt(i, 5).toString());      
+          //cbo_Asignaturas.setSelectedItem(Tabla_Seccion.getValueAt(i, 3).toString());
           cbo_IdPeriodo.setSelectedItem(Tabla_Seccion.getValueAt(i, 7).toString());
           cbo_IdAula.setSelectedItem(Tabla_Seccion.getValueAt(i, 8).toString());
-          txt_CantidadM.setText(Tabla_Seccion.getValueAt(i, 10).toString());
+         // txt_CantidadM.setText(Tabla_Seccion.getValueAt(i, 9).toString());
           
           
           
