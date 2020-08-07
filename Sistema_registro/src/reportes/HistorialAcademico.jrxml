@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c1320183-e093-4777-aa20-aaa068e83c97">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#FAEBD7">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFE4BF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="New Dataset 1" uuid="5b456d83-2bf2-4c75-8dc8-cd9318ca135a">
+		<queryString language="SQL">
+			<![CDATA[select * from Empleados]]>
+		</queryString>
+		<field name="nombres_empleado" class="java.lang.String"/>
+		<field name="apellido_empleado" class="java.lang.String"/>
+		<field name="telefono_empleado" class="java.lang.String"/>
+		<field name="id_campus" class="java.lang.String"/>
+		<field name="salario" class="java.math.BigDecimal"/>
+		<field name="id_empleado" class="java.lang.Integer"/>
+		<field name="numero_identidad" class="java.lang.String"/>
+	</subDataset>
+	<queryString>
+		<![CDATA[Select * from secciones as s join matricula as m on s.id_seccion = m.id_seccion join Alumno as a on a.numero_cuenta_alumno = m.numero_cuenta_alumno]]>
+	</queryString>
+	<field name="id_seccion" class="java.lang.String"/>
+	<field name="Nombre_seccion" class="java.lang.String"/>
+	<field name="cod_asignaturas" class="java.lang.String"/>
+	<field name="cantidad_alumnos" class="java.lang.Short"/>
+	<field name="Hora_inicial" class="java.sql.Time"/>
+	<field name="Hora_final" class="java.sql.Time"/>
+	<field name="id_periodo" class="java.lang.String"/>
+	<field name="id_aula" class="java.lang.String"/>
+	<field name="dias" class="java.lang.String"/>
+	<field name="numero_cuenta_alumno" class="java.lang.String"/>
+	<field name="id_matricula" class="java.lang.Integer"/>
+	<field name="nombres_alumno" class="java.lang.String"/>
+	<field name="apellidos_alumno" class="java.lang.String"/>
+	<field name="telefono_alumno" class="java.lang.String"/>
+	<field name="fecha_nacimiento" class="java.sql.Date"/>
+	<field name="id_carrera" class="java.lang.String"/>
+	<field name="fecha_inscripcion" class="java.sql.Date"/>
+	<field name="numero_identidad" class="java.lang.String"/>
+	<field name="id_campus" class="java.lang.String"/>
+	<variable name="nombres_alumno_1" class="java.lang.Integer" resetType="Page" calculation="Count">
+		<variableExpression><![CDATA[$F{nombres_alumno}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="53" y="33" width="100" height="20" uuid="45241132-abe1-43c0-84a5-c70a8d6bccf3"/>
+				<textFieldExpression><![CDATA[$F{nombres_alumno}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

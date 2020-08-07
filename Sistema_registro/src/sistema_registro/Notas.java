@@ -16,6 +16,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -23,6 +25,16 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import sistema_registro.SQL.ConectorSQL;
 
 /**
@@ -143,6 +155,7 @@ public class Notas extends javax.swing.JFrame {
         lbl_notaParcialI.setBounds(110, 50, 140, 22);
 
         txt_notaParcialI.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_notaParcialI.setEnabled(false);
         txt_notaParcialI.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txt_notaParcialIFocusLost(evt);
@@ -170,6 +183,7 @@ public class Notas extends javax.swing.JFrame {
         lbl_notaParcialII.setBounds(110, 90, 119, 22);
 
         txt_notaParcialII.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_notaParcialII.setEnabled(false);
         txt_notaParcialII.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txt_notaParcialIIFocusLost(evt);
@@ -189,6 +203,7 @@ public class Notas extends javax.swing.JFrame {
         lbl_notaParcialIII.setBounds(100, 130, 126, 22);
 
         txt_notaParcialIII.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_notaParcialIII.setEnabled(false);
         txt_notaParcialIII.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txt_notaParcialIIIFocusLost(evt);
@@ -206,6 +221,7 @@ public class Notas extends javax.swing.JFrame {
         btn_guardar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Guardar.png"))); // NOI18N
         btn_guardar.setText("  Guardar");
+        btn_guardar.setEnabled(false);
         btn_guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_guardarActionPerformed(evt);
@@ -270,6 +286,7 @@ public class Notas extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        Tabla_asignatura.setEnabled(false);
         Tabla_asignatura.setGridColor(new java.awt.Color(0, 51, 51));
         Tabla_asignatura.setRowHeight(30);
         Tabla_asignatura.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -286,18 +303,20 @@ public class Notas extends javax.swing.JFrame {
         jScrollPane2.setBounds(830, 30, 260, 260);
 
         cbo_reposicion.setText("¿El estudiante hizo reposición?");
+        cbo_reposicion.setEnabled(false);
         cbo_reposicion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbo_reposicionActionPerformed(evt);
             }
         });
         jPanel2.add(cbo_reposicion);
-        cbo_reposicion.setBounds(380, 40, 203, 25);
+        cbo_reposicion.setBounds(380, 40, 171, 23);
 
         btn_generarReporte.setBackground(new java.awt.Color(235, 250, 251));
         btn_generarReporte.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_generarReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/writing-on-an-open-book_icon-icons.com_70325.png"))); // NOI18N
         btn_generarReporte.setText("Generar historial academico");
+        btn_generarReporte.setEnabled(false);
         btn_generarReporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_generarReporteActionPerformed(evt);
@@ -312,7 +331,7 @@ public class Notas extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_asignatura.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPanel3.add(lbl_asignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 20, 120, 30));
+        jPanel3.add(lbl_asignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 20, 340, 30));
 
         lbl_clase.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_clase.setText("Clase:");
@@ -401,16 +420,26 @@ public class Notas extends javax.swing.JFrame {
   
     
      
-
+        private void activar(){
+            this.txt_notaParcialI.setEnabled(true);
+            this.txt_notaParcialII.setEnabled(true);
+            this.txt_notaParcialIII.setEnabled(true);
+            this.cbo_reposicion.setEnabled(true);
+            this.btn_guardar.setEnabled(true);
+            this.btn_generarReporte.setEnabled(true);
+            this.Tabla_asignatura.setEnabled(true);
+        }
     
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
-      String numeroDeCuenta,nota1, nota2, nota3, clase,periodo,promedio,estado,matricula;
+        
+        String numeroDeCuenta,nota1, nota2, nota3, clase,periodo,promedio,estado,matricula,reposicion;
  
     
         numeroDeCuenta =txt_numeroCuenta.getText();
         nota1 = txt_notaParcialI.getText();
         nota2 = txt_notaParcialII.getText();
         nota3 = txt_notaParcialIII.getText();
+        reposicion = "S/N";
         
          if(txt_notaParcialI.getText().equals("")){
              txt_notaParcialI.setText("0");
@@ -435,6 +464,17 @@ public class Notas extends javax.swing.JFrame {
             return;
             
             }
+         
+         if(cbo_reposicion.isSelected()){
+             rad_reposicionParcialI.setEnabled(true);
+             rad_reposicionParcialII.setEnabled(true);
+             if(rad_reposicionParcialI.isSelected()){
+                 reposicion = "1P";
+                     }
+             if(rad_reposicionParcialII.isSelected()){
+                 reposicion = "2P";
+                     }
+         }
         double calificacion1=Double.parseDouble(nota1);
 
         double calificacion2=Double.parseDouble(nota2);
@@ -494,17 +534,15 @@ public class Notas extends javax.swing.JFrame {
                                     "nota2 = ?,\n" +
                                     "nota3 = ?,\n" +
                                     "promedio = ?,\n" +
-                                    "estado = ?\n" +
+                                    "estado = ?\n" + 
+                                  //  "reposicion = ?" +
                                     "where id_matricula = (select id_matricula from Matricula where numero_cuenta_alumno = '"+numeroDeCuenta+"' and id_seccion = '"+lbl_idmatricula.getText()+"')");
-     
-             
                   ps.setString(1, txt_notaParcialI.getText());
                   ps.setString(2, txt_notaParcialII.getText());
                   ps.setString(3, txt_notaParcialIII.getText());
                   ps.setString(4,promedio);
                   ps.setString(5,estado);
-             
-
+                 // ps.setString(6,reposicion);
                   int res= ps.executeUpdate();
                   if(res > 0){
                        JOptionPane.showMessageDialog(null, "Se ha guardado con éxito la nota del alumno: "+numeroDeCuenta);
@@ -513,11 +551,18 @@ public class Notas extends javax.swing.JFrame {
  
                   }
                   
-       
+                  Statement ps2 = con.createStatement();
+                  String sql = "update Notas set reposicion = '"+reposicion+"' "
+                          +"where id_matricula = (select id_matricula from Matricula where numero_cuenta_alumno = '"+numeroDeCuenta+"' and id_seccion = '"+lbl_idmatricula.getText()+"')";
+                  int res2= ps2.executeUpdate(sql);
       } catch ( Exception e) {
-            System.out.println(e);
+            JOptionPane.showMessageDialog(null,e.getMessage());
         }
-      
+      rad_reposicionParcialI.setSelected(false);
+      rad_reposicionParcialII.setSelected(false);
+      cbo_reposicion.setSelected(false);
+      rad_reposicionParcialI.setEnabled(false);
+      rad_reposicionParcialII.setEnabled(false);
       LimpiarCajas();
     }//GEN-LAST:event_btn_guardarActionPerformed
 
@@ -559,7 +604,7 @@ public class Notas extends javax.swing.JFrame {
                 modelo.addRow(filas);
                 Tabla_asignatura.setShowGrid(true);
                 Tabla_asignatura.setShowHorizontalLines(true);
-              
+                this.Tabla_asignatura.setEnabled(true);
             }
          }catch(SQLException ex){
              System.out.println(ex.toString());
@@ -676,11 +721,7 @@ public class Notas extends javax.swing.JFrame {
                 txt_notaParcialII.setText(rs.getString("nota2"));
                 txt_notaParcialIII.setText(rs.getString("nota3"));
                 lbl_idmatricula.setText(rs.getString("id_seccion"));
-                this.txt_notaParcialI.setEnabled(true);
-                   this.txt_notaParcialII.setEnabled(true);
-                      this.txt_notaParcialIII.setEnabled(true);
-                       this.btn_guardar.setEnabled(true);
-
+                activar();
             }
         }catch(SQLException ex){
             System.out.println(ex.toString());
@@ -743,7 +784,20 @@ public class Notas extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void btn_generarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_generarReporteActionPerformed
-        // TODO add your handling code here:
+       try {
+            JasperReport reporte = null;
+            String path = "src\\reportes\\report1.jasper";
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("numeroCuenta",txt_numeroCuenta.getText());
+            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+            JasperPrint jprint;
+            jprint=JasperFillManager.fillReport(reporte,parameters,con);
+            JasperViewer view = new JasperViewer(jprint,false);
+            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            view.setVisible(true);      
+       } catch (JRException ex) {
+           Logger.getLogger(Notas.class.getName()).log(Level.SEVERE, null, ex);
+       }
     }//GEN-LAST:event_btn_generarReporteActionPerformed
 
     /**

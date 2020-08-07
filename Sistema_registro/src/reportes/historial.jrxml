@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b421b636-2abc-46ab-90bc-639b471153c9">
+	<queryString language="SQL">
+		<![CDATA[Select * from secciones as s join matricula as m on s.id_seccion = m.id_seccion join Alumno as a on a.numero_cuenta_alumno = m.numero_cuenta_alumno 
+join Carrera as c on c.id_carrera = a.id_carrera join Asignaturas as asi on asi.cod_asignaturas = s.cod_asignaturas join notas as n on n.id_matricula = m.id_matricula join campus as ca on ca.id_campus = a.id_campus]]>
+	</queryString>
+	<field name="numero_cuenta_alumno" class="java.lang.String"/>
+	<field name="nombres_alumno" class="java.lang.String"/>
+	<field name="apellidos_alumno" class="java.lang.String"/>
+	<field name="nombre_carrera" class="java.lang.String"/>
+	<field name="nombre_campus" class="java.lang.String"/>
+	<field name="nombre_asignaturas" class="java.lang.String"/>
+	<field name="Nombre_seccion" class="java.lang.String"/>
+	<field name="cod_asignaturas" class="java.lang.String"/>
+	<field name="nota1" class="java.math.BigDecimal"/>
+	<field name="nota2" class="java.math.BigDecimal"/>
+	<field name="nota3" class="java.math.BigDecimal"/>
+	<field name="promedio" class="java.math.BigDecimal"/>
+	<field name="estado" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
