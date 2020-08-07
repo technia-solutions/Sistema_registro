@@ -99,21 +99,11 @@ public class Secciones extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbl_horaFinal = new javax.swing.JLabel();
-        txt_NombreSeccion = new javax.swing.JTextField();
         btn_guardar = new javax.swing.JButton();
         btn_actualizar = new javax.swing.JButton();
-        lbl_CantidadM = new javax.swing.JLabel();
-        lbl_CodAsignatura = new javax.swing.JLabel();
-        lbl_horaInicial = new javax.swing.JLabel();
-        btn_eliminar = new javax.swing.JButton();
-        lbl_aula = new javax.swing.JLabel();
-        lbl_Periodo = new javax.swing.JLabel();
         btn_buscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_Seccion = new javax.swing.JTable();
-        cbo_IdPeriodo = new javax.swing.JComboBox<>();
-        cbo_Asignaturas = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         chb_Lunes = new javax.swing.JCheckBox();
         chb_Martes = new javax.swing.JCheckBox();
@@ -124,14 +114,24 @@ public class Secciones extends javax.swing.JFrame {
         chb_Domingo = new javax.swing.JCheckBox();
         lbl_MensajeDias = new javax.swing.JLabel();
         btn_Aceptar = new javax.swing.JButton();
-        cbo_IdAula = new javax.swing.JComboBox<>();
-        txt_HoraInicial = new javax.swing.JFormattedTextField();
-        txt_HoraFinal = new javax.swing.JFormattedTextField();
-        lbl_NombreSeccion1 = new javax.swing.JLabel();
-        txt_CantidadM = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        btn_eliminar = new javax.swing.JButton();
+        lbl_NombreSeccion1 = new javax.swing.JLabel();
+        txt_NombreSeccion = new javax.swing.JTextField();
+        lbl_CantidadM = new javax.swing.JLabel();
+        txt_CantidadM = new javax.swing.JTextField();
+        lbl_CodAsignatura = new javax.swing.JLabel();
+        cbo_Asignaturas = new javax.swing.JComboBox<>();
+        lbl_horaInicial = new javax.swing.JLabel();
+        lbl_horaFinal = new javax.swing.JLabel();
+        txt_HoraInicial = new javax.swing.JFormattedTextField();
+        txt_HoraFinal = new javax.swing.JFormattedTextField();
+        lbl_Periodo = new javax.swing.JLabel();
+        lbl_aula = new javax.swing.JLabel();
+        cbo_IdPeriodo = new javax.swing.JComboBox<>();
+        cbo_IdAula = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -141,23 +141,6 @@ public class Secciones extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lbl_horaFinal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_horaFinal.setText("Hora final:");
-        getContentPane().add(lbl_horaFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(464, 294, -1, -1));
-
-        txt_NombreSeccion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_NombreSeccion.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txt_NombreSeccionFocusLost(evt);
-            }
-        });
-        txt_NombreSeccion.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_NombreSeccionKeyTyped(evt);
-            }
-        });
-        getContentPane().add(txt_NombreSeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 123, 222, -1));
 
         btn_guardar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Guardar.png"))); // NOI18N
@@ -179,36 +162,6 @@ public class Secciones extends javax.swing.JFrame {
         });
         getContentPane().add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 170, -1));
 
-        lbl_CantidadM.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_CantidadM.setText("Cantidad máxima:");
-        getContentPane().add(lbl_CantidadM, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 169, -1, -1));
-
-        lbl_CodAsignatura.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_CodAsignatura.setText("Código Asignatura:");
-        getContentPane().add(lbl_CodAsignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(394, 203, -1, -1));
-
-        lbl_horaInicial.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_horaInicial.setText("Hora inicial:");
-        getContentPane().add(lbl_horaInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(452, 252, -1, -1));
-
-        btn_eliminar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Eliminar.png"))); // NOI18N
-        btn_eliminar.setText("Eliminar");
-        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_eliminarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 170, -1));
-
-        lbl_aula.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_aula.setText("Aula: ");
-        getContentPane().add(lbl_aula, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 391, -1, -1));
-
-        lbl_Periodo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_Periodo.setText("Periodo:");
-        getContentPane().add(lbl_Periodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(491, 347, -1, -1));
-
         btn_buscar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Consulta.png"))); // NOI18N
         btn_buscar.setText("Buscar");
@@ -229,7 +182,7 @@ public class Secciones extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre Seccion", "Cod Asignatura", "Hora Inicial", "Hora Final", "Periodo", "Aula", "Dias", "Cantidad Máxima"
+                "Nombre Seccion", " Asignatura", "Hora Inicial", "Hora Final", "Período", "Aula", "Días", "Cantidad Máxima"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -249,22 +202,7 @@ public class Secciones extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 1320, 103));
 
-        cbo_IdPeriodo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un periodo:" }));
-        cbo_IdPeriodo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbo_IdPeriodoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cbo_IdPeriodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(562, 346, 222, -1));
-
-        cbo_Asignaturas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una asignatura:" }));
-        cbo_Asignaturas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                cbo_AsignaturasKeyTyped(evt);
-            }
-        });
-        getContentPane().add(cbo_Asignaturas, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 203, 222, 30));
-
+        jPanel1.setBackground(new java.awt.Color(215, 236, 233));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Dias de Asignaturas"));
 
         chb_Lunes.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -362,42 +300,6 @@ public class Secciones extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 120, 400, 290));
 
-        cbo_IdAula.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un aula:" }));
-        getContentPane().add(cbo_IdAula, new org.netbeans.lib.awtextra.AbsoluteConstraints(562, 390, 222, -1));
-
-        txt_HoraInicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        txt_HoraInicial.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_HoraInicialKeyTyped(evt);
-            }
-        });
-        getContentPane().add(txt_HoraInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 251, 223, -1));
-
-        txt_HoraFinal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
-        txt_HoraFinal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_HoraFinalActionPerformed(evt);
-            }
-        });
-        txt_HoraFinal.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_HoraFinalKeyTyped(evt);
-            }
-        });
-        getContentPane().add(txt_HoraFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(552, 293, 223, -1));
-
-        lbl_NombreSeccion1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_NombreSeccion1.setText("Nombre sección:");
-        getContentPane().add(lbl_NombreSeccion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 128, -1, -1));
-
-        txt_CantidadM.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_CantidadM.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_CantidadMKeyTyped(evt);
-            }
-        });
-        getContentPane().add(txt_CantidadM, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 166, 222, -1));
-
         jPanel3.setBackground(new java.awt.Color(232, 251, 249));
 
         lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -422,20 +324,170 @@ public class Secciones extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 1320, 70));
 
-        jPanel2.setBackground(new java.awt.Color(232, 251, 249));
+        jPanel2.setBackground(new java.awt.Color(215, 236, 233));
+
+        btn_eliminar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Eliminar.png"))); // NOI18N
+        btn_eliminar.setText("Eliminar");
+        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarActionPerformed(evt);
+            }
+        });
+
+        lbl_NombreSeccion1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_NombreSeccion1.setText("Nombre sección:");
+
+        txt_NombreSeccion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_NombreSeccion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_NombreSeccionFocusLost(evt);
+            }
+        });
+        txt_NombreSeccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_NombreSeccionActionPerformed(evt);
+            }
+        });
+        txt_NombreSeccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_NombreSeccionKeyTyped(evt);
+            }
+        });
+
+        lbl_CantidadM.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_CantidadM.setText("Cantidad máxima:");
+
+        txt_CantidadM.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_CantidadM.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_CantidadMKeyTyped(evt);
+            }
+        });
+
+        lbl_CodAsignatura.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_CodAsignatura.setText("Código Asignatura:");
+
+        cbo_Asignaturas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una asignatura:" }));
+        cbo_Asignaturas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cbo_AsignaturasKeyTyped(evt);
+            }
+        });
+
+        lbl_horaInicial.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_horaInicial.setText("Hora inicial:");
+
+        lbl_horaFinal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_horaFinal.setText("Hora final:");
+
+        txt_HoraInicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        txt_HoraInicial.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_HoraInicialKeyTyped(evt);
+            }
+        });
+
+        txt_HoraFinal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        txt_HoraFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_HoraFinalActionPerformed(evt);
+            }
+        });
+        txt_HoraFinal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_HoraFinalKeyTyped(evt);
+            }
+        });
+
+        lbl_Periodo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_Periodo.setText("Periodo:");
+
+        lbl_aula.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_aula.setText("Aula: ");
+
+        cbo_IdPeriodo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un periodo:" }));
+        cbo_IdPeriodo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbo_IdPeriodoActionPerformed(evt);
+            }
+        });
+
+        cbo_IdAula.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un aula:" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1320, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lbl_aula)
+                    .addComponent(lbl_Periodo)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(112, 112, 112)
+                            .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbl_horaFinal))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(341, 341, 341)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lbl_CantidadM)
+                                .addComponent(lbl_NombreSeccion1)
+                                .addComponent(lbl_CodAsignatura)
+                                .addComponent(lbl_horaInicial)))))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_NombreSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_CantidadM, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbo_Asignaturas, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_HoraInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_HoraFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbo_IdPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbo_IdAula, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(588, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_NombreSeccion1)
+                    .addComponent(txt_NombreSeccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_CantidadM)
+                    .addComponent(txt_CantidadM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_CodAsignatura)
+                    .addComponent(cbo_Asignaturas, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lbl_horaInicial, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                    .addComponent(txt_HoraInicial))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_eliminar)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(txt_HoraFinal)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                            .addGap(9, 9, 9)
+                            .addComponent(lbl_horaFinal))))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lbl_Periodo)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(cbo_IdPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_aula)
+                    .addComponent(cbo_IdAula, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 1320, 360));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 1320, 380));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -499,9 +551,11 @@ public class Secciones extends javax.swing.JFrame {
         else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de la sección" +Seccion + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
             String id_seccion = cbo_Asignaturas.getSelectedItem().toString().substring(0, 6) + "-" +  txt_NombreSeccion.getText();
-            String id_asignatura = cbo_Asignaturas.getSelectedItem().toString().substring(0, 3);
+            String id_asignatura = cbo_Asignaturas.getSelectedItem().toString().substring(0, 6);
             String id_periodo = cbo_IdPeriodo.getSelectedItem().toString().substring(5, 6);
             String id_aula = cbo_IdAula.getSelectedItem().toString().substring(0, 4);
+            
+            
         
             try {
                 PreparedStatement ps;
@@ -514,8 +568,8 @@ public class Secciones extends javax.swing.JFrame {
                     + " Hora_final= ? , "
                     + " id_periodo= ? , "
                     + " id_aula= ? , "
-                    + "dias= ? "
-                   //+ "cantidad_maxima = ? "
+                    + "dias= ?, "
+                   + "cantidad_maxima = ? "
                   + " where id_seccion =\'"+id_seccion+"\'");
                   ps.setString(1,id_seccion);
                   ps.setString(2, txt_NombreSeccion.getText());
@@ -525,14 +579,13 @@ public class Secciones extends javax.swing.JFrame {
                   ps.setString(6,id_periodo);
                   ps.setString(7,id_aula);
                   ps.setString(8,Mensaje);
-                 // ps.setString(9, txt_CantidadM.getText());
+                  ps.setString(9, txt_CantidadM.getText());
                   
                     
              int res = ps.executeUpdate();
              
             } catch (Exception e) {
-                System.out.println(e);
-              
+                JOptionPane.showMessageDialog(null,e.getMessage());
             }
             
             actualizarDatos();
@@ -667,53 +720,9 @@ public class Secciones extends javax.swing.JFrame {
             return;
         }
            
-       try{
-           
-           //  ResultSet rs = st.executeQuery(sql);
-            String verificar = "Select cantidad_alumnos from Secciones where Nombre_seccion = '"+txt_NombreSeccion.getText()+"'";
-            Statement stmt = con.createStatement();
-            ResultSet rs2 = stmt.executeQuery(verificar);
-       if(rs2.next()){
-                        String consul = "update Secciones \n" +
-                                        "set cantidad_alumnos = 0\n" +
-                                        "where Nombre_seccion = '"+txt_NombreSeccion.getText()+"'";
-                        Statement ss = con.createStatement();
-                        int actualizarcantidad_alumnos = ss.executeUpdate(consul);
-                        //Secciones secciones = new Secciones(txt_NombreSeccion,rs2.getString(1));
-                        Secciones secciones = new Secciones(txt_NombreSeccion,rs2.getString(1));
-                        secciones.setVisible(true); 
-                        this.dispose();
-                        
-      }else{
-                    try {
-                         String consulta = "SELECT * from Secciones where Nombre_seccion ='"+txt_NombreSeccion.getText()+"'";
-                         Statement st3 = con.createStatement();
-                         ResultSet rs3 = st3.executeQuery(consulta);
-                        if(rs3.next()){
-                            if(!rs3.getString("cantidad_alumnos").equals("1")){
-                                if(rs3.getString("Nombre_seccion").equals(txt_NombreSeccion.getText())){
-                                    getToolkit().beep();
-                                    int in = Integer.parseInt(rs3.getString("cantidad_alumnos")) + 1 ;
-                                    String sql4 = "update Secciones \n" +
-                                                  "set cantidad_alumnos = '"+in+"'\n" +
-                                                  "where Nombre_seccion = '"+txt_NombreSeccion.getText()+"' ";
-                                    Statement st4 = con.createStatement();
-                                    int rs4 = st4.executeUpdate(sql4);
-                                    if(rs3.getString("cantidad_alumnos").equals("70")){
-                                        Statement st2 = con.createStatement();
-                                        String sql2 = "Update Secciones set cantidad_alumnos = 'Cantidad Maxima' where Nombre_seccion ='"+txt_NombreSeccion.getText()+"'";
-                                        int columnas = st2.executeUpdate(sql2);
-                                        JOptionPane.showMessageDialog(null, "La Sección: "+txt_NombreSeccion.getText()+" excede su capacidad por favor comuníquese con el coordinador de la carrera.", "Limite Cupos", JOptionPane.INFORMATION_MESSAGE);
-                                        this.dispose();
-                                        return;
-                                        
-                                    }
-                                }
-                            }
-                        }
-                    } catch (SQLException ex) {
-                        Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                     
+                    
+    
 
         if(existeSeccion()){
             return;
@@ -774,12 +783,10 @@ public class Secciones extends javax.swing.JFrame {
 
         actualizarDatos();
         LimpiarCajas();
-      } }
-         catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,e.getMessage());
-        }
+       
+         
         
-     
+    
 
       
     }//GEN-LAST:event_btn_guardarActionPerformed
@@ -836,6 +843,7 @@ public class Secciones extends javax.swing.JFrame {
         }
        
         lbl_MensajeDias.setText(Mensaje);
+       
         
     }//GEN-LAST:event_btn_AceptarActionPerformed
 
@@ -883,18 +891,6 @@ public class Secciones extends javax.swing.JFrame {
                  || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
         return;
         }
-         /*if(evt.getKeyChar() == 32){
-             if(txt_NombreSeccion.getText().length() == 0){
-                 evt.consume();
-                 Toolkit.getDefaultToolkit().beep();
-                 return;
-             }
-             if(txt_NombreSeccion.getText().substring(txt_NombreSeccion.getText().length() - 1).equals(" ")){
-                 evt.consume();
-                 Toolkit.getDefaultToolkit().beep();
-             }
-             return; 
-         }*/
         if(txt_NombreSeccion.getText().length() >=40){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
@@ -980,6 +976,10 @@ public class Secciones extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Solo números");
         }
     }//GEN-LAST:event_txt_HoraFinalKeyTyped
+
+    private void txt_NombreSeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NombreSeccionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_NombreSeccionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1104,15 +1104,15 @@ public void actualizarDatos(){
                  while(rs.next()) {
                      
                      //Registro Anterior (Posible Error)//
-                       String []datos= new String[10];
+                       String []datos= new String[11];
                       datos[0] =rs.getString("id_seccion");
                       datos[1] =rs.getString("Nombre_seccion");
                       datos[2] =rs.getString("cod_asignaturas");
-                      //datos[3] =rs.getString("cantidad_alumnos");
+                      datos[3] =rs.getString("cantidad_alumnos");
                       datos[4] =rs.getString("Hora_inicial");
                       datos[5] =rs.getString("Hora_final");
-                      datos[6] =rs.getString("id_periodo");
-                      datos[7] =rs.getString("id_aula");
+                      datos[7] =rs.getString("id_periodo");
+                      datos[6] =rs.getString("id_aula");
                       datos[8] =rs.getString("dias");
                       datos[9] =rs.getString("cantidad_maxima");
                       
@@ -1122,24 +1122,26 @@ public void actualizarDatos(){
                       
                       centrar_datos();
                  }
+            TableColumn ise= Tabla_Seccion.getColumn(titulos[0]);
+            ise.setMaxWidth(145);
             TableColumn nse= Tabla_Seccion.getColumn(titulos[1]);
-            nse.setMaxWidth(165);
+            nse.setMaxWidth(145);
             TableColumn coda= Tabla_Seccion.getColumn(titulos[2]);
-            coda.setMaxWidth(165);            
-            // TableColumn cana= Tabla_Seccion.getColumn(titulos[3]); //Puede ser este un error//
-             //cana.setMaxWidth(165);
+            coda.setMaxWidth(145);            
+            TableColumn cana= Tabla_Seccion.getColumn(titulos[3]); //Puede ser este un error//
+            cana.setMaxWidth(145);
            TableColumn hin= Tabla_Seccion.getColumn(titulos[4]);
-           hin.setMaxWidth(165);
+           hin.setMaxWidth(145);
             TableColumn hfi= Tabla_Seccion.getColumn(titulos[5]);
-           hfi.setMaxWidth(165);
+           hfi.setMaxWidth(145);
            TableColumn idp= Tabla_Seccion.getColumn(titulos[6]);
-           idp.setMaxWidth(165);
+           idp.setMaxWidth(145);
            TableColumn idau= Tabla_Seccion.getColumn(titulos[7]);
-           idau.setMaxWidth(165);
+           idau.setMaxWidth(145);
            TableColumn dias= Tabla_Seccion.getColumn(titulos[8]);
-           dias.setMaxWidth(165);
+           dias.setMaxWidth(145);
            TableColumn cm= Tabla_Seccion.getColumn(titulos[9]);
-           cm.setMaxWidth(165);
+           cm.setMaxWidth(145);
         }
         catch (Exception e) {
            
@@ -1162,31 +1164,24 @@ public void actualizarDatos(){
       try {
                     String cap = "";
                     ResultSet rs2 = null;
-                   var = JOptionPane.showInputDialog(this, "Ingrese el nombre de la sección que desea consultar", "Consulta de secciones", JOptionPane.QUESTION_MESSAGE);
-                    if (var == null) {
-                        JOptionPane.showMessageDialog(this, "La acción fue cancelada", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
-                    } else {
-                        if (var.equals("")) {
-                            JOptionPane.showMessageDialog(this, "Favor de ingresar el nombre de la sección \n que desea consultar", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
-                        } else {
+                    
+                       
                             String sql = "SELECT * FROM Secciones where id_seccion='"+var+"' or nombre_seccion ='"+var+"'";
                             stmt = con.createStatement();
                             rs2 = stmt.executeQuery(sql);
 
                             if (rs2.next()) {
                                 txt_NombreSeccion.setText(rs2.getString("Nombre_seccion"));
-                                cbo_Asignaturas.setSelectedItem((rs2.getString("cod_asignaturas")));
+                                cbo_Asignaturas.setSelectedItem((rs2.getString("cod_asignaturas")+ " - " + rs2.getString("nombre_asignaturas")));
                                 txt_HoraInicial.setText(rs2.getString("Hora_inicial"));
                                 txt_HoraFinal.setText(rs2.getString("Hora_final"));
-                               cbo_IdPeriodo.setSelectedItem((rs2.getString("id_periodo")));
-                               cbo_Asignaturas.setSelectedItem((rs2.getString("id_aula")));
+                               cbo_IdPeriodo.setSelectedItem((rs2.getString("id_periodo")+ " - " + rs2.getString("descripcion")));
+                               cbo_Asignaturas.setSelectedItem((rs2.getString("id_aula")+ " - " + rs2.getString("nombre_aula")));
                                txt_CantidadM.setText(rs2.getString("cantidad_maxima"));
-                            } else {
-                                JOptionPane.showMessageDialog(null, "¡No se encuentran los datos: "+var+" ! Por favor verifique sí, lo escribió correctamente");
                             }
-                        }
+                        
 
-                    }
+                    
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e.getMessage());
                 }
@@ -1210,18 +1205,28 @@ public void actualizarDatos(){
      private void llenarCampos() {
       int i = Tabla_Seccion.getSelectedRow();
      
-          txt_NombreSeccion.setText(Tabla_Seccion.getValueAt(i, 1).toString());
-          txt_HoraInicial.setText(Tabla_Seccion.getValueAt(i,4 ).toString());
-          txt_HoraFinal.setText(Tabla_Seccion.getValueAt(i, 5).toString());      
-          //cbo_Asignaturas.setSelectedItem(Tabla_Seccion.getValueAt(i, 3).toString());
-          cbo_IdPeriodo.setSelectedItem(Tabla_Seccion.getValueAt(i, 7).toString());
-          cbo_IdAula.setSelectedItem(Tabla_Seccion.getValueAt(i, 8).toString());
-         // txt_CantidadM.setText(Tabla_Seccion.getValueAt(i, 9).toString());
-        
-          
-          
-          
+        txt_NombreSeccion.setText(Tabla_Seccion.getValueAt(i, 1).toString());
+        cbo_Asignaturas.setSelectedItem(Tabla_Seccion.getValueAt(i, 2).toString());
+        txt_HoraInicial.setText(Tabla_Seccion.getValueAt(i, 4).toString());
+        txt_HoraFinal.setText(Tabla_Seccion.getValueAt(i, 5).toString());
+        cbo_IdPeriodo.setSelectedItem(Tabla_Seccion.getValueAt(i, 6).toString());
+        cbo_IdAula.setSelectedItem(Tabla_Seccion.getValueAt(i, 7).toString());
+        //txt_HoraFinal.setText(Tabla_Seccion.getValueAt(i, 5).toString());
+        txt_CantidadM.setText(Tabla_Seccion.getValueAt(i, 9).toString());       
     }
+     
+     /*private boolean validarDias(String Lu, String Ma, String Mi, String Ju, String Vi, String Sa, String Do){
+        if(Lu.equals("Lu") || Lu.equals("Lu")){
+            return true;
+        }
+       
+        if(!Lu.equals(Ma)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }*/
  
  
 }
