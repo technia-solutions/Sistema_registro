@@ -82,6 +82,8 @@ public class Notas extends javax.swing.JFrame {
         lbl_asignatura = new javax.swing.JLabel();
         lbl_clase = new javax.swing.JLabel();
         btn_buscarClases = new javax.swing.JButton();
+        lbl_usuario = new javax.swing.JLabel();
+        iconodeUsuario = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         lbl_idmatricula = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -110,8 +112,8 @@ public class Notas extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(232, 251, 249));
 
-        lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lbl_titulo.setText("Registrar notas");
+        lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        lbl_titulo.setText("Notas");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -120,17 +122,17 @@ public class Notas extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(506, 506, 506)
                 .addComponent(lbl_titulo)
-                .addContainerGap(522, Short.MAX_VALUE))
+                .addContainerGap(593, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(lbl_titulo)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 1190, -1));
 
         jPanel2.setBackground(new java.awt.Color(215, 236, 233));
         jPanel2.setLayout(null);
@@ -237,7 +239,7 @@ public class Notas extends javax.swing.JFrame {
         lbl_reposiciones.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_reposiciones.setText("Reposiciones");
         jPanel2.add(lbl_reposiciones);
-        lbl_reposiciones.setBounds(410, 10, 101, 22);
+        lbl_reposiciones.setBounds(430, 10, 101, 22);
 
         Tabla_asignatura.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Tabla_asignatura.setModel(new javax.swing.table.DefaultTableModel(
@@ -296,6 +298,11 @@ public class Notas extends javax.swing.JFrame {
         btn_generarReporte.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_generarReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/writing-on-an-open-book_icon-icons.com_70325.png"))); // NOI18N
         btn_generarReporte.setText("Generar historial academico");
+        btn_generarReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_generarReporteActionPerformed(evt);
+            }
+        });
         jPanel2.add(btn_generarReporte);
         btn_generarReporte.setBounds(380, 200, 240, 40);
 
@@ -304,8 +311,8 @@ public class Notas extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(0, 153, 153));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_asignatura.setText("Nombre de la asignatura");
-        jPanel3.add(lbl_asignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(818, 28, -1, -1));
+        lbl_asignatura.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jPanel3.add(lbl_asignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 20, 120, 30));
 
         lbl_clase.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_clase.setText("Clase:");
@@ -323,11 +330,18 @@ public class Notas extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 1190, 60));
 
+        lbl_usuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbl_usuario.setText("Nombre Usuario");
+        getContentPane().add(lbl_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 190, -1));
+
+        iconodeUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User.png"))); // NOI18N
+        getContentPane().add(iconodeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 50, 70));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1310, 680));
 
         lbl_idmatricula.setText("jLabel2");
-        getContentPane().add(lbl_idmatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 10, -1, -1));
+        getContentPane().add(lbl_idmatricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 20, -1, -1));
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
         jMenu1.setText("Menú");
@@ -397,6 +411,30 @@ public class Notas extends javax.swing.JFrame {
         nota1 = txt_notaParcialI.getText();
         nota2 = txt_notaParcialII.getText();
         nota3 = txt_notaParcialIII.getText();
+        
+         if(txt_notaParcialI.getText().equals("")){
+             txt_notaParcialI.setText("0");
+             javax.swing.JOptionPane.showMessageDialog(this,"Por favor verificar el campo Nota del primer parcial, campo vacío.","Verificar la nota",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_notaParcialI.requestFocus();
+            return;
+            
+            }
+          
+         if(txt_notaParcialII.getText().equals("")){
+             txt_notaParcialII.setText("0");
+             javax.swing.JOptionPane.showMessageDialog(this,"Por favor verificar el campo nota  del segundo parcial,campo vacio., campo vacío","Verificar la nota",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_notaParcialII.requestFocus();
+            return;
+            
+            }
+          
+         if(txt_notaParcialIII.getText().equals("")){
+             txt_notaParcialIII.setText("0");
+             javax.swing.JOptionPane.showMessageDialog(this,"Por favor verificar el campo Nota del tercer parcial, campo vacío.","Verificar la nota",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_notaParcialIII.requestFocus();
+            return;
+            
+            }
         double calificacion1=Double.parseDouble(nota1);
 
         double calificacion2=Double.parseDouble(nota2);
@@ -406,20 +444,36 @@ public class Notas extends javax.swing.JFrame {
         
   
            if(calificacion1>100){
-               JOptionPane.showMessageDialog(null, "La calificacion: '" + nota1 + "' es incorrecta porfavor revisar que sea un valor menor a 100", "Calificación Incorrecta", JOptionPane.ERROR_MESSAGE);
+               JOptionPane.showMessageDialog(null, "La calificacion: '" + nota1 + "' es incorrecta porfavor revisar que sea un valor menor a 100.", "Calificación Incorrecta", JOptionPane.ERROR_MESSAGE);
                     txt_notaParcialI.setText(null);
              return;  
            }
             if(calificacion2>100){
-               JOptionPane.showMessageDialog(null, "La calificacion: '" + nota2 + "' es incorrecta porfavor revisar que sea un valor menor a 100", "Calificación Incorrecta", JOptionPane.ERROR_MESSAGE);
+               JOptionPane.showMessageDialog(null, "La calificacion: '" + nota2 + "' es incorrecta porfavor revisar que sea un valor menor a 100.", "Calificación Incorrecta", JOptionPane.ERROR_MESSAGE);
                   txt_notaParcialII.setText(null);
              return;  
            } 
             if(calificacion3>100){
-               JOptionPane.showMessageDialog(null, "La calificacion: '" + nota3 + "' es incorrecta porfavor revisar que sea un valor menor a 100", "Calificación Incorrecta", JOptionPane.ERROR_MESSAGE);
+               JOptionPane.showMessageDialog(null, "La calificacion: '" + nota3 + "' es incorrecta porfavor revisar que sea un valor menor a 100.", "Calificación Incorrecta", JOptionPane.ERROR_MESSAGE);
                     txt_notaParcialIII.setText(null);
              return;  
            }
+       
+            /*     if((txt_notaParcialII.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar los nombres del alumno.","Nombres del alumno requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_notaParcialI.requestFocus();
+            return;
+            }
+            
+          if((txt_notaParcialIII.getText().equals(""))){
+           
+           txt_notaParcialIII.setText("0");
+            
+            }*/
+            
+            
+       
+             
     
         
        if(notafinal >=65){
@@ -617,6 +671,7 @@ public class Notas extends javax.swing.JFrame {
             rs= ps.executeQuery();
            
             while(rs.next()){
+                lbl_asignatura.setText(codigo);
                  txt_notaParcialI.setText(rs.getString("nota1"));
                 txt_notaParcialII.setText(rs.getString("nota2"));
                 txt_notaParcialIII.setText(rs.getString("nota3"));
@@ -670,8 +725,26 @@ public class Notas extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_numeroCuentaKeyTyped
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+       try {
+            String sql2 = "Select nombres_empleado + ' ' + apellido_empleado from Empleados where id_empleado = (select id_empleado from Acceso where nombre_usuario = '"+lbl_usuario.getText()+"')";
+                Statement st2 = con.createStatement();
+                ResultSet rs2 = st2.executeQuery(sql2);
+                if(rs2.next()){
+                Principal principal = new Principal(lbl_usuario.getText(),rs2.getString(1));
+                principal.setVisible(true); 
+                this.dispose();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Error");
+                }
+        } catch (SQLException ex) {
+            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void btn_generarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_generarReporteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_generarReporteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -718,6 +791,7 @@ public class Notas extends javax.swing.JFrame {
     private javax.swing.JButton btn_generarReporte;
     private javax.swing.JButton btn_guardar;
     private javax.swing.JCheckBox cbo_reposicion;
+    private javax.swing.JLabel iconodeUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
@@ -735,6 +809,7 @@ public class Notas extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_numeroCuenta;
     private javax.swing.JLabel lbl_reposiciones;
     private javax.swing.JLabel lbl_titulo;
+    private javax.swing.JLabel lbl_usuario;
     private javax.swing.JRadioButton rad_reposicionParcialI;
     private javax.swing.JRadioButton rad_reposicionParcialII;
     private javax.swing.JTextField txt_notaParcialI;
