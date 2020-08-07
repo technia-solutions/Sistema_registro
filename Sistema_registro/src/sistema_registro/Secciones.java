@@ -108,7 +108,6 @@ public class Secciones extends javax.swing.JFrame {
         lbl_horaInicial = new javax.swing.JLabel();
         btn_eliminar = new javax.swing.JButton();
         lbl_aula = new javax.swing.JLabel();
-        lbl_titulo = new javax.swing.JLabel();
         lbl_Periodo = new javax.swing.JLabel();
         btn_buscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -130,6 +129,9 @@ public class Secciones extends javax.swing.JFrame {
         txt_HoraFinal = new javax.swing.JFormattedTextField();
         lbl_NombreSeccion1 = new javax.swing.JLabel();
         txt_CantidadM = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        lbl_titulo = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -165,7 +167,7 @@ public class Secciones extends javax.swing.JFrame {
                 btn_guardarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 117, -1, -1));
+        getContentPane().add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 170, -1));
 
         btn_actualizar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
@@ -175,14 +177,14 @@ public class Secciones extends javax.swing.JFrame {
                 btn_actualizarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 176, 143, -1));
+        getContentPane().add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 170, -1));
 
         lbl_CantidadM.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_CantidadM.setText("Cantidad máxima:");
         getContentPane().add(lbl_CantidadM, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 169, -1, -1));
 
         lbl_CodAsignatura.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_CodAsignatura.setText("Codigo Asignatura:");
+        lbl_CodAsignatura.setText("Código Asignatura:");
         getContentPane().add(lbl_CodAsignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(394, 203, -1, -1));
 
         lbl_horaInicial.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -197,15 +199,11 @@ public class Secciones extends javax.swing.JFrame {
                 btn_eliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 294, -1, -1));
+        getContentPane().add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 170, -1));
 
         lbl_aula.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_aula.setText("Aula: ");
         getContentPane().add(lbl_aula, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 391, -1, -1));
-
-        lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        lbl_titulo.setText("Registro de sección");
-        getContentPane().add(lbl_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(589, 16, -1, -1));
 
         lbl_Periodo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_Periodo.setText("Periodo:");
@@ -224,7 +222,7 @@ public class Secciones extends javax.swing.JFrame {
                 btn_buscarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 235, 143, -1));
+        getContentPane().add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 235, 170, -1));
 
         Tabla_Seccion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -249,7 +247,7 @@ public class Secciones extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Tabla_Seccion);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 509, 1387, 103));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 1320, 103));
 
         cbo_IdPeriodo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un periodo:" }));
         cbo_IdPeriodo.addActionListener(new java.awt.event.ActionListener() {
@@ -399,6 +397,45 @@ public class Secciones extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_CantidadM, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 166, 222, -1));
+
+        jPanel3.setBackground(new java.awt.Color(232, 251, 249));
+
+        lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lbl_titulo.setText("Registro de sección");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(569, Short.MAX_VALUE)
+                .addComponent(lbl_titulo)
+                .addGap(545, 545, 545))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_titulo)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 1320, 70));
+
+        jPanel2.setBackground(new java.awt.Color(232, 251, 249));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1320, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 360, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 1320, 360));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -1007,6 +1044,8 @@ public class Secciones extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem_Aula;
     private javax.swing.JMenuItem jMenuItem_Periodo;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_CantidadM;
     private javax.swing.JLabel lbl_CodAsignatura;
