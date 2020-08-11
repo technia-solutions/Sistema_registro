@@ -5,17 +5,34 @@
  */
 package sistema_registro;
 
+import java.sql.Connection;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import java.sql.ResultSet;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableColumn;
+
 /**
  *
  * @author Carlos
  */
 public class Matricula extends javax.swing.JFrame {
 
+    Connection con = null;
+    String titulos [] = {"Codigo de Asignatura", "Nombre de la Asignatura", "Seccion", "Hora Inicial", "Hora Final","Periodo", "Unidades Valorativas",  "Matrícula"};
+   
+    DefaultTableModel modelo =  new DefaultTableModel();
+    Statement stmt = null;
+    String var, var2;
+    
     /**
      * Creates new form Matricula
      */
     public Matricula() {
         initComponents();
+        
     }
 
     /**
@@ -83,6 +100,11 @@ public class Matricula extends javax.swing.JFrame {
 
         lbl_cancelarAsignatura.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_cancelarAsignatura.setText("Cancelar asignatura");
+        lbl_cancelarAsignatura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lbl_cancelarAsignaturaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -142,6 +164,53 @@ public class Matricula extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void lbl_cancelarAsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lbl_cancelarAsignaturaActionPerformed
+        
+        String Cuenta = txt_numeroCuenta.getText() + " " ;
+          
+           if ((txt_numeroCuenta.getText().equals(""))  ) {
+
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la matrícula que desea eliminar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+           
+        }
+          else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar la matrícula correspondiente al número de cuenta:" + Cuenta + "", "Confirmación de eliminación",
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
+        ) == JOptionPane.YES_OPTION) {
+
+            try {
+                Statement st2 = con.createStatement();
+                String sql = "Delete Matricula"
+                + "where numero_cuenta_alumno = (Select numero_cuenta_alumno from Matricula where numero_cuenta_alumno = '"+txt_numeroCuenta.getText()+"')";
+
+                int rs2 = st2.executeUpdate(sql);
+                System.out.println(rs2);
+                if(rs2 > 0){
+                    JOptionPane.showMessageDialog(null, "Se ha borrado la matrícula seleccionada " + Cuenta + " correctamente");
+
+                }else {
+                    JOptionPane.showMessageDialog(null, "¡Error al eliminar la matrícula!");
+
+                }
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+
+        }
+        actualizarDatos();
+        LimpiarCajas();
+    }                                             
+
+    private void btn_buscarMouseClicked(java.awt.event.MouseEvent evt) {                                        
+        rellenar();
+        this.jScrollPane1.setEnabled(true);
+        this.tbl_asignaturas.setEnabled(true);
+        
+        
+        
+        
+    }//GEN-LAST:event_lbl_cancelarAsignaturaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -189,4 +258,103 @@ public class Matricula extends javax.swing.JFrame {
     private javax.swing.JTable tbl_asignaturas;
     private javax.swing.JTextField txt_numeroCuenta;
     // End of variables declaration//GEN-END:variables
+
+     public void actualizarDatos(){
+        try {
+               
+               String sql = "SELECT * FROM Matricula";
+               stmt = con.createStatement();
+               ResultSet rs = stmt.executeQuery(sql);
+               modelo = new DefaultTableModel(null, titulos);
+               tbl_asignaturas.setModel(modelo);
+                 while(rs.next()) {
+                     
+                          String []datos= new String[8];
+                      datos[0] =rs.getString("cod_asignaturas");
+                      datos[1] =rs.getString("nombre_asignaturas");
+                      datos[2] =rs.getString("Hora_inicial");
+                      datos[3] =rs.getString("Hora_final");
+                      datos[4] =rs.getString("id_periodo");
+                      datos[5] =rs.getString("nombre_aula");
+                      datos[6] =rs.getString("UV");
+                      datos[7] =rs.getString("id_matricula");
+                      
+                      
+                      
+                     modelo.addRow(datos);
+                      
+                      centrar_datos();
+                 }
+            TableColumn codA = tbl_asignaturas.getColumn(titulos[0]);
+            codA.setMaxWidth(125);
+            TableColumn nomA= tbl_asignaturas.getColumn(titulos[1]);
+            nomA.setMaxWidth(165);
+            TableColumn hI= tbl_asignaturas.getColumn(titulos[2]);
+            hI.setMaxWidth(125);            
+            TableColumn hF= tbl_asignaturas.getColumn(titulos[3]);
+           hF.setMaxWidth(165);
+           TableColumn idP= tbl_asignaturas.getColumn(titulos[4]);
+           idP.setMaxWidth(165);
+            TableColumn nomAu= tbl_asignaturas.getColumn(titulos[5]);
+           nomAu.setMaxWidth(165);
+            TableColumn UV= tbl_asignaturas.getColumn(titulos[6]);
+           UV.setMaxWidth(165);
+            TableColumn idM= tbl_asignaturas.getColumn(titulos[7]);
+           idM.setMaxWidth(165);
+        }
+        catch (Exception e) {
+           
+            System.err.println(e);
+        }
+           }
+     
+         public void centrar_datos() {
+ 
+        DefaultTableCellRenderer modelocentrar = new DefaultTableCellRenderer();
+        modelocentrar.setHorizontalAlignment(SwingConstants.CENTER);
+         for (int i = 0; i <modelo.getRowCount(); i++) {
+              tbl_asignaturas.getColumnModel().getColumn(i).setCellRenderer(modelocentrar);
+             
+         }
+         }
+    
+  private void rellenar(){
+      try {
+                    String cap = "";
+                    ResultSet rs2 = null;
+                   var = JOptionPane.showInputDialog(this, "Ingrese el número de cuenta que desea consultar", "Consulta de matrícula", JOptionPane.QUESTION_MESSAGE);
+                    if (var == null) {
+                        JOptionPane.showMessageDialog(this, "La acción fue cancelada", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        if (var.equals("")) {
+                            JOptionPane.showMessageDialog(this, "Favor de ingresar el número de cuenta  \n que desea consultar", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
+                        } else {
+                            String sql = "SELECT * FROM Matricula where numero_cuenta_alumno='"+var+"'";
+                            stmt = con.createStatement();
+                            rs2 = stmt.executeQuery(sql);
+
+                            if (rs2.next()) {
+                                txt_numeroCuenta.setText(rs2.getString("numero_cuenta_alumno"));
+                               
+                               
+                                
+                            } else {
+                                JOptionPane.showMessageDialog(null, "¡No se encuentra los datos de la matrícula: "+var+" ! Por favor verifique sí, el número de cuenta lo escribio correctamente");
+                            }
+                        }
+
+                    }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e.getMessage());
+                }
+    
+    }
+  
+  private void LimpiarCajas() {
+       
+        txt_numeroCuenta.setText(null);
+               
+    }
+
+    
 }

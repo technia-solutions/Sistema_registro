@@ -227,6 +227,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Cancelar asignatura"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lbl_cancelarAsignaturaActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
