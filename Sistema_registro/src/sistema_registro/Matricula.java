@@ -281,54 +281,7 @@ public class Matricula extends javax.swing.JFrame {
     private javax.swing.JTextField txt_numeroCuenta;
     // End of variables declaration//GEN-END:variables
 
-   /*  public void actualizarDatos(){
-        try {
-               
-               String sql = "SELECT * FROM Matricula";
-               stmt = con.createStatement();
-               ResultSet rs = stmt.executeQuery(sql);
-               modelo = new DefaultTableModel(null, titulos);
-               tbl_asignaturas.setModel(modelo);
-                 while(rs.next()) {
-                     
-                          String []datos= new String[8];
-                      datos[0] =rs.getString("cod_asignaturas");
-                      datos[1] =rs.getString("nombre_asignaturas");
-                      datos[2] =rs.getString("Hora_inicial");
-                      datos[3] =rs.getString("Hora_final");
-                      datos[4] =rs.getString("id_periodo");
-                      datos[5] =rs.getString("nombre_aula");
-                      datos[6] =rs.getString("UV");
-                      datos[7] =rs.getString("id_matricula");
-                      
-                      
-                      
-                     modelo.addRow(datos);
-                      
-                      centrar_datos();
-                 }
-            TableColumn codA = tbl_asignaturas.getColumn(titulos[0]);
-            codA.setMaxWidth(125);
-            TableColumn nomA= tbl_asignaturas.getColumn(titulos[1]);
-            nomA.setMaxWidth(165);
-            TableColumn hI= tbl_asignaturas.getColumn(titulos[2]);
-            hI.setMaxWidth(125);            
-            TableColumn hF= tbl_asignaturas.getColumn(titulos[3]);
-           hF.setMaxWidth(165);
-           TableColumn idP= tbl_asignaturas.getColumn(titulos[4]);
-           idP.setMaxWidth(165);
-            TableColumn nomAu= tbl_asignaturas.getColumn(titulos[5]);
-           nomAu.setMaxWidth(165);
-            TableColumn UV= tbl_asignaturas.getColumn(titulos[6]);
-           UV.setMaxWidth(165);
-            TableColumn idM= tbl_asignaturas.getColumn(titulos[7]);
-           idM.setMaxWidth(165);
-        }
-        catch (Exception e) {
-           
-            System.err.println(e);
-        }
-           }*/
+   
      
          public void centrar_datos() {
  
