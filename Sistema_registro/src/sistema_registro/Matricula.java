@@ -5,17 +5,34 @@
  */
 package sistema_registro;
 
+import java.sql.Connection;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import java.sql.ResultSet;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableColumn;
+
 /**
  *
  * @author Carlos
  */
 public class Matricula extends javax.swing.JFrame {
 
+    Connection con = null;
+    String titulos [] = {"Codigo de Asignatura", "Nombre de la Asignatura", "Seccion", "Hora Inicial", "Hora Final","Periodo", "Unidades Valorativas",  "Matrícula"};
+   
+    DefaultTableModel modelo =  new DefaultTableModel();
+    Statement stmt = null;
+    String var, var2;
+    
     /**
      * Creates new form Matricula
      */
     public Matricula() {
         initComponents();
+        
     }
 
     /**
@@ -83,6 +100,11 @@ public class Matricula extends javax.swing.JFrame {
 
         lbl_cancelarAsignatura.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_cancelarAsignatura.setText("Cancelar asignatura");
+        lbl_cancelarAsignatura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lbl_cancelarAsignaturaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -142,6 +164,53 @@ public class Matricula extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void lbl_cancelarAsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lbl_cancelarAsignaturaActionPerformed
+        
+        String Cuenta = txt_numeroCuenta.getText() + " " ;
+          
+           if ((txt_numeroCuenta.getText().equals(""))  ) {
+
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la matrícula que desea eliminar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+           
+        }
+          else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar la matrícula correspondiente al número de cuenta:" + Cuenta + "", "Confirmación de eliminación",
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
+        ) == JOptionPane.YES_OPTION) {
+
+            try {
+                Statement st2 = con.createStatement();
+                String sql = "Delete Matricula"
+                + "where numero_cuenta_alumno = (Select numero_cuenta_alumno from Matricula where numero_cuenta_alumno = '"+txt_numeroCuenta.getText()+"')";
+
+                int rs2 = st2.executeUpdate(sql);
+                System.out.println(rs2);
+                if(rs2 > 0){
+                    JOptionPane.showMessageDialog(null, "Se ha borrado la matrícula seleccionada " + Cuenta + " correctamente");
+
+                }else {
+                    JOptionPane.showMessageDialog(null, "¡Error al eliminar la matrícula!");
+
+                }
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+
+        }
+        actualizarDatos();
+        LimpiarCajas();
+    }                                             
+
+    private void btn_buscarMouseClicked(java.awt.event.MouseEvent evt) {                                        
+        rellenar();
+        this.jScrollPane1.setEnabled(true);
+        this.tbl_asignaturas.setEnabled(true);
+        
+        
+        
+        
+    }//GEN-LAST:event_lbl_cancelarAsignaturaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -189,4 +258,6 @@ public class Matricula extends javax.swing.JFrame {
     private javax.swing.JTable tbl_asignaturas;
     private javax.swing.JTextField txt_numeroCuenta;
     // End of variables declaration//GEN-END:variables
+
+    
 }
