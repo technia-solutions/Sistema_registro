@@ -310,7 +310,7 @@ public class Notas extends javax.swing.JFrame {
             }
         });
         jPanel2.add(cbo_reposicion);
-        cbo_reposicion.setBounds(380, 40, 171, 23);
+        cbo_reposicion.setBounds(380, 40, 260, 25);
 
         btn_generarReporte.setBackground(new java.awt.Color(235, 250, 251));
         btn_generarReporte.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -484,17 +484,17 @@ public class Notas extends javax.swing.JFrame {
         
   
            if(calificacion1>100){
-               JOptionPane.showMessageDialog(null, "La calificacion: '" + nota1 + "' es incorrecta porfavor revisar que sea un valor menor a 100.", "Calificación Incorrecta", JOptionPane.ERROR_MESSAGE);
+               JOptionPane.showMessageDialog(null, "La calificacion: '" + nota1 + "' es incorrecta porfavor revisar que sea un valor menor o igual a 100.", "Calificación Incorrecta", JOptionPane.ERROR_MESSAGE);
                     txt_notaParcialI.setText(null);
              return;  
            }
             if(calificacion2>100){
-               JOptionPane.showMessageDialog(null, "La calificacion: '" + nota2 + "' es incorrecta porfavor revisar que sea un valor menor a 100.", "Calificación Incorrecta", JOptionPane.ERROR_MESSAGE);
+               JOptionPane.showMessageDialog(null, "La calificacion: '" + nota2 + "' es incorrecta porfavor revisar que sea un valor menor o igual a 100.", "Calificación Incorrecta", JOptionPane.ERROR_MESSAGE);
                   txt_notaParcialII.setText(null);
              return;  
            } 
             if(calificacion3>100){
-               JOptionPane.showMessageDialog(null, "La calificacion: '" + nota3 + "' es incorrecta porfavor revisar que sea un valor menor a 100.", "Calificación Incorrecta", JOptionPane.ERROR_MESSAGE);
+               JOptionPane.showMessageDialog(null, "La calificacion: '" + nota3 + "' es incorrecta porfavor revisar que sea un valor menor o igual a 100.", "Calificación Incorrecta", JOptionPane.ERROR_MESSAGE);
                     txt_notaParcialIII.setText(null);
              return;  
            }
@@ -537,9 +537,9 @@ public class Notas extends javax.swing.JFrame {
                                     "estado = ?\n" + 
                                   //  "reposicion = ?" +
                                     "where id_matricula = (select id_matricula from Matricula where numero_cuenta_alumno = '"+numeroDeCuenta+"' and id_seccion = '"+lbl_idmatricula.getText()+"')");
-                  ps.setString(1, txt_notaParcialI.getText());
-                  ps.setString(2, txt_notaParcialII.getText());
-                  ps.setString(3, txt_notaParcialIII.getText());
+                  ps.setString(1, nota1);
+                  ps.setString(2, nota2);
+                  ps.setString(3, nota3);
                   ps.setString(4,promedio);
                   ps.setString(5,estado);
                  // ps.setString(6,reposicion);
@@ -605,6 +605,8 @@ public class Notas extends javax.swing.JFrame {
                 Tabla_asignatura.setShowGrid(true);
                 Tabla_asignatura.setShowHorizontalLines(true);
                 this.Tabla_asignatura.setEnabled(true);
+                this.btn_generarReporte.setEnabled(true);
+                
             }
          }catch(SQLException ex){
              System.out.println(ex.toString());
@@ -640,7 +642,7 @@ public class Notas extends javax.swing.JFrame {
         return;
         }
             
-        if(txt_notaParcialI.getText().length() >=5){
+        if(txt_notaParcialI.getText().length() >=6){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
@@ -664,7 +666,7 @@ public class Notas extends javax.swing.JFrame {
             }
    
             
-        if(txt_notaParcialII.getText().length() >=5){
+        if(txt_notaParcialII.getText().length() >=6){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
@@ -687,7 +689,7 @@ public class Notas extends javax.swing.JFrame {
             }
    
             
-        if(txt_notaParcialIII.getText().length() >=5){
+        if(txt_notaParcialIII.getText().length() >=6){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
@@ -709,10 +711,11 @@ public class Notas extends javax.swing.JFrame {
             String codigo = Tabla_asignatura.getValueAt(Fila, 0).toString();
 
             ps=con.prepareStatement("select n.nota1,nota2,nota3,id_seccion from notas as n join Matricula as m on n.id_matricula = m.id_matricula\n" +
-                                    "where n.id_matricula in(select m.id_matricula from Matricula as m where m.id_seccion in(Select S.id_seccion from Secciones as S where s.cod_asignaturas in\n" +
-                                    "(select A.cod_asignaturas from Asignaturas as A where A.nombre_asignaturas=?)))");
+                                    "where m.numero_cuenta_alumno = ? and n.id_matricula in(select m.id_matricula from Matricula as m where m.id_seccion in(Select S.id_seccion from Secciones as S where s.cod_asignaturas in\n" +
+                                    "(select A.cod_asignaturas from Asignaturas as A where A.nombre_asignaturas= ?)))");
             
-            ps.setString(1, codigo);
+            ps.setString(1, txt_numeroCuenta.getText());
+            ps.setString(2, codigo);
             rs= ps.executeQuery();
            
             while(rs.next()){
@@ -725,7 +728,6 @@ public class Notas extends javax.swing.JFrame {
             }
         }catch(SQLException ex){
             System.out.println(ex.toString());
-
         }
 
     }//GEN-LAST:event_Tabla_asignaturaMouseClicked
@@ -766,21 +768,15 @@ public class Notas extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_numeroCuentaKeyTyped
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-       try {
-            String sql2 = "Select nombres_empleado + ' ' + apellido_empleado from Empleados where id_empleado = (select id_empleado from Acceso where nombre_usuario = '"+lbl_usuario.getText()+"')";
-                Statement st2 = con.createStatement();
-                ResultSet rs2 = st2.executeQuery(sql2);
-                if(rs2.next()){
-                Principal principal = new Principal(lbl_usuario.getText(),rs2.getString(1));
-                principal.setVisible(true); 
-                this.dispose();
-                }
-                else{
-                    JOptionPane.showMessageDialog(null, "Error");
-                }
-        } catch (SQLException ex) {
-            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
-        }
+      this.dispose();
+        Principal pa = null;
+         try {
+             pa = new Principal();
+         } catch (SQLException ex) {
+             Logger.getLogger(Notas.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        pa.setVisible(true);
+        
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void btn_generarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_generarReporteActionPerformed

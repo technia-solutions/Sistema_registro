@@ -526,14 +526,11 @@
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="lbl_Periodo" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Component id="cbo_IdPeriodo" min="-2" pref="34" max="-2" attributes="0"/>
-                          <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="cbo_IdPeriodo" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="lbl_Periodo" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="lbl_aula" min="-2" max="-2" attributes="0"/>
                       <Component id="cbo_IdAula" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
@@ -593,6 +590,7 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_CantidadMActionPerformed"/>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_CantidadMKeyTyped"/>
           </Events>
         </Component>
@@ -638,7 +636,7 @@
         <Component class="javax.swing.JFormattedTextField" name="txt_HoraInicial">
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-              <Format subtype="1" type="2"/>
+              <Format format="HH:mm" subtype="-1" type="2"/>
             </Property>
           </Properties>
           <Events>
@@ -648,7 +646,7 @@
         <Component class="javax.swing.JFormattedTextField" name="txt_HoraFinal">
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-              <Format subtype="1" type="2"/>
+              <Format format="HH:mm" subtype="-1" type="2"/>
             </Property>
           </Properties>
           <Events>
