@@ -195,6 +195,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Cancelar matricula"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_cancelarMatriculaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btn_generarReporte">
       <Properties>
@@ -211,6 +214,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Buscar clases"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_buscarClasesActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lbl_titulo">
       <Properties>

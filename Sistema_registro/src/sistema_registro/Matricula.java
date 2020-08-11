@@ -88,12 +88,22 @@ public class Matricula extends javax.swing.JFrame {
 
         btn_cancelarMatricula.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_cancelarMatricula.setText("Cancelar matricula");
+        btn_cancelarMatricula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelarMatriculaActionPerformed(evt);
+            }
+        });
 
         btn_generarReporte.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_generarReporte.setText("Generar reporte matricula");
 
         btn_buscarClases.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_buscarClases.setText("Buscar clases");
+        btn_buscarClases.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscarClasesActionPerformed(evt);
+            }
+        });
 
         lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lbl_titulo.setText("Matricula");
@@ -166,6 +176,27 @@ public class Matricula extends javax.swing.JFrame {
 
     private void lbl_cancelarAsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lbl_cancelarAsignaturaActionPerformed
         
+        
+    }                                             
+
+    private void btn_buscarMouseClicked(java.awt.event.MouseEvent evt) {                                        
+        rellenar();
+        this.jScrollPane1.setEnabled(true);
+        this.tbl_asignaturas.setEnabled(true);
+        
+        
+        
+        
+    }//GEN-LAST:event_lbl_cancelarAsignaturaActionPerformed
+
+    private void btn_buscarClasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarClasesActionPerformed
+        
+        
+        
+    }//GEN-LAST:event_btn_buscarClasesActionPerformed
+
+    private void btn_cancelarMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarMatriculaActionPerformed
+        
         String Cuenta = txt_numeroCuenta.getText() + " " ;
           
            if ((txt_numeroCuenta.getText().equals(""))  ) {
@@ -197,19 +228,10 @@ public class Matricula extends javax.swing.JFrame {
             }
 
         }
-        actualizarDatos();
+        //actualizarDatos();
         LimpiarCajas();
-    }                                             
-
-    private void btn_buscarMouseClicked(java.awt.event.MouseEvent evt) {                                        
-        rellenar();
-        this.jScrollPane1.setEnabled(true);
-        this.tbl_asignaturas.setEnabled(true);
         
-        
-        
-        
-    }//GEN-LAST:event_lbl_cancelarAsignaturaActionPerformed
+    }//GEN-LAST:event_btn_cancelarMatriculaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,7 +281,7 @@ public class Matricula extends javax.swing.JFrame {
     private javax.swing.JTextField txt_numeroCuenta;
     // End of variables declaration//GEN-END:variables
 
-     public void actualizarDatos(){
+   /*  public void actualizarDatos(){
         try {
                
                String sql = "SELECT * FROM Matricula";
@@ -306,7 +328,7 @@ public class Matricula extends javax.swing.JFrame {
            
             System.err.println(e);
         }
-           }
+           }*/
      
          public void centrar_datos() {
  
