@@ -36,7 +36,7 @@ import sistema_registro.SQL.ConectorSQL;
 public class Secciones extends javax.swing.JFrame {
 
     Connection con = null;
-     String titulos [] = {"Id Seccion","Nombre de la Seccion", " Codigo de la Seccion ", "Cantidad Alumnos","Hora Inicial", "Hora Final", "Aula", "Periodo","Dias de la Asignatura"};
+     String titulos [] = {"Id Seccion","Nombre de la Seccion", " Codigo de la Seccion ", "Cantidad Máxima de Alumnos","Hora Inicial", "Hora Final", "Aula", "Periodo","Dias de la Asignatura"};
    
     DefaultTableModel modelo =  new DefaultTableModel();
     Statement stmt = null;
@@ -359,6 +359,11 @@ public class Secciones extends javax.swing.JFrame {
         lbl_CantidadM.setText("Cantidad máxima:");
 
         txt_CantidadM.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_CantidadM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_CantidadMActionPerformed(evt);
+            }
+        });
         txt_CantidadM.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_CantidadMKeyTyped(evt);
@@ -381,14 +386,14 @@ public class Secciones extends javax.swing.JFrame {
         lbl_horaFinal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_horaFinal.setText("Hora final:");
 
-        txt_HoraInicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        txt_HoraInicial.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("HH:mm"))));
         txt_HoraInicial.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_HoraInicialKeyTyped(evt);
             }
         });
 
-        txt_HoraFinal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        txt_HoraFinal.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("HH:mm"))));
         txt_HoraFinal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_HoraFinalActionPerformed(evt);
@@ -475,12 +480,10 @@ public class Secciones extends javax.swing.JFrame {
                             .addGap(9, 9, 9)
                             .addComponent(lbl_horaFinal))))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lbl_Periodo)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(cbo_IdPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)))
-                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbo_IdPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_Periodo))
+                .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_aula)
                     .addComponent(cbo_IdAula, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -599,7 +602,7 @@ public class Secciones extends javax.swing.JFrame {
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         
          String Seccion = txt_NombreSeccion.getText();
-          
+           String id_seccion = cbo_Asignaturas.getSelectedItem().toString().substring(0, 6) + "-" +  txt_NombreSeccion.getText();
            if ((txt_NombreSeccion.getText().equals("")) ||  (txt_HoraInicial.getText().equals(""))   || (txt_HoraFinal.getText().equals(""))  ) {
           
             javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la sección que desea eliminar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
@@ -612,7 +615,7 @@ public class Secciones extends javax.swing.JFrame {
             try {
                 Statement st2 = con.createStatement();
                 String sql = "Delete Secciones "
-                + "where Nombre_seccion = (Select Nombre_seccion from Secciones where Nombre_seccion = '"+txt_NombreSeccion.getText()+"')";
+                + "where id_seccion = '"+id_seccion+"' ";
 
                 int rs2 = st2.executeUpdate(sql);
                 System.out.println(rs2);
@@ -670,7 +673,33 @@ public class Secciones extends javax.swing.JFrame {
       // makeLabel(Mensaje);
         cadena9 = txt_CantidadM.getText();
         
+        int cantidad=Integer.parseInt(cadena9);
         
+         if(chb_Lunes.isSelected()){
+           Mensaje +=  "Lu";
+
+        }
+        if(chb_Martes.isSelected()){
+            Mensaje +=  "Ma";
+        }
+        if(chb_Miercoles.isSelected()){
+            Mensaje += "Mi";
+        }
+        if(chb_Jueves.isSelected()){
+            Mensaje +=  "Ju";
+        }
+        if(chb_Viernes.isSelected()){
+            Mensaje +=  "Vi";
+        }
+        
+        if(chb_Sabado.isSelected()){
+            Mensaje +=  "Sa";
+        }
+        if(chb_Domingo.isSelected()){
+            Mensaje +=  "Do";
+        }
+       
+        lbl_MensajeDias.setText(Mensaje);
       
         
         /*if((txt_IdSeccion.getText().equals(""))){
@@ -762,13 +791,13 @@ public class Secciones extends javax.swing.JFrame {
             ps.setString(1, id_seccion);
             ps.setString(2, txt_NombreSeccion.getText());
             ps.setString(3,codigo_asignatura);
-            ps.setString(4, "0");
+            ps.setString(4,"0");
             ps.setString(5, txt_HoraInicial.getText());
             ps.setString(6, txt_HoraFinal.getText());
             ps.setString(7, id_periodo);
             ps.setString(8,id_aula);
             ps.setString(9, Mensaje);
-            ps.setString(10, txt_CantidadM.getText());
+            ps.setString(10, cadena9);
             
             
             
@@ -946,7 +975,7 @@ public class Secciones extends javax.swing.JFrame {
                  || evt.getKeyChar() == 26 || evt.getKeyChar() == 24 || evt.getKeyChar() == 58) {
         return;
         }
-        if(txt_CantidadM.getText().length() >=4){
+        if(txt_HoraInicial.getText().length() >= 5){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
@@ -965,7 +994,7 @@ public class Secciones extends javax.swing.JFrame {
                  || evt.getKeyChar() == 26 || evt.getKeyChar() == 24 || evt.getKeyChar() == 58) {
         return;
         }
-        if(txt_CantidadM.getText().length() >=4){
+        if(txt_HoraFinal.getText().length() >=5){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
@@ -980,6 +1009,10 @@ public class Secciones extends javax.swing.JFrame {
     private void txt_NombreSeccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NombreSeccionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_NombreSeccionActionPerformed
+
+    private void txt_CantidadMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_CantidadMActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_CantidadMActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1199,6 +1232,7 @@ public void actualizarDatos(){
         cbo_IdPeriodo.setSelectedIndex(0);
         cbo_IdAula.setSelectedIndex(0);
         txt_CantidadM.setText(null);
+        lbl_MensajeDias.setText(null);
        
     }
      
@@ -1206,13 +1240,39 @@ public void actualizarDatos(){
       int i = Tabla_Seccion.getSelectedRow();
      
         txt_NombreSeccion.setText(Tabla_Seccion.getValueAt(i, 1).toString());
+        String codAsignatura = Tabla_Seccion.getValueAt(i, 2).toString();
         cbo_Asignaturas.setSelectedItem(Tabla_Seccion.getValueAt(i, 2).toString());
-        txt_HoraInicial.setText(Tabla_Seccion.getValueAt(i, 4).toString());
-        txt_HoraFinal.setText(Tabla_Seccion.getValueAt(i, 5).toString());
-        cbo_IdPeriodo.setSelectedItem(Tabla_Seccion.getValueAt(i, 6).toString());
-        cbo_IdAula.setSelectedItem(Tabla_Seccion.getValueAt(i, 7).toString());
+        txt_CantidadM.setText(Tabla_Seccion.getValueAt(i, 3).toString());
+        txt_HoraInicial.setText(Tabla_Seccion.getValueAt(i, 4).toString().substring(0, 5));
+        txt_HoraFinal.setText(Tabla_Seccion.getValueAt(i, 5).toString().substring(0,5));
+        cbo_IdPeriodo.setSelectedItem(Tabla_Seccion.getValueAt(i, 7).toString());
+        cbo_IdAula.setSelectedItem(Tabla_Seccion.getValueAt(i, 6).toString());
         //txt_HoraFinal.setText(Tabla_Seccion.getValueAt(i, 5).toString());
-        txt_CantidadM.setText(Tabla_Seccion.getValueAt(i, 9).toString());       
+        
+        String dias = "";
+        dias =Tabla_Seccion.getValueAt(i,8).toString();
+        
+        if(dias.contains("Lu")){
+            chb_Lunes.setSelected(true);
+        }
+        if(dias.contains("Ma")){
+            chb_Martes.setSelected(true);
+        }
+        if(dias.contains("Mi")){
+            chb_Miercoles.setSelected(true);
+        }
+        if(dias.contains("Ju")){
+            chb_Jueves.setSelected(true);
+        }
+        if(dias.contains("Vi")){
+            chb_Viernes.setSelected(true);
+        }
+        if(dias.contains("Sa")){
+            chb_Sabado.setSelected(true);
+        }
+        if(dias.contains("Do")){
+            chb_Domingo.setSelected(true);
+        }
     }
      
      /*private boolean validarDias(String Lu, String Ma, String Mi, String Ju, String Vi, String Sa, String Do){
