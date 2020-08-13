@@ -237,11 +237,6 @@ public class Secciones extends javax.swing.JFrame {
         });
 
         lbl_MensajeDias.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        lbl_MensajeDias.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                lbl_MensajeDiasKeyTyped(evt);
-            }
-        });
 
         btn_Aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/check.png"))); // NOI18N
         btn_Aceptar.setText("Aceptar");
@@ -416,14 +411,14 @@ public class Secciones extends javax.swing.JFrame {
         lbl_aula.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_aula.setText("Aula: ");
 
-        cbo_IdPeriodo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un periodo:", "II" }));
+        cbo_IdPeriodo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un periodo:" }));
         cbo_IdPeriodo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbo_IdPeriodoActionPerformed(evt);
             }
         });
 
-        cbo_IdAula.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un aula:", "A101" }));
+        cbo_IdAula.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un aula:" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -673,7 +668,9 @@ public class Secciones extends javax.swing.JFrame {
         cadena5 = txt_HoraFinal.getText();
         String id_periodo= cbo_IdPeriodo.getSelectedItem().toString().substring(5,6);
         String id_aula= cbo_IdAula.getSelectedItem().toString().substring(0,4);
-  
+  //   Cadena8 = txt_MensajeDias.getText();
+   //    txt_MensajeDias.setText(Mensaje);
+      // makeLabel(Mensaje);
         cadena9 = txt_CantidadM.getText();
         
         int cantidad=Integer.parseInt(cadena9);
@@ -702,8 +699,8 @@ public class Secciones extends javax.swing.JFrame {
             Mensaje +=  "Do";
         }
        
-       // lbl_MensajeDias.setText(Mensaje);
-      lbl_MensajeDias.getText();
+        lbl_MensajeDias.setText(Mensaje);
+      
         
         /*if((txt_IdSeccion.getText().equals(""))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id de la sección.","Id sección requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
@@ -1017,10 +1014,6 @@ public class Secciones extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_CantidadMActionPerformed
 
-    private void lbl_MensajeDiasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lbl_MensajeDiasKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lbl_MensajeDiasKeyTyped
-
     /**
      * @param args the command line arguments
      */
@@ -1218,7 +1211,6 @@ public void actualizarDatos(){
                                cbo_IdPeriodo.setSelectedItem((rs2.getString("id_periodo")+ " - " + rs2.getString("descripcion")));
                                cbo_Asignaturas.setSelectedItem((rs2.getString("id_aula")+ " - " + rs2.getString("nombre_aula")));
                                txt_CantidadM.setText(rs2.getString("cantidad_maxima"));
-                               
                             }
                         
 
@@ -1261,7 +1253,7 @@ public void actualizarDatos(){
         dias =Tabla_Seccion.getValueAt(i,8).toString();
         
         if(dias.contains("Lu")){
-            chb_Lunes.setSelected(false);
+            chb_Lunes.setSelected(true);
         }
         if(dias.contains("Ma")){
             chb_Martes.setSelected(true);
@@ -1283,7 +1275,18 @@ public void actualizarDatos(){
         }
     }
      
- 
+     /*private boolean validarDias(String Lu, String Ma, String Mi, String Ju, String Vi, String Sa, String Do){
+        if(Lu.equals("Lu") || Lu.equals("Lu")){
+            return true;
+        }
+       
+        if(!Lu.equals(Ma)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }*/
  
  
 }
