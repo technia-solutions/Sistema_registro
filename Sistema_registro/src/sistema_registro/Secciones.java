@@ -699,7 +699,8 @@ public class Secciones extends javax.swing.JFrame {
             Mensaje +=  "Do";
         }
        
-        lbl_MensajeDias.setText(Mensaje);
+      //  lbl_MensajeDias.setText(Mensaje);
+        lbl_MensajeDias.getText();
       
         
         /*if((txt_IdSeccion.getText().equals(""))){
@@ -1253,7 +1254,7 @@ public void actualizarDatos(){
         dias =Tabla_Seccion.getValueAt(i,8).toString();
         
         if(dias.contains("Lu")){
-            chb_Lunes.setSelected(true);
+            chb_Lunes.setSelected(false);
         }
         if(dias.contains("Ma")){
             chb_Martes.setSelected(true);
