@@ -383,6 +383,9 @@
               </Border>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="lbl_MensajeDiasKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_Aceptar">
           <Properties>
@@ -673,8 +676,9 @@
         <Component class="javax.swing.JComboBox" name="cbo_IdPeriodo">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="1">
+              <StringArray count="2">
                 <StringItem index="0" value="Seleccione un periodo:"/>
+                <StringItem index="1" value="II"/>
               </StringArray>
             </Property>
           </Properties>
@@ -688,8 +692,9 @@
         <Component class="javax.swing.JComboBox" name="cbo_IdAula">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="1">
+              <StringArray count="2">
                 <StringItem index="0" value="Seleccione un aula:"/>
+                <StringItem index="1" value="A101"/>
               </StringArray>
             </Property>
           </Properties>
