@@ -14,13 +14,24 @@ import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import sistema_registro.SQL.ConectorSQL;
+
 
 /**
  *
@@ -43,7 +54,7 @@ public class Matricula extends javax.swing.JFrame {
         this.con = ConectorSQL.obtenerConexion();
          initComponents();
          desactivar();
-        
+         obtenerPeriodo();
         
     }
 
@@ -66,6 +77,7 @@ public class Matricula extends javax.swing.JFrame {
         btn_buscarClases = new javax.swing.JButton();
         lbl_titulo = new javax.swing.JLabel();
         lbl_cancelarAsignatura = new javax.swing.JButton();
+        lbl_periodo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -140,6 +152,11 @@ public class Matricula extends javax.swing.JFrame {
 
         btn_generarReporte.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_generarReporte.setText("Generar reporte matricula");
+        btn_generarReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_generarReporteActionPerformed(evt);
+            }
+        });
 
         btn_buscarClases.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_buscarClases.setText("Buscar clases");
@@ -159,6 +176,8 @@ public class Matricula extends javax.swing.JFrame {
                 lbl_cancelarAsignaturaActionPerformed(evt);
             }
         });
+
+        lbl_periodo.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -191,11 +210,17 @@ public class Matricula extends javax.swing.JFrame {
                         .addGap(0, 87, Short.MAX_VALUE))
                     .addComponent(jScrollPane1))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_periodo)
+                .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(68, 68, 68)
+                .addContainerGap()
+                .addComponent(lbl_periodo)
+                .addGap(43, 43, 43)
                 .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -231,6 +256,26 @@ public class Matricula extends javax.swing.JFrame {
         
     }//GEN-LAST:event_lbl_cancelarAsignaturaActionPerformed
 
+     private void obtenerPeriodo() throws SQLException{
+        Statement st = con.createStatement();
+        Calendar f;
+       
+       f=Calendar.getInstance();
+       
+       int d=f.get(Calendar.DATE), mes=1+(f.get(Calendar.MONTH)), año=f.get(Calendar.YEAR);
+       String fecha = d+"-"+mes+"-"+año;
+        String sql = "select nombre_periodo_historico from Periodo_historico\n" +
+        "where fecha_inicial < '"+fecha+"' and fecha_final > '"+fecha+"'";
+        ResultSet rs2 = st.executeQuery(sql);
+        if(rs2.next()){
+            lbl_periodo.setText(rs2.getString(1));
+            lbl_periodo.setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Error");
+        }
+    }
+
      private boolean existeNumeroCuenta() {
         try {
             Statement st = con.createStatement();
@@ -251,7 +296,39 @@ public class Matricula extends javax.swing.JFrame {
         return false;
     }
     
-     
+    private boolean validarRequisito1(String codigo){      
+     try {
+         Statement st = con.createStatement();
+         String sql = "select requisito1 from Asignaturas\n" +
+                      "where cod_asignaturas = '"+codigo+"'";
+         ResultSet rs1 = st.executeQuery(sql);
+         if(rs1.next()){
+             if(!rs1.getString("requisito1").equals("Sin r")){
+                 String requisito = rs1.getString("requisito1");
+                 String consulta = "select * from notas as n join Matricula as m on m.id_matricula = n.id_matricula\n" +
+                                "where numero_cuenta = '"+txt_numeroCuenta.getText()+"' and id_seccion like '"+requisito+"'";
+               Statement st1 = con.createStatement();  
+                ResultSet rs2 = st1.executeQuery(consulta);
+                if(rs2.next()){
+                    if(rs2.getString("estado").equals("APB")){
+                        return true;
+                    }
+                    if(rs2.getString("estado").equals("RPB") || rs2.getString("estado").equals("S/C")){
+                        return false;
+                    }
+                }
+             }
+             else{
+                 return true;
+             }
+         }
+                
+     } catch (SQLException ex) {
+         Logger.getLogger(Matricula.class.getName()).log(Level.SEVERE, null, ex);
+     }
+       return true;    
+    }
+
      
   
      
@@ -612,6 +689,24 @@ public class Matricula extends javax.swing.JFrame {
         this.btn_matricularAsignatura.setEnabled(true);
     }//GEN-LAST:event_tbl_asignaturasMouseClicked
 
+    private void btn_generarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_generarReporteActionPerformed
+      try {
+            JasperReport reporte = null;
+            String path = "src\\reportes\\report2.jasper";
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("periodoHistorico",lbl_periodo.getText());
+            parameters.put("numeroCuenta",txt_numeroCuenta.getText());
+            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+            JasperPrint jprint;
+            jprint=JasperFillManager.fillReport(reporte,parameters,con);
+            JasperViewer view = new JasperViewer(jprint,false);
+            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            view.setVisible(true);      
+       } catch (JRException ex) {
+           Logger.getLogger(Matricula.class.getName()).log(Level.SEVERE, null, ex);
+       }
+    }//GEN-LAST:event_btn_generarReporteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -659,6 +754,7 @@ public class Matricula extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton lbl_cancelarAsignatura;
     private javax.swing.JLabel lbl_numeroCuenta;
+    private javax.swing.JLabel lbl_periodo;
     private javax.swing.JLabel lbl_titulo;
     private javax.swing.JTable tbl_asignaturas;
     private javax.swing.JTextField txt_numeroCuenta;

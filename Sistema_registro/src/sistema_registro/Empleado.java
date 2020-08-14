@@ -1466,7 +1466,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
     }//GEN-LAST:event_txt_IdentidadActionPerformed
 
     private void btn_Limpiarbtn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Limpiarbtn_limpiarActionPerformed
- 
+
         limpiar();
         this.btn_guardar.setEnabled(true);
         this.btn_Actualizar.setEnabled(false);

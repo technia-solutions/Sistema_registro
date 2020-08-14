@@ -104,6 +104,7 @@ join Carrera as c on c.id_carrera = a.id_carrera join Asignaturas as asi on asi.
 	</subDataset>
 	<subDataset name="Table Dataset 2" uuid="b10b7cf8-2cf6-44af-92fe-3e5c2f41c6bd"/>
 	<subDataset name="Clases" uuid="f1c689fc-a7b6-41fb-962d-a2c129c87d6d">
+		<parameter name="numeroCuenta" class="java.lang.String"/>
 		<queryString language="SQL">
 			<![CDATA[Select * from secciones as s join matricula as m on s.id_seccion = m.id_seccion join Alumno as a on a.numero_cuenta_alumno = m.numero_cuenta_alumno 
 join Carrera as c on c.id_carrera = a.id_carrera join Asignaturas as asi on asi.cod_asignaturas = s.cod_asignaturas 
@@ -119,10 +120,12 @@ join notas as n on n.id_matricula = m.id_matricula join campus as ca on ca.id_ca
 		<field name="estado" class="java.lang.String"/>
 		<field name="nombre_periodo_historico" class="java.lang.String"/>
 	</subDataset>
+	<parameter name="numeroCuenta" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[Select * from secciones as s join matricula as m on s.id_seccion = m.id_seccion join Alumno as a on a.numero_cuenta_alumno = m.numero_cuenta_alumno 
 join Carrera as c on c.id_carrera = a.id_carrera join Asignaturas as asi on asi.cod_asignaturas = s.cod_asignaturas 
-join notas as n on n.id_matricula = m.id_matricula join campus as ca on ca.id_campus = a.id_campus join Periodo_historico as ph on ph.id_periodo = s.id_periodo]]>
+join notas as n on n.id_matricula = m.id_matricula join campus as ca on ca.id_campus = a.id_campus join Periodo_historico as ph on ph.id_periodo = s.id_periodo
+where a.numero_cuenta_alumno = $P{numeroCuenta}]]>
 	</queryString>
 	<field name="id_seccion" class="java.lang.String"/>
 	<field name="Nombre_seccion" class="java.lang.String"/>
@@ -133,6 +136,7 @@ join notas as n on n.id_matricula = m.id_matricula join campus as ca on ca.id_ca
 	<field name="id_periodo" class="java.lang.String"/>
 	<field name="id_aula" class="java.lang.String"/>
 	<field name="dias" class="java.lang.String"/>
+	<field name="cantidad_maxima" class="java.lang.String"/>
 	<field name="numero_cuenta_alumno" class="java.lang.String"/>
 	<field name="id_matricula" class="java.lang.Integer"/>
 	<field name="nombres_alumno" class="java.lang.String"/>
@@ -156,6 +160,7 @@ join notas as n on n.id_matricula = m.id_matricula join campus as ca on ca.id_ca
 	<field name="promedio" class="java.math.BigDecimal"/>
 	<field name="estado" class="java.lang.String"/>
 	<field name="id_notas" class="java.lang.Integer"/>
+	<field name="reposicion" class="java.lang.String"/>
 	<field name="nombre_campus" class="java.lang.String"/>
 	<field name="fecha_final" class="java.sql.Date"/>
 	<field name="fecha_inicial" class="java.sql.Date"/>
@@ -237,7 +242,10 @@ join notas as n on n.id_matricula = m.id_matricula join campus as ca on ca.id_ca
 			<componentElement>
 				<reportElement key="table 3" style="table 3" x="1" y="0" width="553" height="132" uuid="9977e579-ac38-48bf-8fdf-0574ab7d5a1d"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Clases" uuid="becd9155-cf1e-40a5-ac01-89a784e29c41">
+					<datasetRun subDataset="Clases" uuid="687e2504-2690-4437-a1e2-1ec5bc4c8e7e">
+						<datasetParameter name="numeroCuenta">
+							<datasetParameterExpression><![CDATA[$P{numeroCuenta}]]></datasetParameterExpression>
+						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
 					<jr:column width="47" uuid="91cdd19c-aed1-41da-8322-9ec6f02c19b2">

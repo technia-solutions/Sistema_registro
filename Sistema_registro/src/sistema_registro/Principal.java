@@ -409,7 +409,11 @@ public class Principal extends javax.swing.JFrame {
 
     private void btn_MatriculaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_MatriculaMouseClicked
          Matricula matricula = null;
-         matricula = new Matricula();
+        try {
+            matricula = new Matricula();
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         matricula.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_MatriculaMouseClicked
