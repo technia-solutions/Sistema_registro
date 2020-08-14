@@ -188,6 +188,11 @@ public class Matricula extends javax.swing.JFrame {
         jMenuPrincipal.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         jMenuPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio.png"))); // NOI18N
         jMenuPrincipal.setText("Menu Principal");
+        jMenuPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuPrincipalActionPerformed(evt);
+            }
+        });
         jMenu.add(jMenuPrincipal);
 
         jMenuBar1.add(jMenu);
@@ -740,6 +745,17 @@ public class Matricula extends javax.swing.JFrame {
            Logger.getLogger(Matricula.class.getName()).log(Level.SEVERE, null, ex);
        }
     }//GEN-LAST:event_btn_generarReporteActionPerformed
+
+    private void jMenuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPrincipalActionPerformed
+         Principal Pp = null;
+        try {
+            Pp = new Principal());
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Pp.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuPrincipalActionPerformed
 
     /**
      * @param args the command line arguments
