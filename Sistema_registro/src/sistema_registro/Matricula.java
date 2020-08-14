@@ -67,6 +67,7 @@ public class Matricula extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lbl_periodo = new javax.swing.JLabel();
         lbl_numeroCuenta = new javax.swing.JLabel();
         txt_numeroCuenta = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -77,12 +78,14 @@ public class Matricula extends javax.swing.JFrame {
         btn_buscarClases = new javax.swing.JButton();
         lbl_titulo = new javax.swing.JLabel();
         lbl_cancelarAsignatura = new javax.swing.JButton();
-        lbl_periodo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu = new javax.swing.JMenu();
         jMenuPrincipal = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lbl_periodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
+        lbl_periodo.setText("jLabel1");
 
         lbl_numeroCuenta.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_numeroCuenta.setText("Número de cuenta:");
@@ -180,8 +183,6 @@ public class Matricula extends javax.swing.JFrame {
             }
         });
 
-        lbl_periodo.setText("jLabel1");
-
         jMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
         jMenu.setText("Menu");
 
@@ -227,22 +228,20 @@ public class Matricula extends javax.swing.JFrame {
                                 .addComponent(txt_numeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(37, 37, 37)
                                 .addComponent(btn_buscarClases)))
-                        .addGap(0, 87, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane1))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl_periodo)
-                .addGap(24, 24, 24))
+                .addGap(242, 242, 242))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_periodo)
-                .addGap(43, 43, 43)
+                .addGap(79, 79, 79)
                 .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_numeroCuenta)
                     .addComponent(txt_numeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -255,7 +254,8 @@ public class Matricula extends javax.swing.JFrame {
                     .addComponent(lbl_cancelarAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_cancelarMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_generarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(84, 84, 84))
+                .addGap(64, 64, 64)
+                .addComponent(lbl_periodo))
         );
 
         pack();
@@ -646,6 +646,11 @@ public class Matricula extends javax.swing.JFrame {
         ) == JOptionPane.YES_OPTION) {
 
             try {
+                 Statement st3 = con.createStatement();
+                String sql2 = "Delete  Notas"
+                + "where numero_cuenta_alumno = (Select numero_cuenta_alumno from Notas where numero_cuenta_alumno = '"+txt_numeroCuenta.getText()+"'"
+                        + "|| id_periodo= '"+id_periodo+"'|| id_matricula '"+id_matricula+"')";
+                
                 Statement st2 = con.createStatement();
                 String sql = "Delete Matricula"
                 + "where numero_cuenta_alumno = (Select numero_cuenta_alumno from Matricula where numero_cuenta_alumno = '"+txt_numeroCuenta.getText()+"'"
@@ -749,7 +754,7 @@ public class Matricula extends javax.swing.JFrame {
     private void jMenuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPrincipalActionPerformed
          Principal Pp = null;
         try {
-            Pp = new Principal());
+            Pp = new Principal();
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
