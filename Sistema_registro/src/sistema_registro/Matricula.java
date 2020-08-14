@@ -67,8 +67,8 @@ public class Matricula extends javax.swing.JFrame {
         lbl_titulo = new javax.swing.JLabel();
         lbl_cancelarAsignatura = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu = new javax.swing.JMenu();
+        jMenuPrincipal = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -163,12 +163,20 @@ public class Matricula extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("File");
+        jMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
+        jMenu.setText("Menu");
 
-        jMenuItem1.setText("jMenuItem1");
-        jMenu1.add(jMenuItem1);
+        jMenuPrincipal.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio.png"))); // NOI18N
+        jMenuPrincipal.setText("Menu Principal");
+        jMenuPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuPrincipalActionPerformed(evt);
+            }
+        });
+        jMenu.add(jMenuPrincipal);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -209,7 +217,7 @@ public class Matricula extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(68, 68, 68)
                 .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_numeroCuenta)
                     .addComponent(txt_numeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -643,6 +651,37 @@ public class Matricula extends javax.swing.JFrame {
         this.btn_matricularAsignatura.setEnabled(true);
     }//GEN-LAST:event_tbl_asignaturasMouseClicked
 
+    private void jMenuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPrincipalActionPerformed
+       
+      /*  try {
+            String sql2 = "Select nombres_empleado + ' ' + apellido_empleado from Empleados where id_empleado = (select id_empleado from Acceso where nombre_usuario = '"+lbl_usuario.getText()+"')";
+                Statement st2 = con.createStatement();
+                ResultSet rs2 = st2.executeQuery(sql2);
+                if(rs2.next()){*/
+                /*Principal principal = new Principal (lbl_usuario.getText(),rs2.getString(1);
+                Principal principal = new Principal;
+                principal.setVisible(true); 
+                this.dispose();*/
+               /* }
+                else{
+                    JOptionPane.showMessageDialog(null, "Error");
+                }
+        } catch (SQLException ex) {
+            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+               
+                
+              Principal Pp = null;
+        try {
+            Pp = new Principal();
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Pp.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_jMenuPrincipalActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -687,9 +726,9 @@ public class Matricula extends javax.swing.JFrame {
     private javax.swing.JButton btn_cancelarMatricula;
     private javax.swing.JButton btn_generarReporte;
     private javax.swing.JButton btn_matricularAsignatura;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuPrincipal;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton lbl_cancelarAsignatura;
     private javax.swing.JLabel lbl_numeroCuenta;
