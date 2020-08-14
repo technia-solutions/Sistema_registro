@@ -55,6 +55,9 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         btn_buscar = new javax.swing.JButton();
         btn_CancelarAsig = new javax.swing.JButton();
         txt_NumC = new javax.swing.JTextField();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,6 +98,22 @@ public class CancelarAsignatura extends javax.swing.JFrame {
             }
         });
 
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_retroceder.png"))); // NOI18N
+        jMenu1.setText("Regresar");
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setText("Matricula");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -130,7 +149,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(55, 55, 55)
                 .addComponent(btn_CancelarAsig, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         pack();
@@ -145,8 +164,57 @@ public class CancelarAsignatura extends javax.swing.JFrame {
     }//GEN-LAST:event_Tabla_CancelarMouseClicked
 
     private void btn_CancelarAsigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CancelarAsigActionPerformed
-        CancelarA(var, var);
+        //CancelarA(var, var);
+         String numeroCuenta,id_matricula,id_seccion;
+        
+            numeroCuenta = "";
+            id_matricula = "";   
+            id_seccion = "";
+          
+        
+        try{
+          
+           
+             Statement st2 =con.createStatement();
+             String sql ="Delete  Matricula "
+                            + "where id_matricula =(Select id_matricula from Matricula where numero_cuenta_alumno='"+numeroCuenta+"' and id_seccion ='"+id_seccion+"')";
+              int rs2 = st2.executeUpdate(sql);
+          }catch ( Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage()); 
+            
+        }
+      try{
+          PreparedStatement ps;
+          ResultSet rs4;
+         Statement st=con.createStatement();
+         String sql ="Delete  Notas "
+                      + "where numero_cuenta='"+numeroCuenta+"'";
+                 
+                    int res=st.executeUpdate(sql);
+                  
+                  if(res > 0){ 
+                      JOptionPane.showMessageDialog(null, "Se ha cancelado la asignatura de el alumno: "+numeroCuenta+" correctamente."); 
+                  }else {
+                      JOptionPane.showMessageDialog(null, "¡Error al cancelar la asignatura!"); 
+                  }
+      } catch ( Exception e) {
+            System.out.println(e);
+        }
+         
     }//GEN-LAST:event_btn_CancelarAsigActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+           this.dispose();
+       Matricula mm = null;
+         try {
+             mm = new Matricula();
+         } catch (SQLException ex) {
+             Logger.getLogger(Matricula.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        mm.setVisible(true);
+        
+    
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,6 +260,9 @@ public class CancelarAsignatura extends javax.swing.JFrame {
     private javax.swing.JButton btn_CancelarAsig;
     private javax.swing.JButton btn_buscar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txt_NumC;
     // End of variables declaration//GEN-END:variables
@@ -259,53 +330,59 @@ public class CancelarAsignatura extends javax.swing.JFrame {
       
     }
      
-      public void CancelarA(String nombre, String codigo){
-         String numeroCuenta,id_periodo,estado,reposicion,nota1,nota2,nota3,promedio,id_matricula,id_seccion;
-         ResultSet rs=null;
-        numeroCuenta ="";
-        id_periodo="2";
-        estado="RPB";
-        reposicion="S/N";
-        nota1="0";
-        nota2="0";
-        nota3="0";
-        promedio="0";
-        id_matricula = "";   
-        id_seccion = "";
-        PreparedStatement pst = null;
-         PreparedStatement pst2 = null;
-          PreparedStatement pst3 = null;
+      /*public boolean CancelarA(String campus, String periodo){
+         String numeroCuenta = null,id_matricula,id_seccion;
         
+           // numeroCuenta ="";
+            id_matricula = "";   
+            id_seccion = "";
+      
         
         
         try{
-             Statement st2=con.createStatement();
-              String sql ="Delete Matricula "
-                      + "where numero_cuenta_alumno = (Select numero_cuenta_alumno from Matricula where numero_cuenta_alumno = '"+numeroCuenta+"' and id_seccion = '"+id_seccion+"' and id_matricula ='"+id_periodo+"')";
-               int rs2 = st2.executeUpdate(sql);
+            numeroCuenta = null;
+            
+             Statement stat = con.createStatement();
+            String sql2="select * from NumerosCuenta as NC\n" +
+           "where NC.campus= '"+campus+"' and NC.id_periodo='"+periodo+"'";
+            ResultSet rs3 = stat.executeQuery(sql2);
+                  if (rs3.next()) {
+                        numeroCuenta = rs3.getString("numero_cuenta_alumno");
+                        } 
+                  else{
+                      JOptionPane.showMessageDialog(null,"error");
+                  }
+           
+             Statement st2 =con.createStatement();
+             String sql ="Delete from Matricula "
+                            + "where id_matricula =(Select id_matricula from Matricula where numero_cuenta_alumno='"+numeroCuenta+"' and id_seccion ='"+id_seccion+"')";
+              int rs2 = st2.executeUpdate(sql);
           }catch ( Exception e) {
-           JOptionPane.showMessageDialog(null, e.getMessage()); 
+            JOptionPane.showMessageDialog(null, e.getMessage()); 
+            
         }
       try{
           PreparedStatement ps;
           ResultSet rs4;
          Statement st=con.createStatement();
-         String sql ="Delete Notas "
-                      + "where numero_cuenta = "+numeroCuenta+"";
-                  int res=st.executeUpdate(sql);
+         String sql ="Delete from Notas "
+                      + "where numero_cuenta='"+numeroCuenta+"'";
+                 
+                    int res=st.executeUpdate(sql);
                   
                   if(res > 0){ 
-                      JOptionPane.showMessageDialog(null, "Se ha borrado la información del empleado "+numeroCuenta+" correctamente"); 
+                      JOptionPane.showMessageDialog(null, "Se ha cancelado la asignatura de el alumno: "+numeroCuenta+" correctamente."); 
                   }else {
-                      JOptionPane.showMessageDialog(null, "¡Error al eliminar la información!"); 
+                      JOptionPane.showMessageDialog(null, "¡Error al cancelar la asignatura!"); 
                   }
       } catch ( Exception e) {
             System.out.println(e);
         }
+            return false;
          
          
       
-    }
+    }*/
       
        public boolean IsSelected(int row,int column, JTable tbl_asignaturas){
         return tbl_asignaturas.getValueAt(row, column) != null;
