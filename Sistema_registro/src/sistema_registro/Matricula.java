@@ -165,10 +165,11 @@ public class Matricula extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(563, 563, 563)
+                .addComponent(lbl_titulo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -187,12 +188,9 @@ public class Matricula extends javax.swing.JFrame {
                                 .addComponent(txt_numeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(37, 37, 37)
                                 .addComponent(btn_buscarClases)))
-                        .addGap(0, 87, Short.MAX_VALUE)))
+                        .addGap(0, 87, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(563, 563, 563)
-                .addComponent(lbl_titulo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,9 +202,9 @@ public class Matricula extends javax.swing.JFrame {
                     .addComponent(lbl_numeroCuenta)
                     .addComponent(txt_numeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_buscarClases))
-                .addGap(51, 51, 51)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
+                .addGap(45, 45, 45)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(122, 122, 122)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_matricularAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_cancelarAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -219,17 +217,17 @@ public class Matricula extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lbl_cancelarAsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lbl_cancelarAsignaturaActionPerformed
+     
+           this.dispose();
+         CancelarAsignatura aa = null;
+         try {
+             aa = new CancelarAsignatura();
+         } catch (SQLException ex) {
+             Logger.getLogger(CancelarAsignatura.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        aa.setVisible(true);
         
-        
-    }                                             
-
-    private void btn_buscarMouseClicked(java.awt.event.MouseEvent evt) {                                        
-        rellenar();
-        this.jScrollPane1.setEnabled(true);
-        this.tbl_asignaturas.setEnabled(true);
-        
-        
-        
+    
         
     }//GEN-LAST:event_lbl_cancelarAsignaturaActionPerformed
 
@@ -252,6 +250,9 @@ public class Matricula extends javax.swing.JFrame {
         }
         return false;
     }
+    
+     
+     
   
      
     
@@ -355,8 +356,8 @@ public class Matricula extends javax.swing.JFrame {
    
    
     private void btn_buscarClasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarClasesActionPerformed
- buscar();
- //.btn_matricularAsignatura.setEnabled(true);
+     buscar();
+    //.btn_matricularAsignatura.setEnabled(true);
  
       //  mostrarClientes();
      //   String idAlumno;
@@ -568,8 +569,7 @@ public class Matricula extends javax.swing.JFrame {
 
         }
         //actualizarDatos();
-        LimpiarCajas();
-        
+       
     }//GEN-LAST:event_btn_cancelarMatriculaActionPerformed
 
   
@@ -664,102 +664,51 @@ public class Matricula extends javax.swing.JFrame {
     private javax.swing.JTextField txt_numeroCuenta;
     // End of variables declaration//GEN-END:variables
 
-    /*  public void actualizarDatos(){
-        try {
-               
-               String sql = "SELECT * FROM Matricula";
-               stmt = con.createStatement();
-               ResultSet rs = stmt.executeQuery(sql);
-               modelo = new DefaultTableModel(null, titulos);
-               tbl_asignaturas.setModel(modelo);
-                 while(rs.next()) {
-                     
-                          String []datos= new String[8];
-                      datos[0] =rs.getString("cod_asignaturas");
-                      datos[1] =rs.getString("nombre_asignaturas");
-                      datos[2] =rs.getString("Hora_inicial");
-                      datos[3] =rs.getString("Hora_final");
-                      datos[4] =rs.getString("id_periodo");
-                      datos[5] =rs.getString("nombre_aula");
-                      datos[6] =rs.getString("UV");
-                      datos[7] =rs.getString("id_matricula");
-                      
-                      
-                      
-                     modelo.addRow(datos);
-                      
-                      centrar_datos();
-                 }
-            TableColumn codA = tbl_asignaturas.getColumn(titulos[0]);
-            codA.setMaxWidth(125);
-            TableColumn nomA= tbl_asignaturas.getColumn(titulos[1]);
-            nomA.setMaxWidth(165);
-            TableColumn hI= tbl_asignaturas.getColumn(titulos[2]);
-            hI.setMaxWidth(125);            
-            TableColumn hF= tbl_asignaturas.getColumn(titulos[3]);
-           hF.setMaxWidth(165);
-           TableColumn idP= tbl_asignaturas.getColumn(titulos[4]);
-           idP.setMaxWidth(165);
-            TableColumn nomAu= tbl_asignaturas.getColumn(titulos[5]);
-           nomAu.setMaxWidth(165);
-            TableColumn UV= tbl_asignaturas.getColumn(titulos[6]);
-           UV.setMaxWidth(165);
-            TableColumn idM= tbl_asignaturas.getColumn(titulos[7]);
-           idM.setMaxWidth(165);
-        }
-        catch (Exception e) {
-           
-            System.err.println(e);
-        }
-           }*/
     
-         public void centrar_datos() {
- 
-        DefaultTableCellRenderer modelocentrar = new DefaultTableCellRenderer();
-        modelocentrar.setHorizontalAlignment(SwingConstants.CENTER);
-         for (int i = 0; i <modelo.getRowCount(); i++) {
-              tbl_asignaturas.getColumnModel().getColumn(i).setCellRenderer(modelocentrar);
-             
-         }
-         }
-    
-  private void rellenar(){
-      try {
-                    String cap = "";
-                    ResultSet rs2 = null;
-                   var = JOptionPane.showInputDialog(this, "Ingrese el número de cuenta que desea consultar", "Consulta de matrícula", JOptionPane.QUESTION_MESSAGE);
-                    if (var == null) {
-                        JOptionPane.showMessageDialog(this, "La acción fue cancelada", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
-                    } else {
-                        if (var.equals("")) {
-                            JOptionPane.showMessageDialog(this, "Favor de ingresar el número de cuenta  \n que desea consultar", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
-                        } else {
-                            String sql = "SELECT * FROM Matricula where numero_cuenta_alumno='"+var+"'";
-                            stmt = con.createStatement();
-                            rs2 = stmt.executeQuery(sql);
-
-                            if (rs2.next()) {
-                                txt_numeroCuenta.setText(rs2.getString("numero_cuenta_alumno"));
-                               
-                               
-                                
-                            } else {
-                                JOptionPane.showMessageDialog(null, "¡No se encuentra los datos de la matrícula: "+var+" ! Por favor verifique sí, el número de cuenta lo escribio correctamente");
-                            }
-                        }
-
-                    }
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, e.getMessage());
-                }
-    
+   public void LimpiarCajas(){
+        txt_numeroCuenta.getText();
     }
+     
+   /* public void CancelarA(String nombre, String id) throws SQLException{
+        try{
+          /*  String id_seccion = null;
+            Statement stm = con.createStatement();
+            String sql3 = "select * from Secciones as S\n"+
+                     "where id_seccion ='"+nombre+"'";
+            ResultSet rs1 = stm.executeQuery(sql3);
+            if(rs1.next()){
+                id_seccion = rs1.getString("id_seccion");
+            }
+            else{
+               JOptionPane.showMessageDialog(null,"error");  
+            }
+            
+            String id_matricula = "";
+            
+            String sql4 = "select * from Matricula as M\n"+
+                        "where id_matricula ='"+id_matricula+"'";*/
   
-  private void LimpiarCajas() {
-       
-        txt_numeroCuenta.setText(null);
+              //Statement st2=con.createStatement();
+           
+            /// String sql ="Delete from Matricula where numero_cuenta_alumno = '"+txt_numeroCuenta.getText()+"' " +  "and id_seccion ='"+id_seccion+"' "+" and id_matricula ='"+id_matricula+"' ";
+            
+              // int rs4 = st2.executeUpdate(sql);
                
+               //if(rs4 > 0){ 
+                    //  JOptionPane.showMessageDialog(null, "Se ha cancelado la asignatura correctamente."); 
+                  //}else {
+                     //JOptionPane.showMessageDialog(null, "¡Error al cancelar la asignatura!"); 
+                 // }
+          ///}catch ( Exception e) {
+         //  JOptionPane.showMessageDialog(null, e.getMessage()); 
+        //}
+          //  return false;
+            
+    //}*/
+   
     }
 
     
-}
+
+    
+
