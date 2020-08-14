@@ -78,6 +78,9 @@ public class Matricula extends javax.swing.JFrame {
         lbl_titulo = new javax.swing.JLabel();
         lbl_cancelarAsignatura = new javax.swing.JButton();
         lbl_periodo = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -177,7 +180,14 @@ public class Matricula extends javax.swing.JFrame {
             }
         });
 
-        lbl_periodo.setText("jLabel1");
+        jMenu1.setText("File");
+
+        jMenuItem1.setText("jMenuItem1");
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -222,7 +232,7 @@ public class Matricula extends javax.swing.JFrame {
                 .addComponent(lbl_periodo)
                 .addGap(43, 43, 43)
                 .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_numeroCuenta)
                     .addComponent(txt_numeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -596,10 +606,10 @@ public class Matricula extends javax.swing.JFrame {
                   }
             if(i !=0){
                 
-            JOptionPane.showMessageDialog(null, "ESTO DE MATRICULASe ha guardado con éxito la nota del alumno: ");
+            JOptionPane.showMessageDialog(null, "ESTO DE MATRICULA Se ha guardado con éxito la nota del alumno: ");
                 return true;
             }else{
-                JOptionPane.showMessageDialog(null, "1Error al Guardar la calificación"); 
+                JOptionPane.showMessageDialog(null, "Error al Guardar la calificación"); 
             
                 return false;
             }
@@ -628,11 +638,30 @@ public class Matricula extends javax.swing.JFrame {
             try {
                 Statement st2 = con.createStatement();
                 String sql = "Delete Matricula"
-                + "where numero_cuenta_alumno = (Select numero_cuenta_alumno from Matricula where numero_cuenta_alumno = '"+txt_numeroCuenta.getText()+"')";
+                + "where numero_cuenta_alumno = (Select numero_cuenta_alumno from Matricula where numero_cuenta_alumno = '"+txt_numeroCuenta.getText()+"'"
+                        + "|| id_periodo=\"2\")";
 
                 int rs2 = st2.executeUpdate(sql);
                 System.out.println(rs2);
                 if(rs2 > 0){
+                    
+                    //Borado de tablas de notas: 
+                    
+                  /*   String sql3="Delete from Notas (numero_cuenta,id_periodo,estado,reposicion,nota1,nota2,nota3,promedio,id_matricula)\n" +
+                  "values (?,?,?,?,?,?,?,?,?)";  
+             pst2=con.prepareStatement(sql3);
+           
+            pst2.setString(1,numeroCuenta);
+            pst2.setString(2,id_periodo);
+            pst2.setString(3,estado);
+            pst2.setString(4,reposicion);
+            pst2.setString(5,nota1);
+            pst2.setString(6,nota2);
+            pst2.setString(7,nota3);
+            pst2.setString(8,promedio);
+            pst2.setString(9,id_matricula);
+             int res= pst2.executeUpdate();*/
+                    
                     JOptionPane.showMessageDialog(null, "Se ha borrado la matrícula seleccionada " + Cuenta + " correctamente");
 
                 }else {
@@ -751,6 +780,9 @@ public class Matricula extends javax.swing.JFrame {
     private javax.swing.JButton btn_cancelarMatricula;
     private javax.swing.JButton btn_generarReporte;
     private javax.swing.JButton btn_matricularAsignatura;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton lbl_cancelarAsignatura;
     private javax.swing.JLabel lbl_numeroCuenta;
