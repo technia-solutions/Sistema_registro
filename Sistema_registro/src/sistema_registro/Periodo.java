@@ -241,19 +241,26 @@ public class Periodo extends javax.swing.JFrame {
             return;
         }
         
+         
         
         if (existeidPeriodo()) {
             return;
         }
 
-        if (!validarLongitud(txt_idPeriodo, 3)) {
-            JOptionPane.showMessageDialog(null, "El id período ingresado es muy pequeño, el mínimo es de 4 caracteres", "Longitud de id período", JOptionPane.INFORMATION_MESSAGE);
+        if (!validarLongitud(txt_idPeriodo, 1)) {
+            JOptionPane.showMessageDialog(null, "El id período ingresado es muy pequeño, el mínimo es de 1caracteres", "Longitud de id período", JOptionPane.INFORMATION_MESSAGE);
             return;
 
         }
 
         if (!validarLongitud(txt_periodo,1 )) {
             JOptionPane.showMessageDialog(null, "El  período ingresado es muy pequeño, el mínimo es de 1 caracter", "Longitud del período", JOptionPane.INFORMATION_MESSAGE);
+            return;
+
+        }
+        
+         if (!validarLongitud(txt_descripcion,10 )) {
+            JOptionPane.showMessageDialog(null, "La descripcion del período ingresado es muy pequeño, el mínimo es de 10 caracter", "Longitud del período", JOptionPane.INFORMATION_MESSAGE);
             return;
 
         }
