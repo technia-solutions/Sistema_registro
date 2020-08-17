@@ -672,7 +672,11 @@ public class SeccionPrueba extends javax.swing.JFrame {
 
     private void jMenuItem_PeriodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_PeriodoActionPerformed
         Periodo pp = null;
-        pp = new Periodo();
+       try {
+           pp = new Periodo();
+       } catch (SQLException ex) {
+           Logger.getLogger(SeccionPrueba.class.getName()).log(Level.SEVERE, null, ex);
+       }
         pp.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem_PeriodoActionPerformed

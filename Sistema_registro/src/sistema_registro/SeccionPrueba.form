@@ -597,7 +597,6 @@
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
           <Format subtype="1" type="2"/>
         </Property>
-        <Property name="text" type="java.lang.String" value=""/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbl_aula">
@@ -613,7 +612,6 @@
         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
           <Format subtype="1" type="2"/>
         </Property>
-        <Property name="text" type="java.lang.String" value=""/>
       </Properties>
     </Component>
   </SubComponents>

@@ -73,7 +73,6 @@ public class Matricula extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_asignaturas = new javax.swing.JTable();
         btn_matricularAsignatura = new javax.swing.JButton();
-        btn_cancelarMatricula = new javax.swing.JButton();
         btn_generarReporte = new javax.swing.JButton();
         btn_buscarClases = new javax.swing.JButton();
         lbl_titulo = new javax.swing.JLabel();
@@ -148,14 +147,6 @@ public class Matricula extends javax.swing.JFrame {
             }
         });
 
-        btn_cancelarMatricula.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_cancelarMatricula.setText("Cancelar matricula");
-        btn_cancelarMatricula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_cancelarMatriculaActionPerformed(evt);
-            }
-        });
-
         btn_generarReporte.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_generarReporte.setText("Generar reporte matricula");
         btn_generarReporte.addActionListener(new java.awt.event.ActionListener() {
@@ -210,26 +201,24 @@ public class Matricula extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(162, 162, 162)
-                                .addComponent(btn_matricularAsignatura)
-                                .addGap(18, 18, 18)
-                                .addComponent(lbl_cancelarAsignatura)
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_cancelarMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)
-                                .addComponent(btn_generarReporte))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(77, 77, 77)
                                 .addComponent(lbl_numeroCuenta)
                                 .addGap(18, 18, 18)
                                 .addComponent(txt_numeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(37, 37, 37)
-                                .addComponent(btn_buscarClases)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
+                                .addComponent(btn_buscarClases))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(162, 162, 162)
+                                .addComponent(btn_matricularAsignatura)
+                                .addGap(18, 18, 18)
+                                .addComponent(lbl_cancelarAsignatura)
+                                .addGap(28, 28, 28)
+                                .addComponent(btn_generarReporte)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -252,7 +241,6 @@ public class Matricula extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_matricularAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_cancelarAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_cancelarMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_generarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(64, 64, 64)
                 .addComponent(lbl_periodo))
@@ -632,67 +620,6 @@ public class Matricula extends javax.swing.JFrame {
         }
         
     }
-    private void btn_cancelarMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelarMatriculaActionPerformed
-        
-        String Cuenta = txt_numeroCuenta.getText() + " " ;
-          
-           if ((txt_numeroCuenta.getText().equals(""))  ) {
-
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la matrícula que desea eliminar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-           
-        }
-          else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar la matrícula correspondiente al número de cuenta:" + Cuenta + "", "Confirmación de eliminación",
-            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
-        ) == JOptionPane.YES_OPTION) {
-
-            try {
-                 Statement st3 = con.createStatement();
-                String sql2 = "Delete  Notas"
-                + "where numero_cuenta_alumno = (Select numero_cuenta_alumno from Notas where numero_cuenta_alumno = '"+txt_numeroCuenta.getText()+"'"
-                        + "|| id_periodo= '"+id_periodo+"'|| id_matricula '"+id_matricula+"')";
-                
-                Statement st2 = con.createStatement();
-                String sql = "Delete Matricula"
-                + "where numero_cuenta_alumno = (Select numero_cuenta_alumno from Matricula where numero_cuenta_alumno = '"+txt_numeroCuenta.getText()+"'"
-                        + "|| id_periodo=\"2\")";
-
-                int rs2 = st2.executeUpdate(sql);
-                System.out.println(rs2);
-                if(rs2 > 0){
-                    
-                    //Borado de tablas de notas: 
-                    
-                  /*   String sql3="Delete from Notas (numero_cuenta,id_periodo,estado,reposicion,nota1,nota2,nota3,promedio,id_matricula)\n" +
-                  "values (?,?,?,?,?,?,?,?,?)";  
-             pst2=con.prepareStatement(sql3);
-           
-            pst2.setString(1,numeroCuenta);
-            pst2.setString(2,id_periodo);
-            pst2.setString(3,estado);
-            pst2.setString(4,reposicion);
-            pst2.setString(5,nota1);
-            pst2.setString(6,nota2);
-            pst2.setString(7,nota3);
-            pst2.setString(8,promedio);
-            pst2.setString(9,id_matricula);
-             int res= pst2.executeUpdate();*/
-                    
-                    JOptionPane.showMessageDialog(null, "Se ha borrado la matrícula seleccionada " + Cuenta + " correctamente");
-
-                }else {
-                    JOptionPane.showMessageDialog(null, "¡Error al eliminar la matrícula!");
-
-                }
-
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getMessage());
-            }
-
-        }
-        //actualizarDatos();
-       
-    }//GEN-LAST:event_btn_cancelarMatriculaActionPerformed
-
   
     private void btn_matricularAsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_matricularAsignaturaActionPerformed
         for (int i = 0; i < tbl_asignaturas.getRowCount(); i++) {
@@ -803,7 +730,6 @@ public class Matricula extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_buscarClases;
-    private javax.swing.JButton btn_cancelarMatricula;
     private javax.swing.JButton btn_generarReporte;
     private javax.swing.JButton btn_matricularAsignatura;
     private javax.swing.JMenu jMenu;
