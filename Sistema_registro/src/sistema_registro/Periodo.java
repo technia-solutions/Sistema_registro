@@ -220,40 +220,35 @@ public class Periodo extends javax.swing.JFrame {
         String id_facultad = txt_descripcion.getText().toString().substring(0, 4);
         
         if((txt_idPeriodo.getText().equals(""))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id del período.","Id de período requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id período.","Id de período requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_idPeriodo.requestFocus();
             return;
         }
           
         if((txt_NomPer.getText().equals(""))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre del período.","Nombre del período requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el período.","Período requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_NomPer.requestFocus();
             return;
         }
         
          if((txt_descripcion.getText().equals(""))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar una descipcion del período","Descipcion del período",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar una descripcion del período","Descripcion del período",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
         }
         
-        
-
-        if (existeNombrePeriodo()) {
-            return;
-        }
         
         if (existeidPeriodo()) {
             return;
         }
 
         if (!validarLongitud(txt_idPeriodo, 3)) {
-            JOptionPane.showMessageDialog(null, "El id para la asignatura requisito ingresado es muy pequeño, el mínimo es de 4 caracteres", "Longitud de id la asignatura requisito", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El id período ingresado es muy pequeño, el mínimo es de 4 caracteres", "Longitud de id período", JOptionPane.INFORMATION_MESSAGE);
             return;
 
         }
 
         if (!validarLongitud(txt_NomPer,1 )) {
-            JOptionPane.showMessageDialog(null, "El  nombre de la asignatura requisito ingresado es muy pequeño, el mínimo es de 7 caracteres", "Longitud de nombre de la asignatura requisito", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El  período ingresado es muy pequeño, el mínimo es de 1 caracter", "Longitud del período", JOptionPane.INFORMATION_MESSAGE);
             return;
 
         }
@@ -360,7 +355,7 @@ public class Periodo extends javax.swing.JFrame {
     private javax.swing.JTextField txt_idPeriodo;
     // End of variables declaration//GEN-END:variables
 
- private boolean existeNombrePeriodo() {
+ /*private boolean existeNombrePeriodo() {
         try {
             Statement st = con.createStatement();
             String sql = "Select Periodo from periodo where periodo = '" + txt_NomPer.getText() + "'";
@@ -375,7 +370,7 @@ public class Periodo extends javax.swing.JFrame {
             Logger.getLogger(Campus.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
-    }
+    }*/
     
      private boolean existeidPeriodo() {
         try {
@@ -416,12 +411,12 @@ private void rellenar() {
                 try {
                     String cap = "";
                     ResultSet rs2 = null;
-                   var = JOptionPane.showInputDialog(this, "Ingrese el nombre del período que desea consultar", "Consulta del período", JOptionPane.QUESTION_MESSAGE);
+                   var = JOptionPane.showInputDialog(this, "Ingrese el período que desea consultar", "Consulta del período", JOptionPane.QUESTION_MESSAGE);
                     if (var == null) {
                         JOptionPane.showMessageDialog(this, "La acción fue cancelada", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
                     } else {
                         if (var.equals("")) {
-                            JOptionPane.showMessageDialog(this, "Favor de ingresar el nombre del período \n que desea consultar", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(this, "Favor de ingresar el período \n que desea consultar", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
                         } else {
                             String sql = "SELECT * FROM Periodo where id_periodo='"+var+"' or periodo ='"+var+"'";
                             stmt = con.createStatement();
@@ -476,5 +471,7 @@ private void rellenar() {
         
         
     }
+  
+  
     
 }
