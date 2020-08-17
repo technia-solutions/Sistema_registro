@@ -20,7 +20,7 @@ import javax.swing.table.TableColumn;
 
 /**
  *
- * @author Carlos
+ * @author William & Genesis
  */
 public class Periodo extends javax.swing.JFrame {
 
@@ -57,6 +57,9 @@ public class Periodo extends javax.swing.JFrame {
         btn_buscar = new javax.swing.JButton();
         lbl_descripcion = new javax.swing.JLabel();
         txt_descripcion = new javax.swing.JTextField();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu = new javax.swing.JMenu();
+        jMenuPrincipal = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -115,11 +118,31 @@ public class Periodo extends javax.swing.JFrame {
 
         btn_buscar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_buscar.setText("Buscar");
+        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscarActionPerformed(evt);
+            }
+        });
 
         lbl_descripcion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_descripcion.setText("Descripción Período");
 
         txt_descripcion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
+        jMenu.setText("Menu");
+
+        jMenuPrincipal.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuPrincipal.setText("Menu Principal");
+        jMenuPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuPrincipalActionPerformed(evt);
+            }
+        });
+        jMenu.add(jMenuPrincipal);
+
+        jMenuBar1.add(jMenu);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -185,7 +208,7 @@ public class Periodo extends javax.swing.JFrame {
                     .addComponent(btn_actualizar)
                     .addComponent(btn_buscar)
                     .addComponent(btn_eliminar))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -263,6 +286,25 @@ public class Periodo extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_Tabla_PeriodoMouseClicked
 
+    private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
+       
+        actualizarDatos();
+        
+    }//GEN-LAST:event_btn_buscarActionPerformed
+
+    private void jMenuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPrincipalActionPerformed
+    
+         this.dispose();
+        Principal P = null;
+         try {
+             P = new Principal();
+         } catch (SQLException ex) {
+             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        P.setVisible(true);
+        
+    }//GEN-LAST:event_jMenuPrincipalActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -304,6 +346,9 @@ public class Periodo extends javax.swing.JFrame {
     private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_guardar;
+    private javax.swing.JMenu jMenu;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuPrincipal;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_NomPer;
     private javax.swing.JLabel lbl_descripcion;
