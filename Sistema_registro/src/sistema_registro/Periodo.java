@@ -47,7 +47,7 @@ public class Periodo extends javax.swing.JFrame {
         btn_eliminar = new javax.swing.JButton();
         lbl_titulo = new javax.swing.JLabel();
         txt_idPeriodo = new javax.swing.JTextField();
-        txt_NomPer = new javax.swing.JTextField();
+        txt_periodo = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_Periodo = new javax.swing.JTable();
         btn_guardar = new javax.swing.JButton();
@@ -78,8 +78,8 @@ public class Periodo extends javax.swing.JFrame {
         txt_idPeriodo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(txt_idPeriodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 96, 180, -1));
 
-        txt_NomPer.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        getContentPane().add(txt_NomPer, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 149, 182, -1));
+        txt_periodo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        getContentPane().add(txt_periodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 149, 182, -1));
 
         Tabla_Periodo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -216,8 +216,8 @@ public class Periodo extends javax.swing.JFrame {
         
          String cadena1, cadena2, cadena3;
         cadena1 = txt_idPeriodo.getText();
-        cadena2 = txt_NomPer.getText();
-        String id_facultad = txt_descripcion.getText().toString().substring(0, 4);
+        cadena2 = txt_periodo.getText();
+        cadena3 = txt_descripcion.getText();
         
         if((txt_idPeriodo.getText().equals(""))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id período.","Id de período requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
@@ -225,9 +225,9 @@ public class Periodo extends javax.swing.JFrame {
             return;
         }
           
-        if((txt_NomPer.getText().equals(""))){
+        if((txt_periodo.getText().equals(""))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el período.","Período requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            txt_NomPer.requestFocus();
+            txt_periodo.requestFocus();
             return;
         }
         
@@ -247,7 +247,7 @@ public class Periodo extends javax.swing.JFrame {
 
         }
 
-        if (!validarLongitud(txt_NomPer,1 )) {
+        if (!validarLongitud(txt_periodo,1 )) {
             JOptionPane.showMessageDialog(null, "El  período ingresado es muy pequeño, el mínimo es de 1 caracter", "Longitud del período", JOptionPane.INFORMATION_MESSAGE);
             return;
 
@@ -259,7 +259,7 @@ public class Periodo extends javax.swing.JFrame {
             ps = con.prepareStatement("INSERT INTO Periodo (id_periodo, periodo ,descripcion)"
                 + "                VALUES(?,?,?)");
             ps.setString(1, txt_idPeriodo.getText());
-            ps.setString(2, txt_NomPer.getText());
+            ps.setString(2, txt_periodo.getText());
             ps.setString(3, txt_descripcion.getText());
             int res = ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Se ha guardado la información del período");
@@ -350,9 +350,9 @@ public class Periodo extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_descripcion;
     private javax.swing.JLabel lbl_idPeriodo;
     private javax.swing.JLabel lbl_titulo;
-    private javax.swing.JTextField txt_NomPer;
     private javax.swing.JTextField txt_descripcion;
     private javax.swing.JTextField txt_idPeriodo;
+    private javax.swing.JTextField txt_periodo;
     // End of variables declaration//GEN-END:variables
 
  /*private boolean existeNombrePeriodo() {
@@ -401,7 +401,7 @@ public class Periodo extends javax.swing.JFrame {
     private void llenarCampos() {
         int i = Tabla_Periodo.getSelectedRow();
         txt_idPeriodo.setText(Tabla_Periodo.getValueAt(i, 0).toString());
-        txt_NomPer.setText(Tabla_Periodo.getValueAt(i, 1).toString());
+        txt_periodo.setText(Tabla_Periodo.getValueAt(i, 1).toString());
         txt_descripcion.setText(Tabla_Periodo.getValueAt(i, 2).toString());
 
     }
@@ -424,7 +424,7 @@ private void rellenar() {
 
                             if (rs2.next()) {
                                 txt_idPeriodo.setText(rs2.getString("id_periodo"));
-                                txt_NomPer.setText(rs2.getString("periodo"));
+                                txt_periodo.setText(rs2.getString("periodo"));
                             } else {
                                 JOptionPane.showMessageDialog(null, "¡No se encuentra los datos: "+var+" ! Por favor verifique sí, lo escribio correctamente");
                             }
@@ -450,13 +450,13 @@ private void rellenar() {
                 datos[2] =rs.getString("descripcion");
                 modelo.addRow(datos);
             }
-            TableColumn ida = Tabla_Periodo.getColumn(titulos[0]);
-            ida.setMaxWidth(300);
-            ida.setIdentifier(ICONIFIED);
-            TableColumn nRA = Tabla_Periodo.getColumn(titulos[1]);
-            nRA.setMaxWidth(300);
-            TableColumn cidc = Tabla_Periodo.getColumn(titulos[2]);
-                cidc.setMaxWidth(150);
+            TableColumn idP = Tabla_Periodo.getColumn(titulos[0]);
+            idP.setMaxWidth(300);
+            idP.setIdentifier(ICONIFIED);
+            TableColumn Per = Tabla_Periodo.getColumn(titulos[1]);
+            Per.setMaxWidth(300);
+            TableColumn desc = Tabla_Periodo.getColumn(titulos[2]);
+                desc.setMaxWidth(150);
         } catch (Exception e) {
            /* JOptionPane.showMessageDialog(null, e.getMessage());*/
             System.err.println(e);
@@ -464,7 +464,7 @@ private void rellenar() {
     }
 
   private void LimpiarCajas(){
-        txt_NomPer.setText(null);
+        txt_periodo.setText(null);
         txt_idPeriodo.setText(null);
            txt_descripcion.setText(null);
         
