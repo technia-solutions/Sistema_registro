@@ -46,8 +46,6 @@ public class Periodo extends javax.swing.JFrame {
 
         btn_eliminar = new javax.swing.JButton();
         lbl_titulo = new javax.swing.JLabel();
-        lbl_idPeriodo = new javax.swing.JLabel();
-        lbl_NomPer = new javax.swing.JLabel();
         txt_idPeriodo = new javax.swing.JTextField();
         txt_NomPer = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -55,33 +53,36 @@ public class Periodo extends javax.swing.JFrame {
         btn_guardar = new javax.swing.JButton();
         btn_actualizar = new javax.swing.JButton();
         btn_buscar = new javax.swing.JButton();
-        lbl_descripcion = new javax.swing.JLabel();
         txt_descripcion = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        lbl_idPeriodo = new javax.swing.JLabel();
+        lbl_NomPer = new javax.swing.JLabel();
+        lbl_descripcion = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu = new javax.swing.JMenu();
         jMenuPrincipal = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_eliminar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_eliminar.setText("Eliminar");
+        getContentPane().add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(536, 400, -1, -1));
 
         lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lbl_titulo.setText("Período");
-
-        lbl_idPeriodo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_idPeriodo.setText("Id Período");
-
-        lbl_NomPer.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_NomPer.setText("Nombre del Período");
+        getContentPane().add(lbl_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 28, -1, -1));
 
         txt_idPeriodo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        getContentPane().add(txt_idPeriodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 96, 180, -1));
 
         txt_NomPer.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        getContentPane().add(txt_NomPer, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 149, 182, -1));
 
         Tabla_Periodo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null}
@@ -105,33 +106,97 @@ public class Periodo extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Tabla_Periodo);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, -1, 93));
+
         btn_guardar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Guardar.png"))); // NOI18N
         btn_guardar.setText("Guardar");
         btn_guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_guardarActionPerformed(evt);
             }
         });
+        getContentPane().add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 395, -1, -1));
 
         btn_actualizar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_actualizar.setText("Actualizar");
+        getContentPane().add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 400, -1, -1));
 
         btn_buscar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Consulta.png"))); // NOI18N
         btn_buscar.setText("Buscar");
         btn_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_buscarActionPerformed(evt);
             }
         });
-
-        lbl_descripcion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_descripcion.setText("Descripción Período");
+        getContentPane().add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 395, -1, -1));
 
         txt_descripcion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        getContentPane().add(txt_descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 195, 182, -1));
 
+        jPanel1.setBackground(new java.awt.Color(232, 251, 249));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 630, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        jPanel2.setBackground(new java.awt.Color(232, 251, 249));
+
+        lbl_idPeriodo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_idPeriodo.setText("Id Período:");
+
+        lbl_NomPer.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_NomPer.setText("Nombre del Período:");
+
+        lbl_descripcion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_descripcion.setText("Descripción Período:");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(111, 111, 111)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_NomPer)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(lbl_idPeriodo)
+                        .addComponent(lbl_descripcion)))
+                .addContainerGap(357, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_idPeriodo)
+                .addGap(33, 33, 33)
+                .addComponent(lbl_NomPer)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(lbl_descripcion)
+                .addContainerGap())
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 450));
+
+        jMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
         jMenu.setText("Menu");
 
         jMenuPrincipal.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio.png"))); // NOI18N
         jMenuPrincipal.setText("Menu Principal");
         jMenuPrincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,73 +208,6 @@ public class Periodo extends javax.swing.JFrame {
         jMenuBar1.add(jMenu);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_idPeriodo)
-                            .addComponent(lbl_NomPer)
-                            .addComponent(lbl_descripcion))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(txt_idPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(txt_NomPer))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(txt_descripcion))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(btn_guardar)
-                        .addGap(40, 40, 40)
-                        .addComponent(btn_actualizar)
-                        .addGap(33, 33, 33)
-                        .addComponent(btn_buscar)
-                        .addGap(37, 37, 37)
-                        .addComponent(btn_eliminar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(241, 241, 241)
-                        .addComponent(lbl_titulo)))
-                .addContainerGap(21, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(lbl_titulo)
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_idPeriodo)
-                    .addComponent(txt_idPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_NomPer)
-                    .addComponent(txt_NomPer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_descripcion)
-                    .addComponent(txt_descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_guardar)
-                    .addComponent(btn_actualizar)
-                    .addComponent(btn_buscar)
-                    .addComponent(btn_eliminar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -346,9 +344,12 @@ public class Periodo extends javax.swing.JFrame {
     private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_guardar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuPrincipal;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_NomPer;
     private javax.swing.JLabel lbl_descripcion;
