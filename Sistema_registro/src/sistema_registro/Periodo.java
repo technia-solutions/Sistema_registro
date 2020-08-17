@@ -124,7 +124,12 @@ public class Periodo extends javax.swing.JFrame {
 
         btn_buscar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Consulta.png"))); // NOI18N
-        btn_buscar.setText("Buscar");
+        btn_buscar.setText("Consultar");
+        btn_buscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_buscarMouseClicked(evt);
+            }
+        });
         btn_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_buscarActionPerformed(evt);
@@ -297,6 +302,14 @@ public class Periodo extends javax.swing.JFrame {
         P.setVisible(true);
         
     }//GEN-LAST:event_jMenuPrincipalActionPerformed
+
+    private void btn_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buscarMouseClicked
+        
+         rellenar();
+        this.jScrollPane1.setEnabled(true);
+        this.Tabla_Periodo.setEnabled(true);
+        
+    }//GEN-LAST:event_btn_buscarMouseClicked
 
     /**
      * @param args the command line arguments
