@@ -19,6 +19,7 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -46,10 +47,12 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         this.con = ConectorSQL.obtenerConexion();
         initComponents();
         obtenerPeriodo();
-      /*  this.lbl_idMatricula.setVisible(false);
+         this.setTitle("Matricula");
+          this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+        /*this.lbl_idMatricula.setVisible(false);
         this.lbl_idPeriodo.setVisible(false);
-        this.lbl_idSeccion.setVisible(false);
-        */
+        this.lbl_idSeccion.setVisible(false);*/
+        
         
     }
 
@@ -63,7 +66,6 @@ public class CancelarAsignatura extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        lbl_idSeccion = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         btn_buscar = new javax.swing.JButton();
@@ -75,6 +77,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         lbl_idPeriodo = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         btn_CancelarAsig = new javax.swing.JButton();
+        lbl_idSeccion = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -91,9 +94,6 @@ public class CancelarAsignatura extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, -1, -1));
-
-        lbl_idSeccion.setText("jLabel4");
-        getContentPane().add(lbl_idSeccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 150, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(232, 251, 249));
 
@@ -113,6 +113,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(215, 236, 233));
 
         btn_buscar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/magnifier-1_icon-icons.com_56924.png"))); // NOI18N
         btn_buscar.setText("Buscar");
         btn_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,6 +121,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
             }
         });
 
+        txt_NumC.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_NumC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_NumCActionPerformed(evt);
@@ -154,6 +156,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         lbl_idPeriodo.setText("jLabel3");
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Eliminar.png"))); // NOI18N
         jButton1.setText("Eliminar Matricula");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,12 +165,15 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         });
 
         btn_CancelarAsig.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_CancelarAsig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar matricula.png"))); // NOI18N
         btn_CancelarAsig.setText("Cancelar Asignatura");
         btn_CancelarAsig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_CancelarAsigActionPerformed(evt);
             }
         });
+
+        lbl_idSeccion.setText("jLabel4");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -181,42 +187,45 @@ public class CancelarAsignatura extends javax.swing.JFrame {
                         .addComponent(lbl_numeroCuenta)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txt_NumC, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(16, 16, 16)
                         .addComponent(lbl_idMatricula)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbl_idPeriodo)
-                        .addGap(220, 220, 220))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbl_idSeccion)
+                        .addGap(141, 141, 141))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(184, 184, 184)
-                                .addComponent(btn_CancelarAsig, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(50, 50, 50)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btn_CancelarAsig)
+                                .addGap(27, 27, 27)
+                                .addComponent(jButton1)))
                         .addContainerGap(60, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addGap(41, 41, 41)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn_buscar)
                         .addComponent(lbl_idMatricula)
-                        .addComponent(lbl_idPeriodo))
+                        .addComponent(lbl_idPeriodo)
+                        .addComponent(lbl_idSeccion))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txt_NumC, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbl_numeroCuenta)))
-                .addGap(47, 47, 47)
+                        .addComponent(lbl_numeroCuenta)
+                        .addComponent(btn_buscar)))
+                .addGap(56, 56, 56)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btn_CancelarAsig, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 940, 380));
@@ -253,7 +262,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
     private void Tabla_CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_CancelarMouseClicked
           this.btn_CancelarAsig.setEnabled(true);
           int i = Tabla_Cancelar.getSelectedRow();
-       if(Tabla_Cancelar.getSelectedRow() >= 0){
+         if(Tabla_Cancelar.getSelectedRow() >= 0){
           lbl_idSeccion.setText(Tabla_Cancelar.getValueAt(i,0).toString()+"-"+Tabla_Cancelar.getValueAt(i,2).toString());
           lbl_idPeriodo.setText(Tabla_Cancelar.getValueAt(i,5).toString());
           
@@ -482,7 +491,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         ResultSet rs2 = st.executeQuery(sql);
         if(rs2.next()){
             lbl_idPeriodo.setText(rs2.getString(1));
-            lbl_idPeriodo.setVisible(true);
+           
         }
         else{
             JOptionPane.showMessageDialog(null,"Error");
