@@ -6,6 +6,7 @@
 package sistema_registro;
 
 import static java.awt.Frame.ICONIFIED;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,6 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import sistema_registro.SQL.ConectorSQL;
 
 /**
  *
@@ -31,7 +33,8 @@ public class Periodo extends javax.swing.JFrame {
     String var, var2;
     
     
-    public Periodo() {
+    public Periodo() throws SQLException {
+         this.con = ConectorSQL.obtenerConexion ();
         initComponents();
     }
 
@@ -44,21 +47,21 @@ public class Periodo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btn_eliminar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        lbl_idPeriodo = new javax.swing.JLabel();
+        lbl_NomPer = new javax.swing.JLabel();
+        lbl_descripcion = new javax.swing.JLabel();
         txt_idPeriodo = new javax.swing.JTextField();
         txt_periodo = new javax.swing.JTextField();
+        txt_descripcion = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_Periodo = new javax.swing.JTable();
         btn_guardar = new javax.swing.JButton();
         btn_actualizar = new javax.swing.JButton();
         btn_buscar = new javax.swing.JButton();
-        txt_descripcion = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        lbl_idPeriodo = new javax.swing.JLabel();
-        lbl_NomPer = new javax.swing.JLabel();
-        lbl_descripcion = new javax.swing.JLabel();
+        btn_eliminar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu = new javax.swing.JMenu();
@@ -67,25 +70,65 @@ public class Periodo extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn_eliminar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_eliminar.setText("Eliminar");
-        getContentPane().add(btn_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(536, 400, -1, -1));
+        jPanel1.setBackground(new java.awt.Color(232, 251, 249));
 
         lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lbl_titulo.setText("Período");
-        getContentPane().add(lbl_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 28, -1, -1));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(306, 306, 306)
+                .addComponent(lbl_titulo)
+                .addContainerGap(315, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_titulo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 700, -1));
+
+        jPanel2.setBackground(new java.awt.Color(215, 236, 233));
+
+        lbl_idPeriodo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_idPeriodo.setText("Id Período:");
+
+        lbl_NomPer.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_NomPer.setText("Nombre del Período:");
+
+        lbl_descripcion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_descripcion.setText("Descripción Período:");
 
         txt_idPeriodo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        getContentPane().add(txt_idPeriodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 96, 180, -1));
+        txt_idPeriodo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_idPeriodoKeyTyped(evt);
+            }
+        });
 
         txt_periodo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        getContentPane().add(txt_periodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 149, 182, -1));
+        txt_periodo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_periodoKeyTyped(evt);
+            }
+        });
+
+        txt_descripcion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_descripcion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_descripcionKeyTyped(evt);
+            }
+        });
 
         Tabla_Periodo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Id Periodo", "Nombre Periodo", "Descripcion"
@@ -106,8 +149,6 @@ public class Periodo extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Tabla_Periodo);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, -1, 93));
-
         btn_guardar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Guardar.png"))); // NOI18N
         btn_guardar.setText("Guardar");
@@ -116,15 +157,19 @@ public class Periodo extends javax.swing.JFrame {
                 btn_guardarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 395, -1, -1));
 
         btn_actualizar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
         btn_actualizar.setText("Actualizar");
-        getContentPane().add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 400, -1, -1));
+        btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_actualizarActionPerformed(evt);
+            }
+        });
 
         btn_buscar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Consulta.png"))); // NOI18N
-        btn_buscar.setText("Consultar");
+        btn_buscar.setText("Buscar");
         btn_buscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_buscarMouseClicked(evt);
@@ -135,67 +180,92 @@ public class Periodo extends javax.swing.JFrame {
                 btn_buscarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 395, -1, -1));
 
-        txt_descripcion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        getContentPane().add(txt_descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 195, 182, -1));
-
-        jPanel1.setBackground(new java.awt.Color(232, 251, 249));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
-
-        jPanel2.setBackground(new java.awt.Color(232, 251, 249));
-
-        lbl_idPeriodo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_idPeriodo.setText("Id Período:");
-
-        lbl_NomPer.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_NomPer.setText("Nombre del Período:");
-
-        lbl_descripcion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_descripcion.setText("Descripción Período:");
+        btn_eliminar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Eliminar.png"))); // NOI18N
+        btn_eliminar.setText("Eliminar");
+        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(111, 111, 111)
+                .addGap(32, 32, 32)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_actualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_guardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_NomPer)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(lbl_idPeriodo)
-                        .addComponent(lbl_descripcion)))
-                .addContainerGap(357, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_NomPer)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(lbl_descripcion)
+                                        .addGap(26, 26, 26))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                        .addComponent(lbl_idPeriodo)
+                                        .addGap(24, 24, 24)))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_periodo, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_idPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_idPeriodo)
-                .addGap(33, 33, 33)
-                .addComponent(lbl_NomPer)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(173, 173, 173)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lbl_descripcion)
+                                .addComponent(txt_descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(38, 38, 38))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(btn_guardar)
+                            .addGap(28, 28, 28)
+                            .addComponent(btn_actualizar)
+                            .addGap(18, 18, 18)
+                            .addComponent(btn_buscar)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_idPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_idPeriodo))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_NomPer)
+                            .addComponent(txt_periodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(lbl_descripcion)
-                .addContainerGap())
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btn_eliminar)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38))))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 700, 410));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 450));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 510));
 
         jMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
         jMenu.setText("Menu");
@@ -312,11 +382,146 @@ public class Periodo extends javax.swing.JFrame {
 
     private void btn_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buscarMouseClicked
         
-         rellenar();
+        rellenar();
         this.jScrollPane1.setEnabled(true);
         this.Tabla_Periodo.setEnabled(true);
         
     }//GEN-LAST:event_btn_buscarMouseClicked
+
+    private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
+         String nombrePeriodo = txt_idPeriodo.getText() + " " + txt_descripcion.getText();
+        
+        if ((txt_idPeriodo.getText().equals("") || (txt_periodo.getText().equals("")))) {
+            JOptionPane.showMessageDialog(this, "¡Debe seleccionar el período a eliminar!");
+            
+        }
+        else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro del período " + nombrePeriodo + ".", "Confirmación de eliminación",
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
+        ) == JOptionPane.YES_OPTION) {
+
+            try {
+                Statement st2 = con.createStatement();
+                String sql = "Delete Periodo "
+                + "where id_periodo = (Select id_periodo from Periodo where id_periodo = '"+txt_idPeriodo.getText()+"')";
+
+                int rs2 = st2.executeUpdate(sql);
+                System.out.println(rs2);
+                if(rs2 > 0){
+                    JOptionPane.showMessageDialog(null, "Se ha borrado la información del período " + nombrePeriodo + " correctamente.");
+
+                }else {
+                    JOptionPane.showMessageDialog(null, "¡Error al eliminar la información!");
+
+                }
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+
+           
+            actualizarDatos();
+            LimpiarCajas();
+        }
+    }//GEN-LAST:event_btn_eliminarActionPerformed
+
+    private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
+            String nombrePeriodo = txt_idPeriodo.getText() + " " +txt_descripcion.getText() + " ";
+         if ((txt_idPeriodo.getText().equals("") || (txt_periodo.getText().equals("")) || (txt_descripcion.getText().equals("")))) {
+            JOptionPane.showMessageDialog(this, "¡Debe seleccionar el período a actualizar!");
+        }
+           
+         else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro del período " + nombrePeriodo + "?.", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
+        ) == JOptionPane.YES_OPTION) {
+            try {
+                PreparedStatement ps;
+                ResultSet rs;
+                ps = con.prepareStatement("Update Periodo set"
+                    + " id_periodo = ? ,"
+                    + " periodo = ? ,"
+                    + "descripcion = ? "
+                    + " where id_periodo =\'"+txt_idPeriodo.getText()+"\'");
+                ps.setString(1, txt_idPeriodo.getText());
+                ps.setString(2, txt_periodo.getText());
+                 ps.setString(3, txt_descripcion.getText());
+                int res = ps.executeUpdate();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+            actualizarDatos();
+            LimpiarCajas();
+        }
+    }//GEN-LAST:event_btn_actualizarActionPerformed
+
+    private void txt_idPeriodoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_idPeriodoKeyTyped
+          char a=evt.getKeyChar();
+            if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
+                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+        return;
+        }
+        if(txt_idPeriodo.getText().length() >=3){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
+        }
+        if(Character.isLetter(a) || !Character.isLetterOrDigit(a)){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Solo números");
+        }
+    }//GEN-LAST:event_txt_idPeriodoKeyTyped
+
+    private void txt_periodoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_periodoKeyTyped
+         char a=evt.getKeyChar();
+            if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
+                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+        return;
+        }
+        if(txt_periodo.getText().length() >=1){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
+        }
+        if(Character.isLetter(a) || !Character.isLetterOrDigit(a)){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Solo números");
+        }
+    }//GEN-LAST:event_txt_periodoKeyTyped
+
+    private void txt_descripcionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_descripcionKeyTyped
+char a=evt.getKeyChar();
+   
+            if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
+                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+        return;
+        }
+         if(evt.getKeyChar() == 32){
+             if(txt_descripcion.getText().length() == 0){
+                 evt.consume();
+                 Toolkit.getDefaultToolkit().beep();
+                 return;
+             }
+             if(txt_descripcion.getText().substring(txt_descripcion.getText().length() - 1).equals(" ")){
+                 evt.consume();
+                 Toolkit.getDefaultToolkit().beep();
+             }
+             return; 
+         }
+        if(txt_descripcion.getText().length() >=15){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
+        }
+        
+        if(Character.isDigit(a) || !Character.isLetterOrDigit(a) ){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Sólo letras");
+        }      
+    }//GEN-LAST:event_txt_descripcionKeyTyped
 
     /**
      * @param args the command line arguments
@@ -348,7 +553,11 @@ public class Periodo extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Periodo().setVisible(true);
+                try {
+                    new Periodo().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Periodo.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -431,13 +640,7 @@ private void rellenar() {
                 try {
                     String cap = "";
                     ResultSet rs2 = null;
-                   var = JOptionPane.showInputDialog(this, "Ingrese el período que desea consultar", "Consulta del período", JOptionPane.QUESTION_MESSAGE);
-                    if (var == null) {
-                        JOptionPane.showMessageDialog(this, "La acción fue cancelada", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
-                    } else {
-                        if (var.equals("")) {
-                            JOptionPane.showMessageDialog(this, "Favor de ingresar el período \n que desea consultar", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
-                        } else {
+                  
                             String sql = "SELECT * FROM Periodo where id_periodo='"+var+"' or periodo ='"+var+"'";
                             stmt = con.createStatement();
                             rs2 = stmt.executeQuery(sql);
@@ -445,12 +648,9 @@ private void rellenar() {
                             if (rs2.next()) {
                                 txt_idPeriodo.setText(rs2.getString("id_periodo"));
                                 txt_periodo.setText(rs2.getString("periodo"));
-                            } else {
-                                JOptionPane.showMessageDialog(null, "¡No se encuentra los datos: "+var+" ! Por favor verifique sí, lo escribio correctamente");
-                            }
-                        }
-
-                    }
+                                txt_descripcion.setText(rs2.getString("descripcion"));
+                               
+                            } 
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e.getMessage());
                 }
@@ -478,7 +678,6 @@ private void rellenar() {
             TableColumn desc = Tabla_Periodo.getColumn(titulos[2]);
                 desc.setMaxWidth(150);
         } catch (Exception e) {
-           /* JOptionPane.showMessageDialog(null, e.getMessage());*/
             System.err.println(e);
         }
     }
