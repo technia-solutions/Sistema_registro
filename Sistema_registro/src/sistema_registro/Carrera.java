@@ -64,7 +64,6 @@ public class Carrera extends javax.swing.JFrame {
 
         lbl_idCarrera = new javax.swing.JLabel();
         txt_idCarrera = new javax.swing.JTextField();
-        txt_NombreCarrera = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_Carrera = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -75,6 +74,8 @@ public class Carrera extends javax.swing.JFrame {
         lbl_nombreCarrera = new javax.swing.JLabel();
         lbl_facultad = new javax.swing.JLabel();
         cbo_idfacultad = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtxt_NombreCarrera = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -107,19 +108,6 @@ public class Carrera extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txt_idCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(457, 111, 278, -1));
-
-        txt_NombreCarrera.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_NombreCarrera.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_NombreCarreraActionPerformed(evt);
-            }
-        });
-        txt_NombreCarrera.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_NombreCarreraKeyTyped(evt);
-            }
-        });
-        getContentPane().add(txt_NombreCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(455, 170, 280, -1));
 
         Tabla_Carrera.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -198,11 +186,23 @@ public class Carrera extends javax.swing.JFrame {
         lbl_facultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_facultad.setText("Facultad:");
         jPanel1.add(lbl_facultad);
-        lbl_facultad.setBounds(360, 140, 71, 22);
+        lbl_facultad.setBounds(370, 150, 71, 22);
 
         cbo_idfacultad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una facultad" }));
         jPanel1.add(cbo_idfacultad);
-        cbo_idfacultad.setBounds(450, 130, 270, 40);
+        cbo_idfacultad.setBounds(460, 140, 270, 40);
+
+        jtxt_NombreCarrera.setColumns(20);
+        jtxt_NombreCarrera.setRows(5);
+        jtxt_NombreCarrera.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxt_NombreCarreraKeyTyped(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jtxt_NombreCarrera);
+
+        jPanel1.add(jScrollPane2);
+        jScrollPane2.setBounds(450, 80, 280, 30);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 870, 250));
 
@@ -287,29 +287,6 @@ public class Carrera extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txt_idCarreraKeyTyped
 
-    private void txt_NombreCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NombreCarreraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_NombreCarreraActionPerformed
-
-    private void txt_NombreCarreraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NombreCarreraKeyTyped
-        if (txt_NombreCarrera.getText().length() >= 100) {
-            evt.consume();
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
-        }
-        if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127
-            || evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22
-            || evt.getKeyChar() == 32 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
-            return;
-        }
-        char a = evt.getKeyChar();
-        if (Character.isDigit(a)) {
-            evt.consume();
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Sólo letras");
-        }
-    }//GEN-LAST:event_txt_NombreCarreraKeyTyped
-
     private void Tabla_CarreraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_CarreraMouseClicked
           if(Tabla_Carrera.getSelectedRow() >= 0){
             llenarCampos();
@@ -319,7 +296,7 @@ public class Carrera extends javax.swing.JFrame {
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
         String cadena1, cadena2, cadena3;
         cadena1 = txt_idCarrera.getText();
-        cadena2 = txt_NombreCarrera.getText();
+        cadena2 = jtxt_NombreCarrera.getText();
        String id_facultad = cbo_idfacultad.getSelectedItem().toString().substring(0, 3);
 
         if((txt_idCarrera.getText().equals(""))){
@@ -328,9 +305,9 @@ public class Carrera extends javax.swing.JFrame {
             return;
         }
         
-        if((txt_NombreCarrera.getText().equals(""))){
+        if((jtxt_NombreCarrera.getText().equals(""))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre de la carrera.","Nombre carrera requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            txt_NombreCarrera.requestFocus();
+            jtxt_NombreCarrera.requestFocus();
             return;
         }
         
@@ -355,7 +332,7 @@ public class Carrera extends javax.swing.JFrame {
 
         }
 
-        if (!validarLongitud(txt_NombreCarrera,10 )) {
+        if (!validarLongitud(jtxt_NombreCarrera,10 )) {
             JOptionPane.showMessageDialog(null, "El  nombre ingresado es muy pequeños el mínimo es de 10 caracteres", "Longitud de nombre carrera", JOptionPane.INFORMATION_MESSAGE);
             return;
 
@@ -367,7 +344,7 @@ public class Carrera extends javax.swing.JFrame {
             ps = con.prepareStatement("INSERT INTO Carrera (id_carrera, nombre_carrera,id_facultad)"
                 + "                VALUES(?,?,?)");
             ps.setString(1, txt_idCarrera.getText());
-            ps.setString(2, txt_NombreCarrera.getText());
+            ps.setString(2, jtxt_NombreCarrera.getText());
              ps.setString(3, id_facultad);
             int res = ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Se ha guradod la información del carrera");
@@ -392,13 +369,13 @@ public class Carrera extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_buscarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-          String nombreCarrera = txt_NombreCarrera.getText();
+          String nombreCarrera = jtxt_NombreCarrera.getText();
           
-          if ((txt_idCarrera.getText().equals("")) || (txt_NombreCarrera.getText().equals("")) || 
+          if ((txt_idCarrera.getText().equals("")) || (jtxt_NombreCarrera.getText().equals("")) || 
           (cbo_idfacultad.getSelectedItem().equals("Seleccione la carrera"))) {
             
             javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la carrera a eliminar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            txt_NombreCarrera.requestFocus();
+            jtxt_NombreCarrera.requestFocus();
             return;
         }
           else if(JOptionPane.showConfirmDialog(null,"¿Está seguro que desea eliminar el registro de la carrera "+nombreCarrera+"","Confirmación de eliminación",
@@ -409,7 +386,7 @@ public class Carrera extends javax.swing.JFrame {
           PreparedStatement ps;
           ResultSet rs;
           ps=con.prepareStatement("Delete Carrera "
-                  + "where id_carrera = (Select id_carrera from Carrera where nombre_carrera = '"+txt_NombreCarrera.getText()+"')");
+                  + "where id_carrera = (Select id_carrera from Carrera where nombre_carrera = '"+jtxt_NombreCarrera.getText()+"')");
                   int res= ps.executeUpdate();
                   JOptionPane.showMessageDialog(null, "Se ha borrado la información de la carrera "+nombreCarrera+" correctamente");
                   if(res > 0){ 
@@ -427,8 +404,8 @@ public class Carrera extends javax.swing.JFrame {
     private void btn_actualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizar1ActionPerformed
             
         
-        String nombreCarrera = txt_NombreCarrera.getText() + " ";
-            if ((txt_idCarrera.getText().equals("")) || (txt_NombreCarrera.getText().equals("")) || 
+        String nombreCarrera = jtxt_NombreCarrera.getText() + " ";
+            if ((txt_idCarrera.getText().equals("")) || (jtxt_NombreCarrera.getText().equals("")) || 
           (cbo_idfacultad.getSelectedItem().equals("Seleccione la carrera"))) {
             
             javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la carrera a actualizar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
@@ -445,7 +422,7 @@ public class Carrera extends javax.swing.JFrame {
                         + " id_carrera = ? "
                         + " where id_carrera =\'"+txt_idCarrera.getText()+"\'");
                 
-                ps.setString(0, txt_NombreCarrera.getText());
+                ps.setString(0, jtxt_NombreCarrera.getText());
                 ps.setString(1, txt_idCarrera.getText());
                /* ps.setString(3, id_facultad);*/
                 int res = ps.executeUpdate();
@@ -492,6 +469,27 @@ public class Carrera extends javax.swing.JFrame {
         ff.setVisible(true);
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jtxt_NombreCarreraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxt_NombreCarreraKeyTyped
+       
+          if (jtxt_NombreCarrera.getText().length() >= 100) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
+        }
+        if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127
+            || evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22
+            || evt.getKeyChar() == 32 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+            return;
+        }
+        char a = evt.getKeyChar();
+        if (Character.isDigit(a)) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Sólo letras");
+        }
+        
+    }//GEN-LAST:event_jtxt_NombreCarreraKeyTyped
 
     /**
      * @param args the command line arguments
@@ -547,11 +545,12 @@ public class Carrera extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jtxt_NombreCarrera;
     private javax.swing.JLabel lbl_facultad;
     private javax.swing.JLabel lbl_idCarrera;
     private javax.swing.JLabel lbl_nombreCarrera;
     private javax.swing.JLabel lbl_titulo;
-    private javax.swing.JTextField txt_NombreCarrera;
     private javax.swing.JTextField txt_idCarrera;
     // End of variables declaration//GEN-END:variables
 
@@ -575,10 +574,10 @@ public class Carrera extends javax.swing.JFrame {
       private boolean existeCarrera() {
         try {
             Statement st = con.createStatement();
-            String sql = "Select nombre_carrera from Carrera where nombre_carrera = '" + txt_NombreCarrera.getText() + "'";
+            String sql = "Select nombre_carrera from Carrera where nombre_carrera = '" + jtxt_NombreCarrera.getText() + "'";
             ResultSet rs = st.executeQuery(sql);
             if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "La carrera: " + txt_NombreCarrera.getText() + " ya existe", "La  carrera ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "La carrera: " + jtxt_NombreCarrera.getText() + " ya existe", "La  carrera ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
                 return true;
             } else {
                 return false;
@@ -600,7 +599,7 @@ public class Carrera extends javax.swing.JFrame {
     private void llenarCampos() {
         int i = Tabla_Carrera.getSelectedRow();
         txt_idCarrera.setText(Tabla_Carrera.getValueAt(i, 0).toString());
-        txt_NombreCarrera.setText(Tabla_Carrera.getValueAt(i, 1).toString());
+        jtxt_NombreCarrera.setText(Tabla_Carrera.getValueAt(i, 1).toString());
         cbo_idfacultad.setSelectedItem(Tabla_Carrera.getValueAt(i, 2).toString());
  
         
@@ -617,7 +616,7 @@ public class Carrera extends javax.swing.JFrame {
 
                             if (rs2.next()) {
                                 txt_idCarrera.setText(rs2.getString("id_carrera"));
-                                txt_NombreCarrera.setText(rs2.getString("nombre_carrera"));
+                                jtxt_NombreCarrera.setText(rs2.getString("nombre_carrera"));
                                 cbo_idfacultad.setSelectedItem((rs2.getString("id_facultad")+ " - " + rs2.getString("nombre_facultad")));
                             }
                         
@@ -665,7 +664,7 @@ public class Carrera extends javax.swing.JFrame {
     }
       
       private void LimpiarCajas(){
-        txt_NombreCarrera.setText(null);
+        jtxt_NombreCarrera.setText(null);
         txt_idCarrera.setText(null);
        cbo_idfacultad.setSelectedIndex(0);
         
