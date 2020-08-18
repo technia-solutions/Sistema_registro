@@ -67,35 +67,25 @@ public class Matricula extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbl_periodo = new javax.swing.JLabel();
-        lbl_numeroCuenta = new javax.swing.JLabel();
-        txt_numeroCuenta = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_asignaturas = new javax.swing.JTable();
         btn_matricularAsignatura = new javax.swing.JButton();
         btn_generarReporte = new javax.swing.JButton();
-        btn_buscarClases = new javax.swing.JButton();
         lbl_cancelarAsignatura = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        lbl_numeroCuenta = new javax.swing.JLabel();
+        txt_numeroCuenta = new javax.swing.JTextField();
+        btn_buscarClases = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        lbl_periodo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu = new javax.swing.JMenu();
         jMenuPrincipal = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        lbl_periodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
-        lbl_periodo.setText("jLabel1");
-
-        lbl_numeroCuenta.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_numeroCuenta.setText("Número de cuenta:");
-        getContentPane().add(lbl_numeroCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
-
-        txt_numeroCuenta.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_numeroCuenta.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_numeroCuentaKeyTyped(evt);
-            }
-        });
-        getContentPane().add(txt_numeroCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 171, -1));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tbl_asignaturas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -140,7 +130,7 @@ public class Matricula extends javax.swing.JFrame {
             tbl_asignaturas.getColumnModel().getColumn(7).setResizable(false);
         }
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 1242, 202));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 954, 210));
 
         btn_matricularAsignatura.setBackground(new java.awt.Color(235, 250, 251));
         btn_matricularAsignatura.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -151,8 +141,9 @@ public class Matricula extends javax.swing.JFrame {
                 btn_matricularAsignaturaActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_matricularAsignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 500, -1, 48));
+        getContentPane().add(btn_matricularAsignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 480, -1, -1));
 
+        btn_generarReporte.setBackground(new java.awt.Color(235, 250, 251));
         btn_generarReporte.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_generarReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/writing-on-an-open-book_icon-icons.com_70325.png"))); // NOI18N
         btn_generarReporte.setText("Generar reporte matricula");
@@ -161,16 +152,7 @@ public class Matricula extends javax.swing.JFrame {
                 btn_generarReporteActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_generarReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 500, -1, 46));
-
-        btn_buscarClases.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_buscarClases.setText("Buscar clases");
-        btn_buscarClases.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_buscarClasesActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_buscarClases, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, -1, -1));
+        getContentPane().add(btn_generarReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 480, -1, -1));
 
         lbl_cancelarAsignatura.setBackground(new java.awt.Color(235, 250, 251));
         lbl_cancelarAsignatura.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -181,6 +163,87 @@ public class Matricula extends javax.swing.JFrame {
                 lbl_cancelarAsignaturaActionPerformed(evt);
             }
         });
+        getContentPane().add(lbl_cancelarAsignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 480, -1, -1));
+
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+
+        lbl_numeroCuenta.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_numeroCuenta.setText("Número de cuenta:");
+
+        txt_numeroCuenta.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_numeroCuenta.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_numeroCuentaKeyTyped(evt);
+            }
+        });
+
+        btn_buscarClases.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_buscarClases.setText("Buscar clases");
+        btn_buscarClases.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscarClasesActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(230, 230, 230)
+                .addComponent(lbl_numeroCuenta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_numeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(btn_buscarClases)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_buscarClases)
+                    .addComponent(lbl_numeroCuenta)
+                    .addComponent(txt_numeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 950, -1));
+
+        jPanel2.setBackground(new java.awt.Color(232, 251, 249));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel2.setText("Matrícula");
+
+        lbl_periodo.setText("jLabel1");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(413, 413, 413)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 369, Short.MAX_VALUE)
+                .addComponent(lbl_periodo)
+                .addGap(31, 31, 31))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(lbl_periodo))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, 50));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1260, 650));
 
         jMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
         jMenu.setText("Menu");
@@ -198,61 +261,6 @@ public class Matricula extends javax.swing.JFrame {
         jMenuBar1.add(jMenu);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(563, 563, 563)
-                .addComponent(lbl_titulo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(77, 77, 77)
-                                .addComponent(lbl_numeroCuenta)
-                                .addGap(18, 18, 18)
-                                .addComponent(txt_numeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(37, 37, 37)
-                                .addComponent(btn_buscarClases))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(162, 162, 162)
-                                .addComponent(btn_matricularAsignatura)
-                                .addGap(18, 18, 18)
-                                .addComponent(lbl_cancelarAsignatura)
-                                .addGap(28, 28, 28)
-                                .addComponent(btn_generarReporte)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbl_periodo)
-                .addGap(242, 242, 242))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_numeroCuenta)
-                    .addComponent(txt_numeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_buscarClases))
-                .addGap(45, 45, 45)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(122, 122, 122)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_matricularAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_cancelarAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_generarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64)
-                .addComponent(lbl_periodo))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -279,7 +287,7 @@ public class Matricula extends javax.swing.JFrame {
        f=Calendar.getInstance();
        
        int d=f.get(Calendar.DATE), mes=1+(f.get(Calendar.MONTH)), año=f.get(Calendar.YEAR);
-       String fecha = d+"-"+mes+"-"+año;
+       String fecha = año+"-"+mes+"-"+ d;
         String sql = "select nombre_periodo_historico from Periodo_historico\n" +
         "where fecha_inicial < '"+fecha+"' and fecha_final > '"+fecha+"'";
         ResultSet rs2 = st.executeQuery(sql);
@@ -755,7 +763,6 @@ public class Matricula extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_buscarClases;
     private javax.swing.JButton btn_generarReporte;
-    private javax.swing.JButton btn_limpiar;
     private javax.swing.JButton btn_matricularAsignatura;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -768,7 +775,6 @@ public class Matricula extends javax.swing.JFrame {
     private javax.swing.JButton lbl_cancelarAsignatura;
     private javax.swing.JLabel lbl_numeroCuenta;
     private javax.swing.JLabel lbl_periodo;
-    private javax.swing.JLabel lbl_titulo;
     private javax.swing.JTable tbl_asignaturas;
     private javax.swing.JTextField txt_numeroCuenta;
     // End of variables declaration//GEN-END:variables
