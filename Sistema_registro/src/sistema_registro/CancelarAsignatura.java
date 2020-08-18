@@ -113,7 +113,6 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(215, 236, 233));
 
         btn_buscar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/magnifier-1_icon-icons.com_56924.png"))); // NOI18N
         btn_buscar.setText("Buscar");
         btn_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,7 +164,6 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         });
 
         btn_CancelarAsig.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_CancelarAsig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar matricula.png"))); // NOI18N
         btn_CancelarAsig.setText("Cancelar Asignatura");
         btn_CancelarAsig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,13 +187,13 @@ public class CancelarAsignatura extends javax.swing.JFrame {
                         .addComponent(txt_NumC, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(130, 130, 130)
                         .addComponent(lbl_idMatricula)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbl_idPeriodo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lbl_idSeccion)
-                        .addGap(141, 141, 141))
+                        .addGap(29, 29, 29))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -210,22 +208,21 @@ public class CancelarAsignatura extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_NumC, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_numeroCuenta)
+                    .addComponent(btn_buscar)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lbl_idMatricula)
                         .addComponent(lbl_idPeriodo)
-                        .addComponent(lbl_idSeccion))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txt_NumC, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbl_numeroCuenta)
-                        .addComponent(btn_buscar)))
+                        .addComponent(lbl_idSeccion)))
                 .addGap(56, 56, 56)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btn_CancelarAsig, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 940, 380));
@@ -485,13 +482,13 @@ public class CancelarAsignatura extends javax.swing.JFrame {
        f=Calendar.getInstance();
        
        int d=f.get(Calendar.DATE), mes=1+(f.get(Calendar.MONTH)), año=f.get(Calendar.YEAR);
-       String fecha = d+"-"+mes+"-"+año;
+       String fecha = año+"-"+mes+"-"+ d;
         String sql = "select id_periodo from Periodo_historico\n" +
         "where fecha_inicial < '"+fecha+"' and fecha_final > '"+fecha+"'";
         ResultSet rs2 = st.executeQuery(sql);
         if(rs2.next()){
             lbl_idPeriodo.setText(rs2.getString(1));
-           
+            lbl_idPeriodo.setVisible(true);
         }
         else{
             JOptionPane.showMessageDialog(null,"Error");
