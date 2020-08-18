@@ -175,7 +175,7 @@ public class Notas extends javax.swing.JFrame {
             }
         });
         jPanel2.add(txt_notaParcialI);
-        txt_notaParcialI.setBounds(250, 50, 60, 28);
+        txt_notaParcialI.setBounds(250, 50, 80, 28);
 
         lbl_notaParcialII.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_notaParcialII.setText("Nota Parcial II:");
@@ -195,7 +195,7 @@ public class Notas extends javax.swing.JFrame {
             }
         });
         jPanel2.add(txt_notaParcialII);
-        txt_notaParcialII.setBounds(250, 90, 60, 28);
+        txt_notaParcialII.setBounds(250, 90, 80, 28);
 
         lbl_notaParcialIII.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_notaParcialIII.setText("Nota Parcial III:");
@@ -215,7 +215,7 @@ public class Notas extends javax.swing.JFrame {
             }
         });
         jPanel2.add(txt_notaParcialIII);
-        txt_notaParcialIII.setBounds(250, 130, 60, 28);
+        txt_notaParcialIII.setBounds(250, 130, 80, 28);
 
         btn_guardar.setBackground(new java.awt.Color(235, 250, 251));
         btn_guardar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -310,7 +310,7 @@ public class Notas extends javax.swing.JFrame {
             }
         });
         jPanel2.add(cbo_reposicion);
-        cbo_reposicion.setBounds(380, 40, 260, 25);
+        cbo_reposicion.setBounds(380, 40, 260, 23);
 
         btn_generarReporte.setBackground(new java.awt.Color(235, 250, 251));
         btn_generarReporte.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -720,10 +720,41 @@ public class Notas extends javax.swing.JFrame {
            
             while(rs.next()){
                 lbl_asignatura.setText(codigo);
-                 txt_notaParcialI.setText(rs.getString("nota1"));
-                txt_notaParcialII.setText(rs.getString("nota2"));
-                txt_notaParcialIII.setText(rs.getString("nota3"));
+                txt_notaParcialI.setText(rs.getString("nota1").substring(0,5));
+                txt_notaParcialII.setText(rs.getString("nota2").substring(0,5));
+                txt_notaParcialIII.setText(rs.getString("nota3").substring(0,5));
                 lbl_idmatricula.setText(rs.getString("id_seccion"));
+                if(rs.getString("nota1").contains("100")){
+                     txt_notaParcialI.setText(rs.getString("nota1").substring(0,6));
+                }
+                if(rs.getString("nota2").contains("100")){
+                     txt_notaParcialII.setText(rs.getString("nota2").substring(0,6));
+                }
+                if(rs.getString("nota3").contains("100")){
+                     txt_notaParcialIII.setText(rs.getString("nota3").substring(0,6));
+                }  
+                if(rs.getString("nota1").startsWith("0")){
+                     txt_notaParcialI.setText(rs.getString("nota1").substring(0,4));
+                }
+                if(rs.getString("nota2").startsWith("0")){
+                     txt_notaParcialII.setText(rs.getString("nota2").substring(0,4));
+                }
+                if(rs.getString("nota3").startsWith("0")){
+                     txt_notaParcialIII.setText(rs.getString("nota3").substring(0,4));
+                }
+                
+                 if(Double.parseDouble(rs.getString("nota1")) < 10){
+                      txt_notaParcialI.setText(rs.getString("nota1").substring(0,4));
+                }
+                  if(Double.parseDouble(rs.getString("nota2")) < 10){
+                      txt_notaParcialII.setText(rs.getString("nota2").substring(0,4));
+                }
+                   if(Double.parseDouble(rs.getString("nota3")) < 10){
+                      txt_notaParcialIII.setText(rs.getString("nota3").substring(0,4));
+                }
+                
+                
+                
                 activar();
             }
         }catch(SQLException ex){

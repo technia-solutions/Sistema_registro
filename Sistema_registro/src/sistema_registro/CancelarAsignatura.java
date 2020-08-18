@@ -5,14 +5,21 @@
  */
 package sistema_registro;
 
+import static java.awt.Frame.ICONIFIED;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -32,12 +39,21 @@ public class CancelarAsignatura extends javax.swing.JFrame {
     DefaultTableModel modelo =  new DefaultTableModel();
     Statement stmt = null;
     String var, var2;
+    
     /**
      * Creates new form CancelarAsignatura
      */
     public CancelarAsignatura() throws SQLException {
         this.con = ConectorSQL.obtenerConexion();
         initComponents();
+        obtenerPeriodo();
+         this.setTitle("Matricula");
+          this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+        /*this.lbl_idMatricula.setVisible(false);
+        this.lbl_idPeriodo.setVisible(false);
+        this.lbl_idSeccion.setVisible(false);*/
+        
+        
     }
 
     /**
@@ -50,26 +66,79 @@ public class CancelarAsignatura extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        btn_buscar = new javax.swing.JButton();
+        txt_NumC = new javax.swing.JTextField();
+        lbl_numeroCuenta = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_Cancelar = new javax.swing.JTable();
-        btn_buscar = new javax.swing.JButton();
+        lbl_idMatricula = new javax.swing.JLabel();
+        lbl_idPeriodo = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         btn_CancelarAsig = new javax.swing.JButton();
-        txt_NumC = new javax.swing.JTextField();
+        lbl_idSeccion = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Cancelar Asignatura ");
+        jLabel1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jLabel1KeyTyped(evt);
+            }
+        });
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, -1, -1));
+
+        jPanel1.setBackground(new java.awt.Color(232, 251, 249));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 940, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 940, 60));
+
+        jPanel2.setBackground(new java.awt.Color(215, 236, 233));
+
+        btn_buscar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/magnifier-1_icon-icons.com_56924.png"))); // NOI18N
+        btn_buscar.setText("Buscar");
+        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscarActionPerformed(evt);
+            }
+        });
+
+        txt_NumC.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_NumC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_NumCActionPerformed(evt);
+            }
+        });
+        txt_NumC.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_NumCKeyTyped(evt);
+            }
+        });
+
+        lbl_numeroCuenta.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_numeroCuenta.setText("Número de cuenta:");
 
         Tabla_Cancelar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
@@ -82,21 +151,88 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Tabla_Cancelar);
 
-        btn_buscar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_buscar.setText("Buscar");
-        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
+        lbl_idMatricula.setText("jLabel2");
+
+        lbl_idPeriodo.setText("jLabel3");
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Eliminar.png"))); // NOI18N
+        jButton1.setText("Eliminar Matricula");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_buscarActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
         btn_CancelarAsig.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_CancelarAsig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar matricula.png"))); // NOI18N
         btn_CancelarAsig.setText("Cancelar Asignatura");
         btn_CancelarAsig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_CancelarAsigActionPerformed(evt);
             }
         });
+
+        lbl_idSeccion.setText("jLabel4");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbl_numeroCuenta)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txt_NumC, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lbl_idMatricula)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbl_idPeriodo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbl_idSeccion)
+                        .addGap(141, 141, 141))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(184, 184, 184)
+                                .addComponent(btn_CancelarAsig)
+                                .addGap(27, 27, 27)
+                                .addComponent(jButton1)))
+                        .addContainerGap(60, Short.MAX_VALUE))))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lbl_idMatricula)
+                        .addComponent(lbl_idPeriodo)
+                        .addComponent(lbl_idSeccion))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_NumC, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_numeroCuenta)
+                        .addComponent(btn_buscar)))
+                .addGap(56, 56, 56)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_CancelarAsig, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 940, 380));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 530));
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_retroceder.png"))); // NOI18N
         jMenu1.setText("Regresar");
@@ -114,43 +250,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(360, 360, 360)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(292, 292, 292)
-                        .addComponent(txt_NumC, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(389, 389, 389)
-                        .addComponent(btn_CancelarAsig, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(60, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jLabel1)
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_NumC, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_buscar))
-                .addGap(39, 39, 39)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
-                .addComponent(btn_CancelarAsig, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(87, Short.MAX_VALUE))
-        );
+        getAccessibleContext().setAccessibleName("jLabel2");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -160,24 +260,95 @@ public class CancelarAsignatura extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_buscarActionPerformed
 
     private void Tabla_CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_CancelarMouseClicked
-       
+          this.btn_CancelarAsig.setEnabled(true);
+          int i = Tabla_Cancelar.getSelectedRow();
+         if(Tabla_Cancelar.getSelectedRow() >= 0){
+          lbl_idSeccion.setText(Tabla_Cancelar.getValueAt(i,0).toString()+"-"+Tabla_Cancelar.getValueAt(i,2).toString());
+          lbl_idPeriodo.setText(Tabla_Cancelar.getValueAt(i,5).toString());
+          
+              try {
+                   Statement st = con.createStatement();
+                   String sql2 = "select * from Matricula as m join Secciones as s on m.id_seccion = s.id_seccion\n" +
+            "where m.numero_cuenta_alumno = '"+txt_NumC.getText()+"' and s.id_seccion = '"+lbl_idSeccion.getText()+"'\n" +
+            "and s.id_periodo = '"+lbl_idPeriodo.getText()+"'";
+                  ResultSet rs = st.executeQuery(sql2);
+                 if(rs.next()){
+                     lbl_idMatricula.setText(rs.getString(3));
+                 }
+          
+              } catch (SQLException ex) {
+                  Logger.getLogger(CancelarAsignatura.class.getName()).log(Level.SEVERE, null, ex);
+              }
+       }
+         
     }//GEN-LAST:event_Tabla_CancelarMouseClicked
 
+      private void eliminarMatricula(){
+         try {
+             Statement st = con.createStatement();
+             String sql2 = "select * from Matricula as m join Secciones as s on m.id_seccion = s.id_seccion\n" +
+            "where m.numero_cuenta_alumno = '"+txt_NumC.getText()+"'" +
+            "and s.id_periodo = '"+lbl_idPeriodo.getText()+"'";
+             ResultSet rs2 = st.executeQuery(sql2);
+             ArrayList<String> id_matricula = new ArrayList<String>();
+             while(rs2.next()){
+                 id_matricula.add(rs2.getString(3));
+             }
+             if(id_matricula.size() > 0){
+             for (int i = 0; i < id_matricula.size(); i++) {
+                 Statement st2 = con.createStatement();
+                
+                 String sql3 = "Delete Notas\n" +
+                                "where id_matricula = '"+id_matricula.get(i)+"'";
+                 int rs3 = st2.executeUpdate(sql3);
+                 
+                 Statement st3 = con.createStatement();
+                 String sql4 = "Delete Matricula\n"
+                         + "where id_matricula = '"+id_matricula.get(i)+"'";
+                 int rs4 = st3.executeUpdate(sql4);
+             }
+             JOptionPane.showMessageDialog(null,"Se ha cancelado la matricula exitosamente");
+                }
+             else if(id_matricula.isEmpty()){
+                  JOptionPane.showMessageDialog(null,"No hay matricula registrada");
+             }
+             
+             
+         } catch (SQLException ex) {
+             JOptionPane.showMessageDialog(null,ex.getMessage());
+         }
+      
+    }
+      
     private void btn_CancelarAsigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CancelarAsigActionPerformed
         //CancelarA(var, var);
-         String numeroCuenta,id_matricula,id_seccion;
+         String numeroCuenta,id_seccion,id_periodo,id_matricula;
         
-            numeroCuenta = "";
-            id_matricula = "";   
-            id_seccion = "";
+       
+            numeroCuenta = txt_NumC.getText();
+            id_matricula =lbl_idMatricula.getText();
+            id_seccion = lbl_idSeccion.getText();
+            id_periodo = lbl_idPeriodo.getText();
+            
+            
+            int matricula =Integer.parseInt(id_matricula);
           
         
         try{
           
+                if ((txt_NumC.getText().equals(""))  ) {
+
+                javax.swing.JOptionPane.showMessageDialog(this,"¡Debe llenar el espacio! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                     txt_NumC.requestFocus();
+                        return;
+              }
+               
            
              Statement st2 =con.createStatement();
-             String sql ="Delete  Matricula "
-                            + "where id_matricula =(Select id_matricula from Matricula where numero_cuenta_alumno='"+numeroCuenta+"' and id_seccion ='"+id_seccion+"')";
+             String sql = "Delete  Notas "
+                      + "where numero_cuenta='"+numeroCuenta+"' and id_periodo='"+id_periodo+"' and id_matricula='"+id_matricula+"'"; 
+                     
+                     
               int rs2 = st2.executeUpdate(sql);
           }catch ( Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage()); 
@@ -187,8 +358,10 @@ public class CancelarAsignatura extends javax.swing.JFrame {
           PreparedStatement ps;
           ResultSet rs4;
          Statement st=con.createStatement();
-         String sql ="Delete  Notas "
-                      + "where numero_cuenta='"+numeroCuenta+"'";
+         String sql ="Delete  Matricula "
+                            + "where id_matricula='"+id_matricula+"' and numero_cuenta_alumno='"+numeroCuenta+"' and id_seccion ='"+id_seccion+"' ";
+                 
+                 
                  
                     int res=st.executeUpdate(sql);
                   
@@ -197,9 +370,11 @@ public class CancelarAsignatura extends javax.swing.JFrame {
                   }else {
                       JOptionPane.showMessageDialog(null, "¡Error al cancelar la asignatura!"); 
                   }
-      } catch ( Exception e) {
-            System.out.println(e);
+      } catch ( Exception e) { 
+          System.out.println(e);; 
         }
+      buscar();
+     
          
     }//GEN-LAST:event_btn_CancelarAsigActionPerformed
 
@@ -216,6 +391,112 @@ public class CancelarAsignatura extends javax.swing.JFrame {
     
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jLabel1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel1KeyTyped
+       
+    }//GEN-LAST:event_jLabel1KeyTyped
+
+    private void txt_NumCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NumCKeyTyped
+             char a=evt.getKeyChar();
+            if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
+                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
+                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+        return;
+        }
+        if(txt_NumC.getText().length() >=10){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
+        }
+      
+        if(Character.isLetter(a) || !Character.isLetterOrDigit(a)){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Sólo números");
+        }
+                      
+    }//GEN-LAST:event_txt_NumCKeyTyped
+
+    private void txt_NumCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NumCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_NumCActionPerformed
+/*public void actualizarDatos(){
+        try {
+               String sql = "select A.cod_asignaturas, A.nombre_asignaturas, S.Nombre_seccion, S.Hora_inicial, S.Hora_final, S.id_periodo,S.id_aula, A.UV from Secciones as S\n" +
+                        "join Asignaturas as A on S.cod_asignaturas=A.cod_asignaturas "+
+                        "join Matricula as M on M.id_seccion = S.id_seccion";
+           
+               stmt = con.createStatement();
+               ResultSet rs = stmt.executeQuery(sql);
+               
+               modelo = new DefaultTableModel(null,titulos);
+               Tabla_Empleados.setModel(modelo);
+               Locale locale = new Locale("es", "HN");      
+               NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
+               NumberFormat formatter = NumberFormat.getCurrencyInstance();
+                 while(rs.next()) {
+                      String []datos= new String[8];
+                      datos[0] =rs.getString("Cod.Asignatura");
+                      datos[1] =rs.getString("Nombre");
+                      datos[2] =rs.getString("Seccion");
+                      datos[3] =currencyFormatter.format(rs.getDouble("Hora Inicial"));
+                      datos[4] =rs.getString("Hora Final");
+                      datos[5] =rs.getString("Período");
+                      datos[6] =rs.getString("Aula");
+                      datos[7] =rs.getString("UV");
+                      datos[8] = rs.getString("Selecciona");
+                   
+                      modelo.addRow(datos);
+                      
+                     
+               }
+                TableColumn idE = Tabla_Empleados.getColumn(titulos[0]);
+                idE.setMaxWidth(125);
+                idE.setIdentifier(ICONIFIED);
+                TableColumn cn = Tabla_Empleados.getColumn(titulos[1]);
+                cn.setMaxWidth(165);
+                TableColumn ca = Tabla_Empleados.getColumn(titulos[2]);
+                ca.setMaxWidth(165);
+                TableColumn cs = Tabla_Empleados.getColumn(titulos[3]);
+                cs.setMaxWidth(75);
+                TableColumn ct = Tabla_Empleados.getColumn(titulos[4]);
+                ct.setMaxWidth(90);
+                TableColumn cid = Tabla_Empleados.getColumn(titulos[5]);
+                cid.setMaxWidth(170);
+                TableColumn cnomu = Tabla_Empleados.getColumn(titulos[6]);
+                cnomu.setMaxWidth(165);
+                TableColumn cidc = Tabla_Empleados.getColumn(titulos[7]);
+                cidc.setMaxWidth(150);
+                TableColumn ctipou = Tabla_Empleados.getColumn(titulos[8]);
+                ctipou.setMaxWidth(95);
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
+    }*/
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        eliminarMatricula();
+        buscar();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+     private void obtenerPeriodo() throws SQLException{
+        Statement st = con.createStatement();
+        Calendar f;
+       
+       f=Calendar.getInstance();
+       
+       int d=f.get(Calendar.DATE), mes=1+(f.get(Calendar.MONTH)), año=f.get(Calendar.YEAR);
+       String fecha = d+"-"+mes+"-"+año;
+        String sql = "select id_periodo from Periodo_historico\n" +
+        "where fecha_inicial < '"+fecha+"' and fecha_final > '"+fecha+"'";
+        ResultSet rs2 = st.executeQuery(sql);
+        if(rs2.next()){
+            lbl_idPeriodo.setText(rs2.getString(1));
+           
+        }
+        else{
+            JOptionPane.showMessageDialog(null,"Error");
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -259,11 +540,19 @@ public class CancelarAsignatura extends javax.swing.JFrame {
     private javax.swing.JTable Tabla_Cancelar;
     private javax.swing.JButton btn_CancelarAsig;
     private javax.swing.JButton btn_buscar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbl_idMatricula;
+    private javax.swing.JLabel lbl_idPeriodo;
+    private javax.swing.JLabel lbl_idSeccion;
+    private javax.swing.JLabel lbl_numeroCuenta;
     private javax.swing.JTextField txt_NumC;
     // End of variables declaration//GEN-END:variables
 
