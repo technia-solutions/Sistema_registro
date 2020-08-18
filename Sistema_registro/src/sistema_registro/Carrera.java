@@ -75,13 +75,13 @@ public class Carrera extends javax.swing.JFrame {
         lbl_nombreCarrera = new javax.swing.JLabel();
         lbl_facultad = new javax.swing.JLabel();
         cbo_idfacultad = new javax.swing.JComboBox<>();
-        btn_AdmFacultades = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         Regresar_Asignatura = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -204,15 +204,6 @@ public class Carrera extends javax.swing.JFrame {
         jPanel1.add(cbo_idfacultad);
         cbo_idfacultad.setBounds(450, 130, 270, 40);
 
-        btn_AdmFacultades.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_Agregar_pantallaAparte.png"))); // NOI18N
-        btn_AdmFacultades.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_AdmFacultadesActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btn_AdmFacultades);
-        btn_AdmFacultades.setBounds(740, 130, 30, 30);
-
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 870, 250));
 
         jPanel2.setBackground(new java.awt.Color(232, 251, 249));
@@ -255,6 +246,16 @@ public class Carrera extends javax.swing.JFrame {
             }
         });
         jMenu1.add(Regresar_Asignatura);
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/mortarboard_icon-icons.com_64579.png"))); // NOI18N
+        jMenuItem1.setText("Facultad");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
 
@@ -457,17 +458,6 @@ public class Carrera extends javax.swing.JFrame {
         LimpiarCajas();
     }//GEN-LAST:event_btn_actualizar1ActionPerformed
 
-    private void btn_AdmFacultadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AdmFacultadesActionPerformed
-        Facultad facultad = null;
-        try {
-            facultad = new Facultad();
-        } catch (SQLException ex) {
-            Logger.getLogger(Carrera.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        facultad.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btn_AdmFacultadesActionPerformed
-
     private void Regresar_AsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Regresar_AsignaturaActionPerformed
         
          this.dispose();
@@ -490,6 +480,18 @@ public class Carrera extends javax.swing.JFrame {
         String lower = id.toLowerCase();
         txt_idCarrera.setText(lower); 
     }//GEN-LAST:event_txt_idCarreraFocusLost
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+     this.dispose();
+        Facultad ff = null;
+         try {
+             ff = new Facultad();
+         } catch (SQLException ex) {
+             Logger.getLogger(Carrera.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        ff.setVisible(true);
+        
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -533,7 +535,6 @@ public class Carrera extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Regresar_Asignatura;
     private javax.swing.JTable Tabla_Carrera;
-    private javax.swing.JButton btn_AdmFacultades;
     private javax.swing.JButton btn_actualizar1;
     private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_eliminar;
@@ -542,6 +543,7 @@ public class Carrera extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -608,13 +610,7 @@ public class Carrera extends javax.swing.JFrame {
         try {
                     String cap = "";
                     ResultSet rs2 = null;
-                   var = JOptionPane.showInputDialog(this, "Ingrese el nombre de la carrera que desea consultar", "Consulta de carrera", JOptionPane.QUESTION_MESSAGE);
-                    if (var == null) {
-                        JOptionPane.showMessageDialog(this, "La acción fue cancelada", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
-                    } else {
-                        if (var.equals("")) {
-                            JOptionPane.showMessageDialog(this, "Favor de ingresar el nombre de la carrera\n que desea consultar", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
-                        } else {
+                   
                             String sql = "SELECT * FROM Carrera where id_carrera='"+var+"' or nombre_carrera ='"+var+"'";
                             stmt = con.createStatement();
                             rs2 = stmt.executeQuery(sql);
@@ -622,12 +618,11 @@ public class Carrera extends javax.swing.JFrame {
                             if (rs2.next()) {
                                 txt_idCarrera.setText(rs2.getString("id_carrera"));
                                 txt_NombreCarrera.setText(rs2.getString("nombre_carrera"));
-                            } else {
-                                JOptionPane.showMessageDialog(null, "¡No se encuentra los datos: "+var+" ! Por favor verifique sí, lo escribio correctamente");
+                                cbo_idfacultad.setSelectedItem((rs2.getString("id_facultad")+ " - " + rs2.getString("nombre_facultad")));
                             }
-                        }
+                        
 
-                    }
+                    
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e.getMessage());
                 }

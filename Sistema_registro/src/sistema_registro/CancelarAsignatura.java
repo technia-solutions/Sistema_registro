@@ -208,17 +208,18 @@ public class CancelarAsignatura extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_NumC, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_numeroCuenta)
-                    .addComponent(btn_buscar)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lbl_idMatricula)
                         .addComponent(lbl_idPeriodo)
-                        .addComponent(lbl_idSeccion)))
+                        .addComponent(lbl_idSeccion))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_NumC, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_numeroCuenta)
+                        .addComponent(btn_buscar)))
                 .addGap(56, 56, 56)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btn_CancelarAsig, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -254,6 +255,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
     buscar();
+     this.txt_NumC.setEnabled(false);
     }//GEN-LAST:event_btn_buscarActionPerformed
 
     private void Tabla_CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_CancelarMouseClicked
@@ -613,6 +615,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
              System.out.println(ex.toString());
              
          }    
+        existeNumeroCuenta();
       
     }
      
@@ -681,6 +684,33 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         return tbl_asignaturas.getValueAt(row, column) != null;
              
     }
+      
+      
+      
+      private boolean existeNumeroCuenta() {
+        try {
+            Statement st = con.createStatement();
+            String sql = "select A.numero_cuenta_alumno from Alumno as A\n" +
+                           "where A.numero_cuenta_alumno='"+txt_NumC.getText()+"';";
+            ResultSet rs = st.executeQuery(sql);
+            if (!rs.next()) {
+                     LimpiarCajas();
+                JOptionPane.showMessageDialog(null, "El número de cuenta: " +txt_NumC.getText()+ " no existe", "Número de Cuenta Incorrecto", JOptionPane.ERROR_MESSAGE);
+                return true;
+            } else {
+                
+                return false;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.toString());
+        }
+        return false;
+    }
+
+    private void LimpiarCajas() {
+       txt_NumC.setText(null);
+    }
+    
   
 }
 

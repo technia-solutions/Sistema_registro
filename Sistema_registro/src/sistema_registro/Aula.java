@@ -81,6 +81,7 @@ public class Aula extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -296,6 +297,16 @@ public class Aula extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Edificio.png"))); // NOI18N
+        jMenuItem2.setText("Administrar Edifio");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
 
         jMenuBar1.add(jMenu1);
 
@@ -550,6 +561,17 @@ public class Aula extends javax.swing.JFrame {
           this.dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+             Edificio ee = null;
+        try {
+            ee = new Edificio();
+        } catch (SQLException ex) {
+            Logger.getLogger(Edificio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          ee.setVisible(true);
+          this.dispose();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -600,6 +622,7 @@ public class Aula extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -661,7 +684,7 @@ public class Aula extends javax.swing.JFrame {
                       
                       centrar_datos();
                  }
-            TableColumn  idA= Tabla_Aula.getColumn(titulos[0]);
+           TableColumn  idA= Tabla_Aula.getColumn(titulos[0]);
             idA.setMaxWidth(300);
             TableColumn nomA= Tabla_Aula.getColumn(titulos[1]);
             nomA.setMaxWidth(300);
@@ -692,13 +715,7 @@ public class Aula extends javax.swing.JFrame {
       try {
                     String cap = "";
                     ResultSet rs2 = null;
-                   var = JOptionPane.showInputDialog(this, "Ingrese el nombre del aula que desea consultar.", "Consulta del aula", JOptionPane.QUESTION_MESSAGE);
-                    if (var == null) {
-                        JOptionPane.showMessageDialog(this, "La acción fue cancelada", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
-                    } else {
-                        if (var.equals("")) {
-                            JOptionPane.showMessageDialog(this, "Favor de ingresar el nombre del aula \n que desea consultar.", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
-                        } else {
+                  
                             String sql = "SELECT * FROM Aula where id_aula='"+var+"' or nombre_aula ='"+var+"'";
                             stmt = con.createStatement();
                             rs2 = stmt.executeQuery(sql);
@@ -707,15 +724,11 @@ public class Aula extends javax.swing.JFrame {
                                 txt_idAula.setText(rs2.getString("id_aula"));
                                 txt_nombreAula.setText(rs2.getString("nombre_aula"));
                                 txt_PisoAula.setText(rs2.getString("nombre_aula"));
-                               cbo_idEdificio.setSelectedItem((rs2.getString("id_edificio")));
-                               
-                                
-                            } else {
-                                JOptionPane.showMessageDialog(null, "¡No se encuentra los datos: "+var+" ! Por favor verifique sí, lo escribio correctamente.");
+                               cbo_idEdificio.setSelectedItem((rs2.getString("id_edificio"))+ " - " + rs2.getString("periodo"));
                             }
-                        }
+                        
 
-                    }
+                    
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e.getMessage());
                 }

@@ -643,13 +643,7 @@ public class Edificio extends javax.swing.JFrame {
       try {
                     String cap = "";
                     ResultSet rs2 = null;
-                   var = JOptionPane.showInputDialog(this, "Ingrese el nombre del edificio que desea consultar.", "Consulta del edificio", JOptionPane.QUESTION_MESSAGE);
-                    if (var == null) {
-                        JOptionPane.showMessageDialog(this, "La acción fue cancelada.", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
-                    } else {
-                        if (var.equals("")) {
-                            JOptionPane.showMessageDialog(this, "Favor de ingresar el nombre del edificio \n que desea consultar.", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
-                        } else {
+                  
                             String sql = "SELECT * FROM Edifcio where id_edificio='"+var+"' or nombre_edificio ='"+var+"'";
                             stmt = con.createStatement();
                             rs2 = stmt.executeQuery(sql);
@@ -660,12 +654,10 @@ public class Edificio extends javax.swing.JFrame {
                                cbo_idCampus.setSelectedItem((rs2.getString("id_campus") + " - " + rs2.getString("nombre_campus")));
                                
                                 
-                            } else {
-                                JOptionPane.showMessageDialog(null, "¡No se encuentra los datos: "+var+" ! Por favor verifique sí, lo escribio correctamente.");
-                            }
+                           
                         }
 
-                    }
+                    
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e.getMessage());
                 }

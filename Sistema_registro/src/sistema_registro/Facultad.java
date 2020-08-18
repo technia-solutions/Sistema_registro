@@ -40,7 +40,7 @@ public class Facultad extends javax.swing.JFrame {
     public Facultad() throws SQLException {
         initComponents();
          this.con = ConectorSQL.obtenerConexion();
-         actualizarDatos(); 
+         //actualizarDatos(); 
          this.setTitle("Facultad");
           this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
     }
@@ -586,13 +586,7 @@ private void rellenar() {
                 try {
                     String cap = "";
                     ResultSet rs2 = null;
-                   var = JOptionPane.showInputDialog(this, "Ingrese el nombre de la facultad que desea consultar", "Consulta de facultad", JOptionPane.QUESTION_MESSAGE);
-                    if (var == null) {
-                        JOptionPane.showMessageDialog(this, "La acción fue cancelada", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
-                    } else {
-                        if (var.equals("")) {
-                            JOptionPane.showMessageDialog(this, "Favor de ingresar el nombre de la facultad \n que desea consultar", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
-                        } else {
+                  
                             String sql = "SELECT * FROM Facultad where id_facultad='"+var+"' or nombre_facultad ='"+var+"'";
                             stmt = con.createStatement();
                             rs2 = stmt.executeQuery(sql);
@@ -600,12 +594,11 @@ private void rellenar() {
                             if (rs2.next()) {
                                 txt_idfacultad.setText(rs2.getString("id_facultad"));
                                 txt_NombreFacultad.setText(rs2.getString("nombre_facultad"));
-                            } else {
-                                JOptionPane.showMessageDialog(null, "¡No se encuentra los datos: "+var+" ! Por favor verifique sí, lo escribio correctamente");
                             }
-                        }
+                            
+                        
 
-                    }
+                    
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e.getMessage());
                 }

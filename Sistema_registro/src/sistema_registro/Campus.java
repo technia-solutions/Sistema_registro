@@ -449,34 +449,20 @@ public class Campus extends javax.swing.JFrame {
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }
-
-            /* try{
-                PreparedStatement ps;
-                ResultSet rs;
-                ps=con.prepareStatement("Delete Campus "
-                    + "where nombre_campus = '"+var+"' ");
-                int res= ps.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Se ha borrado la información del empleado "+nombreCampus+" correctamente");
-                if(res > 0){
-                }else {
-                    JOptionPane.showMessageDialog(null, "¡Error al eliminar la información!");
-                }
-            } catch ( Exception e) {
-                System.out.println(e);
-            }*/
             actualizarDatos();
             LimpiarCajas();
         }
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
-
         actualizarDatos();
      
     }//GEN-LAST:event_btn_buscarActionPerformed
 
     private void btn_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buscarMouseClicked
         rellenar();
+        this.jScrollPane1.setEnabled(true);
+        this.Tabla_Campus.setEnabled(true);
     }//GEN-LAST:event_btn_buscarMouseClicked
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
@@ -569,37 +555,9 @@ public class Campus extends javax.swing.JFrame {
         txt_idCampus.setText(upper); 
     }//GEN-LAST:event_txt_idCampusFocusLost
 
-    public void actualizarDatos() {
-        try {
-            String sql = "SELECT * FROM Campus";
-            stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery(sql);
-            modelo = new DefaultTableModel(null, titulos);
-            Tabla_Campus.setModel(modelo);
-            while (rs.next()) {
-                String[] datos = new String[2];
-                datos[0] = rs.getString("id_campus");
-                datos[1] = rs.getString("nombre_campus");
-                modelo.addRow(datos);
-            }
-            TableColumn idC = Tabla_Campus.getColumn(titulos[0]);
-            idC.setMaxWidth(150);
-            idC.setIdentifier(ICONIFIED);
-            TableColumn cn = Tabla_Campus.getColumn(titulos[1]);
-            cn.setMaxWidth(300);
-        } catch (Exception e) {
-           /* JOptionPane.showMessageDialog(null, e.getMessage());*/
-            System.err.println(e);
-        }
-    }
+   
 
-    public void centrar_datos() {
-        DefaultTableCellRenderer modelocentrar = new DefaultTableCellRenderer();
-        modelocentrar.setHorizontalAlignment(SwingConstants.CENTER);
-        for (int i = 0; i <modelo.getRowCount(); i++) {
-              Tabla_Campus.getColumnModel().getColumn(i).setCellRenderer(modelocentrar);   
-         }
-    }
+ 
 
     /**
      *
@@ -708,25 +666,28 @@ public class Campus extends javax.swing.JFrame {
         }
     }
 
+    
+
+  private void LimpiarCajas(){
+        txt_NombreCampus.setText(null);
+        txt_idCampus.setText(null);
+        
+    }
+  
+  
     private void llenarCampos() {
         int i = Tabla_Campus.getSelectedRow();
         txt_idCampus.setText(Tabla_Campus.getValueAt(i, 0).toString());
         txt_NombreCampus.setText(Tabla_Campus.getValueAt(i, 1).toString());
-
+        
+        
     }
   
-
-private void rellenar() {
-                try {
+  private void rellenar() {
+        try {
                     String cap = "";
                     ResultSet rs2 = null;
-                   var = JOptionPane.showInputDialog(this, "Ingrese el nombre del campus que desea consultar", "Consulta de campus", JOptionPane.QUESTION_MESSAGE);
-                    if (var == null) {
-                        JOptionPane.showMessageDialog(this, "La acción fue cancelada", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
-                    } else {
-                        if (var.equals("")) {
-                            JOptionPane.showMessageDialog(this, "Favor de ingresar el nombre del campus \n que desea consultar", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
-                        } else {
+                   
                             String sql = "SELECT * FROM Campus where id_campus='"+var+"' or nombre_campus ='"+var+"'";
                             stmt = con.createStatement();
                             rs2 = stmt.executeQuery(sql);
@@ -734,21 +695,49 @@ private void rellenar() {
                             if (rs2.next()) {
                                 txt_idCampus.setText(rs2.getString("id_campus"));
                                 txt_NombreCampus.setText(rs2.getString("nombre_campus"));
-                            } else {
-                                JOptionPane.showMessageDialog(null, "¡No se encuentra los datos: "+var+" ! Por favor verifique sí, lo escribio correctamente");
+                                
                             }
-                        }
+                        
 
-                    }
+                    
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e.getMessage());
                 }
     }
-
-  private void LimpiarCajas(){
-        txt_NombreCampus.setText(null);
-        txt_idCampus.setText(null);
-        
+    
+     public void centrar_datos(){
+ 
+        DefaultTableCellRenderer modelocentrar = new DefaultTableCellRenderer();
+        modelocentrar.setHorizontalAlignment(SwingConstants.CENTER);
+         for (int i = 0; i <modelo.getRowCount(); i++) {
+              Tabla_Campus.getColumnModel().getColumn(i).setCellRenderer(modelocentrar);   
+         }
+    }
+     
+      public void actualizarDatos() {
+        try {
+            String sql = "SELECT * FROM Campus";
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            modelo = new DefaultTableModel(null, titulos);
+            Tabla_Campus.setModel(modelo);
+            while (rs.next()) {
+                String[] datos = new String[3];
+                datos[0] = rs.getString("id_campus");
+                datos[1] = rs.getString("nombre_campus");
+                
+                modelo.addRow(datos);
+            }
+            TableColumn idC = Tabla_Campus.getColumn(titulos[0]);
+            idC.setMaxWidth(300);
+            idC.setIdentifier(ICONIFIED);
+            TableColumn cnombre = Tabla_Campus.getColumn(titulos[1]);
+            cnombre.setMaxWidth(300);
+           
+        } catch (Exception e) {
+           /* JOptionPane.showMessageDialog(null, e.getMessage());*/
+            System.err.println(e);
+        }
     }
 
 }
