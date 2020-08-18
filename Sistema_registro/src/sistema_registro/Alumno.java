@@ -244,7 +244,7 @@ public class Alumno extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(546, 546, 546)
                 .addComponent(lbl_titulo)
-                .addContainerGap(605, Short.MAX_VALUE))
+                .addContainerGap(575, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,7 +254,7 @@ public class Alumno extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 1240, 60));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 1210, 60));
 
         jPanel1.setBackground(new java.awt.Color(215, 236, 233));
 
@@ -500,7 +500,7 @@ public class Alumno extends javax.swing.JFrame {
                 .addGap(18, 18, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, 340));
 
         lbl_usuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_usuario.setText("Nombre Usuario");
@@ -1037,21 +1037,14 @@ public class Alumno extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-           try {
-            String sql2 = "Select nombres_empleado + ' ' + apellido_empleado from Empleados where id_empleado = (select id_empleado from Acceso where nombre_usuario = '"+lbl_usuario.getText()+"')";
-                Statement st2 = con.createStatement();
-                ResultSet rs2 = st2.executeQuery(sql2);
-                if(rs2.next()){
-                Principal principal = new Principal(lbl_usuario.getText(),rs2.getString(1));
-                principal.setVisible(true); 
-                this.dispose();
-                }
-                else{
-                    JOptionPane.showMessageDialog(null, "Error");
-                }
+        Principal Pp = null;
+        try {
+            Pp = new Principal();
         } catch (SQLException ex) {
-            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
+        Pp.setVisible(true);
+        this.dispose();
       
 
     }//GEN-LAST:event_jMenuItem2ActionPerformed
