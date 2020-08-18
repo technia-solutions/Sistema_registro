@@ -18,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -591,7 +592,15 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
     }
 
 
-    private boolean validarLongitud(JTextField texto, int longitud) {
+    private boolean validarLongitud(JTextArea texto, int longitud) {
+        if (texto.getText().length() >= longitud) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    private boolean validarLongitud( JTextField texto, int longitud) {
         if (texto.getText().length() >= longitud) {
             return true;
         } else {

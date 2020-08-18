@@ -18,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -588,7 +589,15 @@ public class Carrera extends javax.swing.JFrame {
         return false;
     }
 
-    private boolean validarLongitud(JTextField texto, int longitud) {
+    private boolean validarLongitud( JTextArea texto, int longitud) {
+        if (texto.getText().length() >= longitud) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+     private boolean validarLongitud( JTextField texto, int longitud) {
         if (texto.getText().length() >= longitud) {
             return true;
         } else {
