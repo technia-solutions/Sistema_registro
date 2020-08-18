@@ -70,12 +70,13 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         btn_eliminar = new javax.swing.JButton();
         lbl_idCarrera = new javax.swing.JLabel();
         lbl_idReqAs = new javax.swing.JLabel();
-        txt_NombreReqAsig = new javax.swing.JTextField();
         txt_idReqAsig = new javax.swing.JTextField();
         lbl_NombreReqAs = new javax.swing.JLabel();
         cbo_idCarrera = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_ReqAsignatura = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtA_NombreReqAsig = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -140,21 +141,12 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         lbl_idCarrera.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_idCarrera.setText("Id Carrera:");
         jPanel1.add(lbl_idCarrera);
-        lbl_idCarrera.setBounds(380, 220, 190, 20);
+        lbl_idCarrera.setBounds(380, 210, 190, 20);
 
         lbl_idReqAs.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_idReqAs.setText("Id Requisito Asignatura:");
         jPanel1.add(lbl_idReqAs);
         lbl_idReqAs.setBounds(270, 80, 200, 22);
-
-        txt_NombreReqAsig.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_NombreReqAsig.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_NombreReqAsigKeyTyped(evt);
-            }
-        });
-        jPanel1.add(txt_NombreReqAsig);
-        txt_NombreReqAsig.setBounds(510, 150, 210, 40);
 
         txt_idReqAsig.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_idReqAsig.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -173,11 +165,11 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         lbl_NombreReqAs.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_NombreReqAs.setText(" Requisito Asignatura:");
         jPanel1.add(lbl_NombreReqAs);
-        lbl_NombreReqAs.setBounds(290, 160, 190, 20);
+        lbl_NombreReqAs.setBounds(290, 150, 190, 20);
 
         cbo_idCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una carrera:" }));
         jPanel1.add(cbo_idCarrera);
-        cbo_idCarrera.setBounds(510, 210, 210, 40);
+        cbo_idCarrera.setBounds(510, 200, 210, 40);
 
         Tabla_ReqAsignatura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -197,6 +189,18 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(60, 310, 736, 110);
 
+        txtA_NombreReqAsig.setColumns(20);
+        txtA_NombreReqAsig.setRows(5);
+        txtA_NombreReqAsig.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtA_NombreReqAsigKeyTyped(evt);
+            }
+        });
+        jScrollPane2.setViewportView(txtA_NombreReqAsig);
+
+        jPanel1.add(jScrollPane2);
+        jScrollPane2.setBounds(510, 140, 210, 40);
+
         jPanel2.setBackground(new java.awt.Color(232, 251, 249));
 
         lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -209,7 +213,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(316, 316, 316)
                 .addComponent(lbl_titulo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(338, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,9 +249,9 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 870, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(40, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 920, Short.MAX_VALUE))
@@ -278,7 +282,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
         String cadena1, cadena2, cadena3;
         cadena1 = txt_idReqAsig.getText();
-        cadena2 = txt_NombreReqAsig.getText();
+        cadena2 = txtA_NombreReqAsig.getText();
         String id_facultad = cbo_idCarrera.getSelectedItem().toString().substring(0, 4);
         
         if((txt_idReqAsig.getText().equals(""))){
@@ -287,9 +291,9 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
             return;
         }
           
-        if((txt_NombreReqAsig.getText().equals(""))){
+        if((txtA_NombreReqAsig.getText().equals(""))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre de la asignatura requisito.","Nombre asignatura requisito requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            txt_NombreReqAsig.requestFocus();
+            txtA_NombreReqAsig.requestFocus();
             return;
         }
         
@@ -314,7 +318,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
 
         }
 
-        if (!validarLongitud(txt_NombreReqAsig,7 )) {
+        if (!validarLongitud(txtA_NombreReqAsig,7)) {
             JOptionPane.showMessageDialog(null, "El  nombre de la asignatura requisito ingresado es muy pequeño, el mínimo es de 7 caracteres", "Longitud de nombre de la asignatura requisito", JOptionPane.INFORMATION_MESSAGE);
             return;
 
@@ -326,7 +330,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
             ps = con.prepareStatement("INSERT INTO Requisito_Asignatura (id_asignatura, RequisitoAsignatura,id_carrera)"
                 + "                VALUES(?,?,?)");
             ps.setString(1, txt_idReqAsig.getText());
-            ps.setString(2, txt_NombreReqAsig.getText());
+            ps.setString(2, txtA_NombreReqAsig.getText());
             ps.setString(3, id_facultad);
             int res = ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Se ha guardado la información de la asignatura requisito");
@@ -341,12 +345,12 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
 
     private void btn_actualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizar1ActionPerformed
 
-        String nombreAsignaturaRequisito = txt_NombreReqAsig.getText() + " ";
-        if ((txt_idReqAsig.getText().equals("")) || (txt_NombreReqAsig.getText().equals("")) ||
+        String nombreAsignaturaRequisito = txtA_NombreReqAsig.getText() + " ";
+        if ((txt_idReqAsig.getText().equals("")) || (txtA_NombreReqAsig.getText().equals("")) ||
             (cbo_idCarrera.getSelectedItem().equals("Seleccione la asignatura requisito"))) {
 
             javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la asignatura requisito a actualizar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            txt_NombreReqAsig.requestFocus();
+            txtA_NombreReqAsig.requestFocus();
             return;
         }
         else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de la asignatura requisito" + nombreAsignaturaRequisito + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
@@ -360,7 +364,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
                     + " id_asignatura = ? "
                     + " where id_asignatura =\'"+txt_idReqAsig.getText()+"\'");
 
-                ps.setString(1, txt_NombreReqAsig.getText());
+                ps.setString(1, txtA_NombreReqAsig.getText());
                 ps.setString(2, txt_idReqAsig.getText());
                 /* ps.setString(3, id_facultad);*/
                 int res = ps.executeUpdate();
@@ -384,9 +388,9 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_buscarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        String nombreAsignaturaRequisito = txt_NombreReqAsig.getText();
+        String nombreAsignaturaRequisito = txtA_NombreReqAsig.getText();
 
-        if ((txt_idReqAsig.getText().equals("")) || (txt_NombreReqAsig.getText().equals("")) ||
+        if ((txt_idReqAsig.getText().equals("")) || (txtA_NombreReqAsig.getText().equals("")) ||
             (cbo_idCarrera.getSelectedItem().equals("Seleccione la asignatura requisito"))) {
 
             javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la asignatura requisito a eliminar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
@@ -401,7 +405,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
                 PreparedStatement ps;
                 ResultSet rs;
                 ps=con.prepareStatement("Delete Requisito_Asignatura "
-                    + "where id_asignatura = (Select id_asignatura from Requisito_Asignatura   where RequisitoAsignatura = '"+txt_NombreReqAsig.getText()+"')");
+                    + "where id_asignatura = (Select id_asignatura from Requisito_Asignatura   where RequisitoAsignatura = '"+txtA_NombreReqAsig.getText()+"')");
                 int res= ps.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Se ha borrado la información de la asignatura requisito "+nombreAsignaturaRequisito+" correctamente");
                 if(res > 0){
@@ -448,8 +452,15 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txt_idReqAsigKeyTyped
 
-    private void txt_NombreReqAsigKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NombreReqAsigKeyTyped
-             if (txt_NombreReqAsig.getText().length() >= 50) {
+    private void txt_idReqAsigFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_idReqAsigFocusLost
+        String id = txt_idReqAsig.getText();
+        String upper = id.toUpperCase();
+        txt_idReqAsig.setText(upper); 
+    }//GEN-LAST:event_txt_idReqAsigFocusLost
+
+    private void txtA_NombreReqAsigKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtA_NombreReqAsigKeyTyped
+
+         if (txtA_NombreReqAsig.getText().length() >= 50) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
@@ -459,31 +470,28 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
             || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
             return;
         }
-         if(evt.getKeyChar() == 32){
-             if(txt_NombreReqAsig.getText().length() == 0){
-                 evt.consume();
-                 Toolkit.getDefaultToolkit().beep();
-                 return;
-             }
-             if(txt_NombreReqAsig.getText().substring(txt_NombreReqAsig.getText().length() - 1).equals(" ")){
-                 evt.consume();
-                 Toolkit.getDefaultToolkit().beep();
-             }
-             return; 
-         }
+        if(evt.getKeyChar() == 32){
+            if(txtA_NombreReqAsig.getText().length() == 0){
+                evt.consume();
+                Toolkit.getDefaultToolkit().beep();
+                return;
+            }
+            if(txtA_NombreReqAsig.getText().substring(txtA_NombreReqAsig.getText().length() - 1).equals(" ")){
+                evt.consume();
+                Toolkit.getDefaultToolkit().beep();
+            }
+            return;
+        }
         char a = evt.getKeyChar();
         if (Character.isDigit(a)) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Sólo letras");
         }
-    }//GEN-LAST:event_txt_NombreReqAsigKeyTyped
 
-    private void txt_idReqAsigFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_idReqAsigFocusLost
-        String id = txt_idReqAsig.getText();
-        String upper = id.toUpperCase();
-        txt_idReqAsig.setText(upper); 
-    }//GEN-LAST:event_txt_idReqAsigFocusLost
+        
+       
+    }//GEN-LAST:event_txtA_NombreReqAsigKeyTyped
 
     /**
      * @param args the command line arguments
@@ -538,11 +546,12 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbl_NombreReqAs;
     private javax.swing.JLabel lbl_idCarrera;
     private javax.swing.JLabel lbl_idReqAs;
     private javax.swing.JLabel lbl_titulo;
-    private javax.swing.JTextField txt_NombreReqAsig;
+    private javax.swing.JTextArea txtA_NombreReqAsig;
     private javax.swing.JTextField txt_idReqAsig;
     // End of variables declaration//GEN-END:variables
 
@@ -550,10 +559,10 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
     private boolean existeRequisitoAsignatura() {
         try {
             Statement st = con.createStatement();
-            String sql = "Select RequisitoAsignatura from Requisito_Asignatura where RequisitoAsignatura = '" + txt_NombreReqAsig.getText() + "'";
+            String sql = "Select RequisitoAsignatura from Requisito_Asignatura where RequisitoAsignatura = '" + txtA_NombreReqAsig.getText() + "'";
             ResultSet rs = st.executeQuery(sql);
             if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "El nombre de la asignatura requisito." + txt_NombreReqAsig.getText() + " ya existe", "La asignatura requisito ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El nombre de la asignatura requisito." + txtA_NombreReqAsig.getText() + " ya existe", "La asignatura requisito ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
                 return true;
             } else {
                 return false;
@@ -593,7 +602,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
     private void llenarCampos() {
         int i = Tabla_ReqAsignatura.getSelectedRow();
         txt_idReqAsig.setText(Tabla_ReqAsignatura.getValueAt(i, 0).toString());
-        txt_NombreReqAsig.setText(Tabla_ReqAsignatura.getValueAt(i, 1).toString());
+        txtA_NombreReqAsig.setText(Tabla_ReqAsignatura.getValueAt(i, 1).toString());
         cbo_idCarrera.setSelectedItem(Tabla_ReqAsignatura.getValueAt(i, 2).toString());
 
     }
@@ -616,7 +625,7 @@ private void rellenar() {
 
                             if (rs2.next()) {
                                 txt_idReqAsig.setText(rs2.getString("id_asignatura"));
-                                txt_NombreReqAsig.setText(rs2.getString("RequisitoAsignatura"));
+                                txtA_NombreReqAsig.setText(rs2.getString("RequisitoAsignatura"));
                             } else {
                                 JOptionPane.showMessageDialog(null, "¡No se encuentra los datos: "+var+" ! Por favor verifique sí, lo escribio correctamente");
                             }
@@ -656,7 +665,7 @@ private void rellenar() {
     }
 
   private void LimpiarCajas(){
-        txt_NombreReqAsig.setText(null);
+        txtA_NombreReqAsig.setText(null);
         txt_idReqAsig.setText(null);
            cbo_idCarrera.setSelectedIndex(0);
         
