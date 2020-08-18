@@ -17,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -830,7 +831,7 @@ public boolean existeidAsignatura(){
             String sql = "Select nombre_asignaturas from Asignaturas where nombre_asignaturas = '"+txtA_NombreA.getText()+"'";
             ResultSet rs = st.executeQuery(sql);
             if(rs.next()){
-                JOptionPane.showMessageDialog(null, "Ya existe el de esta Asignatura: "+jTxtA_NombreAgetText()+" ", "Nombre de asignatura ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Ya existe el de esta Asignatura: "+txtA_NombreA.getText()+" ", "Nombre de asignatura ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
                 return true; 
             }
             else{
@@ -842,13 +843,21 @@ public boolean existeidAsignatura(){
         return false;
     }
        
-           private boolean validarLongitud(JTextField texto, int longitud){
+           private boolean validarLongitud(JTextArea texto, int longitud){
        if(texto.getText().length() >= longitud){
            return true;
        }
        else{
            return false;
        }
+    }
+           
+           private boolean validarLongitud( JTextField texto, int longitud) {
+        if (texto.getText().length() >= longitud) {
+            return true;
+        } else {
+            return false;
+        }
     }
          
  public void actualizarDatos(){
