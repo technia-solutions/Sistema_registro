@@ -80,7 +80,6 @@ Connection con = null;
         lbl_Req2 = new javax.swing.JLabel();
         cbo_IdCarrera = new javax.swing.JComboBox<>();
         txt_UniVal = new javax.swing.JTextField();
-        txt_NombreA = new javax.swing.JTextField();
         txt_codA = new javax.swing.JTextField();
         lbl_NombreA = new javax.swing.JLabel();
         lbl_codA = new javax.swing.JLabel();
@@ -89,6 +88,8 @@ Connection con = null;
         btn_actualizar = new javax.swing.JButton();
         btn_guardar = new javax.swing.JButton();
         btn_requisitos = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtA_NombreA = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -185,18 +186,6 @@ Connection con = null;
             }
         });
 
-        txt_NombreA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_NombreA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_NombreAActionPerformed(evt);
-            }
-        });
-        txt_NombreA.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_NombreAKeyTyped(evt);
-            }
-        });
-
         txt_codA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_codA.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -270,6 +259,15 @@ Connection con = null;
             }
         });
 
+        txtA_NombreA.setColumns(20);
+        txtA_NombreA.setRows(5);
+        txtA_NombreA.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtA_NombreAKeyTyped(evt);
+            }
+        });
+        jScrollPane2.setViewportView(txtA_NombreA);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -283,84 +281,75 @@ Connection con = null;
                         .addComponent(btn_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_requisitos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(btn_eliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(203, 203, 203)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbl_Req1)
-                            .addComponent(lbl_Req2)
-                            .addComponent(lbl_IdCarrera))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbo_Req1, javax.swing.GroupLayout.Alignment.TRAILING, 0, 211, Short.MAX_VALUE)
-                            .addComponent(cbo_Req2, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbo_IdCarrera, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(102, 102, 102))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
+                        .addGap(215, 215, 215)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lbl_codA)
-                                .addGap(15, 15, 15))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(lbl_Req2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbo_Req2, 0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lbl_NombreA)
-                                    .addComponent(lbl_UniVal))
-                                .addGap(13, 13, 13)))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_codA, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-                            .addComponent(txt_NombreA)
-                            .addComponent(txt_UniVal))
-                        .addGap(102, 102, 102))))
+                                    .addComponent(lbl_IdCarrera)
+                                    .addComponent(lbl_Req1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbo_Req1, javax.swing.GroupLayout.Alignment.TRAILING, 0, 1, Short.MAX_VALUE)
+                                    .addComponent(cbo_IdCarrera, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(102, 102, 102))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbl_NombreA)
+                            .addComponent(lbl_UniVal)
+                            .addComponent(lbl_codA))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_codA, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_UniVal, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(98, 98, 98))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_codA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_codA))
-                        .addGap(32, 32, 32))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btn_guardar)))
+                .addGap(60, 60, 60)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txt_NombreA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbl_NombreA))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_actualizar)))
-                .addGap(11, 11, 11)
+                        .addComponent(txt_codA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_codA))
+                    .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_UniVal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_UniVal))
-                        .addGap(29, 29, 29)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbo_IdCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_IdCarrera))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_Req1)
-                            .addComponent(cbo_Req1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_Req2)
-                            .addComponent(cbo_Req2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btn_eliminar1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_buscar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_requisitos)))
-                .addContainerGap(138, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_actualizar)
+                        .addComponent(lbl_NombreA))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_eliminar1)
+                    .addComponent(txt_UniVal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_UniVal))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_buscar)
+                    .addComponent(cbo_IdCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_IdCarrera))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_requisitos)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cbo_Req1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_Req1)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cbo_Req2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_Req2))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 840, 480));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 840, 480));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -403,13 +392,13 @@ Connection con = null;
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
         
-        String nombreAsignatura = txt_NombreA.getText() + " ";
+        String nombreAsignatura = txtA_NombreA.getText() + " ";
         String uv = txt_UniVal.getText();
-        if ((txt_codA.getText().equals("")) || (txt_NombreA.getText().equals("")) ||
+        if ((txt_codA.getText().equals("")) || (txtA_NombreA.getText().equals("")) ||
             (cbo_IdCarrera.getSelectedItem().equals("Seleccione la asignatura"))) {
 
             javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la asignatura a actualizar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            txt_NombreA.requestFocus();
+            txtA_NombreA.requestFocus();
             return;
         }
         if(!validarUV(uv)){
@@ -431,7 +420,7 @@ Connection con = null;
                     + " requisito2 = ? "
                     + " where id_asignatura =\'"+txt_codA.getText()+"\'");
                   ps.setString(1, txt_codA.getText());
-                  ps.setString(2, txt_NombreA.getText());
+                  ps.setString(2, txtA_NombreA.getText());
                   ps.setString(3, txt_UniVal.getText());
                   ps.setString(4, id_carrera);
                   ps.setString(5, requisito1);
@@ -474,7 +463,7 @@ Connection con = null;
         
         String cadena1, cadena2, cadena3, cadena4, cadena5, cadena6;
         cadena1 = txt_codA.getText();
-        cadena2 = txt_NombreA.getText();
+        cadena2 = txtA_NombreA.getText();
         cadena3 = txt_UniVal.getText();
         String id_carrera = cbo_IdCarrera.getSelectedItem().toString().substring(0, 4);
         String requisito1= cbo_Req1.getSelectedItem().toString().substring(0,5);
@@ -487,9 +476,9 @@ Connection con = null;
             return;
         }
         
-          if((txt_NombreA.getText().equals(""))){
+          if((txtA_NombreA.getText().equals(""))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre de la asignatura.","Nombre asignatura requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            txt_NombreA.requestFocus();
+            txtA_NombreA.requestFocus();
             return;
         }
          
@@ -524,7 +513,7 @@ Connection con = null;
             return;
         }
 
-       if(!validarLongitud(txt_NombreA,7)){
+       if(!validarLongitud(txtA_NombreA,7)){
             JOptionPane.showMessageDialog(null, "El Nombre de la asignatura es muy corto el mínimo es de 7 caracteres", "Longitud del nombre de asignatura", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
@@ -552,7 +541,7 @@ Connection con = null;
             ps=con.prepareStatement("Insert into Asignaturas (cod_asignaturas, nombre_asignaturas, UV, id_carrera, requisito1, requisito2 )"
                 + "                VALUES(?,?,?,?,?,?)");
             ps.setString(1, txt_codA.getText());
-            ps.setString(2, txt_NombreA.getText());
+            ps.setString(2, txtA_NombreA.getText());
             ps.setString(3, txt_UniVal.getText());
             ps.setString(4, id_carrera);
             ps.setString(5, requisito1);
@@ -572,9 +561,9 @@ Connection con = null;
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void btn_eliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminar1ActionPerformed
-          String Asignatura = txt_NombreA.getText() + " " + txt_codA.getText();
+          String Asignatura = txtA_NombreA.getText() + " " + txt_codA.getText();
           
-           if ((txt_NombreA.getText().equals("")) || (txt_codA.getText().equals(""))  || (txt_UniVal.getText().equals(""))  ) {
+           if ((txtA_NombreA.getText().equals("")) || (txt_codA.getText().equals(""))  || (txt_UniVal.getText().equals(""))  ) {
 
             javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la asignatura que desea eliminar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
            
@@ -586,7 +575,7 @@ Connection con = null;
             try {
                 Statement st2 = con.createStatement();
                 String sql = "Delete Asignaturas "
-                + "where cod_asignaturas = (Select cod_asignaturas from Asignaturas where nombre_asignaturas = '"+txt_NombreA.getText()+"')";
+                + "where cod_asignaturas = (Select cod_asignaturas from Asignaturas where nombre_asignaturas = '"+txtA_NombreA.getText()+"')";
 
                 int rs2 = st2.executeUpdate(sql);
                 System.out.println(rs2);
@@ -678,37 +667,6 @@ Connection con = null;
         }
     }//GEN-LAST:event_txt_codAKeyTyped
 
-    private void txt_NombreAKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NombreAKeyTyped
-        if (txt_NombreA.getText().length() >= 50) {
-            evt.consume();
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
-        }
-        if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127
-            || evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22
-            || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
-            return;
-        }
-         if(evt.getKeyChar() == 32){
-             if(txt_NombreA.getText().length() == 0){
-                 evt.consume();
-                 Toolkit.getDefaultToolkit().beep();
-                 return;
-             }
-             if(txt_NombreA.getText().substring(txt_NombreA.getText().length() - 1).equals(" ")){
-                 evt.consume();
-                 Toolkit.getDefaultToolkit().beep();
-             }
-             return; 
-         }
-        char a = evt.getKeyChar();
-        if (Character.isDigit(a)) {
-            evt.consume();
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Sólo letras");
-        }
-    }//GEN-LAST:event_txt_NombreAKeyTyped
-
     private void txt_UniValKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_UniValKeyTyped
         char a=evt.getKeyChar();
             if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
@@ -728,10 +686,6 @@ Connection con = null;
         }
     }//GEN-LAST:event_txt_UniValKeyTyped
 
-    private void txt_NombreAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NombreAActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_NombreAActionPerformed
-
     private void txt_codAFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_codAFocusLost
          String id = txt_codA.getText();
         String upper = id.toUpperCase();
@@ -748,6 +702,39 @@ Connection con = null;
         cc.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void txtA_NombreAKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtA_NombreAKeyTyped
+        
+        if (txtA_NombreA.getText().length() >= 50) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
+        }
+        if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127
+            || evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22
+            || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+            return;
+        }
+         if(evt.getKeyChar() == 32){
+             if(txtA_NombreA.getText().length() == 0){
+                 evt.consume();
+                 Toolkit.getDefaultToolkit().beep();
+                 return;
+             }
+             if(txtA_NombreA.getText().substring(txtA_NombreA.getText().length() - 1).equals(" ")){
+                 evt.consume();
+                 Toolkit.getDefaultToolkit().beep();
+             }
+             return; 
+         }
+        char a = evt.getKeyChar();
+        if (Character.isDigit(a)) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Sólo letras");
+        }
+        
+    }//GEN-LAST:event_txtA_NombreAKeyTyped
 
     /**
      * @param args the command line arguments
@@ -807,13 +794,14 @@ Connection con = null;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbl_IdCarrera;
     private javax.swing.JLabel lbl_NombreA;
     private javax.swing.JLabel lbl_Req1;
     private javax.swing.JLabel lbl_Req2;
     private javax.swing.JLabel lbl_UniVal;
     private javax.swing.JLabel lbl_codA;
-    private javax.swing.JTextField txt_NombreA;
+    private javax.swing.JTextArea txtA_NombreA;
     private javax.swing.JTextField txt_UniVal;
     private javax.swing.JTextField txt_codA;
     // End of variables declaration//GEN-END:variables
@@ -839,10 +827,10 @@ public boolean existeidAsignatura(){
     public boolean existeAsignatura(){
         try {
             Statement st = con.createStatement();
-            String sql = "Select nombre_asignaturas from Asignaturas where nombre_asignaturas = '"+txt_NombreA.getText()+"'";
+            String sql = "Select nombre_asignaturas from Asignaturas where nombre_asignaturas = '"+txtA_NombreA.getText()+"'";
             ResultSet rs = st.executeQuery(sql);
             if(rs.next()){
-                JOptionPane.showMessageDialog(null, "Ya existe el de esta Asignatura: "+txt_NombreA.getText()+" ", "Nombre de asignatura ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Ya existe el de esta Asignatura: "+jTxtA_NombreAgetText()+" ", "Nombre de asignatura ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
                 return true; 
             }
             else{
@@ -935,7 +923,7 @@ public boolean existeidAsignatura(){
 
                             if (rs2.next()) {
                                 txt_codA.setText(rs2.getString("cod_asignaturas"));
-                                txt_NombreA.setText(rs2.getString("nombre_asignaturas"));
+                                txtA_NombreA.setText(rs2.getString("nombre_asignaturas"));
                                 txt_UniVal.setText(rs2.getString("UV"));
                                
                                 
@@ -953,7 +941,7 @@ public boolean existeidAsignatura(){
 
     private void LimpiarCajas() {
        
-        txt_NombreA.setText(null);
+        txtA_NombreA.setText(null);
         txt_UniVal.setText(null);
         txt_codA.setText(null);
         cbo_IdCarrera.setSelectedIndex(0);
@@ -965,7 +953,7 @@ public boolean existeidAsignatura(){
     private void llenarCampos() {
       int i = Tabla_RegistroAsignatura.getSelectedRow();
         txt_codA.setText(Tabla_RegistroAsignatura.getValueAt(i, 0).toString());
-        txt_NombreA.setText(Tabla_RegistroAsignatura.getValueAt(i, 1).toString());
+        txtA_NombreA.setText(Tabla_RegistroAsignatura.getValueAt(i, 1).toString());
         txt_UniVal.setText(Tabla_RegistroAsignatura.getValueAt(i, 2).toString());
         cbo_IdCarrera.setSelectedItem(Tabla_RegistroAsignatura.getValueAt(i, 3).toString());
         cbo_Req1.setSelectedItem(Tabla_RegistroAsignatura.getValueAt(i, 4).toString());
