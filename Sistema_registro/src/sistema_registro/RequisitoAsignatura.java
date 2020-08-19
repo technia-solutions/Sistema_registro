@@ -190,8 +190,10 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(60, 310, 736, 110);
 
-        txtA_NombreReqAsig.setColumns(20);
+        txtA_NombreReqAsig.setColumns(3);
+        txtA_NombreReqAsig.setLineWrap(true);
         txtA_NombreReqAsig.setRows(5);
+        txtA_NombreReqAsig.setWrapStyleWord(true);
         txtA_NombreReqAsig.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtA_NombreReqAsigKeyTyped(evt);

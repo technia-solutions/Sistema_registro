@@ -310,8 +310,10 @@
           <SubComponents>
             <Component class="javax.swing.JTextArea" name="txtA_NombreReqAsig">
               <Properties>
-                <Property name="columns" type="int" value="20"/>
+                <Property name="columns" type="int" value="3"/>
+                <Property name="lineWrap" type="boolean" value="true"/>
                 <Property name="rows" type="int" value="5"/>
+                <Property name="wrapStyleWord" type="boolean" value="true"/>
               </Properties>
               <Events>
                 <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtA_NombreReqAsigKeyTyped"/>
