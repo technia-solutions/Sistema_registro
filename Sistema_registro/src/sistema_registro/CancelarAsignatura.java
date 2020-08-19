@@ -113,6 +113,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(215, 236, 233));
 
         btn_buscar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/magnifier-1_icon-icons.com_56924.png"))); // NOI18N
         btn_buscar.setText("Buscar");
         btn_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,6 +165,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         });
 
         btn_CancelarAsig.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_CancelarAsig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cancelar matricula.png"))); // NOI18N
         btn_CancelarAsig.setText("Cancelar Asignatura");
         btn_CancelarAsig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,7 +225,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btn_CancelarAsig, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 940, 380));
