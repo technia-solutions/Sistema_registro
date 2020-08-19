@@ -236,6 +236,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         jMenu1.setText("Regresar");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Matricula.png"))); // NOI18N
         jMenuItem1.setText("Matricula");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -262,8 +263,8 @@ public class CancelarAsignatura extends javax.swing.JFrame {
           this.btn_CancelarAsig.setEnabled(true);
           int i = Tabla_Cancelar.getSelectedRow();
          if(Tabla_Cancelar.getSelectedRow() >= 0){
-          lbl_idSeccion.setText(Tabla_Cancelar.getValueAt(i,0).toString()+"-"+Tabla_Cancelar.getValueAt(i,2).toString());
-          lbl_idPeriodo.setText(Tabla_Cancelar.getValueAt(i,5).toString());
+          lbl_idSeccion.setText(Tabla_Cancelar.getValueAt(i,0).toString()/*+"-"+Tabla_Cancelar.getValueAt(i,2).toString()*/);
+          lbl_idPeriodo.setText(Tabla_Cancelar.getValueAt(i,4).toString());
           
               try {
                    Statement st = con.createStatement();
@@ -556,7 +557,9 @@ public class CancelarAsignatura extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
      public void buscar(){
-        
+         
+        String numeroCuenta;
+         numeroCuenta = txt_NumC.getText();
            
         if((txt_NumC.getText().equals(""))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el número de cuenta.","Número de Cuenta requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
@@ -572,25 +575,23 @@ public class CancelarAsignatura extends javax.swing.JFrame {
             
            
            
-           String sql="select A.cod_asignaturas, A.nombre_asignaturas, S.Nombre_seccion, S.Hora_inicial, S.Hora_final, S.id_periodo,S.id_aula, A.UV from Secciones as S\n" +
-                        "join Asignaturas as A on S.cod_asignaturas=A.cod_asignaturas "+
-                        "join Matricula as M on M.id_seccion = S.id_seccion";
-           
+           String sql= "select S.id_seccion, S.Nombre_seccion, S.Hora_inicial, S.Hora_final, S.id_periodo,S.id_aula from Secciones as S\n"+
+                         "join Matricula as M on S.id_seccion = M.id_seccion\n"+
+                         "where numero_cuenta_alumno = '"+numeroCuenta+"'";
+
             ps= con.prepareStatement(sql);
             rs= ps.executeQuery(); 
             
             ResultSetMetaData rsMd =rs.getMetaData();
             int cantidadColumnas = rsMd.getColumnCount();
-            modelo.addColumn("Cod.Asignatura");
+            modelo.addColumn("Id Seccion");
             modelo.addColumn("Nombre");
-            modelo.addColumn("Sección");
             modelo.addColumn("Hora Inicial");
             modelo.addColumn("Hora Final");
             modelo.addColumn("Período");
             modelo.addColumn("Aula");
-            modelo.addColumn("UV");
             modelo.addColumn("Selecciona");
-            TableColumn tc = Tabla_Cancelar.getColumnModel().getColumn(8);
+            TableColumn tc = Tabla_Cancelar.getColumnModel().getColumn(6);
             tc.setCellEditor(Tabla_Cancelar.getDefaultEditor(Boolean.class));
             tc.setCellRenderer(Tabla_Cancelar.getDefaultRenderer(Boolean.class));
             
