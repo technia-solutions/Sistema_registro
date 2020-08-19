@@ -54,23 +54,6 @@ public class Principal extends javax.swing.JFrame {
        int d=f.get(Calendar.DATE), mes=1+(f.get(Calendar.MONTH)), año=f.get(Calendar.YEAR);
        
        fechaHoy.setText(d+"-"+mes+"-"+año);
-       /* for (int i = 1; i < 3; i++) {
-            Imagen[i]=new ImageIcon(getClass().getResource("/imagenes/"+i+".jpg"));
-        }
-        lblvisor.setIcon(Imagen[1]);
-       
-        Timer timer=new Timer(1000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                 int contador = 0;
-                contador++;
-                lblvisor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/"+contador+".jpg")));
-                if (contador==3)contador=1 ;
-                    
-            }
-        });
-        timer.start();
-        */
         this.setLocationRelativeTo(null);
         this.setTitle("Menú Principal");
         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
@@ -93,7 +76,16 @@ public class Principal extends javax.swing.JFrame {
         
         this.setTitle("Menú Principal");
         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
-        
+           f=Calendar.getInstance();
+       
+       int d=f.get(Calendar.DATE), mes=1+(f.get(Calendar.MONTH)), año=f.get(Calendar.YEAR);
+       
+       fechaHoy.setText(d+"-"+mes+"-"+año);
+         this.setLocationRelativeTo(null);
+        this.setTitle("Menú Principal");
+        this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+        jPanel1.setBackground(new Color(244,245,245,100));
+             jPanel2.setBackground(new Color(244,245,245,190));
     }
   
 
@@ -163,12 +155,12 @@ public class Principal extends javax.swing.JFrame {
         lbl_NombreUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_NombreUsuario.setText("Nombre Usuario");
         jPanel2.add(lbl_NombreUsuario);
-        lbl_NombreUsuario.setBounds(192, 23, 127, 22);
+        lbl_NombreUsuario.setBounds(192, 23, 380, 22);
 
         lbl_NombreEmpleado.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_NombreEmpleado.setText("Nombre Empleado");
         jPanel2.add(lbl_NombreEmpleado);
-        lbl_NombreEmpleado.setBounds(172, 52, 145, 22);
+        lbl_NombreEmpleado.setBounds(172, 52, 390, 22);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User.png"))); // NOI18N
         jPanel2.add(jLabel4);
@@ -200,7 +192,7 @@ public class Principal extends javax.swing.JFrame {
         btn_Alumno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/empleado.png"))); // NOI18N
         btn_Alumno.setText("Alumno");
         btn_Alumno.setBorderPainted(false);
-        btn_Alumno.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_Alumno.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btn_Alumno.setDoubleBuffered(true);
         btn_Alumno.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_Alumno.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
@@ -223,7 +215,7 @@ public class Principal extends javax.swing.JFrame {
         btn_Notas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Matricula.png"))); // NOI18N
         btn_Notas.setText("Notas");
         btn_Notas.setBorderPainted(false);
-        btn_Notas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_Notas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btn_Notas.setDoubleBuffered(true);
         btn_Notas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_Notas.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
@@ -247,7 +239,7 @@ public class Principal extends javax.swing.JFrame {
         btn_Matricula.setText("Matrícula");
         btn_Matricula.setToolTipText("");
         btn_Matricula.setBorderPainted(false);
-        btn_Matricula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_Matricula.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btn_Matricula.setDoubleBuffered(true);
         btn_Matricula.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_Matricula.setVerifyInputWhenFocusTarget(false);
@@ -273,7 +265,7 @@ public class Principal extends javax.swing.JFrame {
         btn_Empleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/empledo2.png"))); // NOI18N
         btn_Empleados.setText("Empleados");
         btn_Empleados.setBorderPainted(false);
-        btn_Empleados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_Empleados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btn_Empleados.setDoubleBuffered(true);
         btn_Empleados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -292,7 +284,7 @@ public class Principal extends javax.swing.JFrame {
         btn_Secciones.setText("Secciones");
         btn_Secciones.setToolTipText("");
         btn_Secciones.setBorderPainted(false);
-        btn_Secciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_Secciones.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btn_Secciones.setDoubleBuffered(true);
         btn_Secciones.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -310,7 +302,7 @@ public class Principal extends javax.swing.JFrame {
         btn_periodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/periodo.png"))); // NOI18N
         btn_periodos.setText("Periodos");
         btn_periodos.setBorderPainted(false);
-        btn_periodos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_periodos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btn_periodos.setDoubleBuffered(true);
         btn_periodos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -328,7 +320,7 @@ public class Principal extends javax.swing.JFrame {
         btn_Asignaturas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Asignatura.png"))); // NOI18N
         btn_Asignaturas.setText("Asignatura");
         btn_Asignaturas.setBorderPainted(false);
-        btn_Asignaturas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_Asignaturas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btn_Asignaturas.setDoubleBuffered(true);
         btn_Asignaturas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -401,7 +393,7 @@ public class Principal extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setText("Cancelar Asigntura");
         jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.setOpaque(true);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -413,7 +405,7 @@ public class Principal extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton2.setText("Añadir Aula");
         jButton2.setContentAreaFilled(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton2.setOpaque(true);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -425,7 +417,7 @@ public class Principal extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton3.setText("Añadir Carrera");
         jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton3.setOpaque(true);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -458,7 +450,7 @@ public class Principal extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanel4);
-        jPanel4.setBounds(282, 0, 1030, 60);
+        jPanel4.setBounds(282, 0, 1030, 58);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 1310, 530));
 
@@ -631,8 +623,12 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_periodosActionPerformed
 
     private void btn_periodosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_periodosMouseClicked
-         PeriodoHistorico periodo = null;
-         periodo = new PeriodoHistorico();
+         PeriodoHis periodo = null;
+        try {
+            periodo = new PeriodoHis();
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         periodo.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_periodosMouseClicked

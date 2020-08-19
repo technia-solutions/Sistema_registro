@@ -212,6 +212,7 @@ public class Login extends javax.swing.JFrame {
            if(r2.next()){
               if(r2.getString("estado").equals("Bloqueado")){
                     JOptionPane.showMessageDialog(null, "El usuario: "+usuario+" está bloqueado por favor comuníquese con el administrador.", "Usuario bloqueado", JOptionPane.INFORMATION_MESSAGE);
+                    pwd_contraseña.setText("");
                     return;
                 }
             }
@@ -219,6 +220,7 @@ public class Login extends javax.swing.JFrame {
             if(rs.next()){
                 if(rs.getString("estado").equals("Bloqueado")){
                     JOptionPane.showMessageDialog(null, "El usuario: "+usuario+" está bloqueado por favor comuníquese con el administrador.", "Usuario bloqueado", JOptionPane.INFORMATION_MESSAGE);
+                    pwd_contraseña.setText("");
                     return;
                 }
                 if(rs.getString("estado").equals("Activo") || rs.getString("estado").equals("Administrador")){

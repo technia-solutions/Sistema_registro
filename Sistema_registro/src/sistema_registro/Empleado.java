@@ -393,7 +393,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         btn_consultar.setBackground(new java.awt.Color(235, 250, 251));
         btn_consultar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btn_consultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Consulta.png"))); // NOI18N
-        btn_consultar.setText("Consulta");
+        btn_consultar.setText("Consultar");
         btn_consultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_consultarActionPerformed(evt);
@@ -422,7 +422,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(70, 380, 79, 25);
+        jButton2.setBounds(70, 380, 73, 23);
 
         chb_mostrarContraseña.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         chb_mostrarContraseña.setText("Mostrar contraseña");
@@ -433,7 +433,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jPanel1.add(chb_mostrarContraseña);
-        chb_mostrarContraseña.setBounds(1020, 160, 147, 25);
+        chb_mostrarContraseña.setBounds(1020, 160, 147, 23);
 
         lbl_nombres.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_nombres.setText("Nombres:");
@@ -603,11 +603,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         jPanel1.add(btn_rellenarCampos);
         btn_rellenarCampos.setBounds(610, 320, 110, 31);
 
-        try {
-            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
         jPanel1.add(jFormattedTextField1);
         jFormattedTextField1.setBounds(260, 310, 240, 40);
 
@@ -924,7 +920,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             return;
         }
         
-        if(validarSalario(txt_Salario.getText())){
+        if(!validarSalario(txt_Salario.getText())){
             return;
         }
         
@@ -1263,7 +1259,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         }
         
-       if(validarSalario(txt_Salario.getText())){
+       if(!validarSalario(txt_Salario.getText())){
             return;
         }
        if(!validarIdentidad(txt_Identidad.getText())){

@@ -75,24 +75,27 @@ public class Alumno extends javax.swing.JFrame {
     
     public Alumno(String nombreUsuario) throws SQLException {
         initComponents();
-        ArrayList<String> lista = new ArrayList<String>();
+        this.con = ConectorSQL.obtenerConexion();
+         ArrayList<String> lista = new ArrayList<String>();
              lista = new Conexion_consulta().llenar_combo2();
             for(int i = 0; i<lista.size();i++){
                 cbo_carrera.addItem(lista.get(i));
             }
             
             ArrayList<String> lista2 = new ArrayList<String>();
-             lista2 = new Conexion_consulta().llenar_combo();
-            for(int i = 0; i<lista2.size();i++){
-                cbo_campus.addItem(lista2.get(i));
+             lista = new Conexion_consulta().llenar_combo();
+            for(int i = 0; i<lista.size();i++){
+                cbo_campus.addItem(lista.get(i));
             }
             
-            ArrayList<String> lista3 = new ArrayList<String>();
+             ArrayList<String> lista3 = new ArrayList<String>();
              lista3 = new Conexion_consulta().llenar_periodo();
             for(int i = 0; i<lista3.size();i++){
-                cbo_campus.addItem(lista3.get(i));
+                cbo_periodo.addItem(lista3.get(i));
             }
-            
+             this.setTitle("Alumno");
+             this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+             
         this.con = ConectorSQL.obtenerConexion();
             String usuario = nombreUsuario;
        Calendar f;
@@ -908,8 +911,9 @@ public class Alumno extends javax.swing.JFrame {
                         }
                         else{
                             String sql = "Select nombres_alumno,apellidos_alumno,telefono_alumno,fecha_nacimiento, c.id_carrera,nombre_carrera, "
-                                        + "ca.id_campus,nombre_campus,numero_cuenta_alumno,a.id_periodo,descripcion,numero_identidad from alumno as a join Carrera as c on a.id_carrera = c.id_carrera\n" +
-                                        "join Campus as ca on ca.id_campus = a.id_campus join periodo as j on j.id_periodo = a.id_periodo\n" +
+                                        + "ca.id_campus,nombre_campus,numero_cuenta_alumno,a.id_periodo,descripcion,numero_identidad,ph.nombre_periodo_historico from alumno as a join Carrera as c on a.id_carrera = c.id_carrera\n" +
+                                        "join Campus as ca on ca.id_campus = a.id_campus join periodo as j on j.id_periodo = a.id_periodo\n"
+                                    + "join Periodo_historico as ph on ph.id_periodo = j.id_periodo" +
                                         " where numero_cuenta_alumno = '"+var+"' or numero_identidad = '"+var+"'";
                             Statement stmt = con.createStatement();
                             rs2 = stmt.executeQuery(sql);
@@ -919,7 +923,7 @@ public class Alumno extends javax.swing.JFrame {
                                 txt_telefono.setText(rs2.getString("telefono_alumno"));
                                 cld_fechaNacimiento.setDate(rs2.getDate("fecha_nacimiento"));
                                 cbo_carrera.setSelectedItem(rs2.getString("id_carrera") + " - " + rs2.getString("nombre_carrera"));
-                                cbo_periodo.setSelectedItem(rs2.getString("id_periodo") +"0"+ " - " + rs2.getString("descripcion"));
+                                cbo_periodo.setSelectedItem(rs2.getString("nombre_periodo_historico") + " Período");
                                 cbo_campus.setSelectedItem(rs2.getString("id_campus") + " - " + rs2.getString("nombre_campus"));
                                 this.lbl_cuenta.setVisible(true);
                                 this.lbl_numeroCuenta.setVisible(true);
