@@ -261,7 +261,9 @@ Connection con = null;
         });
 
         txtA_NombreA.setColumns(20);
+        txtA_NombreA.setLineWrap(true);
         txtA_NombreA.setRows(5);
+        txtA_NombreA.setWrapStyleWord(true);
         txtA_NombreA.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtA_NombreAKeyTyped(evt);
