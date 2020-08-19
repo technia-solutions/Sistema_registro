@@ -194,7 +194,9 @@ public class Carrera extends javax.swing.JFrame {
         cbo_idfacultad.setBounds(460, 140, 270, 40);
 
         jtxt_NombreCarrera.setColumns(20);
+        jtxt_NombreCarrera.setLineWrap(true);
         jtxt_NombreCarrera.setRows(5);
+        jtxt_NombreCarrera.setWrapStyleWord(true);
         jtxt_NombreCarrera.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jtxt_NombreCarreraKeyTyped(evt);
