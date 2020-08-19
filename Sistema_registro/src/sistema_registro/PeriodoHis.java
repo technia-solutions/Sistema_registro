@@ -49,6 +49,8 @@ DefaultTableModel modelo = new DefaultTableModel();
             for(int i = 0; i<lista.size();i++){
                 cbo_periodo.addItem(lista.get(i));
                 }
+            
+           this.btn_actualizar.setEnabled(false); 
     }
 
     /**
@@ -60,6 +62,8 @@ DefaultTableModel modelo = new DefaultTableModel();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lbl_periodo = new javax.swing.JLabel();
         lbl_fechaInicial = new javax.swing.JLabel();
@@ -74,12 +78,18 @@ DefaultTableModel modelo = new DefaultTableModel();
         Tabla_Periodo = new javax.swing.JTable();
         lbl_nombrePeriodo = new javax.swing.JLabel();
         lbl_nombre = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel3.setBackground(new java.awt.Color(232, 251, 249));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setText("Período Histórico");
 
         jPanel2.setBackground(new java.awt.Color(215, 236, 233));
 
@@ -102,7 +112,7 @@ DefaultTableModel modelo = new DefaultTableModel();
         });
 
         cbo_periodo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cbo_periodo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un Periodo" }));
+        cbo_periodo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un Período" }));
 
         btn_actualizar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
@@ -146,19 +156,29 @@ DefaultTableModel modelo = new DefaultTableModel();
         lbl_nombre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_nombre.setText("Nombre");
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Limpiar.png"))); // NOI18N
+        jButton1.setText("Limpiar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_consulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_actualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                    .addComponent(btn_agregarPeriodo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_consulta, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_agregarPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
@@ -173,68 +193,79 @@ DefaultTableModel modelo = new DefaultTableModel();
                                 .addGap(5, 5, 5)))
                         .addGap(36, 36, 36)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cbo_periodo, 0, 259, Short.MAX_VALUE)
+                            .addComponent(cbo_periodo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cld_fechaInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cld_fechaFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbl_nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lbl_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(358, 358, 358))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 760, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(114, 114, 114))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(84, 84, 84)
+                .addComponent(btn_agregarPeriodo)
+                .addGap(18, 18, 18)
+                .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btn_consulta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(53, 53, 53)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_nombrePeriodo)
                     .addComponent(lbl_nombre))
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btn_agregarPeriodo)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_consulta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(100, 100, 100)
+                        .addComponent(lbl_fechaFinal))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(100, 100, 100)
-                                .addComponent(lbl_fechaFinal))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(50, 50, 50)
-                                .addComponent(lbl_fechaInicial))
-                            .addComponent(lbl_periodo)
-                            .addComponent(cbo_periodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(50, 50, 50)
-                                .addComponent(cld_fechaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(100, 100, 100)
-                                .addComponent(cld_fechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(103, 103, 103))))
+                        .addGap(50, 50, 50)
+                        .addComponent(lbl_fechaInicial))
+                    .addComponent(lbl_periodo)
+                    .addComponent(cbo_periodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(cld_fechaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(cld_fechaFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76))
         );
-
-        jPanel3.setBackground(new java.awt.Color(232, 251, 249));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Período Histórico");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(372, 372, 372)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(440, 440, 440)
                 .addComponent(jLabel1)
-                .addContainerGap(421, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 1090, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 720));
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
         jMenu1.setText("Menú");
@@ -242,30 +273,24 @@ DefaultTableModel modelo = new DefaultTableModel();
 
         setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(41, 41, 41))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void Limpiar(){
+
+        cbo_periodo.setSelectedIndex(0);
+       
+       cld_fechaInicial.setDate(null);
+        cld_fechaFinal.setDate(null);
+        lbl_nombre.setText(null);
+        
+       
+        
+    
+        
+    }
+    
+   
     
     private void btn_agregarPeriodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarPeriodoActionPerformed
         String nombre,periodo;
@@ -273,9 +298,32 @@ DefaultTableModel modelo = new DefaultTableModel();
         Date dateinicial = cld_fechaInicial.getDate();
         Date datefinal = cld_fechaFinal.getDate();
 
+   
+        
+              if((cbo_periodo.getSelectedItem().equals("Seleccione un Período"))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un período .","Período Requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+ 
+      if( (cld_fechaInicial.getDate()== null)){
+             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar la fecha de inicio del período.","Fecha Inicial Requerida",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            
+            return;
+        }
+        
+        if( (cld_fechaFinal.getDate()== null)){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar la fecha final del período.","Fecha Final Requerida",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            cld_fechaFinal.requestFocus();
+            return;
+         }
+        
+        
         int mes = cld_fechaInicial.getDate().getMonth() + 1;
         int año = cld_fechaInicial.getDate().getYear() +1900;
         int dia =cld_fechaInicial.getDate().getDate();
+        
+        
+           
         String fecha = año + "-" + mes +"-"+ dia;
 
         int mes2 = cld_fechaFinal.getDate().getMonth() + 1;
@@ -283,11 +331,29 @@ DefaultTableModel modelo = new DefaultTableModel();
         int dia2 =cld_fechaFinal.getDate().getDate();
         String fecha2 = año2 + "-" + mes2 +"-"+ dia2;
 
+      
+  
         nombre=año+"-"+periodo;
- JOptionPane.showMessageDialog(null, "Se ha guardado el periodo: "+nombre+periodo);
+                    
+ //JOptionPane.showMessageDialog(null, "Se ha guardado el período: "+nombre+periodo);
+
+     
+
+        
+        
+ 
         try{
             PreparedStatement ps;
             ResultSet rs;
+              Statement stdoble = con.createStatement();
+               String sqldoble = "select* from Periodo_historico \n" +
+                                    "where nombre_periodo_historico='"+nombre+"'";
+               ResultSet rsdoble = stdoble.executeQuery(sqldoble);
+               if (rsdoble.next()) {
+
+                  JOptionPane.showMessageDialog(null, "El período: " +nombre+ " ya esta creada. ", "Período Ya Creada", JOptionPane.ERROR_MESSAGE);
+                   return ;
+               }    
             ps=con.prepareStatement("insert into Periodo_historico(fecha_final,fecha_inicial,id_periodo,nombre_periodo_historico)"
                 + "             VALUES(?,?,?,?)");
 
@@ -342,7 +408,7 @@ DefaultTableModel modelo = new DefaultTableModel();
                                             "fecha_inicial=?,\n" +
                                             "fecha_final=?,\n" +
                                             "nombre_periodo_historico=?\n" +
-                                            "where id_periodo_historico= 4");
+                                            "where nombre_periodo_historico= '"+nombre+"'");
               
                 ps.setString(1,periodo);
                 ps.setString(2,fecha);
@@ -363,6 +429,11 @@ DefaultTableModel modelo = new DefaultTableModel();
             }
           
         }
+     btn_agregarPeriodo.setEnabled(true);
+        this.btn_actualizar.setEnabled(false);
+     
+     
+       
         
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
@@ -406,17 +477,30 @@ DefaultTableModel modelo = new DefaultTableModel();
     }
     private void btn_consultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultaActionPerformed
         rellenar();
+        btn_agregarPeriodo.setEnabled(false);
+        this.btn_actualizar.setEnabled(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_consultaActionPerformed
 
     private void Tabla_PeriodoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_PeriodoMouseClicked
     try {
         llenarCampos();
+        this.btn_actualizar.setEnabled(true);
+        btn_agregarPeriodo.setEnabled(false);
         // TODO add your handling code here:
     } catch (ParseException ex) {
         Logger.getLogger(PeriodoHis.class.getName()).log(Level.SEVERE, null, ex);
     }
     }//GEN-LAST:event_Tabla_PeriodoMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         Limpiar();
+        this.lbl_nombre.setVisible(false);
+        this.lbl_nombrePeriodo.setVisible(false);
+          this.btn_actualizar.setEnabled(false);
+          this.btn_agregarPeriodo.setEnabled(true);
+         
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public void actualizarDatos() {
         try {
@@ -522,7 +606,9 @@ DefaultTableModel modelo = new DefaultTableModel();
     private javax.swing.JComboBox<String> cbo_periodo;
     private com.toedter.calendar.JDateChooser cld_fechaFinal;
     private com.toedter.calendar.JDateChooser cld_fechaInicial;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel2;
