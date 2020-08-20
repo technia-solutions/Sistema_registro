@@ -57,8 +57,7 @@ public class Matricula extends javax.swing.JFrame {
          desactivar();
          obtenerPeriodo();
           this.setTitle("Matricula");
-         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
-        
+         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());    
     }
     
         public Matricula(String nombreUsuario)throws SQLException{
@@ -517,7 +516,7 @@ public class Matricula extends javax.swing.JFrame {
          String numeroCuenta,id_periodo,estado,reposicion,nota1,nota2,nota3,promedio;
          ResultSet rs=null;
         numeroCuenta =txt_numeroCuenta.getText();
-        id_periodo="2";
+        id_periodo= lbl_periodo.getText().substring(5);
         estado="RPB";
         reposicion="S/N";
         nota1="0";
@@ -728,14 +727,21 @@ public class Matricula extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_generarReporteActionPerformed
 
     private void jMenuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPrincipalActionPerformed
-         Principal Pp = null;
-        try {
-            Pp = new Principal();
+       try {
+            String sql2 = "Select nombres_empleado + ' ' + apellido_empleado from Empleados where id_empleado = (select id_empleado from Acceso where nombre_usuario = '"+lbl_usuario.getText()+"')";
+                Statement st2 = con.createStatement();
+                ResultSet rs2 = st2.executeQuery(sql2);
+                if(rs2.next()){
+                Principal principal = new Principal(lbl_usuario.getText(),rs2.getString(1));
+                principal.setVisible(true); 
+                this.dispose();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Error");
+                }
         } catch (SQLException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Pp.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_jMenuPrincipalActionPerformed
 
     private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed

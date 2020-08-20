@@ -181,11 +181,11 @@ m.numero_cuenta_alumno = $P{numeroCuenta}]]>
 	<title>
 		<band height="147" splitType="Stretch">
 			<staticText>
-				<reportElement style="Title" x="285" y="0" width="244" height="50" forecolor="#000000" uuid="37aa1ae5-14d4-4f39-8606-d63c0fafcf21"/>
+				<reportElement style="Title" x="253" y="0" width="298" height="50" forecolor="#000000" uuid="37aa1ae5-14d4-4f39-8606-d63c0fafcf21"/>
 				<textElement verticalAlignment="Middle">
 					<font size="26" pdfFontName="Times-Roman"/>
 				</textElement>
-				<text><![CDATA[Asignaturas inscritas]]></text>
+				<text><![CDATA[Asignaturas matriculadas]]></text>
 			</staticText>
 			<textField pattern="dd/MM/yyyy HH:mm:ss">
 				<reportElement x="671" y="12" width="100" height="20" forecolor="#000000" uuid="73615428-d56e-4a1f-91dc-cb94f9a2bd5e"/>

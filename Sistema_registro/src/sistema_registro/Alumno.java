@@ -1041,16 +1041,21 @@ public class Alumno extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        Principal Pp = null;
-        try {
-            Pp = new Principal();
+       try {
+            String sql2 = "Select nombres_empleado + ' ' + apellido_empleado from Empleados where id_empleado = (select id_empleado from Acceso where nombre_usuario = '"+lbl_usuario.getText()+"')";
+                Statement st2 = con.createStatement();
+                ResultSet rs2 = st2.executeQuery(sql2);
+                if(rs2.next()){
+                Principal principal = new Principal(lbl_usuario.getText(),rs2.getString(1));
+                principal.setVisible(true); 
+                this.dispose();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Error");
+                }
         } catch (SQLException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Pp.setVisible(true);
-        this.dispose();
-      
-
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void cbo_periodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_periodoActionPerformed

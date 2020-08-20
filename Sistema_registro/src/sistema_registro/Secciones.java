@@ -83,6 +83,8 @@ public class Secciones extends javax.swing.JFrame {
              }                    
              this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
             this.setTitle("Secciones");
+            this.btn_actualizar.setEnabled(false);
+            this.btn_eliminar.setEnabled(false);
     }
     
     public Secciones(String nombreUsuario) throws SQLException {
@@ -111,7 +113,7 @@ public class Secciones extends javax.swing.JFrame {
                cbo_IdAula.addItem(lista5.get(i));
              }                
             String usuario = nombreUsuario;
-             this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+            this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
             this.setTitle("Secciones");
             this.lbl_usuario.setText(usuario);
     }
@@ -171,10 +173,10 @@ public class Secciones extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem_Asignatura = new javax.swing.JMenuItem();
         jMenuItem_Periodo = new javax.swing.JMenuItem();
         jMenuItem_Aula = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -570,6 +572,16 @@ public class Secciones extends javax.swing.JFrame {
             }
         });
 
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio.png"))); // NOI18N
+        jMenuItem1.setText("Menú Principal");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
         jMenuItem_Asignatura.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem_Asignatura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/books_3025.png"))); // NOI18N
         jMenuItem_Asignatura.setText("Asignatura");
@@ -599,16 +611,6 @@ public class Secciones extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem_Aula);
-
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio.png"))); // NOI18N
-        jMenuItem1.setText("Menú Principal");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
 
@@ -1023,6 +1025,9 @@ public class Secciones extends javax.swing.JFrame {
            if(Tabla_Seccion.getSelectedRow () >= 0){
                try {
                    llenarCampos();
+                    this.btn_guardar.setEnabled(false);
+           this.btn_eliminar.setEnabled(true);
+           this.btn_actualizar.setEnabled(true);
                } catch (SQLException ex) {
                    Logger.getLogger(Secciones.class.getName()).log(Level.SEVERE, null, ex);
                }
@@ -1101,14 +1106,21 @@ public class Secciones extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_CantidadMActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-          Principal pr = null;
         try {
-            pr = new Principal();
+            String sql2 = "Select nombres_empleado + ' ' + apellido_empleado from Empleados where id_empleado = (select id_empleado from Acceso where nombre_usuario = '"+lbl_usuario.getText()+"')";
+                Statement st2 = con.createStatement();
+                ResultSet rs2 = st2.executeQuery(sql2);
+                if(rs2.next()){
+                Principal principal = new Principal(lbl_usuario.getText(),rs2.getString(1));
+                principal.setVisible(true); 
+                this.dispose();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Error");
+                }
         } catch (SQLException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
         }
-        pr.setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
@@ -1275,6 +1287,7 @@ public void actualizarDatos(){
            dias.setMaxWidth(145);
            TableColumn cm= Tabla_Seccion.getColumn(titulos[9]);
            cm.setMaxWidth(145);
+          
         }
         catch (Exception e) {
            

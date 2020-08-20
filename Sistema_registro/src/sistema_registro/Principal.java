@@ -501,7 +501,7 @@ public class Principal extends javax.swing.JFrame {
     private void btn_MatriculaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_MatriculaMouseClicked
          Matricula matricula = null;
         try {
-            matricula = new Matricula();
+            matricula = new Matricula(lbl_NombreUsuario.getText());
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -512,7 +512,7 @@ public class Principal extends javax.swing.JFrame {
     private void btn_NotasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_NotasMouseClicked
          Notas nota = null;
         try {
-            nota = new Notas();
+            nota = new Notas(lbl_NombreUsuario.getText());
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }

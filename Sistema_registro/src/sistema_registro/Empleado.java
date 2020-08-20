@@ -42,6 +42,7 @@ public class Empleado extends javax.swing.JFrame {
     Connection con = null;
     Statement stmt = null;
     String var, var2;
+    NumberFormat nf;
     
     
     private void LimpiarCajas(){
@@ -87,6 +88,10 @@ public class Empleado extends javax.swing.JFrame {
        int d=f.get(Calendar.DATE), mes=1+(f.get(Calendar.MONTH)), año=f.get(Calendar.YEAR);
        
        fechaHoy.setText(d+"-"+mes+"-"+año);
+       nf = NumberFormat.getInstance(new Locale("en", "US"));
+
+       
+      
       
     } 
     
@@ -104,6 +109,13 @@ public class Empleado extends javax.swing.JFrame {
             for(int i = 0; i<lista2.size();i++){
                 cbo_tipoUsuario.addItem(lista2.get(i));
             }
+            Calendar f;
+       
+       f=Calendar.getInstance();
+       
+       int d=f.get(Calendar.DATE), mes=1+(f.get(Calendar.MONTH)), año=f.get(Calendar.YEAR);
+       
+       fechaHoy.setText(d+"-"+mes+"-"+año);
         String usuario = nombreUsuario;
         this.lbl_usuario.setText(usuario);
         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
@@ -279,7 +291,6 @@ this.cbo_tipoUsuario.setSelectedItem("");
         lbl_apellidos = new javax.swing.JLabel();
         txt_Apellido = new javax.swing.JTextField();
         lbl_salario = new javax.swing.JLabel();
-        txt_Salario = new javax.swing.JTextField();
         lbl_telefono = new javax.swing.JLabel();
         txt_Telefono = new javax.swing.JTextField();
         lbl_identidad = new javax.swing.JLabel();
@@ -293,7 +304,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         lbl_tipoUsuario = new javax.swing.JLabel();
         cbo_tipoUsuario = new javax.swing.JComboBox<>();
         btn_rellenarCampos = new javax.swing.JButton();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        txt_Salario = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -356,7 +367,6 @@ this.cbo_tipoUsuario.setSelectedItem("");
         btn_guardar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btn_guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Guardar.png"))); // NOI18N
         btn_guardar.setText("  Guardar");
-        btn_guardar.setBorderPainted(false);
         btn_guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btn_guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -433,7 +443,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jPanel1.add(chb_mostrarContraseña);
-        chb_mostrarContraseña.setBounds(1020, 160, 147, 23);
+        chb_mostrarContraseña.setBounds(940, 160, 147, 23);
 
         lbl_nombres.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_nombres.setText("Nombres:");
@@ -471,21 +481,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         lbl_salario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_salario.setText("Salario:");
         jPanel1.add(lbl_salario);
-        lbl_salario.setBounds(370, 160, 90, 22);
-
-        txt_Salario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_Salario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_SalarioActionPerformed(evt);
-            }
-        });
-        txt_Salario.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_SalarioKeyTyped(evt);
-            }
-        });
-        jPanel1.add(txt_Salario);
-        txt_Salario.setBounds(440, 160, 200, 28);
+        lbl_salario.setBounds(370, 160, 60, 22);
 
         lbl_telefono.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_telefono.setText("  Teléfono:");
@@ -603,9 +599,20 @@ this.cbo_tipoUsuario.setSelectedItem("");
         jPanel1.add(btn_rellenarCampos);
         btn_rellenarCampos.setBounds(610, 320, 110, 31);
 
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        jPanel1.add(jFormattedTextField1);
-        jFormattedTextField1.setBounds(260, 310, 240, 40);
+        txt_Salario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        txt_Salario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_Salario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_SalarioFocusLost(evt);
+            }
+        });
+        txt_Salario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_SalarioKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txt_Salario);
+        txt_Salario.setBounds(440, 160, 200, 30);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 1240, 360));
 
@@ -702,10 +709,6 @@ this.cbo_tipoUsuario.setSelectedItem("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txt_SalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_SalarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_SalarioActionPerformed
 
     private void chb_mostrarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_mostrarContraseñaActionPerformed
           if(chb_mostrarContraseña.isSelected()){
@@ -1128,26 +1131,6 @@ this.cbo_tipoUsuario.setSelectedItem("");
             JOptionPane.showMessageDialog(null, "Sólo números");
         }
     }//GEN-LAST:event_txt_TelefonoKeyTyped
-
-    private void txt_SalarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_SalarioKeyTyped
-        char a=evt.getKeyChar();
-            if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 || 
-                 evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22 
-                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
-        return;
-            }
-       
-        if(txt_Salario.getText().length() >=10){
-            evt.consume();
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
-        }
-        if(Character.isLetter(a) || !Character.isLetterOrDigit(a)){
-            evt.consume();
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Sólo numeros");
-        }
-    }//GEN-LAST:event_txt_SalarioKeyTyped
 
     private void txt_NombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NombreActionPerformed
         
@@ -1603,6 +1586,32 @@ this.cbo_tipoUsuario.setSelectedItem("");
         this.dispose();
     }//GEN-LAST:event_menu_tipoUsuarioActionPerformed
 
+    private void txt_SalarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_SalarioKeyTyped
+/* char a=evt.getKeyChar();
+        if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 ||
+            evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22
+            || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+            return;
+        }
+
+        if(txt_Salario.getText().length() >=10){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
+        }
+        if(Character.isLetter(a) || !Character.isLetterOrDigit(a)){
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Sólo numeros");
+        }
+        */
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_SalarioKeyTyped
+
+    private void txt_SalarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_SalarioFocusLost
+       
+    }//GEN-LAST:event_txt_SalarioFocusLost
+
    
     /**
      * @param args the command line arguments
@@ -1658,7 +1667,6 @@ this.cbo_tipoUsuario.setSelectedItem("");
     private javax.swing.JLabel fechaHoy;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -1688,7 +1696,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
     private javax.swing.JTextField txt_Identidad;
     private javax.swing.JTextField txt_Nombre;
     private javax.swing.JTextField txt_NombreUsuario;
-    private javax.swing.JTextField txt_Salario;
+    private javax.swing.JFormattedTextField txt_Salario;
     private javax.swing.JTextField txt_Telefono;
     // End of variables declaration//GEN-END:variables
 

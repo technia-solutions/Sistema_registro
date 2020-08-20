@@ -77,6 +77,7 @@ public class Periodo extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu = new javax.swing.JMenu();
         jMenuPrincipal = new javax.swing.JMenuItem();
+        jMenuPrincipal1 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -291,14 +292,24 @@ public class Periodo extends javax.swing.JFrame {
         jMenu.setText("Menu");
 
         jMenuPrincipal.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio.png"))); // NOI18N
-        jMenuPrincipal.setText("Menu Principal");
+        jMenuPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_retroceder.png"))); // NOI18N
+        jMenuPrincipal.setText("Regresar");
         jMenuPrincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuPrincipalActionPerformed(evt);
             }
         });
         jMenu.add(jMenuPrincipal);
+
+        jMenuPrincipal1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuPrincipal1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio.png"))); // NOI18N
+        jMenuPrincipal1.setText("Menu Principal");
+        jMenuPrincipal1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuPrincipal1ActionPerformed(evt);
+            }
+        });
+        jMenu.add(jMenuPrincipal1);
 
         jMenuBar1.add(jMenu);
 
@@ -388,15 +399,15 @@ public class Periodo extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_buscarActionPerformed
 
     private void jMenuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPrincipalActionPerformed
-    
-         this.dispose();
-        Principal P = null;
-         try {
-             P = new Principal();
-         } catch (SQLException ex) {
-             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-         }
-        P.setVisible(true);
+
+       PeriodoHis pp = null;
+        try {
+            pp = new PeriodoHis(lbl_usuario.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(Carrera.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        pp.setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_jMenuPrincipalActionPerformed
 
@@ -543,6 +554,24 @@ char a=evt.getKeyChar();
         }      
     }//GEN-LAST:event_txt_descripcionKeyTyped
 
+    private void jMenuPrincipal1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPrincipal1ActionPerformed
+    try {
+            String sql2 = "Select nombres_empleado + ' ' + apellido_empleado from Empleados where id_empleado = (select id_empleado from Acceso where nombre_usuario = '"+lbl_usuario.getText()+"')";
+            Statement st2 = con.createStatement();
+            ResultSet rs2 = st2.executeQuery(sql2);
+            if(rs2.next()){
+                Principal principal = new Principal(lbl_usuario.getText(),rs2.getString(1));
+                principal.setVisible(true);
+                this.dispose();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Error");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuPrincipal1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -594,6 +623,7 @@ char a=evt.getKeyChar();
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuPrincipal;
+    private javax.swing.JMenuItem jMenuPrincipal1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

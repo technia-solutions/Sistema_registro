@@ -294,13 +294,12 @@ public class CancelarAsignatura extends javax.swing.JFrame {
           int i = Tabla_Cancelar.getSelectedRow();
          if(Tabla_Cancelar.getSelectedRow() >= 0){
           lbl_idSeccion.setText(Tabla_Cancelar.getValueAt(i,0).toString()/*+"-"+Tabla_Cancelar.getValueAt(i,2).toString()*/);
-          lbl_idPeriodo.setText(Tabla_Cancelar.getValueAt(i,4).toString());
-          
+          lbl_idPeriodo.setText(Tabla_Cancelar.getValueAt(i,5).toString());
               try {
                    Statement st = con.createStatement();
                    String sql2 = "select * from Matricula as m join Secciones as s on m.id_seccion = s.id_seccion\n" +
-            "where m.numero_cuenta_alumno = '"+txt_NumC.getText()+"' and s.id_seccion = '"+lbl_idSeccion.getText()+"'\n" +
-            "and s.id_periodo = '"+lbl_idPeriodo.getText()+"'";
+                    "where m.numero_cuenta_alumno = '"+txt_NumC.getText()+"' and s.id_seccion = '"+lbl_idSeccion.getText()+"'\n" +
+                    "and s.id_periodo = '"+lbl_idPeriodo.getText()+"'";
                   ResultSet rs = st.executeQuery(sql2);
                  if(rs.next()){
                      lbl_idMatricula.setText(rs.getString(3));
@@ -607,7 +606,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
             
            
            
-           String sql= "select S.id_seccion, S.Nombre_seccion,S.cod_asignaturas, S.Hora_inicial, S.Hora_final, S.id_periodo,S.id_aula from Secciones as S\n"+
+           String sql= "select S.id_seccion, S.Nombre_seccion,A.nombre_asignaturas, S.Hora_inicial, S.Hora_final, S.id_periodo,S.id_aula from Secciones as S\n"+
                          "join Matricula as M on S.id_seccion = M.id_seccion\n"+
                           "join Asignaturas as A on S.cod_asignaturas = A.cod_asignaturas\n"+
                          "where numero_cuenta_alumno = '"+numeroCuenta+"'";
@@ -617,8 +616,8 @@ public class CancelarAsignatura extends javax.swing.JFrame {
             
             ResultSetMetaData rsMd =rs.getMetaData();
             int cantidadColumnas = rsMd.getColumnCount();
-            modelo.addColumn("Id Seccion");
-            modelo.addColumn("Nombre");
+            modelo.addColumn("Id Sección");
+            modelo.addColumn("Sección");
             modelo.addColumn("Asignatura");
             modelo.addColumn("Hora Inicial");
             modelo.addColumn("Hora Final");
