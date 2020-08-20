@@ -195,10 +195,9 @@ public class Principal extends javax.swing.JFrame {
         btn_Alumno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/empleado.png"))); // NOI18N
         btn_Alumno.setText("Alumno");
         btn_Alumno.setBorderPainted(false);
-        btn_Alumno.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_Alumno.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_Alumno.setDoubleBuffered(true);
         btn_Alumno.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btn_Alumno.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         btn_Alumno.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btn_Alumno.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -218,10 +217,9 @@ public class Principal extends javax.swing.JFrame {
         btn_Notas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Matricula.png"))); // NOI18N
         btn_Notas.setText("Notas");
         btn_Notas.setBorderPainted(false);
-        btn_Notas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_Notas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_Notas.setDoubleBuffered(true);
         btn_Notas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btn_Notas.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         btn_Notas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btn_Notas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -242,11 +240,10 @@ public class Principal extends javax.swing.JFrame {
         btn_Matricula.setText("Matrícula");
         btn_Matricula.setToolTipText("");
         btn_Matricula.setBorderPainted(false);
-        btn_Matricula.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_Matricula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_Matricula.setDoubleBuffered(true);
         btn_Matricula.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_Matricula.setVerifyInputWhenFocusTarget(false);
-        btn_Matricula.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         btn_Matricula.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btn_Matricula.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -268,7 +265,7 @@ public class Principal extends javax.swing.JFrame {
         btn_Empleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/empledo2.png"))); // NOI18N
         btn_Empleados.setText("Empleados");
         btn_Empleados.setBorderPainted(false);
-        btn_Empleados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_Empleados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_Empleados.setDoubleBuffered(true);
         btn_Empleados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -287,7 +284,7 @@ public class Principal extends javax.swing.JFrame {
         btn_Secciones.setText("Secciones");
         btn_Secciones.setToolTipText("");
         btn_Secciones.setBorderPainted(false);
-        btn_Secciones.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_Secciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_Secciones.setDoubleBuffered(true);
         btn_Secciones.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -303,9 +300,9 @@ public class Principal extends javax.swing.JFrame {
         btn_periodos.setBackground(new java.awt.Color(191, 228, 224));
         btn_periodos.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btn_periodos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/periodo.png"))); // NOI18N
-        btn_periodos.setText("Periodos");
+        btn_periodos.setText("Períodos");
         btn_periodos.setBorderPainted(false);
-        btn_periodos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_periodos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_periodos.setDoubleBuffered(true);
         btn_periodos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -323,7 +320,7 @@ public class Principal extends javax.swing.JFrame {
         btn_Asignaturas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Asignatura.png"))); // NOI18N
         btn_Asignaturas.setText("Asignatura");
         btn_Asignaturas.setBorderPainted(false);
-        btn_Asignaturas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_Asignaturas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_Asignaturas.setDoubleBuffered(true);
         btn_Asignaturas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -375,7 +372,7 @@ public class Principal extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(90, 90, 90)
+                .addGap(81, 81, 81)
                 .addComponent(btn_Empleados)
                 .addGap(33, 33, 33)
                 .addComponent(btn_Secciones)
@@ -383,7 +380,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(btn_periodos)
                 .addGap(30, 30, 30)
                 .addComponent(btn_Asignaturas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(btn_cerrarSesion))
         );
 
@@ -394,9 +391,10 @@ public class Principal extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setText("Cancelar Asigntura");
+        jButton1.setText("Cancelar Asignatura");
+        jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.setOpaque(true);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -407,8 +405,9 @@ public class Principal extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton2.setText("Añadir Aula");
+        jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.setOpaque(true);
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -419,8 +418,9 @@ public class Principal extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(255, 255, 255));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton3.setText("Añadir Carrera");
+        jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.setOpaque(true);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -439,7 +439,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(jButton2)
                 .addGap(92, 92, 92)
                 .addComponent(jButton3)
-                .addContainerGap(245, Short.MAX_VALUE))
+                .addContainerGap(237, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

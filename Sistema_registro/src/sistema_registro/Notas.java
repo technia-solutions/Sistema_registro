@@ -102,6 +102,7 @@ public class Notas extends javax.swing.JFrame {
         lbl_asignatura = new javax.swing.JLabel();
         lbl_clase = new javax.swing.JLabel();
         btn_buscarClases = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         lbl_usuario = new javax.swing.JLabel();
         iconodeUsuario = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -339,11 +340,11 @@ public class Notas extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_asignatura.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPanel3.add(lbl_asignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 20, 340, 30));
+        jPanel3.add(lbl_asignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 20, 300, 30));
 
         lbl_clase.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_clase.setText("Clase:");
-        jPanel3.add(lbl_clase, new org.netbeans.lib.awtextra.AbsoluteConstraints(753, 23, -1, -1));
+        jPanel3.add(lbl_clase, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, -1, -1));
 
         btn_buscarClases.setBackground(new java.awt.Color(235, 250, 251));
         btn_buscarClases.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -354,6 +355,15 @@ public class Notas extends javax.swing.JFrame {
             }
         });
         jPanel3.add(btn_buscarClases, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 20, 170, 30));
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton1.setText("Limpiar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 20, 100, 30));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 1190, 60));
 
@@ -614,7 +624,7 @@ public class Notas extends javax.swing.JFrame {
                 Tabla_asignatura.setShowHorizontalLines(true);
                 this.Tabla_asignatura.setEnabled(true);
                 this.btn_generarReporte.setEnabled(true);
-                
+                this.txt_numeroCuenta.setEnabled(false);
             }
          }catch(SQLException ex){
              System.out.println(ex.toString());
@@ -841,6 +851,13 @@ public class Notas extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_btn_generarReporteActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.txt_numeroCuenta.setEnabled(true);
+        this.txt_numeroCuenta.setText("");
+        this.Tabla_asignatura.setVisible(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -887,6 +904,7 @@ public class Notas extends javax.swing.JFrame {
     private javax.swing.JButton btn_guardar;
     private javax.swing.JCheckBox cbo_reposicion;
     private javax.swing.JLabel iconodeUsuario;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;

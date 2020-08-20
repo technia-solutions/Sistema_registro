@@ -57,7 +57,8 @@ public class Matricula extends javax.swing.JFrame {
          desactivar();
          obtenerPeriodo();
           this.setTitle("Matricula");
-         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());    
+         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage()); 
+         this.lbl_periodo.setVisible(false);
     }
     
         public Matricula(String nombreUsuario)throws SQLException{
@@ -66,6 +67,7 @@ public class Matricula extends javax.swing.JFrame {
          desactivar();
          obtenerPeriodo();
           this.setTitle("Matricula");
+          this.lbl_periodo.setVisible(false);
           this.lbl_usuario.setText(nombreUsuario);
          this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
         
@@ -90,6 +92,7 @@ public class Matricula extends javax.swing.JFrame {
         lbl_numeroCuenta = new javax.swing.JLabel();
         txt_numeroCuenta = new javax.swing.JTextField();
         btn_buscarClases = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         lbl_periodo = new javax.swing.JLabel();
@@ -201,6 +204,14 @@ public class Matricula extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton1.setText("Limpiar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -212,6 +223,8 @@ public class Matricula extends javax.swing.JFrame {
                 .addComponent(txt_numeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addComponent(btn_buscarClases)
+                .addGap(30, 30, 30)
+                .addComponent(jButton1)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -221,7 +234,8 @@ public class Matricula extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_buscarClases)
                     .addComponent(lbl_numeroCuenta)
-                    .addComponent(txt_numeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_numeroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -390,6 +404,11 @@ public class Matricula extends javax.swing.JFrame {
             txt_numeroCuenta.requestFocus();
             return;
         }
+         if(existeNumeroCuenta()){
+            return;
+            
+        }
+       
         try{
             DefaultTableModel modelo = new DefaultTableModel();
             tbl_asignaturas.setModel(modelo);
@@ -438,6 +457,7 @@ public class Matricula extends javax.swing.JFrame {
                     filas[i]=rs.getObject(i+1);
                 }
                 modelo.addRow(filas);
+                this.txt_numeroCuenta.setEnabled(false);
                /* tbl_asignaturas.setShowGrid(true);
                 tbl_asignaturas.setShowHorizontalLines(true);
                 this.tbl_asignaturas.setEnabled(true);
@@ -448,7 +468,7 @@ public class Matricula extends javax.swing.JFrame {
              System.out.println(ex.toString());
              
          }    
-        existeNumeroCuenta();
+        
     }
     
     
@@ -482,7 +502,7 @@ public class Matricula extends javax.swing.JFrame {
     private void btn_buscarClasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarClasesActionPerformed
      buscar();
      
-      this.txt_numeroCuenta.setEnabled(false);
+      
     //.btn_matricularAsignatura.setEnabled(true);
  
       //  mostrarClientes();
@@ -751,6 +771,13 @@ public class Matricula extends javax.swing.JFrame {
    
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.txt_numeroCuenta.setEnabled(true);
+        this.txt_numeroCuenta.setText("");
+        this.tbl_asignaturas.setVisible(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -795,6 +822,7 @@ public class Matricula extends javax.swing.JFrame {
     private javax.swing.JButton btn_generarReporte;
     private javax.swing.JButton btn_matricularAsignatura;
     private javax.swing.JLabel iconodeUsuario;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu;

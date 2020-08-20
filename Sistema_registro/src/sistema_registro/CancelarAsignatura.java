@@ -34,7 +34,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
      Connection con=null;
     ResultSet rs;
     
-    String titulos [] = {"Codigo de Asignatura", "Nombre de la Asignatura", "Seccion", "Hora Inicial", "Hora Final","Periodo", "Unidades Valorativas",  "Matrícula"};
+    String titulos [] = {"Código de Asignatura", "Nombre de la Asignatura", "Sección", "Hora Inicial", "Hora Final","Período", "Unidades Valorativas",  "Matrícula"};
    
     DefaultTableModel modelo =  new DefaultTableModel();
     Statement stmt = null;
@@ -49,9 +49,9 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         obtenerPeriodo();
          this.setTitle("Matricula");
           this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
-        /*this.lbl_idMatricula.setVisible(false);
+        this.lbl_idMatricula.setVisible(false);
         this.lbl_idPeriodo.setVisible(false);
-        this.lbl_idSeccion.setVisible(false);*/
+        this.lbl_idSeccion.setVisible(false);
         
         
     }
@@ -63,9 +63,9 @@ public class CancelarAsignatura extends javax.swing.JFrame {
          this.setTitle("Matricula");
          this.lbl_usuario.setText(nombreUsuario);
           this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
-        /*this.lbl_idMatricula.setVisible(false);
+        this.lbl_idMatricula.setVisible(false);
         this.lbl_idPeriodo.setVisible(false);
-        this.lbl_idSeccion.setVisible(false);*/
+        this.lbl_idSeccion.setVisible(false);
         
         
     }
