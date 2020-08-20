@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -36,7 +37,9 @@ import sistema_registro.SQL.ConectorSQL;
 public class Secciones extends javax.swing.JFrame {
 
     Connection con = null;
-     String titulos [] = {"Id Seccion","Nombre de la Seccion", " Codigo de la Seccion ", "Cantidad Máxima de Alumnos","Hora Inicial", "Hora Final", "Aula", "Periodo","Dias de la Asignatura"};
+      String titulos [] = {"Id Seccion","Nombre de la Seccion", " Codigo de la Asignatura ", 
+         "Cantidad de Alumnos","Hora Inicial", "Hora Final",  "Periodo", "Aula",
+         "Dias de la Asignatura","Cantidad Máxima de Alumnos"};
    
     DefaultTableModel modelo =  new DefaultTableModel();
     Statement stmt = null;
@@ -45,19 +48,19 @@ public class Secciones extends javax.swing.JFrame {
     String CantidadAl =String.valueOf(Contador);
     
     
+    
     //JCheckBox Mensaje = new JCheckBox();
     
     /**
      * Creates new form Secciones
      */
     
-        
-    String Mensaje = "";
-    
+         
     public Secciones() throws SQLException {
         
         this.con = ConectorSQL.obtenerConexion ();
         initComponents();
+       
         
           
                 ArrayList<String> lista = new ArrayList<String>();
@@ -542,7 +545,7 @@ public class Secciones extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
-    
+          String Mensaje = "";
         String Seccion = txt_NombreSeccion.getText() + " ";
         if ((txt_NombreSeccion.getText().equals("")) || (txt_HoraInicial.getText().equals("")) || (txt_HoraFinal.getText().equals(""))) {
 
@@ -658,7 +661,8 @@ public class Secciones extends javax.swing.JFrame {
     }//GEN-LAST:event_chb_MartesActionPerformed
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
-       
+         String Mensaje = "";
+  
         String cadena2, cadena5, cadena4, cadena8, cadena9;
         //Id Seccion
         String id_seccion = cbo_Asignaturas.getSelectedItem().toString().substring(0, 6) + "-" +  txt_NombreSeccion.getText();
@@ -848,7 +852,7 @@ public class Secciones extends javax.swing.JFrame {
 
     private void btn_AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AceptarActionPerformed
        // String Mensaje = "Dias:";
-        if(chb_Lunes.isSelected()){
+        /*if(chb_Lunes.isSelected()){
            Mensaje +=  "Lu";
 
         }
@@ -873,7 +877,7 @@ public class Secciones extends javax.swing.JFrame {
         }
        
         lbl_MensajeDias.setText(Mensaje);
-       
+       */
         
     }//GEN-LAST:event_btn_AceptarActionPerformed
 
@@ -944,7 +948,11 @@ public class Secciones extends javax.swing.JFrame {
 
     private void Tabla_SeccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_SeccionMouseClicked
            if(Tabla_Seccion.getSelectedRow () >= 0){
-            llenarCampos();
+               try {
+                   llenarCampos();
+               } catch (SQLException ex) {
+                   Logger.getLogger(Secciones.class.getName()).log(Level.SEVERE, null, ex);
+               }
         }
     }//GEN-LAST:event_Tabla_SeccionMouseClicked
 
@@ -1149,8 +1157,8 @@ public void actualizarDatos(){
                       datos[3] =rs.getString("cantidad_alumnos");
                       datos[4] =rs.getString("Hora_inicial");
                       datos[5] =rs.getString("Hora_final");
-                      datos[7] =rs.getString("id_periodo");
-                      datos[6] =rs.getString("id_aula");
+                      datos[6] =rs.getString("id_periodo");
+                      datos[7] =rs.getString("id_aula");
                       datos[8] =rs.getString("dias");
                       datos[9] =rs.getString("cantidad_maxima");
                       
@@ -1172,9 +1180,9 @@ public void actualizarDatos(){
            hin.setMaxWidth(145);
             TableColumn hfi= Tabla_Seccion.getColumn(titulos[5]);
            hfi.setMaxWidth(145);
-           TableColumn idp= Tabla_Seccion.getColumn(titulos[6]);
+           TableColumn idp= Tabla_Seccion.getColumn(titulos[7]);
            idp.setMaxWidth(145);
-           TableColumn idau= Tabla_Seccion.getColumn(titulos[7]);
+           TableColumn idau= Tabla_Seccion.getColumn(titulos[6]);
            idau.setMaxWidth(145);
            TableColumn dias= Tabla_Seccion.getColumn(titulos[8]);
            dias.setMaxWidth(145);
@@ -1183,7 +1191,7 @@ public void actualizarDatos(){
         }
         catch (Exception e) {
            
-            System.err.println(e);
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
            }
 
@@ -1241,24 +1249,45 @@ public void actualizarDatos(){
        
     }
      
-     private void llenarCampos() {
+     private void deseleccionar(){
+         chb_Lunes.setSelected(false);
+         chb_Martes.setSelected(false);
+         chb_Miercoles.setSelected(false);
+         chb_Jueves.setSelected(false);
+         chb_Viernes.setSelected(false);
+         chb_Sabado.setSelected(false);
+         chb_Domingo.setSelected(false);
+     }
+     private void llenarCampos() throws SQLException {
       int i = Tabla_Seccion.getSelectedRow();
+        deseleccionar();
+        Calendar c1 = Calendar.getInstance();
+        int año = c1.get(Calendar.YEAR);
      
         txt_NombreSeccion.setText(Tabla_Seccion.getValueAt(i, 1).toString());
         String codAsignatura = Tabla_Seccion.getValueAt(i, 2).toString();
+        Statement st = con.createStatement();
+        String sql = "Select * from Asignaturas where cod_asignaturas = '"+codAsignatura+"'";
+        ResultSet rs3 = st.executeQuery(sql);
+        if(rs3.next()){
+            cbo_Asignaturas.setSelectedItem(rs3.getString("cod_asignaturas") + " - " + rs3.getString("nombre_asignaturas"));
+        }
         cbo_Asignaturas.setSelectedItem(Tabla_Seccion.getValueAt(i, 2).toString());
         txt_CantidadM.setText(Tabla_Seccion.getValueAt(i, 3).toString());
         txt_HoraInicial.setText(Tabla_Seccion.getValueAt(i, 4).toString().substring(0, 5));
         txt_HoraFinal.setText(Tabla_Seccion.getValueAt(i, 5).toString().substring(0,5));
-        cbo_IdPeriodo.setSelectedItem(Tabla_Seccion.getValueAt(i, 7).toString());
-        cbo_IdAula.setSelectedItem(Tabla_Seccion.getValueAt(i, 6).toString());
+        
+        cbo_IdPeriodo.setSelectedItem(año+"-"+Tabla_Seccion.getValueAt(i, 6).toString() + " Período");
+        
+
+        cbo_IdAula.setSelectedItem(Tabla_Seccion.getValueAt(i, 7).toString() + " - " + Tabla_Seccion.getValueAt(i, 7).toString().substring(1));
         //txt_HoraFinal.setText(Tabla_Seccion.getValueAt(i, 5).toString());
         
         String dias = "";
         dias =Tabla_Seccion.getValueAt(i,8).toString();
         
         if(dias.contains("Lu")){
-            chb_Lunes.setSelected(false);
+            chb_Lunes.setSelected(true);
         }
         if(dias.contains("Ma")){
             chb_Martes.setSelected(true);

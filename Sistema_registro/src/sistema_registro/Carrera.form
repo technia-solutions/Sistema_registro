@@ -115,14 +115,20 @@
         <Component class="javax.swing.JTable" name="Tabla_Carrera">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="3" rowCount="0">
+              <Table columnCount="4" rowCount="0">
                 <Column editable="true" title="Id Carrera" type="java.lang.Object"/>
                 <Column editable="true" title="Carrera" type="java.lang.Object"/>
                 <Column editable="true" title="Facultad" type="java.lang.Object"/>
+                <Column editable="true" title="Nombre de la Facultad" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
@@ -265,7 +271,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="370" y="150" width="-1" height="-1"/>
+              <AbsoluteConstraints x="370" y="170" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -282,7 +288,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="460" y="140" width="270" height="40"/>
+              <AbsoluteConstraints x="450" y="160" width="270" height="40"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -292,7 +298,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="450" y="80" width="280" height="30"/>
+              <AbsoluteConstraints x="450" y="80" width="280" height="50"/>
             </Constraint>
           </Constraints>
 

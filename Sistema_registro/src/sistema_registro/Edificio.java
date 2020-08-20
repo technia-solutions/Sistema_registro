@@ -480,14 +480,16 @@ public class Edificio extends javax.swing.JFrame {
 
     private void Tabla_EdificioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_EdificioMouseClicked
        if(Tabla_Edificio.getSelectedRow () >= 0){
-            llenarCampos();
+           try {
+               llenarCampos();
+           } catch (SQLException ex) {
+               Logger.getLogger(Edificio.class.getName()).log(Level.SEVERE, null, ex);
+           }
         }
     }//GEN-LAST:event_Tabla_EdificioMouseClicked
 
     private void btn_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buscarMouseClicked
-           rellenar();
-        this.jScrollPane1.setEnabled(true);
-        this.Tabla_Edificio.setEnabled(true);
+
     }//GEN-LAST:event_btn_buscarMouseClicked
 
     private void txt_nombreEdificioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreEdificioActionPerformed
@@ -644,7 +646,7 @@ public class Edificio extends javax.swing.JFrame {
                     String cap = "";
                     ResultSet rs2 = null;
                   
-                            String sql = "SELECT * FROM Edifcio where id_edificio='"+var+"' or nombre_edificio ='"+var+"'";
+                            String sql = "SELECT * FROM Edificio where id_edificio='"+var+"' or nombre_edificio ='"+var+"'";
                             stmt = con.createStatement();
                             rs2 = stmt.executeQuery(sql);
 
@@ -673,11 +675,24 @@ public class Edificio extends javax.swing.JFrame {
        
     }
 
-    private void llenarCampos() {
+    private void llenarCampos() throws SQLException {
       int i = Tabla_Edificio.getSelectedRow();
         txt_idEdificio.setText(Tabla_Edificio.getValueAt(i, 0).toString());
         txt_nombreEdificio.setText(Tabla_Edificio.getValueAt(i, 1).toString());
-        cbo_idCampus.setSelectedItem(Tabla_Edificio.getValueAt(i, 2).toString());
+        String campus = Tabla_Edificio.getValueAt(i, 2).toString();
+        Statement st;
+        try {
+            st = con.createStatement();
+            String sql = "select * from Edificio as e join Campus as c on c.id_campus = e.id_campus"
+                    + " where c.id_campus = '"+campus+"'";
+            ResultSet rs3 = st.executeQuery(sql);
+            if(rs3.next()){
+               cbo_idCampus.setSelectedItem(rs3.getString("id_campus") + " - " + rs3.getString("nombre_campus"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Edificio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
      
     }
 

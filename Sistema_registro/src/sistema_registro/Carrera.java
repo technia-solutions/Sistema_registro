@@ -31,7 +31,7 @@ import sistema_registro.SQL.ConectorSQL;
  * @author asus
  */
 public class Carrera extends javax.swing.JFrame {
-     String titulos [] = {"Id Carrera","Carrera","Facultad"};
+     String titulos [] = {"Id Carrera","Carrera","Facultad", "Nombre de la Facultad"};
     //String fila [] = new String[9];
     DefaultTableModel modelo =  new DefaultTableModel();
     Connection con = null;
@@ -115,7 +115,7 @@ public class Carrera extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Id Carrera", "Carrera", "Facultad"
+                "Id Carrera", "Carrera", "Facultad", "Nombre de la Facultad"
             }
         ));
         Tabla_Carrera.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -187,11 +187,11 @@ public class Carrera extends javax.swing.JFrame {
         lbl_facultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_facultad.setText("Facultad:");
         jPanel1.add(lbl_facultad);
-        lbl_facultad.setBounds(370, 150, 71, 22);
+        lbl_facultad.setBounds(370, 170, 71, 22);
 
         cbo_idfacultad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una facultad" }));
         jPanel1.add(cbo_idfacultad);
-        cbo_idfacultad.setBounds(460, 140, 270, 40);
+        cbo_idfacultad.setBounds(450, 160, 270, 40);
 
         jtxt_NombreCarrera.setColumns(20);
         jtxt_NombreCarrera.setLineWrap(true);
@@ -205,7 +205,7 @@ public class Carrera extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jtxt_NombreCarrera);
 
         jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(450, 80, 280, 30);
+        jScrollPane2.setBounds(450, 80, 280, 50);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 870, 250));
 
@@ -611,8 +611,7 @@ public class Carrera extends javax.swing.JFrame {
         int i = Tabla_Carrera.getSelectedRow();
         txt_idCarrera.setText(Tabla_Carrera.getValueAt(i, 0).toString());
         jtxt_NombreCarrera.setText(Tabla_Carrera.getValueAt(i, 1).toString());
-        cbo_idfacultad.setSelectedItem(Tabla_Carrera.getValueAt(i, 2).toString());
- 
+        cbo_idfacultad.setSelectedItem(Tabla_Carrera.getValueAt(i, 2).toString() + " - " + Tabla_Carrera.getValueAt(i, 3).toString());
         
     }
 
@@ -649,16 +648,17 @@ public class Carrera extends javax.swing.JFrame {
      
       public void actualizarDatos() {
         try {
-            String sql = "SELECT * FROM Carrera";
+            String sql = "SELECT * FROM Carrera as c join Facultad as f on f.id_facultad = c.id_facultad";
             stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             modelo = new DefaultTableModel(null, titulos);
             Tabla_Carrera.setModel(modelo);
             while (rs.next()) {
-                String[] datos = new String[3];
+                String[] datos = new String[4];
                 datos[0] = rs.getString("id_carrera");
                 datos[1] = rs.getString("nombre_carrera");
                 datos[2] =rs.getString("id_facultad");
+                datos[3] =rs.getString("nombre_facultad");
                 modelo.addRow(datos);
             }
             TableColumn idC = Tabla_Carrera.getColumn(titulos[0]);
@@ -668,6 +668,8 @@ public class Carrera extends javax.swing.JFrame {
             cnombre.setMaxWidth(300);
             TableColumn cfacultad = Tabla_Carrera.getColumn(titulos[2]);
                 cfacultad.setMaxWidth(300);
+                TableColumn facultad = Tabla_Carrera.getColumn(titulos[3]);
+                facultad.setMaxWidth(300);
         } catch (Exception e) {
            /* JOptionPane.showMessageDialog(null, e.getMessage());*/
             System.err.println(e);
