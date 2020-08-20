@@ -37,6 +37,14 @@ public class Periodo extends javax.swing.JFrame {
          this.con = ConectorSQL.obtenerConexion ();
         initComponents();
     }
+    
+    public Periodo(String nombreUsuario) throws SQLException {
+         this.con = ConectorSQL.obtenerConexion ();
+        initComponents();
+        
+        this.lbl_usuario.setText(nombreUsuario);
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,6 +55,7 @@ public class Periodo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -62,10 +71,14 @@ public class Periodo extends javax.swing.JFrame {
         btn_actualizar = new javax.swing.JButton();
         btn_buscar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
+        lbl_usuario = new javax.swing.JLabel();
+        iconodeUsuario = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu = new javax.swing.JMenu();
         jMenuPrincipal = new javax.swing.JMenuItem();
+
+        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -92,7 +105,7 @@ public class Periodo extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 700, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 700, -1));
 
         jPanel2.setBackground(new java.awt.Color(215, 236, 233));
 
@@ -261,11 +274,18 @@ public class Periodo extends javax.swing.JFrame {
                         .addGap(38, 38, 38))))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 700, 410));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 700, 410));
+
+        lbl_usuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbl_usuario.setText("Nombre Usuario");
+        getContentPane().add(lbl_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 190, -1));
+
+        iconodeUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User.png"))); // NOI18N
+        getContentPane().add(iconodeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 50, 70));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 510));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 570));
 
         jMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
         jMenu.setText("Menu");
@@ -568,9 +588,11 @@ char a=evt.getKeyChar();
     private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_guardar;
+    private javax.swing.JLabel iconodeUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuPrincipal;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -579,27 +601,13 @@ char a=evt.getKeyChar();
     private javax.swing.JLabel lbl_descripcion;
     private javax.swing.JLabel lbl_idPeriodo;
     private javax.swing.JLabel lbl_titulo;
+    private javax.swing.JLabel lbl_usuario;
     private javax.swing.JTextField txt_descripcion;
     private javax.swing.JTextField txt_idPeriodo;
     private javax.swing.JTextField txt_periodo;
     // End of variables declaration//GEN-END:variables
 
- /*private boolean existeNombrePeriodo() {
-        try {
-            Statement st = con.createStatement();
-            String sql = "Select Periodo from periodo where periodo = '" + txt_NomPer.getText() + "'";
-            ResultSet rs = st.executeQuery(sql);
-            if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "El nombre del período." + txt_NomPer.getText() + " ya existe", "El período  ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
-                return true;
-            } else {
-                return false;
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Campus.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
-    }*/
+
     
      private boolean existeidPeriodo() {
         try {

@@ -53,6 +53,20 @@ public class Carrera extends javax.swing.JFrame {
             this.setTitle("Carrera");
              this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
     }
+    
+    public Carrera(String nombreUsuario) throws SQLException {
+          this.con = ConectorSQL.obtenerConexion();
+        initComponents();
+        ArrayList<String> lista = new ArrayList<String>();
+             lista = new Conexion_consulta().llenar_Facultad();
+            for(int i = 0; i<lista.size();i++){
+                cbo_idfacultad.addItem(lista.get(i));
+            }
+             this.setLocationRelativeTo(null);
+            this.setTitle("Carrera");
+            this.lbl_usuario.setText(nombreUsuario);
+             this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,8 +77,6 @@ public class Carrera extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbl_idCarrera = new javax.swing.JLabel();
-        txt_idCarrera = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_Carrera = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -77,8 +89,12 @@ public class Carrera extends javax.swing.JFrame {
         cbo_idfacultad = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         jtxt_NombreCarrera = new javax.swing.JTextArea();
+        txt_idCarrera = new javax.swing.JTextField();
+        lbl_idCarrera = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
+        lbl_usuario = new javax.swing.JLabel();
+        iconodeUsuario = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -87,28 +103,6 @@ public class Carrera extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lbl_idCarrera.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_idCarrera.setText("ID Carrera:");
-        getContentPane().add(lbl_idCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 114, -1, -1));
-
-        txt_idCarrera.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_idCarrera.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txt_idCarreraFocusLost(evt);
-            }
-        });
-        txt_idCarrera.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_idCarreraActionPerformed(evt);
-            }
-        });
-        txt_idCarrera.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_idCarreraKeyTyped(evt);
-            }
-        });
-        getContentPane().add(txt_idCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(457, 111, 278, -1));
 
         Tabla_Carrera.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -125,7 +119,7 @@ public class Carrera extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Tabla_Carrera);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 360, 870, 110));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 870, 110));
 
         jPanel1.setBackground(new java.awt.Color(215, 236, 233));
         jPanel1.setLayout(null);
@@ -207,7 +201,31 @@ public class Carrera extends javax.swing.JFrame {
         jPanel1.add(jScrollPane2);
         jScrollPane2.setBounds(450, 80, 280, 50);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 870, 250));
+        txt_idCarrera.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_idCarrera.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_idCarreraFocusLost(evt);
+            }
+        });
+        txt_idCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_idCarreraActionPerformed(evt);
+            }
+        });
+        txt_idCarrera.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_idCarreraKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txt_idCarrera);
+        txt_idCarrera.setBounds(450, 30, 278, 28);
+
+        lbl_idCarrera.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbl_idCarrera.setText("ID Carrera:");
+        jPanel1.add(lbl_idCarrera);
+        lbl_idCarrera.setBounds(350, 30, 87, 22);
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 870, 250));
 
         jPanel2.setBackground(new java.awt.Color(232, 251, 249));
 
@@ -231,11 +249,18 @@ public class Carrera extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 870, 70));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 870, 70));
+
+        lbl_usuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbl_usuario.setText("Nombre Usuario");
+        getContentPane().add(lbl_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 190, -1));
+
+        iconodeUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User.png"))); // NOI18N
+        getContentPane().add(iconodeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 50, 70));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 480));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 540));
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_retroceder.png"))); // NOI18N
         jMenu1.setText("Regresar");
@@ -443,7 +468,7 @@ public class Carrera extends javax.swing.JFrame {
          this.dispose();
         Asignaturas aa = null;
          try {
-             aa = new Asignaturas();
+             aa = new Asignaturas(lbl_usuario.getText());
          } catch (SQLException ex) {
              Logger.getLogger(Carrera.class.getName()).log(Level.SEVERE, null, ex);
          }
@@ -465,7 +490,7 @@ public class Carrera extends javax.swing.JFrame {
      this.dispose();
         Facultad ff = null;
          try {
-             ff = new Facultad();
+             ff = new Facultad(lbl_usuario.getText());
          } catch (SQLException ex) {
              Logger.getLogger(Carrera.class.getName()).log(Level.SEVERE, null, ex);
          }
@@ -541,6 +566,7 @@ public class Carrera extends javax.swing.JFrame {
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_guardar;
     private javax.swing.JComboBox<String> cbo_idfacultad;
+    private javax.swing.JLabel iconodeUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
@@ -554,6 +580,7 @@ public class Carrera extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_idCarrera;
     private javax.swing.JLabel lbl_nombreCarrera;
     private javax.swing.JLabel lbl_titulo;
+    private javax.swing.JLabel lbl_usuario;
     private javax.swing.JTextField txt_idCarrera;
     // End of variables declaration//GEN-END:variables
 

@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -51,6 +52,27 @@ DefaultTableModel modelo = new DefaultTableModel();
                 }
             
            this.btn_actualizar.setEnabled(false); 
+           this.setTitle("Período Histórico");
+           this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+    }
+    
+     public PeriodoHis(String nombreUsuario) throws SQLException {
+        this.con = ConectorSQL.obtenerConexion();
+        initComponents();
+        actualizarDatos();
+        this.lbl_nombrePeriodo.setVisible(false);
+        this.lbl_nombre.setVisible(false);
+          ArrayList<String> lista = new ArrayList<String>();
+             lista = new Conexion_consulta().llenar_period();
+            for(int i = 0; i<lista.size();i++){
+                cbo_periodo.addItem(lista.get(i));
+                }
+            
+           this.btn_actualizar.setEnabled(false); 
+             this.setTitle("Período Histórico");
+              this.lbl_usuario.setText(nombreUsuario);
+         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+          
     }
 
     /**
@@ -79,6 +101,8 @@ DefaultTableModel modelo = new DefaultTableModel();
         lbl_nombrePeriodo = new javax.swing.JLabel();
         lbl_nombre = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        lbl_usuario = new javax.swing.JLabel();
+        iconodeUsuario = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -262,6 +286,13 @@ DefaultTableModel modelo = new DefaultTableModel();
         );
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 1090, -1));
+
+        lbl_usuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbl_usuario.setText("Nombre Usuario");
+        getContentPane().add(lbl_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 190, -1));
+
+        iconodeUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User.png"))); // NOI18N
+        getContentPane().add(iconodeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 50, 70));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -606,6 +637,7 @@ DefaultTableModel modelo = new DefaultTableModel();
     private javax.swing.JComboBox<String> cbo_periodo;
     private com.toedter.calendar.JDateChooser cld_fechaFinal;
     private com.toedter.calendar.JDateChooser cld_fechaInicial;
+    private javax.swing.JLabel iconodeUsuario;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -619,5 +651,6 @@ DefaultTableModel modelo = new DefaultTableModel();
     private javax.swing.JLabel lbl_nombre;
     private javax.swing.JLabel lbl_nombrePeriodo;
     private javax.swing.JLabel lbl_periodo;
+    private javax.swing.JLabel lbl_usuario;
     // End of variables declaration//GEN-END:variables
 }

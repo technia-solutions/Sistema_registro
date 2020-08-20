@@ -54,6 +54,23 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
          
          
     }
+    
+    public RequisitoAsignatura(String nombreUsuario) throws SQLException {
+        initComponents();
+        ArrayList<String> lista = new ArrayList<String>();
+             lista = new Conexion_consulta().llenar_combo2();
+            for(int i = 0; i<lista.size();i++){
+                cbo_idCarrera.addItem(lista.get(i));
+            }
+           
+        this.con = ConectorSQL.obtenerConexion();
+        actualizarDatos(); 
+        this.setTitle("Asignatura Requisito");
+         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+         this.lbl_usuario.setText(nombreUsuario);
+         
+         
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -80,12 +97,15 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         txtA_NombreReqAsig = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
+        lbl_usuario = new javax.swing.JLabel();
+        iconodeUsuario = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(215, 236, 233));
         jPanel1.setLayout(null);
@@ -145,9 +165,9 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         lbl_idCarrera.setBounds(380, 210, 190, 20);
 
         lbl_idReqAs.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lbl_idReqAs.setText("Id Requisito Asignatura:");
+        lbl_idReqAs.setText("Id  Asignatura:");
         jPanel1.add(lbl_idReqAs);
-        lbl_idReqAs.setBounds(270, 80, 200, 22);
+        lbl_idReqAs.setBounds(340, 80, 200, 22);
 
         txt_idReqAsig.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_idReqAsig.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -204,6 +224,8 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         jPanel1.add(jScrollPane2);
         jScrollPane2.setBounds(510, 140, 210, 40);
 
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 172, 870, 443));
+
         jPanel2.setBackground(new java.awt.Color(232, 251, 249));
 
         lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -223,11 +245,21 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbl_titulo)
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 104, -1, -1));
+
+        lbl_usuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbl_usuario.setText("Nombre Usuario");
+        getContentPane().add(lbl_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 41, 190, -1));
+
+        iconodeUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User.png"))); // NOI18N
+        getContentPane().add(iconodeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(48, 11, 50, 70));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 648));
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_retroceder.png"))); // NOI18N
         jMenu1.setText("Regresar");
@@ -245,33 +277,6 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(40, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 920, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 608, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -428,7 +433,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
          this.dispose();
         Asignaturas a = null;
          try {
-             a = new Asignaturas();
+             a = new Asignaturas(lbl_usuario.getText());
          } catch (SQLException ex) {
              Logger.getLogger(Carrera.class.getName()).log(Level.SEVERE, null, ex);
          }
@@ -542,6 +547,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_guardar;
     private javax.swing.JComboBox<String> cbo_idCarrera;
+    private javax.swing.JLabel iconodeUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
@@ -554,6 +560,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_idCarrera;
     private javax.swing.JLabel lbl_idReqAs;
     private javax.swing.JLabel lbl_titulo;
+    private javax.swing.JLabel lbl_usuario;
     private javax.swing.JTextArea txtA_NombreReqAsig;
     private javax.swing.JTextField txt_idReqAsig;
     // End of variables declaration//GEN-END:variables

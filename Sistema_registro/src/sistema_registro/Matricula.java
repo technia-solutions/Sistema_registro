@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
@@ -55,8 +56,22 @@ public class Matricula extends javax.swing.JFrame {
          initComponents();
          desactivar();
          obtenerPeriodo();
+          this.setTitle("Matricula");
+         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
         
     }
+    
+        public Matricula(String nombreUsuario)throws SQLException{
+        this.con = ConectorSQL.obtenerConexion();
+         initComponents();
+         desactivar();
+         obtenerPeriodo();
+          this.setTitle("Matricula");
+          this.lbl_usuario.setText(nombreUsuario);
+         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+        
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -79,6 +94,8 @@ public class Matricula extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         lbl_periodo = new javax.swing.JLabel();
+        lbl_usuario = new javax.swing.JLabel();
+        iconodeUsuario = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu = new javax.swing.JMenu();
@@ -240,6 +257,13 @@ public class Matricula extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, 50));
+
+        lbl_usuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbl_usuario.setText("Nombre Usuario");
+        getContentPane().add(lbl_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 190, -1));
+
+        iconodeUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User.png"))); // NOI18N
+        getContentPane().add(iconodeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 50, 70));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -764,6 +788,7 @@ public class Matricula extends javax.swing.JFrame {
     private javax.swing.JButton btn_buscarClases;
     private javax.swing.JButton btn_generarReporte;
     private javax.swing.JButton btn_matricularAsignatura;
+    private javax.swing.JLabel iconodeUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu;
@@ -775,6 +800,7 @@ public class Matricula extends javax.swing.JFrame {
     private javax.swing.JButton lbl_cancelarAsignatura;
     private javax.swing.JLabel lbl_numeroCuenta;
     private javax.swing.JLabel lbl_periodo;
+    private javax.swing.JLabel lbl_usuario;
     private javax.swing.JTable tbl_asignaturas;
     private javax.swing.JTextField txt_numeroCuenta;
     // End of variables declaration//GEN-END:variables

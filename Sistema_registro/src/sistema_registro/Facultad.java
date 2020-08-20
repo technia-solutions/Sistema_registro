@@ -44,6 +44,15 @@ public class Facultad extends javax.swing.JFrame {
          this.setTitle("Facultad");
           this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
     }
+    
+     public Facultad(String nombreUsuario) throws SQLException {
+        initComponents();
+         this.con = ConectorSQL.obtenerConexion();
+         //actualizarDatos(); 
+         this.setTitle("Facultad");
+         this.lbl_usuario.setText(nombreUsuario);
+          this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,10 +63,6 @@ public class Facultad extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txt_idfacultad = new javax.swing.JTextField();
-        txt_NombreFacultad = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Tabla_Facultad = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         btn_guardar = new javax.swing.JButton();
         btn_actualizar = new javax.swing.JButton();
@@ -65,8 +70,14 @@ public class Facultad extends javax.swing.JFrame {
         btn_eliminar = new javax.swing.JButton();
         lbl_nombreFacultad = new javax.swing.JLabel();
         lbl_idfacultad = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Tabla_Facultad = new javax.swing.JTable();
+        txt_NombreFacultad = new javax.swing.JTextField();
+        txt_idfacultad = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
+        lbl_usuario = new javax.swing.JLabel();
+        iconodeUsuario = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -74,49 +85,6 @@ public class Facultad extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txt_idfacultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_idfacultad.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txt_idfacultadFocusLost(evt);
-            }
-        });
-        txt_idfacultad.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_idfacultadKeyTyped(evt);
-            }
-        });
-        getContentPane().add(txt_idfacultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, 180, -1));
-
-        txt_NombreFacultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_NombreFacultad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_NombreFacultadActionPerformed(evt);
-            }
-        });
-        txt_NombreFacultad.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_NombreFacultadKeyTyped(evt);
-            }
-        });
-        getContentPane().add(txt_NombreFacultad, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, 182, -1));
-
-        Tabla_Facultad.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Id Facultad", "Facultad"
-            }
-        ));
-        Tabla_Facultad.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Tabla_FacultadMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(Tabla_Facultad);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, -1, 142));
 
         jPanel1.setBackground(new java.awt.Color(215, 236, 233));
         jPanel1.setLayout(null);
@@ -173,14 +141,60 @@ public class Facultad extends javax.swing.JFrame {
         lbl_nombreFacultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_nombreFacultad.setText("Facultad:");
         jPanel1.add(lbl_nombreFacultad);
-        lbl_nombreFacultad.setBounds(340, 90, 71, 22);
+        lbl_nombreFacultad.setBounds(360, 110, 71, 22);
 
         lbl_idfacultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_idfacultad.setText("ID Facultad:");
         jPanel1.add(lbl_idfacultad);
-        lbl_idfacultad.setBounds(310, 30, 96, 22);
+        lbl_idfacultad.setBounds(330, 60, 96, 22);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 830, 340));
+        Tabla_Facultad.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id Facultad", "Facultad"
+            }
+        ));
+        Tabla_Facultad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tabla_FacultadMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(Tabla_Facultad);
+
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(290, 170, 452, 142);
+
+        txt_NombreFacultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_NombreFacultad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_NombreFacultadActionPerformed(evt);
+            }
+        });
+        txt_NombreFacultad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_NombreFacultadKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txt_NombreFacultad);
+        txt_NombreFacultad.setBounds(440, 110, 182, 28);
+
+        txt_idfacultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_idfacultad.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_idfacultadFocusLost(evt);
+            }
+        });
+        txt_idfacultad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_idfacultadKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txt_idfacultad);
+        txt_idfacultad.setBounds(440, 60, 180, 28);
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 830, 340));
 
         jPanel2.setBackground(new java.awt.Color(232, 251, 249));
 
@@ -204,11 +218,18 @@ public class Facultad extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 830, 60));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 830, 60));
+
+        lbl_usuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbl_usuario.setText("Nombre Usuario");
+        getContentPane().add(lbl_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 190, -1));
+
+        iconodeUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User.png"))); // NOI18N
+        getContentPane().add(iconodeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 50, 70));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 500));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 530));
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_retroceder.png"))); // NOI18N
         jMenu1.setText("Regresar");
@@ -422,7 +443,7 @@ public class Facultad extends javax.swing.JFrame {
           this.dispose();
        Carrera cc;
          try {
-             cc = new Carrera();
+             cc = new Carrera(lbl_usuario.getText());
              cc.setVisible(true);
          } catch (SQLException ex) {
              Logger.getLogger(Facultad.class.getName()).log(Level.SEVERE, null, ex);
@@ -484,6 +505,7 @@ public class Facultad extends javax.swing.JFrame {
     private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_guardar;
+    private javax.swing.JLabel iconodeUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
@@ -493,6 +515,7 @@ public class Facultad extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_idfacultad;
     private javax.swing.JLabel lbl_nombreFacultad;
     private javax.swing.JLabel lbl_titulo;
+    private javax.swing.JLabel lbl_usuario;
     private javax.swing.JTextField txt_NombreFacultad;
     private javax.swing.JTextField txt_idfacultad;
     // End of variables declaration//GEN-END:variables

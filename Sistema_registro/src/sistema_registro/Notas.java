@@ -57,6 +57,14 @@ public class Notas extends javax.swing.JFrame {
          this.lbl_idmatricula.setVisible(false);
          desactivar();
     }
+    
+     public Notas(String nombreUsuario) throws SQLException {
+         this.con = ConectorSQL.obtenerConexion();
+         initComponents();
+         this.lbl_idmatricula.setVisible(false);
+         desactivar();
+         this.lbl_usuario.setText(nombreUsuario);
+    }
 
     
      private void LimpiarCajas(){

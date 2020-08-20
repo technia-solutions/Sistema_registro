@@ -87,6 +87,9 @@ public class Principal extends javax.swing.JFrame {
         jPanel1.setBackground(new Color(244,245,245,100));
              jPanel2.setBackground(new Color(244,245,245,190));
     }
+    
+   
+  
   
 
     /**
@@ -468,7 +471,7 @@ public class Principal extends javax.swing.JFrame {
     private void btn_AsignaturasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_AsignaturasMouseClicked
          Asignaturas asignatura = null;
         try {
-            asignatura = new Asignaturas();
+            asignatura = new Asignaturas(lbl_NombreUsuario.getText());
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -483,7 +486,7 @@ public class Principal extends javax.swing.JFrame {
     private void btn_SeccionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SeccionesMouseClicked
          Secciones seccion = null;
         try {
-            seccion = new Secciones();
+            seccion = new Secciones(lbl_NombreUsuario.getText());
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -625,7 +628,7 @@ public class Principal extends javax.swing.JFrame {
     private void btn_periodosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_periodosMouseClicked
          PeriodoHis periodo = null;
         try {
-            periodo = new PeriodoHis();
+            periodo = new PeriodoHis(lbl_NombreUsuario.getText());
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -636,7 +639,7 @@ public class Principal extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
          Aula au = null;
         try {
-            au = new Aula();
+            au = new Aula(lbl_NombreUsuario.getText());
         } catch (SQLException ex) {
             Logger.getLogger(Aula.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -648,7 +651,7 @@ public class Principal extends javax.swing.JFrame {
           this.dispose();
          CancelarAsignatura aa = null;
          try {
-             aa = new CancelarAsignatura();
+             aa = new CancelarAsignatura(lbl_NombreUsuario.getText());
          } catch (SQLException ex) {
              Logger.getLogger(CancelarAsignatura.class.getName()).log(Level.SEVERE, null, ex);
          }
@@ -660,7 +663,7 @@ public class Principal extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
             Carrera cc = null;
         try {
-            cc = new Carrera();
+            cc = new Carrera(lbl_NombreUsuario.getText());
         } catch (SQLException ex) {
             Logger.getLogger(Carrera.class.getName()).log(Level.SEVERE, null, ex);
         }

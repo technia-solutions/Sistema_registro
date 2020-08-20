@@ -55,6 +55,20 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         
         
     }
+    
+     public CancelarAsignatura(String nombreUsuario) throws SQLException {
+        this.con = ConectorSQL.obtenerConexion();
+        initComponents();
+        obtenerPeriodo();
+         this.setTitle("Matricula");
+         this.lbl_usuario.setText(nombreUsuario);
+          this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+        /*this.lbl_idMatricula.setVisible(false);
+        this.lbl_idPeriodo.setVisible(false);
+        this.lbl_idSeccion.setVisible(false);*/
+        
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -65,8 +79,8 @@ public class CancelarAsignatura extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btn_buscar = new javax.swing.JButton();
         txt_NumC = new javax.swing.JTextField();
@@ -78,6 +92,8 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         btn_CancelarAsig = new javax.swing.JButton();
         lbl_idSeccion = new javax.swing.JLabel();
+        lbl_usuario = new javax.swing.JLabel();
+        iconodeUsuario = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -86,6 +102,8 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(232, 251, 249));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Cancelar Asignatura ");
         jLabel1.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -93,22 +111,25 @@ public class CancelarAsignatura extends javax.swing.JFrame {
                 jLabel1KeyTyped(evt);
             }
         });
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, -1, -1));
-
-        jPanel1.setBackground(new java.awt.Color(232, 251, 249));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 940, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(385, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(367, 367, 367))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 60, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel1)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 940, 60));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 940, 60));
 
         jPanel2.setBackground(new java.awt.Color(215, 236, 233));
 
@@ -228,17 +249,24 @@ public class CancelarAsignatura extends javax.swing.JFrame {
                 .addContainerGap(66, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 940, 380));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 940, 380));
+
+        lbl_usuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbl_usuario.setText("Nombre Usuario");
+        getContentPane().add(lbl_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 190, -1));
+
+        iconodeUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User.png"))); // NOI18N
+        getContentPane().add(iconodeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 50, 70));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
         jLabel3.setText("jLabel3");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 530));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 550));
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_retroceder.png"))); // NOI18N
         jMenu1.setText("Regresar");
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Matricula.png"))); // NOI18N
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/check.png"))); // NOI18N
         jMenuItem1.setText("Matricula");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -384,7 +412,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
            this.dispose();
        Matricula mm = null;
          try {
-             mm = new Matricula();
+             mm = new Matricula(lbl_usuario.getText());
          } catch (SQLException ex) {
              Logger.getLogger(Matricula.class.getName()).log(Level.SEVERE, null, ex);
          }
@@ -542,6 +570,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
     private javax.swing.JTable Tabla_Cancelar;
     private javax.swing.JButton btn_CancelarAsig;
     private javax.swing.JButton btn_buscar;
+    private javax.swing.JLabel iconodeUsuario;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
@@ -555,6 +584,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_idPeriodo;
     private javax.swing.JLabel lbl_idSeccion;
     private javax.swing.JLabel lbl_numeroCuenta;
+    private javax.swing.JLabel lbl_usuario;
     private javax.swing.JTextField txt_NumC;
     // End of variables declaration//GEN-END:variables
 
@@ -577,8 +607,9 @@ public class CancelarAsignatura extends javax.swing.JFrame {
             
            
            
-           String sql= "select S.id_seccion, S.Nombre_seccion, S.Hora_inicial, S.Hora_final, S.id_periodo,S.id_aula from Secciones as S\n"+
+           String sql= "select S.id_seccion, S.Nombre_seccion,S.cod_asignaturas, S.Hora_inicial, S.Hora_final, S.id_periodo,S.id_aula from Secciones as S\n"+
                          "join Matricula as M on S.id_seccion = M.id_seccion\n"+
+                          "join Asignaturas as A on S.cod_asignaturas = A.cod_asignaturas\n"+
                          "where numero_cuenta_alumno = '"+numeroCuenta+"'";
 
             ps= con.prepareStatement(sql);
@@ -588,12 +619,13 @@ public class CancelarAsignatura extends javax.swing.JFrame {
             int cantidadColumnas = rsMd.getColumnCount();
             modelo.addColumn("Id Seccion");
             modelo.addColumn("Nombre");
+            modelo.addColumn("Asignatura");
             modelo.addColumn("Hora Inicial");
             modelo.addColumn("Hora Final");
             modelo.addColumn("Período");
             modelo.addColumn("Aula");
             modelo.addColumn("Selecciona");
-            TableColumn tc = Tabla_Cancelar.getColumnModel().getColumn(6);
+            TableColumn tc = Tabla_Cancelar.getColumnModel().getColumn(7);
             tc.setCellEditor(Tabla_Cancelar.getDefaultEditor(Boolean.class));
             tc.setCellRenderer(Tabla_Cancelar.getDefaultRenderer(Boolean.class));
             

@@ -58,6 +58,26 @@ Connection con = null;
              this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
             this.setTitle("Asignaturas");
     }
+    
+     public Asignaturas(String nombreUsuario) throws SQLException {
+        this.con = ConectorSQL.obtenerConexion ();
+        initComponents();
+        ArrayList<String> lista = new ArrayList<String>();
+             lista = new Conexion_consulta().llenar_combo2();
+            for(int i = 0; i<lista.size();i++){
+                cbo_IdCarrera.addItem(lista.get(i));
+            }
+             ArrayList<String> lista2 = new ArrayList<String>();
+             lista2 = new Conexion_consulta().llenar_requisito();
+            for(int i = 0; i<lista2.size();i++){
+               cbo_Req1.addItem(lista2.get(i));
+               cbo_Req2.addItem(lista2.get(i));
+            }
+             this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+            this.setTitle("Asignaturas");
+            String usuario = nombreUsuario;
+            this.lbl_usuario.setText(usuario);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -92,6 +112,8 @@ Connection con = null;
         jScrollPane2 = new javax.swing.JScrollPane();
         txa_NombreA = new javax.swing.JTextArea();
         btn_consultar = new javax.swing.JButton();
+        lbl_usuario = new javax.swing.JLabel();
+        iconodeUsuario = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -125,7 +147,7 @@ Connection con = null;
         });
         jScrollPane1.setViewportView(Tabla_RegistroAsignatura);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 590, 840, 106));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 650, 840, 106));
 
         jPanel1.setBackground(new java.awt.Color(232, 251, 249));
 
@@ -149,7 +171,7 @@ Connection con = null;
                 .addGap(19, 19, 19))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, 70));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, 70));
 
         jPanel2.setBackground(new java.awt.Color(215, 236, 233));
 
@@ -308,7 +330,7 @@ Connection con = null;
                                     .addComponent(lbl_Req1))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbo_Req1, javax.swing.GroupLayout.Alignment.TRAILING, 0, 1, Short.MAX_VALUE)
+                                    .addComponent(cbo_Req1, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(cbo_IdCarrera, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(102, 102, 102))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -367,11 +389,18 @@ Connection con = null;
                 .addGap(106, 106, 106))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 840, 480));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 840, 480));
+
+        lbl_usuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbl_usuario.setText("Nombre Usuario");
+        getContentPane().add(lbl_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 190, -1));
+
+        iconodeUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User.png"))); // NOI18N
+        getContentPane().add(iconodeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 50, 70));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -1, 1240, 740));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, -1, 1240, 790));
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
         jMenu1.setText("Menú");
@@ -719,7 +748,7 @@ Connection con = null;
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
          Carrera cc = null;
         try {
-            cc = new Carrera();
+            cc = new Carrera(lbl_usuario.getText());
         } catch (SQLException ex) {
             Logger.getLogger(Carrera.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -815,6 +844,7 @@ Connection con = null;
     private javax.swing.JComboBox<String> cbo_IdCarrera;
     private javax.swing.JComboBox<String> cbo_Req1;
     private javax.swing.JComboBox<String> cbo_Req2;
+    private javax.swing.JLabel iconodeUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
@@ -831,6 +861,7 @@ Connection con = null;
     private javax.swing.JLabel lbl_Req2;
     private javax.swing.JLabel lbl_UniVal;
     private javax.swing.JLabel lbl_codA;
+    private javax.swing.JLabel lbl_usuario;
     private javax.swing.JTextArea txa_NombreA;
     private javax.swing.JTextField txt_UniVal;
     private javax.swing.JTextField txt_codA;
