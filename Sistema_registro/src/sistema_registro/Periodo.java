@@ -371,7 +371,7 @@ public class Periodo extends javax.swing.JFrame {
         }
 
         if (!validarLongitud(txt_idPeriodo, 1)) {
-            JOptionPane.showMessageDialog(null, "El id período ingresado es muy pequeño, el mínimo es de 1caracteres", "Longitud de id período", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El id período ingresado es muy pequeño, el mínimo es de 1 caracteres", "Longitud de id período", JOptionPane.INFORMATION_MESSAGE);
             return;
 
         }

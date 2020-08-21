@@ -377,7 +377,7 @@ public class Edificio extends javax.swing.JFrame {
         }
 
         if(!validarLongitud(txt_nombreEdificio,10)){
-            JOptionPane.showMessageDialog(null, "El Nombre de la asignatura es muy corto el mínimo es de 10 caracteres.", "Longitud del nombre de asignatura", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El nombre del edificio es muy corto el mínimo es de 10 caracteres.", "Longitud del nombre del edificio", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
        
@@ -396,7 +396,7 @@ public class Edificio extends javax.swing.JFrame {
          
             
             int res= ps.executeUpdate(); 
-            JOptionPane.showMessageDialog(null, "Se ha guardado la información en Registro de edificio.");
+            JOptionPane.showMessageDialog(null, "Se ha guardado la información del edificio.");
              } catch ( Exception e) {
             System.out.println(e);
         
@@ -411,7 +411,7 @@ public class Edificio extends javax.swing.JFrame {
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
       String nombreEdificio = txt_nombreEdificio.getText() + " ";
         if ((txt_idEdificio.getText().equals("")) || (txt_nombreEdificio.getText().equals("")) ||
-            (cbo_idCampus.getSelectedItem().equals("Seleccione el campus"))) {
+            (cbo_idCampus.getSelectedItem().equals("Seleccione el edificio"))) {
 
             javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar el edificio a actualizar!. \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_nombreEdificio.requestFocus();
@@ -647,7 +647,7 @@ public class Edificio extends javax.swing.JFrame {
             String sql = "Select id_edificio from Edificio where id_edificio = '"+txt_idEdificio.getText()+"'";
             ResultSet rs = st.executeQuery(sql);
             if(rs.next()){
-                JOptionPane.showMessageDialog(null, "Ya existe esta Asignatura: "+txt_idEdificio.getText()+".", "Codigo de asignatura ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Ya existe este edificio: "+txt_idEdificio.getText()+".", "Id Edificio: "+txt_idEdificio.getText()+ " ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
                 return true;
             }
             else{
