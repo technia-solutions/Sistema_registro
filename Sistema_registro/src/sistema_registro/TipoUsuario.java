@@ -766,7 +766,6 @@ this.txt_TipoUsuario.setText("");
                             String sql = "SELECT * FROM Tipo_Usuarios where id_tipoUsuario='"+var+"' or Tipo_Usuario ='"+var+"'";
                             stmt = con.createStatement();
                             rs2 = stmt.executeQuery(sql);
-
                             if (rs2.next()) {
                                 txt_idTipo.setText(rs2.getString("id_tipoUsuario"));
                                 txt_TipoUsuario.setText(rs2.getString("Tipo_Usuario"));

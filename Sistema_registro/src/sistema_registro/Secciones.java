@@ -1125,6 +1125,26 @@ public class Secciones extends javax.swing.JFrame {
         if(minutos < 10){
             horafinal = hora + ":0" + minutos;
         }
+        if(hora >= 24){
+            hora = hora - 24;
+            if(minutos < 10){
+            horafinal = hora + ":0" + minutos;
+        } 
+            horafinal = hora + ":" + minutos;
+            
+        }
+        if(hora <10 && minutos < 10){
+                 horafinal = "0"+ hora + ":0" + minutos;
+            }
+            if(hora <10 && minutos > 10){
+                 horafinal = "0"+ hora + ":" + minutos;
+            }
+            if(hora >10 && minutos < 10){
+                 horafinal = ""+ hora + ":0" + minutos;
+            }
+            if(hora >10 && minutos > 10){
+                 horafinal = ""+ hora + ":" + minutos;
+            }
         txt_HoraFinal.setText(horafinal);
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_HoraInicialFocusLost
