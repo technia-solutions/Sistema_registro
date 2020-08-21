@@ -592,7 +592,7 @@ public class Matricula extends javax.swing.JFrame {
             
         }
         else{*/
-            if(minima>maxima){
+            if(minima>=maxima){
                 JOptionPane.showMessageDialog(null,"Esta Sección está llena");
                 return false;
                
@@ -653,7 +653,7 @@ public class Matricula extends javax.swing.JFrame {
               if(res > 0){
                       
                   }else {
-                      JOptionPane.showMessageDialog(null, "2Error al Guardar la calificación"); 
+                      JOptionPane.showMessageDialog(null, "Error al Guardar la calificación"); 
  
                   }
          
@@ -669,12 +669,12 @@ public class Matricula extends javax.swing.JFrame {
                   if(res > 0){
                       
                   }else {
-                      JOptionPane.showMessageDialog(null, "Error al Guardarn"); 
+                      JOptionPane.showMessageDialog(null, "Error al Guardar"); 
  
                   }
             if(i !=0){
                 
-            JOptionPane.showMessageDialog(null, "ESTO DE MATRICULA Se ha guardado con éxito la nota del alumno: ");
+            JOptionPane.showMessageDialog(null, "La matrícula del alumno "+numeroCuenta+" se ha realizado con éxito");
                 return true;
             }else{
                 JOptionPane.showMessageDialog(null, "Error al Guardar la calificación"); 
