@@ -1587,10 +1587,10 @@ this.cbo_tipoUsuario.setSelectedItem("");
     }//GEN-LAST:event_menu_tipoUsuarioActionPerformed
 
     private void txt_SalarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_SalarioKeyTyped
-/* char a=evt.getKeyChar();
+    char a=evt.getKeyChar();
         if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 ||
             evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22
-            || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+            || evt.getKeyChar() == 26 || evt.getKeyChar() == 24 || evt.getKeyChar() == 46 || evt.getKeyChar() == 44) {
             return;
         }
 
@@ -1604,7 +1604,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Sólo numeros");
         }
-        */
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_SalarioKeyTyped
 
