@@ -98,6 +98,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         Tabla_ReqAsignatura = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtA_NombreReqAsig = new javax.swing.JTextArea();
+        btn_limpiar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
         lbl_usuario = new javax.swing.JLabel();
@@ -111,7 +112,6 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(215, 236, 233));
-        jPanel1.setLayout(null);
 
         btn_guardar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Guardar.png"))); // NOI18N
@@ -121,8 +121,6 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
                 btn_guardarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_guardar);
-        btn_guardar.setBounds(30, 80, 159, 41);
 
         btn_actualizar1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_actualizar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
@@ -132,8 +130,6 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
                 btn_actualizar1ActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_actualizar1);
-        btn_actualizar1.setBounds(30, 130, 159, 41);
 
         btn_buscar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Consulta.png"))); // NOI18N
@@ -148,8 +144,6 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
                 btn_buscarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_buscar);
-        btn_buscar.setBounds(30, 180, 159, 41);
 
         btn_eliminar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Eliminar.png"))); // NOI18N
@@ -159,18 +153,12 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
                 btn_eliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_eliminar);
-        btn_eliminar.setBounds(30, 230, 159, 41);
 
         lbl_idCarrera.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_idCarrera.setText("Id Carrera:");
-        jPanel1.add(lbl_idCarrera);
-        lbl_idCarrera.setBounds(380, 210, 190, 20);
 
         lbl_idReqAs.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_idReqAs.setText("Id  Asignatura:");
-        jPanel1.add(lbl_idReqAs);
-        lbl_idReqAs.setBounds(340, 80, 200, 22);
 
         txt_idReqAsig.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_idReqAsig.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -183,17 +171,11 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
                 txt_idReqAsigKeyTyped(evt);
             }
         });
-        jPanel1.add(txt_idReqAsig);
-        txt_idReqAsig.setBounds(510, 80, 210, 40);
 
         lbl_NombreReqAs.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_NombreReqAs.setText(" Requisito Asignatura:");
-        jPanel1.add(lbl_NombreReqAs);
-        lbl_NombreReqAs.setBounds(290, 150, 190, 20);
 
         cbo_idCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una carrera:" }));
-        jPanel1.add(cbo_idCarrera);
-        cbo_idCarrera.setBounds(510, 200, 210, 40);
 
         Tabla_ReqAsignatura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -210,9 +192,6 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Tabla_ReqAsignatura);
 
-        jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(60, 310, 736, 110);
-
         txtA_NombreReqAsig.setColumns(3);
         txtA_NombreReqAsig.setLineWrap(true);
         txtA_NombreReqAsig.setRows(5);
@@ -224,8 +203,93 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(txtA_NombreReqAsig);
 
-        jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(510, 140, 210, 40);
+        btn_limpiar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_limpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Limpiar.png"))); // NOI18N
+        btn_limpiar.setText("Limpiar");
+        btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_limpiarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                    .addComponent(btn_limpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(191, 191, 191)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_idCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(cbo_idCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 736, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_actualizar1)
+                    .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(lbl_NombreReqAs, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(151, 151, 151)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_idReqAs, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(170, 170, 170)
+                                .addComponent(txt_idReqAsig, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_idReqAs)
+                            .addComponent(txt_idReqAsig, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(lbl_NombreReqAs, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btn_guardar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_actualizar1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_buscar)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_limpiar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_eliminar)
+                        .addGap(34, 34, 34))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(lbl_idCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbo_idCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(70, 70, 70)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 172, 870, 443));
 
@@ -510,6 +574,11 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
        
     }//GEN-LAST:event_txtA_NombreReqAsigKeyTyped
 
+    private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
+        LimpiarCajas();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_limpiarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -555,6 +624,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
     private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_guardar;
+    private javax.swing.JButton btn_limpiar;
     private javax.swing.JComboBox<String> cbo_idCarrera;
     private javax.swing.JLabel iconodeUsuario;
     private javax.swing.JLabel jLabel1;

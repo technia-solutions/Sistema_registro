@@ -95,6 +95,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         btn_eliminarM = new javax.swing.JButton();
         btn_CancelarAsig = new javax.swing.JButton();
         lbl_idSeccion = new javax.swing.JLabel();
+        btn_limpiar = new javax.swing.JButton();
         lbl_usuario = new javax.swing.JLabel();
         iconodeUsuario = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -199,6 +200,15 @@ public class CancelarAsignatura extends javax.swing.JFrame {
 
         lbl_idSeccion.setText("jLabel4");
 
+        btn_limpiar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_limpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Limpiar.png"))); // NOI18N
+        btn_limpiar.setText("Limpiar");
+        btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_limpiarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -224,10 +234,12 @@ public class CancelarAsignatura extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(184, 184, 184)
+                                .addGap(55, 55, 55)
                                 .addComponent(btn_CancelarAsig)
-                                .addGap(27, 27, 27)
-                                .addComponent(btn_eliminarM)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_eliminarM)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(60, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -245,11 +257,12 @@ public class CancelarAsignatura extends javax.swing.JFrame {
                         .addComponent(btn_buscar)))
                 .addGap(56, 56, 56)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btn_CancelarAsig, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-                    .addComponent(btn_eliminarM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(66, Short.MAX_VALUE))
+                    .addComponent(btn_eliminarM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_limpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 940, 380));
@@ -511,6 +524,11 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         buscar();
     }//GEN-LAST:event_btn_eliminarMActionPerformed
 
+    private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
+       LimpiarCajas();
+       // TODO add your handling code here:
+    }//GEN-LAST:event_btn_limpiarActionPerformed
+
      private void obtenerPeriodo() throws SQLException{
         Statement st = con.createStatement();
         Calendar f;
@@ -574,6 +592,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
     private javax.swing.JButton btn_CancelarAsig;
     private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_eliminarM;
+    private javax.swing.JButton btn_limpiar;
     private javax.swing.JLabel iconodeUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

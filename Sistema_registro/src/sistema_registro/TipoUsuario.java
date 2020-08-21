@@ -87,6 +87,7 @@ public class TipoUsuario extends javax.swing.JFrame {
         txt_idTipo = new javax.swing.JTextField();
         lbl_idTipo = new javax.swing.JLabel();
         lbl_TipoUsuario = new javax.swing.JLabel();
+        btn_limpiar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -196,6 +197,15 @@ public class TipoUsuario extends javax.swing.JFrame {
         lbl_TipoUsuario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_TipoUsuario.setText("Tipo de Usuario:");
 
+        btn_limpiar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_limpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Limpiar.png"))); // NOI18N
+        btn_limpiar.setText("Limpiar");
+        btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_limpiarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -210,7 +220,8 @@ public class TipoUsuario extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btn_guardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btn_actualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btn_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_limpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -247,11 +258,13 @@ public class TipoUsuario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_buscar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_limpiar)
+                        .addGap(7, 7, 7)
                         .addComponent(btn_eliminar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 700, 360));
@@ -667,6 +680,10 @@ this.txt_TipoUsuario.setText("");
         txt_idTipo.setText(upper);
     }//GEN-LAST:event_txt_idTipoFocusLost
 
+    private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
+        LimpiarCajas();// TODO add your handling code here:
+    }//GEN-LAST:event_btn_limpiarActionPerformed
+
     private void limpiar(){
         txt_idTipo.setText(null);
         txt_TipoUsuario.setText(null);
@@ -717,6 +734,7 @@ this.txt_TipoUsuario.setText("");
     private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_guardar;
+    private javax.swing.JButton btn_limpiar;
     private javax.swing.JMenuItem cbo_menuprincipal;
     private javax.swing.JLabel iconodeUsuario;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;

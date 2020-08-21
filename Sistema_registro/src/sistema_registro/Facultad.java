@@ -82,6 +82,7 @@ public class Facultad extends javax.swing.JFrame {
         txt_idfacultad = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         txa_NombreFacultad = new javax.swing.JTextArea();
+        btn_limpiar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
         lbl_usuario = new javax.swing.JLabel();
@@ -95,7 +96,6 @@ public class Facultad extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(215, 236, 233));
-        jPanel1.setLayout(null);
 
         btn_guardar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Guardar.png"))); // NOI18N
@@ -105,8 +105,6 @@ public class Facultad extends javax.swing.JFrame {
                 btn_guardarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_guardar);
-        btn_guardar.setBounds(24, 55, 160, 41);
 
         btn_actualizar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
@@ -116,8 +114,6 @@ public class Facultad extends javax.swing.JFrame {
                 btn_actualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_actualizar);
-        btn_actualizar.setBounds(24, 107, 159, 41);
 
         btn_buscar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Consulta.png"))); // NOI18N
@@ -132,8 +128,6 @@ public class Facultad extends javax.swing.JFrame {
                 btn_buscarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_buscar);
-        btn_buscar.setBounds(24, 159, 160, 41);
 
         btn_eliminar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Eliminar.png"))); // NOI18N
@@ -143,18 +137,12 @@ public class Facultad extends javax.swing.JFrame {
                 btn_eliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_eliminar);
-        btn_eliminar.setBounds(24, 211, 160, 41);
 
         lbl_nombreFacultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_nombreFacultad.setText("Facultad:");
-        jPanel1.add(lbl_nombreFacultad);
-        lbl_nombreFacultad.setBounds(360, 110, 71, 22);
 
         lbl_idfacultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_idfacultad.setText("ID Facultad:");
-        jPanel1.add(lbl_idfacultad);
-        lbl_idfacultad.setBounds(330, 60, 96, 22);
 
         Tabla_Facultad.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -171,9 +159,6 @@ public class Facultad extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Tabla_Facultad);
 
-        jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(290, 180, 452, 142);
-
         txt_idfacultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_idfacultad.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -185,8 +170,6 @@ public class Facultad extends javax.swing.JFrame {
                 txt_idfacultadKeyTyped(evt);
             }
         });
-        jPanel1.add(txt_idfacultad);
-        txt_idfacultad.setBounds(440, 60, 210, 28);
 
         txa_NombreFacultad.setColumns(20);
         txa_NombreFacultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -200,8 +183,71 @@ public class Facultad extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(txa_NombreFacultad);
 
-        jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(440, 90, 210, 70);
+        btn_limpiar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_limpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Limpiar.png"))); // NOI18N
+        btn_limpiar.setText("Limpiar");
+        btn_limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_limpiarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_guardar, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                    .addComponent(btn_actualizar)
+                    .addComponent(btn_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_eliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_limpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(106, 106, 106)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(lbl_idfacultad)
+                        .addGap(14, 14, 14)
+                        .addComponent(txt_idfacultad, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(lbl_nombreFacultad)
+                        .addGap(9, 9, 9)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(btn_guardar)
+                        .addGap(11, 11, 11)
+                        .addComponent(btn_actualizar)
+                        .addGap(11, 11, 11)
+                        .addComponent(btn_buscar)
+                        .addGap(11, 11, 11)
+                        .addComponent(btn_eliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_limpiar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_idfacultad)
+                            .addComponent(txt_idfacultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(2, 2, 2)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(lbl_nombreFacultad))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18))
+        );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 830, 340));
 
@@ -473,6 +519,11 @@ public class Facultad extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txa_NombreFacultadKeyTyped
 
+    private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
+        LimpiarCajas();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_limpiarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -519,6 +570,7 @@ public class Facultad extends javax.swing.JFrame {
     private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_guardar;
+    private javax.swing.JButton btn_limpiar;
     private javax.swing.JLabel iconodeUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;

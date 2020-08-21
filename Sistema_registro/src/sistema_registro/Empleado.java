@@ -304,7 +304,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         lbl_tipoUsuario = new javax.swing.JLabel();
         cbo_tipoUsuario = new javax.swing.JComboBox<>();
         btn_rellenarCampos = new javax.swing.JButton();
-        txt_Salario = new javax.swing.JFormattedTextField();
+        txt_Salario = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -599,13 +599,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         jPanel1.add(btn_rellenarCampos);
         btn_rellenarCampos.setBounds(610, 320, 110, 31);
 
-        txt_Salario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
         txt_Salario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_Salario.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txt_SalarioFocusLost(evt);
-            }
-        });
         txt_Salario.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_SalarioKeyTyped(evt);
@@ -1587,7 +1581,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
     }//GEN-LAST:event_menu_tipoUsuarioActionPerformed
 
     private void txt_SalarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_SalarioKeyTyped
-    char a=evt.getKeyChar();
+char a=evt.getKeyChar();
         if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127 ||
             evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22
             || evt.getKeyChar() == 26 || evt.getKeyChar() == 24 || evt.getKeyChar() == 46 || evt.getKeyChar() == 44) {
@@ -1604,13 +1598,8 @@ this.cbo_tipoUsuario.setSelectedItem("");
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Sólo numeros");
         }
-        
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_SalarioKeyTyped
-
-    private void txt_SalarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_SalarioFocusLost
-       
-    }//GEN-LAST:event_txt_SalarioFocusLost
 
    
     /**
@@ -1696,7 +1685,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
     private javax.swing.JTextField txt_Identidad;
     private javax.swing.JTextField txt_Nombre;
     private javax.swing.JTextField txt_NombreUsuario;
-    private javax.swing.JFormattedTextField txt_Salario;
+    private javax.swing.JTextField txt_Salario;
     private javax.swing.JTextField txt_Telefono;
     // End of variables declaration//GEN-END:variables
 
