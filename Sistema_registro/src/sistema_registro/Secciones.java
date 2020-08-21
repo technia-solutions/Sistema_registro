@@ -116,6 +116,8 @@ public class Secciones extends javax.swing.JFrame {
             this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
             this.setTitle("Secciones");
             this.lbl_usuario.setText(usuario);
+            this.btn_actualizar.setEnabled(false);
+            this.btn_eliminar.setEnabled(false);
     }
     
     
@@ -661,6 +663,10 @@ public class Secciones extends javax.swing.JFrame {
                   ps.setString(7,id_aula);
                   ps.setString(8,Mensaje);
                   ps.setString(9, txt_CantidadM.getText());
+                   this.btn_actualizar.setEnabled(false);
+                   this.btn_eliminar.setEnabled(false);
+                    this.btn_guardar.setEnabled(true);
+           
                   
                     
              int res = ps.executeUpdate();
@@ -1025,9 +1031,9 @@ public class Secciones extends javax.swing.JFrame {
            if(Tabla_Seccion.getSelectedRow () >= 0){
                try {
                    llenarCampos();
-                    this.btn_guardar.setEnabled(false);
-           this.btn_eliminar.setEnabled(true);
-           this.btn_actualizar.setEnabled(true);
+              this.btn_guardar.setEnabled(false);
+                this.btn_eliminar.setEnabled(true);
+            this.btn_actualizar.setEnabled(true);
                } catch (SQLException ex) {
                    Logger.getLogger(Secciones.class.getName()).log(Level.SEVERE, null, ex);
                }
