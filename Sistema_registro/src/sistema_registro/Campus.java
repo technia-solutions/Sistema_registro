@@ -47,7 +47,9 @@ public class Campus extends javax.swing.JFrame {
         initComponents();
         actualizarDatos(); 
         this.setTitle("Campus");
-         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+        this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+        this.btn_eliminar.setEnabled(false);
+        this.btn_actualizar.setEnabled(false);
     }
 
     public Campus(String nombreUsuario) throws SQLException {
@@ -56,7 +58,10 @@ public class Campus extends javax.swing.JFrame {
         actualizarDatos(); 
         this.setTitle("Campus");
         this.lbl_usuario.setText(nombreUsuario);
-         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+        this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+        this.btn_eliminar.setEnabled(false);
+        this.btn_actualizar.setEnabled(false);
+    
     }
     public void Actualizar() {
 
@@ -416,6 +421,10 @@ public class Campus extends javax.swing.JFrame {
 
     private void Tabla_CampusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_CampusMouseClicked
         if (Tabla_Campus.getSelectedRow() >= 0) {
+            this.btn_actualizar.setEnabled(true);
+            this.btn_eliminar.setEnabled(true);
+            this.btn_guardar.setEnabled(false);
+            
             llenarCampos();
         }
     }//GEN-LAST:event_Tabla_CampusMouseClicked
@@ -483,6 +492,9 @@ public class Campus extends javax.swing.JFrame {
                 /*ps.setString(1, txt_NombreCampus.getText());*/
                 ps.setString(1, txt_NombreCampus.getText());
                 ps.setString(2, txt_idCampus.getText());
+                 this.btn_eliminar.setEnabled(false);
+                 this.btn_actualizar.setEnabled(false);
+                 this.btn_guardar.setEnabled(true);
                 int res = ps.executeUpdate();
             } catch (Exception e) {
                 System.out.println(e);

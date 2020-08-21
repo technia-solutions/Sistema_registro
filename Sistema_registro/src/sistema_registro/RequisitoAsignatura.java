@@ -51,6 +51,9 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         actualizarDatos(); 
         this.setTitle("Asignatura Requisito");
          this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+          this.btn_eliminar.setEnabled(false);
+          this.btn_actualizar1.setEnabled(false);
+               
          
          
     }
@@ -284,6 +287,9 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
     private void Tabla_ReqAsignaturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_ReqAsignaturaMouseClicked
         if(Tabla_ReqAsignatura.getSelectedRow() >= 0){
             llenarCampos();
+             this.btn_eliminar.setEnabled(true);
+                 this.btn_actualizar1.setEnabled(true);
+                 this.btn_guardar.setEnabled(false);
         }
     }//GEN-LAST:event_Tabla_ReqAsignaturaMouseClicked
 
@@ -375,6 +381,9 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
                 ps.setString(1, txtA_NombreReqAsig.getText());
                 ps.setString(2, txt_idReqAsig.getText());
                 /* ps.setString(3, id_facultad);*/
+                 this.btn_eliminar.setEnabled(false);
+                 this.btn_actualizar1.setEnabled(false);
+                 this.btn_guardar.setEnabled(true);
                 int res = ps.executeUpdate();
             } catch (Exception e) {
                 System.out.println(e);
@@ -630,26 +639,21 @@ private void rellenar() {
                 try {
                     String cap = "";
                     ResultSet rs2 = null;
-                   var = JOptionPane.showInputDialog(this, "Ingrese el nombre de la asignatura requisito que desea consultar", "Consulta de la asignatura requisito", JOptionPane.QUESTION_MESSAGE);
-                    if (var == null) {
-                        JOptionPane.showMessageDialog(this, "La acción fue cancelada", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
-                    } else {
-                        if (var.equals("")) {
-                            JOptionPane.showMessageDialog(this, "Favor de ingresar el nombre de la asignatura requisito \n que desea consultar", "¡AVISO!", JOptionPane.INFORMATION_MESSAGE);
-                        } else {
-                            String sql = "SELECT * FROM Requisito_Asignatura where id_asignatura='"+var+"' or RequisitoAsignatura ='"+var+"'";
+                   
+                            String sql = "SELECT * FROM Requisito_Asignatura as a join Carrera as c on c.id_carrera = a.id_carrera  where id_asignatura='"+var+"' or RequisitoAsignatura ='"+var+"'";
                             stmt = con.createStatement();
                             rs2 = stmt.executeQuery(sql);
 
                             if (rs2.next()) {
                                 txt_idReqAsig.setText(rs2.getString("id_asignatura"));
                                 txtA_NombreReqAsig.setText(rs2.getString("RequisitoAsignatura"));
+                               cbo_idCarrera.setSelectedItem(rs2.getString("id_carrera")+ " - " + rs2.getString("nombre_carrera"));
                             } else {
                                 JOptionPane.showMessageDialog(null, "¡No se encuentra los datos: "+var+" ! Por favor verifique sí, lo escribio correctamente");
                             }
-                        }
+                        
 
-                    }
+                    
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e.getMessage());
                 }
@@ -685,7 +689,7 @@ private void rellenar() {
   private void LimpiarCajas(){
         txtA_NombreReqAsig.setText(null);
         txt_idReqAsig.setText(null);
-           cbo_idCarrera.setSelectedIndex(0);
+        cbo_idCarrera.setSelectedIndex(0);
         
         
         

@@ -37,7 +37,7 @@ import sistema_registro.SQL.ConectorSQL;
 public class Secciones extends javax.swing.JFrame {
 
     Connection con = null;
-      String titulos [] = {"Id Seccion","Nombre de la Seccion", " Codigo de la Asignatura ", 
+      String titulos [] = {"Id Sección","Nombre de la Sección", " Código de la Asignatura ", 
          "Cantidad de Alumnos","Hora Inicial", "Hora Final",  "Periodo", "Aula",
          "Dias de la Asignatura","Cantidad Máxima de Alumnos"};
    

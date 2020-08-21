@@ -52,6 +52,8 @@ public class Carrera extends javax.swing.JFrame {
              this.setLocationRelativeTo(null);
             this.setTitle("Carrera");
              this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+            this.btn_eliminar.setEnabled(false);
+            this.btn_actualizar1.setEnabled(false);
     }
     
     public Carrera(String nombreUsuario) throws SQLException {
@@ -62,10 +64,12 @@ public class Carrera extends javax.swing.JFrame {
             for(int i = 0; i<lista.size();i++){
                 cbo_idfacultad.addItem(lista.get(i));
             }
-             this.setLocationRelativeTo(null);
+            this.setLocationRelativeTo(null);
             this.setTitle("Carrera");
             this.lbl_usuario.setText(nombreUsuario);
-             this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+            this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+            this.btn_eliminar.setEnabled(false);
+            this.btn_actualizar1.setEnabled(false);
     }
 
     /**
@@ -77,6 +81,7 @@ public class Carrera extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem2 = new javax.swing.JMenuItem();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_Carrera = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -98,8 +103,11 @@ public class Carrera extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
         Regresar_Asignatura = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+
+        jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -265,6 +273,16 @@ public class Carrera extends javax.swing.JFrame {
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_retroceder.png"))); // NOI18N
         jMenu1.setText("Regresar");
 
+        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio.png"))); // NOI18N
+        jMenuItem3.setText("Menú Principal");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
         Regresar_Asignatura.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         Regresar_Asignatura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/books_3025.png"))); // NOI18N
         Regresar_Asignatura.setText("Asignaturas");
@@ -317,7 +335,11 @@ public class Carrera extends javax.swing.JFrame {
 
     private void Tabla_CarreraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_CarreraMouseClicked
           if(Tabla_Carrera.getSelectedRow() >= 0){
-            llenarCampos();
+            this.btn_eliminar.setEnabled(true);
+            this.btn_actualizar1.setEnabled(true);
+            this.btn_guardar.setEnabled(false);
+           
+              llenarCampos();
         }
     }//GEN-LAST:event_Tabla_CarreraMouseClicked
 
@@ -454,6 +476,10 @@ public class Carrera extends javax.swing.JFrame {
                 ps.setString(1, txt_idCarrera.getText());
                /* ps.setString(3, id_facultad);*/
                 int res = ps.executeUpdate();
+             this.btn_eliminar.setEnabled(false);
+            this.btn_actualizar1.setEnabled(false);
+            this.btn_guardar.setEnabled(true);
+            
             } catch (Exception e) {
                 System.out.println(e);
             }
@@ -519,6 +545,24 @@ public class Carrera extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jtxt_NombreCarreraKeyTyped
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+         try {
+            String sql2 = "Select nombres_empleado + ' ' + apellido_empleado from Empleados where id_empleado = (select id_empleado from Acceso where nombre_usuario = '"+lbl_usuario.getText()+"')";
+                Statement st2 = con.createStatement();
+                ResultSet rs2 = st2.executeQuery(sql2);
+                if(rs2.next()){
+                Principal principal = new Principal(lbl_usuario.getText(),rs2.getString(1));
+                principal.setVisible(true); 
+                this.dispose();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Error");
+                }
+        } catch (SQLException ex) {
+            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -571,6 +615,8 @@ public class Carrera extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

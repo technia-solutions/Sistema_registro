@@ -32,7 +32,7 @@ import sistema_registro.SQL.ConectorSQL;
 public class Asignaturas extends javax.swing.JFrame {
 
 Connection con = null;
-    String titulos [] = {"Codigo de Asignatura", "Nombre de la Asignatura", "Unidades Valorativas", "Id Carrera", "Requisito1", "Requisito2"};
+    String titulos [] = {"Código de Asignatura", "Nombre de la Asignatura", "Unidades Valorativas", "Id Carrera", "Requisito1", "Requisito2"};
    
     DefaultTableModel modelo =  new DefaultTableModel();
     Statement stmt = null;
@@ -57,6 +57,8 @@ Connection con = null;
             }
              this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
             this.setTitle("Asignaturas");
+            this.btn_eliminar1.setEnabled(false);
+            this.btn_actualizar.setEnabled(false);
     }
     
      public Asignaturas(String nombreUsuario) throws SQLException {
@@ -77,6 +79,8 @@ Connection con = null;
             this.setTitle("Asignaturas");
             String usuario = nombreUsuario;
             this.lbl_usuario.setText(usuario);
+            this.btn_eliminar1.setEnabled(false);
+            this.btn_actualizar.setEnabled(false);
     }
 
     /**
@@ -121,6 +125,7 @@ Connection con = null;
         jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Tabla_RegistroAsignatura.setModel(new javax.swing.table.DefaultTableModel(
@@ -284,6 +289,7 @@ Connection con = null;
         });
 
         txa_NombreA.setColumns(20);
+        txa_NombreA.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txa_NombreA.setLineWrap(true);
         txa_NombreA.setRows(5);
         txa_NombreA.setWrapStyleWord(true);
@@ -473,6 +479,10 @@ Connection con = null;
                   ps.setString(4, id_carrera);
                   ps.setString(5, requisito1);
                   ps.setString(6, requisito2);
+                  this.btn_guardar.setEnabled(true);
+                  this.btn_actualizar.setEnabled(false);
+                  this.btn_eliminar1.setEnabled(false);
+                  this.btn_buscar.setEnabled(true);
                
                 int res = ps.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Se ha actualizado la información en de la asignatura: " + txa_NombreA.getText());
@@ -649,6 +659,11 @@ Connection con = null;
 
     private void btn_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buscarMouseClicked
         rellenar();
+        this.btn_consultar.setEnabled(true);
+        this.btn_guardar.setEnabled(false);
+        this.btn_eliminar1.setEnabled(true);
+        this.btn_actualizar.setEnabled(true);
+        this.jScrollPane1.setEnabled(true);
         this.jScrollPane1.setEnabled(true);
         this.Tabla_RegistroAsignatura.setEnabled(true);
     }//GEN-LAST:event_btn_buscarMouseClicked
@@ -656,6 +671,10 @@ Connection con = null;
     private void Tabla_RegistroAsignaturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_RegistroAsignaturaMouseClicked
         if(Tabla_RegistroAsignatura.getSelectedRow () >= 0){
             //llenarCampos();
+            this.btn_actualizar.setEnabled(true);
+            this.btn_eliminar1.setEnabled(true);
+            this.btn_guardar.setEnabled(false);
+            this.btn_buscar.setEnabled(false);
             int i = Tabla_RegistroAsignatura.getSelectedRow();
             rellenar2(Tabla_RegistroAsignatura.getValueAt(i, 0).toString());
         }

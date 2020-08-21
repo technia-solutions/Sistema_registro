@@ -52,6 +52,8 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         this.lbl_idMatricula.setVisible(false);
         this.lbl_idPeriodo.setVisible(false);
         this.lbl_idSeccion.setVisible(false);
+        this.btn_CancelarAsig.setEnabled(false);
+        this.btn_eliminarM.setEnabled(false);
         
         
     }
@@ -66,7 +68,8 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         this.lbl_idMatricula.setVisible(false);
         this.lbl_idPeriodo.setVisible(false);
         this.lbl_idSeccion.setVisible(false);
-        
+        this.btn_CancelarAsig.setEnabled(false);
+        this.btn_eliminarM.setEnabled(false); 
         
     }
 
@@ -89,7 +92,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         Tabla_Cancelar = new javax.swing.JTable();
         lbl_idMatricula = new javax.swing.JLabel();
         lbl_idPeriodo = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btn_eliminarM = new javax.swing.JButton();
         btn_CancelarAsig = new javax.swing.JButton();
         lbl_idSeccion = new javax.swing.JLabel();
         lbl_usuario = new javax.swing.JLabel();
@@ -176,12 +179,12 @@ public class CancelarAsignatura extends javax.swing.JFrame {
 
         lbl_idPeriodo.setText("jLabel3");
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Eliminar.png"))); // NOI18N
-        jButton1.setText("Eliminar Matricula");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_eliminarM.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_eliminarM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Eliminar.png"))); // NOI18N
+        btn_eliminarM.setText("Eliminar Matricula");
+        btn_eliminarM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_eliminarMActionPerformed(evt);
             }
         });
 
@@ -224,7 +227,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
                                 .addGap(184, 184, 184)
                                 .addComponent(btn_CancelarAsig)
                                 .addGap(27, 27, 27)
-                                .addComponent(jButton1)))
+                                .addComponent(btn_eliminarM)))
                         .addContainerGap(60, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -245,7 +248,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btn_CancelarAsig, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_eliminarM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(66, Short.MAX_VALUE))
         );
 
@@ -286,11 +289,12 @@ public class CancelarAsignatura extends javax.swing.JFrame {
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
     buscar();
-     this.txt_NumC.setEnabled(false);
+    
     }//GEN-LAST:event_btn_buscarActionPerformed
 
     private void Tabla_CancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_CancelarMouseClicked
           this.btn_CancelarAsig.setEnabled(true);
+        this.btn_eliminarM.setEnabled(true);
           int i = Tabla_Cancelar.getSelectedRow();
          if(Tabla_Cancelar.getSelectedRow() >= 0){
           lbl_idSeccion.setText(Tabla_Cancelar.getValueAt(i,0).toString()/*+"-"+Tabla_Cancelar.getValueAt(i,2).toString()*/);
@@ -502,10 +506,10 @@ public class CancelarAsignatura extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,e.getMessage());
         }
     }*/
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_eliminarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarMActionPerformed
         eliminarMatricula();
         buscar();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_eliminarMActionPerformed
 
      private void obtenerPeriodo() throws SQLException{
         Statement st = con.createStatement();
@@ -569,8 +573,8 @@ public class CancelarAsignatura extends javax.swing.JFrame {
     private javax.swing.JTable Tabla_Cancelar;
     private javax.swing.JButton btn_CancelarAsig;
     private javax.swing.JButton btn_buscar;
+    private javax.swing.JButton btn_eliminarM;
     private javax.swing.JLabel iconodeUsuario;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
@@ -596,6 +600,10 @@ public class CancelarAsignatura extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el número de cuenta.","Número de Cuenta requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_NumC.requestFocus();
             return;
+        }
+         if(existeNumeroCuenta()){
+            return;
+            
         }
         try{
             DefaultTableModel modelo = new DefaultTableModel();
@@ -643,13 +651,14 @@ public class CancelarAsignatura extends javax.swing.JFrame {
                     filas[i]=rs.getObject(i+1);
                 }
                 modelo.addRow(filas);
+                this.txt_NumC.setEnabled(false);
              
            }
          }catch(SQLException ex){
              System.out.println(ex.toString());
              
          }    
-        existeNumeroCuenta();
+      
       
     }
      

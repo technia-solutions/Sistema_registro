@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -36,6 +37,10 @@ public class Periodo extends javax.swing.JFrame {
     public Periodo() throws SQLException {
          this.con = ConectorSQL.obtenerConexion ();
         initComponents();
+         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+            this.setTitle("Período");
+            this.btn_eliminar.setEnabled(false);
+            this.btn_actualizar.setEnabled(false);
     }
     
     public Periodo(String nombreUsuario) throws SQLException {
@@ -43,6 +48,10 @@ public class Periodo extends javax.swing.JFrame {
         initComponents();
         
         this.lbl_usuario.setText(nombreUsuario);
+         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+            this.setTitle("Período");
+            this.btn_eliminar.setEnabled(false);
+            this.btn_actualizar.setEnabled(false);
     }
 
 
@@ -389,6 +398,9 @@ public class Periodo extends javax.swing.JFrame {
     private void Tabla_PeriodoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_PeriodoMouseClicked
            if(Tabla_Periodo.getSelectedRow() >= 0){
             llenarCampos();
+             this.btn_eliminar.setEnabled(true);
+                 this.btn_actualizar.setEnabled(true);
+                 this.btn_guardar.setEnabled(false);
         }
     }//GEN-LAST:event_Tabla_PeriodoMouseClicked
 
@@ -474,6 +486,9 @@ public class Periodo extends javax.swing.JFrame {
                 ps.setString(1, txt_idPeriodo.getText());
                 ps.setString(2, txt_periodo.getText());
                  ps.setString(3, txt_descripcion.getText());
+                 this.btn_eliminar.setEnabled(false);
+                 this.btn_actualizar.setEnabled(false);
+                 this.btn_guardar.setEnabled(true);
                 int res = ps.executeUpdate();
             } catch (Exception e) {
                 System.out.println(e);

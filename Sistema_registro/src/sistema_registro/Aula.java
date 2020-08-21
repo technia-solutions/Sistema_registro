@@ -49,7 +49,9 @@ public class Aula extends javax.swing.JFrame {
              this.setLocationRelativeTo(null);
             this.setTitle("Aulas");
              this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
-    }
+             this.btn_eliminar.setEnabled(false);
+             this.btn_actualizar.setEnabled(false);
+    }       
     
      public Aula(String nombreUsuario) throws SQLException {
          this.con = ConectorSQL.obtenerConexion();
@@ -62,8 +64,10 @@ public class Aula extends javax.swing.JFrame {
              this.setLocationRelativeTo(null);
             this.setTitle("Aulas");
             this.lbl_usuario.setText(nombreUsuario);
-             this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
-    }
+            this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+            this.btn_eliminar.setEnabled(false);
+            this.btn_actualizar.setEnabled(false);
+     }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -96,9 +100,9 @@ public class Aula extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -315,15 +319,15 @@ public class Aula extends javax.swing.JFrame {
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/boton_retroceder.png"))); // NOI18N
         jMenu1.setText("Regresar");
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Seccion.png"))); // NOI18N
-        jMenuItem1.setText("Sección");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio.png"))); // NOI18N
+        jMenuItem3.setText("Menú Principal");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuItem3ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(jMenuItem3);
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Edificio.png"))); // NOI18N
@@ -335,15 +339,15 @@ public class Aula extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem2);
 
-        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio.png"))); // NOI18N
-        jMenuItem3.setText("Menú Principal");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Seccion.png"))); // NOI18N
+        jMenuItem1.setText("Sección");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem3);
+        jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
 
@@ -375,6 +379,9 @@ public class Aula extends javax.swing.JFrame {
         if(Tabla_Aula.getSelectedRow () >= 0){
             try {
                 llenarCampos();
+             this.btn_guardar.setEnabled(false); 
+             this.btn_eliminar.setEnabled(true);
+             this.btn_actualizar.setEnabled(true);
             } catch (SQLException ex) {
                 Logger.getLogger(Aula.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -486,6 +493,9 @@ public class Aula extends javax.swing.JFrame {
                 ps.setString(2, id_edificio);
                 ps.setString(3, txt_nombreAula.getText());
                 ps.setString(4, txt_PisoAula.getText());
+                 this.btn_guardar.setEnabled(true);
+                 this.btn_eliminar.setEnabled(false);
+                 this.btn_actualizar.setEnabled(false);
 
                 int res = ps.executeUpdate();
             } catch (Exception e) {
@@ -613,14 +623,21 @@ public class Aula extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-              Principal pp = null;
-        try {
-            pp = new Principal();
+      try {
+            String sql2 = "Select nombres_empleado + ' ' + apellido_empleado from Empleados where id_empleado = (select id_empleado from Acceso where nombre_usuario = '"+lbl_usuario.getText()+"')";
+                Statement st2 = con.createStatement();
+                ResultSet rs2 = st2.executeQuery(sql2);
+                if(rs2.next()){
+                Principal principal = new Principal(lbl_usuario.getText(),rs2.getString(1));
+                principal.setVisible(true); 
+                this.dispose();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Error");
+                }
         } catch (SQLException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
         }
-          pp.setVisible(true);
-          this.dispose();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**

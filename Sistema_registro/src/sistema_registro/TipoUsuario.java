@@ -47,6 +47,8 @@ public class TipoUsuario extends javax.swing.JFrame {
         consultarDatos();
          this.setTitle("Tipos de Usuario");
           this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+           this.btn_actualizar.setEnabled(false);
+            this.btn_eliminar.setEnabled(false);
     }
     
     
@@ -57,6 +59,8 @@ public class TipoUsuario extends javax.swing.JFrame {
          this.setTitle("Tipos de Usuario");
          this.lbl_usuario.setText(nombreUsuario);
           this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+           this.btn_actualizar.setEnabled(false);
+            this.btn_eliminar.setEnabled(false);
     }
         
 
@@ -574,6 +578,9 @@ this.txt_TipoUsuario.setText("");
                         
                 ps.setString(1, txt_idTipo.getText());
                 ps.setString(2, txt_TipoUsuario.getText());
+                this.btn_actualizar.setEnabled(false);
+                this.btn_eliminar.setEnabled(false);
+                this.btn_guardar.setEnabled(true);
 
                 int res= ps.executeUpdate();
             } catch ( Exception e) {
@@ -594,7 +601,12 @@ this.txt_TipoUsuario.setText("");
     private void Tabla_TipoUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_TipoUsuariosMouseClicked
 
           if(Tabla_TipoUsuarios.getSelectedRow () >= 0){
+              this.btn_actualizar.setEnabled(true);
+                this.btn_eliminar.setEnabled(true);
+                this.btn_guardar.setEnabled(false);
+
             llenarCampos();
+            
         }
         
     }//GEN-LAST:event_Tabla_TipoUsuariosMouseClicked

@@ -50,6 +50,8 @@ public class Edificio extends javax.swing.JFrame {
              this.setLocationRelativeTo(null);
             this.setTitle("Edificios");
              this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+             this.btn_eliminar.setEnabled(false);
+            this.btn_actualizar.setEnabled(false);
     }
     
     public Edificio(String nombreUsuario) throws SQLException {
@@ -64,7 +66,9 @@ public class Edificio extends javax.swing.JFrame {
              this.setLocationRelativeTo(null);
             this.setTitle("Edificios");
             this.lbl_usuario.setText(nombreUsuario);
-             this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+            this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+            this.btn_eliminar.setEnabled(false);
+            this.btn_actualizar.setEnabled(false);
     }
 
 
@@ -411,7 +415,9 @@ public class Edificio extends javax.swing.JFrame {
                   ps.setString(1, txt_idEdificio.getText());
                   ps.setString(2, txt_nombreEdificio.getText());
                   ps.setString(3,id_campus);
-                    
+             this.btn_eliminar.setEnabled(false);
+            this.btn_actualizar.setEnabled(false);
+            this.btn_guardar.setEnabled(true);
              int res = ps.executeUpdate();
             } catch (Exception e) {
                 System.out.println(e);
@@ -518,6 +524,9 @@ public class Edificio extends javax.swing.JFrame {
     private void Tabla_EdificioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_EdificioMouseClicked
        if(Tabla_Edificio.getSelectedRow () >= 0){
            try {
+            this.btn_eliminar.setEnabled(true);
+            this.btn_actualizar.setEnabled(true);
+            this.btn_guardar.setEnabled(false);
                llenarCampos();
            } catch (SQLException ex) {
                Logger.getLogger(Edificio.class.getName()).log(Level.SEVERE, null, ex);

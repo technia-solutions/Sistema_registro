@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -43,6 +44,9 @@ public class Facultad extends javax.swing.JFrame {
          //actualizarDatos(); 
          this.setTitle("Facultad");
           this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+           this.btn_eliminar.setEnabled(false);
+           this.btn_actualizar.setEnabled(false);
+         
     }
     
      public Facultad(String nombreUsuario) throws SQLException {
@@ -52,6 +56,9 @@ public class Facultad extends javax.swing.JFrame {
          this.setTitle("Facultad");
          this.lbl_usuario.setText(nombreUsuario);
           this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+           this.btn_eliminar.setEnabled(false);
+            this.btn_actualizar.setEnabled(false);
+          
     }
 
     /**
@@ -72,8 +79,9 @@ public class Facultad extends javax.swing.JFrame {
         lbl_idfacultad = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_Facultad = new javax.swing.JTable();
-        txt_NombreFacultad = new javax.swing.JTextField();
         txt_idfacultad = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txa_NombreFacultad = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
         lbl_usuario = new javax.swing.JLabel();
@@ -164,21 +172,7 @@ public class Facultad extends javax.swing.JFrame {
         jScrollPane1.setViewportView(Tabla_Facultad);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(290, 170, 452, 142);
-
-        txt_NombreFacultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txt_NombreFacultad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_NombreFacultadActionPerformed(evt);
-            }
-        });
-        txt_NombreFacultad.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txt_NombreFacultadKeyTyped(evt);
-            }
-        });
-        jPanel1.add(txt_NombreFacultad);
-        txt_NombreFacultad.setBounds(440, 110, 182, 28);
+        jScrollPane1.setBounds(290, 180, 452, 142);
 
         txt_idfacultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_idfacultad.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -192,7 +186,22 @@ public class Facultad extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txt_idfacultad);
-        txt_idfacultad.setBounds(440, 60, 180, 28);
+        txt_idfacultad.setBounds(440, 60, 210, 28);
+
+        txa_NombreFacultad.setColumns(20);
+        txa_NombreFacultad.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txa_NombreFacultad.setLineWrap(true);
+        txa_NombreFacultad.setRows(5);
+        txa_NombreFacultad.setWrapStyleWord(true);
+        txa_NombreFacultad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txa_NombreFacultadKeyTyped(evt);
+            }
+        });
+        jScrollPane2.setViewportView(txa_NombreFacultad);
+
+        jPanel1.add(jScrollPane2);
+        jScrollPane2.setBounds(440, 90, 210, 70);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 830, 340));
 
@@ -261,8 +270,8 @@ public class Facultad extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_buscarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        String nombreFacultad = txt_NombreFacultad.getText() + " " + txt_idfacultad.getText();
-         if ((txt_idfacultad.getText().equals("") || (txt_NombreFacultad.getText().equals("")))) {
+        String nombreFacultad = txa_NombreFacultad.getText() + " " + txt_idfacultad.getText();
+         if ((txt_idfacultad.getText().equals("") || (txa_NombreFacultad.getText().equals("")))) {
             JOptionPane.showMessageDialog(this, "¡Debe seleccionar la facultad que desea eliminar!");
         }
          else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de facultad " + nombreFacultad + "", "Confirmación de eliminación",
@@ -272,7 +281,7 @@ public class Facultad extends javax.swing.JFrame {
             try {
                 Statement st2 = con.createStatement();
                 String sql = "Delete Facultad "
-                + "where id_facultad = (Select id_facultad from Facultad where nombre_facultad = '"+txt_NombreFacultad.getText()+"')";
+                + "where id_facultad = (Select id_facultad from Facultad where nombre_facultad = '"+txa_NombreFacultad.getText()+"')";
 
                 int rs2 = st2.executeUpdate(sql);
                 System.out.println(rs2);
@@ -312,61 +321,30 @@ public class Facultad extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txt_idfacultadKeyTyped
 
-    private void txt_NombreFacultadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_NombreFacultadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_NombreFacultadActionPerformed
-
-    private void txt_NombreFacultadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NombreFacultadKeyTyped
-        if (txt_NombreFacultad.getText().length() >= 40) {
-            evt.consume();
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
-        }
-        if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127
-            || evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22
-            || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
-            return;
-        }
-         if(evt.getKeyChar() == 32){
-             if(txt_NombreFacultad.getText().length() == 0){
-                 evt.consume();
-                 Toolkit.getDefaultToolkit().beep();
-                 return;
-             }
-             if(txt_NombreFacultad.getText().substring(txt_NombreFacultad.getText().length() - 1).equals(" ")){
-                 evt.consume();
-                 Toolkit.getDefaultToolkit().beep();
-             }
-             return; 
-         }
-        char a = evt.getKeyChar();
-        if (Character.isDigit(a)) {
-            evt.consume();
-            Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Sólo letras");
-        }
-    }//GEN-LAST:event_txt_NombreFacultadKeyTyped
-
     private void Tabla_FacultadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_FacultadMouseClicked
         if (Tabla_Facultad.getSelectedRow() >= 0) {
-           llenarCampos();        }
+             this.btn_eliminar.setEnabled(true);
+            this.btn_actualizar.setEnabled(true);
+            this.btn_guardar.setEnabled(false);
+           llenarCampos();     
+        }
     }//GEN-LAST:event_Tabla_FacultadMouseClicked
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
         String cadena1, cadena2;
         cadena1 = txt_idfacultad.getText();
-        cadena2 = txt_NombreFacultad.getText();
+        cadena2 = txa_NombreFacultad.getText();
 
          
-        if((txt_NombreFacultad.getText().equals(""))){
+        if((txt_idfacultad.getText().equals(""))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id de la facultad.","Id facultad requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            txt_NombreFacultad.requestFocus();
+            txt_idfacultad.requestFocus();
             return;
         }
         
-        if((txt_NombreFacultad.getText().equals(""))){
+        if((txa_NombreFacultad.getText().equals(""))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre de la facultad.","Nombre facultad requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            txt_NombreFacultad.requestFocus();
+            txa_NombreFacultad.requestFocus();
             return;
         }
         
@@ -385,7 +363,7 @@ public class Facultad extends javax.swing.JFrame {
 
         }
 
-        if (!validarLongitud(txt_NombreFacultad, 15)) {
+        if (!validarLongitud(txa_NombreFacultad, 15)) {
             JOptionPane.showMessageDialog(null, "El nombre facultad ingresado es muy pequeños el mínimo es de 15 caracteres", "Longitud de  nombre facultad", JOptionPane.INFORMATION_MESSAGE);
             return;
 
@@ -397,7 +375,7 @@ public class Facultad extends javax.swing.JFrame {
             ps = con.prepareStatement("INSERT INTO Facultad (id_facultad, nombre_facultad)"
                 + "                VALUES(?,?)");
             ps.setString(1, txt_idfacultad.getText());
-            ps.setString(2, txt_NombreFacultad.getText());
+            ps.setString(2, txa_NombreFacultad.getText());
             int res = ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Se ha guradod la información de la facultad");
         } catch (Exception e) {
@@ -409,9 +387,9 @@ public class Facultad extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
-        String nombreCampus = txt_NombreFacultad.getText() + " ";
+        String nombreCampus = txa_NombreFacultad.getText() + " ";
          
-        if ((txt_idfacultad.getText().equals("") || (txt_NombreFacultad.getText().equals("")))) {
+        if ((txt_idfacultad.getText().equals("") || (txa_NombreFacultad.getText().equals("")))) {
             JOptionPane.showMessageDialog(this, "¡Debe seleccionar la facultad que desea actualizar!");
         }
 
@@ -425,8 +403,11 @@ public class Facultad extends javax.swing.JFrame {
                     + "id_facultad = ? "
                     + " where id_facultad =\'"+txt_idfacultad.getText()+"\'");
                 /*ps.setString(1, txt_NombreCampus.getText());*/
-                ps.setString(1, txt_NombreFacultad.getText());
+                ps.setString(1, txa_NombreFacultad.getText());
                 ps.setString(2, txt_idfacultad.getText());
+            this.btn_eliminar.setEnabled(false);
+            this.btn_actualizar.setEnabled(false);
+            this.btn_guardar.setEnabled(true);
                 int res = ps.executeUpdate();
             } catch (Exception e) {
                 System.out.println(e);
@@ -458,6 +439,39 @@ public class Facultad extends javax.swing.JFrame {
         String upper = id.toUpperCase();
         txt_idfacultad.setText(upper); 
     }//GEN-LAST:event_txt_idfacultadFocusLost
+
+    private void txa_NombreFacultadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txa_NombreFacultadKeyTyped
+
+        if (txa_NombreFacultad.getText().length() >= 50) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
+        }
+        if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127
+            || evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22
+            || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+            return;
+        }
+        if(evt.getKeyChar() == 32){
+            if(txa_NombreFacultad.getText().length() == 0){
+                evt.consume();
+                Toolkit.getDefaultToolkit().beep();
+                return;
+            }
+            if(txa_NombreFacultad.getText().substring(txa_NombreFacultad.getText().length() - 1).equals(" ")){
+                evt.consume();
+                Toolkit.getDefaultToolkit().beep();
+            }
+            return;
+        }
+        char a = evt.getKeyChar();
+        if (Character.isDigit(a)) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Sólo letras");
+        }
+
+    }//GEN-LAST:event_txa_NombreFacultadKeyTyped
 
     /**
      * @param args the command line arguments
@@ -512,11 +526,12 @@ public class Facultad extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbl_idfacultad;
     private javax.swing.JLabel lbl_nombreFacultad;
     private javax.swing.JLabel lbl_titulo;
     private javax.swing.JLabel lbl_usuario;
-    private javax.swing.JTextField txt_NombreFacultad;
+    private javax.swing.JTextArea txa_NombreFacultad;
     private javax.swing.JTextField txt_idfacultad;
     // End of variables declaration//GEN-END:variables
  public void actualizarDatos() {
@@ -558,10 +573,10 @@ public class Facultad extends javax.swing.JFrame {
     private boolean existeFacultad() {
         try {
             Statement st = con.createStatement();
-            String sql = "Select nombre_facultad from Facultad where nombre_facultad = '" + txt_NombreFacultad.getText() + "'";
+            String sql = "Select nombre_facultad from Facultad where nombre_facultad = '" + txa_NombreFacultad.getText() + "'";
             ResultSet rs = st.executeQuery(sql);
             if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "El nombre facultad: " + txt_NombreFacultad.getText() + " ya existe", "La facultad ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El nombre facultad: " + txa_NombreFacultad.getText() + " ya existe", "La facultad ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
                 return true;
             } else {
                 return false;
@@ -596,11 +611,19 @@ public class Facultad extends javax.swing.JFrame {
             return false;
         }
     }
+    
+     private boolean validarLongitud(JTextArea texto, int longitud) {
+        if (texto.getText().length() >= longitud) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     private void llenarCampos() {
         int i = Tabla_Facultad.getSelectedRow();
         txt_idfacultad.setText(Tabla_Facultad.getValueAt(i, 0).toString());
-        txt_NombreFacultad.setText(Tabla_Facultad.getValueAt(i, 1).toString());
+        txa_NombreFacultad.setText(Tabla_Facultad.getValueAt(i, 1).toString());
 
     }
   
@@ -616,7 +639,7 @@ private void rellenar() {
 
                             if (rs2.next()) {
                                 txt_idfacultad.setText(rs2.getString("id_facultad"));
-                                txt_NombreFacultad.setText(rs2.getString("nombre_facultad"));
+                                txa_NombreFacultad.setText(rs2.getString("nombre_facultad"));
                             }
                             
                         
@@ -628,7 +651,7 @@ private void rellenar() {
     }
 
   private void LimpiarCajas(){
-        txt_NombreFacultad.setText(null);
+        txa_NombreFacultad.setText(null);
         txt_idfacultad.setText(null);
       
         

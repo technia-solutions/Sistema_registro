@@ -59,6 +59,9 @@ public class Matricula extends javax.swing.JFrame {
           this.setTitle("Matricula");
          this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage()); 
          this.lbl_periodo.setVisible(false);
+        this.btn_matricularAsignatura.setEnabled(false);
+        this.btn_generarReporte.setEnabled(false);
+        this.lbl_cancelarAsignatura.setEnabled(false);
     }
     
         public Matricula(String nombreUsuario)throws SQLException{
@@ -108,10 +111,7 @@ public class Matricula extends javax.swing.JFrame {
 
         tbl_asignaturas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Cod. Asignatura", "Nombre Asignatura", "Seccion", "Hora inicial", "Hora final", "Periodo", "Aula", "UV"
@@ -205,6 +205,7 @@ public class Matricula extends javax.swing.JFrame {
         });
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Limpiar.png"))); // NOI18N
         jButton1.setText("Limpiar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -255,7 +256,7 @@ public class Matricula extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(413, 413, 413)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 369, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 376, Short.MAX_VALUE)
                 .addComponent(lbl_periodo)
                 .addGap(31, 31, 31))
         );
@@ -269,7 +270,7 @@ public class Matricula extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, -1, 50));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 950, 50));
 
         lbl_usuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_usuario.setText("Nombre Usuario");
@@ -303,6 +304,7 @@ public class Matricula extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lbl_cancelarAsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lbl_cancelarAsignaturaActionPerformed
+       
      
            this.dispose();
          CancelarAsignatura aa = null;
@@ -724,7 +726,9 @@ public class Matricula extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_numeroCuentaKeyTyped
 
     private void tbl_asignaturasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_asignaturasMouseClicked
-    
+ 
+        this.btn_generarReporte.setEnabled(true);
+        this.lbl_cancelarAsignatura.setEnabled(true);
         this.btn_matricularAsignatura.setEnabled(true);
     }//GEN-LAST:event_tbl_asignaturasMouseClicked
 
@@ -747,7 +751,7 @@ public class Matricula extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_generarReporteActionPerformed
 
     private void jMenuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPrincipalActionPerformed
-       try {
+        try {
             String sql2 = "Select nombres_empleado + ' ' + apellido_empleado from Empleados where id_empleado = (select id_empleado from Acceso where nombre_usuario = '"+lbl_usuario.getText()+"')";
                 Statement st2 = con.createStatement();
                 ResultSet rs2 = st2.executeQuery(sql2);
