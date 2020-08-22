@@ -612,6 +612,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
 
      public void buscar(){
          
+         this.Tabla_Cancelar.setVisible(true);
         String numeroCuenta;
          numeroCuenta = txt_NumC.getText();
            
@@ -671,7 +672,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
                 }
                 modelo.addRow(filas);
                 this.txt_NumC.setEnabled(false);
-             
+                this.btn_eliminarM.setEnabled(true);
            }
          }catch(SQLException ex){
              System.out.println(ex.toString());
@@ -771,6 +772,10 @@ public class CancelarAsignatura extends javax.swing.JFrame {
 
     private void LimpiarCajas() {
        txt_NumC.setText(null);
+       this.btn_CancelarAsig.setEnabled(false);
+       this.btn_eliminarM.setEnabled(false);
+       this.txt_NumC.setEnabled(true);
+       this.Tabla_Cancelar.setVisible(false);
     }
     
   

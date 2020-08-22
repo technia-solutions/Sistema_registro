@@ -61,7 +61,6 @@ public class Matricula extends javax.swing.JFrame {
          this.lbl_periodo.setVisible(false);
         this.btn_matricularAsignatura.setEnabled(false);
         this.btn_generarReporte.setEnabled(false);
-        this.lbl_cancelarAsignatura.setEnabled(false);
     }
     
         public Matricula(String nombreUsuario)throws SQLException{
@@ -72,6 +71,8 @@ public class Matricula extends javax.swing.JFrame {
           this.setTitle("Matricula");
           this.lbl_periodo.setVisible(false);
           this.lbl_usuario.setText(nombreUsuario);
+          this.btn_matricularAsignatura.setEnabled(false);
+          this.btn_generarReporte.setEnabled(false);
          this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
         
     }
@@ -309,7 +310,7 @@ public class Matricula extends javax.swing.JFrame {
            this.dispose();
          CancelarAsignatura aa = null;
          try {
-             aa = new CancelarAsignatura();
+             aa = new CancelarAsignatura(lbl_usuario.getText());
          } catch (SQLException ex) {
              Logger.getLogger(CancelarAsignatura.class.getName()).log(Level.SEVERE, null, ex);
          }
@@ -400,6 +401,7 @@ public class Matricula extends javax.swing.JFrame {
     
     public void buscar(){
         
+        this.tbl_asignaturas.setVisible(true);
            
         if((txt_numeroCuenta.getText().equals(""))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el número de cuenta.","Número de Cuenta requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);

@@ -56,6 +56,7 @@ public class Notas extends javax.swing.JFrame {
          initComponents();
          this.lbl_idmatricula.setVisible(false);
          desactivar();
+         this.Tabla_asignatura.setEnabled(true);
     }
     
      public Notas(String nombreUsuario) throws SQLException {
@@ -64,6 +65,7 @@ public class Notas extends javax.swing.JFrame {
          this.lbl_idmatricula.setVisible(false);
          desactivar();
          this.lbl_usuario.setText(nombreUsuario);
+         this.Tabla_asignatura.setEnabled(true);
     }
 
     
@@ -72,8 +74,11 @@ public class Notas extends javax.swing.JFrame {
         txt_notaParcialI.setText(null);
         txt_notaParcialII.setText(null);
         txt_notaParcialIII.setText(null);
+        txt_numeroCuenta.setText(null);
         lbl_asignatura.setText(null);
-        
+        this.Tabla_asignatura.setVisible(false);
+        this.txt_numeroCuenta.setEnabled(true);
+        this.btn_generarReporte.setEnabled(false);
     }
    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -410,6 +415,7 @@ public class Notas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rad_reposicionParcialIActionPerformed
 
+  
     private void desactivar(){
         this.txt_notaParcialI.setEnabled(false);
         this.txt_notaParcialII.setEnabled(false);
@@ -422,9 +428,9 @@ public class Notas extends javax.swing.JFrame {
             Statement st = con.createStatement();
             String sql = "select N.numero_cuenta from Notas as N  where numero_cuenta= '"+txt_numeroCuenta.getText()+"';";
             ResultSet rs = st.executeQuery(sql);
-            if (!rs.next()) {
-                     LimpiarCajas();
-                JOptionPane.showMessageDialog(null, "El número de cuenta: " + txt_numeroCuenta.getText() + " no existe", "Número de Cuenta Incorrecto", JOptionPane.ERROR_MESSAGE);
+            if (!rs.next()) {  
+                JOptionPane.showMessageDialog(null, "El número de cuenta: " + txt_numeroCuenta.getText() + " no existe o no tiene asignaturas matriculadas", "Número de Cuenta Incorrecto", JOptionPane.ERROR_MESSAGE);
+                LimpiarCajas();
                 return true;
             } else {
                 
@@ -622,7 +628,7 @@ public class Notas extends javax.swing.JFrame {
                 modelo.addRow(filas);
                 Tabla_asignatura.setShowGrid(true);
                 Tabla_asignatura.setShowHorizontalLines(true);
-                this.Tabla_asignatura.setEnabled(true);
+                this.Tabla_asignatura.setVisible(true);
                 this.btn_generarReporte.setEnabled(true);
                 this.txt_numeroCuenta.setEnabled(false);
             }
@@ -852,9 +858,8 @@ public class Notas extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_generarReporteActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.txt_numeroCuenta.setEnabled(true);
-        this.txt_numeroCuenta.setText("");
-        this.Tabla_asignatura.setVisible(false);
+        LimpiarCajas();
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
