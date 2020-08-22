@@ -51,6 +51,7 @@ public class Aula extends javax.swing.JFrame {
              this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
              this.btn_eliminar.setEnabled(false);
              this.btn_actualizar.setEnabled(false);
+             this.lbl_aula.setVisible(false);
     }       
     
      public Aula(String nombreUsuario) throws SQLException {
@@ -67,6 +68,7 @@ public class Aula extends javax.swing.JFrame {
             this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
             this.btn_eliminar.setEnabled(false);
             this.btn_actualizar.setEnabled(false);
+            this.lbl_aula.setVisible(false);
      }
 
     /**
@@ -96,6 +98,7 @@ public class Aula extends javax.swing.JFrame {
         btn_actualizar = new javax.swing.JButton();
         btn_guardar = new javax.swing.JButton();
         btn_limpiar = new javax.swing.JButton();
+        lbl_aula = new javax.swing.JLabel();
         iconodeUsuario = new javax.swing.JLabel();
         lbl_usuario = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -244,6 +247,8 @@ public class Aula extends javax.swing.JFrame {
             }
         });
 
+        lbl_aula.setText("jLabel2");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -261,18 +266,23 @@ public class Aula extends javax.swing.JFrame {
                         .addGap(1, 1, 1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_pisoAula, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lbl_edificio, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lbl_nombreAula, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lbl_idAula, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txt_nombreAula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txt_idAula, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(cbo_idEdificio, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_PisoAula, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(112, 112, 112))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_pisoAula, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbl_edificio, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbl_nombreAula, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbl_idAula, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txt_nombreAula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_idAula, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbo_idEdificio, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_PisoAula, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(112, 112, 112))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(lbl_aula)
+                        .addGap(212, 212, 212))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -291,7 +301,9 @@ public class Aula extends javax.swing.JFrame {
                         .addComponent(btn_eliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
+                        .addGap(27, 27, 27)
+                        .addComponent(lbl_aula)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_idAula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_idAula))
@@ -504,7 +516,7 @@ public class Aula extends javax.swing.JFrame {
                    + " id_edificio = ? , "
                     + " nombre_aula = ?  , "
                     + " piso_aula = ?  "
-                    + " where id_aula =\'"+txt_idAula.getText()+"\'");
+                    + " where id_aula =\'"+lbl_aula.getText()+"\'");
                 ps.setString(1, txt_idAula.getText());
                 ps.setString(2, id_edificio);
                 ps.setString(3, txt_nombreAula.getText());
@@ -548,7 +560,7 @@ public class Aula extends javax.swing.JFrame {
             try {
                 Statement st2 = con.createStatement();
                 String sql = "Delete Aula "
-                + "where id_aula = (Select id_aula from Aula where nombre_aula = '"+txt_nombreAula.getText()+"')";
+                + "where id_aula = (Select id_aula from Aula where nombre_aula = '"+lbl_aula.getText()+"')";
 
                 int rs2 = st2.executeUpdate(sql);
                 System.out.println(rs2);
@@ -718,6 +730,7 @@ public class Aula extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbl_aula;
     private javax.swing.JLabel lbl_edificio;
     private javax.swing.JLabel lbl_idAula;
     private javax.swing.JLabel lbl_nombreAula;
@@ -843,6 +856,7 @@ public class Aula extends javax.swing.JFrame {
         txt_idAula.setText(Tabla_Aula.getValueAt(i, 0).toString());
         txt_nombreAula.setText(Tabla_Aula.getValueAt(i, 1).toString());
        txt_PisoAula.setText(Tabla_Aula.getValueAt(i, 2).toString());
+       lbl_aula.setText(Tabla_Aula.getValueAt(i, 0).toString());
        String idEdificio = Tabla_Aula.getValueAt(i, 3).toString();
         Statement st = con.createStatement();
         String sql = "select * from Edificio where id_edificio = '"+idEdificio+"'";

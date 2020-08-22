@@ -128,6 +128,10 @@ DefaultTableModel modelo = new DefaultTableModel();
         lbl_fechaFinal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_fechaFinal.setText("Fecha final:");
 
+        cld_fechaInicial.setDateFormatString("dd/MM/yyyy");
+
+        cld_fechaFinal.setDateFormatString("dd/MM/yyyy");
+
         btn_agregarPeriodo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_agregarPeriodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Guardar.png"))); // NOI18N
         btn_agregarPeriodo.setText("Guardar");
@@ -473,7 +477,11 @@ DefaultTableModel modelo = new DefaultTableModel();
                  if(res > 0){
                 JOptionPane.showMessageDialog(null, "Se ha Actualizado el periodo: "+nombre);
                 actualizarDatos();
-                // limpiar();
+                Limpiar();
+                this.lbl_nombre.setVisible(false);
+                this.lbl_nombrePeriodo.setVisible(false);
+                this.btn_actualizar.setEnabled(false);
+                this.btn_agregarPeriodo.setEnabled(true);
             }else {
                 JOptionPane.showMessageDialog(null, "Error al Actualizar la información");
             }
@@ -593,10 +601,15 @@ DefaultTableModel modelo = new DefaultTableModel();
             modelo = new DefaultTableModel(null, titulos);
             Tabla_Periodo.setModel(modelo);
             while (rs.next()) {
+                Date fechaInicial = rs.getDate("fecha_inicial");
+                Date fechaFinal = rs.getDate("fecha_final");
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                String fechaInicio = formatter.format(fechaInicial);
+                String fechaFin = formatter.format(fechaFinal);
                 String[] datos = new String[5];
                 datos[0] = rs.getString("nombre_periodo_historico");
-                datos[1] = rs.getString("fecha_inicial");
-                datos[2] = rs.getString("fecha_final");
+                datos[1] = fechaInicio;
+                datos[2] = fechaFin;
                 datos[3] = rs.getString("id_periodo");
                 datos[4] = rs.getString("descripcion");
                 modelo.addRow(datos);
@@ -624,7 +637,7 @@ DefaultTableModel modelo = new DefaultTableModel();
         cbo_periodo.setSelectedItem(Tabla_Periodo.getValueAt(i, 3).toString() + " - " + Tabla_Periodo.getValueAt(i, 4).toString());
         String fechaInicial = Tabla_Periodo.getValueAt(i, 1).toString();
         String fechaFinal = Tabla_Periodo.getValueAt(i, 2).toString();
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         Date fechaInicial2 = df.parse(fechaInicial);
         Date fechaFinal2 = df.parse(fechaFinal);
         

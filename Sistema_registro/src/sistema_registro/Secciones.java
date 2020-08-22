@@ -187,7 +187,7 @@ public class Secciones extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre Seccion", " Asignatura", "Hora Inicial", "Hora Final", "Período", "Aula", "Días", "Cantidad Máxima"
+                "Nombre Sección", " Asignatura", "Hora Inicial", "Hora Final", "Período", "Aula", "Días", "Cantidad Máxima de Alumnos"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -998,7 +998,7 @@ public class Secciones extends javax.swing.JFrame {
                  || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
         return;
         }
-        if(txt_NombreSeccion.getText().length() >=40){
+        if(txt_NombreSeccion.getText().length() >=1){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");

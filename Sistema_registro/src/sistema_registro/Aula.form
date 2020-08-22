@@ -158,21 +158,29 @@
                   </Group>
                   <EmptySpace pref="75" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lbl_pisoAula" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbl_edificio" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbl_nombreAula" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="lbl_idAula" alignment="1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txt_nombreAula" alignment="1" min="-2" pref="182" max="-2" attributes="0"/>
-                          <Component id="txt_idAula" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lbl_pisoAula" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_edificio" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_nombreAula" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="lbl_idAula" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txt_nombreAula" alignment="1" min="-2" pref="182" max="-2" attributes="0"/>
+                                  <Component id="txt_idAula" alignment="0" min="-2" pref="180" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="cbo_idEdificio" min="-2" pref="190" max="-2" attributes="0"/>
+                              <Component id="txt_PisoAula" min="-2" pref="182" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="cbo_idEdificio" min="-2" pref="190" max="-2" attributes="0"/>
-                      <Component id="txt_PisoAula" min="-2" pref="182" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="lbl_aula" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="212" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
@@ -195,7 +203,9 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="lbl_aula" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="txt_idAula" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lbl_idAula" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -435,6 +445,11 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_limpiarActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_aula">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jLabel2"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

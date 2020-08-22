@@ -340,11 +340,11 @@ public class Notas extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_asignatura.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jPanel3.add(lbl_asignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 20, 300, 30));
+        jPanel3.add(lbl_asignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 20, 280, 30));
 
         lbl_clase.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_clase.setText("Clase:");
-        jPanel3.add(lbl_clase, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, -1, -1));
+        jPanel3.add(lbl_clase, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 20, -1, -1));
 
         btn_buscarClases.setBackground(new java.awt.Color(235, 250, 251));
         btn_buscarClases.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -363,7 +363,7 @@ public class Notas extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 20, 100, 30));
+        jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 20, 120, 30));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 1190, 60));
 

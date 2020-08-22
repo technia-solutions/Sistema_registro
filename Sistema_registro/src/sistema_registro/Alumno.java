@@ -66,7 +66,12 @@ public class Alumno extends javax.swing.JFrame {
        
        int d=f.get(Calendar.DATE), mes=1+(f.get(Calendar.MONTH)), año=f.get(Calendar.YEAR);
        
-       fechaHoy.setText(d+"-"+mes+"-"+año);
+      if(mes < 10){
+           fechaHoy.setText(d+"/0"+mes+"/"+año);
+       }
+       if(mes >= 10){
+          fechaHoy.setText(d+"/"+mes+"/"+año); 
+       }
         this.lbl_cuenta.setVisible(false);
         this.lbl_numeroCuenta.setVisible(false);
         this.btn_actualizar.setEnabled(false);    
@@ -104,7 +109,13 @@ public class Alumno extends javax.swing.JFrame {
        
        int d=f.get(Calendar.DATE), mes=1+(f.get(Calendar.MONTH)), año=f.get(Calendar.YEAR);
        
-       fechaHoy.setText(d+"-"+mes+"-"+año);
+     if(mes < 10){
+           fechaHoy.setText(d+"/0"+mes+"/"+año);
+       }
+       if(mes >= 10){
+          fechaHoy.setText(d+"/"+mes+"/"+año); 
+       }
+       
         this.lbl_usuario.setText(usuario);
         this.lbl_cuenta.setVisible(false);
         this.lbl_numeroCuenta.setVisible(false);
@@ -214,7 +225,7 @@ public class Alumno extends javax.swing.JFrame {
         cld_fechaNacimiento = new com.toedter.calendar.JDateChooser();
         cbo_carrera = new javax.swing.JComboBox<>();
         lbl_carrera = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btn_buscar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         cbo_periodo = new javax.swing.JComboBox<>();
         cbo_campus = new javax.swing.JComboBox<>();
@@ -338,6 +349,7 @@ public class Alumno extends javax.swing.JFrame {
 
         cld_fechaNacimiento.setBackground(new java.awt.Color(170, 226, 218));
         cld_fechaNacimiento.setAutoscrolls(true);
+        cld_fechaNacimiento.setDateFormatString("dd/MM/yyyy");
         cld_fechaNacimiento.setMaxSelectableDate(new java.util.Date(1104562870000L));
         cld_fechaNacimiento.setMinSelectableDate(new java.util.Date(-1893430711000L));
         cld_fechaNacimiento.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -356,12 +368,12 @@ public class Alumno extends javax.swing.JFrame {
         lbl_carrera.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_carrera.setText("Carrera:");
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Consulta.png"))); // NOI18N
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_buscar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Consulta.png"))); // NOI18N
+        btn_buscar.setText("Buscar");
+        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_buscarActionPerformed(evt);
             }
         });
 
@@ -410,7 +422,7 @@ public class Alumno extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btn_agregarAlumnos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btn_actualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btn_Limpiar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -499,7 +511,7 @@ public class Alumno extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_Limpiar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)))
+                        .addComponent(btn_buscar)))
                 .addGap(18, 18, Short.MAX_VALUE))
         );
 
@@ -515,7 +527,7 @@ public class Alumno extends javax.swing.JFrame {
         fechaHoy.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         fechaHoy.setText("Fecha hoy");
         jPanel3.add(fechaHoy);
-        fechaHoy.setBounds(20, 10, 80, 16);
+        fechaHoy.setBounds(10, 10, 110, 16);
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 50, 120, 40));
 
@@ -860,6 +872,55 @@ public class Alumno extends javax.swing.JFrame {
             int dia = cld_fechaNacimiento.getDate().getDate();
             String fecha = año + "-" + mes +"-"+ dia;
             String periodo = cbo_periodo.getSelectedItem().toString().substring(0, 1);
+             if((txt_nombres.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar los nombres del alumno.","Nombres del alumno requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_nombres.requestFocus();
+            return;
+        }
+        
+        if((txt_apellidos.getText().equals(""))){
+             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar los apellidos del alumno.","Apellidos del alumno requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_apellidos.requestFocus();
+            return;
+        }
+        
+        if((txt_telefono.getText().equals(""))){
+             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el teléfono del alumno.","Teléfono del alumno requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_telefono.requestFocus();
+            return;
+        }
+        
+        if((txt_identidad.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el número de identidad del alumno.","Número de identidad del alumno requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_identidad.requestFocus();
+            return;
+         }
+        
+        
+        if((cbo_carrera.getSelectedItem().equals("Seleccione una carrera"))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar una carrera para el alumno.","Carrera del alumno requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+         if((cbo_periodo.getSelectedItem().equals("Seleccione el período"))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar el período de inscripción del alumno.","Período de inscripción del alumno requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+         
+          if((cbo_campus.getSelectedItem().equals("Seleccione un campus"))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un campus para el alumno.","Campus del alumno requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+          
+     
+        if((cld_fechaNacimiento.getDate()== null)){
+             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar la fecha de nacimiento del alumno.","Fecha de nacimiento del alumno requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+             if(!validarLongitudTelefono(txt_telefono,8)){
+            return;
+            }
             if(!validarIdentidad(txt_identidad.getText())){
             return;
             
@@ -891,6 +952,7 @@ public class Alumno extends javax.swing.JFrame {
                       this.btn_actualizar.setEnabled(false); 
                       this.lbl_numeroCuenta.setVisible(false);
                       this.lbl_cuenta.setVisible(false);
+                      this.btn_agregarAlumnos.setEnabled(true);
                       limpiar();
             } catch ( Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage());
@@ -930,6 +992,7 @@ public class Alumno extends javax.swing.JFrame {
                                 lbl_cuenta.setText(rs2.getString("numero_cuenta_alumno"));
                                 txt_identidad.setText(rs2.getString("numero_identidad"));
                                 this.btn_actualizar.setEnabled(true); 
+                                this.btn_agregarAlumnos.setEnabled(false);
                             }
                             else{
                                JOptionPane.showMessageDialog(null,"¡No se encuentra el alumno! Por favor verifique sí, lo escribió correctamente");
@@ -1036,9 +1099,9 @@ public class Alumno extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txt_telefonoKeyTyped
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
         rellenar();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_buscarActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
        try {
@@ -1094,6 +1157,12 @@ public class Alumno extends javax.swing.JFrame {
         cbo_periodo.setSelectedIndex(0);
         cbo_campus.setSelectedIndex(0);
         txt_identidad.setText(null);
+        lbl_numeroCuenta.setVisible(false);
+        lbl_cuenta.setVisible(false);
+        this.btn_actualizar.setEnabled(false);
+        this.btn_agregarAlumnos.setEnabled(true);
+        this.btn_buscar.setEnabled(true);
+               
     }
         
     public static void main(String args[]) {
@@ -1136,13 +1205,13 @@ public class Alumno extends javax.swing.JFrame {
     private javax.swing.JButton btn_Limpiar;
     private javax.swing.JButton btn_actualizar;
     private javax.swing.JButton btn_agregarAlumnos;
+    private javax.swing.JButton btn_buscar;
     private javax.swing.JComboBox<String> cbo_campus;
     private javax.swing.JComboBox<String> cbo_carrera;
     private javax.swing.JComboBox<String> cbo_periodo;
     private com.toedter.calendar.JDateChooser cld_fechaNacimiento;
     private javax.swing.JLabel fechaHoy;
     private javax.swing.JLabel iconodeUsuario;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

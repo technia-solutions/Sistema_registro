@@ -12,7 +12,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -49,11 +52,22 @@ public class Principal extends javax.swing.JFrame {
         }
 
         initComponents();
-          f=Calendar.getInstance();
+       f=Calendar.getInstance();
+       DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+       
+       
+   
        
        int d=f.get(Calendar.DATE), mes=1+(f.get(Calendar.MONTH)), año=f.get(Calendar.YEAR);
        
-       fechaHoy.setText(d+"-"+mes+"-"+año);
+       if(mes < 10){
+           fechaHoy.setText(d+"/0"+mes+"/"+año);
+       }
+       if(mes >= 10){
+          fechaHoy.setText(d+"/"+mes+"/"+año); 
+       }
+
+       
         this.setLocationRelativeTo(null);
         this.setTitle("Menú Principal");
         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
@@ -80,7 +94,12 @@ public class Principal extends javax.swing.JFrame {
        
        int d=f.get(Calendar.DATE), mes=1+(f.get(Calendar.MONTH)), año=f.get(Calendar.YEAR);
        
-       fechaHoy.setText(d+"-"+mes+"-"+año);
+      if(mes < 10){
+           fechaHoy.setText(d+"/0"+mes+"/"+año);
+       }
+       if(mes >= 10){
+          fechaHoy.setText(d+"/"+mes+"/"+año); 
+       }
          this.setLocationRelativeTo(null);
         this.setTitle("Menú Principal");
         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
@@ -172,12 +191,12 @@ public class Principal extends javax.swing.JFrame {
         fechaHoy.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         fechaHoy.setText("Fecha hoy");
         jPanel2.add(fechaHoy);
-        fechaHoy.setBounds(1190, 30, 80, 16);
+        fechaHoy.setBounds(1160, 30, 130, 16);
 
         fechaHoy1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         fechaHoy1.setText("      Fecha:");
         jPanel2.add(fechaHoy1);
-        fechaHoy1.setBounds(1100, 30, 80, 16);
+        fechaHoy1.setBounds(1080, 30, 80, 16);
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 1310, 80));
 
