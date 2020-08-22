@@ -239,61 +239,69 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
-                              <Component id="lbl_horaFinal" min="-2" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
+                                      <Component id="lbl_horaFinal" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="341" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="lbl_CantidadM" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbl_NombreSeccion1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbl_CodAsignatura" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbl_horaInicial" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="btn_limpiar" min="-2" pref="170" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="lbl_Periodo" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="btn_actualizar" pref="170" max="32767" attributes="0"/>
+                                              <Component id="btn_buscar" pref="170" max="32767" attributes="0"/>
+                                              <Component id="btn_guardar" alignment="0" pref="170" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="btn_eliminar" min="-2" pref="170" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="lbl_aula" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="341" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="lbl_CantidadM" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbl_NombreSeccion1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbl_CodAsignatura" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lbl_horaInicial" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cbo_IdAula" min="-2" pref="222" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txt_NombreSeccion" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
+                                      <Component id="txt_CantidadM" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
+                                      <Component id="cbo_Asignaturas" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
+                                      <Component id="txt_HoraInicial" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
+                                      <Component id="txt_HoraFinal" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
+                                      <Component id="cbo_IdPeriodo" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="btn_limpiar" min="-2" pref="170" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="lbl_Periodo" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="btn_actualizar" pref="170" max="32767" attributes="0"/>
-                                      <Component id="btn_buscar" pref="170" max="32767" attributes="0"/>
-                                      <Component id="btn_guardar" alignment="0" pref="170" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="btn_eliminar" min="-2" pref="170" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="lbl_aula" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="cbo_IdAula" min="-2" pref="222" max="-2" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txt_NombreSeccion" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
-                              <Component id="txt_CantidadM" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
-                              <Component id="cbo_Asignaturas" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
-                              <Component id="txt_HoraInicial" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
-                              <Component id="txt_HoraFinal" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
-                              <Component id="cbo_IdPeriodo" alignment="0" min="-2" pref="222" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="602" max="-2" attributes="0"/>
+                          <Component id="lbl_seccion" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="131" max="32767" attributes="0"/>
@@ -306,7 +314,9 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                              <Component id="lbl_seccion" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lbl_NombreSeccion1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txt_NombreSeccion" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -718,6 +728,11 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_limpiarActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_seccion">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jLabel2"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

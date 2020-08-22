@@ -740,13 +740,7 @@ Connection con = null;
 
     private void btn_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buscarMouseClicked
         rellenar();
-        this.btn_consultar.setEnabled(true);
-        this.btn_guardar.setEnabled(false);
-        this.btn_eliminar1.setEnabled(true);
-        this.btn_actualizar.setEnabled(true);
-        this.jScrollPane1.setEnabled(true);
-        this.jScrollPane1.setEnabled(true);
-        this.Tabla_RegistroAsignatura.setEnabled(true);
+        
     }//GEN-LAST:event_btn_buscarMouseClicked
 
     private void Tabla_RegistroAsignaturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_RegistroAsignaturaMouseClicked
@@ -1124,6 +1118,13 @@ public boolean existeidAsignatura(){
                                 }
                                 cbo_Req1.setSelectedItem(requisito1);
                                 cbo_Req2.setSelectedItem(requisito2);
+                                this.btn_consultar.setEnabled(true);
+                                this.btn_guardar.setEnabled(false);
+                                this.btn_eliminar1.setEnabled(true);
+                                this.btn_actualizar.setEnabled(true);
+                                this.jScrollPane1.setEnabled(true);
+                                this.jScrollPane1.setEnabled(true);
+                                this.Tabla_RegistroAsignatura.setEnabled(true);
                             } else {
                                 JOptionPane.showMessageDialog(null, "¡No se encuentra los datos: "+var+" ! Por favor verifique sí, lo escribio correctamente");
                             }
