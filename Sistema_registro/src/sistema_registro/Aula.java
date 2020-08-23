@@ -453,6 +453,10 @@ public class Aula extends javax.swing.JFrame {
         if(existeAula()){
             return;
         }
+        
+        if(existeNombreAula()){
+            return;
+        }
 
         if(!validarLongitud(txt_idAula,4)){
             JOptionPane.showMessageDialog(null, "El id del aula debe ser de 4 caracter.", "Longitud de id del aula.", JOptionPane.INFORMATION_MESSAGE);
@@ -497,11 +501,28 @@ public class Aula extends javax.swing.JFrame {
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
         String Aula = txt_nombreAula.getText() + " ";
-        if ((txt_idAula.getText().equals("")) || (txt_PisoAula.getText().equals("")) ||
-            (cbo_idEdificio.getSelectedItem().equals("Seleccione el edificio"))) {
-
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar el aula a actualizar!. \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+          if((txt_idAula.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id del aula.","Id aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_idAula.requestFocus();
+            return;
+        }
+         
+           
+         if((txt_nombreAula.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre del aula.","Nombre aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_nombreAula.requestFocus();
+            return;
+        }
+         
+            
+         if((txt_PisoAula.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el piso del aula.","Piso de aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_PisoAula.requestFocus();
+            return;
+        }
+         
+         if((cbo_idEdificio.getSelectedItem().equals("Seleccione un edificio"))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un edificio para el aula.","Edificio del aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
         }
         else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro del aula" +Aula + "?.", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
@@ -526,6 +547,13 @@ public class Aula extends javax.swing.JFrame {
                  this.btn_actualizar.setEnabled(false);
 
                 int res = ps.executeUpdate();
+                if(res > 0){
+                    JOptionPane.showMessageDialog(null, "Se ha actualizado la información del aula " + Aula + " correctamente.");
+
+                }else {
+                    JOptionPane.showMessageDialog(null, "¡Error al actualizar la información!.");
+
+                }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null,e.getMessage());
             }
@@ -548,10 +576,29 @@ public class Aula extends javax.swing.JFrame {
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         String Aula = txt_idAula.getText() + " " + txt_PisoAula.getText();
 
-        if ((txt_idAula.getText().equals("")) || (txt_PisoAula.getText().equals(""))  || (cbo_idEdificio.getSelectedItem().equals(""))  ) {
-
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar el aula que desea eliminar!.\n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-
+         if((txt_idAula.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id del aula.","Id aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_idAula.requestFocus();
+            return;
+        }
+         
+           
+         if((txt_nombreAula.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre del aula.","Nombre aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_nombreAula.requestFocus();
+            return;
+        }
+         
+            
+         if((txt_PisoAula.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el piso del aula.","Piso de aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_PisoAula.requestFocus();
+            return;
+        }
+         
+         if((cbo_idEdificio.getSelectedItem().equals("Seleccione un edificio"))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un edificio para el aula.","Edificio del aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
         }
         else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro del aula " + Aula + ".", "Confirmación de eliminación",
             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
@@ -560,7 +607,10 @@ public class Aula extends javax.swing.JFrame {
             try {
                 Statement st2 = con.createStatement();
                 String sql = "Delete Aula "
-                + "where id_aula = (Select id_aula from Aula where nombre_aula = '"+lbl_aula.getText()+"')";
+                + "where id_aula = (Select id_aula from Aula where nombre_aula = '"+txt_nombreAula.getText()+"')";
+                 this.btn_guardar.setEnabled(true);
+                 this.btn_actualizar.setEnabled(false);
+                 this.btn_eliminar.setEnabled(false);
 
                 int rs2 = st2.executeUpdate(sql);
                 System.out.println(rs2);
@@ -769,6 +819,25 @@ public class Aula extends javax.swing.JFrame {
         return false;
     }
     
+      
+    private boolean existeNombreAula() {
+        try {
+            Statement st = con.createStatement();
+            String sql = "Select nombre_aula from Aula where nombre_aula = '"+txt_nombreAula.getText()+"'";
+            ResultSet rs = st.executeQuery(sql);
+            if(rs.next()){
+                JOptionPane.showMessageDialog(null, "Ya existe el nombre de aula: "+txt_nombreAula.getText()+".", "Nombre de aula ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
+                return true;
+            }
+            else{
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Aula.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
      private void actualizarDatos() {
         try {
                
@@ -847,6 +916,10 @@ public class Aula extends javax.swing.JFrame {
         txt_nombreAula.setText(null);
          txt_PisoAula.setText(null);
         cbo_idEdificio.setSelectedIndex(0);
+         this.btn_guardar.setEnabled(true); 
+         this.btn_eliminar.setEnabled(false);
+            this.btn_actualizar.setEnabled(false);
+       
         
        
     }

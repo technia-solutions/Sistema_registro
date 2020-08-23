@@ -85,6 +85,7 @@ public class Secciones extends javax.swing.JFrame {
             this.setTitle("Secciones");
             this.btn_actualizar.setEnabled(false);
             this.btn_eliminar.setEnabled(false);
+            this.lbl_seccion.setVisible(false);
     }
     
     public Secciones(String nombreUsuario) throws SQLException {
@@ -118,6 +119,7 @@ public class Secciones extends javax.swing.JFrame {
             this.lbl_usuario.setText(usuario);
             this.btn_actualizar.setEnabled(false);
             this.btn_eliminar.setEnabled(false);
+            this.lbl_seccion.setVisible(false);
     }
     
     
@@ -729,6 +731,9 @@ public class Secciones extends javax.swing.JFrame {
                 Statement st2 = con.createStatement();
                 String sql = "Delete Secciones "
                 + "where id_seccion = '"+id_seccion+"' ";
+                 this.btn_guardar.setEnabled(true);
+                 this.btn_actualizar.setEnabled(false);
+                 this.btn_eliminar.setEnabled(false);
 
                 int rs2 = st2.executeUpdate(sql);
                 System.out.println(rs2);
@@ -1029,9 +1034,7 @@ public class Secciones extends javax.swing.JFrame {
            if(Tabla_Seccion.getSelectedRow () >= 0){
                try {
                    llenarCampos();
-              this.btn_guardar.setEnabled(false);
-                this.btn_eliminar.setEnabled(true);
-            this.btn_actualizar.setEnabled(true);
+              
                } catch (SQLException ex) {
                    Logger.getLogger(Secciones.class.getName()).log(Level.SEVERE, null, ex);
                }
@@ -1161,7 +1164,9 @@ public class Secciones extends javax.swing.JFrame {
 
     private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
         LimpiarCajas();
-        // TODO add your handling code here:
+         this.btn_guardar.setEnabled(true);
+         this.btn_actualizar.setEnabled(false);
+         this.btn_eliminar.setEnabled(false);
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
     /**
@@ -1386,6 +1391,9 @@ public void actualizarDatos(){
         cbo_IdPeriodo.setSelectedIndex(0);
         cbo_IdAula.setSelectedIndex(0);
         txt_CantidadM.setText(null);
+        this.btn_guardar.setEnabled(true);
+        this.btn_eliminar.setEnabled(false);
+        this.btn_actualizar.setEnabled(false);
         
        
     }
@@ -1449,6 +1457,10 @@ public void actualizarDatos(){
         if(dias.contains("Do")){
             chb_Domingo.setSelected(true);
         }
+        
+        this.btn_guardar.setEnabled(false);
+        this.btn_eliminar.setEnabled(true);
+        this.btn_actualizar.setEnabled(true);
     }
      
      /*private boolean validarDias(String Lu, String Ma, String Mi, String Ju, String Vi, String Sa, String Do){

@@ -50,6 +50,7 @@ public class Campus extends javax.swing.JFrame {
         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
         this.btn_eliminar.setEnabled(false);
         this.btn_actualizar.setEnabled(false);
+        this.lbl_campus.setVisible(false);
     }
 
     public Campus(String nombreUsuario) throws SQLException {
@@ -61,6 +62,8 @@ public class Campus extends javax.swing.JFrame {
         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
         this.btn_eliminar.setEnabled(false);
         this.btn_actualizar.setEnabled(false);
+        this.lbl_campus.setVisible(false);
+
     
     }
     public void Actualizar() {
@@ -126,6 +129,7 @@ public class Campus extends javax.swing.JFrame {
         txt_idCampus = new javax.swing.JTextField();
         lbl_idCampus = new javax.swing.JLabel();
         btn_limpiar = new javax.swing.JButton();
+        lbl_campus = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -252,6 +256,8 @@ public class Campus extends javax.swing.JFrame {
             }
         });
 
+        lbl_campus.setText("jLabel2");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -277,11 +283,17 @@ public class Campus extends javax.swing.JFrame {
                         .addGap(52, 52, 52))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(280, 280, 280))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_campus)
+                .addGap(432, 432, 432))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(70, 70, 70)
+                .addGap(29, 29, 29)
+                .addComponent(lbl_campus)
+                .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(11, 11, 11)
@@ -433,20 +445,22 @@ public class Campus extends javax.swing.JFrame {
 
     private void Tabla_CampusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_CampusMouseClicked
         if (Tabla_Campus.getSelectedRow() >= 0) {
-            this.btn_actualizar.setEnabled(true);
-            this.btn_eliminar.setEnabled(true);
-            this.btn_guardar.setEnabled(false);
-            
+           
             llenarCampos();
         }
     }//GEN-LAST:event_Tabla_CampusMouseClicked
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         String nombreCampus = txt_NombreCampus.getText() + " " + txt_idCampus.getText();
-        
-        if ((txt_idCampus.getText().equals("") || (txt_NombreCampus.getText().equals("")))) {
-            JOptionPane.showMessageDialog(this, "¡Debe seleccionar el campo a eliminar!");
-            
+         if((txt_idCampus.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id del campus.","Id campus  requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_idCampus.requestFocus();
+            return;
+        }
+        if((txt_NombreCampus.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre del campus."," nombre campus requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_NombreCampus.requestFocus();
+            return;
         }
         else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro del campus " + nombreCampus + "", "Confirmación de eliminación",
             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
@@ -456,7 +470,9 @@ public class Campus extends javax.swing.JFrame {
                 Statement st2 = con.createStatement();
                 String sql = "Delete Campus "
                 + "where id_campus = (Select id_campus from Campus where nombre_campus = '"+txt_NombreCampus.getText()+"')";
-
+                this.btn_eliminar.setEnabled(false);
+                this.btn_actualizar.setEnabled(false);
+                this.btn_guardar.setEnabled(true);
                 int rs2 = st2.executeUpdate(sql);
                 System.out.println(rs2);
                 if(rs2 > 0){
@@ -488,8 +504,15 @@ public class Campus extends javax.swing.JFrame {
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
         String nombreCampus = txt_NombreCampus.getText() + " ";
-         if ((txt_idCampus.getText().equals("") || (txt_NombreCampus.getText().equals("")))) {
-            JOptionPane.showMessageDialog(this, "¡Debe seleccionar el campus a actualizar!");
+        if((txt_idCampus.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id del campus.","Id campus  requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_idCampus.requestFocus();
+            return;
+        }
+        if((txt_NombreCampus.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre del campus."," nombre campus requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_NombreCampus.requestFocus();
+            return;
         }
            
          else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro del campus " + nombreCampus + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
@@ -500,7 +523,7 @@ public class Campus extends javax.swing.JFrame {
                 ps = con.prepareStatement("Update Campus set"
                     + " nombre_campus = ? ,"
                     + "id_campus = ? "
-                    + " where id_campus =\'"+txt_idCampus.getText()+"\'");
+                    + " where id_campus =\'"+lbl_campus.getText()+"\'");
                 /*ps.setString(1, txt_NombreCampus.getText());*/
                 ps.setString(1, txt_NombreCampus.getText());
                 ps.setString(2, txt_idCampus.getText());
@@ -508,6 +531,14 @@ public class Campus extends javax.swing.JFrame {
                  this.btn_actualizar.setEnabled(false);
                  this.btn_guardar.setEnabled(true);
                 int res = ps.executeUpdate();
+                 if(res > 0){
+                    JOptionPane.showMessageDialog(null, "Se ha actualizado la información del aula " + nombreCampus + " correctamente.");
+
+                }else {
+                    JOptionPane.showMessageDialog(null, "¡Error al actualizar la información!.");
+
+                }
+           
             } catch (Exception e) {
                 System.out.println(e);
             }
@@ -646,6 +677,7 @@ public class Campus extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbl_campus;
     private javax.swing.JLabel lbl_idCampus;
     private javax.swing.JLabel lbl_nombreCampus;
     private javax.swing.JLabel lbl_titulo;
@@ -701,6 +733,10 @@ public class Campus extends javax.swing.JFrame {
   private void LimpiarCajas(){
         txt_NombreCampus.setText(null);
         txt_idCampus.setText(null);
+         this.btn_actualizar.setEnabled(false);
+         this.btn_eliminar.setEnabled(false);
+         this.btn_guardar.setEnabled(true);
+            
         
     }
   
@@ -709,6 +745,11 @@ public class Campus extends javax.swing.JFrame {
         int i = Tabla_Campus.getSelectedRow();
         txt_idCampus.setText(Tabla_Campus.getValueAt(i, 0).toString());
         txt_NombreCampus.setText(Tabla_Campus.getValueAt(i, 1).toString());
+        lbl_campus.setText(Tabla_Campus.getValueAt(i, 0).toString());
+         this.btn_actualizar.setEnabled(true);
+         this.btn_eliminar.setEnabled(true);
+         this.btn_guardar.setEnabled(false);
+            
         
         
     }

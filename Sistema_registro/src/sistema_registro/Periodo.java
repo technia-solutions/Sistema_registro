@@ -41,6 +41,7 @@ public class Periodo extends javax.swing.JFrame {
             this.setTitle("Período");
             this.btn_eliminar.setEnabled(false);
             this.btn_actualizar.setEnabled(false);
+            this.lbl_periodo.setVisible(false);
     }
     
     public Periodo(String nombreUsuario) throws SQLException {
@@ -52,6 +53,7 @@ public class Periodo extends javax.swing.JFrame {
             this.setTitle("Período");
             this.btn_eliminar.setEnabled(false);
             this.btn_actualizar.setEnabled(false);
+             this.lbl_periodo.setVisible(false);
     }
 
 
@@ -81,6 +83,7 @@ public class Periodo extends javax.swing.JFrame {
         btn_buscar = new javax.swing.JButton();
         btn_eliminar = new javax.swing.JButton();
         btn_limpiar = new javax.swing.JButton();
+        lbl_periodo = new javax.swing.JLabel();
         lbl_usuario = new javax.swing.JLabel();
         iconodeUsuario = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -223,6 +226,8 @@ public class Periodo extends javax.swing.JFrame {
             }
         });
 
+        lbl_periodo.setText("jLabel2");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -257,34 +262,41 @@ public class Periodo extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_periodo)
+                .addGap(142, 142, 142))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(173, 173, 173)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lbl_descripcion)
-                                .addComponent(txt_descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(38, 38, 38))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(btn_guardar)
-                            .addGap(28, 28, 28)
-                            .addComponent(btn_actualizar)
-                            .addGap(18, 18, 18)
-                            .addComponent(btn_buscar)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_idPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_idPeriodo))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btn_guardar)
+                        .addGap(28, 28, 28)
+                        .addComponent(btn_actualizar)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_NomPer)
-                            .addComponent(txt_periodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(btn_buscar))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(lbl_periodo)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(127, 127, 127)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lbl_descripcion)
+                                    .addComponent(txt_descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txt_idPeriodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbl_idPeriodo))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lbl_NomPer)
+                                    .addComponent(txt_periodo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(38, 38, 38)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -370,6 +382,10 @@ public class Periodo extends javax.swing.JFrame {
         if (existeidPeriodo()) {
             return;
         }
+        
+        if (existeNombrePeriodo()) {
+            return;
+        }
 
         if (!validarLongitud(txt_idPeriodo, 1)) {
             JOptionPane.showMessageDialog(null, "El id período ingresado es muy pequeño, el mínimo es de 1 caracteres", "Longitud de id período", JOptionPane.INFORMATION_MESSAGE);
@@ -412,9 +428,7 @@ public class Periodo extends javax.swing.JFrame {
     private void Tabla_PeriodoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_PeriodoMouseClicked
            if(Tabla_Periodo.getSelectedRow() >= 0){
             llenarCampos();
-             this.btn_eliminar.setEnabled(true);
-                 this.btn_actualizar.setEnabled(true);
-                 this.btn_guardar.setEnabled(false);
+            
         }
     }//GEN-LAST:event_Tabla_PeriodoMouseClicked
 
@@ -448,9 +462,21 @@ public class Periodo extends javax.swing.JFrame {
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
          String nombrePeriodo = txt_idPeriodo.getText() + " " + txt_descripcion.getText();
         
-        if ((txt_idPeriodo.getText().equals("") || (txt_periodo.getText().equals("")))) {
-            JOptionPane.showMessageDialog(this, "¡Debe seleccionar el período a eliminar!");
-            
+        if((txt_idPeriodo.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id período.","Id de período requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_idPeriodo.requestFocus();
+            return;
+        }
+          
+        if((txt_periodo.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el período.","Período requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_periodo.requestFocus();
+            return;
+        }
+        
+         if((txt_descripcion.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar una descripcion del período","Descripcion del período",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
         }
         else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro del período " + nombrePeriodo + ".", "Confirmación de eliminación",
             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
@@ -459,7 +485,10 @@ public class Periodo extends javax.swing.JFrame {
             try {
                 Statement st2 = con.createStatement();
                 String sql = "Delete Periodo "
-                + "where id_periodo = (Select id_periodo from Periodo where id_periodo = '"+txt_idPeriodo.getText()+"')";
+                + "where id_periodo = (Select id_periodo from Periodo where id_periodo = '"+lbl_periodo.getText()+"')";
+                 this.btn_guardar.setEnabled(true);
+                 this.btn_actualizar.setEnabled(false);
+                 this.btn_eliminar.setEnabled(false);
 
                 int rs2 = st2.executeUpdate(sql);
                 System.out.println(rs2);
@@ -483,8 +512,22 @@ public class Periodo extends javax.swing.JFrame {
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
             String nombrePeriodo = txt_idPeriodo.getText() + " " +txt_descripcion.getText() + " ";
-         if ((txt_idPeriodo.getText().equals("") || (txt_periodo.getText().equals("")) || (txt_descripcion.getText().equals("")))) {
-            JOptionPane.showMessageDialog(this, "¡Debe seleccionar el período a actualizar!");
+           
+        if((txt_idPeriodo.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id período.","Id de período requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_idPeriodo.requestFocus();
+            return;
+        }
+          
+        if((txt_periodo.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el período.","Período requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_periodo.requestFocus();
+            return;
+        }
+        
+         if((txt_descripcion.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar una descripcion del período","Descripcion del período",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
         }
            
          else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro del período " + nombrePeriodo + "?.", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
@@ -496,7 +539,7 @@ public class Periodo extends javax.swing.JFrame {
                     + " id_periodo = ? ,"
                     + " periodo = ? ,"
                     + "descripcion = ? "
-                    + " where id_periodo =\'"+txt_idPeriodo.getText()+"\'");
+                    + " where id_periodo ='"+lbl_periodo.getText()+"'");
                 ps.setString(1, txt_idPeriodo.getText());
                 ps.setString(2, txt_periodo.getText());
                  ps.setString(3, txt_descripcion.getText());
@@ -504,6 +547,13 @@ public class Periodo extends javax.swing.JFrame {
                  this.btn_actualizar.setEnabled(false);
                  this.btn_guardar.setEnabled(true);
                 int res = ps.executeUpdate();
+                if(res > 0){
+                    JOptionPane.showMessageDialog(null, "Se ha actualizado la información del período " + nombrePeriodo + " correctamente.");
+
+                }else {
+                    JOptionPane.showMessageDialog(null, "¡Error al actualizado la información!.");
+
+                }
             } catch (Exception e) {
                 System.out.println(e);
             }
@@ -665,6 +715,7 @@ char a=evt.getKeyChar();
     private javax.swing.JLabel lbl_NomPer;
     private javax.swing.JLabel lbl_descripcion;
     private javax.swing.JLabel lbl_idPeriodo;
+    private javax.swing.JLabel lbl_periodo;
     private javax.swing.JLabel lbl_titulo;
     private javax.swing.JLabel lbl_usuario;
     private javax.swing.JTextField txt_descripcion;
@@ -690,6 +741,24 @@ char a=evt.getKeyChar();
         }
         return false;
     }
+     
+         private boolean existeNombrePeriodo() {
+        try {
+            Statement st = con.createStatement();
+            String sql = "Select descripcion from Periodo where descripcion = '" + txt_descripcion.getText() + "'";
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null, "El nombre del período " + txt_descripcion.getText() + " ya existe", "El nombre período ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Campus.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+
 
 
     private boolean validarLongitud(JTextField texto, int longitud) {
@@ -705,6 +774,10 @@ char a=evt.getKeyChar();
         txt_idPeriodo.setText(Tabla_Periodo.getValueAt(i, 0).toString());
         txt_periodo.setText(Tabla_Periodo.getValueAt(i, 1).toString());
         txt_descripcion.setText(Tabla_Periodo.getValueAt(i, 2).toString());
+         lbl_periodo.setText((Tabla_Periodo.getValueAt(i, 0).toString()));
+          this.btn_eliminar.setEnabled(true);
+          this.btn_actualizar.setEnabled(true);
+          this.btn_guardar.setEnabled(false);
 
     }
   
@@ -722,6 +795,7 @@ private void rellenar() {
                                 txt_idPeriodo.setText(rs2.getString("id_periodo"));
                                 txt_periodo.setText(rs2.getString("periodo"));
                                 txt_descripcion.setText(rs2.getString("descripcion"));
+                                lbl_periodo.setText(rs2.getString("id_periodo"));
                                
                             } 
                 } catch (Exception e) {
@@ -741,6 +815,7 @@ private void rellenar() {
                 datos[0] = rs.getString("id_periodo");
                 datos[1] = rs.getString("periodo");
                 datos[2] =rs.getString("descripcion");
+                 lbl_periodo.setText("id_periodo");
                 modelo.addRow(datos);
             }
             TableColumn idP = Tabla_Periodo.getColumn(titulos[0]);
@@ -759,6 +834,9 @@ private void rellenar() {
         txt_periodo.setText(null);
         txt_idPeriodo.setText(null);
            txt_descripcion.setText(null);
+         this.btn_eliminar.setEnabled(false);
+         this.btn_actualizar.setEnabled(false);
+         this.btn_guardar.setEnabled(true);
         
         
         

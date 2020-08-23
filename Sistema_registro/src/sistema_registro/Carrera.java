@@ -54,6 +54,7 @@ public class Carrera extends javax.swing.JFrame {
              this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
             this.btn_eliminar.setEnabled(false);
             this.btn_actualizar1.setEnabled(false);
+            this.lbl_carrera.setVisible(false);
     }
     
     public Carrera(String nombreUsuario) throws SQLException {
@@ -70,6 +71,7 @@ public class Carrera extends javax.swing.JFrame {
             this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
             this.btn_eliminar.setEnabled(false);
             this.btn_actualizar1.setEnabled(false);
+            this.lbl_carrera.setVisible(false);
     }
 
     /**
@@ -97,6 +99,7 @@ public class Carrera extends javax.swing.JFrame {
         txt_idCarrera = new javax.swing.JTextField();
         lbl_idCarrera = new javax.swing.JLabel();
         btn_limpiar = new javax.swing.JButton();
+        lbl_carrera = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
         lbl_usuario = new javax.swing.JLabel();
@@ -221,67 +224,71 @@ public class Carrera extends javax.swing.JFrame {
             }
         });
 
+        lbl_carrera.setText("jLabel2");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(166, 166, 166)
-                        .addComponent(lbl_idCarrera)
-                        .addGap(13, 13, 13)
-                        .addComponent(txt_idCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(btn_limpiar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btn_actualizar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btn_buscar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btn_eliminar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(186, 186, 186)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(169, 169, 169)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbl_facultad)
                             .addComponent(lbl_nombreCarrera)
-                            .addComponent(lbl_facultad))
-                        .addGap(9, 9, 9)
+                            .addComponent(lbl_idCarrera))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbo_idfacultad, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(140, 140, 140))
+                            .addComponent(cbo_idfacultad, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_idCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(140, 140, 140))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbl_carrera)
+                        .addGap(306, 306, 306))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(11, 11, 11)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_guardar)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_idCarrera)
-                            .addComponent(txt_idCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btn_guardar)
+                        .addGap(18, 18, 18)
                         .addComponent(btn_actualizar1)
                         .addGap(18, 18, 18)
-                        .addComponent(btn_buscar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_eliminar))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_buscar)
+                            .addComponent(lbl_nombreCarrera)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lbl_nombreCarrera)
-                                .addGap(68, 68, 68)
-                                .addComponent(lbl_facultad))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(cbo_idfacultad, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(11, 11, 11)
-                .addComponent(btn_limpiar))
+                        .addComponent(lbl_carrera)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_idCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_idCarrera))
+                        .addGap(40, 40, 40)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_eliminar)
+                        .addGap(11, 11, 11)
+                        .addComponent(btn_limpiar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbo_idfacultad, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_facultad))
+                        .addGap(68, 68, 68))))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 870, 310));
@@ -386,9 +393,7 @@ public class Carrera extends javax.swing.JFrame {
 
     private void Tabla_CarreraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_CarreraMouseClicked
           if(Tabla_Carrera.getSelectedRow() >= 0){
-            this.btn_eliminar.setEnabled(true);
-            this.btn_actualizar1.setEnabled(true);
-            this.btn_guardar.setEnabled(false);
+           
            
               llenarCampos();
         }
@@ -472,11 +477,21 @@ public class Carrera extends javax.swing.JFrame {
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
           String nombreCarrera = jtxt_NombreCarrera.getText();
           
-          if ((txt_idCarrera.getText().equals("")) || (jtxt_NombreCarrera.getText().equals("")) || 
-          (cbo_idfacultad.getSelectedItem().equals("Seleccione la carrera"))) {
-            
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la carrera a eliminar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+          if((txt_idCarrera.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id de la carrera.","Id carrera requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_idCarrera.requestFocus();
+            return;
+        }
+        
+        if((jtxt_NombreCarrera.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre de la carrera.","Nombre carrera requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             jtxt_NombreCarrera.requestFocus();
+            return;
+        }
+        
+          
+        if((cbo_idfacultad.getSelectedItem().equals("Seleccione una facultad"))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar una facultad para la carrea","Facultad de la carrera requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
         }
           else if(JOptionPane.showConfirmDialog(null,"¿Está seguro que desea eliminar el registro de la carrera "+nombreCarrera+"","Confirmación de eliminación",
@@ -488,7 +503,11 @@ public class Carrera extends javax.swing.JFrame {
           ResultSet rs;
           ps=con.prepareStatement("Delete Carrera "
                   + "where id_carrera = (Select id_carrera from Carrera where nombre_carrera = '"+jtxt_NombreCarrera.getText()+"')");
-                  int res= ps.executeUpdate();
+                        this.btn_eliminar.setEnabled(false);
+            this.btn_actualizar1.setEnabled(false);
+            this.btn_guardar.setEnabled(true);
+            
+                int res= ps.executeUpdate();
                   JOptionPane.showMessageDialog(null, "Se ha borrado la información de la carrera "+nombreCarrera+" correctamente");
                   if(res > 0){ 
                   }else {
@@ -506,11 +525,22 @@ public class Carrera extends javax.swing.JFrame {
             
         
         String nombreCarrera = jtxt_NombreCarrera.getText() + " ";
-            if ((txt_idCarrera.getText().equals("")) || (jtxt_NombreCarrera.getText().equals("")) || 
-          (cbo_idfacultad.getSelectedItem().equals("Seleccione la carrera"))) {
-            
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la carrera a actualizar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-           
+          if((txt_idCarrera.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id de la carrera.","Id carrera requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_idCarrera.requestFocus();
+            return;
+        }
+        
+        if((jtxt_NombreCarrera.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre de la carrera.","Nombre carrera requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            jtxt_NombreCarrera.requestFocus();
+            return;
+        }
+        
+          
+        if((cbo_idfacultad.getSelectedItem().equals("Seleccione una facultad"))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar una facultad para la carrea","Facultad de la carrera requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
         }
             else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de carrera" + nombreCarrera + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
@@ -521,15 +551,22 @@ public class Carrera extends javax.swing.JFrame {
                 ps = con.prepareStatement("Update Carrera set"
                         + " nombre_carrera = ? ,"
                         + " id_carrera = ? "
-                        + " where id_carrera =\'"+txt_idCarrera.getText()+"\'");
+                        + " where id_carrera =\'"+lbl_carrera.getText()+"\'");
                 
-                ps.setString(0, jtxt_NombreCarrera.getText());
-                ps.setString(1, txt_idCarrera.getText());
+                ps.setString(1, jtxt_NombreCarrera.getText());
+                ps.setString(2, txt_idCarrera.getText());
                /* ps.setString(3, id_facultad);*/
+                this.btn_eliminar.setEnabled(false);
+             this.btn_actualizar1.setEnabled(false);
+             this.btn_guardar.setEnabled(true);
                 int res = ps.executeUpdate();
-             this.btn_eliminar.setEnabled(false);
-            this.btn_actualizar1.setEnabled(false);
-            this.btn_guardar.setEnabled(true);
+                 if(res > 0){
+                    JOptionPane.showMessageDialog(null, "Se ha actualizado la información del período " +nombreCarrera + " correctamente.");
+
+                }else {
+                    JOptionPane.showMessageDialog(null, "¡Error al actualizado la información!.");
+
+                 }
             
             } catch (Exception e) {
                 System.out.println(e);
@@ -679,6 +716,7 @@ public class Carrera extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jtxt_NombreCarrera;
+    private javax.swing.JLabel lbl_carrera;
     private javax.swing.JLabel lbl_facultad;
     private javax.swing.JLabel lbl_idCarrera;
     private javax.swing.JLabel lbl_nombreCarrera;
@@ -742,7 +780,10 @@ public class Carrera extends javax.swing.JFrame {
         txt_idCarrera.setText(Tabla_Carrera.getValueAt(i, 0).toString());
         jtxt_NombreCarrera.setText(Tabla_Carrera.getValueAt(i, 1).toString());
         cbo_idfacultad.setSelectedItem(Tabla_Carrera.getValueAt(i, 2).toString() + " - " + Tabla_Carrera.getValueAt(i, 3).toString());
-        
+         this.btn_eliminar.setEnabled(true);
+         this.btn_actualizar1.setEnabled(true);
+         this.btn_guardar.setEnabled(false);
+         this.lbl_carrera.setText((Tabla_Carrera.getValueAt(i, 0).toString()));
     }
 
     private void rellenar() {
@@ -810,6 +851,9 @@ public class Carrera extends javax.swing.JFrame {
         jtxt_NombreCarrera.setText(null);
         txt_idCarrera.setText(null);
        cbo_idfacultad.setSelectedIndex(0);
+        this.btn_eliminar.setEnabled(false);
+         this.btn_actualizar1.setEnabled(false);
+         this.btn_guardar.setEnabled(true);
         
     }
 }
