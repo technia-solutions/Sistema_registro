@@ -602,6 +602,40 @@ Connection con = null;
         }
     }
     
+    private boolean existeCodAsignatura() {
+        try {
+            Statement st = con.createStatement();
+            String sql = "Select * from Asignaturas where cod_asignaturas = '" + txt_codA.getText() + "'";
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null, "El código de la asignatura: " + txt_codA.getText() + " ya existe", "El código de la asignatura ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Campus.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
+     private boolean existeAsignatura() {
+        try {
+            Statement st = con.createStatement();
+            String sql = "Select * from Asignaturas where nombre_asignaturas = '" + txa_NombreA.getText() + "'";
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null, "La asignatura: " + txa_NombreA.getText() + " ya existe", "El nombre de la asignatura ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Campus.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
     
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
         
@@ -637,16 +671,20 @@ Connection con = null;
             return;
         }
          
-         if((cbo_Req1.getSelectedItem().equals("Seleccione requsito1"))){
+         if((cbo_Req1.getSelectedItem().equals("Seleccione requsito 1"))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un requisito para la asignatura","Requisito1 de la asignatura requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
         }
         
-        if((cbo_Req2.getSelectedItem().equals("Seleccione requsito2"))){
+        if((cbo_Req2.getSelectedItem().equals("Seleccione requsito 2"))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un requisito para la asignatura","Requisito2 de la asignatura requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 
+        if(existeCodAsignatura()){
+            return;
+        }
+        
         if(existeAsignatura()){
             return;
         }
@@ -1002,23 +1040,7 @@ public boolean existeidAsignatura(){
         }
         return false;
     }
-    public boolean existeAsignatura(){
-        try {
-            Statement st = con.createStatement();
-            String sql = "Select nombre_asignaturas from Asignaturas where nombre_asignaturas = '"+txa_NombreA.getText()+"'";
-            ResultSet rs = st.executeQuery(sql);
-            if(rs.next()){
-                JOptionPane.showMessageDialog(null, "Ya existe el nombre de esta asignatura: "+txa_NombreA.getText()+" ", "Nombre de asignatura ¡Ya existe!.", JOptionPane.INFORMATION_MESSAGE);
-                return true; 
-            }
-            else{
-                return false;
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
-    }
+   
        
            private boolean validarLongitud(JTextArea texto, int longitud){
        if(texto.getText().length() >= longitud){

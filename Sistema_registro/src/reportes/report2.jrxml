@@ -123,6 +123,15 @@ and m.numero_cuenta_alumno = $P{numeroCuenta}]]>
 		<field name="nombre_periodo_historico" class="java.lang.String"/>
 		<field name="id_periodo_historico" class="java.lang.Integer"/>
 	</subDataset>
+	<subDataset name="Indice global" uuid="0798ef92-a935-4f1d-b841-fb6d5038f6b9">
+		<parameter name="numeroCuenta" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[select Sum(promedio * uv)/sum(uv) as [Promedio Global] from notas as n join Matricula as m on m.id_matricula = n.id_matricula
+join secciones as s on s.id_seccion = m.id_seccion join Asignaturas as a on a.cod_asignaturas = s.cod_asignaturas
+where numero_cuenta = $P{numeroCuenta}]]>
+		</queryString>
+		<field name="Promedio Global" class="java.math.BigDecimal"/>
+	</subDataset>
 	<parameter name="periodoHistorico" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -130,51 +139,19 @@ and m.numero_cuenta_alumno = $P{numeroCuenta}]]>
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[Select * from secciones as s join matricula as m on s.id_seccion = m.id_seccion join Alumno as a on a.numero_cuenta_alumno = m.numero_cuenta_alumno 
+		<![CDATA[Select a.numero_cuenta_alumno, a.nombres_alumno, a.apellidos_alumno, c.nombre_carrera, ph.nombre_periodo_historico, Sum(promedio * uv) /sum(uv) as [Promedio Global] from secciones as s join matricula as m on s.id_seccion = m.id_seccion join Alumno as a on a.numero_cuenta_alumno = m.numero_cuenta_alumno 
 join Carrera as c on c.id_carrera = a.id_carrera join Asignaturas as asi on asi.cod_asignaturas = s.cod_asignaturas 
 join notas as n on n.id_matricula = m.id_matricula join campus as ca on ca.id_campus = a.id_campus join Periodo_historico as ph on ph.id_periodo = s.id_periodo
 where ph.nombre_periodo_historico = $P{periodoHistorico} and
-m.numero_cuenta_alumno = $P{numeroCuenta}]]>
+m.numero_cuenta_alumno = $P{numeroCuenta}
+group by a.numero_cuenta_alumno, a.nombres_alumno, a.apellidos_alumno, c.nombre_carrera, ph.nombre_periodo_historico]]>
 	</queryString>
-	<field name="id_seccion" class="java.lang.String"/>
-	<field name="Nombre_seccion" class="java.lang.String"/>
-	<field name="cod_asignaturas" class="java.lang.String"/>
-	<field name="cantidad_alumnos" class="java.lang.Short"/>
-	<field name="Hora_inicial" class="java.sql.Time"/>
-	<field name="Hora_final" class="java.sql.Time"/>
-	<field name="id_periodo" class="java.lang.String"/>
-	<field name="id_aula" class="java.lang.String"/>
-	<field name="dias" class="java.lang.String"/>
-	<field name="cantidad_maxima" class="java.lang.String"/>
 	<field name="numero_cuenta_alumno" class="java.lang.String"/>
-	<field name="id_matricula" class="java.lang.Integer"/>
 	<field name="nombres_alumno" class="java.lang.String"/>
 	<field name="apellidos_alumno" class="java.lang.String"/>
-	<field name="telefono_alumno" class="java.lang.String"/>
-	<field name="fecha_nacimiento" class="java.sql.Date"/>
-	<field name="id_carrera" class="java.lang.String"/>
-	<field name="fecha_inscripcion" class="java.sql.Date"/>
-	<field name="numero_identidad" class="java.lang.String"/>
-	<field name="id_campus" class="java.lang.String"/>
 	<field name="nombre_carrera" class="java.lang.String"/>
-	<field name="id_facultad" class="java.lang.String"/>
-	<field name="nombre_asignaturas" class="java.lang.String"/>
-	<field name="UV" class="java.lang.Short"/>
-	<field name="requisito1" class="java.lang.String"/>
-	<field name="requisito2" class="java.lang.String"/>
-	<field name="numero_cuenta" class="java.lang.String"/>
-	<field name="nota1" class="java.math.BigDecimal"/>
-	<field name="nota2" class="java.math.BigDecimal"/>
-	<field name="nota3" class="java.math.BigDecimal"/>
-	<field name="promedio" class="java.math.BigDecimal"/>
-	<field name="estado" class="java.lang.String"/>
-	<field name="id_notas" class="java.lang.Integer"/>
-	<field name="reposicion" class="java.lang.String"/>
-	<field name="nombre_campus" class="java.lang.String"/>
-	<field name="fecha_final" class="java.sql.Date"/>
-	<field name="fecha_inicial" class="java.sql.Date"/>
 	<field name="nombre_periodo_historico" class="java.lang.String"/>
-	<field name="id_periodo_historico" class="java.lang.Integer"/>
+	<field name="Promedio Global" class="java.math.BigDecimal"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -246,6 +223,15 @@ m.numero_cuenta_alumno = $P{numeroCuenta}]]>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="593" y="107" width="100" height="15" uuid="c1efff64-aa53-4116-8859-d1ba773fccc9"/>
+				<textFieldExpression><![CDATA[$F{Promedio Global}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="529" y="107" width="50" height="15" forecolor="#000000" uuid="bc3b1db8-2f10-4978-a785-f6066919d32b"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[CUM:]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>

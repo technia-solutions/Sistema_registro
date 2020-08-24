@@ -88,6 +88,7 @@ public class TipoUsuario extends javax.swing.JFrame {
         lbl_idTipo = new javax.swing.JLabel();
         lbl_TipoUsuario = new javax.swing.JLabel();
         btn_limpiar = new javax.swing.JButton();
+        lbl_tipoU = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -178,6 +179,11 @@ public class TipoUsuario extends javax.swing.JFrame {
                 txt_TipoUsuarioActionPerformed(evt);
             }
         });
+        txt_TipoUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_TipoUsuarioKeyTyped(evt);
+            }
+        });
 
         txt_idTipo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_idTipo.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -188,6 +194,11 @@ public class TipoUsuario extends javax.swing.JFrame {
         txt_idTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_idTipoActionPerformed(evt);
+            }
+        });
+        txt_idTipo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_idTipoKeyTyped(evt);
             }
         });
 
@@ -205,6 +216,8 @@ public class TipoUsuario extends javax.swing.JFrame {
                 btn_limpiarActionPerformed(evt);
             }
         });
+
+        lbl_tipoU.setText("jLabel2");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -234,13 +247,19 @@ public class TipoUsuario extends javax.swing.JFrame {
                             .addComponent(txt_TipoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_tipoU)
+                .addGap(179, 179, 179))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
+                        .addGap(21, 21, 21)
+                        .addComponent(lbl_tipoU)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_idTipo)
                             .addComponent(txt_idTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -371,7 +390,7 @@ this.txt_TipoUsuario.setText("");
        public boolean existeUsuario(){
         try {
             Statement st = con.createStatement();
-            String sql = "Select Tipo_Usario from Tipo_Usuarios where Tipo_Usuario = '"+txt_TipoUsuario.getText()+"'";
+            String sql = "Select Tipo_Usuario from Tipo_Usuarios where Tipo_Usuario = '"+txt_TipoUsuario.getText()+"'";
             ResultSet rs = st.executeQuery(sql);
             if(rs.next()){
                 JOptionPane.showMessageDialog(null, "Ya existe este nombre de Usuario: "+txt_TipoUsuario.getText()+" ", "Nombre de usuario ¡Ya existe!", JOptionPane.INFORMATION_MESSAGE);
@@ -413,7 +432,7 @@ this.txt_TipoUsuario.setText("");
        }
     }
            
-           public void consultarDatos(){
+public void consultarDatos(){
                 try {
                String sql = "SELECT * FROM Tipo_Usuarios";
                stmt = con.createStatement();
@@ -423,8 +442,8 @@ this.txt_TipoUsuario.setText("");
                  while(rs.next()) {
                       String []datos= new String[2];
                       datos[0] =rs.getString("id_tipoUsuario");
-                      datos[1] =rs.getString("Tipo_Usuario");                 
-                      modelo.addRow(datos);
+                      datos[1] =rs.getString("Tipo_Usuario"); 
+                      modelo.addRow(datos);   
                  }
             TableColumn idTi = Tabla_TipoUsuarios.getColumn(titulos[0]);
             idTi.setMaxWidth(175);
@@ -452,6 +471,7 @@ this.txt_TipoUsuario.setText("");
         int i = Tabla_TipoUsuarios.getSelectedRow();
         txt_idTipo.setText(Tabla_TipoUsuarios.getValueAt(i,0).toString());
         txt_TipoUsuario.setText(Tabla_TipoUsuarios.getValueAt(i, 1).toString());
+        this.lbl_tipoU.setText(Tabla_TipoUsuarios.getValueAt(i,0).toString());
     }
     
     private void cbo_menuprincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_menuprincipalActionPerformed
@@ -529,8 +549,9 @@ this.txt_TipoUsuario.setText("");
 
     }//GEN-LAST:event_btn_guardarActionPerformed
 
+    /*
     private void txt_TipoUsuarioKeyTyped(java.awt.event.KeyEvent evt) {                                          
-        if (txt_TipoUsuario.getText().length() >= 35) {
+        if (txt_TipoUsuario.getText().length() >= 2) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
@@ -547,9 +568,11 @@ this.txt_TipoUsuario.setText("");
             JOptionPane.showMessageDialog(null, "Sólo letras");
         }
     }       
+    */
     
+    /*
     private void txt_idTipoKeyTyped(java.awt.event.KeyEvent evt) {                                      
-        if (txt_idTipo.getText().length() >= 4) {
+        if (txt_idTipo.getText().length() >= 2) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
@@ -567,7 +590,7 @@ this.txt_TipoUsuario.setText("");
         }
 
     }                                     
-    
+    */
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
 
         String TipoUsuario = txt_idTipo.getText() + " " + txt_TipoUsuario.getText();
@@ -587,7 +610,7 @@ this.txt_TipoUsuario.setText("");
                 ps=con.prepareStatement("Update Tipo_Usuarios "
                     + "set id_tipoUsuario = ?,"
                     + "Tipo_Usuario = ?"
-                     + " where id_tipoUsuario =\'"+txt_idTipo.getText()+"\'");
+                     + " where id_tipoUsuario =\'"+lbl_tipoU.getText()+"\'");
                         
                 ps.setString(1, txt_idTipo.getText());
                 ps.setString(2, txt_TipoUsuario.getText());
@@ -606,7 +629,7 @@ this.txt_TipoUsuario.setText("");
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
 
-        rellenar();
+        consultarDatos();
     }//GEN-LAST:event_btn_buscarActionPerformed
 
     
@@ -649,7 +672,7 @@ this.txt_TipoUsuario.setText("");
             try {
                 Statement st2 = con.createStatement();
                 String sql = "Delete Tipo_Usuarios " 
-                        + "where id_tipoUsuario = (Select id_tipoUsuario from Tipo_Usuarios where Tipo_Usuario = '"+txt_TipoUsuario.getText()+"')";
+                        + "where id_tipoUsuario = '"+lbl_tipoU.getText()+"'";
                 
                 int rs2 = st2.executeUpdate(sql);
                 System.out.println(rs2);
@@ -684,6 +707,47 @@ this.txt_TipoUsuario.setText("");
         LimpiarCajas();// TODO add your handling code here:
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
+    private void txt_TipoUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_TipoUsuarioKeyTyped
+
+    if (txt_TipoUsuario.getText().length() >= 20) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
+        }
+        if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127
+                || evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22
+                || evt.getKeyChar() == 32 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+            return;
+        }
+        char a = evt.getKeyChar();
+        if (Character.isDigit(a)) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Sólo letras");
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_TipoUsuarioKeyTyped
+
+    private void txt_idTipoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_idTipoKeyTyped
+        if (txt_idTipo.getText().length() >= 1) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
+        }
+        if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127
+                || evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22
+                || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+            return;
+        }
+        char a = evt.getKeyChar();
+        if (Character.isDigit(a) || !Character.isLetterOrDigit(a)) {
+            evt.consume();
+            Toolkit.getDefaultToolkit().beep();
+            JOptionPane.showMessageDialog(null, "Valido numeros y caracteres");
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_idTipoKeyTyped
+
+    
     private void limpiar(){
         txt_idTipo.setText(null);
         txt_TipoUsuario.setText(null);
@@ -746,6 +810,7 @@ this.txt_TipoUsuario.setText("");
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_TipoUsuario;
     private javax.swing.JLabel lbl_idTipo;
+    private javax.swing.JLabel lbl_tipoU;
     private javax.swing.JLabel lbl_titulo;
     private javax.swing.JLabel lbl_usuario;
     private javax.swing.JTextField txt_TipoUsuario;
@@ -783,8 +848,10 @@ this.txt_TipoUsuario.setText("");
    private void LimpiarCajas(){
         txt_TipoUsuario.setText(null);
         txt_idTipo.setText(null);
-      
-        
+        lbl_tipoU.setText("");
+        this.btn_guardar.setEnabled(true);
+        this.btn_actualizar.setEnabled(false);
+        this.btn_eliminar.setEnabled(false);
     }
 
 }
