@@ -46,6 +46,8 @@ public class Facultad extends javax.swing.JFrame {
           this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
            this.btn_eliminar.setEnabled(false);
            this.btn_actualizar.setEnabled(false);
+           this.btn_actualizar.setEnabled(false);
+           this.lbl_facultad.setVisible(false);
          
     }
     
@@ -83,6 +85,7 @@ public class Facultad extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         txa_NombreFacultad = new javax.swing.JTextArea();
         btn_limpiar = new javax.swing.JButton();
+        lbl_facultad = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
         lbl_usuario = new javax.swing.JLabel();
@@ -192,6 +195,8 @@ public class Facultad extends javax.swing.JFrame {
             }
         });
 
+        lbl_facultad.setText("jLabel2");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -216,7 +221,12 @@ public class Facultad extends javax.swing.JFrame {
                         .addComponent(lbl_nombreFacultad)
                         .addGap(9, 9, 9)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(88, 88, 88))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_facultad)
+                .addGap(267, 267, 267))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,7 +244,9 @@ public class Facultad extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_limpiar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
+                        .addGap(26, 26, 26)
+                        .addComponent(lbl_facultad, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_idfacultad)
                             .addComponent(txt_idfacultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -447,7 +459,7 @@ public class Facultad extends javax.swing.JFrame {
                 ps = con.prepareStatement("Update Facultad set"
                     + " nombre_facultad = ? ,"
                     + "id_facultad = ? "
-                    + " where id_facultad =\'"+txt_idfacultad.getText()+"\'");
+                    + " where id_facultad =\'"+lbl_facultad.getText()+"\'");
                 /*ps.setString(1, txt_NombreCampus.getText());*/
                 ps.setString(1, txa_NombreFacultad.getText());
                 ps.setString(2, txt_idfacultad.getText());
@@ -579,6 +591,7 @@ public class Facultad extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lbl_facultad;
     private javax.swing.JLabel lbl_idfacultad;
     private javax.swing.JLabel lbl_nombreFacultad;
     private javax.swing.JLabel lbl_titulo;
@@ -676,6 +689,7 @@ public class Facultad extends javax.swing.JFrame {
         int i = Tabla_Facultad.getSelectedRow();
         txt_idfacultad.setText(Tabla_Facultad.getValueAt(i, 0).toString());
         txa_NombreFacultad.setText(Tabla_Facultad.getValueAt(i, 1).toString());
+         this.lbl_facultad.setText((Tabla_Facultad.getValueAt(i, 0).toString()));
 
     }
   
