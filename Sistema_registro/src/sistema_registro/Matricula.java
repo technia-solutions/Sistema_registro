@@ -100,6 +100,7 @@ public class Matricula extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         lbl_periodo = new javax.swing.JLabel();
+        lbl_codAsignatura = new javax.swing.JLabel();
         lbl_usuario = new javax.swing.JLabel();
         iconodeUsuario = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -250,12 +251,16 @@ public class Matricula extends javax.swing.JFrame {
 
         lbl_periodo.setText("jLabel1");
 
+        lbl_codAsignatura.setText("jLabel3");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(413, 413, 413)
+                .addGap(22, 22, 22)
+                .addComponent(lbl_codAsignatura)
+                .addGap(357, 357, 357)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 376, Short.MAX_VALUE)
                 .addComponent(lbl_periodo)
@@ -267,7 +272,8 @@ public class Matricula extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(lbl_periodo))
+                    .addComponent(lbl_periodo)
+                    .addComponent(lbl_codAsignatura))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -537,8 +543,8 @@ public class Matricula extends javax.swing.JFrame {
 
     
     public boolean agregarMatricula(String nombre, String codigo){
-         String numeroCuenta,id_periodo,estado,reposicion,nota1,nota2,nota3,promedio;
-         ResultSet rs=null;
+        String numeroCuenta,id_periodo,estado,reposicion,nota1,nota2,nota3,promedio;
+        ResultSet rs=null;
         numeroCuenta =txt_numeroCuenta.getText();
         id_periodo= lbl_periodo.getText().substring(5);
         estado="RPB";
@@ -547,22 +553,13 @@ public class Matricula extends javax.swing.JFrame {
         nota2="0";
         nota3="0";
         promedio="0";
-        
         existeNumeroCuenta();
         PreparedStatement pst = null;
-         PreparedStatement pst2 = null;
-          PreparedStatement pst3 = null;
-        
-        
-        
-       
-         
+        PreparedStatement pst2 = null;
+        PreparedStatement pst3 = null;
+
         try{
          String idseccion = null;
-       
-        
-        
-         
          Statement stat = con.createStatement();
            String sql2="select * from Secciones as S\n" +
        "where S.cod_asignaturas= '"+nombre+"' and S.Nombre_seccion='"+codigo+"'";
@@ -591,7 +588,6 @@ public class Matricula extends javax.swing.JFrame {
        
        /* if(minima<maxima){
             return true;
-            
         }
         else{*/
             if(minima>=maxima){
@@ -601,18 +597,27 @@ public class Matricula extends javax.swing.JFrame {
             }
    
         
-         Statement stdoble = con.createStatement();
-               String sqldoble = "select* from matricula as m\n" +
+         
+        Statement stdoble2 = con.createStatement();
+               String sqldoble2 = "select * from matricula as m join secciones as s on s.id_seccion = m.id_seccion join Asignaturas as a on a.cod_asignaturas = s.cod_asignaturas \n" +
+                           "where numero_cuenta_alumno='"+numeroCuenta+"' and s.cod_asignaturas='"+lbl_codAsignatura.getText()+"'";
+               ResultSet rsdoble2 = stdoble2.executeQuery(sqldoble2);
+               if (rsdoble2.next()) {
+
+                  JOptionPane.showMessageDialog(null, "El Alumno tiene la asignatura: " +rsdoble2.getString("nombre_asignaturas")+ " ya matriculada  ", "Asignatura Ya Matriculada", JOptionPane.ERROR_MESSAGE);
+                   return true;
+               }     
+     
+               Statement stdoble = con.createStatement();
+               String sqldoble = "select * from matricula as m\n" +
                            "where numero_cuenta_alumno='"+numeroCuenta+"' and id_seccion='"+idseccion+"'";
                ResultSet rsdoble = stdoble.executeQuery(sqldoble);
                if (rsdoble.next()) {
 
-                  JOptionPane.showMessageDialog(null, "El Alumno tiene la asignatura: " +idseccion+ " ya matriculada  ", "Asignatura Ya Matriculada", JOptionPane.ERROR_MESSAGE);
+                  JOptionPane.showMessageDialog(null, "El Alumno esta matriculado en la seccion: " +idseccion+ " ", "Asignatura Ya Matriculada", JOptionPane.ERROR_MESSAGE);
                    return true;
                }         
-            
-    
-     
+        
                    
             
             String sql="insert Matricula (numero_cuenta_alumno,id_seccion)\n" +
@@ -728,7 +733,8 @@ public class Matricula extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_numeroCuentaKeyTyped
 
     private void tbl_asignaturasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_asignaturasMouseClicked
- 
+        int i = tbl_asignaturas.getSelectedRow();
+        lbl_codAsignatura.setText(tbl_asignaturas.getValueAt(i, 0).toString());
         this.btn_generarReporte.setEnabled(true);
         this.lbl_cancelarAsignatura.setEnabled(true);
         this.btn_matricularAsignatura.setEnabled(true);
@@ -838,6 +844,7 @@ public class Matricula extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton lbl_cancelarAsignatura;
+    private javax.swing.JLabel lbl_codAsignatura;
     private javax.swing.JLabel lbl_numeroCuenta;
     private javax.swing.JLabel lbl_periodo;
     private javax.swing.JLabel lbl_usuario;

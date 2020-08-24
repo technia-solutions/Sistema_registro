@@ -138,6 +138,11 @@
                   </Group>
                   <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="lbl_tipoU" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="179" max="-2" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -145,7 +150,9 @@
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                          <Component id="lbl_tipoU" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lbl_idTipo" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txt_idTipo" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -289,6 +296,7 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_TipoUsuarioActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_TipoUsuarioKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txt_idTipo">
@@ -300,6 +308,7 @@
           <Events>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txt_idTipoFocusLost"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_idTipoActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_idTipoKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lbl_idTipo">
@@ -331,6 +340,11 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_limpiarActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_tipoU">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jLabel2"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

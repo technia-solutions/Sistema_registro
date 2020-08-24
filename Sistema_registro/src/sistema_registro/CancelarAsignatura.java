@@ -47,13 +47,14 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         this.con = ConectorSQL.obtenerConexion();
         initComponents();
         obtenerPeriodo();
-         this.setTitle("Matricula");
+         this.setTitle("Cancelar Asignatura");
           this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
         this.lbl_idMatricula.setVisible(false);
         this.lbl_idPeriodo.setVisible(false);
         this.lbl_idSeccion.setVisible(false);
         this.btn_CancelarAsig.setEnabled(false);
         this.btn_eliminarM.setEnabled(false);
+        this.setLocationRelativeTo(null);
         
         
     }
@@ -62,7 +63,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         this.con = ConectorSQL.obtenerConexion();
         initComponents();
         obtenerPeriodo();
-         this.setTitle("Matricula");
+         this.setTitle("Cancelar Asignatura");
          this.lbl_usuario.setText(nombreUsuario);
           this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
         this.lbl_idMatricula.setVisible(false);
@@ -70,6 +71,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         this.lbl_idSeccion.setVisible(false);
         this.btn_CancelarAsig.setEnabled(false);
         this.btn_eliminarM.setEnabled(false); 
+        this.setLocationRelativeTo(null);
         
     }
 
@@ -96,6 +98,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         btn_CancelarAsig = new javax.swing.JButton();
         lbl_idSeccion = new javax.swing.JLabel();
         btn_limpiar = new javax.swing.JButton();
+        lbl_nombreAsignatura = new javax.swing.JLabel();
         lbl_usuario = new javax.swing.JLabel();
         iconodeUsuario = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -104,6 +107,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(232, 251, 249));
@@ -209,6 +213,8 @@ public class CancelarAsignatura extends javax.swing.JFrame {
             }
         });
 
+        lbl_nombreAsignatura.setText("jLabel2");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -241,11 +247,17 @@ public class CancelarAsignatura extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(60, Short.MAX_VALUE))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(lbl_nombreAsignatura)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addContainerGap()
+                .addComponent(lbl_nombreAsignatura)
+                .addGap(16, 16, 16)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lbl_idMatricula)
@@ -312,6 +324,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
          if(Tabla_Cancelar.getSelectedRow() >= 0){
           lbl_idSeccion.setText(Tabla_Cancelar.getValueAt(i,0).toString()/*+"-"+Tabla_Cancelar.getValueAt(i,2).toString()*/);
           lbl_idPeriodo.setText(Tabla_Cancelar.getValueAt(i,5).toString());
+          lbl_nombreAsignatura.setText(Tabla_Cancelar.getValueAt(i, 2).toString());
               try {
                    Statement st = con.createStatement();
                    String sql2 = "select * from Matricula as m join Secciones as s on m.id_seccion = s.id_seccion\n" +
@@ -337,8 +350,10 @@ public class CancelarAsignatura extends javax.swing.JFrame {
             "and s.id_periodo = '"+lbl_idPeriodo.getText()+"'";
              ResultSet rs2 = st.executeQuery(sql2);
              ArrayList<String> id_matricula = new ArrayList<String>();
+             ArrayList<String> id_seccion = new ArrayList<String>();
              while(rs2.next()){
                  id_matricula.add(rs2.getString(3));
+                 id_seccion.add(rs2.getString(2));
              }
              if(id_matricula.size() > 0){
              for (int i = 0; i < id_matricula.size(); i++) {
@@ -352,6 +367,14 @@ public class CancelarAsignatura extends javax.swing.JFrame {
                  String sql4 = "Delete Matricula\n"
                          + "where id_matricula = '"+id_matricula.get(i)+"'";
                  int rs4 = st3.executeUpdate(sql4);
+                 
+                 Statement st4 = con.createStatement();
+                 String sql5 = "Update Secciones\n" +
+                            "set cantidad_alumnos = cantidad_alumnos - 1 "
+                         + " where id_seccion = '"+id_seccion.get(i)+"'";
+              
+                 int rs5 = st4.executeUpdate(sql5);
+                 
              }
              JOptionPane.showMessageDialog(null,"Se ha cancelado la matricula exitosamente");
                 }
@@ -410,9 +433,19 @@ public class CancelarAsignatura extends javax.swing.JFrame {
                  
                  
                     int res=st.executeUpdate(sql);
+                    
+                    
+                  Statement st4 = con.createStatement();
+                 String sql5 = "Update Secciones\n" +
+                            "set cantidad_alumnos = cantidad_alumnos - 1"
+                         + " where id_seccion = '"+id_seccion+"'";
+              
+                 int rs5 = st4.executeUpdate(sql5);
+                    
                   
                   if(res > 0){ 
-                      JOptionPane.showMessageDialog(null, "Se ha cancelado la asignatura de el alumno: "+numeroCuenta+" correctamente."); 
+                      
+                      JOptionPane.showMessageDialog(null, "Se ha cancelado la asignatura "+lbl_nombreAsignatura.getText()+" del alumno: "+numeroCuenta+" correctamente."); 
                   }else {
                       JOptionPane.showMessageDialog(null, "¡Error al cancelar la asignatura!"); 
                   }
@@ -605,6 +638,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_idMatricula;
     private javax.swing.JLabel lbl_idPeriodo;
     private javax.swing.JLabel lbl_idSeccion;
+    private javax.swing.JLabel lbl_nombreAsignatura;
     private javax.swing.JLabel lbl_numeroCuenta;
     private javax.swing.JLabel lbl_usuario;
     private javax.swing.JTextField txt_NumC;
@@ -674,6 +708,11 @@ public class CancelarAsignatura extends javax.swing.JFrame {
                 this.txt_NumC.setEnabled(false);
                 this.btn_eliminarM.setEnabled(true);
            }
+            if(Tabla_Cancelar.getRowCount() == 0){
+                JOptionPane.showMessageDialog(null, "El alumno no tiene clases matriculadas");
+                LimpiarCajas();
+                return;
+            }
          }catch(SQLException ex){
              System.out.println(ex.toString());
              

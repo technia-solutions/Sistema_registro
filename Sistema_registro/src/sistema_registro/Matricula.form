@@ -307,7 +307,9 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="413" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="lbl_codAsignatura" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="357" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="376" max="32767" attributes="0"/>
                   <Component id="lbl_periodo" min="-2" max="-2" attributes="0"/>
@@ -322,6 +324,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lbl_periodo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_codAsignatura" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -340,6 +343,11 @@
         <Component class="javax.swing.JLabel" name="lbl_periodo">
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel1"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_codAsignatura">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jLabel3"/>
           </Properties>
         </Component>
       </SubComponents>
