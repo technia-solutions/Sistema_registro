@@ -52,6 +52,8 @@ public class Edificio extends javax.swing.JFrame {
              this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
              this.btn_eliminar.setEnabled(false);
             this.btn_actualizar.setEnabled(false);
+              this.lbl_edificio.setVisible(false);
+         
     }
     
     public Edificio(String nombreUsuario) throws SQLException {
@@ -69,6 +71,8 @@ public class Edificio extends javax.swing.JFrame {
             this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
             this.btn_eliminar.setEnabled(false);
             this.btn_actualizar.setEnabled(false);
+            
+         
     }
 
 
@@ -97,6 +101,7 @@ public class Edificio extends javax.swing.JFrame {
         btn_actualizar = new javax.swing.JButton();
         btn_guardar = new javax.swing.JButton();
         btn_limpiar = new javax.swing.JButton();
+        lbl_edificio = new javax.swing.JLabel();
         iconodeUsuario = new javax.swing.JLabel();
         lbl_usuario = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -131,7 +136,7 @@ public class Edificio extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 710, 60));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 710, 60));
 
         jPanel2.setBackground(new java.awt.Color(215, 236, 233));
 
@@ -177,6 +182,11 @@ public class Edificio extends javax.swing.JFrame {
         });
 
         txt_idEdificio.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_idEdificio.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_idEdificioFocusLost(evt);
+            }
+        });
         txt_idEdificio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_idEdificioKeyTyped(evt);
@@ -235,6 +245,8 @@ public class Edificio extends javax.swing.JFrame {
             }
         });
 
+        lbl_edificio.setText("jLabel3");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -266,14 +278,19 @@ public class Edificio extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(txt_idEdificio, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txt_nombreEdificio, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(79, 79, 79))))
+                        .addGap(79, 79, 79))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(lbl_edificio)
+                        .addGap(159, 159, 159))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(56, Short.MAX_VALUE)
+                .addContainerGap(54, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(lbl_edificio)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_idEdificio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_idEdificio))
@@ -428,7 +445,7 @@ public class Edificio extends javax.swing.JFrame {
                     + " id_edificio = ? ,"
                     + " nombre_edificio = ? , "
                     + " id_campus = ?  "
-                  + " where id_edificio =\'"+txt_idEdificio.getText()+"\'");
+                  + " where id_edificio =\'"+lbl_edificio.getText()+"\'");
                   ps.setString(1, txt_idEdificio.getText());
                   ps.setString(2, txt_nombreEdificio.getText());
                   ps.setString(3,id_campus);
@@ -438,6 +455,8 @@ public class Edificio extends javax.swing.JFrame {
              int res = ps.executeUpdate();
             } catch (Exception e) {
                 System.out.println(e);
+                JOptionPane.showMessageDialog(null, "Error al actualizar la informacion del edificio, podria ser por: \n 1.El edificio ya está en uso."
+                         + "\n 2. No se encuentra el código del edificio a actualizar.","¡Error al Actuarlizar!", JOptionPane.ERROR_MESSAGE);
             }
             
             actualizarDatos();
@@ -479,7 +498,9 @@ public class Edificio extends javax.swing.JFrame {
                 }
 
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getMessage());
+               // JOptionPane.showMessageDialog(null, e.getMessage());
+                JOptionPane.showMessageDialog(null, "Error al borrar la informacion del edificio, podria ser por: \n 1.El edificio ya está en uso."
+                         + "\n 2. No se encuentra el código del edificio a borrar.","¡Error al borrar!", JOptionPane.ERROR_MESSAGE);
             }
             actualizarDatos();
             LimpiarCajas();
@@ -489,7 +510,7 @@ public class Edificio extends javax.swing.JFrame {
 
     private void txt_idEdificioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_idEdificioKeyTyped
        
-        if (txt_idEdificio.getText().length() >= 2) {
+        if (txt_idEdificio.getText().length() >= 1) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos.");
@@ -572,8 +593,15 @@ public class Edificio extends javax.swing.JFrame {
 
     private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
         LimpiarCajas();
+         btn_guardar.setEnabled(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_limpiarActionPerformed
+
+    private void txt_idEdificioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_idEdificioFocusLost
+            String id = txt_idEdificio.getText();
+        String upper = id.toUpperCase();
+        txt_idEdificio.setText(upper); 
+    }//GEN-LAST:event_txt_idEdificioFocusLost
 
     /**
      * @param args the command line arguments
@@ -633,6 +661,7 @@ public class Edificio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_campus;
+    private javax.swing.JLabel lbl_edificio;
     private javax.swing.JLabel lbl_idEdificio;
     private javax.swing.JLabel lbl_nombreEdificio;
     private javax.swing.JLabel lbl_titulo;
@@ -752,6 +781,7 @@ public class Edificio extends javax.swing.JFrame {
         txt_idEdificio.setText(Tabla_Edificio.getValueAt(i, 0).toString());
         txt_nombreEdificio.setText(Tabla_Edificio.getValueAt(i, 1).toString());
         String campus = Tabla_Edificio.getValueAt(i, 2).toString();
+        this.lbl_edificio.setText((Tabla_Edificio.getValueAt(i, 0).toString()));
         Statement st;
         try {
             st = con.createStatement();
