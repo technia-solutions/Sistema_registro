@@ -105,67 +105,66 @@ join Carrera as c on c.id_carrera = a.id_carrera join Asignaturas as asi on asi.
 	<subDataset name="Table Dataset 2" uuid="b10b7cf8-2cf6-44af-92fe-3e5c2f41c6bd"/>
 	<subDataset name="Clases" uuid="f1c689fc-a7b6-41fb-962d-a2c129c87d6d">
 		<parameter name="numeroCuenta" class="java.lang.String"/>
-		<queryString language="SQL">
+		<queryString>
 			<![CDATA[Select * from secciones as s join matricula as m on s.id_seccion = m.id_seccion join Alumno as a on a.numero_cuenta_alumno = m.numero_cuenta_alumno 
 join Carrera as c on c.id_carrera = a.id_carrera join Asignaturas as asi on asi.cod_asignaturas = s.cod_asignaturas 
-join notas as n on n.id_matricula = m.id_matricula join campus as ca on ca.id_campus = a.id_campus join Periodo_historico as ph on ph.id_periodo = s.id_periodo]]>
+join notas as n on n.id_matricula = m.id_matricula join campus as ca on ca.id_campus = a.id_campus join Periodo_historico as ph on ph.id_periodo = s.id_periodo
+where a.numero_cuenta_alumno = $P{numeroCuenta}]]>
 		</queryString>
-		<field name="cod_asignaturas" class="java.lang.String"/>
-		<field name="nombre_asignaturas" class="java.lang.String"/>
+		<field name="id_seccion" class="java.lang.String"/>
 		<field name="Nombre_seccion" class="java.lang.String"/>
+		<field name="cod_asignaturas" class="java.lang.String"/>
+		<field name="cantidad_alumnos" class="java.lang.Short"/>
+		<field name="Hora_inicial" class="java.sql.Time"/>
+		<field name="Hora_final" class="java.sql.Time"/>
+		<field name="id_periodo" class="java.lang.String"/>
+		<field name="id_aula" class="java.lang.String"/>
+		<field name="dias" class="java.lang.String"/>
+		<field name="cantidad_maxima" class="java.lang.String"/>
+		<field name="numero_cuenta_alumno" class="java.lang.String"/>
+		<field name="id_matricula" class="java.lang.Integer"/>
+		<field name="nombres_alumno" class="java.lang.String"/>
+		<field name="apellidos_alumno" class="java.lang.String"/>
+		<field name="telefono_alumno" class="java.lang.String"/>
+		<field name="fecha_nacimiento" class="java.sql.Date"/>
+		<field name="id_carrera" class="java.lang.String"/>
+		<field name="fecha_inscripcion" class="java.sql.Date"/>
+		<field name="numero_identidad" class="java.lang.String"/>
+		<field name="id_campus" class="java.lang.String"/>
+		<field name="nombre_carrera" class="java.lang.String"/>
+		<field name="id_facultad" class="java.lang.String"/>
+		<field name="nombre_asignaturas" class="java.lang.String"/>
+		<field name="UV" class="java.lang.Short"/>
+		<field name="requisito1" class="java.lang.String"/>
+		<field name="requisito2" class="java.lang.String"/>
+		<field name="numero_cuenta" class="java.lang.String"/>
 		<field name="nota1" class="java.math.BigDecimal"/>
 		<field name="nota2" class="java.math.BigDecimal"/>
 		<field name="nota3" class="java.math.BigDecimal"/>
 		<field name="promedio" class="java.math.BigDecimal"/>
 		<field name="estado" class="java.lang.String"/>
+		<field name="id_notas" class="java.lang.Integer"/>
+		<field name="reposicion" class="java.lang.String"/>
+		<field name="nombre_campus" class="java.lang.String"/>
+		<field name="fecha_final" class="java.sql.Date"/>
+		<field name="fecha_inicial" class="java.sql.Date"/>
 		<field name="nombre_periodo_historico" class="java.lang.String"/>
+		<field name="id_periodo_historico" class="java.lang.Integer"/>
 	</subDataset>
 	<parameter name="numeroCuenta" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[Select * from secciones as s join matricula as m on s.id_seccion = m.id_seccion join Alumno as a on a.numero_cuenta_alumno = m.numero_cuenta_alumno 
+		<![CDATA[Select a.numero_cuenta_alumno, a.nombres_alumno, a.apellidos_alumno, c.nombre_carrera, ca.nombre_campus, Sum(promedio * uv)/sum(uv) as [Promedio Global] from secciones as s join matricula as m on s.id_seccion = m.id_seccion join Alumno as a on a.numero_cuenta_alumno = m.numero_cuenta_alumno 
 join Carrera as c on c.id_carrera = a.id_carrera join Asignaturas as asi on asi.cod_asignaturas = s.cod_asignaturas 
 join notas as n on n.id_matricula = m.id_matricula join campus as ca on ca.id_campus = a.id_campus join Periodo_historico as ph on ph.id_periodo = s.id_periodo
-where a.numero_cuenta_alumno = $P{numeroCuenta}]]>
+where a.numero_cuenta_alumno = $P{numeroCuenta}
+group by a.numero_cuenta_alumno, a.nombres_alumno, a.apellidos_alumno, c.nombre_carrera, ca.nombre_campus]]>
 	</queryString>
-	<field name="id_seccion" class="java.lang.String"/>
-	<field name="Nombre_seccion" class="java.lang.String"/>
-	<field name="cod_asignaturas" class="java.lang.String"/>
-	<field name="cantidad_alumnos" class="java.lang.Short"/>
-	<field name="Hora_inicial" class="java.sql.Time"/>
-	<field name="Hora_final" class="java.sql.Time"/>
-	<field name="id_periodo" class="java.lang.String"/>
-	<field name="id_aula" class="java.lang.String"/>
-	<field name="dias" class="java.lang.String"/>
-	<field name="cantidad_maxima" class="java.lang.String"/>
 	<field name="numero_cuenta_alumno" class="java.lang.String"/>
-	<field name="id_matricula" class="java.lang.Integer"/>
 	<field name="nombres_alumno" class="java.lang.String"/>
 	<field name="apellidos_alumno" class="java.lang.String"/>
-	<field name="telefono_alumno" class="java.lang.String"/>
-	<field name="fecha_nacimiento" class="java.sql.Date"/>
-	<field name="id_carrera" class="java.lang.String"/>
-	<field name="fecha_inscripcion" class="java.sql.Date"/>
-	<field name="numero_identidad" class="java.lang.String"/>
-	<field name="id_campus" class="java.lang.String"/>
 	<field name="nombre_carrera" class="java.lang.String"/>
-	<field name="id_facultad" class="java.lang.String"/>
-	<field name="nombre_asignaturas" class="java.lang.String"/>
-	<field name="UV" class="java.lang.Short"/>
-	<field name="requisito1" class="java.lang.String"/>
-	<field name="requisito2" class="java.lang.String"/>
-	<field name="numero_cuenta" class="java.lang.String"/>
-	<field name="nota1" class="java.math.BigDecimal"/>
-	<field name="nota2" class="java.math.BigDecimal"/>
-	<field name="nota3" class="java.math.BigDecimal"/>
-	<field name="promedio" class="java.math.BigDecimal"/>
-	<field name="estado" class="java.lang.String"/>
-	<field name="id_notas" class="java.lang.Integer"/>
-	<field name="reposicion" class="java.lang.String"/>
 	<field name="nombre_campus" class="java.lang.String"/>
-	<field name="fecha_final" class="java.sql.Date"/>
-	<field name="fecha_inicial" class="java.sql.Date"/>
-	<field name="nombre_periodo_historico" class="java.lang.String"/>
-	<field name="id_periodo_historico" class="java.lang.Integer"/>
+	<field name="Promedio Global" class="java.math.BigDecimal"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -232,6 +231,15 @@ where a.numero_cuenta_alumno = $P{numeroCuenta}]]>
 				<reportElement x="192" y="0" width="169" height="138" uuid="987d1e2d-5045-4d48-a042-4b6b07327e1c"/>
 				<imageExpression><![CDATA["C:\\Users\\Carlos\\Documents\\NetBeansProjects\\Sistema_registro\\Sistema_registro\\src\\Imagenes\\Titulo.png"]]></imageExpression>
 			</image>
+			<textField>
+				<reportElement x="150" y="284" width="100" height="20" uuid="89a49148-dfc4-4075-aa84-5d869e31679f"/>
+				<textFieldExpression><![CDATA[$F{Promedio Global}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="9" y="284" width="114" height="16" forecolor="#000000" uuid="418c75d4-9553-4caf-92fb-2cb1342a600a"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[CUM:]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
@@ -242,7 +250,7 @@ where a.numero_cuenta_alumno = $P{numeroCuenta}]]>
 			<componentElement>
 				<reportElement key="table 3" style="table 3" x="1" y="0" width="553" height="132" uuid="9977e579-ac38-48bf-8fdf-0574ab7d5a1d"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Clases" uuid="687e2504-2690-4437-a1e2-1ec5bc4c8e7e">
+					<datasetRun subDataset="Clases" uuid="2e2eaf5e-d0e6-4e6c-8746-f0f600806cf1">
 						<datasetParameter name="numeroCuenta">
 							<datasetParameterExpression><![CDATA[$P{numeroCuenta}]]></datasetParameterExpression>
 						</datasetParameter>
