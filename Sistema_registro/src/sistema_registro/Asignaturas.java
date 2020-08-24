@@ -180,7 +180,7 @@ Connection con = null;
                 .addGap(19, 19, 19))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, 70));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, -1, 70));
 
         jPanel2.setBackground(new java.awt.Color(215, 236, 233));
 
@@ -350,7 +350,7 @@ Connection con = null;
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(lbl_Req2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbo_Req2, 0, 208, Short.MAX_VALUE))
+                                .addComponent(cbo_Req2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lbl_IdCarrera)
@@ -570,7 +570,9 @@ Connection con = null;
                 actualizarDatos();
                 LimpiarCajas();
             } catch (Exception e) {
-                System.out.println(e);
+               // System.out.println(e);
+                JOptionPane.showMessageDialog(null, "Error al actualizar la informacion de la asignatura, podría ser por: \n 1.La Asignatura ya está en uso con alumnos matriculados."
+                         + "\n 2. No se encuentra el código de la Asignatura a actualizar.\n 3.La Asignatura tiene secciones creadas","¡Error al Actuarlizar!", JOptionPane.ERROR_MESSAGE);
             }
             
 
@@ -694,7 +696,7 @@ Connection con = null;
              } catch ( Exception e) {
             System.out.println(e);
         
-             JOptionPane.showMessageDialog(null, e.getMessage());
+             JOptionPane.showMessageDialog(null, "Error al guardar la información");
         }
         
 
@@ -722,7 +724,7 @@ Connection con = null;
                 int rs2 = st2.executeUpdate(sql);
                 System.out.println(rs2);
                 if(rs2 > 0){
-                    JOptionPane.showMessageDialog(null, "Se ha borrado la información de la asignatura " + Asignatura + " correctamente");
+                    JOptionPane.showMessageDialog(null, "Se ha borrado la información de la asignatura" + Asignatura + " correctamente");
 
                 }else {
                     JOptionPane.showMessageDialog(null, "¡Error al eliminar la información!");
@@ -730,7 +732,9 @@ Connection con = null;
                 }
 
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getMessage());
+                //JOptionPane.showMessageDialog(null, e.getMessage());
+                   JOptionPane.showMessageDialog(null, "Error al borrar la información de la asignatura, podría ser por: \n 1.La Asignatura ya está en uso con alumnos matriculados."
+                         + "\n 2. No se encuentra el código de la Asignatura a borrar.\n 3.La Asignatura tiene secciones creadas","¡Error al Borrar!", JOptionPane.ERROR_MESSAGE);
             }
 
         }
@@ -794,7 +798,7 @@ Connection con = null;
         this.dispose();
         RequisitoAsignatura req = null;
     try {
-        req = new RequisitoAsignatura();
+        req = new RequisitoAsignatura(lbl_usuario.getText());
     } catch (SQLException ex) {
         Logger.getLogger(Asignaturas.class.getName()).log(Level.SEVERE, null, ex);
     }
@@ -897,6 +901,7 @@ Connection con = null;
 
     private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
         LimpiarCajas();
+        btn_guardar.setEnabled(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
@@ -1189,7 +1194,7 @@ public boolean existeidAsignatura(){
 
                     }
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, e.getMessage());
+                    //JOptionPane.showMessageDialog(null, e.getMessage());
                 }
     
     }

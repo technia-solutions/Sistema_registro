@@ -217,9 +217,9 @@ public class Facultad extends javax.swing.JFrame {
                         .addGap(14, 14, 14)
                         .addComponent(txt_idfacultad, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
+                        .addGap(64, 64, 64)
                         .addComponent(lbl_nombreFacultad)
-                        .addGap(9, 9, 9)
+                        .addGap(18, 18, 18)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(88, 88, 88))
@@ -236,7 +236,9 @@ public class Facultad extends javax.swing.JFrame {
                         .addGap(55, 55, 55)
                         .addComponent(btn_guardar)
                         .addGap(11, 11, 11)
-                        .addComponent(btn_actualizar)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_actualizar)
+                            .addComponent(lbl_nombreFacultad))
                         .addGap(11, 11, 11)
                         .addComponent(btn_buscar)
                         .addGap(11, 11, 11)
@@ -250,13 +252,9 @@ public class Facultad extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_idfacultad)
                             .addComponent(txt_idfacultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(2, 2, 2)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(lbl_nombreFacultad))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18))
         );
@@ -285,7 +283,7 @@ public class Facultad extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 830, 60));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 830, 60));
 
         lbl_usuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_usuario.setText("Nombre Usuario");
@@ -352,7 +350,10 @@ public class Facultad extends javax.swing.JFrame {
                 }
 
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getMessage());
+                //JOptionPane.showMessageDialog(null, e.getMessage());
+                     JOptionPane.showMessageDialog(null, "Error al borrar la información, podría ser por: \n 1.La facultad ya está en uso."
+                         + "\n 2. No se encuentra el código de la facultad a borrar.","¡Error al Borrar!", JOptionPane.ERROR_MESSAGE);
+            
             }
 
            actualizarDatos();
@@ -435,9 +436,10 @@ public class Facultad extends javax.swing.JFrame {
             ps.setString(1, txt_idfacultad.getText());
             ps.setString(2, txa_NombreFacultad.getText());
             int res = ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Se ha guradod la información de la facultad");
+            JOptionPane.showMessageDialog(null, "Se ha guardado la información de la facultad: "+txa_NombreFacultad.getText());
         } catch (Exception e) {
             System.out.println(e);
+             JOptionPane.showMessageDialog(null, "Error al Guardar la información");
 
         }
         actualizarDatos();
@@ -469,6 +471,8 @@ public class Facultad extends javax.swing.JFrame {
                 int res = ps.executeUpdate();
             } catch (Exception e) {
                 System.out.println(e);
+                              JOptionPane.showMessageDialog(null, "No se ha realizado la actualización por: \n 1.La facultad ya está en uso."
+                         + "\n 2. No se encuentra el código de la facultad a actualizar.","¡Error al Actualizar!", JOptionPane.ERROR_MESSAGE);
             }
             
             actualizarDatos();
@@ -500,7 +504,7 @@ public class Facultad extends javax.swing.JFrame {
 
     private void txa_NombreFacultadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txa_NombreFacultadKeyTyped
 
-        if (txa_NombreFacultad.getText().length() >= 50) {
+        if (txa_NombreFacultad.getText().length() >= 40) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
@@ -533,6 +537,8 @@ public class Facultad extends javax.swing.JFrame {
 
     private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
         LimpiarCajas();
+        
+        btn_guardar.setEnabled(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
