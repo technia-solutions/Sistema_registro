@@ -668,6 +668,17 @@ public class Alumno extends javax.swing.JFrame {
             return;
         }
         
+         
+        if(!validarLongitud(txt_nombres,5)){
+            JOptionPane.showMessageDialog(null, "Los nombres ingresados son muy pequeños el mínimo es de 5 caracteres", "Longitud de los nombres", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+         if(!validarLongitud(txt_apellidos,5)){
+            JOptionPane.showMessageDialog(null, "Los apellidos ingresados son muy pequeños el mínimo es de 5 caracteres", "Longitud de los apellidos", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
         
          if(!validarLongitudTelefono(txt_telefono,8)){
             return;
@@ -956,6 +967,8 @@ public class Alumno extends javax.swing.JFrame {
                       limpiar();
             } catch ( Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage());
+                
+                
             }
          }
     }//GEN-LAST:event_btn_actualizarActionPerformed
@@ -1238,6 +1251,13 @@ public class Alumno extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
    
-
+ private boolean validarLongitud(JTextField texto, int longitud){
+       if(texto.getText().length() >= longitud){
+           return true;
+       }
+       else{
+           return false;
+       }
+    }
 
 }

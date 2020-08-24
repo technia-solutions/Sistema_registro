@@ -41,7 +41,8 @@ public class Periodo extends javax.swing.JFrame {
             this.setTitle("Período");
             this.btn_eliminar.setEnabled(false);
             this.btn_actualizar.setEnabled(false);
-            this.lbl_periodo.setVisible(false);
+           this.lbl_periodo.setVisible(false);
+            this.setLocationRelativeTo(null);
     }
     
     public Periodo(String nombreUsuario) throws SQLException {
@@ -53,7 +54,8 @@ public class Periodo extends javax.swing.JFrame {
             this.setTitle("Período");
             this.btn_eliminar.setEnabled(false);
             this.btn_actualizar.setEnabled(false);
-             this.lbl_periodo.setVisible(false);
+            this.lbl_periodo.setVisible(false);
+            this.setLocationRelativeTo(null);
     }
 
 
@@ -95,6 +97,7 @@ public class Periodo extends javax.swing.JFrame {
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(232, 251, 249));
@@ -501,7 +504,9 @@ public class Periodo extends javax.swing.JFrame {
                 }
 
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getMessage());
+                //JOptionPane.showMessageDialog(null,"¡Error al eliminar la información!" );
+                 JOptionPane.showMessageDialog(null, "Error al borrar la información del período, podría ser por: \n 1.El período ya empezo."
+                         + "\n 2. No se encuentra el código del período.\n 3.El período tiene alumnos matriculados","¡Error al eliminar!", JOptionPane.ERROR_MESSAGE);
             }
 
            
@@ -551,11 +556,14 @@ public class Periodo extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Se ha actualizado la información del período " + nombrePeriodo + " correctamente.");
 
                 }else {
-                    JOptionPane.showMessageDialog(null, "¡Error al actualizado la información!.");
+                    JOptionPane.showMessageDialog(null, "¡Error al actualizar la información!.");
 
                 }
             } catch (Exception e) {
-                System.out.println(e);
+                //JOptionPane.showMessageDialog(null, "¡Error al actualizar la información!.");
+                //System.out.println(e);
+                JOptionPane.showMessageDialog(null, "Error al actualizar la información del período, podría ser por: \n 1.El período ya empezo."
+                         + "\n 2. No se encuentra el código del período.\n 3.El período tiene alumnos matriculados","¡Error al actualizar!", JOptionPane.ERROR_MESSAGE);
             }
             actualizarDatos();
             LimpiarCajas();

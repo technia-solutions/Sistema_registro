@@ -486,7 +486,9 @@ public class Edificio extends javax.swing.JFrame {
                 Statement st2 = con.createStatement();
                 String sql = "Delete Edificio "
                 + "where id_edificio = (Select id_edificio from Edificio where nombre_edificio = '"+txt_nombreEdificio.getText()+"')";
-
+                 this.btn_eliminar.setEnabled(false);
+                this.btn_actualizar.setEnabled(false);
+                this.btn_guardar.setEnabled(true);
                 int rs2 = st2.executeUpdate(sql);
                 System.out.println(rs2);
                 if(rs2 > 0){
@@ -562,9 +564,6 @@ public class Edificio extends javax.swing.JFrame {
     private void Tabla_EdificioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_EdificioMouseClicked
        if(Tabla_Edificio.getSelectedRow () >= 0){
            try {
-            this.btn_eliminar.setEnabled(true);
-            this.btn_actualizar.setEnabled(true);
-            this.btn_guardar.setEnabled(false);
                llenarCampos();
            } catch (SQLException ex) {
                Logger.getLogger(Edificio.class.getName()).log(Level.SEVERE, null, ex);
@@ -771,7 +770,10 @@ public class Edificio extends javax.swing.JFrame {
        
         txt_idEdificio.setText(null);
         txt_nombreEdificio.setText(null);
-        cbo_idCampus.setSelectedIndex(0);
+        cbo_idCampus.setSelectedIndex(0); 
+        this.btn_eliminar.setEnabled(false);
+        this.btn_actualizar.setEnabled(false);
+         this.btn_guardar.setEnabled(true);
         
        
     }
@@ -782,6 +784,9 @@ public class Edificio extends javax.swing.JFrame {
         txt_nombreEdificio.setText(Tabla_Edificio.getValueAt(i, 1).toString());
         String campus = Tabla_Edificio.getValueAt(i, 2).toString();
         this.lbl_edificio.setText((Tabla_Edificio.getValueAt(i, 0).toString()));
+         this.btn_eliminar.setEnabled(true);
+         this.btn_actualizar.setEnabled(true);
+         this.btn_guardar.setEnabled(false);
         Statement st;
         try {
             st = con.createStatement();

@@ -38,8 +38,8 @@ public class Secciones extends javax.swing.JFrame {
 
     Connection con = null;
       String titulos [] = {"Id Sección","Nombre de la Sección", " Código de la Asignatura ", 
-         "Cantidad de Alumnos","Hora Inicial", "Hora Final",  "Periodo", "Aula",
-         "Dias de la Asignatura","Cantidad Máxima de Alumnos"};
+         "Cantidad de Alumnos","Hora Inicial", "Hora Final",  "Período", "Aula",
+         "Días de la Asignatura","Cantidad Máxima de Alumnos"};
    
     DefaultTableModel modelo =  new DefaultTableModel();
     Statement stmt = null;
@@ -86,6 +86,7 @@ public class Secciones extends javax.swing.JFrame {
             this.btn_actualizar.setEnabled(false);
             this.btn_eliminar.setEnabled(false);
             this.lbl_seccion.setVisible(false);
+            this.setLocationRelativeTo(null);
     }
     
     public Secciones(String nombreUsuario) throws SQLException {
@@ -120,6 +121,7 @@ public class Secciones extends javax.swing.JFrame {
             this.btn_actualizar.setEnabled(false);
             this.btn_eliminar.setEnabled(false);
             this.lbl_seccion.setVisible(false);
+             this.setLocationRelativeTo(null);
     }
     
     
@@ -183,6 +185,7 @@ public class Secciones extends javax.swing.JFrame {
         jMenuItem_Aula = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Tabla_Seccion.setModel(new javax.swing.table.DefaultTableModel(
@@ -634,10 +637,44 @@ public class Secciones extends javax.swing.JFrame {
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
           String Mensaje = "";
         String Seccion = txt_NombreSeccion.getText() + " ";
-        if ((txt_NombreSeccion.getText().equals("")) || (txt_HoraInicial.getText().equals("")) || (txt_HoraFinal.getText().equals(""))) {
-
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la sección a actualizar!. \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                   if((txt_NombreSeccion.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre de la sección.","Nombre sección requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_NombreSeccion.requestFocus();
+            return;
+        }
+            
+         if((cbo_Asignaturas.getSelectedItem().equals("Seleccione una asignatura"))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar una asignatura para la sección.","Asignatura de la sección requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+         
+          if((txt_HoraInicial.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar la hora inicial de la sección.","Hora inicial requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_HoraInicial.requestFocus();
+            return;
+        }
+        
+           if((txt_HoraFinal.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar la hora final de la sección.","Hora final requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_HoraFinal.requestFocus();
+            return;
+        }
+           
+         if((cbo_IdPeriodo.getSelectedItem().equals("Seleccione un período"))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un período para la sección.","Período de la sección requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+         
+           if((cbo_IdAula.getSelectedItem().equals("Seleccione un aula"))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar una para la sección.","Aula de la sección requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+           
+        if ((chb_Lunes.getText().equals("")) || (chb_Martes.getText().equals("")) || (chb_Miercoles.getText().equals("")) || (chb_Jueves.getText().equals("")) ||
+             (chb_Viernes.getText().equals("")) || (chb_Sabado.getText().equals("")) || (chb_Domingo.getText().equals(""))) {
+
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar el día de la sección!. \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            chb_Lunes.requestFocus();
             return;
         }
         
@@ -701,9 +738,18 @@ public class Secciones extends javax.swing.JFrame {
                   
             
              int res = ps.executeUpdate();
+               if(res > 0){
+                    JOptionPane.showMessageDialog(null, "Se ha actualizado la información de la sección " + Seccion + " correctamente.");
+
+                }else {
+                    JOptionPane.showMessageDialog(null, "¡Error al actualizar la información!.");
+
+                }
              
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null,e.getMessage());
+                //JOptionPane.showMessageDialog(null,e.getMessage());
+                JOptionPane.showMessageDialog(null, "Error al actualizar la información de la sección, podría ser por: \n 1.La sección ya está en uso con alumnos matriculados."
+                         + "\n 2. No se encuentra el código de la sección a borrar.\n 3.La sección tiene asignaturas creadas","¡Error al actualizar!", JOptionPane.ERROR_MESSAGE);
             }
             
             actualizarDatos();
@@ -718,10 +764,45 @@ public class Secciones extends javax.swing.JFrame {
         
          String Seccion = txt_NombreSeccion.getText();
            String id_seccion = cbo_Asignaturas.getSelectedItem().toString().substring(0, 4) + "-" +  txt_NombreSeccion.getText();
-           if ((txt_NombreSeccion.getText().equals("")) ||  (txt_HoraInicial.getText().equals(""))   || (txt_HoraFinal.getText().equals(""))  ) {
-          
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar la sección que desea eliminar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                      if((txt_NombreSeccion.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre de la sección.","Nombre sección requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_NombreSeccion.requestFocus();
+            return;
+        }
+            
+         if((cbo_Asignaturas.getSelectedItem().equals("Seleccione una asignatura"))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar una asignatura para la sección.","Asignatura de la sección requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+         
+          if((txt_HoraInicial.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar la hora inicial de la sección.","Hora inicial requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_HoraInicial.requestFocus();
+            return;
+        }
+        
+           if((txt_HoraFinal.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar la hora final de la sección.","Hora final requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_HoraFinal.requestFocus();
+            return;
+        }
            
+         if((cbo_IdPeriodo.getSelectedItem().equals("Seleccione un período"))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un período para la sección.","Período de la sección requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+         
+           if((cbo_IdAula.getSelectedItem().equals("Seleccione un aula"))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar una para la sección.","Aula de la sección requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+           
+        if ((chb_Lunes.getText().equals("")) || (chb_Martes.getText().equals("")) || (chb_Miercoles.getText().equals("")) || (chb_Jueves.getText().equals("")) ||
+             (chb_Viernes.getText().equals("")) || (chb_Sabado.getText().equals("")) || (chb_Domingo.getText().equals(""))) {
+
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar el día de la sección!. \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            chb_Lunes.requestFocus();
+            return;
         }
           else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de sección" + Seccion+ "", "Confirmación de eliminación",
             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
@@ -746,7 +827,9 @@ public class Secciones extends javax.swing.JFrame {
                 }
 
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getMessage());
+               // JOptionPane.showMessageDialog(null, "¡Error al eliminar la información!");
+               JOptionPane.showMessageDialog(null, "Error al eliminar la información de la sección, podría ser por: \n 1.La sección ya está en uso con alumnos matriculados."
+                         + "\n 2. No se encuentra el código de la sección a borrar.\n 3.La sección tiene asignaturas creadas","¡Error al eliminar!", JOptionPane.ERROR_MESSAGE);
             }
 
         }
@@ -874,6 +957,10 @@ public class Secciones extends javax.swing.JFrame {
     
 
         if(existeSeccion()){
+            return;
+        }
+        
+           if(existeidSeccion()){
             return;
         }
 
@@ -1262,6 +1349,26 @@ public class Secciones extends javax.swing.JFrame {
             ResultSet rs = st.executeQuery(sql);
             if(rs.next()){
                 JOptionPane.showMessageDialog(null, "Ya existe esta Sección: "+txt_NombreSeccion+" ", " Sección ¡Ya existe!", JOptionPane.INFORMATION_MESSAGE);
+                return true;
+            }
+            else{
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
+     public boolean existeidSeccion(){
+          String id_seccion = cbo_Asignaturas.getSelectedItem().toString().substring(0, 4) + "-" +  txt_NombreSeccion.getText();
+        try {
+            
+            Statement st = con.createStatement();
+            String sql = "Select id_seccion from Secciones where id_seccion = '"+id_seccion+"'";
+            ResultSet rs = st.executeQuery(sql);
+            if(rs.next()){
+                JOptionPane.showMessageDialog(null, "Ya existe el id de esta sección: "+id_seccion+" ", " Id sección ¡Ya existe!", JOptionPane.INFORMATION_MESSAGE);
                 return true;
             }
             else{

@@ -52,6 +52,7 @@ public class Aula extends javax.swing.JFrame {
              this.btn_eliminar.setEnabled(false);
              this.btn_actualizar.setEnabled(false);
              this.lbl_aula.setVisible(false);
+             this.setLocationRelativeTo(null);
     }       
     
      public Aula(String nombreUsuario) throws SQLException {
@@ -69,6 +70,7 @@ public class Aula extends javax.swing.JFrame {
             this.btn_eliminar.setEnabled(false);
             this.btn_actualizar.setEnabled(false);
             this.lbl_aula.setVisible(false);
+            this.setLocationRelativeTo(null);
      }
 
     /**
@@ -109,6 +111,7 @@ public class Aula extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(232, 251, 249));
@@ -359,7 +362,7 @@ public class Aula extends javax.swing.JFrame {
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Edificio.png"))); // NOI18N
-        jMenuItem2.setText("Administrar Edifio");
+        jMenuItem2.setText("Administrar Edificio");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -547,15 +550,14 @@ public class Aula extends javax.swing.JFrame {
                  this.btn_actualizar.setEnabled(false);
 
                 int res = ps.executeUpdate();
-                if(res > 0){
+           
                     JOptionPane.showMessageDialog(null, "Se ha actualizado la información del aula " + Aula + " correctamente.");
 
-                }else {
-                    JOptionPane.showMessageDialog(null, "¡Error al actualizar la información!.");
-
-                }
+               
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null,e.getMessage());
+                
+                JOptionPane.showMessageDialog(null,"Error al actualizar la información de la aula, podría ser por: \n 1.El aula ya está en uso con alumnos matriculados."
+                         + "\n 2. No se encuentra el código de la aula a actualizar.\n 3.El aula tiene secciones creadas","¡Error al actualizar!", JOptionPane.ERROR_MESSAGE);
             }
            actualizarDatos();
             LimpiarCajas();
@@ -623,7 +625,9 @@ public class Aula extends javax.swing.JFrame {
                 }
 
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getMessage());
+               // JOptionPane.showMessageDialog(null, e.getMessage());
+             JOptionPane.showMessageDialog(null, "Error al borrar la información del aula, podría ser por: \n 1.El aula ya está en uso."
+                         + "\n 2. No se encuentra el código del aula a borrar.\n","¡Error al eliminar!", JOptionPane.ERROR_MESSAGE);
             }
            actualizarDatos();
             LimpiarCajas();
