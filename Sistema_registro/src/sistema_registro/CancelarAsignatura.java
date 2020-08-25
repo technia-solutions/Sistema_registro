@@ -453,7 +453,8 @@ public class CancelarAsignatura extends javax.swing.JFrame {
                       JOptionPane.showMessageDialog(null, "¡Error al cancelar la asignatura!"); 
                   }
       } catch ( Exception e) { 
-          System.out.println(e);
+           JOptionPane.showMessageDialog(null, "Error al borrar la información, podría ser por: \n 1.Podria ser porque la asignatura ya contenga notas"
+                         + "\n 2. No existe una matricula de esta clase.","¡Error al Borrar!", JOptionPane.ERROR_MESSAGE);
         }
       buscar();
      
