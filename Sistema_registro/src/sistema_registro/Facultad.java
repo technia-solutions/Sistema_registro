@@ -48,6 +48,7 @@ public class Facultad extends javax.swing.JFrame {
            this.btn_actualizar.setEnabled(false);
            this.btn_actualizar.setEnabled(false);
            this.lbl_facultad.setVisible(false);
+            this.setLocationRelativeTo(null);
          
     }
     
@@ -60,6 +61,8 @@ public class Facultad extends javax.swing.JFrame {
           this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
            this.btn_eliminar.setEnabled(false);
             this.btn_actualizar.setEnabled(false);
+            this.lbl_facultad.setVisible(false);
+             this.setLocationRelativeTo(null);
           
     }
 
@@ -96,6 +99,7 @@ public class Facultad extends javax.swing.JFrame {
         Carrera = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(215, 236, 233));
@@ -338,7 +342,9 @@ public class Facultad extends javax.swing.JFrame {
                 Statement st2 = con.createStatement();
                 String sql = "Delete Facultad "
                 + "where id_facultad = (Select id_facultad from Facultad where nombre_facultad = '"+txa_NombreFacultad.getText()+"')";
-
+             this.btn_eliminar.setEnabled(false);
+             this.btn_actualizar.setEnabled(false);
+             this.btn_guardar.setEnabled(true);
                 int rs2 = st2.executeUpdate(sql);
                 System.out.println(rs2);
                 if(rs2 > 0){
@@ -382,9 +388,7 @@ public class Facultad extends javax.swing.JFrame {
 
     private void Tabla_FacultadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_FacultadMouseClicked
         if (Tabla_Facultad.getSelectedRow() >= 0) {
-             this.btn_eliminar.setEnabled(true);
-            this.btn_actualizar.setEnabled(true);
-            this.btn_guardar.setEnabled(false);
+            
            llenarCampos();     
         }
     }//GEN-LAST:event_Tabla_FacultadMouseClicked
@@ -696,6 +700,9 @@ public class Facultad extends javax.swing.JFrame {
         txt_idfacultad.setText(Tabla_Facultad.getValueAt(i, 0).toString());
         txa_NombreFacultad.setText(Tabla_Facultad.getValueAt(i, 1).toString());
          this.lbl_facultad.setText((Tabla_Facultad.getValueAt(i, 0).toString()));
+          this.btn_eliminar.setEnabled(true);
+          this.btn_actualizar.setEnabled(true);
+          this.btn_guardar.setEnabled(false);
 
     }
   
@@ -725,6 +732,9 @@ private void rellenar() {
   private void LimpiarCajas(){
         txa_NombreFacultad.setText(null);
         txt_idfacultad.setText(null);
+         this.btn_eliminar.setEnabled(false);
+            this.btn_actualizar.setEnabled(false);
+            this.btn_guardar.setEnabled(true);
       
         
     }

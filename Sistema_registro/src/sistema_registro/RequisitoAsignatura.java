@@ -53,6 +53,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
          this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
           this.btn_eliminar.setEnabled(false);
           this.btn_actualizar1.setEnabled(false);
+           this.setLocationRelativeTo(null);
                
          
          
@@ -71,6 +72,9 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         this.setTitle("Asignatura Requisito");
          this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
          this.lbl_usuario.setText(nombreUsuario);
+          this.btn_eliminar.setEnabled(false);
+          this.btn_actualizar1.setEnabled(false);
+          this.setLocationRelativeTo(null);
          
          
     }
@@ -109,6 +113,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(215, 236, 233));
@@ -351,9 +356,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
     private void Tabla_ReqAsignaturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_ReqAsignaturaMouseClicked
         if(Tabla_ReqAsignatura.getSelectedRow() >= 0){
             llenarCampos();
-             this.btn_eliminar.setEnabled(true);
-                 this.btn_actualizar1.setEnabled(true);
-                 this.btn_guardar.setEnabled(false);
+           
         }
     }//GEN-LAST:event_Tabla_ReqAsignaturaMouseClicked
 
@@ -487,6 +490,9 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
                 ResultSet rs;
                 ps=con.prepareStatement("Delete Requisito_Asignatura "
                     + "where id_asignatura = (Select id_asignatura from Requisito_Asignatura   where RequisitoAsignatura = '"+txtA_NombreReqAsig.getText()+"')");
+                this.btn_eliminar.setEnabled(false);
+                 this.btn_actualizar1.setEnabled(false);
+                 this.btn_guardar.setEnabled(true);
                 int res= ps.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Se ha borrado la información de la asignatura requisito "+nombreAsignaturaRequisito+" correctamente");
                 if(res > 0){
@@ -701,6 +707,9 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         txt_idReqAsig.setText(Tabla_ReqAsignatura.getValueAt(i, 0).toString());
         txtA_NombreReqAsig.setText(Tabla_ReqAsignatura.getValueAt(i, 1).toString());
         cbo_idCarrera.setSelectedItem(Tabla_ReqAsignatura.getValueAt(i, 2).toString());
+        this.btn_eliminar.setEnabled(true);
+        this.btn_actualizar1.setEnabled(true);
+        this.btn_guardar.setEnabled(false);
 
     }
   
@@ -760,6 +769,9 @@ private void rellenar() {
         txtA_NombreReqAsig.setText(null);
         txt_idReqAsig.setText(null);
         cbo_idCarrera.setSelectedIndex(0);
+        this.btn_eliminar.setEnabled(false);
+        this.btn_actualizar1.setEnabled(false);
+        this.btn_guardar.setEnabled(true);
         
         
         

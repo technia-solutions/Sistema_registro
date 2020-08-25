@@ -55,6 +55,7 @@ public class Carrera extends javax.swing.JFrame {
             this.btn_eliminar.setEnabled(false);
             this.btn_actualizar1.setEnabled(false);
             this.lbl_carrera.setVisible(false);
+             this.setLocationRelativeTo(null);
     }
     
     public Carrera(String nombreUsuario) throws SQLException {
@@ -72,6 +73,7 @@ public class Carrera extends javax.swing.JFrame {
             this.btn_eliminar.setEnabled(false);
             this.btn_actualizar1.setEnabled(false);
             this.lbl_carrera.setVisible(false);
+             this.setLocationRelativeTo(null);
     }
 
     /**
@@ -114,6 +116,7 @@ public class Carrera extends javax.swing.JFrame {
         jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Tabla_Carrera.setModel(new javax.swing.table.DefaultTableModel(

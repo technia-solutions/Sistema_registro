@@ -49,6 +49,8 @@ public class TipoUsuario extends javax.swing.JFrame {
           this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
            this.btn_actualizar.setEnabled(false);
             this.btn_eliminar.setEnabled(false);
+            this.setLocationRelativeTo(null);
+            this.lbl_tipoU.setVisible(false);
     }
     
     
@@ -61,6 +63,8 @@ public class TipoUsuario extends javax.swing.JFrame {
           this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
            this.btn_actualizar.setEnabled(false);
             this.btn_eliminar.setEnabled(false);
+            this.setLocationRelativeTo(null);
+            this.lbl_tipoU.setVisible(false);
     }
         
 
@@ -100,6 +104,7 @@ public class TipoUsuario extends javax.swing.JFrame {
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         iconodeUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User.png"))); // NOI18N

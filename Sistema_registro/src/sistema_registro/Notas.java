@@ -57,6 +57,7 @@ public class Notas extends javax.swing.JFrame {
          this.lbl_idmatricula.setVisible(false);
          desactivar();
          this.Tabla_asignatura.setEnabled(true);
+         this.setLocationRelativeTo(null);
     }
     
      public Notas(String nombreUsuario) throws SQLException {
@@ -66,6 +67,7 @@ public class Notas extends javax.swing.JFrame {
          desactivar();
          this.lbl_usuario.setText(nombreUsuario);
          this.Tabla_asignatura.setEnabled(true);
+         this.setLocationRelativeTo(null);
     }
 
     
@@ -117,6 +119,7 @@ public class Notas extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_numeroCuenta.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
