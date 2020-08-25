@@ -50,11 +50,13 @@ public class CancelarAsignatura extends javax.swing.JFrame {
          this.setTitle("Cancelar Asignatura");
           this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
         this.lbl_idMatricula.setVisible(false);
+        this.lbl_nombreAsignatura.setVisible(false);
         this.lbl_idPeriodo.setVisible(false);
         this.lbl_idSeccion.setVisible(false);
         this.btn_CancelarAsig.setEnabled(false);
         this.btn_eliminarM.setEnabled(false);
         this.setLocationRelativeTo(null);
+        
         
         
     }
@@ -67,6 +69,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
          this.lbl_usuario.setText(nombreUsuario);
           this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
         this.lbl_idMatricula.setVisible(false);
+        this.lbl_nombreAsignatura.setVisible(false);
         this.lbl_idPeriodo.setVisible(false);
         this.lbl_idSeccion.setVisible(false);
         this.btn_CancelarAsig.setEnabled(false);
@@ -450,7 +453,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
                       JOptionPane.showMessageDialog(null, "¡Error al cancelar la asignatura!"); 
                   }
       } catch ( Exception e) { 
-          System.out.println(e);; 
+          System.out.println(e);
         }
       buscar();
      

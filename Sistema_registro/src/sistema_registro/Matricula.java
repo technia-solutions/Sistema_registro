@@ -61,6 +61,8 @@ public class Matricula extends javax.swing.JFrame {
          this.lbl_periodo.setVisible(false);
         this.btn_matricularAsignatura.setEnabled(false);
         this.btn_generarReporte.setEnabled(false);
+        this.lbl_codAsignatura.setVisible(false);
+        this.setLocationRelativeTo(null);
     }
     
         public Matricula(String nombreUsuario)throws SQLException{
@@ -74,6 +76,8 @@ public class Matricula extends javax.swing.JFrame {
           this.btn_matricularAsignatura.setEnabled(false);
           this.btn_generarReporte.setEnabled(false);
          this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+          this.lbl_codAsignatura.setVisible(false);
+           this.setLocationRelativeTo(null);
         
     }
 
@@ -109,6 +113,7 @@ public class Matricula extends javax.swing.JFrame {
         jMenuPrincipal = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tbl_asignaturas.setModel(new javax.swing.table.DefaultTableModel(

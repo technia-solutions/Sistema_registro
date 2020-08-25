@@ -54,6 +54,7 @@ DefaultTableModel modelo = new DefaultTableModel();
            this.btn_actualizar.setEnabled(false); 
            this.setTitle("Período Histórico");
            this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+            this.setLocationRelativeTo(null);
     }
     
      public PeriodoHis(String nombreUsuario) throws SQLException {
@@ -72,6 +73,7 @@ DefaultTableModel modelo = new DefaultTableModel();
              this.setTitle("Período Histórico");
               this.lbl_usuario.setText(nombreUsuario);
          this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+          this.setLocationRelativeTo(null);
           
     }
 
@@ -110,6 +112,7 @@ DefaultTableModel modelo = new DefaultTableModel();
         jMenuPrincipal1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(232, 251, 249));

@@ -53,6 +53,7 @@ public class Edificio extends javax.swing.JFrame {
              this.btn_eliminar.setEnabled(false);
             this.btn_actualizar.setEnabled(false);
               this.lbl_edificio.setVisible(false);
+               this.setLocationRelativeTo(null);
          
     }
     
@@ -71,6 +72,7 @@ public class Edificio extends javax.swing.JFrame {
             this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
             this.btn_eliminar.setEnabled(false);
             this.btn_actualizar.setEnabled(false);
+             this.setLocationRelativeTo(null);
             
          
     }
@@ -112,6 +114,7 @@ public class Edificio extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(232, 251, 249));
