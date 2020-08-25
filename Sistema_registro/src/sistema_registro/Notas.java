@@ -583,7 +583,9 @@ public class Notas extends javax.swing.JFrame {
                           +"where id_matricula = (select id_matricula from Matricula where numero_cuenta_alumno = '"+numeroDeCuenta+"' and id_seccion = '"+lbl_idmatricula.getText()+"')";
                   int res2= ps2.executeUpdate(sql);
       } catch ( Exception e) {
-            JOptionPane.showMessageDialog(null,e.getMessage());
+           System.out.println(e);
+             JOptionPane.showMessageDialog(null, "Error al Guardar la información");
+            
         }
       rad_reposicionParcialI.setSelected(false);
       rad_reposicionParcialII.setSelected(false);
