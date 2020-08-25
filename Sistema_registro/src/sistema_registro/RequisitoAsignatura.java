@@ -53,6 +53,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
          this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
           this.btn_eliminar.setEnabled(false);
           this.btn_actualizar1.setEnabled(false);
+          this.lbl_ReqA.setVisible(false);
            this.setLocationRelativeTo(null);
                
          
@@ -105,6 +106,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         btn_limpiar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
+        lbl_ReqA = new javax.swing.JLabel();
         lbl_usuario = new javax.swing.JLabel();
         iconodeUsuario = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -303,6 +305,8 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         lbl_titulo.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lbl_titulo.setText("Requisito Asignatura");
 
+        lbl_ReqA.setText("jLabel2");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -310,13 +314,17 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(316, 316, 316)
                 .addComponent(lbl_titulo)
-                .addContainerGap(338, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
+                .addComponent(lbl_ReqA)
+                .addGap(146, 146, 146))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbl_titulo)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_titulo)
+                    .addComponent(lbl_ReqA))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -443,7 +451,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
                 ps = con.prepareStatement("Update Requisito_Asignatura set"
                     + " RequisitoAsignatura = ? ,"
                     + " id_asignatura = ? "
-                    + " where id_asignatura =\'"+txt_idReqAsig.getText()+"\'");
+                    + " where id_asignatura =\'"+lbl_ReqA.getText()+"\'");
 
                 ps.setString(1, txtA_NombreReqAsig.getText());
                 ps.setString(2, txt_idReqAsig.getText());
@@ -642,6 +650,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbl_NombreReqAs;
+    private javax.swing.JLabel lbl_ReqA;
     private javax.swing.JLabel lbl_idCarrera;
     private javax.swing.JLabel lbl_idReqAs;
     private javax.swing.JLabel lbl_titulo;
@@ -707,6 +716,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         txt_idReqAsig.setText(Tabla_ReqAsignatura.getValueAt(i, 0).toString());
         txtA_NombreReqAsig.setText(Tabla_ReqAsignatura.getValueAt(i, 1).toString());
         cbo_idCarrera.setSelectedItem(Tabla_ReqAsignatura.getValueAt(i, 2).toString());
+         lbl_ReqA.setText(Tabla_ReqAsignatura.getValueAt(i, 0).toString());
         this.btn_eliminar.setEnabled(true);
         this.btn_actualizar1.setEnabled(true);
         this.btn_guardar.setEnabled(false);

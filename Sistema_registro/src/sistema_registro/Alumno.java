@@ -57,6 +57,7 @@ public class Alumno extends javax.swing.JFrame {
             }
              this.setTitle("Alumno");
              this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+               this.setLocationRelativeTo(null);
             
             
     
@@ -123,6 +124,7 @@ public class Alumno extends javax.swing.JFrame {
         ((JTextField) this.cld_fechaNacimiento.getDateEditor()).setEditable(false); 
         this.setTitle("Alumno");
         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
+          this.setLocationRelativeTo(null);
     }
     
     public boolean existeAlumno(){

@@ -60,6 +60,7 @@ Connection con = null;
             this.btn_eliminar1.setEnabled(false);
             this.btn_actualizar.setEnabled(false);
             this.lbl_codigo.setVisible(false);
+              this.setLocationRelativeTo(null);
     }
     
      public Asignaturas(String nombreUsuario) throws SQLException {
@@ -83,6 +84,7 @@ Connection con = null;
             this.btn_eliminar1.setEnabled(false);
             this.btn_actualizar.setEnabled(false);
             this.lbl_codigo.setVisible(false);
+              this.setLocationRelativeTo(null);
     }
 
     /**

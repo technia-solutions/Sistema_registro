@@ -51,6 +51,8 @@ public class Campus extends javax.swing.JFrame {
         this.btn_eliminar.setEnabled(false);
         this.btn_actualizar.setEnabled(false);
         this.lbl_campus.setVisible(false);
+        this.setLocationRelativeTo(null);
+        
     }
 
     public Campus(String nombreUsuario) throws SQLException {
@@ -63,6 +65,7 @@ public class Campus extends javax.swing.JFrame {
         this.btn_eliminar.setEnabled(false);
         this.btn_actualizar.setEnabled(false);
         this.lbl_campus.setVisible(false);
+        this.setLocationRelativeTo(null);
 
     
     }
@@ -145,6 +148,7 @@ public class Campus extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 255, 255));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         iconodeUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User.png"))); // NOI18N
