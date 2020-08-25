@@ -431,7 +431,9 @@ DefaultTableModel modelo = new DefaultTableModel();
             }
 
         } catch ( Exception e) {
-            System.out.println(e);
+             System.out.println(e);
+             JOptionPane.showMessageDialog(null, "Error al Guardar la información de Periodo Historico");
+            
         }
     }//GEN-LAST:event_btn_agregarPeriodoActionPerformed
 
@@ -488,11 +490,13 @@ DefaultTableModel modelo = new DefaultTableModel();
                 
             } catch (Exception e) {
                 System.out.println(e);
+                              JOptionPane.showMessageDialog(null, "No se ha realizado la actualización por: \n 1.El periodo historico ya está definido."
+                         + "\n 2. No se encuentra el id del periodo historico a actualizar.","¡Error al Actualizar!", JOptionPane.ERROR_MESSAGE);
             }
           
         }
-     btn_agregarPeriodo.setEnabled(true);
-        this.btn_actualizar.setEnabled(false);
+     //btn_agregarPeriodo.setEnabled(true);
+        //this.btn_actualizar.setEnabled(false);
      
      
        
