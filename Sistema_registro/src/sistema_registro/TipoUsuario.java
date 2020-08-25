@@ -541,6 +541,7 @@ public void consultarDatos(){
             int res= ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Se ha guardado la información en Tipo de Usuario");
         } catch ( Exception e) {
+            System.out.println(e);
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
 
@@ -621,10 +622,15 @@ public void consultarDatos(){
                 int res= ps.executeUpdate();
             } catch ( Exception e) {
                 System.out.println(e);
+                              JOptionPane.showMessageDialog(null, "No se ha realizado la actualización por: \n 1.El tipo de usuario ya fue definido."
+                         + "\n 2. No se encuentra el id del tipo usuario a actualizar.","¡Error al Actualizar!", JOptionPane.ERROR_MESSAGE);
             }
            consultarDatos(); 
            LimpiarCajas();
         }
+         
+        // btn_guardar.setEnabled(true);
+        //this.btn_actualizar.setEnabled(false);
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
@@ -685,7 +691,9 @@ public void consultarDatos(){
                   }
                 
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getMessage());
+                //JOptionPane.showMessageDialog(null, e.getMessage());
+                JOptionPane.showMessageDialog(null, "Error al borrar la información, podría ser por: \n 1.Tipo de Usuario ya está definido."
+                         + "\n 2. No se encuentra el id del tipo usuario a borrar.","¡Error al Borrar!", JOptionPane.ERROR_MESSAGE);
             }
            consultarDatos();
            LimpiarCajas();
