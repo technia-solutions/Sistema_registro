@@ -72,8 +72,8 @@ public class Edificio extends javax.swing.JFrame {
             this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
             this.btn_eliminar.setEnabled(false);
             this.btn_actualizar.setEnabled(false);
-             this.setLocationRelativeTo(null);
-            
+             this.setLocationRelativeTo(null);  
+             this.lbl_edificio.setVisible(false);
          
     }
 

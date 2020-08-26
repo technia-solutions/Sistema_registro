@@ -76,6 +76,8 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
           this.btn_eliminar.setEnabled(false);
           this.btn_actualizar1.setEnabled(false);
           this.setLocationRelativeTo(null);
+           this.lbl_ReqA.setVisible(false);
+          
          
          
     }
@@ -737,10 +739,8 @@ private void rellenar() {
                                 txt_idReqAsig.setText(rs2.getString("id_asignatura"));
                                 txtA_NombreReqAsig.setText(rs2.getString("RequisitoAsignatura"));
                                cbo_idCarrera.setSelectedItem(rs2.getString("id_carrera")+ " - " + rs2.getString("nombre_carrera"));
-                            } else {
-                                JOptionPane.showMessageDialog(null, "¡No se encuentra los datos: "+var+" ! Por favor verifique sí, lo escribio correctamente");
+                          
                             }
-                        
 
                     
                 } catch (Exception e) {
