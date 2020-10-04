@@ -171,9 +171,9 @@ group by a.numero_cuenta_alumno, a.nombres_alumno, a.apellidos_alumno, c.nombre_
 	<title>
 		<band height="314" splitType="Stretch">
 			<staticText>
-				<reportElement style="Title" x="175" y="148" width="219" height="33" uuid="9d37d5af-6795-4727-8627-b31aa3006335"/>
+				<reportElement style="Title" x="142" y="138" width="277" height="33" uuid="9d37d5af-6795-4727-8627-b31aa3006335"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Boleta de notas por ciclo]]></text>
+				<text><![CDATA[Historial Académico]]></text>
 			</staticText>
 			<staticText>
 				<reportElement style="Column header" x="9" y="208" width="114" height="14" forecolor="#000000" uuid="55a83a43-3f10-44c0-9e39-3c2768bde185"/>

@@ -609,7 +609,8 @@ public class Facultad extends javax.swing.JFrame {
     private javax.swing.JTextArea txa_NombreFacultad;
     private javax.swing.JTextField txt_idfacultad;
     // End of variables declaration//GEN-END:variables
- public void actualizarDatos() {
+ 
+    public void actualizarDatos() {
         try {
             String sql = "SELECT * FROM Facultad";
             stmt = con.createStatement();
@@ -643,8 +644,7 @@ public class Facultad extends javax.swing.JFrame {
     }
 
    
-               
-
+    
     private boolean existeFacultad() {
         try {
             Statement st = con.createStatement();

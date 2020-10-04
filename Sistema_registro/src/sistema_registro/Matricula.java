@@ -473,6 +473,7 @@ public class Matricula extends javax.swing.JFrame {
                 }
                 modelo.addRow(filas);
                 this.txt_numeroCuenta.setEnabled(false);
+                this.btn_generarReporte.setEnabled(true);
                /* tbl_asignaturas.setShowGrid(true);
                 tbl_asignaturas.setShowHorizontalLines(true);
                 this.tbl_asignaturas.setEnabled(true);
@@ -792,6 +793,7 @@ public class Matricula extends javax.swing.JFrame {
         this.txt_numeroCuenta.setEnabled(true);
         this.txt_numeroCuenta.setText("");
         this.tbl_asignaturas.setVisible(false);
+        this.btn_generarReporte.setEnabled(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 

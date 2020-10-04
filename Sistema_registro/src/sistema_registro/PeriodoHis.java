@@ -471,7 +471,7 @@ DefaultTableModel modelo = new DefaultTableModel();
                                             "fecha_inicial=?,\n" +
                                             "fecha_final=?,\n" +
                                             "nombre_periodo_historico=?\n" +
-                                            "where nombre_periodo_historico= '"+nombre+"'");
+                                            "where nombre_periodo_historico= '"+lbl_nombre.getText()+"'");
               
                 ps.setString(1,periodo);
                 ps.setString(2,fecha);

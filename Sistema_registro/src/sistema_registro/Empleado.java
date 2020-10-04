@@ -131,8 +131,8 @@ public class Empleado extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.btn_Actualizar.setEnabled(false);
         this.btn_Eliminar.setEnabled(false);
-       this.lbl_numeroIdentidad.setVisible(false);
-       this.lbl_nombreU.setVisible(false);
+        this.lbl_numeroIdentidad.setVisible(false);
+        this.lbl_nombreU.setVisible(false);
     } 
     
     /**
@@ -943,6 +943,10 @@ this.cbo_tipoUsuario.setSelectedItem("");
             return;
         }
         
+        if(!validarLongitudTelefono(txt_Telefono,8)){
+            return;
+        }
+        
         
         
         if(!validarIdentidad(txt_Identidad.getText())){
@@ -967,9 +971,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             return;
         }
          
-         if(!validarLongitudTelefono(txt_Telefono,8)){
-            return;
-        }
+         
          
           if(!validarLongitud(txt_NombreUsuario,8)){
             JOptionPane.showMessageDialog(null, "El nombre de usuario debe ser de mínimo 8 caracteres", "Longitud del nombre de usuario", JOptionPane.INFORMATION_MESSAGE);
@@ -1386,15 +1388,17 @@ this.cbo_tipoUsuario.setSelectedItem("");
                         }
                         else{
                             String sql = "select * from Empleados as e join Acceso as a on e.id_empleado = a.id_empleado join\n" +
-"                Campus as c on c.id_campus = e.id_campus join \n" +
+"               Campus as c on c.id_campus = e.id_campus join \n" +
 "               Tipo_Usuarios as t on a.id_tipoUsuario =  t.id_tipoUsuario where numero_identidad = '"+var+"' or nombres_empleado = '"+var+"' or apellido_empleado = '"+var+"'";
                             stmt = con.createStatement();
                             rs2 = stmt.executeQuery(sql);
                         
                             if(rs2.next()) {
+                                Locale locale = new Locale("es", "HN"); 
+                                NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
                                 txt_Nombre.setText(rs2.getString("nombres_empleado"));
                                 txt_Apellido.setText(rs2.getString("apellido_empleado"));
-                                txt_Salario.setText(rs2.getString("salario"));
+                                txt_Salario.setText(currencyFormatter.format(rs2.getDouble("salario")).toString().substring(1));
                                 txt_Telefono.setText(rs2.getString("telefono_empleado"));
                                 txt_Identidad.setText(rs2.getString("numero_identidad"));
                                 cbo_idCampus.setSelectedItem((rs2.getString("id_campus") + " - " + rs2.getString("nombre_campus")));
@@ -1403,7 +1407,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
                                 lbl_numeroIdentidad.setText(rs2.getString("numero_identidad"));
                                 lbl_nombreU.setText(rs2.getString("nombre_usuario"));
                                 this.btn_Actualizar.setEnabled(true);
-                                  this.btn_Eliminar.setEnabled(true);
+                                this.btn_Eliminar.setEnabled(true);
                             }
                             else{
                                JOptionPane.showMessageDialog(null,"¡No se encuentra el empleado! Por favor verifique sí, lo escribio correctamente");

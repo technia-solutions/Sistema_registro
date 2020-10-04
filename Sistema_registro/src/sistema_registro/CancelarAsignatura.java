@@ -346,6 +346,9 @@ public class CancelarAsignatura extends javax.swing.JFrame {
     }//GEN-LAST:event_Tabla_CancelarMouseClicked
 
       private void eliminarMatricula(){
+            if (validarNotas()) {
+            return;
+        }
          try {
              Statement st = con.createStatement();
              String sql2 = "select * from Matricula as m join Secciones as s on m.id_seccion = s.id_seccion\n" +
@@ -392,6 +395,43 @@ public class CancelarAsignatura extends javax.swing.JFrame {
       
     }
       
+    private boolean validarNotas(){
+         try {
+            Statement st = con.createStatement();
+            String sql = "Select * from Notas where numero_cuenta = '" + txt_NumC.getText() + "'";
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null, "El número de cuenta: " + txt_NumC.getText() + " ya contiene notas. \n No se puede eliminar la matrícula", "Notas ya ingresadas.", JOptionPane.INFORMATION_MESSAGE);
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Campus.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+    
+    private boolean validarNotas2(){
+         try {
+            Statement st = con.createStatement();
+            String sql = "Select * from Notas where numero_cuenta = '" + txt_NumC.getText() + "' and id_matricula = '"+lbl_idMatricula.getText()+"'";
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+                if(rs.getString("nota1").equals("0.00000")){
+                    return false;
+                }
+                JOptionPane.showMessageDialog(null, "El número de cuenta : " + txt_NumC.getText() + " ya contiene notas. \n No se puede eliminar la asignatura, ", "Notas ya ingresadas.", JOptionPane.INFORMATION_MESSAGE);
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Campus.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
+      
     private void btn_CancelarAsigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CancelarAsigActionPerformed
         //CancelarA(var, var);
          String numeroCuenta,id_seccion,id_periodo,id_matricula;
@@ -405,6 +445,9 @@ public class CancelarAsignatura extends javax.swing.JFrame {
             
             int matricula =Integer.parseInt(id_matricula);
           
+            if (validarNotas2()) {
+            return;
+        }
         
         try{
           

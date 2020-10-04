@@ -223,15 +223,6 @@ group by a.numero_cuenta_alumno, a.nombres_alumno, a.apellidos_alumno, c.nombre_
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="593" y="107" width="100" height="15" uuid="c1efff64-aa53-4116-8859-d1ba773fccc9"/>
-				<textFieldExpression><![CDATA[$F{Promedio Global}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement style="Column header" x="529" y="107" width="50" height="15" forecolor="#000000" uuid="bc3b1db8-2f10-4978-a785-f6066919d32b"/>
-				<textElement textAlignment="Right"/>
-				<text><![CDATA[CUM:]]></text>
-			</staticText>
 		</band>
 	</title>
 	<pageHeader>

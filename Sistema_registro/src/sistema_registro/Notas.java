@@ -592,7 +592,7 @@ public class Notas extends javax.swing.JFrame {
       cbo_reposicion.setSelected(false);
       rad_reposicionParcialI.setEnabled(false);
       rad_reposicionParcialII.setEnabled(false);
-      LimpiarCajas();
+     // LimpiarCajas();
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void btn_buscarClasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarClasesActionPerformed
