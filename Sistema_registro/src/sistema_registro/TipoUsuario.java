@@ -599,14 +599,16 @@ public void consultarDatos(){
     */
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
 
-        String TipoUsuario = txt_idTipo.getText() + " " + txt_TipoUsuario.getText();
+        String TipoUsuario = txt_TipoUsuario.getText();
+        int i = Tabla_TipoUsuarios.getSelectedRow();
+        String tipoAnterior = Tabla_TipoUsuarios.getValueAt(i,1).toString();
          if ((txt_idTipo.getText().equals("")) || (txt_TipoUsuario.getText().equals(""))) {
             
             javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar el tipo usuario a actualizar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
            
         }
 
-       else if(JOptionPane.showConfirmDialog(null,"¿Está seguro que desea actualizar el registro del empleado "+TipoUsuario+"?","Confirmación de actualización",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE
+       else if(JOptionPane.showConfirmDialog(null,"¿Está seguro que desea actualizar el registro del tipo de usuario: "+tipoAnterior+" a "+TipoUsuario+"?","Confirmación de actualización",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE
         )==JOptionPane.YES_OPTION){
             
 
@@ -669,14 +671,14 @@ public void consultarDatos(){
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         
-          String TipoUsuario = txt_TipoUsuario.getText() + " " + txt_idTipo.getText();
+          String TipoUsuario = txt_TipoUsuario.getText();
            if ((txt_idTipo.getText().equals("")) || (txt_TipoUsuario.getText().equals(""))) {
             
             javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar el tipo usuario a eliminar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
            
         }
           
-       else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de Tipo de Usuario " + TipoUsuario + "", "Confirmación de eliminación",
+       else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de Tipo de Usuario: " + TipoUsuario + "", "Confirmación de eliminación",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
             
@@ -688,7 +690,7 @@ public void consultarDatos(){
                 int rs2 = st2.executeUpdate(sql);
                 System.out.println(rs2);
                 if(rs2 > 0){ 
-                    JOptionPane.showMessageDialog(null, "Se ha borrado la información del Tipo de Usuario " + TipoUsuario + " correctamente");
+                    JOptionPane.showMessageDialog(null, "Se ha borrado la información del Tipo de Usuario: " + TipoUsuario + " correctamente");
 
                   }else {
                       JOptionPane.showMessageDialog(null, "¡Error al eliminar la información!"); 
@@ -729,15 +731,27 @@ public void consultarDatos(){
         }
         if (evt.getKeyChar() == 8 || evt.getKeyChar() == 127
                 || evt.getKeyChar() == 0 || evt.getKeyChar() == 3 || evt.getKeyChar() == 22
-                || evt.getKeyChar() == 32 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
+                 || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
             return;
         }
+        if(evt.getKeyChar() == 32){
+             if(txt_TipoUsuario.getText().length() == 0){
+                 evt.consume();
+                 Toolkit.getDefaultToolkit().beep();
+                 return;
+             }
+             if(txt_TipoUsuario.getText().substring(txt_TipoUsuario.getText().length() - 1).equals(" ")){
+                 evt.consume();
+                 Toolkit.getDefaultToolkit().beep();
+             }
+             return; 
+         }
         char a = evt.getKeyChar();
-        if (Character.isDigit(a)) {
+        if(Character.isDigit(a) || !Character.isLetterOrDigit(a)){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Sólo letras");
-        }        // TODO add your handling code here:
+        }      // TODO add your handling code here:
     }//GEN-LAST:event_txt_TipoUsuarioKeyTyped
 
     private void txt_idTipoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_idTipoKeyTyped
@@ -755,7 +769,7 @@ public void consultarDatos(){
         if (Character.isDigit(a) || !Character.isLetterOrDigit(a)) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Valido numeros y caracteres");
+            JOptionPane.showMessageDialog(null, "Sólo números y letras");
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_idTipoKeyTyped

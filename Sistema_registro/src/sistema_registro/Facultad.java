@@ -368,7 +368,7 @@ public class Facultad extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void txt_idfacultadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_idfacultadKeyTyped
-        if (txt_idfacultad.getText().length() >= 3) {
+        if (txt_idfacultad.getText().length() >= 4) {
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos");
@@ -421,13 +421,13 @@ public class Facultad extends javax.swing.JFrame {
         }
 
         if (!validarLongitud(txt_idfacultad, 2)) {
-            JOptionPane.showMessageDialog(null, "El id  ingresados es muy pequeño el mínimo es de 2 caracteres", "Longitud de id facultad", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El id ingresado es muy pequeño el mínimo es de 2 caracteres", "Longitud de id de la facultad", JOptionPane.INFORMATION_MESSAGE);
             return;
 
         }
 
         if (!validarLongitud(txa_NombreFacultad, 15)) {
-            JOptionPane.showMessageDialog(null, "El nombre facultad ingresado es muy pequeños el mínimo es de 15 caracteres", "Longitud de  nombre facultad", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El nombre de la facultad ingresado es muy pequeño el mínimo es de 15 caracteres", "Longitud del nombre de la facultad", JOptionPane.INFORMATION_MESSAGE);
             return;
 
         }
