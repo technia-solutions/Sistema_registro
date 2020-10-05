@@ -435,17 +435,19 @@ public class Carrera extends javax.swing.JFrame {
             return;
         }
 
-        if (!validarLongitud(txt_idCarrera, 4)) {
-            JOptionPane.showMessageDialog(null, "El id ingresado es muy pequeños el mínimo es de 4 caracteres", "Longitud de id carrera", JOptionPane.INFORMATION_MESSAGE);
+        if (!validarLongitud(txt_idCarrera, 3)) {
+            JOptionPane.showMessageDialog(null, "El id ingresado es muy pequeño el mínimo es de 3 caracteres", "Longitud de id carrera", JOptionPane.INFORMATION_MESSAGE);
             return;
 
         }
 
         if (!validarLongitud(jtxt_NombreCarrera,10 )) {
-            JOptionPane.showMessageDialog(null, "El  nombre ingresado es muy pequeños el mínimo es de 10 caracteres", "Longitud de nombre carrera", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El  nombre ingresado es muy pequeño el mínimo es de 10 caracteres", "Longitud de nombre carrera", JOptionPane.INFORMATION_MESSAGE);
             return;
 
         }
+        
+        
 
         try {
             PreparedStatement ps;
@@ -456,7 +458,7 @@ public class Carrera extends javax.swing.JFrame {
             ps.setString(2, jtxt_NombreCarrera.getText());
              ps.setString(3, id_facultad);
             int res = ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Se ha guradod la información del carrera");
+            JOptionPane.showMessageDialog(null, "Se ha guradod la información de la carrera");
         } catch (Exception e) {
             System.out.println(e);
 
@@ -553,18 +555,19 @@ public class Carrera extends javax.swing.JFrame {
                 ResultSet rs;
                 ps = con.prepareStatement("Update Carrera set"
                         + " nombre_carrera = ? ,"
-                        + " id_carrera = ? "
+                        + " id_carrera = ? ,"
+                        + " id_facultad = ? "
                         + " where id_carrera =\'"+lbl_carrera.getText()+"\'");
                 
                 ps.setString(1, jtxt_NombreCarrera.getText());
                 ps.setString(2, txt_idCarrera.getText());
-               /* ps.setString(3, id_facultad);*/
+                ps.setString(3, id_facultad);
                 this.btn_eliminar.setEnabled(false);
              this.btn_actualizar1.setEnabled(false);
              this.btn_guardar.setEnabled(true);
                 int res = ps.executeUpdate();
                  if(res > 0){
-                    JOptionPane.showMessageDialog(null, "Se ha actualizado la información del período " +nombreCarrera + " correctamente.");
+                    JOptionPane.showMessageDialog(null, "Se ha actualizado la información de la carerra " +nombreCarrera + " correctamente.");
 
                 }else {
                     JOptionPane.showMessageDialog(null, "¡Error al actualizado la información!.");

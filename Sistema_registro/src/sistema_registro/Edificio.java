@@ -437,7 +437,7 @@ public class Edificio extends javax.swing.JFrame {
             txt_nombreEdificio.requestFocus();
             return;
         }
-        else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro del edificio." +nombreEdificio + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
+        else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro del edificio " +nombreEdificio + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
             String id_campus = cbo_idCampus.getSelectedItem().toString().substring(0, 4);
             
@@ -446,7 +446,7 @@ public class Edificio extends javax.swing.JFrame {
                 ResultSet rs;
                 ps = con.prepareStatement("Update Edificio set"
                     + " id_edificio = ? ,"
-                    + " nombre_edificio = ? , "
+                    + " nombre_edificio = ? ,"
                     + " id_campus = ?  "
                   + " where id_edificio =\'"+lbl_edificio.getText()+"\'");
                   ps.setString(1, txt_idEdificio.getText());
@@ -481,7 +481,7 @@ public class Edificio extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar el edificio que desea eliminar!. \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
            
         }
-          else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro del edificio " + Edificio + ".", "Confirmación de eliminación",
+          else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro del edificio " + Edificio + "?", "Confirmación de eliminación",
             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
 
@@ -557,11 +557,11 @@ public class Edificio extends javax.swing.JFrame {
              return; 
          }
         char a = evt.getKeyChar();
-        if (Character.isDigit(a)) {
+        if(Character.isDigit(a) || !Character.isLetterOrDigit(a)){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
-            JOptionPane.showMessageDialog(null, "Sólo letras.");
-        }
+            JOptionPane.showMessageDialog(null, "Sólo letras");
+        }   
     }//GEN-LAST:event_txt_nombreEdificioKeyTyped
 
     private void Tabla_EdificioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_EdificioMouseClicked
@@ -771,7 +771,6 @@ public class Edificio extends javax.swing.JFrame {
 
     private void LimpiarCajas() {
        
-        txt_idEdificio.setText(null);
         txt_nombreEdificio.setText(null);
         cbo_idCampus.setSelectedIndex(0); 
         this.btn_eliminar.setEnabled(false);
