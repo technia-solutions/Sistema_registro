@@ -257,39 +257,38 @@ public class Aula extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btn_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_buscar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btn_eliminar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_actualizar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_guardar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_buscar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_pisoAula, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbl_edificio, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbl_nombreAula, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbl_idAula, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txt_nombreAula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txt_idAula, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cbo_idEdificio, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_PisoAula, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(112, 112, 112))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(lbl_aula)
-                        .addGap(212, 212, 212))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbl_pisoAula, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lbl_edificio, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lbl_nombreAula, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lbl_idAula, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txt_nombreAula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_idAula, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(cbo_idEdificio, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_PisoAula, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(112, 112, 112))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(lbl_aula)
+                                .addGap(212, 212, 212))))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -298,11 +297,11 @@ public class Aula extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btn_guardar)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_actualizar)
-                        .addGap(33, 33, 33)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_eliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                        .addGap(1, 1, 1))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(27, 27, 27)
                         .addComponent(lbl_aula)
@@ -318,7 +317,7 @@ public class Aula extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txt_PisoAula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_pisoAula))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -327,10 +326,13 @@ public class Aula extends javax.swing.JFrame {
                         .addGap(165, 165, 165))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(btn_buscar)
-                        .addGap(17, 17, 17)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_limpiar))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_limpiar)))
                         .addGap(30, 30, 30))))
         );
 
@@ -426,8 +428,9 @@ public class Aula extends javax.swing.JFrame {
         String id_edificio = cbo_idEdificio.getSelectedItem().toString().substring(0, 2);
         cadena2 = txt_nombreAula.getText();
         cadena3 = txt_PisoAula.getText();
-
-         
+        
+      
+        
          if((txt_idAula.getText().equals(""))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id del aula.","Id aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_idAula.requestFocus();
@@ -471,7 +474,7 @@ public class Aula extends javax.swing.JFrame {
             return;
         }
         
-         if(!validarLongitud(txt_PisoAula,1)){
+         if(!validarLongitud(txt_PisoAula,2)){
             JOptionPane.showMessageDialog(null, "El piso de la aula es muy corto el mínimo es de 1 caracteres.", "Longitud del piso del aula", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
@@ -504,6 +507,8 @@ public class Aula extends javax.swing.JFrame {
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
         String Aula = txt_nombreAula.getText() + " ";
+        String aula= txt_nombreAula.getText();
+        String cap = aula.substring(0, 1).toUpperCase() + aula.substring(1);
           if((txt_idAula.getText().equals(""))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id del aula.","Id aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_idAula.requestFocus();
@@ -521,6 +526,20 @@ public class Aula extends javax.swing.JFrame {
          if((txt_PisoAula.getText().equals(""))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el piso del aula.","Piso de aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_PisoAula.requestFocus();
+            return;
+        }
+             if(!validarLongitud(txt_idAula,4)){
+            JOptionPane.showMessageDialog(null, "El id del aula debe ser de 4 caracter.", "Longitud de id del aula.", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        if(!validarLongitud(txt_nombreAula,3)){
+            JOptionPane.showMessageDialog(null, "El Nombre de la aula es muy corto el mínimo es de 3 caracteres.", "Longitud del nombre de aula", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+         if(!validarLongitud(txt_PisoAula,2)){
+            JOptionPane.showMessageDialog(null, "El piso de la aula es muy corto el mínimo es de 1 caracteres.", "Longitud del piso del aula", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
          
@@ -602,6 +621,15 @@ public class Aula extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un edificio para el aula.","Edificio del aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
         }
+          /* if (noexisteAula()){
+               return;
+           }*/
+          if(!noexisteAula()){
+               JOptionPane.showMessageDialog(null, "Error al borrar la información del aula, podría ser por que el código de aula no existe.","¡Error al eliminar!", JOptionPane.ERROR_MESSAGE);
+            
+                   return;
+               }
+        
         else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro del aula " + Aula + ".", "Confirmación de eliminación",
             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
@@ -626,8 +654,8 @@ public class Aula extends javax.swing.JFrame {
 
             } catch (Exception e) {
                // JOptionPane.showMessageDialog(null, e.getMessage());
-             JOptionPane.showMessageDialog(null, "Error al borrar la información del aula, podría ser por: \n 1.El aula ya está en uso."
-                         + "\n 2. No se encuentra el código del aula a borrar.\n","¡Error al eliminar!", JOptionPane.ERROR_MESSAGE);
+              JOptionPane.showMessageDialog(null, "Error al borrar la información del aula, podría ser por que el aula se encuentra en uso.","¡Error al eliminar!", JOptionPane.ERROR_MESSAGE);
+     
             }
            actualizarDatos();
             LimpiarCajas();
@@ -635,6 +663,7 @@ public class Aula extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
+    
     private void cbo_idEdificioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_idEdificioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbo_idEdificioActionPerformed
@@ -666,7 +695,7 @@ public class Aula extends javax.swing.JFrame {
                  || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
         return;
         }
-        if(txt_PisoAula.getText().length() >=3){
+        if(txt_nombreAula.getText().length() >=3){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Número máximo de dígitos admitidos");
@@ -803,6 +832,24 @@ public class Aula extends javax.swing.JFrame {
        else{
            return false;
        }
+    }
+    
+     private boolean noexisteAula() {
+          try {
+            Statement st = con.createStatement();
+            String sql = "Select id_aula from Aula where id_aula = '"+txt_idAula.getText()+"'";
+            ResultSet rs = st.executeQuery(sql);
+            if(rs.next()){
+               
+                return true;
+            }
+            else{
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Aula.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
     
     private boolean existeAula() {

@@ -466,6 +466,11 @@ public class Campus extends javax.swing.JFrame {
             txt_NombreCampus.requestFocus();
             return;
         }
+         if(!noexisteidCampus()){
+               JOptionPane.showMessageDialog(null, "Error al borrar la información del Campus por que el código de Campus no existe.","¡Error al eliminar!", JOptionPane.ERROR_MESSAGE);
+            
+                   return;
+               }
         else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro del campus " + nombreCampus + "", "Confirmación de eliminación",
             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
@@ -488,7 +493,9 @@ public class Campus extends javax.swing.JFrame {
                 }
 
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e.getMessage());
+                //JOptionPane.showMessageDialog(null, e.getMessage());
+                JOptionPane.showMessageDialog(null, "Error al borrar la información de Campus por que el Campus se encuentra en uso.","¡Error al eliminar!", JOptionPane.ERROR_MESSAGE);
+     
             }
             actualizarDatos();
             LimpiarCajas();
@@ -508,6 +515,9 @@ public class Campus extends javax.swing.JFrame {
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
         String nombreCampus = txt_NombreCampus.getText() + " ";
+        String nombre=  txt_NombreCampus.getText();
+        String cap = nombre.substring(0, 1).toUpperCase() + nombre.substring(1);
+        
         if((txt_idCampus.getText().equals(""))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id del campus.","Id campus  requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_idCampus.requestFocus();
@@ -518,8 +528,23 @@ public class Campus extends javax.swing.JFrame {
             txt_NombreCampus.requestFocus();
             return;
         }
+          if (!validarLongitud(txt_idCampus, 3)) {
+            JOptionPane.showMessageDialog(null, "El ID del Campus es muy pequeño el mínimo es de 3 caracteres", "Longitud del ID del Campus", JOptionPane.INFORMATION_MESSAGE);
+            return;
+
+        }
+
+        if (!validarLongitud(txt_NombreCampus, 5)) {
+            JOptionPane.showMessageDialog(null, "El nombre del campus ingresado es muy pequeños el mínimo es de 5 caracteres", "Longitud del nombre", JOptionPane.INFORMATION_MESSAGE);
+            return;
+
+        }
+        if(!noexisteidCampus()){
+               JOptionPane.showMessageDialog(null, "Error al Actualizar la información del Campus, podría ser por que el código de Campus no existe.","¡Error al Actualizar!", JOptionPane.ERROR_MESSAGE);
+        }
+
            
-         else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro del campus " + nombreCampus + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
+         else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro del campus " + cap + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
             try {
                 PreparedStatement ps;
@@ -529,22 +554,24 @@ public class Campus extends javax.swing.JFrame {
                     + "id_campus = ? "
                     + " where id_campus =\'"+lbl_campus.getText()+"\'");
                 /*ps.setString(1, txt_NombreCampus.getText());*/
-                ps.setString(1, txt_NombreCampus.getText());
+                ps.setString(1,cap);
                 ps.setString(2, txt_idCampus.getText());
                  this.btn_eliminar.setEnabled(false);
                  this.btn_actualizar.setEnabled(false);
                  this.btn_guardar.setEnabled(true);
                 int res = ps.executeUpdate();
                  if(res > 0){
-                    JOptionPane.showMessageDialog(null, "Se ha actualizado la información del aula " + nombreCampus + " correctamente.");
+                    JOptionPane.showMessageDialog(null, "Se ha actualizado la información del aula " + cap + " correctamente.");
 
                 }else {
                     JOptionPane.showMessageDialog(null, "¡Error al actualizar la información!.");
 
                 }
            
-            } catch (Exception e) {
-                System.out.println(e);
+            } catch (SQLException ex) {
+                System.out.println(ex);
+                 JOptionPane.showMessageDialog(null,"Error al actualizar la información de la aula, podría ser por que el campus ya está en uso con alumnos matriculados.","¡Error al actualizar!", JOptionPane.ERROR_MESSAGE);
+                      
             }
             actualizarDatos();
             LimpiarCajas();
@@ -556,6 +583,10 @@ public class Campus extends javax.swing.JFrame {
         String cadena1, cadena2;
         cadena1 = txt_idCampus.getText();
         cadena2 = txt_NombreCampus.getText();
+        
+          String nombre=  txt_NombreCampus.getText();
+        String cap = nombre.substring(0, 1).toUpperCase() + nombre.substring(1);
+        
 
         if((txt_idCampus.getText().equals(""))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id del campus.","Id campus  requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
@@ -593,9 +624,9 @@ public class Campus extends javax.swing.JFrame {
             ps = con.prepareStatement("INSERT INTO Campus (id_campus, nombre_campus)"
                 + "                VALUES(?,?)");
             ps.setString(1, txt_idCampus.getText());
-            ps.setString(2, txt_NombreCampus.getText());
+            ps.setString(2, cap);
             int res = ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Se ha guardado la información del campus: "+txt_NombreCampus.getText()+"");
+            JOptionPane.showMessageDialog(null, "Se ha guardado la información del campus: "+cap+"");
         } catch (Exception e) {
             System.out.println(e);
 
@@ -690,6 +721,22 @@ public class Campus extends javax.swing.JFrame {
     private javax.swing.JTextField txt_idCampus;
     // End of variables declaration//GEN-END:variables
 
+     private boolean noexisteidCampus() {
+        try {
+            Statement st = con.createStatement();
+            String sql = "Select id_campus from Campus where id_campus = '" + txt_idCampus.getText() + "'";
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+               
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Campus.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
     private boolean existeidCampus() {
         try {
             Statement st = con.createStatement();
