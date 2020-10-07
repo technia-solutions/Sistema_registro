@@ -424,10 +424,16 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
             ps.setString(2, txtA_NombreReqAsig.getText());
             ps.setString(3, id_facultad);
             int res = ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Se ha guardado la información de la asignatura requisito");
+            
+          
+            JOptionPane.showMessageDialog(null, "Se ha guardado la información de la asignatura requisito"); 
+            
+          
         } catch (Exception e) {
-            System.out.println(e);
-
+           System.out.println(e);
+          
+             JOptionPane.showMessageDialog(null, "Error al guardar la información");
+            
         }
 
         actualizarDatos();
@@ -444,28 +450,36 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
             txtA_NombreReqAsig.requestFocus();
             return;
         }
-        else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de la asignatura requisito" + nombreAsignaturaRequisito + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
+        else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de la asignatura requisito " + nombreAsignaturaRequisito + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
-            String id_carrera = cbo_idCarrera.getSelectedItem().toString().substring(0, 3);
+            String id_carrera = cbo_idCarrera.getSelectedItem().toString().substring(0, 4);
             try {
                 PreparedStatement ps;
                 ResultSet rs;
                 ps = con.prepareStatement("Update Requisito_Asignatura set"
                     + " RequisitoAsignatura = ? ,"
-                    + " id_asignatura = ? "
+                    + " id_asignatura = ? ,"
+                    +  " id_carrera = ? "
                     + " where id_asignatura =\'"+lbl_ReqA.getText()+"\'");
 
                 ps.setString(1, txtA_NombreReqAsig.getText());
                 ps.setString(2, txt_idReqAsig.getText());
-                /* ps.setString(3, id_facultad);*/
+                ps.setString(3, id_carrera);
                  this.btn_eliminar.setEnabled(false);
                  this.btn_actualizar1.setEnabled(false);
                  this.btn_guardar.setEnabled(true);
                 int res = ps.executeUpdate();
+              JOptionPane.showMessageDialog(null, "Se ha actualizado la información en de la asignatura: " + txtA_NombreReqAsig.getText());
+                if(res > 0){
+                }else {
+                     JOptionPane.showMessageDialog(null, "Error al actualizar la informacion de la asignatura requisito, podría ser por: \n 1.La Asignatura requisito ya está en uso con alumnos matriculados."
+                         + "\n 2. No se encuentra el código de la Asignatura requisito a actualizar.\n 3.La Asignatura requsito tiene secciones creadas","¡Error al Actuarlizar!", JOptionPane.ERROR_MESSAGE);
+                }
             } catch (Exception e) {
                 System.out.println(e);
+               
             }
-
+           
         }
         actualizarDatos();
         LimpiarCajas();
@@ -580,11 +594,11 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
             return;
         }
         char a = evt.getKeyChar();
-        if (Character.isDigit(a)) {
+        if(Character.isDigit(a) || !Character.isLetterOrDigit(a)){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Sólo letras");
-        }
+        }   
 
         
        

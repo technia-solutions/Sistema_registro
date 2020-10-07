@@ -158,7 +158,7 @@ Connection con = null;
         });
         jScrollPane1.setViewportView(Tabla_RegistroAsignatura);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 650, 840, 106));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 610, 840, 106));
 
         jPanel1.setBackground(new java.awt.Color(232, 251, 249));
 
@@ -192,7 +192,7 @@ Connection con = null;
         lbl_IdCarrera.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_IdCarrera.setText("Carrera:");
 
-        cbo_Req1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione la asignatura1:", "Sin requisito" }));
+        cbo_Req1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione la asignatura 1:", "Sin requisito" }));
         cbo_Req1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbo_Req1ActionPerformed(evt);
@@ -352,14 +352,14 @@ Connection con = null;
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(lbl_Req2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbo_Req2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(cbo_Req2, 0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lbl_IdCarrera)
                                     .addComponent(lbl_Req1))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbo_Req1, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cbo_Req1, javax.swing.GroupLayout.Alignment.TRAILING, 0, 1, Short.MAX_VALUE)
                                     .addComponent(cbo_IdCarrera, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(102, 102, 102))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -427,7 +427,7 @@ Connection con = null;
                 .addGap(59, 59, 59))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 840, 480));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 840, 480));
 
         lbl_usuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_usuario.setText("Nombre Usuario");
@@ -533,11 +533,14 @@ Connection con = null;
             JOptionPane.showMessageDialog(null, "La unidades valorativas debe ser de un mínimo de 1 caracter", "Longitud de las unidades valorativas", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
-         
-       
         
         if(!validarRequisitos(cbo_Req1.getSelectedItem().toString(),cbo_Req2.getSelectedItem().toString())){
             JOptionPane.showMessageDialog(null, "El requisito 1 no puede ser igual al requisito 2", "Requisitos iguales", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+          if(!validarVacio(cbo_Req1.getSelectedItem().toString(),cbo_Req2.getSelectedItem().toString())){
+            JOptionPane.showMessageDialog(null, "El requisito 1 y el requisito 2 están vacíos.", "Requisitos vacíos", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
         else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de la asignatura " +nombreAsignatura + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
@@ -571,10 +574,14 @@ Connection con = null;
                 JOptionPane.showMessageDialog(null, "Se ha actualizado la información en de la asignatura: " + txa_NombreA.getText());
                 actualizarDatos();
                 LimpiarCajas();
-            } catch (Exception e) {
-               // System.out.println(e);
-                JOptionPane.showMessageDialog(null, "Error al actualizar la informacion de la asignatura, podría ser por: \n 1.La Asignatura ya está en uso con alumnos matriculados."
+                if(res > 0){
+                }else {
+                     JOptionPane.showMessageDialog(null, "Error al actualizar la informacion de la asignatura, podría ser por: \n 1.La Asignatura ya está en uso con alumnos matriculados."
                          + "\n 2. No se encuentra el código de la Asignatura a actualizar.\n 3.La Asignatura tiene secciones creadas","¡Error al Actuarlizar!", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+               
             }
             
 
@@ -602,7 +609,20 @@ Connection con = null;
         else{
             return false;
         }
+
+       
     }
+    
+     private boolean validarVacio(String RequisitoA, String RequisitoB){
+     if(RequisitoA.equals("Seleccione la asignatura 1:")|| RequisitoB.equals("Seleccione la asignatura 1:")){
+         return false;
+     }
+    return false;
+        
+    }
+    
+   
+
     
     private boolean existeCodAsignatura() {
         try {
@@ -716,7 +736,13 @@ Connection con = null;
             JOptionPane.showMessageDialog(null, "El requisito 1 no puede ser igual al requisito 2", "Requisitos iguales", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
-         
+        
+          if(!validarVacio(cbo_Req1.getSelectedItem().toString(),cbo_Req2.getSelectedItem().toString())){
+            JOptionPane.showMessageDialog(null, "El requisito 1 y el requisito 2 están vacíos.", "Requisitos vacíos", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+      
 
         try{
             PreparedStatement ps;
@@ -926,12 +952,11 @@ Connection con = null;
              return; 
          }
         char a = evt.getKeyChar();
-        if (Character.isDigit(a)) {
+        if(Character.isDigit(a) || !Character.isLetterOrDigit(a)){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(null, "Sólo letras");
-        }
-        
+        }   
     }//GEN-LAST:event_txa_NombreAKeyTyped
 
     private void btn_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultarActionPerformed
