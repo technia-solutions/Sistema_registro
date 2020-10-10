@@ -371,7 +371,17 @@ DefaultTableModel modelo = new DefaultTableModel();
             
             return;
         }
+      
+      if( (cld_fechaInicial.equals(cld_fechaFinal))){
+        javax.swing.JOptionPane.showMessageDialog(this,"Error al ingresar fecha de inicio del periodo.", "Fecha Inicial invalida", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+          //return;
+      }
         
+       if( (cld_fechaFinal.equals(cld_fechaInicial))){
+        javax.swing.JOptionPane.showMessageDialog(this,"Error al ingresar fecha final del periodo.", "Fecha Final invalida", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+          //return;
+      }
+      
         if( (cld_fechaFinal.getDate()== null)){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar la fecha final del período.","Fecha Final Requerida",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             cld_fechaFinal.requestFocus();

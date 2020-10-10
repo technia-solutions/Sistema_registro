@@ -94,6 +94,25 @@ public static String DateAString (Date fecha){
             return;
          }
           
+              if(idPeriodo.equals(idPeriodo) ) {
+                   javax.swing.JOptionPane.showMessageDialog(null,"Error al guardar el id del período","Id del período no valido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+               if(nombrePeriodo.equals(nombrePeriodo) ) {
+                   javax.swing.JOptionPane.showMessageDialog(null,"Error al guardar el nombre del período","Nombre del período no valido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+               }
+               
+               if(fechaInicial.equals(fechaInicial) ) {
+                   javax.swing.JOptionPane.showMessageDialog(null,"Error al guardar la fecha Inicial del período historico","Hora Inicial del período historico no valido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+               }
+               
+                if(fechaFinal.equals(fechaFinal) ) {
+                   javax.swing.JOptionPane.showMessageDialog(null,"Error al guardar la fecha Final del período historico","Hora Final del período historico no valido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+               }
+        
           /*int mes = cld_fechaInicial.getDate().getMonth() + 1;
         int año = cld_fechaInicial.getDate().getYear() +1900;
         int dia =cld_fechaInicial.getDate().getDate();

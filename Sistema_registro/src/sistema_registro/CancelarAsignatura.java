@@ -433,7 +433,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
     }
       
     private void btn_CancelarAsigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CancelarAsigActionPerformed
-        //CancelarA(var, var);
+         //CancelarA(var, var);
          String numeroCuenta,id_seccion,id_periodo,id_matricula;
         
        

@@ -329,7 +329,8 @@ public class Secciones extends javax.swing.JFrame {
         lbl_aula.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_aula.setText("Aula: ");
 
-        cbo_IdPeriodo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un periodo:" }));
+        cbo_IdPeriodo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un período:" }));
+        cbo_IdPeriodo.setToolTipText("");
         cbo_IdPeriodo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbo_IdPeriodoActionPerformed(evt);
@@ -707,6 +708,9 @@ public class Secciones extends javax.swing.JFrame {
             String id_seccion = cbo_Asignaturas.getSelectedItem().toString().substring(0, 4) + "-" +  txt_NombreSeccion.getText();
             String id_asignatura = cbo_Asignaturas.getSelectedItem().toString().substring(0, 4);
             String id_periodo = cbo_IdPeriodo.getSelectedItem().toString().substring(5, 6);
+            //Correcion para aceptar el idperiodo
+            //String id_periodo= cbo_IdPeriodo.getSelectedItem().toString().substring(0,6);
+            
             String id_aula = cbo_IdAula.getSelectedItem().toString().substring(0, 4);
             try {
                 PreparedStatement ps;
@@ -869,7 +873,11 @@ public class Secciones extends javax.swing.JFrame {
         cadena4 = txt_HoraInicial.getText();
         cadena5 = txt_HoraFinal.getText();
         String id_periodo= cbo_IdPeriodo.getSelectedItem().toString().substring(5,6);
-        String id_aula= cbo_IdAula.getSelectedItem().toString().substring(0,4);
+        //Correcion para aceptar el idperiodo
+       //String id_periodo= cbo_IdPeriodo.getSelectedItem().toString().substring(0,6);
+       String id_aula= cbo_IdAula.getSelectedItem().toString().substring(0,4);
+       
+       
   //   Cadena8 = txt_MensajeDias.getText();
    //    txt_MensajeDias.setText(Mensaje);
       // makeLabel(Mensaje);
@@ -934,20 +942,20 @@ public class Secciones extends javax.swing.JFrame {
             return;
         }
            
-         if((cbo_IdPeriodo.getSelectedItem().equals("Seleccione un período"))){
+         if((cbo_IdPeriodo.getSelectedItem().equals(":"))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un período para la sección.","Período de la sección requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
         }
          
            if((cbo_IdAula.getSelectedItem().equals("Seleccione un aula"))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar una para la sección.","Aula de la sección requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar una aula para la sección.","Aula de la sección requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
         }
            
         if ((chb_Lunes.getText().equals("")) || (chb_Martes.getText().equals("")) || (chb_Miercoles.getText().equals("")) || (chb_Jueves.getText().equals("")) ||
              (chb_Viernes.getText().equals("")) || (chb_Sabado.getText().equals("")) || (chb_Domingo.getText().equals(""))) {
 
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar el día de la sección!. \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar los dias correspondientes de la sección!. \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             chb_Lunes.requestFocus();
             return;
         }

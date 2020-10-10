@@ -380,6 +380,19 @@ public class Periodo extends javax.swing.JFrame {
             return;
         }
         
+         if(txt_idPeriodo.equals(txt_idPeriodo) ) {
+                   javax.swing.JOptionPane.showMessageDialog(null,"Error al guardar el id del período","Id del período no valido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+               if(txt_periodo.equals(txt_periodo) ) {
+                   javax.swing.JOptionPane.showMessageDialog(null,"Error al guardar el nombre del período","Nombre del período no valido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+               }
+               
+               if(txt_descripcion.equals(txt_descripcion) ) {
+                   javax.swing.JOptionPane.showMessageDialog(null,"Error al guardar la descripcion del período","Descripcion del período no valido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+               }
          
         
         if (existeidPeriodo()) {
@@ -391,7 +404,7 @@ public class Periodo extends javax.swing.JFrame {
         }
 
         if (!validarLongitud(txt_idPeriodo, 1)) {
-            JOptionPane.showMessageDialog(null, "El id período ingresado es muy pequeño, el mínimo es de 1 caracteres", "Longitud de id período", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El id período ingresado es muy pequeño, el mínimo es de 1 caracter", "Longitud de id período", JOptionPane.INFORMATION_MESSAGE);
             return;
 
         }
@@ -403,7 +416,7 @@ public class Periodo extends javax.swing.JFrame {
         }
         
          if (!validarLongitud(txt_descripcion,10 )) {
-            JOptionPane.showMessageDialog(null, "La descripcion del período ingresado es muy pequeño, el mínimo es de 10 caracter", "Longitud del período", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "La descripcion del período ingresado es muy pequeño, el mínimo es de 10 caracteres", "Longitud del período", JOptionPane.INFORMATION_MESSAGE);
             return;
 
         }
