@@ -617,13 +617,13 @@ public class Alumno extends javax.swing.JFrame {
         identidad = txt_identidad.getText();
         
         if((txt_nombres.getText().equals(""))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar los nombres del alumno.","Nombres del alumno requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar los nombres del alumno.","Nombres del alumno requeridos",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_nombres.requestFocus();
             return;
         }
         
         if((txt_apellidos.getText().equals(""))){
-             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar los apellidos del alumno.","Apellidos del alumno requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar los apellidos del alumno.","Apellidos del alumno requeridos",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_apellidos.requestFocus();
             return;
         }
@@ -887,13 +887,13 @@ public class Alumno extends javax.swing.JFrame {
             String fecha = año + "-" + mes +"-"+ dia;
             String periodo = cbo_periodo.getSelectedItem().toString().substring(0, 1);
              if((txt_nombres.getText().equals(""))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar los nombres del alumno.","Nombres del alumno requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar los nombres del alumno.","Nombres del alumno requeridos",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_nombres.requestFocus();
             return;
         }
         
         if((txt_apellidos.getText().equals(""))){
-             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar los apellidos del alumno.","Apellidos del alumno requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar los apellidos del alumno.","Apellidos del alumno requeridos",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_apellidos.requestFocus();
             return;
         }
@@ -951,8 +951,8 @@ public class Alumno extends javax.swing.JFrame {
 "                      numero_identidad = ?,\n" +
 "                      id_campus =?,\n" +
 "                      id_periodo= ?\n" +
-"                      where numero_cuenta_alumno = '"+var+"'\n" +
-"                      or numero_identidad = '"+var+"'");
+"                      where numero_cuenta_alumno = '"+lbl_cuenta.getText()+"'\n" +
+"                      or numero_identidad = '"+txt_identidad.getText()+"'");
                       ps.setString(1,txt_nombres.getText());
                       ps.setString(2,txt_apellidos.getText());
                       ps.setString(3,txt_telefono.getText());
@@ -1001,6 +1001,8 @@ public class Alumno extends javax.swing.JFrame {
                                 txt_telefono.setText(rs2.getString("telefono_alumno"));
                                 cld_fechaNacimiento.setDate(rs2.getDate("fecha_nacimiento"));
                                 cbo_carrera.setSelectedItem(rs2.getString("id_carrera") + " - " + rs2.getString("nombre_carrera"));
+                                cbo_periodo.addItem(rs2.getString("nombre_periodo_historico") + " Período");
+                                this.cbo_periodo.setEnabled(false);
                                 cbo_periodo.setSelectedItem(rs2.getString("nombre_periodo_historico") + " Período");
                                 cbo_campus.setSelectedItem(rs2.getString("id_campus") + " - " + rs2.getString("nombre_campus"));
                                 this.lbl_cuenta.setVisible(true);
@@ -1178,7 +1180,18 @@ public class Alumno extends javax.swing.JFrame {
         this.btn_actualizar.setEnabled(false);
         this.btn_agregarAlumnos.setEnabled(true);
         this.btn_buscar.setEnabled(true);
-               
+        this.cbo_periodo.setEnabled(true);
+        cbo_periodo.removeAllItems();
+        try {
+            ArrayList<String> lista3 = new ArrayList<String>();
+            lista3 = new Conexion_consulta().llenar_periodo();
+            cbo_periodo.addItem("Seleccione el período");
+            for(int i = 0; i<lista3.size();i++){
+                cbo_periodo.addItem(lista3.get(i));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Alumno.class.getName()).log(Level.SEVERE, null, ex);
+        }        
     }
         
     public static void main(String args[]) {

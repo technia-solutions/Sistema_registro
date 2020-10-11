@@ -878,13 +878,13 @@ this.cbo_tipoUsuario.setSelectedItem("");
         String nombreEmpleado = txt_Nombre.getText() + " " + txt_Apellido.getText();
         
          if((txt_Nombre.getText().equals(""))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar los nombres del empleado.","Nombres empleado requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar los nombres del empleado.","Nombres del empleado requeridos",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_Nombre.requestFocus();
             return;
         }
          
          if((txt_Apellido.getText().equals(""))){
-             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar los apellidos del empleado.","Apellidos del empleado requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar los apellidos del empleado.","Apellidos del empleado requeridos",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_Apellido.requestFocus();
             return;
         }
@@ -1255,13 +1255,13 @@ this.cbo_tipoUsuario.setSelectedItem("");
      String identidad = txt_Identidad.getText();
      
       if((txt_Nombre.getText().equals(""))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar los nombres del empleado.","Nombres empleado requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar los nombres del empleado.","Nombres del empleado requeridos",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_Nombre.requestFocus();
             return;
         }
          
          if((txt_Apellido.getText().equals(""))){
-             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar los apellidos del empleado.","Apellidos del empleado requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar los apellidos del empleado.","Apellidos del empleado requeridos",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_Apellido.requestFocus();
             return;
         }
@@ -1569,6 +1569,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
                  || evt.getKeyChar() == 26 || evt.getKeyChar() == 24) {
         return;
             }
+            
         if(evt.getKeyChar() == 32 || evt.getKeyChar() == 124){
             evt.consume();
             Toolkit.getDefaultToolkit().beep();

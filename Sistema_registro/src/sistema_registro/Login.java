@@ -321,7 +321,7 @@ public class Login extends javax.swing.JFrame {
         return true;
         else
             return false;
-    }
+        }
     
     /**
      * @param args the command line arguments
