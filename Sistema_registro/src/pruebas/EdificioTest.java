@@ -57,7 +57,7 @@ public class EdificioTest {
             return;
         }
         
-        if(existeEdificio()){
+        if(existeEdificio(idEdificio)){
             return;
         }
         
@@ -92,17 +92,17 @@ public class EdificioTest {
             return;
         }
           
-         if(contieneLetra(NombreEdificio)){
-             return;
-         }
-         
-         if(contieneLetrayNumeros(Campus)){
-             return;
-         }
-         
-         if(contieneLetra(idEdificio)){
-             return;
-         }
+          if(contieneNumero(idEdificio)){
+               JOptionPane.showMessageDialog(null, "El id edificio no puede contener números");
+               return;
+          }
+          
+           if(contieneNumero(NombreEdificio)){
+               JOptionPane.showMessageDialog(null, "El nombre edificio no puede contener números");
+               return;
+          }
+          
+        
         
          try{
             PreparedStatement ps;
@@ -127,12 +127,62 @@ public class EdificioTest {
    }
    
    public void ActualizarEdificio(String idEdificio, String NombreEdificio, String Campus){
-        if ((idEdificio.equals("")) || (NombreEdificio.equals("")) ||
-            (Campus.equals(""))) {
-
-            javax.swing.JOptionPane.showMessageDialog(null,"¡Debe seleccionar el edificio a actualizar!. \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+         if((idEdificio.equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(null,"Debe ingresar el id del edificio.","Id edifico requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
         }
+        
+          if((NombreEdificio.equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(null,"Debe ingresar el nombre del edificio.","Nombre edifico requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+          
+           if((Campus.equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(null,"Debe ingresar el nombre del edificio.","Nombre edifico requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+         if(!validarLongitud(idEdificio,1)){
+            JOptionPane.showMessageDialog(null, "El id del edificio debe ser de 1 caracter.", "Longitud de id del edificio", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+         
+        if(!validarLongitud(NombreEdificio,10)){
+            JOptionPane.showMessageDialog(null, "El nombre del edificio es muy corto el mínimo es de 10 caracteres.", "Longitud del nombre del edificio", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+        if(!validarLongitud(Campus,4)){
+            JOptionPane.showMessageDialog(null, "El código del campus es muy corto el mínimo es de 4 caracteres.", "Longitud del id del campus", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+         if(!validarLongitudMax(idEdificio,1)){
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres permitidos.", "Longitud de id del edificio", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+         
+         if(!validarLongitudMax(NombreEdificio,40)){
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres permitidos.", "Longitud de nombre del edificio", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
+          if(!validarLongitudMax(Campus,4)){
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres permitidos.", "Longitud del id del campus", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+           if(contieneNumero(idEdificio)){
+               JOptionPane.showMessageDialog(null, "El id edificio no puede contener números");
+               return;
+          }
+          
+           if(contieneNumero(NombreEdificio)){
+               JOptionPane.showMessageDialog(null, "El nombre edificio no puede contener números");
+               return;
+          }
+          
+          
+       
          if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro del edificio." +NombreEdificio + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
             
@@ -147,6 +197,8 @@ public class EdificioTest {
                   ps.setString(1, idEdificio);
                   ps.setString(2, NombreEdificio);
                   ps.setString(3,Campus);
+                 int res = ps.executeUpdate();
+             JOptionPane.showMessageDialog(null, "Se ha actualizado la información en de la asignatura: " + NombreEdificio);
           } catch (Exception e) {
                 System.out.println(e);
                 JOptionPane.showMessageDialog(null, "Error al actualizar la informacion del edificio, podria ser por: \n 1.El edificio ya está en uso."
@@ -216,9 +268,9 @@ public class EdificioTest {
        
    
 
-    private boolean existeEdificio() {
+    private boolean existeEdificio(String idEdificio) {
        
-        String idEdificio = null;
+        
        
        try {
             Statement st = con.createStatement();
@@ -248,7 +300,7 @@ public class EdificioTest {
      }
      //Longitud maxima
      private boolean validarLongitudMax(String texto, int longitud){
-       if(texto.length() <= longitud){
+       if(texto.length() <= longitud){ JOptionPane.showMessageDialog(null, "La unidad valorativa de la asignatura no puede contener letras");
            return true;
        }
        else{
@@ -257,7 +309,7 @@ public class EdificioTest {
     
      }
    
-    private boolean contieneNumeros(String texto){
+    private boolean contieneNumero(String texto){
           for (int i = 0; i < texto.length(); i++) {
               if(Character.isDigit(texto.charAt(i)))
                   return true;
@@ -265,21 +317,7 @@ public class EdificioTest {
           return false;
       }
    
-      private boolean contieneLetra(String texto){
-          for (int i = 0; i < texto.length(); i++) {
-              if(Character.isLetter(texto.charAt(i)))
-                  return true;
-          }
-          return false;
-      }
-      
-      private boolean contieneLetrayNumeros(String texto){
-          for (int i = 0; i < texto.length(); i++) {
-              if(Character.isLetterOrDigit(texto.charAt(i)))
-                  return true;
-          }
-          return false;
-      }
+     
 
 
 }

@@ -7,7 +7,9 @@ package pruebas;
 
 import pruebas.CarreraTest;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -59,6 +61,18 @@ public class CarreraTestTest {
         CarreraTest instance = new CarreraTest();
         instance.GuardarCarrera(idCarrera, NombreCarrera, Facultad);
         // TODO review the generated test code and remove the default call to fail.
+         try {
+            Statement st = con.createStatement();
+            String sql = "Select * from Edificio where id_carrera  = '"+idCarrera+"'";
+            ResultSet rs = st.executeQuery(sql);
+            if(rs.next()){
+                assertEquals(idCarrera,rs.getString("id_edificio "));
+                assertEquals(NombreCarrera,rs.getString("nombre_edificio"));
+                assertEquals(Facultad,rs.getString("id_campus"));   
+            }
+        } catch (SQLException ex) {
+           System.out.println(ex.getMessage());
+        }
        
     }
 
@@ -74,7 +88,18 @@ public class CarreraTestTest {
         CarreraTest instance = new CarreraTest();
         instance.ActualizarCarrera(idCarrera, NombreCarrera, Facultad);
         // TODO review the generated test code and remove the default call to fail.
-       
+         try {
+            Statement st = con.createStatement();
+            String sql = "Select * from Edificio where id_carrera  = '"+idCarrera+"'";
+            ResultSet rs = st.executeQuery(sql);
+            if(rs.next()){
+                assertEquals(idCarrera,rs.getString("id_edificio "));
+                assertEquals(NombreCarrera,rs.getString("nombre_edificio"));
+                assertEquals(Facultad,rs.getString("id_campus"));   
+            }
+        } catch (SQLException ex) {
+           System.out.println(ex.getMessage());
+        }
     }
 
     /**

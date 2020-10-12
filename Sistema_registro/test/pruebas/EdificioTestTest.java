@@ -5,6 +5,10 @@
  */
 package pruebas;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import pruebas.EdificioTest;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -12,18 +16,25 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import sistema_registro.SQL.ConectorSQL;
 
 /**
  *
  * @author asus
  */
 public class EdificioTestTest {
-    
+      Connection con = null;
     public EdificioTestTest() {
+           try {
+          this.con = ConectorSQL.obtenerConexion();
+         } catch (SQLException ex) {
+             System.out.println(ex.getMessage());
+         }
     }
     
     @BeforeClass
     public static void setUpClass() {
+      
     }
     
     @AfterClass
@@ -50,6 +61,18 @@ public class EdificioTestTest {
         EdificioTest instance = new EdificioTest();
         instance.GuardarEdificio(idEdificio, NombreEdificio, Campus);
         // TODO review the generated test code and remove the default call to fail.
+         try {
+            Statement st = con.createStatement();
+            String sql = "Select * from Edificio where id_edificio  = '"+idEdificio+"'";
+            ResultSet rs = st.executeQuery(sql);
+            if(rs.next()){
+                assertEquals(idEdificio,rs.getString("id_edificio "));
+                assertEquals(NombreEdificio,rs.getString("nombre_edificio"));
+                assertEquals(Campus,rs.getString("id_campus"));   
+            }
+        } catch (SQLException ex) {
+           System.out.println(ex.getMessage());
+        }
        
     }
 
@@ -65,6 +88,18 @@ public class EdificioTestTest {
         EdificioTest instance = new EdificioTest();
         instance.ActualizarEdificio(idEdificio, NombreEdificio, Campus);
         // TODO review the generated test code and remove the default call to fail.
+        try {
+            Statement st = con.createStatement();
+            String sql = "Select * from Edificio where id_edificio  = '"+idEdificio+"'";
+            ResultSet rs = st.executeQuery(sql);
+            if(rs.next()){
+                assertEquals(idEdificio,rs.getString("id_edificio "));
+                assertEquals(NombreEdificio,rs.getString("nombre_edificio"));
+                assertEquals(Campus,rs.getString("id_campus"));   
+            }
+        } catch (SQLException ex) {
+           System.out.println(ex.getMessage());
+        }
         
     }
 
@@ -74,9 +109,9 @@ public class EdificioTestTest {
     @Test
     public void testEliminarEdificio() {
         System.out.println("EliminarEdificio");
-        String idEdificio = "D";
-        String NombreEdificio = "Gimnasios Poli";
-        String Campus = "C004";
+        String idEdificio = "";
+        String NombreEdificio = "";
+        String Campus = "";
         EdificioTest instance = new EdificioTest();
         instance.EliminarEdificio(idEdificio, NombreEdificio, Campus);
         // TODO review the generated test code and remove the default call to fail.

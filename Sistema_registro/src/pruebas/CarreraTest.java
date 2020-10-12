@@ -29,8 +29,7 @@ import sistema_registro.SQL.ConectorSQL;
 public class CarreraTest {
      Connection con = null;
     Statement stmt = null;
-    String NombreCarrera;
-    String idCarrera;
+   
    public CarreraTest() {
     try{
         this.con = ConectorSQL.obtenerConexion();
@@ -56,11 +55,11 @@ public class CarreraTest {
             return;
         }
         
-         if (existeCarrera()) {
+         if (existeCarrera(NombreCarrera)) {
             return;
         }
         
-          if (existeidCarrera()) {
+          if (existeidCarrera(idCarrera)) {
             return;
         }
           
@@ -100,17 +99,13 @@ public class CarreraTest {
 
         }
           
-        if (contieneLetrayNumeros(Facultad)) {
-           return;
+         if (contieneNumero(NombreCarrera)) {
+              JOptionPane.showMessageDialog(null, "El nombre carrera no puede contener números");
+              return;
+           
        }
-         
-         if(contieneLetra(NombreCarrera)){
-             return;
-         }
-         
-         if(contieneLetrayNumeros(idCarrera)){
-             return;
-         }
+          
+      
     
       try {
             PreparedStatement ps;
@@ -129,9 +124,7 @@ public class CarreraTest {
    }
    
    public void ActualizarCarrera(String idCarrera, String NombreCarrera, String Facultad){
-               
-      
-          if((idCarrera.equals(""))){
+         if((idCarrera.equals(""))){
             javax.swing.JOptionPane.showMessageDialog(null,"Debe ingresar el id de la carrera.","Id carrera requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
         }
@@ -146,6 +139,51 @@ public class CarreraTest {
             javax.swing.JOptionPane.showMessageDialog(null,"Debe seleccionar una facultad para la carrea","Facultad de la carrera requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
         }
+        
+                 
+         if (!validarLongitud(idCarrera, 4)) {
+            JOptionPane.showMessageDialog(null, "El id ingresado es muy pequeños el mínimo es de 4 caracteres", "Longitud de id carrera", JOptionPane.INFORMATION_MESSAGE);
+            return;
+
+        }
+
+        if (!validarLongitud(NombreCarrera,10)) {
+            JOptionPane.showMessageDialog(null, "El  nombre ingresado es muy pequeño el mínimo es de 10 caracteres", "Longitud de nombre carrera", JOptionPane.INFORMATION_MESSAGE);
+            return;
+
+        }
+        
+          if (!validarLongitud(Facultad,2)) {
+            JOptionPane.showMessageDialog(null, "El  nombre de facultad ingresado es muy pequeños el mínimo es de 3 caracteres", "Longitud de nombre facultad", JOptionPane.INFORMATION_MESSAGE);
+            return;
+
+        }
+        
+           if (!validarLongitudMax(idCarrera, 4)) {
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos", "Longitud de id carrera", JOptionPane.INFORMATION_MESSAGE);
+            return;
+
+        }
+
+        if (!validarLongitudMax(NombreCarrera,100 )) {
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos", "Longitud de nombre carrera", JOptionPane.INFORMATION_MESSAGE);
+            return;
+
+        }
+        
+          if (!validarLongitudMax(Facultad,3)) {
+            JOptionPane.showMessageDialog(null, "Número máximo de caracteres admitidos", "Longitud de nombre facultad", JOptionPane.INFORMATION_MESSAGE);
+            return;
+
+        }
+          
+         if (contieneNumero(NombreCarrera)) {
+              JOptionPane.showMessageDialog(null, "El nombre carrera no puede contener números");
+              return;
+           
+       }
+          
+
             else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de carrera" +NombreCarrera + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
                 String Carrera = null;
@@ -239,7 +277,7 @@ public class CarreraTest {
    }
    
    
-   private boolean existeidCarrera() {
+   private boolean existeidCarrera(String idCarrera) {
       
         try {
             Statement st = con.createStatement();
@@ -257,7 +295,7 @@ public class CarreraTest {
         return false;
     }
   
-      private boolean existeCarrera() {
+      private boolean existeCarrera(String NombreCarrera) {
        
         try {
             Statement st = con.createStatement();
@@ -291,29 +329,17 @@ public class CarreraTest {
         }
     }
    
-   private boolean contieneNumeros(String texto){
+
+   
+      private boolean contieneNumero(String texto){
           for (int i = 0; i < texto.length(); i++) {
               if(Character.isDigit(texto.charAt(i)))
                   return true;
           }
           return false;
       }
-   
-      private boolean contieneLetra(String texto){
-          for (int i = 0; i < texto.length(); i++) {
-              if(Character.isLetter(texto.charAt(i)))
-                  return true;
-          }
-          return false;
-      }
       
-      private boolean contieneLetrayNumeros(String texto){
-          for (int i = 0; i < texto.length(); i++) {
-              if(Character.isLetterOrDigit(texto.charAt(i)))
-                  return true;
-          }
-          return false;
-      }
+    
 
    
 }
