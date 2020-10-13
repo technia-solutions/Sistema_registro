@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -58,6 +59,8 @@ public class Notas extends javax.swing.JFrame {
          desactivar();
          this.Tabla_asignatura.setEnabled(true);
          this.setLocationRelativeTo(null);
+         this.setTitle("Notas");
+         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
     }
     
      public Notas(String nombreUsuario) throws SQLException {
@@ -68,6 +71,8 @@ public class Notas extends javax.swing.JFrame {
          this.lbl_usuario.setText(nombreUsuario);
          this.Tabla_asignatura.setEnabled(true);
          this.setLocationRelativeTo(null);
+         this.setTitle("Notas");
+         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
     }
 
     
@@ -81,6 +86,13 @@ public class Notas extends javax.swing.JFrame {
         this.Tabla_asignatura.setVisible(false);
         this.txt_numeroCuenta.setEnabled(true);
         this.btn_generarReporte.setEnabled(false);
+        this.rad_reposicionParcialI.setEnabled(false);
+        this.rad_reposicionParcialII.setEnabled(false);
+        cbo_reposicion.setSelected(false);
+        rad_reposicionParcialI.setSelected(false);
+        rad_reposicionParcialII.setSelected(false);
+        this.cbo_reposicion.setEnabled(false);
+       
     }
    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -432,7 +444,7 @@ public class Notas extends javax.swing.JFrame {
             String sql = "select N.numero_cuenta from Notas as N  where numero_cuenta= '"+txt_numeroCuenta.getText()+"';";
             ResultSet rs = st.executeQuery(sql);
             if (!rs.next()) {  
-                JOptionPane.showMessageDialog(null, "El número de cuenta: " + txt_numeroCuenta.getText() + " no existe o no tiene asignaturas matriculadas", "Número de Cuenta Incorrecto", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El número de cuenta: " + txt_numeroCuenta.getText() + " no existe o no tiene asignaturas matriculadas", "Número de cuenta incorrecto", JOptionPane.ERROR_MESSAGE);
                 LimpiarCajas();
                 return true;
             } else {
@@ -597,8 +609,15 @@ public class Notas extends javax.swing.JFrame {
 
     private void btn_buscarClasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarClasesActionPerformed
     String idAlumno;
-    existeNumeroCuenta();
+  
     idAlumno=txt_numeroCuenta.getText();
+    if(txt_numeroCuenta.getText().equals("")){
+        javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el número de cuenta de el alumno."," Número de cuenta de el alumno requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        txt_numeroCuenta.requestFocus();
+        return;
+    }
+    else if (existeNumeroCuenta())
+    
  
         try{
             DefaultTableModel modelo = new DefaultTableModel();
@@ -636,6 +655,7 @@ public class Notas extends javax.swing.JFrame {
                 this.Tabla_asignatura.setVisible(true);
                 this.btn_generarReporte.setEnabled(true);
                 this.txt_numeroCuenta.setEnabled(false);
+                
             }
          }catch(SQLException ex){
              System.out.println(ex.toString());

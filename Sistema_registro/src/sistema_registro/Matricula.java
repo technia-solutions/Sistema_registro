@@ -359,7 +359,7 @@ public class Matricula extends javax.swing.JFrame {
             ResultSet rs = st.executeQuery(sql);
             if (!rs.next()) {
                      LimpiarCajas();
-                JOptionPane.showMessageDialog(null, "El número de cuenta: " +txt_numeroCuenta.getText()+ " no existe", "Número de Cuenta Incorrecto", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "El número de cuenta: " +txt_numeroCuenta.getText()+ " no existe", "Número de cuenta incorrecto", JOptionPane.ERROR_MESSAGE);
                 return true;
             } else {
                 
@@ -415,7 +415,7 @@ public class Matricula extends javax.swing.JFrame {
         this.tbl_asignaturas.setVisible(true);
            
         if((txt_numeroCuenta.getText().equals(""))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el número de cuenta.","Número de Cuenta requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el número de cuenta.","Número de cuenta requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_numeroCuenta.requestFocus();
             return;
         }
@@ -499,7 +499,7 @@ public class Matricula extends javax.swing.JFrame {
         }
         else{
             if(minima>maxima){
-                JOptionPane.showMessageDialog(null,"Esta Sección está llena");
+                JOptionPane.showMessageDialog(null,"La sección está llena");
                 return false;
                 
             }
@@ -597,7 +597,7 @@ public class Matricula extends javax.swing.JFrame {
         }
         else{*/
             if(minima>=maxima){
-                JOptionPane.showMessageDialog(null,"Esta Sección está llena");
+                JOptionPane.showMessageDialog(null,"La sección está llena");
                 return false;
                
             }
@@ -610,7 +610,7 @@ public class Matricula extends javax.swing.JFrame {
                ResultSet rsdoble2 = stdoble2.executeQuery(sqldoble2);
                if (rsdoble2.next()) {
 
-                  JOptionPane.showMessageDialog(null, "El Alumno tiene la asignatura: " +rsdoble2.getString("nombre_asignaturas")+ " ya matriculada  ", "Asignatura Ya Matriculada", JOptionPane.ERROR_MESSAGE);
+                  JOptionPane.showMessageDialog(null, "El alumno tiene la asignatura: " +rsdoble2.getString("nombre_asignaturas")+ " ya matriculada  ", "Asignatura ya matriculada", JOptionPane.ERROR_MESSAGE);
                    return true;
                }     
      
@@ -620,7 +620,7 @@ public class Matricula extends javax.swing.JFrame {
                ResultSet rsdoble = stdoble.executeQuery(sqldoble);
                if (rsdoble.next()) {
 
-                  JOptionPane.showMessageDialog(null, "El Alumno esta matriculado en la seccion: " +idseccion+ " ", "Asignatura Ya Matriculada", JOptionPane.ERROR_MESSAGE);
+                  JOptionPane.showMessageDialog(null, "El alumno esta matriculado en la sección: " +idseccion+ " ", "Asignatura ya matriculada", JOptionPane.ERROR_MESSAGE);
                    return true;
                }         
         
@@ -666,7 +666,7 @@ public class Matricula extends javax.swing.JFrame {
               if(res > 0){
                       
                   }else {
-                      JOptionPane.showMessageDialog(null, "Error al Guardar la calificación"); 
+                      JOptionPane.showMessageDialog(null, "Error al guardar la calificación"); 
  
                   }
          
@@ -682,7 +682,7 @@ public class Matricula extends javax.swing.JFrame {
                   if(res > 0){
                       
                   }else {
-                      JOptionPane.showMessageDialog(null, "Error al Guardar"); 
+                      JOptionPane.showMessageDialog(null, "Error al guardar"); 
  
                   }
             if(i !=0){
@@ -690,7 +690,7 @@ public class Matricula extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "La matrícula del alumno "+numeroCuenta+" se ha realizado con éxito");
                 return true;
             }else{
-                JOptionPane.showMessageDialog(null, "Error al Guardar la calificación"); 
+                JOptionPane.showMessageDialog(null, "Error al guardar la calificación"); 
             
                 return false;
             }
