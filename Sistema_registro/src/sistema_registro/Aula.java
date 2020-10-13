@@ -141,6 +141,11 @@ public class Aula extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(215, 236, 233));
 
         txt_idAula.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_idAula.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_idAulaFocusLost(evt);
+            }
+        });
         txt_idAula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_idAulaActionPerformed(evt);
@@ -432,14 +437,14 @@ public class Aula extends javax.swing.JFrame {
       
         
          if((txt_idAula.getText().equals(""))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id del aula.","Id aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id del aula.","Id  de la aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_idAula.requestFocus();
             return;
         }
          
            
          if((txt_nombreAula.getText().equals(""))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre del aula.","Nombre aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre del aula.","Nombre de la aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_nombreAula.requestFocus();
             return;
         }
@@ -452,7 +457,7 @@ public class Aula extends javax.swing.JFrame {
         }
          
          if((cbo_idEdificio.getSelectedItem().equals("Seleccione un edificio"))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un edificio para el aula.","Edificio del aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un edificio para el aula.","Edificio para el aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 
@@ -474,7 +479,7 @@ public class Aula extends javax.swing.JFrame {
             return;
         }
         
-         if(!validarLongitud(txt_PisoAula,2)){
+         if(!validarLongitud(txt_PisoAula,1)){
             JOptionPane.showMessageDialog(null, "El piso de la aula es muy corto el mínimo es de 1 caracteres.", "Longitud del piso del aula", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
@@ -510,21 +515,21 @@ public class Aula extends javax.swing.JFrame {
         String aula= txt_nombreAula.getText();
         String cap = aula.substring(0, 1).toUpperCase() + aula.substring(1);
           if((txt_idAula.getText().equals(""))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id del aula.","Id aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id del aula.","Id de la aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_idAula.requestFocus();
             return;
         }
          
            
          if((txt_nombreAula.getText().equals(""))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre del aula.","Nombre aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre del aula.","Nombre de la aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_nombreAula.requestFocus();
             return;
         }
          
             
          if((txt_PisoAula.getText().equals(""))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el piso del aula.","Piso de aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el piso del aula.","Piso de la aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_PisoAula.requestFocus();
             return;
         }
@@ -538,13 +543,13 @@ public class Aula extends javax.swing.JFrame {
             return;
         }
         
-         if(!validarLongitud(txt_PisoAula,2)){
+         if(!validarLongitud(txt_PisoAula,1)){
             JOptionPane.showMessageDialog(null, "El piso de la aula es muy corto el mínimo es de 1 caracteres.", "Longitud del piso del aula", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
          
          if((cbo_idEdificio.getSelectedItem().equals("Seleccione un edificio"))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un edificio para el aula.","Edificio del aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un edificio para el aula.","Edificio para el aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
         }
         else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro del aula" +Aula + "?.", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
@@ -598,27 +603,27 @@ public class Aula extends javax.swing.JFrame {
         String Aula = txt_idAula.getText() + " " + txt_PisoAula.getText();
 
          if((txt_idAula.getText().equals(""))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id del aula.","Id aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id del aula.","Id de la aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_idAula.requestFocus();
             return;
         }
          
            
          if((txt_nombreAula.getText().equals(""))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre del aula.","Nombre aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre del aula.","Nombre de la aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_nombreAula.requestFocus();
             return;
         }
          
             
          if((txt_PisoAula.getText().equals(""))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el piso del aula.","Piso de aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el piso del aula.","Piso de la aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_PisoAula.requestFocus();
             return;
         }
          
          if((cbo_idEdificio.getSelectedItem().equals("Seleccione un edificio"))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un edificio para el aula.","Edificio del aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un edificio para el aula.","Edificio para el aula requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
         }
           /* if (noexisteAula()){
@@ -630,7 +635,7 @@ public class Aula extends javax.swing.JFrame {
                    return;
                }
         
-        else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro del aula " + Aula + ".", "Confirmación de eliminación",
+        else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro del aula " + Aula + "?", "Confirmación de eliminación",
             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
 
@@ -755,6 +760,12 @@ public class Aula extends javax.swing.JFrame {
         LimpiarCajas();
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_limpiarActionPerformed
+
+    private void txt_idAulaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_idAulaFocusLost
+        String id = txt_idAula.getText();
+        String upper = id.toUpperCase();
+        txt_idAula.setText(upper); 
+    }//GEN-LAST:event_txt_idAulaFocusLost
 
     /**
      * @param args the command line arguments

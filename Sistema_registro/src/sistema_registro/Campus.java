@@ -457,12 +457,12 @@ public class Campus extends javax.swing.JFrame {
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         String nombreCampus = txt_NombreCampus.getText() + " " + txt_idCampus.getText();
          if((txt_idCampus.getText().equals(""))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id del campus.","Id campus  requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id del campus.","Id del campus  requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_idCampus.requestFocus();
             return;
         }
         if((txt_NombreCampus.getText().equals(""))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre del campus."," nombre campus requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre del campus."," nombre del campus requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_NombreCampus.requestFocus();
             return;
         }
@@ -561,18 +561,17 @@ public class Campus extends javax.swing.JFrame {
                  this.btn_guardar.setEnabled(true);
                 int res = ps.executeUpdate();
                  if(res > 0){
-                    JOptionPane.showMessageDialog(null, "Se ha actualizado la información del aula " + cap + " correctamente.");
+                    JOptionPane.showMessageDialog(null, "Se ha actualizado la información del campus " + cap + " correctamente.");
 
                 }else {
                     JOptionPane.showMessageDialog(null, "¡Error al actualizar la información!.");
-
                 }
            
-            } catch (SQLException ex) {
-                System.out.println(ex);
-                 JOptionPane.showMessageDialog(null,"Error al actualizar la información de la aula, podría ser por que el campus ya está en uso con alumnos matriculados.","¡Error al actualizar!", JOptionPane.ERROR_MESSAGE);
+            } catch (Exception e) {
+                 JOptionPane.showMessageDialog(null,"Error al actualizar la información del campus, podría ser por que el campus ya está en uso con alumnos matriculados.","¡Error al actualizar!", JOptionPane.ERROR_MESSAGE);
                       
             }
+           
             actualizarDatos();
             LimpiarCajas();
         }
@@ -589,12 +588,12 @@ public class Campus extends javax.swing.JFrame {
         
 
         if((txt_idCampus.getText().equals(""))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id del campus.","Id campus  requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id del campus.","Id  del campus  requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_idCampus.requestFocus();
             return;
         }
         if((txt_NombreCampus.getText().equals(""))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre del campus."," nombre campus requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre del campus."," nombre del campus requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_NombreCampus.requestFocus();
             return;
         }
