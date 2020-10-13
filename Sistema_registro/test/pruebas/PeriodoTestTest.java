@@ -44,13 +44,13 @@ public class PeriodoTestTest {
     @Test
     public void testGuardarPeriodo() {
         System.out.println("GuardarPeriodo");
-        String idPeriodo = "";
-        String nombrePeriodo = "";
-        String descripcion = "";
+        String idPeriodo = "s";
+        String nombrePeriodo = "s";
+        String descripcion = "Cuarto periodo";
         PeriodoTest instance = new PeriodoTest();
         instance.GuardarPeriodo(idPeriodo, nombrePeriodo, descripcion);
         // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+   
     }
 
     /**

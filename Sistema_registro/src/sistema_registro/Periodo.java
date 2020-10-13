@@ -136,6 +136,11 @@ public class Periodo extends javax.swing.JFrame {
         lbl_descripcion.setText("Descripción Período:");
 
         txt_idPeriodo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txt_idPeriodo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_idPeriodoActionPerformed(evt);
+            }
+        });
         txt_idPeriodo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_idPeriodoKeyTyped(evt);
@@ -380,21 +385,6 @@ public class Periodo extends javax.swing.JFrame {
             return;
         }
         
-         if(txt_idPeriodo.equals(txt_idPeriodo) ) {
-                   javax.swing.JOptionPane.showMessageDialog(null,"Error al guardar el id del período","Id del período no valido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            return;
-        }
-               if(txt_periodo.equals(txt_periodo) ) {
-                   javax.swing.JOptionPane.showMessageDialog(null,"Error al guardar el nombre del período","Nombre del período no valido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            return;
-               }
-               
-               if(txt_descripcion.equals(txt_descripcion) ) {
-                   javax.swing.JOptionPane.showMessageDialog(null,"Error al guardar la descripcion del período","Descripcion del período no valido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            return;
-               }
-         
-        
         if (existeidPeriodo()) {
             return;
         }
@@ -402,14 +392,21 @@ public class Periodo extends javax.swing.JFrame {
         if (existeNombrePeriodo()) {
             return;
         }
+         if(txt_idPeriodo.getText().equals("0") ) {
+                   javax.swing.JOptionPane.showMessageDialog(null,"Error al guardar el id del período, no puede ser cero","Id del período no valido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+               if(txt_periodo.getText().equals("0") ) {
+                   javax.swing.JOptionPane.showMessageDialog(null,"Error al guardar el nombre del período, no puede ser cero","Nombre del período no valido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+               }
 
         if (!validarLongitud(txt_idPeriodo, 1)) {
             JOptionPane.showMessageDialog(null, "El id período ingresado es muy pequeño, el mínimo es de 1 caracter", "Longitud de id período", JOptionPane.INFORMATION_MESSAGE);
             return;
-
         }
 
-        if (!validarLongitud(txt_periodo,1 )) {
+        if (!validarLongitud(txt_periodo,1)) {
             JOptionPane.showMessageDialog(null, "El  período ingresado es muy pequeño, el mínimo es de 1 caracter", "Longitud del período", JOptionPane.INFORMATION_MESSAGE);
             return;
 
@@ -547,6 +544,41 @@ public class Periodo extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar una descripcion del período","Descripcion del período",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
         }
+         
+          if (existeidPeriodo()) {
+            return;
+        }
+        
+        if (existeNombrePeriodo()) {
+            return;
+        }
+        
+         if(txt_idPeriodo.getText().equals("0") ) {
+                   javax.swing.JOptionPane.showMessageDialog(null,"Error al guardar el id del período, no puede ser cero","Id del período no valido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+               if(txt_periodo.getText().equals("0") ) {
+                   javax.swing.JOptionPane.showMessageDialog(null,"Error al guardar el nombre del período, no puede ser cero","Nombre del período no valido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            return;
+               }
+
+        if (!validarLongitud(txt_idPeriodo, 1)) {
+            JOptionPane.showMessageDialog(null, "El id período ingresado es muy pequeño, el mínimo es de 1 caracter", "Longitud de id período", JOptionPane.INFORMATION_MESSAGE);
+            return;
+
+        }
+
+        if (!validarLongitud(txt_periodo,1 )) {
+            JOptionPane.showMessageDialog(null, "El  período ingresado es muy pequeño, el mínimo es de 1 caracter", "Longitud del período", JOptionPane.INFORMATION_MESSAGE);
+            return;
+
+        }
+        
+         if (!validarLongitud(txt_descripcion,10 )) {
+            JOptionPane.showMessageDialog(null, "La descripcion del período ingresado es muy pequeño, el mínimo es de 10 caracteres", "Longitud del período", JOptionPane.INFORMATION_MESSAGE);
+            return;
+
+        }
            
          else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro del período " + nombrePeriodo + "?.", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
@@ -676,6 +708,10 @@ char a=evt.getKeyChar();
         LimpiarCajas();
 // TODO add your handling code here:
     }//GEN-LAST:event_btn_limpiarActionPerformed
+
+    private void txt_idPeriodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idPeriodoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_idPeriodoActionPerformed
 
     /**
      * @param args the command line arguments

@@ -72,19 +72,15 @@ public class PeriodoTest {
             return;
         }
         
-               if(idPeriodo.equals(idPeriodo) ) {
+               if(idPeriodo.equals("0") ) {
                    javax.swing.JOptionPane.showMessageDialog(null,"Error al guardar el id del período","Id del período no valido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
         }
-               if(nombrePeriodo.equals(nombrePeriodo) ) {
+               if(nombrePeriodo.equals("0") ) {
                    javax.swing.JOptionPane.showMessageDialog(null,"Error al guardar el nombre del período","Nombre del período no valido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
                }
-               
-               if(descripcion.equals(descripcion) ) {
-                   javax.swing.JOptionPane.showMessageDialog(null,"Error al guardar la descripcion del período","Descripcion del período no valido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            return;
-               }
+  
                
             if (existenombrePeriodo()) {
             return;
