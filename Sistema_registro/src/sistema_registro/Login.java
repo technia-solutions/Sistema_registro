@@ -6,6 +6,7 @@
 package sistema_registro;
 
 import java.awt.Toolkit;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.*;
@@ -284,7 +285,16 @@ public class Login extends javax.swing.JFrame {
             } */
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null,e.getMessage());
+              
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Login.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                 
         }
 
     }//GEN-LAST:event_btn_ingresarActionPerfomed
