@@ -7,6 +7,7 @@ package sistema_registro;
 
 import static java.awt.Frame.ICONIFIED;
 import java.awt.Toolkit;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -321,50 +322,85 @@ public class Facultad extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buscarMouseClicked
-       rellenar();
+        try{
+        rellenar();
+        }
+        catch(Exception e){
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Facultad.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btn_buscarMouseClicked
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
-
+        try{
         actualizarDatos();
+        }
+        catch(Exception e){
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Facultad.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btn_buscarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        String nombreFacultad = txa_NombreFacultad.getText() + " " + txt_idfacultad.getText();
-         if ((txt_idfacultad.getText().equals("") || (txa_NombreFacultad.getText().equals("")))) {
-            JOptionPane.showMessageDialog(this, "¡Debe seleccionar la facultad que desea eliminar!");
-        }
-         else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de facultad " + nombreFacultad + "", "Confirmación de eliminación",
-            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
-        ) == JOptionPane.YES_OPTION) {
+       try{
+            String nombreFacultad = txa_NombreFacultad.getText() + " " + txt_idfacultad.getText();
+             if ((txt_idfacultad.getText().equals("") || (txa_NombreFacultad.getText().equals("")))) {
+                JOptionPane.showMessageDialog(this, "¡Debe seleccionar la facultad que desea eliminar!");
+            }
+             else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de facultad " + nombreFacultad + "", "Confirmación de eliminación",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
+            ) == JOptionPane.YES_OPTION) {
 
-            try {
-                Statement st2 = con.createStatement();
-                String sql = "Delete Facultad "
-                + "where id_facultad = (Select id_facultad from Facultad where nombre_facultad = '"+txa_NombreFacultad.getText()+"')";
-             this.btn_eliminar.setEnabled(false);
-             this.btn_actualizar.setEnabled(false);
-             this.btn_guardar.setEnabled(true);
-                int rs2 = st2.executeUpdate(sql);
-                System.out.println(rs2);
-                if(rs2 > 0){
-                    JOptionPane.showMessageDialog(null, "Se ha borrado la información de la facultad " + nombreFacultad + " correctamente");
+                try {
+                    Statement st2 = con.createStatement();
+                    String sql = "Delete Facultad "
+                    + "where id_facultad = (Select id_facultad from Facultad where nombre_facultad = '"+txa_NombreFacultad.getText()+"')";
+                 this.btn_eliminar.setEnabled(false);
+                 this.btn_actualizar.setEnabled(false);
+                 this.btn_guardar.setEnabled(true);
+                    int rs2 = st2.executeUpdate(sql);
+                    System.out.println(rs2);
+                    if(rs2 > 0){
+                        JOptionPane.showMessageDialog(null, "Se ha borrado la información de la facultad " + nombreFacultad + " correctamente");
 
-                }else {
-                    JOptionPane.showMessageDialog(null, "¡Error al eliminar la información!");
+                    }else {
+                        JOptionPane.showMessageDialog(null, "¡Error al eliminar la información!");
+
+                    }
+
+                } catch (Exception e) {
+                    //JOptionPane.showMessageDialog(null, e.getMessage());
+                         JOptionPane.showMessageDialog(null, "Error al borrar la información, podría ser por: \n 1.La facultad ya está en uso."
+                             + "\n 2. No se encuentra el código de la facultad a borrar.","¡Error al Borrar!", JOptionPane.ERROR_MESSAGE);
 
                 }
 
-            } catch (Exception e) {
-                //JOptionPane.showMessageDialog(null, e.getMessage());
-                     JOptionPane.showMessageDialog(null, "Error al borrar la información, podría ser por: \n 1.La facultad ya está en uso."
-                         + "\n 2. No se encuentra el código de la facultad a borrar.","¡Error al Borrar!", JOptionPane.ERROR_MESSAGE);
-            
+               actualizarDatos();
+               LimpiarCajas();
             }
-
-           actualizarDatos();
-           LimpiarCajas();
-        }
+       }
+       catch(Exception e){
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Facultad.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+       }
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void txt_idfacultadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_idfacultadKeyTyped
@@ -394,6 +430,7 @@ public class Facultad extends javax.swing.JFrame {
     }//GEN-LAST:event_Tabla_FacultadMouseClicked
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
+       try{
         String cadena1, cadena2;
         cadena1 = txt_idfacultad.getText();
         cadena2 = txa_NombreFacultad.getText();
@@ -448,52 +485,82 @@ public class Facultad extends javax.swing.JFrame {
         }
         actualizarDatos();
         LimpiarCajas();
+            }
+        catch(Exception e){
+           try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Facultad.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }     
+        }
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
-        String nombreCampus = txa_NombreFacultad.getText() + " ";
-         
-        if ((txt_idfacultad.getText().equals("") || (txa_NombreFacultad.getText().equals("")))) {
-            JOptionPane.showMessageDialog(this, "¡Debe seleccionar la facultad que desea actualizar!");
-        }
+        try{
+            String nombreCampus = txa_NombreFacultad.getText() + " ";
 
-       else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de facultad " + nombreCampus + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
-        ) == JOptionPane.YES_OPTION) {
-            try {
-                PreparedStatement ps;
-                ResultSet rs;
-                ps = con.prepareStatement("Update Facultad set"
-                    + " nombre_facultad = ? ,"
-                    + "id_facultad = ? "
-                    + " where id_facultad =\'"+lbl_facultad.getText()+"\'");
-                /*ps.setString(1, txt_NombreCampus.getText());*/
-                ps.setString(1, txa_NombreFacultad.getText());
-                ps.setString(2, txt_idfacultad.getText());
-            this.btn_eliminar.setEnabled(false);
-            this.btn_actualizar.setEnabled(false);
-            this.btn_guardar.setEnabled(true);
-                int res = ps.executeUpdate();
-            } catch (Exception e) {
-                System.out.println(e);
-                              JOptionPane.showMessageDialog(null, "No se ha realizado la actualización por: \n 1.La facultad ya está en uso."
-                         + "\n 2. No se encuentra el código de la facultad a actualizar.","¡Error al Actualizar!", JOptionPane.ERROR_MESSAGE);
+            if ((txt_idfacultad.getText().equals("") || (txa_NombreFacultad.getText().equals("")))) {
+                JOptionPane.showMessageDialog(this, "¡Debe seleccionar la facultad que desea actualizar!");
             }
-            
-            actualizarDatos();
-            LimpiarCajas();
+
+           else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de facultad " + nombreCampus + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
+            ) == JOptionPane.YES_OPTION) {
+                try {
+                    PreparedStatement ps;
+                    ResultSet rs;
+                    ps = con.prepareStatement("Update Facultad set"
+                        + " nombre_facultad = ? ,"
+                        + "id_facultad = ? "
+                        + " where id_facultad =\'"+lbl_facultad.getText()+"\'");
+                    /*ps.setString(1, txt_NombreCampus.getText());*/
+                    ps.setString(1, txa_NombreFacultad.getText());
+                    ps.setString(2, txt_idfacultad.getText());
+                this.btn_eliminar.setEnabled(false);
+                this.btn_actualizar.setEnabled(false);
+                this.btn_guardar.setEnabled(true);
+                    int res = ps.executeUpdate();
+                } catch (Exception e) {
+                    System.out.println(e);
+                                  JOptionPane.showMessageDialog(null, "No se ha realizado la actualización por: \n 1.La facultad ya está en uso."
+                             + "\n 2. No se encuentra el código de la facultad a actualizar.","¡Error al Actualizar!", JOptionPane.ERROR_MESSAGE);
+                }
+
+                actualizarDatos();
+                LimpiarCajas();
+            }
+        }
+        catch(Exception e){
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Facultad.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
     private void CarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CarreraActionPerformed
-        
+
           this.dispose();
        Carrera cc;
          try {
              cc = new Carrera(lbl_usuario.getText());
              cc.setVisible(true);
-         } catch (SQLException ex) {
-             Logger.getLogger(Facultad.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (SQLException e) {
+              try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Facultad.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
          }
         
         
@@ -629,8 +696,14 @@ public class Facultad extends javax.swing.JFrame {
             TableColumn fn = Tabla_Facultad.getColumn(titulos[1]);
             fn.setMaxWidth(300);
         } catch (Exception e) {
-           /* JOptionPane.showMessageDialog(null, e.getMessage());*/
-            System.err.println(e);
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Facultad.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 
@@ -725,7 +798,14 @@ private void rellenar() {
 
                     
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, e.getMessage());
+                     try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Facultad.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
                 }
     }
 

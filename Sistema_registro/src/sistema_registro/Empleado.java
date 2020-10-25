@@ -18,6 +18,7 @@ import sistema_registro.SQL.ConectorSQL;
 import codigo.Conexion_consulta;
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.io.IOException;
 import java.text.NumberFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -863,7 +864,9 @@ this.cbo_tipoUsuario.setSelectedItem("");
     }
     
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
-        
+      String nombreEmpleado = "";
+      String tipoUsuario = "";
+      try{
         String cadena1, cadena2, cadena3, cadena4, cadena5, cadena6, cadena7, cadena8, cadena9;
         cadena1 = txt_Nombre.getText();
         cadena2 = txt_Apellido.getText();
@@ -874,8 +877,8 @@ this.cbo_tipoUsuario.setSelectedItem("");
         String id_campus = cbo_idCampus.getSelectedItem().toString().substring(0, 4);
         cadena8 = txt_NombreUsuario.getText();
         cadena9 = pwd_contraseña.getText();
-        String tipoUsuario = cbo_tipoUsuario.getSelectedItem().toString().substring(0,1);
-        String nombreEmpleado = txt_Nombre.getText() + " " + txt_Apellido.getText();
+        tipoUsuario = cbo_tipoUsuario.getSelectedItem().toString().substring(0,1);
+        nombreEmpleado = txt_Nombre.getText() + " " + txt_Apellido.getText();
         
          if((txt_Nombre.getText().equals(""))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar los nombres del empleado.","Nombres del empleado requeridos",javax.swing.JOptionPane.INFORMATION_MESSAGE);
@@ -981,8 +984,6 @@ this.cbo_tipoUsuario.setSelectedItem("");
         if(!validarContraseñas(cadena9)){
             return;
         }
-       
-      try{
           PreparedStatement ps;
           ResultSet rs;
         
@@ -996,7 +997,14 @@ this.cbo_tipoUsuario.setSelectedItem("");
                   ps.setString(6, txt_Identidad.getText());
                   int res= ps.executeUpdate();
       } catch ( Exception e) {
-            System.out.println(e);
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Empleado.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
          try{
              Statement st2=con.createStatement();
@@ -1013,7 +1021,14 @@ this.cbo_tipoUsuario.setSelectedItem("");
             int rs2 = st2.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Se ha guardado la informacion del empleado "+nombreEmpleado+" correctamente");
           }catch ( Exception e) {
-           JOptionPane.showMessageDialog(null, e.getMessage()); 
+          try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Empleado.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         limpiar();
         actualizarDatos();
@@ -1153,7 +1168,19 @@ this.cbo_tipoUsuario.setSelectedItem("");
     }//GEN-LAST:event_txt_NombreActionPerformed
 
     private void btn_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultarActionPerformed
+        try{
         actualizarDatos();
+        }
+        catch(Exception e){
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Empleado.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btn_consultarActionPerformed
 
     public void actualizarDatos(){
@@ -1208,7 +1235,14 @@ this.cbo_tipoUsuario.setSelectedItem("");
                 ctipou.setMaxWidth(95);
         }
         catch (Exception e) {
-            JOptionPane.showMessageDialog(null,e.getMessage());
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Empleado.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
     
@@ -1232,8 +1266,15 @@ this.cbo_tipoUsuario.setSelectedItem("");
                 else{
                     JOptionPane.showMessageDialog(null, "Error");
                 }
-        } catch (SQLException ex) {
-            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Facultad.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_menu_MenuPrincipalActionPerformed
 
@@ -1244,6 +1285,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
     int filas;
     
     private void btn_ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ActualizarActionPerformed
+        try{
         String nombreEmpleado = txt_Nombre.getText() + " " + txt_Apellido.getText();
         
         if(JOptionPane.showConfirmDialog(null,"¿Está seguro que desea actualizar el registro del empleado "+nombreEmpleado+"?","Confirmación de actualización",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE
@@ -1366,6 +1408,17 @@ this.cbo_tipoUsuario.setSelectedItem("");
          }
         limpiar();
         actualizarDatos();
+        }
+        catch ( Exception e){
+           try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Empleado.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btn_ActualizarActionPerformed
 
     public void rellenar(){
@@ -1417,7 +1470,14 @@ this.cbo_tipoUsuario.setSelectedItem("");
                         
                     }
                     }catch (Exception e) {
-                            JOptionPane.showMessageDialog(null,e.getMessage());
+                            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Empleado.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
                             }
                 }
                 
@@ -1428,8 +1488,15 @@ this.cbo_tipoUsuario.setSelectedItem("");
                             }
                 
             
-        } catch (SQLException ex) {
-            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Empleado.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
     }
@@ -1474,7 +1541,8 @@ this.cbo_tipoUsuario.setSelectedItem("");
     
     
     private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
-         String nombreEmpleado = txt_Nombre.getText() + " " + txt_Apellido.getText();
+        try{
+        String nombreEmpleado = txt_Nombre.getText() + " " + txt_Apellido.getText();
            if(JOptionPane.showConfirmDialog(null,"¿Está seguro que desea eliminar el registro del empleado "+nombreEmpleado+"","Confirmación de eliminación",
                    JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE
             )==JOptionPane.YES_OPTION){   
@@ -1508,6 +1576,17 @@ this.cbo_tipoUsuario.setSelectedItem("");
          }
         limpiar();
         actualizarDatos();
+        }
+        catch(Exception e){
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Empleado.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
     private void txt_IdentidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_IdentidadActionPerformed
@@ -1524,10 +1603,22 @@ this.cbo_tipoUsuario.setSelectedItem("");
     }//GEN-LAST:event_btn_Limpiarbtn_limpiarActionPerformed
 
     private void btn_rellenarCamposMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_rellenarCamposMouseClicked
-       rellenar();
+       try{
+        rellenar();
        this.jScrollPane1.setEnabled(true);
        this.Tabla_Empleados.setEnabled(true);
        this.btn_guardar.setEnabled(false);
+       }
+       catch(Exception e){
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Empleado.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+       }
     }//GEN-LAST:event_btn_rellenarCamposMouseClicked
 
     private void limpiar(){
@@ -1608,7 +1699,8 @@ this.cbo_tipoUsuario.setSelectedItem("");
     }//GEN-LAST:event_txt_NombreUsuarioActionPerformed
 
     private void menu_desbloquearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_desbloquearUsuarioActionPerformed
-         var = JOptionPane.showInputDialog(this,"Ingrese el nombre de usuario del empleado que desea desbloquar","Desbloqueo de usuarios",JOptionPane.QUESTION_MESSAGE);
+        try{ 
+        var = JOptionPane.showInputDialog(this,"Ingrese el nombre de usuario del empleado que desea desbloquar","Desbloqueo de usuarios",JOptionPane.QUESTION_MESSAGE);
             if(var == null){
                 JOptionPane.showMessageDialog(this,"La acción fue cancelada","¡AVISO!",JOptionPane.INFORMATION_MESSAGE);
             }
@@ -1633,14 +1725,32 @@ this.cbo_tipoUsuario.setSelectedItem("");
                         Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
+        }
+        catch(Exception e){
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Empleado.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_menu_desbloquearUsuarioActionPerformed
 
     private void menu_CampusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_CampusActionPerformed
          Campus campus = null;
         try {
             campus = new Campus(lbl_usuario.getText());
-        } catch (SQLException ex) {
-            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Facultad.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         campus.setVisible(true);
         this.dispose();
@@ -1650,8 +1760,15 @@ this.cbo_tipoUsuario.setSelectedItem("");
         TipoUsuario tipoEmpleado = null;
         try {
             tipoEmpleado = new TipoUsuario(lbl_usuario.getText());
-        } catch (SQLException ex) {
-            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Facultad.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         tipoEmpleado.setVisible(true);
         this.dispose();

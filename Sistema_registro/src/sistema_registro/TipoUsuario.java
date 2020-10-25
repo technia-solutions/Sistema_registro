@@ -7,6 +7,7 @@ package sistema_registro;
 
 import static java.awt.Frame.ICONIFIED;
 import java.awt.Toolkit;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -457,7 +458,14 @@ public void consultarDatos(){
             cTU.setMaxWidth(175);
         }
         catch (Exception e) {
-           JOptionPane.showMessageDialog(null, e.getMessage());
+           try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\TipoUsuario.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
            }
            
@@ -486,8 +494,15 @@ public void consultarDatos(){
      try {
          ee = new Empleado(lbl_usuario.getText());
           ee.setVisible(true);
-     } catch (SQLException ex) {
-         Logger.getLogger(TipoUsuario.class.getName()).log(Level.SEVERE, null, ex);
+     } catch (SQLException e) {
+        try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\TipoUsuario.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
      }   
     
     
@@ -498,61 +513,71 @@ public void consultarDatos(){
     }//GEN-LAST:event_txt_TipoUsuarioActionPerformed
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
-
-        String cadena1, cadena2;
-        cadena1 = txt_idTipo.getText();
-        cadena2 = txt_TipoUsuario.getText();
-
-       
-        if((txt_idTipo.getText().equals(""))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id del tipo de usuario.","Id tipo usuario requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            txt_idTipo.requestFocus();
-            return;
-        }
-        
-         if((txt_TipoUsuario.getText().equals(""))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre del tipo de usuario.","Nombre tipo usuario requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            txt_TipoUsuario.requestFocus();
-            return;
-        }
-        
-        
-        if(existeUsuario()){
-            return;
-        }
-        
-        if(existeidUsuario()){
-            return;
-        }
-
-        if(!validarLongitud(txt_idTipo,1)){
-            JOptionPane.showMessageDialog(null, "El Id ingresado tiene que ser de un caracter", "Longitud de los Id", JOptionPane.INFORMATION_MESSAGE);
-            return;
-        }
-
-        if(!validarLongitud(txt_TipoUsuario,5)){
-            JOptionPane.showMessageDialog(null, "El Tipo de Usuario es muy corto el mínimo es de 5 caracteres", "Longitud de los Tipo de Usuario", JOptionPane.INFORMATION_MESSAGE);
-            return;
-        }
-
         try{
-            PreparedStatement ps;
-            ResultSet rs;
+            String cadena1, cadena2;
+            cadena1 = txt_idTipo.getText();
+            cadena2 = txt_TipoUsuario.getText();
 
-            ps=con.prepareStatement("Insert into Tipo_Usuarios (id_tipoUsuario, Tipo_Usuario)"
-                + "                VALUES(?,?)");
-            ps.setString(1, txt_idTipo.getText());
-            ps.setString(2, txt_TipoUsuario.getText());
-            int res= ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Se ha guardado la información en Tipo de Usuario");
-        } catch ( Exception e) {
-            System.out.println(e);
-            JOptionPane.showMessageDialog(null, e.getMessage());
+
+            if((txt_idTipo.getText().equals(""))){
+                javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id del tipo de usuario.","Id tipo usuario requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                txt_idTipo.requestFocus();
+                return;
+            }
+
+             if((txt_TipoUsuario.getText().equals(""))){
+                javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre del tipo de usuario.","Nombre tipo usuario requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                txt_TipoUsuario.requestFocus();
+                return;
+            }
+
+
+            if(existeUsuario()){
+                return;
+            }
+
+            if(existeidUsuario()){
+                return;
+            }
+
+            if(!validarLongitud(txt_idTipo,1)){
+                JOptionPane.showMessageDialog(null, "El Id ingresado tiene que ser de un caracter", "Longitud de los Id", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+
+            if(!validarLongitud(txt_TipoUsuario,5)){
+                JOptionPane.showMessageDialog(null, "El Tipo de Usuario es muy corto el mínimo es de 5 caracteres", "Longitud de los Tipo de Usuario", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+
+            try{
+                PreparedStatement ps;
+                ResultSet rs;
+
+                ps=con.prepareStatement("Insert into Tipo_Usuarios (id_tipoUsuario, Tipo_Usuario)"
+                    + "                VALUES(?,?)");
+                ps.setString(1, txt_idTipo.getText());
+                ps.setString(2, txt_TipoUsuario.getText());
+                int res= ps.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Se ha guardado la información en Tipo de Usuario");
+            } catch ( Exception e) {
+                System.out.println(e);
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+
+            consultarDatos();
+            LimpiarCajas();
         }
-
-        consultarDatos();
-        LimpiarCajas();
-
+        catch(Exception e){
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\TipoUsuario.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     /*
@@ -598,42 +623,53 @@ public void consultarDatos(){
     }                                     
     */
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
+        try{
+            String TipoUsuario = txt_TipoUsuario.getText();
+            int i = Tabla_TipoUsuarios.getSelectedRow();
+            String tipoAnterior = Tabla_TipoUsuarios.getValueAt(i,1).toString();
+             if ((txt_idTipo.getText().equals("")) || (txt_TipoUsuario.getText().equals(""))) {
 
-        String TipoUsuario = txt_TipoUsuario.getText();
-        int i = Tabla_TipoUsuarios.getSelectedRow();
-        String tipoAnterior = Tabla_TipoUsuarios.getValueAt(i,1).toString();
-         if ((txt_idTipo.getText().equals("")) || (txt_TipoUsuario.getText().equals(""))) {
-            
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar el tipo usuario a actualizar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-           
-        }
+                javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar el tipo usuario a actualizar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
-       else if(JOptionPane.showConfirmDialog(null,"¿Está seguro que desea actualizar el registro del tipo de usuario: "+tipoAnterior+" a "+TipoUsuario+"?","Confirmación de actualización",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE
-        )==JOptionPane.YES_OPTION){
-            
-
-            try{
-                PreparedStatement ps;
-                ResultSet rs;
-                ps=con.prepareStatement("Update Tipo_Usuarios "
-                    + "set id_tipoUsuario = ?,"
-                    + "Tipo_Usuario = ?"
-                     + " where id_tipoUsuario =\'"+lbl_tipoU.getText()+"\'");
-                        
-                ps.setString(1, txt_idTipo.getText());
-                ps.setString(2, txt_TipoUsuario.getText());
-                this.btn_actualizar.setEnabled(false);
-                this.btn_eliminar.setEnabled(false);
-                this.btn_guardar.setEnabled(true);
-
-                int res= ps.executeUpdate();
-            } catch ( Exception e) {
-                System.out.println(e);
-                              JOptionPane.showMessageDialog(null, "No se ha realizado la actualización por: \n 1.El tipo de usuario ya fue definido."
-                         + "\n 2. No se encuentra el id del tipo usuario a actualizar.","¡Error al Actualizar!", JOptionPane.ERROR_MESSAGE);
             }
-           consultarDatos(); 
-           LimpiarCajas();
+
+           else if(JOptionPane.showConfirmDialog(null,"¿Está seguro que desea actualizar el registro del tipo de usuario: "+tipoAnterior+" a "+TipoUsuario+"?","Confirmación de actualización",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE
+            )==JOptionPane.YES_OPTION){
+
+
+                try{
+                    PreparedStatement ps;
+                    ResultSet rs;
+                    ps=con.prepareStatement("Update Tipo_Usuarios "
+                        + "set id_tipoUsuario = ?,"
+                        + "Tipo_Usuario = ?"
+                         + " where id_tipoUsuario =\'"+lbl_tipoU.getText()+"\'");
+
+                    ps.setString(1, txt_idTipo.getText());
+                    ps.setString(2, txt_TipoUsuario.getText());
+                    this.btn_actualizar.setEnabled(false);
+                    this.btn_eliminar.setEnabled(false);
+                    this.btn_guardar.setEnabled(true);
+
+                    int res= ps.executeUpdate();
+                } catch ( Exception e) {
+                    System.out.println(e);
+                                  JOptionPane.showMessageDialog(null, "No se ha realizado la actualización por: \n 1.El tipo de usuario ya fue definido."
+                             + "\n 2. No se encuentra el id del tipo usuario a actualizar.","¡Error al Actualizar!", JOptionPane.ERROR_MESSAGE);
+                }
+               consultarDatos(); 
+               LimpiarCajas();
+            }
+        }
+        catch(Exception e){
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\TipoUsuario.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
          
         // btn_guardar.setEnabled(true);
@@ -641,8 +677,19 @@ public void consultarDatos(){
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
-
+        try{
         consultarDatos();
+        }
+        catch(Exception e){
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\TipoUsuario.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btn_buscarActionPerformed
 
     
@@ -670,41 +717,53 @@ public void consultarDatos(){
     }//GEN-LAST:event_btn_eliminarMouseClicked
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        
-          String TipoUsuario = txt_TipoUsuario.getText();
-           if ((txt_idTipo.getText().equals("")) || (txt_TipoUsuario.getText().equals(""))) {
-            
-            javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar el tipo usuario a eliminar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-           
-        }
-          
-       else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de Tipo de Usuario: " + TipoUsuario + "", "Confirmación de eliminación",
-                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
-        ) == JOptionPane.YES_OPTION) {
-            
-            try {
-                Statement st2 = con.createStatement();
-                String sql = "Delete Tipo_Usuarios " 
-                        + "where id_tipoUsuario = '"+lbl_tipoU.getText()+"'";
-                
-                int rs2 = st2.executeUpdate(sql);
-                System.out.println(rs2);
-                if(rs2 > 0){ 
-                    JOptionPane.showMessageDialog(null, "Se ha borrado la información del Tipo de Usuario: " + TipoUsuario + " correctamente");
+    try{
+            String TipoUsuario = txt_TipoUsuario.getText();
+             if ((txt_idTipo.getText().equals("")) || (txt_TipoUsuario.getText().equals(""))) {
 
-                  }else {
-                      JOptionPane.showMessageDialog(null, "¡Error al eliminar la información!"); 
-                      
-                  }
-                
-            } catch (Exception e) {
-                //JOptionPane.showMessageDialog(null, e.getMessage());
-                JOptionPane.showMessageDialog(null, "Error al borrar la información, podría ser por: \n 1.Tipo de Usuario ya está definido."
-                         + "\n 2. No se encuentra el id del tipo usuario a borrar.","¡Error al Borrar!", JOptionPane.ERROR_MESSAGE);
+              javax.swing.JOptionPane.showMessageDialog(this,"¡Debe seleccionar el tipo usuario a eliminar! \n","¡AVISO!",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+
+          }
+
+         else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de Tipo de Usuario: " + TipoUsuario + "", "Confirmación de eliminación",
+                  JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
+          ) == JOptionPane.YES_OPTION) {
+
+                try {
+                    Statement st2 = con.createStatement();
+                    String sql = "Delete Tipo_Usuarios " 
+                            + "where id_tipoUsuario = '"+lbl_tipoU.getText()+"'";
+
+                    int rs2 = st2.executeUpdate(sql);
+                    System.out.println(rs2);
+                    if(rs2 > 0){ 
+                        JOptionPane.showMessageDialog(null, "Se ha borrado la información del Tipo de Usuario: " + TipoUsuario + " correctamente");
+
+                      }else {
+                          JOptionPane.showMessageDialog(null, "¡Error al eliminar la información!"); 
+
+                      }
+
+                } catch (Exception e) {
+                    //JOptionPane.showMessageDialog(null, e.getMessage());
+                    JOptionPane.showMessageDialog(null, "Error al borrar la información, podría ser por: \n 1.Tipo de Usuario ya está definido."
+                             + "\n 2. No se encuentra el id del tipo usuario a borrar.","¡Error al Borrar!", JOptionPane.ERROR_MESSAGE);
+                }
+               consultarDatos();
+               LimpiarCajas();
             }
-           consultarDatos();
-           LimpiarCajas();
         }
+        catch(Exception e){
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\TipoUsuario.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+     
         
     }//GEN-LAST:event_btn_eliminarActionPerformed
 

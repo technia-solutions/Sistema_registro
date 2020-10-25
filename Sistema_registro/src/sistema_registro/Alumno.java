@@ -6,7 +6,9 @@
 package sistema_registro;
 
 import codigo.Conexion_consulta;
+import java.awt.HeadlessException;
 import java.awt.Toolkit;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -602,6 +604,7 @@ public class Alumno extends javax.swing.JFrame {
         }    
     }
     private void btn_agregarAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarAlumnosActionPerformed
+        try{
         String numeroDeCuenta,nombreAlumno, apellidoAlumno, telefonoAlumno, idCarrera, identidad;
         numeroDeCuenta = "";
         nombreAlumno = txt_nombres.getText();
@@ -863,9 +866,18 @@ public class Alumno extends javax.swing.JFrame {
             System.out.println(e);
              
         }*/
-      
-      
-       
+        }
+        catch(Exception e){
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Alumno.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
           
         
     }//GEN-LAST:event_btn_agregarAlumnosActionPerformed
@@ -875,7 +887,8 @@ public class Alumno extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_LimpiarActionPerformed
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
-         String nombreAlumno = txt_nombres.getText() + " " + txt_apellidos.getText();
+        try{
+        String nombreAlumno = txt_nombres.getText() + " " + txt_apellidos.getText();
         
         if(JOptionPane.showConfirmDialog(null,"¿Está seguro que desea actualizar el registro del alumno: "+nombreAlumno+"?","Confirmación de actualización de alumno",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE
         )==JOptionPane.YES_OPTION){ 
@@ -968,12 +981,23 @@ public class Alumno extends javax.swing.JFrame {
                       this.lbl_cuenta.setVisible(false);
                       this.btn_agregarAlumnos.setEnabled(true);
                       limpiar();
-            } catch ( Exception e) {
+            } catch ( HeadlessException | SQLException e) {
                 JOptionPane.showMessageDialog(null, e.getMessage());
                 
                 
             }
          }
+        }
+        catch(Exception e){
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Alumno.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
     public void rellenar(){
@@ -1018,7 +1042,14 @@ public class Alumno extends javax.swing.JFrame {
                         }  
                     }
                     }catch (Exception e) {
-                            JOptionPane.showMessageDialog(null,e.getMessage());
+                             try {
+                                    Log myLog; 
+                                    myLog = new Log("src\\Logs\\Alumno.txt");
+                                    myLog.logger.setLevel(Level.SEVERE);
+                                    myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+                                } catch (IOException ex) {
+                                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                                }
                             }
      
         
@@ -1118,7 +1149,19 @@ public class Alumno extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_telefonoKeyTyped
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
+        try{
         rellenar();
+        }
+        catch(Exception e){
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Alumnoo.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btn_buscarActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -1134,8 +1177,15 @@ public class Alumno extends javax.swing.JFrame {
                 else{
                     JOptionPane.showMessageDialog(null, "Error");
                 }
-        } catch (SQLException ex) {
-            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Facultad.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
