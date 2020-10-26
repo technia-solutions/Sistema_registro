@@ -7,6 +7,7 @@ package sistema_registro;
 
 import codigo.Conexion_consulta;
 import java.awt.Toolkit;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -365,7 +366,8 @@ public class Edificio extends javax.swing.JFrame {
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
           
-        String cadena1, cadena2;
+        try {
+            String cadena1, cadena2;
         cadena1 = txt_idEdificio.getText();
         cadena2 = txt_nombreEdificio.getText();
         String id_campus = cbo_idCampus.getSelectedItem().toString().substring(0, 4);
@@ -426,10 +428,22 @@ public class Edificio extends javax.swing.JFrame {
         actualizarDatos();
         LimpiarCajas();
         
+        } catch (Exception e) {
+           try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Edificio.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+             
+        }
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
-      String nombreEdificio = txt_nombreEdificio.getText() + " ";
+        try {
+                 String nombreEdificio = txt_nombreEdificio.getText() + " ";
         if ((txt_idEdificio.getText().equals("")) || (txt_nombreEdificio.getText().equals("")) ||
             (cbo_idCampus.getSelectedItem().equals("Seleccione el edificio"))) {
 
@@ -467,14 +481,38 @@ public class Edificio extends javax.swing.JFrame {
 
         
         }
+        } catch (Exception e) {
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Edificio.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
-        actualizarDatos();
+       try{ 
+           actualizarDatos();
+       }catch(Exception e){
+           try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Edificio.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+       }
     }//GEN-LAST:event_btn_buscarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-       String Edificio = txt_idEdificio.getText() + " " + txt_nombreEdificio.getText();
+        try {
+            String Edificio = txt_idEdificio.getText() + " " + txt_nombreEdificio.getText();
           
            if ((txt_idEdificio.getText().equals("")) || (txt_nombreEdificio.getText().equals(""))  || (cbo_idCampus.getSelectedItem().equals(""))  ) {
 
@@ -510,6 +548,17 @@ public class Edificio extends javax.swing.JFrame {
             actualizarDatos();
             LimpiarCajas();
 
+        }
+        } catch (Exception e) {
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Edificio.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         }
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
@@ -586,8 +635,16 @@ public class Edificio extends javax.swing.JFrame {
         Aula aa = null;
         try {
             aa = new Aula(lbl_usuario.getText());
-        } catch (SQLException ex) {
-            Logger.getLogger(Aula.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+               try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Aula.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         }
         aa.setVisible(true);
         this.dispose();
@@ -728,8 +785,15 @@ public class Edificio extends javax.swing.JFrame {
          
         }
         catch (Exception e) {
-           
-            System.err.println(e);
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Edificio.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         }
     }
 
@@ -764,7 +828,15 @@ public class Edificio extends javax.swing.JFrame {
 
                     
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, e.getMessage());
+                    try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Edificio.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
                 }
     
     }
@@ -772,6 +844,7 @@ public class Edificio extends javax.swing.JFrame {
     private void LimpiarCajas() {
        
         txt_nombreEdificio.setText(null);
+        txt_idEdificio.setText(null);
         cbo_idCampus.setSelectedIndex(0); 
         this.btn_eliminar.setEnabled(false);
         this.btn_actualizar.setEnabled(false);
@@ -781,7 +854,8 @@ public class Edificio extends javax.swing.JFrame {
     }
 
     private void llenarCampos() throws SQLException {
-      int i = Tabla_Edificio.getSelectedRow();
+        try {
+              int i = Tabla_Edificio.getSelectedRow();
         txt_idEdificio.setText(Tabla_Edificio.getValueAt(i, 0).toString());
         txt_nombreEdificio.setText(Tabla_Edificio.getValueAt(i, 1).toString());
         String campus = Tabla_Edificio.getValueAt(i, 2).toString();
@@ -800,6 +874,17 @@ public class Edificio extends javax.swing.JFrame {
             }
         } catch (SQLException ex) {
             Logger.getLogger(Edificio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        } catch (Exception e) {
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Edificio.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         }
        
      

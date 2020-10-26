@@ -8,6 +8,7 @@ package sistema_registro;
 import codigo.Conexion_consulta;
 import static java.awt.Frame.ICONIFIED;
 import java.awt.Toolkit;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -371,7 +372,8 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
     }//GEN-LAST:event_Tabla_ReqAsignaturaMouseClicked
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
-        String cadena1, cadena2, cadena3;
+        try {
+              String cadena1, cadena2, cadena3;
         cadena1 = txt_idReqAsig.getText();
         cadena2 = txtA_NombreReqAsig.getText();
         String id_facultad = cbo_idCarrera.getSelectedItem().toString().substring(0, 4);
@@ -438,11 +440,23 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
 
         actualizarDatos();
         LimpiarCajas();
+        } catch (Exception e) {
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Edificio.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void btn_actualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizar1ActionPerformed
 
-        String nombreAsignaturaRequisito = txtA_NombreReqAsig.getText() + " ";
+        try {
+               String nombreAsignaturaRequisito = txtA_NombreReqAsig.getText() + " ";
         if ((txt_idReqAsig.getText().equals("")) || (txtA_NombreReqAsig.getText().equals("")) ||
             (cbo_idCarrera.getSelectedItem().equals("Seleccione la asignatura requisito"))) {
 
@@ -483,6 +497,17 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         }
         actualizarDatos();
         LimpiarCajas();
+        } catch (Exception e) {
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\RequisitoAsignatura.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+             
+        }
     }//GEN-LAST:event_btn_actualizar1ActionPerformed
 
     private void btn_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buscarMouseClicked
@@ -496,7 +521,8 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_buscarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-        String nombreAsignaturaRequisito = txtA_NombreReqAsig.getText();
+        try {
+              String nombreAsignaturaRequisito = txtA_NombreReqAsig.getText();
 
         if ((txt_idReqAsig.getText().equals("")) || (txtA_NombreReqAsig.getText().equals("")) ||
             (cbo_idCarrera.getSelectedItem().equals("Seleccione la asignatura requisito"))) {
@@ -529,6 +555,17 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         }
         actualizarDatos();
         LimpiarCajas();
+        } catch (Exception e) {
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\RequisitoAsignatura.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+             
+        }
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -537,8 +574,16 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         Asignaturas a = null;
          try {
              a = new Asignaturas(lbl_usuario.getText());
-         } catch (SQLException ex) {
-             Logger.getLogger(Carrera.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (SQLException e) {
+           try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Asignatura.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
          }
         a.setVisible(true);
         
@@ -758,7 +803,15 @@ private void rellenar() {
 
                     
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, e.getMessage());
+                   try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\RequisitoAsignatura.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
                 }
     }
 
@@ -785,7 +838,15 @@ private void rellenar() {
                 cidc.setMaxWidth(150);
         } catch (Exception e) {
            /* JOptionPane.showMessageDialog(null, e.getMessage());*/
-            System.err.println(e);
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\RequisitoAsignatura.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         }
     }
 

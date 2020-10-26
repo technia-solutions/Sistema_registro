@@ -7,6 +7,7 @@ package sistema_registro;
 
 import codigo.Conexion_consulta;
 import java.awt.Toolkit;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -471,80 +472,93 @@ Connection con = null;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
-
+            try{
+             actualizarDatos();
+        }
+        catch(Exception e){
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Asignaturas.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btn_buscarActionPerformed
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
-
-        String nombreAsignatura = txa_NombreA.getText() + " ";
-        String uv = txt_UniVal.getText();
+  
+        try {
+             String nombreAsignatura = txa_NombreA.getText() + " ";
+         String uv = txt_UniVal.getText();
        
         
-        if((txt_codA.getText().equals(""))){
+         if((txt_codA.getText().equals(""))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el código de la asignatura.","Código asignatura requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_codA.requestFocus();
             return;
-        }
+         }
         
           if((txa_NombreA.getText().equals(""))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre de la asignatura.","Nombre asignatura requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txa_NombreA.requestFocus();
             return;
-        }
+         }
          
           if((txt_UniVal.getText().equals(""))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar la unidad valorativa de la asignatura.","Unidad valorativa de la asignatura requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_UniVal.requestFocus();
             return;
-        }
+         }
           
          if((cbo_IdCarrera.getSelectedItem().equals("Seleccione una carrera"))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar una carrera para la asignatura","Carrera de la asignatura requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
-        }
+         }
          
          if((cbo_Req1.getSelectedItem().equals("Seleccione requsito1"))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un requisito para la asignatura","Requisito1 de la asignatura requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
-        }
+            }
         
-        if((cbo_Req2.getSelectedItem().equals("Seleccione requsito2"))){
+         if((cbo_Req2.getSelectedItem().equals("Seleccione requsito2"))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un requisito para la asignatura","Requisito2 de la asignatura requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
-        }
+            }
 
      
 
-        if(!validarLongitud(txt_codA,3)){
+            if(!validarLongitud(txt_codA,3)){
             JOptionPane.showMessageDialog(null, "El codigo de asignaturas tiene que ser minimo de 3 caracteres", "Longitud de codigo de asignatura", JOptionPane.INFORMATION_MESSAGE);
             return;
-        }
+         }
 
-       if(!validarLongitud(txa_NombreA,7)){
+          if(!validarLongitud(txa_NombreA,7)){
             JOptionPane.showMessageDialog(null, "El Nombre de la asignatura es muy corto el mínimo es de 7 caracteres", "Longitud del nombre de asignatura", JOptionPane.INFORMATION_MESSAGE);
             return;
-        }
-       if(!validarUV(uv)){
+         }
+           if(!validarUV(uv)){
             JOptionPane.showMessageDialog(null, "La unidades solo pueden ser valores entre 1 y 15", "Valor de la unidad valorativa", JOptionPane.INFORMATION_MESSAGE);
             return;
-        }
+           }
        
-         if(!validarLongitud(txt_UniVal,1)){
+            if(!validarLongitud(txt_UniVal,1)){
             JOptionPane.showMessageDialog(null, "La unidades valorativas debe ser de un mínimo de 1 caracter", "Longitud de las unidades valorativas", JOptionPane.INFORMATION_MESSAGE);
             return;
-        }
+         }
         
-        if(!validarRequisitos(cbo_Req1.getSelectedItem().toString(),cbo_Req2.getSelectedItem().toString())){
+            if(!validarRequisitos(cbo_Req1.getSelectedItem().toString(),cbo_Req2.getSelectedItem().toString())){
             JOptionPane.showMessageDialog(null, "El requisito 1 no puede ser igual al requisito 2", "Requisitos iguales", JOptionPane.INFORMATION_MESSAGE);
             return;
-        }
+         }
         
           if(!validarVacio(cbo_Req1.getSelectedItem().toString(),cbo_Req2.getSelectedItem().toString())){
             JOptionPane.showMessageDialog(null, "El requisito 1 y el requisito 2 están vacíos.", "Requisitos vacíos", JOptionPane.INFORMATION_MESSAGE);
             return;
-        }
-        else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de la asignatura " +nombreAsignatura + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
-        ) == JOptionPane.YES_OPTION) {
+            }
+           else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de la asignatura " +nombreAsignatura + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
+         ) == JOptionPane.YES_OPTION) {
             String id_carrera = cbo_IdCarrera.getSelectedItem().toString().substring(0, 4);
             String requisito1 = cbo_Req1.getSelectedItem().toString().substring(0, 5);
             String requisito2 = cbo_Req2.getSelectedItem().toString().substring(0, 5);
@@ -582,9 +596,20 @@ Connection con = null;
             } catch (Exception e) {
                 System.out.println(e);
                
-            }
+                }
             
 
+         }
+        } catch (Exception e) {
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Asignaturas.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         }
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
@@ -614,7 +639,7 @@ Connection con = null;
     }
     
      private boolean validarVacio(String RequisitoA, String RequisitoB){
-     if(RequisitoA.equals("Seleccione la asignatura 1:")|| RequisitoB.equals("Seleccione la asignatura 1:")){
+     if(RequisitoA.equals("Seleccione la asignatura 1:")|| RequisitoB.equals("Seleccione la asignatura 2:")){
          return false;
      }
     return false;
@@ -661,7 +686,8 @@ Connection con = null;
     
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
         
-        String cadena1, cadena2, cadena3, cadena4, cadena5, cadena6;
+        try {
+              String cadena1, cadena2, cadena3, cadena4, cadena5, cadena6;
         cadena1 = txt_codA.getText();
         cadena2 = txa_NombreA.getText();
         cadena3 = txt_UniVal.getText();
@@ -768,10 +794,21 @@ Connection con = null;
 
         actualizarDatos();
         LimpiarCajas();
+        } catch (Exception e) {
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Asignaturas.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void btn_eliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminar1ActionPerformed
-          String Asignatura = txa_NombreA.getText() + " " + txt_codA.getText();
+        try {
+                      String Asignatura = txa_NombreA.getText() + " " + txt_codA.getText();
           
            if ((txa_NombreA.getText().equals("")) || (txt_codA.getText().equals(""))  || (txt_UniVal.getText().equals(""))  ) {
 
@@ -806,6 +843,18 @@ Connection con = null;
         }
         actualizarDatos();
         LimpiarCajas();
+        } catch (Exception e) {
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Asignaturas.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+        }
     }//GEN-LAST:event_btn_eliminar1ActionPerformed
 
     private void btn_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buscarMouseClicked
@@ -842,8 +891,16 @@ Connection con = null;
                 else{
                     JOptionPane.showMessageDialog(null, "Error");
                 }
-        } catch (SQLException ex) {
-            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Principal.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         }
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -861,12 +918,19 @@ Connection con = null;
 
     private void btn_requisitosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_requisitosActionPerformed
         
-        this.dispose();
+     this.dispose();
         RequisitoAsignatura req = null;
     try {
         req = new RequisitoAsignatura(lbl_usuario.getText());
-    } catch (SQLException ex) {
-        Logger.getLogger(Asignaturas.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (SQLException e) { 
+        try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\RequisitoAsignatura.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
         req.setVisible(true);
         
@@ -920,8 +984,16 @@ Connection con = null;
          Carrera cc = null;
         try {
             cc = new Carrera(lbl_usuario.getText());
-        } catch (SQLException ex) {
-            Logger.getLogger(Carrera.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Carrera.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         }
         cc.setVisible(true);
         this.dispose();
@@ -960,7 +1032,18 @@ Connection con = null;
     }//GEN-LAST:event_txa_NombreAKeyTyped
 
     private void btn_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultarActionPerformed
-        actualizarDatos();
+        try {
+            actualizarDatos();
+        } catch (Exception e) {
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Asignaturas.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_consultarActionPerformed
 
@@ -1122,8 +1205,16 @@ public boolean existeidAsignatura(){
            req2C.setMaxWidth(165);
         }
         catch (Exception e) {
-           
-            System.err.println(e);
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Asignaturas.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+         
         }
            }
            
@@ -1186,7 +1277,15 @@ public boolean existeidAsignatura(){
 
                     }
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, e.getMessage());
+                    try {
+                    Log myLog; 
+                    myLog = new Log("src\\Logs\\Asignaturas.txt");
+                    myLog.logger.setLevel(Level.SEVERE);
+                    myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
                 }
     
     }
@@ -1243,7 +1342,15 @@ public boolean existeidAsignatura(){
 
                     }
                 } catch (Exception e) {
-                    //JOptionPane.showMessageDialog(null, e.getMessage());
+                     try {
+                      Log myLog; 
+                     myLog = new Log("src\\Logs\\Asignaturas.txt");
+                     myLog.logger.setLevel(Level.SEVERE);
+                    myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
                 }
     
     }

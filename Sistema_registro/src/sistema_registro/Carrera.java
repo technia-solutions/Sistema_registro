@@ -8,6 +8,7 @@ package sistema_registro;
 import codigo.Conexion_consulta;
 import static java.awt.Frame.ICONIFIED;
 import java.awt.Toolkit;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -403,7 +404,8 @@ public class Carrera extends javax.swing.JFrame {
     }//GEN-LAST:event_Tabla_CarreraMouseClicked
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
-        String cadena1, cadena2, cadena3;
+        try {
+             String cadena1, cadena2, cadena3;
         cadena1 = txt_idCarrera.getText();
         cadena2 = jtxt_NombreCarrera.getText();
        String id_facultad = cbo_idfacultad.getSelectedItem().toString().substring(0, 3);
@@ -466,6 +468,17 @@ public class Carrera extends javax.swing.JFrame {
      
         actualizarDatos();
         LimpiarCajas();
+        } catch (Exception e) {
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Carrera.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
 
     }//GEN-LAST:event_btn_guardarActionPerformed
 
@@ -476,37 +489,52 @@ public class Carrera extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_buscarMouseClicked
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
-        actualizarDatos();
+        try {
+          actualizarDatos();
+            
+        } catch (Exception e) {
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Carrera.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+       
     }//GEN-LAST:event_btn_buscarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
-          String nombreCarrera = jtxt_NombreCarrera.getText();
+        try {
+              String nombreCarrera = jtxt_NombreCarrera.getText();
           
           if((txt_idCarrera.getText().equals(""))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id de la carrera.","Id carrera requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_idCarrera.requestFocus();
             return;
-        }
+            }
         
-        if((jtxt_NombreCarrera.getText().equals(""))){
+            if((jtxt_NombreCarrera.getText().equals(""))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre de la carrera.","Nombre carrera requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             jtxt_NombreCarrera.requestFocus();
             return;
-        }
+         }
         
           
-        if((cbo_idfacultad.getSelectedItem().equals("Seleccione una facultad"))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar una facultad para la carrea","Facultad de la carrera requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            return;
-        }
-          else if(JOptionPane.showConfirmDialog(null,"¿Está seguro que desea eliminar el registro de la carrera "+nombreCarrera+"","Confirmación de eliminación",
-                   JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE
-            )==JOptionPane.YES_OPTION){   
-                String id_facultad = cbo_idfacultad.getSelectedItem().toString().substring(0, 2);
-      try{
-          PreparedStatement ps;
-          ResultSet rs;
-          ps=con.prepareStatement("Delete Carrera "
+            if((cbo_idfacultad.getSelectedItem().equals("Seleccione una facultad"))){
+                javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar una facultad para la carrea","Facultad de la carrera requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+              else if(JOptionPane.showConfirmDialog(null,"¿Está seguro que desea eliminar el registro de la carrera "+nombreCarrera+"","Confirmación de eliminación",
+                       JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE
+                )==JOptionPane.YES_OPTION){   
+                    String id_facultad = cbo_idfacultad.getSelectedItem().toString().substring(0, 2);
+          try{
+              PreparedStatement ps;
+              ResultSet rs;
+              ps=con.prepareStatement("Delete Carrera "
                   + "where id_carrera = (Select id_carrera from Carrera where nombre_carrera = '"+jtxt_NombreCarrera.getText()+"')");
                         this.btn_eliminar.setEnabled(false);
             this.btn_actualizar1.setEnabled(false);
@@ -518,69 +546,92 @@ public class Carrera extends javax.swing.JFrame {
                   }else {
                       JOptionPane.showMessageDialog(null, "¡Error al eliminar la información!"); 
                   }
-      } catch ( Exception e) {
+        } catch ( Exception e) {
             System.out.println(e);
         }
            }
            actualizarDatos();
            LimpiarCajas();
+        } catch (Exception e) {
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Carrera.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void btn_actualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizar1ActionPerformed
             
-        
-        String nombreCarrera = jtxt_NombreCarrera.getText() + " ";
-          if((txt_idCarrera.getText().equals(""))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id de la carrera.","Id carrera requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            txt_idCarrera.requestFocus();
-            return;
-        }
-        
-        if((jtxt_NombreCarrera.getText().equals(""))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre de la carrera.","Nombre carrera requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            jtxt_NombreCarrera.requestFocus();
-            return;
-        }
-        
-          
-        if((cbo_idfacultad.getSelectedItem().equals("Seleccione una facultad"))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar una facultad para la carrea","Facultad de la carrera requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            return;
-        }
-            else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de carrera" + nombreCarrera + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
-        ) == JOptionPane.YES_OPTION) {
-           String id_facultad = cbo_idfacultad.getSelectedItem().toString().substring(0, 2);
-            try {
-                PreparedStatement ps;
-                ResultSet rs;
-                ps = con.prepareStatement("Update Carrera set"
-                        + " nombre_carrera = ? ,"
-                        + " id_carrera = ? ,"
-                        + " id_facultad = ? "
-                        + " where id_carrera =\'"+lbl_carrera.getText()+"\'");
-                
-                ps.setString(1, jtxt_NombreCarrera.getText());
-                ps.setString(2, txt_idCarrera.getText());
-                ps.setString(3, id_facultad);
-                this.btn_eliminar.setEnabled(false);
-             this.btn_actualizar1.setEnabled(false);
-             this.btn_guardar.setEnabled(true);
-                int res = ps.executeUpdate();
-                 if(res > 0){
-                    JOptionPane.showMessageDialog(null, "Se ha actualizado la información de la carerra " +nombreCarrera + " correctamente.");
+        try {
+              
+            String nombreCarrera = jtxt_NombreCarrera.getText() + " ";
+              if((txt_idCarrera.getText().equals(""))){
+                javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id de la carrera.","Id carrera requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                txt_idCarrera.requestFocus();
+                return;
+            }
 
-                }else {
-                    JOptionPane.showMessageDialog(null, "¡Error al actualizado la información!.");
+            if((jtxt_NombreCarrera.getText().equals(""))){
+                javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre de la carrera.","Nombre carrera requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                jtxt_NombreCarrera.requestFocus();
+                return;
+            }
 
-                 }
-            
-            } catch (Exception e) {
-                System.out.println(e);
+
+            if((cbo_idfacultad.getSelectedItem().equals("Seleccione una facultad"))){
+                javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar una facultad para la carrea","Facultad de la carrera requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+                else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de carrera" + nombreCarrera + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
+            ) == JOptionPane.YES_OPTION) {
+               String id_facultad = cbo_idfacultad.getSelectedItem().toString().substring(0, 2);
+                try {
+                    PreparedStatement ps;
+                    ResultSet rs;
+                    ps = con.prepareStatement("Update Carrera set"
+                            + " nombre_carrera = ? ,"
+                            + " id_carrera = ? ,"
+                            + " id_facultad = ? "
+                            + " where id_carrera =\'"+lbl_carrera.getText()+"\'");
+
+                    ps.setString(1, jtxt_NombreCarrera.getText());
+                    ps.setString(2, txt_idCarrera.getText());
+                    ps.setString(3, id_facultad);
+                    this.btn_eliminar.setEnabled(false);
+                 this.btn_actualizar1.setEnabled(false);
+                 this.btn_guardar.setEnabled(true);
+                    int res = ps.executeUpdate();
+                     if(res > 0){
+                        JOptionPane.showMessageDialog(null, "Se ha actualizado la información de la carerra " +nombreCarrera + " correctamente.");
+
+                    }else {
+                        JOptionPane.showMessageDialog(null, "¡Error al actualizado la información!.");
+
+                     }
+
+                } catch (Exception e) {
+                    System.out.println(e);
             }
            
+            }
+            actualizarDatos();
+            LimpiarCajas();
+        } catch (Exception e) {
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Carrera.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         }
-        actualizarDatos();
-        LimpiarCajas();
     }//GEN-LAST:event_btn_actualizar1ActionPerformed
 
     private void Regresar_AsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Regresar_AsignaturaActionPerformed
@@ -589,8 +640,16 @@ public class Carrera extends javax.swing.JFrame {
         Asignaturas aa = null;
          try {
              aa = new Asignaturas(lbl_usuario.getText());
-         } catch (SQLException ex) {
-             Logger.getLogger(Carrera.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (SQLException e) {
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Asignatura.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
          }
         aa.setVisible(true);
         
@@ -611,8 +670,16 @@ public class Carrera extends javax.swing.JFrame {
         Facultad ff = null;
          try {
              ff = new Facultad(lbl_usuario.getText());
-         } catch (SQLException ex) {
-             Logger.getLogger(Carrera.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (SQLException e) {
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Facultad.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
          }
         ff.setVisible(true);
         
@@ -652,8 +719,16 @@ public class Carrera extends javax.swing.JFrame {
                 else{
                     JOptionPane.showMessageDialog(null, "Error");
                 }
-        } catch (SQLException ex) {
-            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Principal.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
@@ -810,7 +885,15 @@ public class Carrera extends javax.swing.JFrame {
 
                     
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, e.getMessage());
+                     try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Carrera.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
                 }
     }
     
@@ -848,15 +931,22 @@ public class Carrera extends javax.swing.JFrame {
                 TableColumn facultad = Tabla_Carrera.getColumn(titulos[3]);
                 facultad.setMaxWidth(300);
         } catch (Exception e) {
-           /* JOptionPane.showMessageDialog(null, e.getMessage());*/
-            System.err.println(e);
+           try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Carrera.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         }
     }
       
       private void LimpiarCajas(){
         jtxt_NombreCarrera.setText(null);
         txt_idCarrera.setText(null);
-       cbo_idfacultad.setSelectedIndex(0);
+        cbo_idfacultad.setSelectedIndex(0);
         this.btn_eliminar.setEnabled(false);
          this.btn_actualizar1.setEnabled(false);
          this.btn_guardar.setEnabled(true);
