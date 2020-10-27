@@ -317,20 +317,23 @@ public class CancelarAsignatura extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
-          try{
-              buscar();
-          } catch (Exception e){
-              
-              try {
-                Log myLog; 
+
+        try {
+                
+        buscar();
+        
+        } catch (Exception e) {
+            
+            try{ 
+           Log myLog; 
                 myLog = new Log("src\\Logs\\CancelarAsignatura.txt");
                 myLog.logger.setLevel(Level.SEVERE);
-                myLog.logger.severe(e.getMessage() + " Este inconveniente se debe a: " + e.getCause());
+                myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
-              
-          }
+            
+        }
     
     }//GEN-LAST:event_btn_buscarActionPerformed
 
@@ -403,17 +406,8 @@ public class CancelarAsignatura extends javax.swing.JFrame {
              }
              
              
-         } catch (SQLException e) {
-             
-             try {
-                Log myLog; 
-                myLog = new Log("src\\Logs\\CancelarAsignatura.txt");
-                myLog.logger.setLevel(Level.SEVERE);
-                myLog.logger.severe(e.getMessage() + " Este inconveniente se debe a: " + e.getCause());
-            } catch (IOException ex) {
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            }
-             
+         } catch (SQLException ex) {
+             JOptionPane.showMessageDialog(null,ex.getMessage());
          }
       
     }
@@ -456,7 +450,10 @@ public class CancelarAsignatura extends javax.swing.JFrame {
     }
       
     private void btn_CancelarAsigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CancelarAsigActionPerformed
-         //CancelarA(var, var);
+
+    try{
+
+//CancelarA(var, var);
          String numeroCuenta,id_seccion,id_periodo,id_matricula;
         
        
@@ -519,40 +516,53 @@ public class CancelarAsignatura extends javax.swing.JFrame {
                       JOptionPane.showMessageDialog(null, "¡Error al cancelar la asignatura!"); 
                   }
       } catch ( Exception e) { 
-           
-             try {
-                Log myLog; 
-                myLog = new Log("src\\Logs\\CancelarAsignatura.txt");
-                myLog.logger.setLevel(Level.SEVERE);
-                myLog.logger.severe(e.getMessage() + " \"Error al borrar la información, podría ser por: \\n 1.Podria ser porque la asignatura ya contenga notas\"\n" +
-"                         + \"\\n 2. No existe una matricula de esta clase.\",\"¡Error al Borrar!\" " + e.getCause());
-            } catch (IOException ex) {
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            }
-           
+           JOptionPane.showMessageDialog(null, "Error al borrar la información, podría ser por: \n 1.Podria ser porque la asignatura ya contenga notas"
+                         + "\n 2. No existe una matricula de esta clase.","¡Error al Borrar!", JOptionPane.ERROR_MESSAGE);
         }
       buscar();
      
-         
-    }//GEN-LAST:event_btn_CancelarAsigActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-           this.dispose();
-       Matricula mm = null;
+    } catch (Exception e) {
+        
          try {
-             mm = new Matricula(lbl_usuario.getText());
-         } catch (SQLException e) {
-             try {
                 Log myLog; 
                 myLog = new Log("src\\Logs\\CancelarAsignatura.txt");
                 myLog.logger.setLevel(Level.SEVERE);
-                myLog.logger.severe(e.getMessage() + " Este inconveniente se debe a: " + e.getCause());
+                myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+        
+    }
+    
+    }//GEN-LAST:event_btn_CancelarAsigActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+          
+        try{
+        
+        this.dispose();
+       Matricula mm = null;
+         try {
+             mm = new Matricula(lbl_usuario.getText());
+         } catch (SQLException ex) {
+             Logger.getLogger(Matricula.class.getName()).log(Level.SEVERE, null, ex);
          }
         mm.setVisible(true);
         
+        } catch (Exception e){
+            
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Matricula.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            
+        }
     
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
@@ -639,43 +649,56 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         }
     }*/
     private void btn_eliminarMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarMActionPerformed
-       try { 
-           eliminarMatricula();
-        buscar();
-       } catch (Exception e) {
        
-       try {
+        try{
+            
+        
+        eliminarMatricula();
+        buscar();
+        
+        } catch (Exception e) {
+            
+             try {
                 Log myLog; 
                 myLog = new Log("src\\Logs\\CancelarAsignatura.txt");
                 myLog.logger.setLevel(Level.SEVERE);
-                myLog.logger.severe(e.getMessage() + " Este inconveniente se debe a: " + e.getCause());
+                myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
-           
-       }
+            
+            
+        }
     }//GEN-LAST:event_btn_eliminarMActionPerformed
 
     private void btn_limpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_limpiarActionPerformed
-        try{
-            LimpiarCajas();
-        } catch (Exception e) {
+
+        try {
+        
+        LimpiarCajas();
+       // TODO add your handling code here:
+       
+        } catch (Exception e){
             
-            try {
+              try {
                 Log myLog; 
                 myLog = new Log("src\\Logs\\CancelarAsignatura.txt");
                 myLog.logger.setLevel(Level.SEVERE);
-                myLog.logger.severe(e.getMessage() + " Este inconveniente se debe a: " + e.getCause());
+                myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
             
+            
         }
-       // TODO add your handling code here:
+        
     }//GEN-LAST:event_btn_limpiarActionPerformed
 
      private void obtenerPeriodo() throws SQLException{
-        Statement st = con.createStatement();
+       
+         try {
+         
+         Statement st = con.createStatement();
         Calendar f;
        
        f=Calendar.getInstance();
@@ -692,6 +715,20 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         else{
             JOptionPane.showMessageDialog(null,"Error");
         }
+         
+         } catch (Exception e) {
+             
+               try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\CancelarAsignatura.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+             
+         }
     }
     /**
      * @param args the command line arguments
@@ -720,8 +757,6 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        
-        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -759,6 +794,10 @@ public class CancelarAsignatura extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
      public void buscar(){
+         
+         try {
+         
+         try {
          
          this.Tabla_Cancelar.setVisible(true);
         String numeroCuenta;
@@ -827,18 +866,38 @@ public class CancelarAsignatura extends javax.swing.JFrame {
                 LimpiarCajas();
                 return;
             }
-         }catch(SQLException e){
-             try {
-                Log myLog; 
-                myLog = new Log("src\\Logs\\CancelarAsignatura.txt");
-                myLog.logger.setLevel(Level.SEVERE);
-                myLog.logger.severe(e.getMessage() + " Este inconveniente se debe a: " + e.getCause());
-            } catch (IOException ex) {
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            }
+         }catch(SQLException ex){
+             System.out.println(ex.toString());
              
          }    
       
+         } catch (Exception e){
+             
+               try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\CancelarAsignatura.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+             
+         }
+         
+         } catch (Exception e) {
+             
+               try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\CancelarAsignatura.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+             
+         }
       
     }
      
@@ -911,7 +970,10 @@ public class CancelarAsignatura extends javax.swing.JFrame {
       
       
       private boolean existeNumeroCuenta() {
-        try {
+        
+          try{
+          
+          try {
             Statement st = con.createStatement();
             String sql = "select A.numero_cuenta_alumno from Alumno as A\n" +
                            "where A.numero_cuenta_alumno='"+txt_NumC.getText()+"';";
@@ -927,7 +989,20 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
-        return false;
+        
+        
+          }catch (Exception e) {
+              
+                    try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\CancelarAsignatura.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+          }
+          return false;
     }
 
     private void LimpiarCajas() {
