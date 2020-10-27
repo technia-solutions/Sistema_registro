@@ -758,8 +758,8 @@ public class Edificio extends javax.swing.JFrame {
 
     private void actualizarDatos() {
         try {
-               
-               String sql = "SELECT * FROM Edificio";
+              try {
+              String sql = "SELECT * FROM Edificio";
                stmt = con.createStatement();
                ResultSet rs = stmt.executeQuery(sql);
                modelo = new DefaultTableModel(null, titulos);
@@ -783,8 +783,20 @@ public class Edificio extends javax.swing.JFrame {
             TableColumn idC= Tabla_Edificio.getColumn(titulos[2]);
            idC.setMaxWidth(300);
          
+        
+  
+        } catch (Exception e) {
+            System.err.println(e);
+               /*try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Edificio.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }*/
         }
-        catch (Exception e) {
+        } catch (Exception e) {
             try {
                 Log myLog; 
                 myLog = new Log("src\\Logs\\Edificio.txt");
@@ -793,8 +805,12 @@ public class Edificio extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
         }
+               
+            
+         
+            
+        
     }
 
     private void centrar_datos() {

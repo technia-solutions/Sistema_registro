@@ -816,7 +816,8 @@ private void rellenar() {
     }
 
       public void actualizarDatos() {
-        try {
+          try {
+                  try {
             String sql = "SELECT * FROM Requisito_Asignatura";
             stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
@@ -837,8 +838,12 @@ private void rellenar() {
             TableColumn cidc = Tabla_ReqAsignatura.getColumn(titulos[2]);
                 cidc.setMaxWidth(150);
         } catch (Exception e) {
-           /* JOptionPane.showMessageDialog(null, e.getMessage());*/
-             try {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+          
+            
+        }
+          } catch (Exception e) {
+              try {
                 Log myLog; 
                 myLog = new Log("src\\Logs\\RequisitoAsignatura.txt");
                 myLog.logger.setLevel(Level.SEVERE);
@@ -846,8 +851,7 @@ private void rellenar() {
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-        }
+          }
     }
 
   private void LimpiarCajas(){

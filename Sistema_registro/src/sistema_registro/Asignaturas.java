@@ -1170,7 +1170,8 @@ public boolean existeidAsignatura(){
     }
          
  public void actualizarDatos(){
-        try {
+     try {
+              try {
                
                String sql = "SELECT * FROM Asignaturas";
                stmt = con.createStatement();
@@ -1205,7 +1206,11 @@ public boolean existeidAsignatura(){
            req2C.setMaxWidth(165);
         }
         catch (Exception e) {
-            try {
+          System.err.println(e);
+         
+        }
+     } catch (Exception e) {
+         try {
                 Log myLog; 
                 myLog = new Log("src\\Logs\\Asignaturas.txt");
                 myLog.logger.setLevel(Level.SEVERE);
@@ -1213,9 +1218,7 @@ public boolean existeidAsignatura(){
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-         
-        }
+     }
            }
            
      public void centrar_datos() {
