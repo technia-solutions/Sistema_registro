@@ -8,6 +8,7 @@ package sistema_registro;
 import codigo.Conexion_consulta;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -751,9 +752,17 @@ public class Secciones extends javax.swing.JFrame {
                 }
              
             } catch (Exception e) {
-                //JOptionPane.showMessageDialog(null,e.getMessage());
-                JOptionPane.showMessageDialog(null, "Error al actualizar la información de la sección, podría ser por: \n 1.La sección ya está en uso con alumnos matriculados."
-                         + "\n 2. No se encuentra el código de la sección a borrar.\n 3.La sección tiene asignaturas creadas","¡Error al actualizar!", JOptionPane.ERROR_MESSAGE);
+               
+                 try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Secciones.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " \"Error al actualizar la información de la sección, podría ser por: \\n 1.La sección ya está en uso con alumnos matriculados.\"\n" +
+"                         + \"\\n 2. No se encuentra el código de la sección a borrar.\\n 3.La sección tiene asignaturas creadas\",\"¡Error al actualizar!\"" + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
             }
             
             actualizarDatos();
@@ -831,9 +840,15 @@ public class Secciones extends javax.swing.JFrame {
                 }
 
             } catch (Exception e) {
-               // JOptionPane.showMessageDialog(null, "¡Error al eliminar la información!");
-               JOptionPane.showMessageDialog(null, "Error al eliminar la información de la sección, podría ser por: \n 1.La sección ya está en uso con alumnos matriculados."
-                         + "\n 2. No se encuentra el código de la sección a borrar.\n 3.La sección tiene asignaturas creadas","¡Error al eliminar!", JOptionPane.ERROR_MESSAGE);
+                try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Secciones.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " \"Error al eliminar la información de la sección, podría ser por: \\n 1.La sección ya está en uso con alumnos matriculados.\"\n" +
+"                         + \"\\n 2. No se encuentra el código de la sección a borrar.\\n 3.La sección tiene asignaturas creadas\",\"¡Error al eliminar!\"" + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
             }
 
         }
@@ -844,13 +859,39 @@ public class Secciones extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void btn_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buscarMouseClicked
-        rellenar();
+        try {
+            rellenar();
+        } catch (Exception e){
+        
+        try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Secciones.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " Este inconveniente se debe a: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
         this.jScrollPane1.setEnabled(true);
         this.Tabla_Seccion.setEnabled(true);
     }//GEN-LAST:event_btn_buscarMouseClicked
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
-        actualizarDatos();
+        try {
+            actualizarDatos();
+        } catch(Exception e) {
+        
+        try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Secciones.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " Este inconveniente se debe a: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
 
     }//GEN-LAST:event_btn_buscarActionPerformed
 
@@ -1019,9 +1060,14 @@ public class Secciones extends javax.swing.JFrame {
             int res= ps.executeUpdate(); 
             JOptionPane.showMessageDialog(null, "Se ha guardado la información en Registro de Sección");
              } catch ( Exception e) {
-            System.out.println(e);
-        
-             JOptionPane.showMessageDialog(null, e.getMessage());
+              try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Secciones.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " Este inconveniente se debe a: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
 
@@ -1068,8 +1114,15 @@ public class Secciones extends javax.swing.JFrame {
            Periodo pp = null;
         try {
             pp = new Periodo(lbl_usuario.getText());
-        } catch (SQLException ex) {
-            Logger.getLogger(Secciones.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Secciones.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " Este inconveniente se debe a: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         pp.setVisible(true);
         this.dispose();
@@ -1079,8 +1132,15 @@ public class Secciones extends javax.swing.JFrame {
            Asignaturas as = null;
         try {
             as = new Asignaturas(lbl_usuario.getText());
-        } catch (SQLException ex) {
-            Logger.getLogger(Asignaturas.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Secciones.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " Este inconveniente se debe a: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         as.setVisible(true);
         this.dispose();
@@ -1090,8 +1150,15 @@ public class Secciones extends javax.swing.JFrame {
            Aula au = null;
         try {
             au = new Aula(lbl_usuario.getText());
-        } catch (SQLException ex) {
-            Logger.getLogger(Aula.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Secciones.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " Este inconveniente se debe a: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         au.setVisible(true);
         this.dispose();
@@ -1291,6 +1358,8 @@ public class Secciones extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+        
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -1452,7 +1521,14 @@ public void actualizarDatos(){
         }
         catch (Exception e) {
            
-            JOptionPane.showMessageDialog(null, e.getMessage());
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Secciones.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " Este inconveniente se debe a: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
            }
 
@@ -1490,7 +1566,14 @@ public void actualizarDatos(){
 
                     
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, e.getMessage());
+                     try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Secciones.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " Este inconveniente se debe a: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
                 }
     
     }

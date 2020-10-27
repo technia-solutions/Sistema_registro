@@ -7,6 +7,7 @@ package sistema_registro;
 
 import static java.awt.Frame.ICONIFIED;
 import java.awt.Toolkit;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -429,7 +430,14 @@ public class Periodo extends javax.swing.JFrame {
             int res = ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Se ha guardado la información del período");
         } catch (Exception e) {
-            System.out.println(e);
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Periodo.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " El motivo de la siguiente se debe a: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
         }
 
@@ -447,7 +455,22 @@ public class Periodo extends javax.swing.JFrame {
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
        
+        try{
         actualizarDatos();
+        
+        }catch (Exception e){
+        
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Periodo.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " El motivo de la siguiente se debe a: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+        
         
     }//GEN-LAST:event_btn_buscarActionPerformed
 
@@ -456,8 +479,15 @@ public class Periodo extends javax.swing.JFrame {
        PeriodoHis pp = null;
         try {
             pp = new PeriodoHis(lbl_usuario.getText());
-        } catch (SQLException ex) {
-            Logger.getLogger(Carrera.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+               try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Periodo.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " El  motivo de la siguiente se debe a: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         pp.setVisible(true);
         this.dispose();
@@ -515,8 +545,19 @@ public class Periodo extends javax.swing.JFrame {
 
             } catch (Exception e) {
                 //JOptionPane.showMessageDialog(null,"¡Error al eliminar la información!" );
-                 JOptionPane.showMessageDialog(null, "Error al borrar la información del período, podría ser por: \n 1.El período ya empezo."
-                         + "\n 2. No se encuentra el código del período.\n 3.El período tiene alumnos matriculados","¡Error al eliminar!", JOptionPane.ERROR_MESSAGE);
+                // JOptionPane.showMessageDialog(null, "Error al borrar la información del período, podría ser por: \n 1.El período ya empezo."
+                    //     + "\n 2. No se encuentra el código del período.\n 3.El período tiene alumnos matriculados","¡Error al eliminar!", JOptionPane.ERROR_MESSAGE);
+          
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Periodo.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " Error al borrar la informacion del  período, podría ser por: \\n 1.El período ya empezo.\"\n" +
+"                    //     + \"\\n 2. No se encuentra el código del período.\\n 3.El período tiene alumnos matriculados\",\"¡Error al eliminar!\" " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                    
             }
 
            
@@ -606,9 +647,15 @@ public class Periodo extends javax.swing.JFrame {
                 }
             } catch (Exception e) {
                 //JOptionPane.showMessageDialog(null, "¡Error al actualizar la información!.");
-                //System.out.println(e);
-                JOptionPane.showMessageDialog(null, "Error al actualizar la información del período, podría ser por: \n 1.El período ya empezo."
-                         + "\n 2. No se encuentra el código del período.\n 3.El período tiene alumnos matriculados","¡Error al actualizar!", JOptionPane.ERROR_MESSAGE);
+                //System.out.println(e); 
+                try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Periodo.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " El motivo de la siguiente se debe a: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
             }
             actualizarDatos();
             LimpiarCajas();
@@ -699,8 +746,15 @@ char a=evt.getKeyChar();
             else{
                 JOptionPane.showMessageDialog(null, "Error");
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Periodo.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " El  motivo de la siguiente se debe a: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuPrincipal1ActionPerformed
 
@@ -717,11 +771,6 @@ char a=evt.getKeyChar();
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -738,9 +787,6 @@ char a=evt.getKeyChar();
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Periodo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
@@ -856,7 +902,14 @@ private void rellenar() {
                                
                             } 
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, e.getMessage());
+                    try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Periodo.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " El  motivo de la siguiente se debe a: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
                 }
     }
 

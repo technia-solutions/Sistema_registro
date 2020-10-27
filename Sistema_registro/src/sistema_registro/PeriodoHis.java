@@ -7,6 +7,7 @@ package sistema_registro;
 
 import codigo.Conexion_consulta;
 import static java.awt.Frame.ICONIFIED;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -372,6 +373,18 @@ DefaultTableModel modelo = new DefaultTableModel();
             return;
         }
       
+        if( (cld_fechaInicial.equals(cld_fechaInicial))){
+            
+            
+        javax.swing.JOptionPane.showMessageDialog(this,"Error al ingresar fecha de inicio del periodo.", "Fecha Inicial invalida", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+          //return;
+      }
+        
+         if( (cld_fechaFinal.equals(cld_fechaFinal))){
+        javax.swing.JOptionPane.showMessageDialog(this,"Error al ingresar fecha de inicio del periodo.", "Fecha Inicial invalida", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+          //return;
+      }
+      
       if( (cld_fechaInicial.equals(cld_fechaFinal))){
         javax.swing.JOptionPane.showMessageDialog(this,"Error al ingresar fecha de inicio del periodo.", "Fecha Inicial invalida", javax.swing.JOptionPane.INFORMATION_MESSAGE);
           //return;
@@ -444,8 +457,14 @@ DefaultTableModel modelo = new DefaultTableModel();
             }
 
         } catch ( Exception e) {
-             System.out.println(e);
-             JOptionPane.showMessageDialog(null, "Error al Guardar la información de Periodo Historico");
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\PeriodoHis.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " El inconveniente se debe a: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
         }
     }//GEN-LAST:event_btn_agregarPeriodoActionPerformed
@@ -454,7 +473,7 @@ DefaultTableModel modelo = new DefaultTableModel();
      if ((cbo_periodo.getSelectedItem().equals("Seleccione una Periodo")||  (cld_fechaInicial.getDate()== null) ||  (cld_fechaFinal.getDate()== null))) {
             JOptionPane.showMessageDialog(this, "¡Debe rellenar todos los campos!");
         }
-
+   
        else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el periodo ?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
             String nombre,periodo;
@@ -473,6 +492,29 @@ DefaultTableModel modelo = new DefaultTableModel();
         String fecha2 = año2 + "-" + mes2 +"-"+ dia2;
 
         nombre=año+"-"+periodo;
+        
+         if( (cld_fechaInicial.equals(cld_fechaInicial))){
+            
+            
+        javax.swing.JOptionPane.showMessageDialog(this,"Error al actualizar la fecha de inicio del periodo.", "Fecha Inicial invalida", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+          //return;
+      }
+        
+         if( (cld_fechaFinal.equals(cld_fechaFinal))){
+        javax.swing.JOptionPane.showMessageDialog(this,"Error al actualizar la  fecha de inicio del periodo.", "Fecha Inicial invalida", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+          //return;
+      }
+      
+      if( (cld_fechaInicial.equals(cld_fechaFinal))){
+        javax.swing.JOptionPane.showMessageDialog(this,"Error al actualizar la  fecha de inicio del periodo.", "Fecha Inicial invalida", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+          //return;
+      }
+        
+       if( (cld_fechaFinal.equals(cld_fechaInicial))){
+        javax.swing.JOptionPane.showMessageDialog(this,"Error al actualizar la  fecha final del periodo.", "Fecha Final invalida", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+          //return;
+      }
+        
             try {
                 PreparedStatement ps;
                 ResultSet rs;
@@ -502,9 +544,16 @@ DefaultTableModel modelo = new DefaultTableModel();
             }
                 
             } catch (Exception e) {
-                System.out.println(e);
-                              JOptionPane.showMessageDialog(null, "No se ha realizado la actualización por: \n 1.El periodo historico ya está definido."
-                         + "\n 2. No se encuentra el id del periodo historico a actualizar.","¡Error al Actualizar!", JOptionPane.ERROR_MESSAGE);
+                                          
+              try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\PeriodoHis.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " \"No se ha realizado la actualización por: \\n 1.El periodo historico ya está definido.\"\n" +
+"                         + \"\\n 2. No se encuentra el id del periodo historico a actualizar.\",\"¡Error al Actualizar!\"" + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
             }
           
         }
@@ -549,13 +598,33 @@ DefaultTableModel modelo = new DefaultTableModel();
                         }  
                     }
                     }catch (Exception e) {
-                            JOptionPane.showMessageDialog(null,e.getMessage());
+                            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\PeriodoHis.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " El inconveniente se debe a: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
                             }
      
         
     }
     private void btn_consultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultaActionPerformed
-        rellenar();
+        try {
+            rellenar();
+        }catch (Exception e){
+        
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\PeriodoHis.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " El inconveniente se debe a: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
         btn_agregarPeriodo.setEnabled(false);
         this.btn_actualizar.setEnabled(true);
         // TODO add your handling code here:
@@ -594,8 +663,15 @@ DefaultTableModel modelo = new DefaultTableModel();
             else{
                 JOptionPane.showMessageDialog(null, "Error");
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\PeriodoHis.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " El inconveniente se debe a: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jMenuPrincipalActionPerformed
 
@@ -603,8 +679,15 @@ DefaultTableModel modelo = new DefaultTableModel();
         Periodo pp = null;
         try {
             pp = new Periodo(lbl_usuario.getText());
-        } catch (SQLException ex) {
-            Logger.getLogger(Carrera.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\PeriodoHis.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " El inconveniente se debe a: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         pp.setVisible(true);
         this.dispose();
@@ -644,7 +727,14 @@ DefaultTableModel modelo = new DefaultTableModel();
             idPeriodo.setWidth(450);
            
         } catch (Exception e) {
-           /* JOptionPane.showMessageDialog(null, e.getMessage());*/
+           try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\PeriodoHis.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " El inconveniente se debe a: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
             System.err.println(e);
         }
     }
@@ -676,11 +766,7 @@ DefaultTableModel modelo = new DefaultTableModel();
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+      
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -689,17 +775,14 @@ DefaultTableModel modelo = new DefaultTableModel();
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PeriodoHis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Periodo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PeriodoHis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Periodo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PeriodoHis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Periodo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PeriodoHis.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Periodo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
