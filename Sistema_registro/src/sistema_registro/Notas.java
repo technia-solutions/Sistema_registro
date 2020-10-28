@@ -7,6 +7,7 @@ package sistema_registro;
 
 import codigo.Conexion_consulta;
 import java.awt.Toolkit;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -470,7 +471,7 @@ public class Notas extends javax.swing.JFrame {
         }
     
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
-        
+try{        
         String numeroDeCuenta,nota1, nota2, nota3, clase,periodo,promedio,estado,matricula,reposicion;
  
     
@@ -605,10 +606,21 @@ public class Notas extends javax.swing.JFrame {
       rad_reposicionParcialI.setEnabled(false);
       rad_reposicionParcialII.setEnabled(false);
      // LimpiarCajas();
+        }catch(Exception e){
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Nota.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void btn_buscarClasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarClasesActionPerformed
-    String idAlumno;
+try{
+        String idAlumno;
   
     idAlumno=txt_numeroCuenta.getText();
     if(txt_numeroCuenta.getText().equals("")){
@@ -616,7 +628,7 @@ public class Notas extends javax.swing.JFrame {
         txt_numeroCuenta.requestFocus();
         return;
     }
-    else if (existeNumeroCuenta())
+    else if (!existeNumeroCuenta()){
     
  
         try{
@@ -661,6 +673,17 @@ public class Notas extends javax.swing.JFrame {
              System.out.println(ex.toString());
              
          }
+    }
+        }catch(Exception e){
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Nota.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btn_buscarClasesActionPerformed
 
     private void txt_notaParcialIFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_notaParcialIFocusLost
@@ -877,9 +900,16 @@ public class Notas extends javax.swing.JFrame {
             JasperViewer view = new JasperViewer(jprint,false);
             view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
             view.setVisible(true);      
-       } catch (JRException ex) {
-           Logger.getLogger(Notas.class.getName()).log(Level.SEVERE, null, ex);
-       }
+     }catch(Exception e){
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Nota.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btn_generarReporteActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

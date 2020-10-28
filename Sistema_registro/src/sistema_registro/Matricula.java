@@ -6,6 +6,7 @@
 package sistema_registro;
 
 import java.awt.Toolkit;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
@@ -516,7 +517,10 @@ public class Matricula extends javax.swing.JFrame {
    
    
     private void btn_buscarClasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarClasesActionPerformed
-     buscar();
+try{
+    
+
+        buscar();
      
       
     //.btn_matricularAsignatura.setEnabled(true);
@@ -526,7 +530,16 @@ public class Matricula extends javax.swing.JFrame {
    // existeNumeroCuenta();
    //idAlumno=txt_numeroCuenta.getText();
  
-        
+        }catch(Exception e){
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Matricula.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue BOTÓN BUSCAR : " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }    
         
     }//GEN-LAST:event_btn_buscarClasesActionPerformed
         
@@ -705,6 +718,9 @@ public class Matricula extends javax.swing.JFrame {
     }
   
     private void btn_matricularAsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_matricularAsignaturaActionPerformed
+       try{
+           
+       
         for (int i = 0; i < tbl_asignaturas.getRowCount(); i++) {
             
             if (IsSelected(i,8, tbl_asignaturas)) {
@@ -715,6 +731,16 @@ public class Matricula extends javax.swing.JFrame {
             }   
         }
          desactivar();
+       }catch(Exception e){
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Matricula.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         
     }//GEN-LAST:event_btn_matricularAsignaturaActionPerformed
 
@@ -759,9 +785,16 @@ public class Matricula extends javax.swing.JFrame {
             JasperViewer view = new JasperViewer(jprint,false);
             view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
             view.setVisible(true);      
-       } catch (JRException ex) {
-           Logger.getLogger(Matricula.class.getName()).log(Level.SEVERE, null, ex);
-       }
+          }catch(Exception e){
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\ReporteMatricula.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btn_generarReporteActionPerformed
 
     private void jMenuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPrincipalActionPerformed

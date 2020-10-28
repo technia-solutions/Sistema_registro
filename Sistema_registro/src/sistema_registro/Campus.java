@@ -8,6 +8,7 @@ package sistema_registro;
 import static java.awt.Frame.ICONIFIED;
 import java.awt.HeadlessException;
 import java.awt.Toolkit;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -455,6 +456,7 @@ public class Campus extends javax.swing.JFrame {
     }//GEN-LAST:event_Tabla_CampusMouseClicked
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
+try{
         String nombreCampus = txt_NombreCampus.getText() + " " + txt_idCampus.getText();
          if((txt_idCampus.getText().equals(""))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id del campus.","Id del campus  requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
@@ -500,6 +502,16 @@ public class Campus extends javax.swing.JFrame {
             actualizarDatos();
             LimpiarCajas();
         }
+              }catch(Exception e){
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Campus.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
@@ -514,6 +526,7 @@ public class Campus extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_buscarMouseClicked
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
+try{
         String nombreCampus = txt_NombreCampus.getText() + " ";
         String nombre=  txt_NombreCampus.getText();
         String cap = nombre.substring(0, 1).toUpperCase() + nombre.substring(1);
@@ -575,10 +588,21 @@ public class Campus extends javax.swing.JFrame {
             actualizarDatos();
             LimpiarCajas();
         }
+             }catch(Exception e){
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Campus.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
 
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
+try{
         String cadena1, cadena2;
         cadena1 = txt_idCampus.getText();
         cadena2 = txt_NombreCampus.getText();
@@ -632,6 +656,16 @@ public class Campus extends javax.swing.JFrame {
         }
         actualizarDatos();
         LimpiarCajas();
+          }catch(Exception e){
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Campus.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void txt_idCampusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_idCampusActionPerformed

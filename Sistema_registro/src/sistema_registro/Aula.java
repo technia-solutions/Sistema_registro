@@ -7,6 +7,7 @@ package sistema_registro;
 
 import codigo.Conexion_consulta;
 import java.awt.Toolkit;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -427,7 +428,7 @@ public class Aula extends javax.swing.JFrame {
     }//GEN-LAST:event_Tabla_AulaMouseClicked
 
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
-
+try{
         String cadena1, cadena2,cadena3;
         cadena1 = txt_idAula.getText();
         String id_edificio = cbo_idEdificio.getSelectedItem().toString().substring(0, 2);
@@ -507,10 +508,21 @@ public class Aula extends javax.swing.JFrame {
 
        actualizarDatos();
         LimpiarCajas();
+             }catch(Exception e){
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Aula.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
 
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
+try{
         String Aula = txt_nombreAula.getText() + " ";
         String aula= txt_nombreAula.getText();
         String cap = aula.substring(0, 1).toUpperCase() + aula.substring(1);
@@ -587,6 +599,16 @@ public class Aula extends javax.swing.JFrame {
             LimpiarCajas();
 
         }
+                }catch(Exception e){
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Aula.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
     private void btn_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buscarMouseClicked
@@ -600,6 +622,9 @@ public class Aula extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_buscarActionPerformed
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
+try{
+    
+
         String Aula = txt_idAula.getText() + " " + txt_PisoAula.getText();
 
          if((txt_idAula.getText().equals(""))){
@@ -665,6 +690,16 @@ public class Aula extends javax.swing.JFrame {
            actualizarDatos();
             LimpiarCajas();
 
+        }
+                    }catch(Exception e){
+             try {
+                Log myLog; 
+                myLog = new Log("src\\Logs\\Aula.txt");
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
