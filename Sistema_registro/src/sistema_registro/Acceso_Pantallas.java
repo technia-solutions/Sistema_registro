@@ -902,25 +902,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBox_JuevesActionPerformed
 
     private void btn_AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AceptarActionPerformed
-             String Mensaje = "Dias:"; 
-        if(jCheckBox_Lunes.isSelected()){
-             Mensaje +=  "Lunes";
-                
-        }
-         if(jCheckBox_Martes.isSelected()){
-            Mensaje +=  "Martes";
-        }
-       if(jCheckBox_Miercoles.isSelected()){
-             Mensaje += "Miercoles";
-        }
-         if(jCheckBox_Jueves.isSelected()){
-             Mensaje +=  "Jueves";
-        }
-         if(jCheckBox_Viernes.isSelected()){
-            Mensaje +=  "Viernes";
-        }
         
-        lbl_MensajeDias.setText(Mensaje);
         
     }//GEN-LAST:event_btn_AceptarActionPerformed
 
@@ -1105,20 +1087,20 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CheckBox.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Acceso_Pantallas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CheckBox.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Acceso_Pantallas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CheckBox.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Acceso_Pantallax.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CheckBox.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Acceso_Pantallas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CheckBox().setVisible(true);
+                new Acceso_Pantallas().setVisible(true);
             }
         });
     }
