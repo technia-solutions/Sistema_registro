@@ -204,7 +204,7 @@ public class Login extends javax.swing.JFrame {
             String usuario = txt_usuario.getText();
             String contraseña = String.valueOf(pwd_contraseña.getText());
             String contraseñaEncriptada=DigestUtils.md5Hex(contraseña);
-            String sql = "SELECT * from Acceso where nombre_usuario' ='" +usuario+ "' and clave_acceso='"+contraseñaEncriptada+"' COLLATE Latin1_General_CS_AS";
+            String sql = "SELECT * from Acceso where nombre_usuario ='" +usuario+ "' and clave_acceso='"+contraseñaEncriptada+"' COLLATE Latin1_General_CS_AS";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
             String verificar = "Select estado from acceso where nombre_usuario = '"+usuario+"'";
