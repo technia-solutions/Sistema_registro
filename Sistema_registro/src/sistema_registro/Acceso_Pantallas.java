@@ -51,23 +51,21 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
     private void initComponents() {
 
         jCheckBox1 = new javax.swing.JCheckBox();
-        btn_Limpiar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        Empleados = new javax.swing.JCheckBox();
-        Seccciones = new javax.swing.JCheckBox();
-        Periodo = new javax.swing.JCheckBox();
-        Asignatura = new javax.swing.JCheckBox();
-        Matricula = new javax.swing.JCheckBox();
-        Notas = new javax.swing.JCheckBox();
-        Aula = new javax.swing.JCheckBox();
-        Carrera = new javax.swing.JCheckBox();
-        Alumno = new javax.swing.JCheckBox();
-        CancelarAsignatura = new javax.swing.JCheckBox();
+        cbo_Empleados = new javax.swing.JCheckBox();
+        cbo_Notas = new javax.swing.JCheckBox();
+        cbo_Periodo = new javax.swing.JCheckBox();
+        cbo_Aula = new javax.swing.JCheckBox();
+        cbo_Secciones = new javax.swing.JCheckBox();
+        cbo_Carrera = new javax.swing.JCheckBox();
+        cbo_Asignatura = new javax.swing.JCheckBox();
+        cbo_Alumno = new javax.swing.JCheckBox();
+        cbo_Matricula = new javax.swing.JCheckBox();
+        cbo_CancelarAsignatura = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         fechaHoy1 = new javax.swing.JLabel();
         fechaHoy = new javax.swing.JLabel();
-        btn_Guardar = new javax.swing.JButton();
         cbo_NombreUsuario = new javax.swing.JComboBox<>();
         cbo_NombreEmpleado = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
@@ -121,6 +119,8 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         lbl_Carrera = new javax.swing.JLabel();
         lbl_Aula = new javax.swing.JLabel();
         lbl_Notas = new javax.swing.JLabel();
+        btn_Limpiar = new javax.swing.JButton();
+        btn_Guardar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -129,115 +129,53 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btn_Limpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Limpiar.png"))); // NOI18N
-        btn_Limpiar.setText("Limpiar");
-        btn_Limpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_LimpiarActionPerformed(evt);
-            }
-        });
-
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Permisos de Pantallas "));
 
-        Empleados.setText("Empleados");
-        Empleados.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EmpleadosActionPerformed(evt);
-            }
-        });
+        cbo_Empleados.setText("Empleados");
 
-        Seccciones.setText("Seccciones");
-        Seccciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SecccionesActionPerformed(evt);
-            }
-        });
+        cbo_Notas.setText("Notas");
 
-        Periodo.setText("Periodo");
-        Periodo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PeriodoActionPerformed(evt);
-            }
-        });
+        cbo_Periodo.setText("Periodo");
 
-        Asignatura.setText("Asignatura");
-        Asignatura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AsignaturaActionPerformed(evt);
-            }
-        });
+        cbo_Aula.setText("Aula");
 
-        Matricula.setText("Matricula");
-        Matricula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MatriculaActionPerformed(evt);
-            }
-        });
+        cbo_Secciones.setText("Secciones");
 
-        Notas.setText("Notas");
-        Notas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NotasActionPerformed(evt);
-            }
-        });
+        cbo_Carrera.setText("Carrera");
 
-        Aula.setText("Aula");
-        Aula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AulaActionPerformed(evt);
-            }
-        });
+        cbo_Asignatura.setText("Asignatura");
 
-        Carrera.setText("Carrera");
-        Carrera.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CarreraActionPerformed(evt);
-            }
-        });
+        cbo_Alumno.setText("Alumno");
 
-        Alumno.setText("Alumno");
-        Alumno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AlumnoActionPerformed(evt);
-            }
-        });
+        cbo_Matricula.setText("Matricula");
 
-        CancelarAsignatura.setText("Cancelar Asignatura");
-        CancelarAsignatura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelarAsignaturaActionPerformed(evt);
-            }
-        });
+        cbo_CancelarAsignatura.setText("CancelarAsignatura");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Notas, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(Aula, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Periodo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbo_Empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbo_Notas, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(Carrera, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Seccciones, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(Asignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Matricula, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CancelarAsignatura))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cbo_Periodo, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbo_Aula, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cbo_Secciones, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbo_Carrera, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cbo_Asignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbo_Alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cbo_Matricula, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbo_CancelarAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,28 +183,28 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(Matricula)
+                        .addComponent(cbo_Matricula)
                         .addGap(18, 18, 18)
-                        .addComponent(CancelarAsignatura))
+                        .addComponent(cbo_CancelarAsignatura))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(Asignatura)
+                            .addComponent(cbo_Asignatura)
                             .addGap(18, 18, 18)
-                            .addComponent(Alumno))
+                            .addComponent(cbo_Alumno))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(Seccciones)
+                                .addComponent(cbo_Secciones)
                                 .addGap(18, 18, 18)
-                                .addComponent(Carrera))
+                                .addComponent(cbo_Carrera))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(Periodo)
+                                .addComponent(cbo_Periodo)
                                 .addGap(18, 18, 18)
-                                .addComponent(Aula))
+                                .addComponent(cbo_Aula))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(Empleados)
+                                .addComponent(cbo_Empleados)
                                 .addGap(18, 18, 18)
-                                .addComponent(Notas)))))
-                .addGap(0, 18, Short.MAX_VALUE))
+                                .addComponent(cbo_Notas)))))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -280,14 +218,6 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         fechaHoy.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         fechaHoy.setText("Fecha hoy");
-
-        btn_Guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Guardar.png"))); // NOI18N
-        btn_Guardar.setText("Guardar");
-        btn_Guardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_GuardarActionPerformed(evt);
-            }
-        });
 
         cbo_NombreUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione el nombre usuario:" }));
 
@@ -774,6 +704,12 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         lbl_Notas.setText("Notas");
 
+        btn_Limpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Limpiar.png"))); // NOI18N
+        btn_Limpiar.setText("Limpiar");
+
+        btn_Guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Guardar.png"))); // NOI18N
+        btn_Guardar.setText("Guardar");
+
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
         jMenu1.setText("Menu");
 
@@ -815,28 +751,28 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                                 .addComponent(lbl_Secciones, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lbl_Notas, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lbl_Aula, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lbl_Asignatura, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lbl_Matricula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(38, 38, 38))
-                                    .addComponent(lbl_CancelarMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(fechaHoy1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(fechaHoy, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(fechaHoy1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(fechaHoy, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(lbl_Asignatura, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(lbl_Matricula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGap(38, 38, 38))
+                                        .addComponent(lbl_CancelarMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(282, 282, 282)
+                        .addGap(191, 191, 191)
                         .addComponent(btn_Limpiar)
                         .addGap(18, 18, 18)
-                        .addComponent(btn_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                        .addComponent(btn_Guardar)))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -853,9 +789,9 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(cbo_NombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addGap(41, 41, 41)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -883,8 +819,8 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_Limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btn_Limpiar)
+                            .addComponent(btn_Guardar))
                         .addContainerGap())))
         );
 
@@ -1091,7 +1027,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         } catch (InstantiationException ex) {
             java.util.logging.Logger.getLogger(Acceso_Pantallas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Acceso_Pantallax.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Acceso_Pantallas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Acceso_Pantallas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
@@ -1116,9 +1052,6 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
     private javax.swing.JCheckBox Actualizar7;
     private javax.swing.JCheckBox Actualizar8;
     private javax.swing.JCheckBox Actualizar9;
-    private javax.swing.JCheckBox Alumno;
-    private javax.swing.JCheckBox Asignatura;
-    private javax.swing.JCheckBox Aula;
     private javax.swing.JCheckBox Buscar;
     private javax.swing.JCheckBox Buscar1;
     private javax.swing.JCheckBox Buscar2;
@@ -1129,8 +1062,6 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
     private javax.swing.JCheckBox Buscar7;
     private javax.swing.JCheckBox Buscar8;
     private javax.swing.JCheckBox Buscar9;
-    private javax.swing.JCheckBox CancelarAsignatura;
-    private javax.swing.JCheckBox Carrera;
     private javax.swing.JCheckBox Eliminar;
     private javax.swing.JCheckBox Eliminar1;
     private javax.swing.JCheckBox Eliminar2;
@@ -1141,7 +1072,6 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
     private javax.swing.JCheckBox Eliminar7;
     private javax.swing.JCheckBox Eliminar8;
     private javax.swing.JCheckBox Eliminar9;
-    private javax.swing.JCheckBox Empleados;
     private javax.swing.JCheckBox Guardar;
     private javax.swing.JCheckBox Guardar1;
     private javax.swing.JCheckBox Guardar2;
@@ -1152,14 +1082,20 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
     private javax.swing.JCheckBox Guardar7;
     private javax.swing.JCheckBox Guardar8;
     private javax.swing.JCheckBox Guardar9;
-    private javax.swing.JCheckBox Matricula;
-    private javax.swing.JCheckBox Notas;
-    private javax.swing.JCheckBox Periodo;
-    private javax.swing.JCheckBox Seccciones;
     private javax.swing.JButton btn_Guardar;
     private javax.swing.JButton btn_Limpiar;
+    private javax.swing.JCheckBox cbo_Alumno;
+    private javax.swing.JCheckBox cbo_Asignatura;
+    private javax.swing.JCheckBox cbo_Aula;
+    private javax.swing.JCheckBox cbo_CancelarAsignatura;
+    private javax.swing.JCheckBox cbo_Carrera;
+    private javax.swing.JCheckBox cbo_Empleados;
+    private javax.swing.JCheckBox cbo_Matricula;
     private javax.swing.JComboBox<String> cbo_NombreEmpleado;
     private javax.swing.JComboBox<String> cbo_NombreUsuario;
+    private javax.swing.JCheckBox cbo_Notas;
+    private javax.swing.JCheckBox cbo_Periodo;
+    private javax.swing.JCheckBox cbo_Secciones;
     private javax.swing.JLabel fechaHoy;
     private javax.swing.JLabel fechaHoy1;
     private javax.swing.JCheckBox jCheckBox1;
