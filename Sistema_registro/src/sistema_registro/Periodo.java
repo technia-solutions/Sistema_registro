@@ -13,6 +13,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -33,6 +35,9 @@ public class Periodo extends javax.swing.JFrame {
     Connection con = null;
     Statement stmt = null;
     String var, var2;
+     final Calendar calendar = Calendar.getInstance();
+    final java.util.Date  date = calendar.getTime();
+    String fecha = new SimpleDateFormat("d-MM-yyyy hh.mm.ss a ").format(date);
     
     
     public Periodo() throws SQLException {
@@ -443,7 +448,8 @@ public class Periodo extends javax.swing.JFrame {
             
               try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Periodo.txt");
+              String nombreArchivo = "src\\Logs\\Periodo " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -472,7 +478,8 @@ public class Periodo extends javax.swing.JFrame {
             
                  try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Periodo.txt");
+                String nombreArchivo = "src\\Logs\\Periodo " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -500,7 +507,8 @@ public class Periodo extends javax.swing.JFrame {
             
                  try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\PeriodoHis.txt");
+                String nombreArchivo = "src\\Logs\\Periodo " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -579,7 +587,8 @@ public class Periodo extends javax.swing.JFrame {
             
                  try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Periodo.txt");
+               String nombreArchivo = "src\\Logs\\Periodo " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -686,7 +695,8 @@ public class Periodo extends javax.swing.JFrame {
             
                  try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Periodo.txt");
+               String nombreArchivo = "src\\Logs\\Periodo " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -791,7 +801,8 @@ char a=evt.getKeyChar();
             
                  try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Periodo.txt");
+               String nombreArchivo = "src\\Logs\\Periodo " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -811,7 +822,8 @@ char a=evt.getKeyChar();
             
                  try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Periodo.txt");
+               String nombreArchivo = "src\\Logs\\Periodo " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -978,7 +990,8 @@ private void rellenar() {
             
                  try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Periodo.txt");
+                String nombreArchivo = "src\\Logs\\Periodo " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -1021,7 +1034,8 @@ private void rellenar() {
               
                    try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Periodo.txt");
+               String nombreArchivo = "src\\Logs\\Periodo " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {

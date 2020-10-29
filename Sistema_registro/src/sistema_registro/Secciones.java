@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.Level;
@@ -47,6 +48,9 @@ public class Secciones extends javax.swing.JFrame {
     String var, var2;
     int Contador=0;
     String CantidadAl =String.valueOf(Contador);
+     final Calendar calendar = Calendar.getInstance();
+    final java.util.Date  date = calendar.getTime();
+    String fecha = new SimpleDateFormat("d-MM-yyyy hh.mm.ss a ").format(date);
     
     
     
@@ -770,7 +774,8 @@ public class Secciones extends javax.swing.JFrame {
             
             try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Secciones.txt");
+                String nombreArchivo = "src\\Logs\\Secciones " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -863,7 +868,8 @@ public class Secciones extends javax.swing.JFrame {
                 
                 try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Secciones.txt");
+                String nombreArchivo = "src\\Logs\\Secciones " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -887,7 +893,8 @@ public class Secciones extends javax.swing.JFrame {
        
        try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Secciones.txt");
+                String nombreArchivo = "src\\Logs\\Secciones " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -1080,7 +1087,8 @@ public class Secciones extends javax.swing.JFrame {
         
         try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Secciones.txt");
+                String nombreArchivo = "src\\Logs\\Secciones " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -1138,7 +1146,8 @@ public class Secciones extends javax.swing.JFrame {
             
         try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Periodo.txt");
+                String nombreArchivo = "src\\Logs\\Secciones " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -1166,7 +1175,8 @@ public class Secciones extends javax.swing.JFrame {
             
             try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Asignaturas.txt");
+                String nombreArchivo = "src\\Logs\\Secciones " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -1195,7 +1205,8 @@ public class Secciones extends javax.swing.JFrame {
             
             try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Aula.txt");
+                String nombreArchivo = "src\\Logs\\Secciones " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -1319,19 +1330,35 @@ public class Secciones extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         try {
+        
+        try {
             String sql2 = "Select nombres_empleado + ' ' + apellido_empleado from Empleados where id_empleado = (select id_empleado from Acceso where nombre_usuario = '"+lbl_usuario.getText()+"')";
-                Statement st2 = con.createStatement();
-                ResultSet rs2 = st2.executeQuery(sql2);
-                if(rs2.next()){
+            Statement st2 = con.createStatement();
+            ResultSet rs2 = st2.executeQuery(sql2);
+            if(rs2.next()){
                 Principal principal = new Principal(lbl_usuario.getText(),rs2.getString(1));
-                principal.setVisible(true); 
+                principal.setVisible(true);
                 this.dispose();
-                }
-                else{
-                    JOptionPane.showMessageDialog(null, "Error");
-                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Error");
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Empleado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        } catch (Exception e) {
+            
+                  try {
+                Log myLog; 
+               String nombreArchivo = "src\\Logs\\PeriodoHis " + fecha + ".txt";
+                    myLog = new Log(nombreArchivo);
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
@@ -1564,7 +1591,8 @@ public void actualizarDatos(){
            
             try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Secciones.txt");
+                String nombreArchivo = "src\\Logs\\Secciones " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -1610,7 +1638,8 @@ public void actualizarDatos(){
                     
                     try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Secciones.txt");
+                 String nombreArchivo = "src\\Logs\\Secciones " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {

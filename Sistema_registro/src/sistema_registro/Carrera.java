@@ -14,7 +14,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -38,7 +41,10 @@ public class Carrera extends javax.swing.JFrame {
     Connection con = null;
     Statement stmt = null;
     String var, var2;
-
+    final Calendar calendar = Calendar.getInstance();
+    final java.util.Date  date = calendar.getTime();
+    String fecha = new SimpleDateFormat("d-MM-yyyy hh.mm.ss a ").format(date);
+     
     /**
      * Creates new form Carrera
      */
@@ -57,6 +63,9 @@ public class Carrera extends javax.swing.JFrame {
             this.btn_actualizar1.setEnabled(false);
             this.lbl_carrera.setVisible(false);
              this.setLocationRelativeTo(null);
+            
+            
+             
     }
     
     public Carrera(String nombreUsuario) throws SQLException {
@@ -75,6 +84,7 @@ public class Carrera extends javax.swing.JFrame {
             this.btn_actualizar1.setEnabled(false);
             this.lbl_carrera.setVisible(false);
              this.setLocationRelativeTo(null);
+            
     }
 
     /**
@@ -103,6 +113,7 @@ public class Carrera extends javax.swing.JFrame {
         lbl_idCarrera = new javax.swing.JLabel();
         btn_limpiar = new javax.swing.JButton();
         lbl_carrera = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
         lbl_usuario = new javax.swing.JLabel();
@@ -230,6 +241,13 @@ public class Carrera extends javax.swing.JFrame {
 
         lbl_carrera.setText("jLabel2");
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -244,15 +262,18 @@ public class Carrera extends javax.swing.JFrame {
                             .addComponent(btn_buscar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btn_eliminar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(169, 169, 169)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lbl_facultad)
-                            .addComponent(lbl_nombreCarrera)
-                            .addComponent(lbl_idCarrera))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbo_idfacultad, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_idCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lbl_facultad)
+                                    .addComponent(lbl_nombreCarrera)
+                                    .addComponent(lbl_idCarrera))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbo_idfacultad, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_idCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jButton1))
                         .addGap(140, 140, 140))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -292,7 +313,9 @@ public class Carrera extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbo_idfacultad, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbl_facultad))
-                        .addGap(68, 68, 68))))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)
+                        .addGap(27, 27, 27))))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 870, 310));
@@ -471,7 +494,8 @@ public class Carrera extends javax.swing.JFrame {
         } catch (Exception e) {
              try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Carrera.txt");
+               String nombreArchivo = "src\\Logs\\Carrera " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -490,12 +514,13 @@ public class Carrera extends javax.swing.JFrame {
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
         try {
-          actualizarDatos();
+            actualizarDatos();
             
         } catch (Exception e) {
              try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Carrera.txt");
+                String nombreArchivo = "src\\Logs\\Carrera " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -555,7 +580,8 @@ public class Carrera extends javax.swing.JFrame {
         } catch (Exception e) {
              try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Carrera.txt");
+                String nombreArchivo = "src\\Logs\\Carrera " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -623,8 +649,9 @@ public class Carrera extends javax.swing.JFrame {
             LimpiarCajas();
         } catch (Exception e) {
              try {
-                Log myLog; 
-                myLog = new Log("src\\Logs\\Carrera.txt");
+                Log myLog;
+                String nombreArchivo = "src\\Logs\\Carrera " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -643,7 +670,8 @@ public class Carrera extends javax.swing.JFrame {
          } catch (SQLException e) {
              try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Asignatura.txt");
+                String nombreArchivo = "src\\Logs\\Carrera " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -673,7 +701,8 @@ public class Carrera extends javax.swing.JFrame {
          } catch (SQLException e) {
              try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Facultad.txt");
+                 String nombreArchivo = "src\\Logs\\Carrera " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -721,8 +750,9 @@ public class Carrera extends javax.swing.JFrame {
                 }
         } catch (SQLException e) {
             try {
-                Log myLog; 
-                myLog = new Log("src\\Logs\\Principal.txt");
+                Log myLog;
+                String nombreArchivo = "src\\Logs\\Carrera " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -736,6 +766,13 @@ public class Carrera extends javax.swing.JFrame {
         LimpiarCajas();
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_limpiarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+     
+             
+           
+         
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -786,6 +823,7 @@ public class Carrera extends javax.swing.JFrame {
     private javax.swing.JButton btn_limpiar;
     private javax.swing.JComboBox<String> cbo_idfacultad;
     private javax.swing.JLabel iconodeUsuario;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
@@ -887,7 +925,8 @@ public class Carrera extends javax.swing.JFrame {
                 } catch (Exception e) {
                      try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Carrera.txt");
+                String nombreArchivo = "src\\Logs\\Carrera " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -907,6 +946,7 @@ public class Carrera extends javax.swing.JFrame {
     }
      
       public void actualizarDatos() {
+          
         try {
             String sql = "SELECT * FROM Carrera as c join Facultad as f on f.id_facultad = c.id_facultad";
             stmt = con.createStatement();
@@ -917,7 +957,7 @@ public class Carrera extends javax.swing.JFrame {
                 String[] datos = new String[4];
                 datos[0] = rs.getString("id_carrera");
                 datos[1] = rs.getString("nombre_carrera");
-                datos[2] =rs.getString("id_facultad");
+                datos[2] =rs.getString("id_facultade");
                 datos[3] =rs.getString("nombre_facultad");
                 modelo.addRow(datos);
             }
@@ -932,12 +972,15 @@ public class Carrera extends javax.swing.JFrame {
                 facultad.setMaxWidth(300);
         } catch (Exception e) {
            try {
+               
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Carrera.txt");
+                String nombreArchivo = "src\\Logs\\Carrera " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+       
             }
             
         }

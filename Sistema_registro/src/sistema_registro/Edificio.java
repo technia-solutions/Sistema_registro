@@ -13,7 +13,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -36,6 +38,10 @@ public class Edificio extends javax.swing.JFrame {
      Statement stmt = null;
      DefaultTableModel modelo =  new DefaultTableModel();
     String var;
+     final Calendar calendar = Calendar.getInstance();
+    final java.util.Date  date = calendar.getTime();
+    String fecha = new SimpleDateFormat("d-MM-yyyy hh.mm.ss a ").format(date);
+     
 
     /**
      * Creates new form Edificio
@@ -431,7 +437,8 @@ public class Edificio extends javax.swing.JFrame {
         } catch (Exception e) {
            try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Edificio.txt");
+                String nombreArchivo = "src\\Logs\\Edificio " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -484,7 +491,8 @@ public class Edificio extends javax.swing.JFrame {
         } catch (Exception e) {
             try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Edificio.txt");
+                String nombreArchivo = "src\\Logs\\Edificio " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -500,7 +508,8 @@ public class Edificio extends javax.swing.JFrame {
        }catch(Exception e){
            try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Edificio.txt");
+                String nombreArchivo = "src\\Logs\\Edificio " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -552,7 +561,8 @@ public class Edificio extends javax.swing.JFrame {
         } catch (Exception e) {
             try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Edificio.txt");
+                String nombreArchivo = "src\\Logs\\Edificio" + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -638,7 +648,8 @@ public class Edificio extends javax.swing.JFrame {
         } catch (SQLException e) {
                try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Aula.txt");
+                String nombreArchivo = "src\\Logs\\Edificio " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -799,7 +810,8 @@ public class Edificio extends javax.swing.JFrame {
         } catch (Exception e) {
             try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Edificio.txt");
+                String nombreArchivo = "src\\Logs\\Edificio " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -846,7 +858,8 @@ public class Edificio extends javax.swing.JFrame {
                 } catch (Exception e) {
                     try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Edificio.txt");
+                String nombreArchivo = "src\\Logs\\Edificio " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -894,7 +907,8 @@ public class Edificio extends javax.swing.JFrame {
         } catch (Exception e) {
             try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Edificio.txt");
+                String nombreArchivo = "src\\Logs\\Edificio " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {

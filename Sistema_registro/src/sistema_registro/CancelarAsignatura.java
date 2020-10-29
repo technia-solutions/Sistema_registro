@@ -15,6 +15,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
@@ -40,6 +41,9 @@ public class CancelarAsignatura extends javax.swing.JFrame {
     DefaultTableModel modelo =  new DefaultTableModel();
     Statement stmt = null;
     String var, var2;
+     final Calendar calendar = Calendar.getInstance();
+    final java.util.Date  date = calendar.getTime();
+    String fecha = new SimpleDateFormat("d-MM-yyyy hh.mm.ss a ").format(date);
     
     /**
      * Creates new form CancelarAsignatura
@@ -326,7 +330,8 @@ public class CancelarAsignatura extends javax.swing.JFrame {
             
             try{ 
            Log myLog; 
-                myLog = new Log("src\\Logs\\CancelarAsignatura.txt");
+                String nombreArchivo = "src\\Logs\\CancelarAsignatura " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -525,7 +530,8 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         
          try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\CancelarAsignatura.txt");
+               String nombreArchivo = "src\\Logs\\CancelarAsignatura " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -554,7 +560,8 @@ public class CancelarAsignatura extends javax.swing.JFrame {
             
              try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Matricula.txt");
+              String nombreArchivo = "src\\Logs\\CancelarAsignatura " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -660,7 +667,8 @@ public class CancelarAsignatura extends javax.swing.JFrame {
             
              try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\CancelarAsignatura.txt");
+               String nombreArchivo = "src\\Logs\\CancelarAsignatura " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -682,7 +690,8 @@ public class CancelarAsignatura extends javax.swing.JFrame {
             
               try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\CancelarAsignatura.txt");
+                String nombreArchivo = "src\\Logs\\CancelarAsignatura " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -720,7 +729,8 @@ public class CancelarAsignatura extends javax.swing.JFrame {
              
                try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\CancelarAsignatura.txt");
+              String nombreArchivo = "src\\Logs\\CancelarAsignatura " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -875,7 +885,8 @@ public class CancelarAsignatura extends javax.swing.JFrame {
              
                try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\CancelarAsignatura.txt");
+               String nombreArchivo = "src\\Logs\\CancelarAsignatura " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -889,7 +900,8 @@ public class CancelarAsignatura extends javax.swing.JFrame {
              
                try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\CancelarAsignatura.txt");
+               String nombreArchivo = "src\\Logs\\CancelarAsignatura " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -995,7 +1007,8 @@ public class CancelarAsignatura extends javax.swing.JFrame {
               
                     try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\CancelarAsignatura.txt");
+              String nombreArchivo = "src\\Logs\\CancelarAsignatura " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {

@@ -18,6 +18,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,6 +36,9 @@ public class PeriodoHis extends javax.swing.JFrame {
 Connection con;
 String titulos[] = {"Nombre del período", "Fecha inicial", "Fecha final", "Período","Descripción"};
 DefaultTableModel modelo = new DefaultTableModel();
+ final Calendar calendar = Calendar.getInstance();
+    final java.util.Date  date = calendar.getTime();
+    String fecha = new SimpleDateFormat("d-MM-yyyy hh.mm.ss a ").format(date);
 
 
     /**
@@ -457,7 +461,9 @@ DefaultTableModel modelo = new DefaultTableModel();
                 
                      try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\PeriodoHis.txt");
+                String nombreArchivo = "src\\Logs\\PeriodoHis " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
+
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -536,7 +542,9 @@ DefaultTableModel modelo = new DefaultTableModel();
             
                   try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\PeriodoHis.txt");
+                String nombreArchivo = "src\\Logs\\PeriodoHis " + fecha + ".txt";
+                    myLog = new Log(nombreArchivo);
+
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -589,7 +597,9 @@ DefaultTableModel modelo = new DefaultTableModel();
             
                   try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\PeriodoHis.txt");
+                String nombreArchivo = "src\\Logs\\PeriodoHis " + fecha + ".txt";
+                    myLog = new Log(nombreArchivo);
+
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -612,7 +622,8 @@ DefaultTableModel modelo = new DefaultTableModel();
             
                   try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\PeriodoHis.txt");
+                String nombreArchivo = "src\\Logs\\PeriodoHis " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -647,7 +658,9 @@ DefaultTableModel modelo = new DefaultTableModel();
             
                   try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\PeriodoHis.txt");
+                String nombreArchivo = "src\\Logs\\PeriodoHis " + fecha + ".txt";
+                 myLog = new Log(nombreArchivo);
+
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -682,7 +695,8 @@ DefaultTableModel modelo = new DefaultTableModel();
             
                   try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Principal.txt");
+               String nombreArchivo = "src\\Logs\\PeriodoHis " + fecha + ".txt";
+                    myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -710,7 +724,9 @@ DefaultTableModel modelo = new DefaultTableModel();
             
                   try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Periodo.txt");
+                String nombreArchivo = "src\\Logs\\PeriodoHis " + fecha + ".txt";
+                    myLog = new Log(nombreArchivo);
+
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {
@@ -766,7 +782,8 @@ DefaultTableModel modelo = new DefaultTableModel();
             
                   try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\PeriodoHis.txt");
+                String nombreArchivo = "src\\Logs\\PeriodoHis " + fecha + ".txt";
+                    myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " El motivo se debio a: " + e.getCause());
             } catch (IOException ex) {

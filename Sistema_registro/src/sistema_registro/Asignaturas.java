@@ -13,7 +13,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -31,13 +33,18 @@ import sistema_registro.SQL.ConectorSQL;
  * @author William
  */
 public class Asignaturas extends javax.swing.JFrame {
+   String titulos [] = {"Código de Asignatura", "Nombre de la Asignatura", "Unidades Valorativas", "Id Carrera", "Requisito1", "Requisito2"};
 
-Connection con = null;
-    String titulos [] = {"Código de Asignatura", "Nombre de la Asignatura", "Unidades Valorativas", "Id Carrera", "Requisito1", "Requisito2"};
+    Connection con = null;
    
     DefaultTableModel modelo =  new DefaultTableModel();
     Statement stmt = null;
     String var, var2;
+    final Calendar calendar = Calendar.getInstance();
+    final java.util.Date  date = calendar.getTime();
+    String fecha = new SimpleDateFormat("d-MM-yyyy hh.mm.ss a ").format(date);
+     
+   
 /**
     /**
      * Creates new form Asignaturas
@@ -478,7 +485,8 @@ Connection con = null;
         catch(Exception e){
              try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Asignaturas.txt");
+               String nombreArchivo = "src\\Logs\\Asignaturas " + fecha + ".txt";
+               myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -603,7 +611,8 @@ Connection con = null;
         } catch (Exception e) {
              try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Asignaturas.txt");
+                String nombreArchivo = "src\\Logs\\Asignaturas " + fecha + ".txt";
+                 myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -797,7 +806,8 @@ Connection con = null;
         } catch (Exception e) {
              try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Asignaturas.txt");
+               String nombreArchivo = "src\\Logs\\Asignaturas " + fecha + ".txt";
+               myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -846,7 +856,8 @@ Connection con = null;
         } catch (Exception e) {
              try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Asignaturas.txt");
+                String nombreArchivo = "src\\Logs\\Asignaturas " + fecha + ".txt";
+               myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -894,7 +905,8 @@ Connection con = null;
         } catch (SQLException e) {
             try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Principal.txt");
+                String nombreArchivo = "src\\Logs\\Asignaturas " + fecha + ".txt";
+               myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -925,7 +937,8 @@ Connection con = null;
     } catch (SQLException e) { 
         try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\RequisitoAsignatura.txt");
+                String nombreArchivo = "src\\Logs\\Asignaturas " + fecha + ".txt";
+               myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -987,7 +1000,8 @@ Connection con = null;
         } catch (SQLException e) {
             try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Carrera.txt");
+                String nombreArchivo = "src\\Logs\\Asignaturas " + fecha + ".txt";
+               myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -1037,7 +1051,8 @@ Connection con = null;
         } catch (Exception e) {
              try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Asignaturas.txt");
+             String nombreArchivo = "src\\Logs\\Asignaturas " + fecha + ".txt";
+               myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -1212,7 +1227,8 @@ public boolean existeidAsignatura(){
      } catch (Exception e) {
          try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Asignaturas.txt");
+               String nombreArchivo = "src\\Logs\\Asignaturas " + fecha + ".txt";
+               myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -1282,7 +1298,8 @@ public boolean existeidAsignatura(){
                 } catch (Exception e) {
                     try {
                     Log myLog; 
-                    myLog = new Log("src\\Logs\\Asignaturas.txt");
+                    String nombreArchivo = "src\\Logs\\Asignaturas " + fecha + ".txt";
+               myLog = new Log(nombreArchivo);
                     myLog.logger.setLevel(Level.SEVERE);
                     myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -1347,7 +1364,8 @@ public boolean existeidAsignatura(){
                 } catch (Exception e) {
                      try {
                       Log myLog; 
-                     myLog = new Log("src\\Logs\\Asignaturas.txt");
+                     String nombreArchivo = "src\\Logs\\Asignaturas " + fecha + ".txt";
+               myLog = new Log(nombreArchivo);
                      myLog.logger.setLevel(Level.SEVERE);
                     myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
