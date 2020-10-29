@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -21,6 +23,9 @@ import sistema_registro.SQL.ConectorSQL;
 public class Login extends javax.swing.JFrame {
     Connection con;
     int intentos = 2;
+    final Calendar calendar = Calendar.getInstance();
+    final java.util.Date  date = calendar.getTime();
+    String fecha = new SimpleDateFormat("d-MM-yyyy hh.mm.ss a ").format(date);
     /**
      * Creates new form Sistema_registro2
      */
@@ -199,7 +204,7 @@ public class Login extends javax.swing.JFrame {
             String usuario = txt_usuario.getText();
             String contraseña = String.valueOf(pwd_contraseña.getText());
             String contraseñaEncriptada=DigestUtils.md5Hex(contraseña);
-            String sql = "SELECT * from Acceso where nombre_usuario ='" +usuario+ "' and clave_acceso='"+contraseñaEncriptada+"' COLLATE Latin1_General_CS_AS";
+            String sql = "SELECT * from Acceso where nombre_usuario' ='" +usuario+ "' and clave_acceso='"+contraseñaEncriptada+"' COLLATE Latin1_General_CS_AS";
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
             String verificar = "Select estado from acceso where nombre_usuario = '"+usuario+"'";
@@ -287,8 +292,9 @@ public class Login extends javax.swing.JFrame {
         } catch (SQLException e) {
               
             try {
-                Log myLog; 
-                myLog = new Log("src\\Logs\\Login.txt");
+                Log myLog;
+                String nombreArchivo = "src\\Logs\\Login " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {

@@ -5,27 +5,24 @@
  */
 package sistema_registro;
 
-import Atxy2k.CustomTextField.RestrictedTextField;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import sistema_registro.SQL.ConectorSQL;
 import codigo.Conexion_consulta;
-import java.awt.Color;
 import java.awt.Toolkit;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.text.NumberFormat;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -44,6 +41,9 @@ public class Empleado extends javax.swing.JFrame {
     Statement stmt = null;
     String var, var2;
     NumberFormat nf;
+    final Calendar calendar = Calendar.getInstance();
+    final java.util.Date  date = calendar.getTime();
+    String fecha = new SimpleDateFormat("d-MM-yyyy hh.mm.ss a ").format(date);
     
     
     private void LimpiarCajas(){
@@ -999,12 +999,13 @@ this.cbo_tipoUsuario.setSelectedItem("");
       } catch ( Exception e) {
             try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Empleado.txt");
+                String nombreArchivo = "src\\Logs\\Empleado " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }  
         }
          try{
              Statement st2=con.createStatement();
@@ -1023,7 +1024,8 @@ this.cbo_tipoUsuario.setSelectedItem("");
           }catch ( Exception e) {
           try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Empleado.txt");
+                String nombreArchivo = "src\\Logs\\Empleado " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -1174,7 +1176,8 @@ this.cbo_tipoUsuario.setSelectedItem("");
         catch(Exception e){
              try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Empleado.txt");
+                String nombreArchivo = "src\\Logs\\Empleado " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -1237,7 +1240,8 @@ this.cbo_tipoUsuario.setSelectedItem("");
         catch (Exception e) {
              try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Empleado.txt");
+                String nombreArchivo = "src\\Logs\\Empleado " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -1269,7 +1273,8 @@ this.cbo_tipoUsuario.setSelectedItem("");
         } catch (SQLException e) {
             try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Facultad.txt");
+                String nombreArchivo = "src\\Logs\\Empleado " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -1403,7 +1408,15 @@ this.cbo_tipoUsuario.setSelectedItem("");
               this.btn_Actualizar.setEnabled(false);
               this.btn_Eliminar.setEnabled(false);
           }catch ( Exception e) {
-           JOptionPane.showMessageDialog(null, e.getMessage()); 
+           try {
+                Log myLog; 
+                String nombreArchivo = "src\\Logs\\Empleado " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
             }
          }
         limpiar();
@@ -1412,7 +1425,8 @@ this.cbo_tipoUsuario.setSelectedItem("");
         catch ( Exception e){
            try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Empleado.txt");
+                String nombreArchivo = "src\\Logs\\Empleado " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -1470,14 +1484,15 @@ this.cbo_tipoUsuario.setSelectedItem("");
                         
                     }
                     }catch (Exception e) {
-                            try {
-                Log myLog; 
-                myLog = new Log("src\\Logs\\Empleado.txt");
-                myLog.logger.setLevel(Level.SEVERE);
-                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
-            } catch (IOException ex) {
-                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                       try {
+                                Log myLog; 
+                                String nombreArchivo = "src\\Logs\\Empleado " + fecha + ".txt";
+                                myLog = new Log(nombreArchivo);
+                                myLog.logger.setLevel(Level.SEVERE);
+                                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+                            } catch (IOException ex) {
+                                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                             }
                 }
                 
@@ -1580,7 +1595,8 @@ this.cbo_tipoUsuario.setSelectedItem("");
         catch(Exception e){
              try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Empleado.txt");
+                String nombreArchivo = "src\\Logs\\Empleado " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -1610,9 +1626,10 @@ this.cbo_tipoUsuario.setSelectedItem("");
        this.btn_guardar.setEnabled(false);
        }
        catch(Exception e){
-            try {
+           try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Empleado.txt");
+                String nombreArchivo = "src\\Logs\\Empleado " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -1729,7 +1746,8 @@ this.cbo_tipoUsuario.setSelectedItem("");
         catch(Exception e){
              try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Empleado.txt");
+                String nombreArchivo = "src\\Logs\\Empleado " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -1743,9 +1761,10 @@ this.cbo_tipoUsuario.setSelectedItem("");
         try {
             campus = new Campus(lbl_usuario.getText());
         } catch (SQLException e) {
-            try {
+           try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Facultad.txt");
+                String nombreArchivo = "src\\Logs\\Empleado " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -1761,9 +1780,10 @@ this.cbo_tipoUsuario.setSelectedItem("");
         try {
             tipoEmpleado = new TipoUsuario(lbl_usuario.getText());
         } catch (SQLException e) {
-             try {
+            try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Facultad.txt");
+                String nombreArchivo = "src\\Logs\\Empleado " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {

@@ -13,6 +13,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -35,6 +37,9 @@ public class Facultad extends javax.swing.JFrame {
     Connection con = null;
     Statement stmt = null;
     String var, var2;
+    final Calendar calendar = Calendar.getInstance();
+    final java.util.Date  date = calendar.getTime();
+    String fecha = new SimpleDateFormat("d-MM-yyyy hh.mm.ss a ").format(date);
 
     /**
      * Creates new form Facultad
@@ -344,12 +349,13 @@ public class Facultad extends javax.swing.JFrame {
         catch(Exception e){
             try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Facultad.txt");
+                String nombreArchivo = "src\\Logs\\Facultad " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }   
         }
     }//GEN-LAST:event_btn_buscarActionPerformed
 
@@ -394,12 +400,13 @@ public class Facultad extends javax.swing.JFrame {
        catch(Exception e){
             try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Facultad.txt");
+                String nombreArchivo = "src\\Logs\\Facultad " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }   
        }
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
@@ -489,7 +496,8 @@ public class Facultad extends javax.swing.JFrame {
         catch(Exception e){
            try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Facultad.txt");
+                String nombreArchivo = "src\\Logs\\Facultad " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -535,7 +543,8 @@ public class Facultad extends javax.swing.JFrame {
         catch(Exception e){
             try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Facultad.txt");
+                String nombreArchivo = "src\\Logs\\Facultad " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -553,14 +562,15 @@ public class Facultad extends javax.swing.JFrame {
              cc = new Carrera(lbl_usuario.getText());
              cc.setVisible(true);
          } catch (SQLException e) {
-              try {
+             try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Facultad.txt");
+                String nombreArchivo = "src\\Logs\\Facultad " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }   
          }
         
         
@@ -698,12 +708,13 @@ public class Facultad extends javax.swing.JFrame {
         } catch (Exception e) {
             try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\Facultad.txt");
+                String nombreArchivo = "src\\Logs\\Facultad " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }   
         }
     }
 
