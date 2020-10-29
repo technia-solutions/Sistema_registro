@@ -13,6 +13,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -40,6 +42,9 @@ public class TipoUsuario extends javax.swing.JFrame {
     DefaultTableModel modelo =  new DefaultTableModel();
     Statement stmt = null;
     String var, var2;
+    final Calendar calendar = Calendar.getInstance();
+    final java.util.Date  date = calendar.getTime();
+    String fecha = new SimpleDateFormat("d-MM-yyyy hh.mm.ss a ").format(date);
     
     
     public TipoUsuario() throws SQLException {
@@ -460,12 +465,13 @@ public void consultarDatos(){
         catch (Exception e) {
            try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\TipoUsuario.txt");
+                String nombreArchivo = "src\\Logs\\Tipo_de_usuario " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }   
         }
            }
            
@@ -495,14 +501,15 @@ public void consultarDatos(){
          ee = new Empleado(lbl_usuario.getText());
           ee.setVisible(true);
      } catch (SQLException e) {
-        try {
+       try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\TipoUsuario.txt");
+                String nombreArchivo = "src\\Logs\\Tipo_de_usuario " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }   
      }   
     
     
@@ -569,14 +576,15 @@ public void consultarDatos(){
             LimpiarCajas();
         }
         catch(Exception e){
-             try {
+            try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\TipoUsuario.txt");
+                String nombreArchivo = "src\\Logs\\Tipo_de_usuario " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }   
         }
     }//GEN-LAST:event_btn_guardarActionPerformed
 
@@ -664,12 +672,13 @@ public void consultarDatos(){
         catch(Exception e){
             try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\TipoUsuario.txt");
+                String nombreArchivo = "src\\Logs\\Tipo_de_usuario " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }   
         }
          
         // btn_guardar.setEnabled(true);
@@ -683,12 +692,13 @@ public void consultarDatos(){
         catch(Exception e){
             try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\TipoUsuario.txt");
+                String nombreArchivo = "src\\Logs\\Tipo_de_usuario " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }   
         }
     }//GEN-LAST:event_btn_buscarActionPerformed
 
@@ -754,14 +764,15 @@ public void consultarDatos(){
             }
         }
         catch(Exception e){
-            try {
+           try {
                 Log myLog; 
-                myLog = new Log("src\\Logs\\TipoUsuario.txt");
+                String nombreArchivo = "src\\Logs\\Tipo_de_usuario " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }   
         }
      
         
