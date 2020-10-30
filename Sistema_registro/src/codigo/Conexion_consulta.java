@@ -44,6 +44,24 @@ public class Conexion_consulta {
           return lista;  
     }
     
+        public ArrayList<String> llenar_empleado() throws SQLException{
+         ArrayList<String> lista = new ArrayList<String>();
+         String q= "select * from Empleados";
+         Statement st;
+         st = con.createStatement();
+         try{
+            rs=st.executeQuery(q);
+            while(rs.next()){
+                lista.add(rs.getString("nombres_empleado") + " " + rs.getString("apellido_empleado"));
+            }
+         }
+        catch(Exception e){ 
+            
+              }
+          return lista;  
+    }
+    
+    
     public ArrayList<String> llenar_tipoUsuario() throws SQLException{
          ArrayList<String> lista = new ArrayList<String>();
          String q= "Select * from tipo_usuarios";
