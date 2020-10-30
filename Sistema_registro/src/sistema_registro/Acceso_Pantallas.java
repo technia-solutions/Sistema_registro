@@ -196,7 +196,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_Empleados.setText("Empleados");
         chb_Empleados.setContentAreaFilled(false);
-        chb_Empleados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_Empleados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_Empleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_EmpleadosActionPerformed(evt);
@@ -205,7 +205,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_Notas.setText("Notas");
         chb_Notas.setContentAreaFilled(false);
-        chb_Notas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_Notas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_Notas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_NotasActionPerformed(evt);
@@ -214,7 +214,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_Periodo.setText("Periodo");
         chb_Periodo.setContentAreaFilled(false);
-        chb_Periodo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_Periodo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_Periodo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_PeriodoActionPerformed(evt);
@@ -223,7 +223,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_Aula.setText("Aula");
         chb_Aula.setContentAreaFilled(false);
-        chb_Aula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_Aula.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_Aula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_AulaActionPerformed(evt);
@@ -232,7 +232,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_Secciones.setText("Secciones");
         chb_Secciones.setContentAreaFilled(false);
-        chb_Secciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_Secciones.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_Secciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_SeccionesActionPerformed(evt);
@@ -241,7 +241,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_Carrera.setText("Carrera");
         chb_Carrera.setContentAreaFilled(false);
-        chb_Carrera.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_Carrera.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_Carrera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_CarreraActionPerformed(evt);
@@ -250,7 +250,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_Asignatura.setText("Asignatura");
         chb_Asignatura.setContentAreaFilled(false);
-        chb_Asignatura.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_Asignatura.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_Asignatura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_AsignaturaActionPerformed(evt);
@@ -259,7 +259,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_Alumno.setText("Alumno");
         chb_Alumno.setContentAreaFilled(false);
-        chb_Alumno.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_Alumno.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_Alumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_AlumnoActionPerformed(evt);
@@ -268,7 +268,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_Matricula.setText("Matricula");
         chb_Matricula.setContentAreaFilled(false);
-        chb_Matricula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_Matricula.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_Matricula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_MatriculaActionPerformed(evt);
@@ -277,7 +277,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_CancelarAsignatura.setText("CancelarAsignatura");
         chb_CancelarAsignatura.setContentAreaFilled(false);
-        chb_CancelarAsignatura.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_CancelarAsignatura.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_CancelarAsignatura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_CancelarAsignaturaActionPerformed(evt);
@@ -450,7 +450,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_EmpleadosG.setText("Guardar");
         chb_EmpleadosG.setContentAreaFilled(false);
-        chb_EmpleadosG.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_EmpleadosG.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_EmpleadosG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_EmpleadosGActionPerformed(evt);
@@ -459,7 +459,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_EmpleadosB.setText("Buscar");
         chb_EmpleadosB.setContentAreaFilled(false);
-        chb_EmpleadosB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_EmpleadosB.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_EmpleadosB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_EmpleadosBActionPerformed(evt);
@@ -468,7 +468,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_EmpleadosA.setText("Actualizar");
         chb_EmpleadosA.setContentAreaFilled(false);
-        chb_EmpleadosA.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_EmpleadosA.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_EmpleadosA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_EmpleadosAActionPerformed(evt);
@@ -477,7 +477,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_EmpleadosE.setText("Eliminar");
         chb_EmpleadosE.setContentAreaFilled(false);
-        chb_EmpleadosE.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_EmpleadosE.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_EmpleadosE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_EmpleadosEActionPerformed(evt);
@@ -486,7 +486,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_PeriodoG.setText("Guardar");
         chb_PeriodoG.setContentAreaFilled(false);
-        chb_PeriodoG.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_PeriodoG.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_PeriodoG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_PeriodoGActionPerformed(evt);
@@ -495,7 +495,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_PeriodoA.setText("Actualizar");
         chb_PeriodoA.setContentAreaFilled(false);
-        chb_PeriodoA.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_PeriodoA.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_PeriodoA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_PeriodoAActionPerformed(evt);
@@ -504,7 +504,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_PeriodoB.setText("Buscar");
         chb_PeriodoB.setContentAreaFilled(false);
-        chb_PeriodoB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_PeriodoB.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_PeriodoB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_PeriodoBActionPerformed(evt);
@@ -513,7 +513,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_PeriodoE.setText("Eliminar");
         chb_PeriodoE.setContentAreaFilled(false);
-        chb_PeriodoE.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_PeriodoE.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_PeriodoE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_PeriodoEActionPerformed(evt);
@@ -522,7 +522,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_SeccionesG.setText("Guardar");
         chb_SeccionesG.setContentAreaFilled(false);
-        chb_SeccionesG.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_SeccionesG.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_SeccionesG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_SeccionesGActionPerformed(evt);
@@ -531,7 +531,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_SeccionesA.setText("Actualizar");
         chb_SeccionesA.setContentAreaFilled(false);
-        chb_SeccionesA.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_SeccionesA.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_SeccionesA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_SeccionesAActionPerformed(evt);
@@ -540,7 +540,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_SeccionesB.setText("Buscar");
         chb_SeccionesB.setContentAreaFilled(false);
-        chb_SeccionesB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_SeccionesB.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_SeccionesB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_SeccionesBActionPerformed(evt);
@@ -549,7 +549,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_SeccionesE.setText("Eliminar");
         chb_SeccionesE.setContentAreaFilled(false);
-        chb_SeccionesE.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_SeccionesE.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_SeccionesE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_SeccionesEActionPerformed(evt);
@@ -558,7 +558,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_AsignaturaG.setText("Guardar");
         chb_AsignaturaG.setContentAreaFilled(false);
-        chb_AsignaturaG.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_AsignaturaG.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_AsignaturaG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_AsignaturaGActionPerformed(evt);
@@ -567,7 +567,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_MatriculaG.setText("Guardar");
         chb_MatriculaG.setContentAreaFilled(false);
-        chb_MatriculaG.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_MatriculaG.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_MatriculaG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_MatriculaGActionPerformed(evt);
@@ -576,7 +576,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_NotasG.setText("Guardar");
         chb_NotasG.setContentAreaFilled(false);
-        chb_NotasG.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_NotasG.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_NotasG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_NotasGActionPerformed(evt);
@@ -585,7 +585,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_AsignaturaA.setText("Actualizar");
         chb_AsignaturaA.setContentAreaFilled(false);
-        chb_AsignaturaA.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_AsignaturaA.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_AsignaturaA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_AsignaturaAActionPerformed(evt);
@@ -594,7 +594,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_MatriculaR.setText("Reporte");
         chb_MatriculaR.setContentAreaFilled(false);
-        chb_MatriculaR.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_MatriculaR.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_MatriculaR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_MatriculaRActionPerformed(evt);
@@ -603,7 +603,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_NotasR.setText("Reporte");
         chb_NotasR.setContentAreaFilled(false);
-        chb_NotasR.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_NotasR.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_NotasR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_NotasRActionPerformed(evt);
@@ -612,7 +612,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_AsignaturaB.setText("Buscar");
         chb_AsignaturaB.setContentAreaFilled(false);
-        chb_AsignaturaB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_AsignaturaB.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_AsignaturaB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_AsignaturaBActionPerformed(evt);
@@ -621,7 +621,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_MatriculaC.setText("Cancelar Matricula");
         chb_MatriculaC.setContentAreaFilled(false);
-        chb_MatriculaC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_MatriculaC.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_MatriculaC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_MatriculaCActionPerformed(evt);
@@ -630,7 +630,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_NotasB.setText("Buscar");
         chb_NotasB.setContentAreaFilled(false);
-        chb_NotasB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_NotasB.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_NotasB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_NotasBActionPerformed(evt);
@@ -639,7 +639,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_AsignaturaE.setText("Eliminar");
         chb_AsignaturaE.setContentAreaFilled(false);
-        chb_AsignaturaE.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_AsignaturaE.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_AsignaturaE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_AsignaturaEActionPerformed(evt);
@@ -648,7 +648,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_AulaG.setText("Guardar");
         chb_AulaG.setContentAreaFilled(false);
-        chb_AulaG.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_AulaG.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_AulaG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_AulaGActionPerformed(evt);
@@ -657,7 +657,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_CarreraG.setText("Guardar");
         chb_CarreraG.setContentAreaFilled(false);
-        chb_CarreraG.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_CarreraG.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_CarreraG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_CarreraGActionPerformed(evt);
@@ -666,7 +666,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_AlumnoG.setText("Guardar");
         chb_AlumnoG.setContentAreaFilled(false);
-        chb_AlumnoG.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_AlumnoG.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_AlumnoG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_AlumnoGActionPerformed(evt);
@@ -675,7 +675,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_AulaA.setText("Actualizar");
         chb_AulaA.setContentAreaFilled(false);
-        chb_AulaA.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_AulaA.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_AulaA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_AulaAActionPerformed(evt);
@@ -684,7 +684,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_CarreraA.setText("Actualizar");
         chb_CarreraA.setContentAreaFilled(false);
-        chb_CarreraA.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_CarreraA.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_CarreraA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_CarreraAActionPerformed(evt);
@@ -693,7 +693,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_AlumnoA.setText("Actualizar");
         chb_AlumnoA.setContentAreaFilled(false);
-        chb_AlumnoA.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_AlumnoA.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_AlumnoA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_AlumnoAActionPerformed(evt);
@@ -702,7 +702,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_AulaB.setText("Buscar");
         chb_AulaB.setContentAreaFilled(false);
-        chb_AulaB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_AulaB.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_AulaB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_AulaBActionPerformed(evt);
@@ -711,7 +711,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_CarreraB.setText("Buscar");
         chb_CarreraB.setContentAreaFilled(false);
-        chb_CarreraB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_CarreraB.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_CarreraB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_CarreraBActionPerformed(evt);
@@ -720,7 +720,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_AlumnoB.setText("Buscar");
         chb_AlumnoB.setContentAreaFilled(false);
-        chb_AlumnoB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_AlumnoB.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_AlumnoB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_AlumnoBActionPerformed(evt);
@@ -729,7 +729,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_AulaE.setText("Eliminar");
         chb_AulaE.setContentAreaFilled(false);
-        chb_AulaE.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_AulaE.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_AulaE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_AulaEActionPerformed(evt);
@@ -738,7 +738,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_CarreraE.setText("Eliminar");
         chb_CarreraE.setContentAreaFilled(false);
-        chb_CarreraE.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_CarreraE.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_CarreraE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_CarreraEActionPerformed(evt);
@@ -747,7 +747,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_AlumnoE.setText("Eliminar");
         chb_AlumnoE.setContentAreaFilled(false);
-        chb_AlumnoE.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_AlumnoE.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_AlumnoE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_AlumnoEActionPerformed(evt);
@@ -756,7 +756,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_CancelarAsignaturaA.setText("Actualizar");
         chb_CancelarAsignaturaA.setContentAreaFilled(false);
-        chb_CancelarAsignaturaA.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_CancelarAsignaturaA.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_CancelarAsignaturaA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_CancelarAsignaturaAActionPerformed(evt);
@@ -765,7 +765,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_CancelarAsignaturaB.setText("Buscar");
         chb_CancelarAsignaturaB.setContentAreaFilled(false);
-        chb_CancelarAsignaturaB.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_CancelarAsignaturaB.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_CancelarAsignaturaB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_CancelarAsignaturaBActionPerformed(evt);
@@ -774,7 +774,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         chb_CancelarAsignaturaE.setText("Eliminar");
         chb_CancelarAsignaturaE.setContentAreaFilled(false);
-        chb_CancelarAsignaturaE.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_CancelarAsignaturaE.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_CancelarAsignaturaE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_CancelarAsignaturaEActionPerformed(evt);
@@ -935,9 +935,8 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(chb_CancelarAsignaturaE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(chb_CancelarAsignaturaA)
-                        .addComponent(chb_CancelarAsignaturaB)))
+                    .addComponent(chb_CancelarAsignaturaB)
+                    .addComponent(chb_CancelarAsignaturaA))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -997,6 +996,11 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio.png"))); // NOI18N
         jMenu2.setText("Menu Principal ");
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenu2);
 
         jMenuBar1.add(jMenu1);
@@ -1674,6 +1678,33 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         limpiar();
         inhabilidado();
     }//GEN-LAST:event_btn_LimpiarActionPerformed
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+           try {
+            String sql2 = "Select nombres_empleado + ' ' + apellido_empleado from Empleados where id_empleado = (select id_empleado from Acceso where nombre_usuario = '"+lbl_usuario.getText()+"')";
+                Statement st2 = con.createStatement();
+                ResultSet rs2 = st2.executeQuery(sql2);
+                if(rs2.next()){
+                Principal principal = new Principal(lbl_usuario.getText(),rs2.getString(1));
+                principal.setVisible(true); 
+                this.dispose();
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Error");
+                }
+        } catch (SQLException e) {
+            try {
+                Log myLog; 
+                String nombreArchivo = "src\\Logs\\Acceso_Pantallas " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+       
+    }//GEN-LAST:event_jMenu2ActionPerformed
  private void inhabilidado(){
           chb_EmpleadosG.setEnabled(false);
           chb_EmpleadosA.setEnabled(false);

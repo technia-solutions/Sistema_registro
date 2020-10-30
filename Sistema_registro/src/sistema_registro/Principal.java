@@ -40,9 +40,6 @@ public class Principal extends javax.swing.JFrame {
      
     public Principal() throws SQLException {
         this.con = ConectorSQL.obtenerConexion();
-        
-        
-        
         try {
             Login login=new Login();
             // this.lbl_NombreEmpleado.setText(login.getTxt_usuario().getText());
@@ -54,10 +51,6 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
        f=Calendar.getInstance();
        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-       
-       
-   
-       
        int d=f.get(Calendar.DATE), mes=1+(f.get(Calendar.MONTH)), año=f.get(Calendar.YEAR);
        
        if(mes < 10){
@@ -67,13 +60,14 @@ public class Principal extends javax.swing.JFrame {
           fechaHoy.setText(d+"/"+mes+"/"+año); 
        }
 
-       
+        this.btn_accesoPantallas.setVisible(false);
         this.setLocationRelativeTo(null);
         this.setTitle("Menú Principal");
         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
         jPanel1.setBackground(new Color(244,245,245,100));
              jPanel2.setBackground(new Color(244,245,245,190));
-             
+        deshabilitarPantallas();
+       
              
     }
     public Principal(String nombreUsuario,String nombreEmpleado) throws SQLException{
@@ -100,11 +94,94 @@ public class Principal extends javax.swing.JFrame {
        if(mes >= 10){
           fechaHoy.setText(d+"/"+mes+"/"+año); 
        }
-         this.setLocationRelativeTo(null);
+        this.btn_accesoPantallas.setVisible(false);
+        this.setLocationRelativeTo(null);
         this.setTitle("Menú Principal");
         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
         jPanel1.setBackground(new Color(244,245,245,100));
-             jPanel2.setBackground(new Color(244,245,245,190));
+        jPanel2.setBackground(new Color(244,245,245,190));
+         //deshabilitarPantallas();
+         activarPermisos(this.lbl_NombreUsuario.getText());
+    }
+    
+    public void deshabilitarPantallas(){
+       btn_Empleados.setEnabled(false);
+       btn_Secciones.setEnabled(false);
+       btn_periodos.setEnabled(false);
+       btn_Asignaturas.setEnabled(false);
+       btn_Matricula.setEnabled(false);
+       btn_Alumno.setEnabled(false);
+       btn_Notas.setEnabled(false);
+       btn_CancelarAsignatura.setEnabled(false);
+       btn_Aula.setEnabled(false);
+       btn_Carrera.setEnabled(false);
+    }
+    
+    public void habilitarPantallas(){
+       btn_Empleados.setEnabled(true);
+       btn_Secciones.setEnabled(true);
+       btn_periodos.setEnabled(true);
+       btn_Asignaturas.setEnabled(true);
+       btn_Matricula.setEnabled(true);
+       btn_Alumno.setEnabled(true);
+       btn_Notas.setEnabled(true);
+       btn_CancelarAsignatura.setEnabled(true);
+       btn_Aula.setEnabled(true);
+       btn_Carrera.setEnabled(true);
+    }
+    
+    public void activarPermisos(String nombreUsuario){
+        
+        try {
+            Statement st = con.createStatement();
+            String sql = "select * from Acceso_Pantallas where nombre_usuario = '"+nombreUsuario+"'";
+            ResultSet rs = st.executeQuery(sql);
+            if(rs.next()){
+                if(rs.getString("Empleados").equals("1")){
+                    btn_Empleados.setEnabled(true);
+                }
+                if(rs.getString("Secciones").equals("1")){
+                    btn_Secciones.setEnabled(true);
+                }
+                if(rs.getString("Periodos").equals("1")){
+                    btn_periodos.setEnabled(true);
+                }
+                if(rs.getString("Asignatura").equals("1")){
+                    btn_Asignaturas.setEnabled(true);
+                }
+                if(rs.getString("Matricula").equals("1")){
+                    btn_Matricula.setEnabled(true);
+                }
+                
+                 if(rs.getString("Alumno").equals("1")){
+                    btn_Alumno.setEnabled(true);
+                }
+                if(rs.getString("Notas").equals("1")){
+                    btn_Notas.setEnabled(true);
+                }
+                if(rs.getString("CancelarAsignatura").equals("1")){
+                    btn_CancelarAsignatura.setEnabled(true);
+                }
+                if(rs.getString("Aula").equals("1")){
+                    btn_Aula.setEnabled(true);
+                }
+                if(rs.getString("Carrera").equals("1")){
+                    btn_Carrera.setEnabled(true);
+                }
+                
+                Statement st2 = con.createStatement();
+                String sql2 = "select id_tipoUsuario from Acceso where nombre_usuario = '"+nombreUsuario+"'";
+                ResultSet rs2 = st2.executeQuery(sql2);
+                if(rs2.next()){
+                    if(rs2.getString("id_tipoUsuario").equals("A")){
+                        this.btn_accesoPantallas.setVisible(true);
+                    }
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
    
@@ -121,6 +198,7 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         kGradientPanel2 = new keeptoo.KGradientPanel();
+        btn_accesoPantallas = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -141,9 +219,9 @@ public class Principal extends javax.swing.JFrame {
         btn_Asignaturas = new javax.swing.JButton();
         btn_cerrarSesion = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btn_CancelarAsignatura = new javax.swing.JButton();
+        btn_Aula = new javax.swing.JButton();
+        btn_Carrera = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout kGradientPanel2Layout = new javax.swing.GroupLayout(kGradientPanel2);
@@ -161,6 +239,18 @@ public class Principal extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btn_accesoPantallas.setBackground(new java.awt.Color(199, 232, 221));
+        btn_accesoPantallas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cog_icon_125323.png"))); // NOI18N
+        btn_accesoPantallas.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btn_accesoPantallas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_accesoPantallas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_accesoPantallas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_accesoPantallasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_accesoPantallas, new org.netbeans.lib.awtextra.AbsoluteConstraints(1300, 20, 60, 50));
 
         jPanel2.setLayout(null);
 
@@ -216,6 +306,7 @@ public class Principal extends javax.swing.JFrame {
         btn_Alumno.setBorderPainted(false);
         btn_Alumno.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_Alumno.setDoubleBuffered(true);
+        btn_Alumno.setEnabled(false);
         btn_Alumno.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_Alumno.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btn_Alumno.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -235,9 +326,11 @@ public class Principal extends javax.swing.JFrame {
         btn_Notas.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btn_Notas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Matricula.png"))); // NOI18N
         btn_Notas.setText("Notas");
+        btn_Notas.setBorder(null);
         btn_Notas.setBorderPainted(false);
         btn_Notas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_Notas.setDoubleBuffered(true);
+        btn_Notas.setEnabled(false);
         btn_Notas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_Notas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btn_Notas.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -261,6 +354,7 @@ public class Principal extends javax.swing.JFrame {
         btn_Matricula.setBorderPainted(false);
         btn_Matricula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_Matricula.setDoubleBuffered(true);
+        btn_Matricula.setEnabled(false);
         btn_Matricula.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_Matricula.setVerifyInputWhenFocusTarget(false);
         btn_Matricula.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -286,6 +380,7 @@ public class Principal extends javax.swing.JFrame {
         btn_Empleados.setBorderPainted(false);
         btn_Empleados.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_Empleados.setDoubleBuffered(true);
+        btn_Empleados.setEnabled(false);
         btn_Empleados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_EmpleadosMouseClicked(evt);
@@ -305,6 +400,7 @@ public class Principal extends javax.swing.JFrame {
         btn_Secciones.setBorderPainted(false);
         btn_Secciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_Secciones.setDoubleBuffered(true);
+        btn_Secciones.setEnabled(false);
         btn_Secciones.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_SeccionesMouseClicked(evt);
@@ -323,6 +419,7 @@ public class Principal extends javax.swing.JFrame {
         btn_periodos.setBorderPainted(false);
         btn_periodos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_periodos.setDoubleBuffered(true);
+        btn_periodos.setEnabled(false);
         btn_periodos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_periodosMouseClicked(evt);
@@ -341,6 +438,7 @@ public class Principal extends javax.swing.JFrame {
         btn_Asignaturas.setBorderPainted(false);
         btn_Asignaturas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_Asignaturas.setDoubleBuffered(true);
+        btn_Asignaturas.setEnabled(false);
         btn_Asignaturas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_AsignaturasMouseClicked(evt);
@@ -408,42 +506,45 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setText("Cancelar Asignatura");
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setOpaque(true);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_CancelarAsignatura.setBackground(new java.awt.Color(255, 255, 255));
+        btn_CancelarAsignatura.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_CancelarAsignatura.setText("Cancelar Asignatura");
+        btn_CancelarAsignatura.setBorderPainted(false);
+        btn_CancelarAsignatura.setContentAreaFilled(false);
+        btn_CancelarAsignatura.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_CancelarAsignatura.setEnabled(false);
+        btn_CancelarAsignatura.setOpaque(true);
+        btn_CancelarAsignatura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_CancelarAsignaturaActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton2.setText("Añadir Aula");
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setOpaque(true);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_Aula.setBackground(new java.awt.Color(255, 255, 255));
+        btn_Aula.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_Aula.setText("Añadir Aula");
+        btn_Aula.setBorderPainted(false);
+        btn_Aula.setContentAreaFilled(false);
+        btn_Aula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_Aula.setEnabled(false);
+        btn_Aula.setOpaque(true);
+        btn_Aula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_AulaActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton3.setText("Añadir Carrera");
-        jButton3.setBorderPainted(false);
-        jButton3.setContentAreaFilled(false);
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.setOpaque(true);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btn_Carrera.setBackground(new java.awt.Color(255, 255, 255));
+        btn_Carrera.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_Carrera.setText("Añadir Carrera");
+        btn_Carrera.setBorderPainted(false);
+        btn_Carrera.setContentAreaFilled(false);
+        btn_Carrera.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_Carrera.setEnabled(false);
+        btn_Carrera.setOpaque(true);
+        btn_Carrera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btn_CarreraActionPerformed(evt);
             }
         });
 
@@ -453,11 +554,11 @@ public class Principal extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(212, 212, 212)
-                .addComponent(jButton1)
+                .addComponent(btn_CancelarAsignatura)
                 .addGap(74, 74, 74)
-                .addComponent(jButton2)
+                .addComponent(btn_Aula)
                 .addGap(92, 92, 92)
-                .addComponent(jButton3)
+                .addComponent(btn_Carrera)
                 .addContainerGap(237, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -465,9 +566,9 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(22, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(btn_CancelarAsignatura)
+                    .addComponent(btn_Aula)
+                    .addComponent(btn_Carrera))
                 .addContainerGap())
         );
 
@@ -484,41 +585,37 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_AsignaturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AsignaturasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_AsignaturasActionPerformed
-
-    private void btn_AsignaturasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_AsignaturasMouseClicked
-         Asignaturas asignatura = null;
+    Asignaturas asignatura = null;
         try {
             asignatura = new Asignaturas(lbl_NombreUsuario.getText());
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
         asignatura.setVisible(true);
-        this.dispose();
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_AsignaturasActionPerformed
+
+    private void btn_AsignaturasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_AsignaturasMouseClicked
+        
     }//GEN-LAST:event_btn_AsignaturasMouseClicked
 
     private void btn_SeccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_SeccionesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_SeccionesActionPerformed
-
-    private void btn_SeccionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SeccionesMouseClicked
-         Secciones seccion = null;
+   Secciones seccion = null;
         try {
             seccion = new Secciones(lbl_NombreUsuario.getText());
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
         seccion.setVisible(true);
-        this.dispose();
+        this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_SeccionesActionPerformed
+
+    private void btn_SeccionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_SeccionesMouseClicked
+      
     }//GEN-LAST:event_btn_SeccionesMouseClicked
 
     private void btn_MatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MatriculaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_MatriculaActionPerformed
-
-    private void btn_MatriculaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_MatriculaMouseClicked
-         Matricula matricula = null;
+          Matricula matricula = null;
         try {
             matricula = new Matricula(lbl_NombreUsuario.getText());
         } catch (SQLException ex) {
@@ -526,25 +623,19 @@ public class Principal extends javax.swing.JFrame {
         }
         matricula.setVisible(true);
         this.dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_MatriculaActionPerformed
+
+    private void btn_MatriculaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_MatriculaMouseClicked
+       
     }//GEN-LAST:event_btn_MatriculaMouseClicked
 
     private void btn_NotasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_NotasMouseClicked
-         Notas nota = null;
-        try {
-            nota = new Notas(lbl_NombreUsuario.getText());
-        } catch (SQLException ex) {
-            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        nota.setVisible(true);
-        this.dispose();
+     
     }//GEN-LAST:event_btn_NotasMouseClicked
 
     private void btn_AlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AlumnoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_AlumnoActionPerformed
-
-    private void btn_AlumnoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_AlumnoMouseClicked
-         Alumno alumno = null;
+     Alumno alumno = null;
         try {
             alumno = new Alumno(lbl_NombreUsuario.getText());
             alumno.setVisible(true);
@@ -552,15 +643,16 @@ public class Principal extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_AlumnoActionPerformed
+
+    private void btn_AlumnoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_AlumnoMouseClicked
+        
         
     }//GEN-LAST:event_btn_AlumnoMouseClicked
 
     private void btn_EmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EmpleadosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_EmpleadosActionPerformed
-
-    private void btn_EmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_EmpleadosMouseClicked
-        Statement st;
+     Statement st;
   
         try {
             st = con.createStatement();
@@ -586,13 +678,11 @@ public class Principal extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
         }
-           
-             
-       
-            
-            
-           
-       
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_EmpleadosActionPerformed
+
+    private void btn_EmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_EmpleadosMouseClicked
+ 
     }//GEN-LAST:event_btn_EmpleadosMouseClicked
 
       
@@ -637,15 +727,19 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_cerrarSesionMouseClicked
 
     private void btn_NotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_NotasActionPerformed
+        Notas nota = null;
+        try {
+            nota = new Notas(lbl_NombreUsuario.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        nota.setVisible(true);
+        this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_NotasActionPerformed
 
     private void btn_periodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_periodosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_periodosActionPerformed
-
-    private void btn_periodosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_periodosMouseClicked
-         PeriodoHis periodo = null;
+       PeriodoHis periodo = null;
         try {
             periodo = new PeriodoHis(lbl_NombreUsuario.getText());
         } catch (SQLException ex) {
@@ -653,9 +747,14 @@ public class Principal extends javax.swing.JFrame {
         }
         periodo.setVisible(true);
         this.dispose();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_periodosActionPerformed
+
+    private void btn_periodosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_periodosMouseClicked
+      
     }//GEN-LAST:event_btn_periodosMouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btn_AulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AulaActionPerformed
          Aula au = null;
         try {
             au = new Aula(lbl_NombreUsuario.getText());
@@ -664,9 +763,9 @@ public class Principal extends javax.swing.JFrame {
         }
         au.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btn_AulaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_CancelarAsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CancelarAsignaturaActionPerformed
           this.dispose();
          CancelarAsignatura aa = null;
          try {
@@ -677,9 +776,9 @@ public class Principal extends javax.swing.JFrame {
         aa.setVisible(true);
         
     
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_CancelarAsignaturaActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btn_CarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CarreraActionPerformed
             Carrera cc = null;
         try {
             cc = new Carrera(lbl_NombreUsuario.getText());
@@ -688,7 +787,18 @@ public class Principal extends javax.swing.JFrame {
         }
         cc.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btn_CarreraActionPerformed
+
+    private void btn_accesoPantallasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_accesoPantallasActionPerformed
+            Acceso_Pantallas ap = null;
+        try {
+            ap = new Acceso_Pantallas(lbl_NombreUsuario.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(Acceso_Pantallas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ap.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_accesoPantallasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -735,17 +845,18 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Alumno;
     private javax.swing.JButton btn_Asignaturas;
+    private javax.swing.JButton btn_Aula;
+    private javax.swing.JButton btn_CancelarAsignatura;
+    private javax.swing.JButton btn_Carrera;
     private javax.swing.JButton btn_Empleados;
     private javax.swing.JButton btn_Matricula;
     private javax.swing.JButton btn_Notas;
     private javax.swing.JButton btn_Secciones;
+    private javax.swing.JButton btn_accesoPantallas;
     private javax.swing.JButton btn_cerrarSesion;
     private javax.swing.JButton btn_periodos;
     private javax.swing.JLabel fechaHoy;
     private javax.swing.JLabel fechaHoy1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

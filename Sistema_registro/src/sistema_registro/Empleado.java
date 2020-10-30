@@ -136,6 +136,7 @@ public class Empleado extends javax.swing.JFrame {
         this.lbl_nombreU.setVisible(false);
     } 
     
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -864,6 +865,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
     }
     
     private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
+      try{
       String nombreEmpleado = "";
       String tipoUsuario = "";
       try{
@@ -1032,8 +1034,59 @@ this.cbo_tipoUsuario.setSelectedItem("");
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        if(tipoUsuario.equals("A")){
+            try{
+                Statement st = con.createStatement();
+                String sql = "insert into Acceso_Pantallas(nombre_usuario,Empleados,Secciones,Periodos,Asignatura,Matricula, Alumno, Notas,CancelarAsignatura,Aula,Carrera,\n" +
+"							EmpleadosFunciones,SeccionesFunciones,PeriodosFunciones,AsignaturaFunciones,MatriculaFunciones,\n" +
+"							AlumnoFunciones,NotasFunciones,CancelarAsignaturasFunciones, AulaFunciones,CarreraFunciones)\n" +
+"values ('"+txt_NombreUsuario.getText()+"',1,1,1,1,1,1,1,1,1,1,'GAEB','GAEB','GAEB','GAEB','GAEB','GAEB','GAEB','GAEB','GAEB','GAEB')";
+            }
+            catch(Exception e){
+                try {
+                    Log myLog; 
+                    String nombreArchivo = "src\\Logs\\Empleado " + fecha + ".txt";
+                    myLog = new Log(nombreArchivo);
+                    myLog.logger.setLevel(Level.SEVERE);
+                    myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+                } catch (IOException ex) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }else{
+            try{
+                Statement st = con.createStatement();
+                String sql = "insert into Acceso_Pantallas(nombre_usuario,Empleados,Secciones,Periodos,Asignatura,Matricula, Alumno, Notas,CancelarAsignatura,Aula,Carrera,\n" +
+"							EmpleadosFunciones,SeccionesFunciones,PeriodosFunciones,AsignaturaFunciones,MatriculaFunciones,\n" +
+"							AlumnoFunciones,NotasFunciones,CancelarAsignaturasFunciones, AulaFunciones,CarreraFunciones)\n" +
+"values ('"+txt_NombreUsuario.getText()+"',0,1,0,1,1,1,1,1,0,1,'','GAEB','GAEB','GAEB','GAEB','GAEB','GAEB','GAEB','','GAEB')";
+            }
+            catch(Exception e){
+                try {
+                    Log myLog; 
+                    String nombreArchivo = "src\\Logs\\Empleado " + fecha + ".txt";
+                    myLog = new Log(nombreArchivo);
+                    myLog.logger.setLevel(Level.SEVERE);
+                    myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+                } catch (IOException ex) {
+                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
         limpiar();
         actualizarDatos();
+      }
+      catch(Exception e){
+          try {
+                Log myLog; 
+                String nombreArchivo = "src\\Logs\\Empleado " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+      }
     }//GEN-LAST:event_btn_guardarActionPerformed
 
     private boolean validarLongitud(JTextField texto, int longitud){
