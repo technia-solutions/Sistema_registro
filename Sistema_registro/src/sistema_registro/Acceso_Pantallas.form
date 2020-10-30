@@ -50,28 +50,45 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Component id="iconodeUsuario" min="-2" pref="50" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="cbo_NombreEmpleado" min="-2" pref="176" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="lbl_usuario" min="-2" pref="190" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                              <Component id="cbo_NombreUsuario" min="-2" pref="176" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="278" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="cbo_NombreUsuario" min="-2" pref="176" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
+                      <Component id="fechaHoy1" min="-2" pref="80" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="fechaHoy" min="-2" pref="130" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="43" pref="43" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="191" max="-2" attributes="0"/>
+                      <Component id="btn_Limpiar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btn_Guardar" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                               <Component id="lbl_Alumno" alignment="1" min="-2" pref="65" max="-2" attributes="0"/>
@@ -84,62 +101,52 @@
                               <Component id="lbl_Notas" alignment="1" min="-2" pref="65" max="-2" attributes="0"/>
                               <Component id="lbl_Aula" alignment="1" min="-2" pref="65" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="fechaHoy1" min="-2" pref="80" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="fechaHoy" min="-2" pref="130" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="lbl_Asignatura" alignment="1" min="-2" pref="65" max="-2" attributes="0"/>
-                                              <Component id="lbl_Matricula" alignment="1" min="-2" pref="65" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lbl_Asignatura" alignment="1" min="-2" pref="65" max="-2" attributes="0"/>
+                                          <Component id="lbl_Matricula" alignment="1" min="-2" pref="65" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="lbl_CancelarMatricula" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="lbl_CancelarAsignatura" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
                               </Group>
+                              <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="191" max="-2" attributes="0"/>
-                      <Component id="btn_Limpiar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btn_Guardar" min="-2" max="-2" attributes="0"/>
-                  </Group>
               </Group>
-              <EmptySpace pref="21" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="cbo_NombreEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="fechaHoy1" min="-2" pref="16" max="-2" attributes="0"/>
-                      <Component id="fechaHoy" min="-2" pref="16" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="iconodeUsuario" min="-2" pref="70" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="fechaHoy1" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                          <Component id="fechaHoy" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                      <Component id="lbl_usuario" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cbo_NombreUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -163,7 +170,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="lbl_Alumno" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="lbl_CancelarMatricula" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbl_CancelarAsignatura" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -197,135 +204,131 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace pref="14" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="cbo_Empleados" min="-2" pref="81" max="-2" attributes="0"/>
-                      <Component id="cbo_Notas" min="-2" pref="81" max="-2" attributes="0"/>
+                      <Component id="chb_Empleados" min="-2" pref="81" max="-2" attributes="0"/>
+                      <Component id="chb_Notas" min="-2" pref="81" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="cbo_Periodo" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
-                      <Component id="cbo_Aula" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
+                      <Component id="chb_Periodo" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
+                      <Component id="chb_Aula" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="cbo_Secciones" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
-                      <Component id="cbo_Carrera" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
+                      <Component id="chb_Secciones" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
+                      <Component id="chb_Carrera" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="cbo_Asignatura" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
-                      <Component id="cbo_Alumno" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
+                      <Component id="chb_Asignatura" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
+                      <Component id="chb_Alumno" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="cbo_Matricula" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
-                      <Component id="cbo_CancelarAsignatura" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="chb_Matricula" min="-2" pref="81" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="20" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="chb_CancelarAsignatura" pref="0" max="32767" attributes="0"/>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="17" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="cbo_Matricula" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="chb_Matricula" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="cbo_CancelarAsignatura" min="-2" max="-2" attributes="0"/>
+                          <Component id="chb_CancelarAsignatura" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="cbo_Asignatura" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="chb_Asignatura" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="cbo_Alumno" min="-2" max="-2" attributes="0"/>
+                              <Component id="chb_Alumno" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="cbo_Secciones" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="chb_Secciones" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="cbo_Carrera" min="-2" max="-2" attributes="0"/>
+                                  <Component id="chb_Carrera" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="cbo_Periodo" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="chb_Periodo" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="cbo_Aula" min="-2" max="-2" attributes="0"/>
+                                  <Component id="chb_Aula" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="cbo_Empleados" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="chb_Empleados" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="cbo_Notas" min="-2" max="-2" attributes="0"/>
+                                  <Component id="chb_Notas" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="17" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JCheckBox" name="cbo_Empleados">
+        <Component class="javax.swing.JCheckBox" name="chb_Empleados">
           <Properties>
             <Property name="text" type="java.lang.String" value="Empleados"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="cbo_Notas">
+        <Component class="javax.swing.JCheckBox" name="chb_Notas">
           <Properties>
             <Property name="text" type="java.lang.String" value="Notas"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="cbo_Periodo">
+        <Component class="javax.swing.JCheckBox" name="chb_Periodo">
           <Properties>
             <Property name="text" type="java.lang.String" value="Periodo"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="cbo_Aula">
+        <Component class="javax.swing.JCheckBox" name="chb_Aula">
           <Properties>
             <Property name="text" type="java.lang.String" value="Aula"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="cbo_Secciones">
+        <Component class="javax.swing.JCheckBox" name="chb_Secciones">
           <Properties>
             <Property name="text" type="java.lang.String" value="Secciones"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="cbo_Carrera">
+        <Component class="javax.swing.JCheckBox" name="chb_Carrera">
           <Properties>
             <Property name="text" type="java.lang.String" value="Carrera"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="cbo_Asignatura">
+        <Component class="javax.swing.JCheckBox" name="chb_Asignatura">
           <Properties>
             <Property name="text" type="java.lang.String" value="Asignatura"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="cbo_Alumno">
+        <Component class="javax.swing.JCheckBox" name="chb_Alumno">
           <Properties>
             <Property name="text" type="java.lang.String" value="Alumno"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="cbo_Matricula">
+        <Component class="javax.swing.JCheckBox" name="chb_Matricula">
           <Properties>
             <Property name="text" type="java.lang.String" value="Matricula"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="cbo_CancelarAsignatura">
+        <Component class="javax.swing.JCheckBox" name="chb_CancelarAsignatura">
           <Properties>
             <Property name="text" type="java.lang.String" value="CancelarAsignatura"/>
           </Properties>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="jLabel1">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="18" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Empleado:"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -362,21 +365,6 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JComboBox" name="cbo_NombreEmpleado">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="1">
-            <StringItem index="0" value="Seleccione el nombre del empleado:"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbo_NombreEmpleadoActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
     <Container class="javax.swing.JPanel" name="jPanel2">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -393,122 +381,122 @@
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="Guardar9" min="-2" pref="81" max="-2" attributes="0"/>
+                          <Component id="chb_CancelarAsignaturaG" min="-2" pref="81" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="Actualizar9" min="-2" pref="81" max="-2" attributes="0"/>
+                          <Component id="chb_CancelarAsignaturaA" min="-2" pref="81" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="Buscar9" min="-2" pref="81" max="-2" attributes="0"/>
+                          <Component id="chb_CancelarAsignaturaB" min="-2" pref="81" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="Eliminar9" min="-2" pref="81" max="-2" attributes="0"/>
+                          <Component id="chb_CancelarAsignaturaE" min="-2" pref="81" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="Guardar8" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_AlumnoG" min="-2" pref="81" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                  <Component id="Actualizar8" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_AlumnoA" min="-2" pref="81" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="Guardar7" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_CarreraG" min="-2" pref="81" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                  <Component id="Actualizar7" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_CarreraA" min="-2" pref="81" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="Guardar6" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_AulaG" min="-2" pref="81" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                  <Component id="Actualizar6" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_AulaA" min="-2" pref="81" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="Buscar8" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_AlumnoB" min="-2" pref="81" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                  <Component id="Eliminar8" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_AlumnoE" min="-2" pref="81" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="Buscar7" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_CarreraB" min="-2" pref="81" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                  <Component id="Eliminar7" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_CarreraE" min="-2" pref="81" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="Buscar6" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_AulaB" min="-2" pref="81" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                  <Component id="Eliminar6" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_AulaE" min="-2" pref="81" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="Guardar5" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_NotasG" min="-2" pref="81" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                  <Component id="Actualizar5" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_NotasA" min="-2" pref="81" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="Guardar4" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_MatriculaG" min="-2" pref="81" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                  <Component id="Actualizar4" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_MatriculaA" min="-2" pref="81" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="Guardar3" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_AsignaturaG" min="-2" pref="81" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                  <Component id="Actualizar3" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_AsignaturaA" min="-2" pref="81" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="Buscar5" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_NotasB" min="-2" pref="81" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                  <Component id="Eliminar5" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_NotasE" min="-2" pref="81" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="Buscar4" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_MatriculaB" min="-2" pref="81" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                  <Component id="Eliminar4" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_MatriculaE" min="-2" pref="81" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="Buscar3" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_AsignaturaB" min="-2" pref="81" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                  <Component id="Eliminar3" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_AsignaturaE" min="-2" pref="81" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="Guardar2" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_SeccionesG" min="-2" pref="81" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                  <Component id="Actualizar2" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_SeccionesA" min="-2" pref="81" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="Guardar1" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_PeriodoG" min="-2" pref="81" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                  <Component id="Actualizar1" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_PeriodoA" min="-2" pref="81" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="Guardar" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_EmpleadosG" min="-2" pref="81" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                  <Component id="Actualizar" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_EmpleadosA" min="-2" pref="81" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="Buscar2" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_SeccionesB" min="-2" pref="81" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                  <Component id="Eliminar2" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_SeccionesE" min="-2" pref="81" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="Buscar1" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_PeriodoB" min="-2" pref="81" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                  <Component id="Eliminar1" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_PeriodoE" min="-2" pref="81" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="Buscar" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_EmpleadosB" min="-2" pref="81" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                  <Component id="Eliminar" min="-2" pref="81" max="-2" attributes="0"/>
+                                  <Component id="chb_EmpleadosE" min="-2" pref="81" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -522,86 +510,86 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="Eliminar" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="Buscar" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="Actualizar" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="Guardar" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="chb_EmpleadosE" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="chb_EmpleadosB" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="chb_EmpleadosA" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="chb_EmpleadosG" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="Eliminar1" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="chb_PeriodoE" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                          <Component id="Buscar1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="Actualizar1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="Guardar1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="chb_PeriodoB" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="chb_PeriodoA" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="chb_PeriodoG" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="Eliminar2" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="chb_SeccionesE" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                          <Component id="Buscar2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="Actualizar2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="Guardar2" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="Eliminar3" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="Buscar3" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="Actualizar3" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="Guardar3" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="Eliminar4" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                          <Component id="Buscar4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="Actualizar4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="Guardar4" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="Eliminar5" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                          <Component id="Buscar5" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="Actualizar5" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="Guardar5" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="chb_SeccionesB" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="chb_SeccionesA" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="chb_SeccionesG" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="Eliminar6" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="Buscar6" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="Actualizar6" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="Guardar6" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="chb_AsignaturaE" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="chb_AsignaturaB" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="chb_AsignaturaA" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="chb_AsignaturaG" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="Eliminar7" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="chb_MatriculaE" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                          <Component id="Buscar7" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="Actualizar7" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="Guardar7" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="chb_MatriculaB" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="chb_MatriculaA" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="chb_MatriculaG" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="Eliminar8" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="chb_NotasE" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                          <Component id="Buscar8" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="Actualizar8" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="Guardar8" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="chb_NotasB" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="chb_NotasA" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="chb_NotasG" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="chb_AulaE" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="chb_AulaB" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="chb_AulaA" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="chb_AulaG" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="chb_CarreraE" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                          <Component id="chb_CarreraB" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="chb_CarreraA" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="chb_CarreraG" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="Eliminar9" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="chb_AlumnoE" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                          <Component id="Buscar9" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="Actualizar9" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="Guardar9" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="chb_AlumnoB" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="chb_AlumnoA" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="chb_AlumnoG" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="chb_CancelarAsignaturaE" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                          <Component id="chb_CancelarAsignaturaB" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="chb_CancelarAsignaturaA" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="chb_CancelarAsignaturaG" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -610,324 +598,324 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JCheckBox" name="Guardar">
+        <Component class="javax.swing.JCheckBox" name="chb_EmpleadosG">
           <Properties>
             <Property name="text" type="java.lang.String" value="Guardar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GuardarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_EmpleadosGActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Buscar">
+        <Component class="javax.swing.JCheckBox" name="chb_EmpleadosB">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BuscarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_EmpleadosBActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Actualizar">
+        <Component class="javax.swing.JCheckBox" name="chb_EmpleadosA">
           <Properties>
             <Property name="text" type="java.lang.String" value="Actualizar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ActualizarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_EmpleadosAActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Eliminar">
+        <Component class="javax.swing.JCheckBox" name="chb_EmpleadosE">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EliminarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_EmpleadosEActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Guardar1">
+        <Component class="javax.swing.JCheckBox" name="chb_PeriodoG">
           <Properties>
             <Property name="text" type="java.lang.String" value="Guardar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Guardar1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_PeriodoGActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Actualizar1">
+        <Component class="javax.swing.JCheckBox" name="chb_PeriodoA">
           <Properties>
             <Property name="text" type="java.lang.String" value="Actualizar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Actualizar1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_PeriodoAActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Buscar1">
+        <Component class="javax.swing.JCheckBox" name="chb_PeriodoB">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Buscar1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_PeriodoBActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Eliminar1">
+        <Component class="javax.swing.JCheckBox" name="chb_PeriodoE">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Eliminar1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_PeriodoEActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Guardar2">
+        <Component class="javax.swing.JCheckBox" name="chb_SeccionesG">
           <Properties>
             <Property name="text" type="java.lang.String" value="Guardar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Guardar2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_SeccionesGActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Actualizar2">
+        <Component class="javax.swing.JCheckBox" name="chb_SeccionesA">
           <Properties>
             <Property name="text" type="java.lang.String" value="Actualizar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Actualizar2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_SeccionesAActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Buscar2">
+        <Component class="javax.swing.JCheckBox" name="chb_SeccionesB">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Buscar2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_SeccionesBActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Eliminar2">
+        <Component class="javax.swing.JCheckBox" name="chb_SeccionesE">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Eliminar2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_SeccionesEActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Guardar3">
+        <Component class="javax.swing.JCheckBox" name="chb_AsignaturaG">
           <Properties>
             <Property name="text" type="java.lang.String" value="Guardar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Guardar3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_AsignaturaGActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Guardar4">
+        <Component class="javax.swing.JCheckBox" name="chb_MatriculaG">
           <Properties>
             <Property name="text" type="java.lang.String" value="Guardar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Guardar4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_MatriculaGActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Guardar5">
+        <Component class="javax.swing.JCheckBox" name="chb_NotasG">
           <Properties>
             <Property name="text" type="java.lang.String" value="Guardar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Guardar5ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_NotasGActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Actualizar3">
+        <Component class="javax.swing.JCheckBox" name="chb_AsignaturaA">
           <Properties>
             <Property name="text" type="java.lang.String" value="Actualizar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Actualizar3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_AsignaturaAActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Actualizar4">
+        <Component class="javax.swing.JCheckBox" name="chb_MatriculaA">
           <Properties>
             <Property name="text" type="java.lang.String" value="Actualizar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Actualizar4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_MatriculaAActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Actualizar5">
+        <Component class="javax.swing.JCheckBox" name="chb_NotasA">
           <Properties>
             <Property name="text" type="java.lang.String" value="Actualizar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Actualizar5ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_NotasAActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Buscar3">
+        <Component class="javax.swing.JCheckBox" name="chb_AsignaturaB">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Buscar3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_AsignaturaBActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Buscar4">
+        <Component class="javax.swing.JCheckBox" name="chb_MatriculaB">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Buscar4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_MatriculaBActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Buscar5">
+        <Component class="javax.swing.JCheckBox" name="chb_NotasB">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Buscar5ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_NotasBActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Eliminar3">
+        <Component class="javax.swing.JCheckBox" name="chb_AsignaturaE">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Eliminar3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_AsignaturaEActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Eliminar4">
+        <Component class="javax.swing.JCheckBox" name="chb_MatriculaE">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Eliminar4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_MatriculaEActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Eliminar5">
+        <Component class="javax.swing.JCheckBox" name="chb_NotasE">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Eliminar5ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_NotasEActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Guardar6">
+        <Component class="javax.swing.JCheckBox" name="chb_AulaG">
           <Properties>
             <Property name="text" type="java.lang.String" value="Guardar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Guardar6ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_AulaGActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Guardar7">
+        <Component class="javax.swing.JCheckBox" name="chb_CarreraG">
           <Properties>
             <Property name="text" type="java.lang.String" value="Guardar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Guardar7ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_CarreraGActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Guardar8">
+        <Component class="javax.swing.JCheckBox" name="chb_AlumnoG">
           <Properties>
             <Property name="text" type="java.lang.String" value="Guardar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Guardar8ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_AlumnoGActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Actualizar6">
+        <Component class="javax.swing.JCheckBox" name="chb_AulaA">
           <Properties>
             <Property name="text" type="java.lang.String" value="Actualizar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Actualizar6ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_AulaAActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Actualizar7">
+        <Component class="javax.swing.JCheckBox" name="chb_CarreraA">
           <Properties>
             <Property name="text" type="java.lang.String" value="Actualizar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Actualizar7ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_CarreraAActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Actualizar8">
+        <Component class="javax.swing.JCheckBox" name="chb_AlumnoA">
           <Properties>
             <Property name="text" type="java.lang.String" value="Actualizar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Actualizar8ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_AlumnoAActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Buscar6">
+        <Component class="javax.swing.JCheckBox" name="chb_AulaB">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Buscar6ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_AulaBActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Buscar7">
+        <Component class="javax.swing.JCheckBox" name="chb_CarreraB">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Buscar7ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_CarreraBActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Buscar8">
+        <Component class="javax.swing.JCheckBox" name="chb_AlumnoB">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Buscar8ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_AlumnoBActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Eliminar6">
+        <Component class="javax.swing.JCheckBox" name="chb_AulaE">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Eliminar6ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_AulaEActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Eliminar7">
+        <Component class="javax.swing.JCheckBox" name="chb_CarreraE">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Eliminar7ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_CarreraEActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Eliminar8">
+        <Component class="javax.swing.JCheckBox" name="chb_AlumnoE">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Eliminar8ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_AlumnoEActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Guardar9">
+        <Component class="javax.swing.JCheckBox" name="chb_CancelarAsignaturaG">
           <Properties>
             <Property name="text" type="java.lang.String" value="Guardar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Guardar9ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_CancelarAsignaturaGActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Actualizar9">
+        <Component class="javax.swing.JCheckBox" name="chb_CancelarAsignaturaA">
           <Properties>
             <Property name="text" type="java.lang.String" value="Actualizar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Actualizar9ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_CancelarAsignaturaAActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Buscar9">
+        <Component class="javax.swing.JCheckBox" name="chb_CancelarAsignaturaB">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Buscar9ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_CancelarAsignaturaBActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="Eliminar9">
+        <Component class="javax.swing.JCheckBox" name="chb_CancelarAsignaturaE">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Eliminar9ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_CancelarAsignaturaEActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -957,9 +945,9 @@
         <Property name="text" type="java.lang.String" value="Matricula"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lbl_CancelarMatricula">
+    <Component class="javax.swing.JLabel" name="lbl_CancelarAsignatura">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Cancelar Matricula"/>
+        <Property name="text" type="java.lang.String" value="Cancelar Asignatura"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lbl_Alumno">
@@ -996,6 +984,21 @@
           <Image iconType="3" name="/Imagenes/botton_Guardar.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Guardar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lbl_usuario">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Nombre Usuario"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="iconodeUsuario">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Imagenes/User.png"/>
+        </Property>
       </Properties>
     </Component>
   </SubComponents>

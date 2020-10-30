@@ -52,75 +52,75 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         jCheckBox1 = new javax.swing.JCheckBox();
         jPanel1 = new javax.swing.JPanel();
-        cbo_Empleados = new javax.swing.JCheckBox();
-        cbo_Notas = new javax.swing.JCheckBox();
-        cbo_Periodo = new javax.swing.JCheckBox();
-        cbo_Aula = new javax.swing.JCheckBox();
-        cbo_Secciones = new javax.swing.JCheckBox();
-        cbo_Carrera = new javax.swing.JCheckBox();
-        cbo_Asignatura = new javax.swing.JCheckBox();
-        cbo_Alumno = new javax.swing.JCheckBox();
-        cbo_Matricula = new javax.swing.JCheckBox();
-        cbo_CancelarAsignatura = new javax.swing.JCheckBox();
-        jLabel1 = new javax.swing.JLabel();
+        chb_Empleados = new javax.swing.JCheckBox();
+        chb_Notas = new javax.swing.JCheckBox();
+        chb_Periodo = new javax.swing.JCheckBox();
+        chb_Aula = new javax.swing.JCheckBox();
+        chb_Secciones = new javax.swing.JCheckBox();
+        chb_Carrera = new javax.swing.JCheckBox();
+        chb_Asignatura = new javax.swing.JCheckBox();
+        chb_Alumno = new javax.swing.JCheckBox();
+        chb_Matricula = new javax.swing.JCheckBox();
+        chb_CancelarAsignatura = new javax.swing.JCheckBox();
         jLabel2 = new javax.swing.JLabel();
         fechaHoy1 = new javax.swing.JLabel();
         fechaHoy = new javax.swing.JLabel();
         cbo_NombreUsuario = new javax.swing.JComboBox<>();
-        cbo_NombreEmpleado = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
-        Guardar = new javax.swing.JCheckBox();
-        Buscar = new javax.swing.JCheckBox();
-        Actualizar = new javax.swing.JCheckBox();
-        Eliminar = new javax.swing.JCheckBox();
-        Guardar1 = new javax.swing.JCheckBox();
-        Actualizar1 = new javax.swing.JCheckBox();
-        Buscar1 = new javax.swing.JCheckBox();
-        Eliminar1 = new javax.swing.JCheckBox();
-        Guardar2 = new javax.swing.JCheckBox();
-        Actualizar2 = new javax.swing.JCheckBox();
-        Buscar2 = new javax.swing.JCheckBox();
-        Eliminar2 = new javax.swing.JCheckBox();
-        Guardar3 = new javax.swing.JCheckBox();
-        Guardar4 = new javax.swing.JCheckBox();
-        Guardar5 = new javax.swing.JCheckBox();
-        Actualizar3 = new javax.swing.JCheckBox();
-        Actualizar4 = new javax.swing.JCheckBox();
-        Actualizar5 = new javax.swing.JCheckBox();
-        Buscar3 = new javax.swing.JCheckBox();
-        Buscar4 = new javax.swing.JCheckBox();
-        Buscar5 = new javax.swing.JCheckBox();
-        Eliminar3 = new javax.swing.JCheckBox();
-        Eliminar4 = new javax.swing.JCheckBox();
-        Eliminar5 = new javax.swing.JCheckBox();
-        Guardar6 = new javax.swing.JCheckBox();
-        Guardar7 = new javax.swing.JCheckBox();
-        Guardar8 = new javax.swing.JCheckBox();
-        Actualizar6 = new javax.swing.JCheckBox();
-        Actualizar7 = new javax.swing.JCheckBox();
-        Actualizar8 = new javax.swing.JCheckBox();
-        Buscar6 = new javax.swing.JCheckBox();
-        Buscar7 = new javax.swing.JCheckBox();
-        Buscar8 = new javax.swing.JCheckBox();
-        Eliminar6 = new javax.swing.JCheckBox();
-        Eliminar7 = new javax.swing.JCheckBox();
-        Eliminar8 = new javax.swing.JCheckBox();
-        Guardar9 = new javax.swing.JCheckBox();
-        Actualizar9 = new javax.swing.JCheckBox();
-        Buscar9 = new javax.swing.JCheckBox();
-        Eliminar9 = new javax.swing.JCheckBox();
+        chb_EmpleadosG = new javax.swing.JCheckBox();
+        chb_EmpleadosB = new javax.swing.JCheckBox();
+        chb_EmpleadosA = new javax.swing.JCheckBox();
+        chb_EmpleadosE = new javax.swing.JCheckBox();
+        chb_PeriodoG = new javax.swing.JCheckBox();
+        chb_PeriodoA = new javax.swing.JCheckBox();
+        chb_PeriodoB = new javax.swing.JCheckBox();
+        chb_PeriodoE = new javax.swing.JCheckBox();
+        chb_SeccionesG = new javax.swing.JCheckBox();
+        chb_SeccionesA = new javax.swing.JCheckBox();
+        chb_SeccionesB = new javax.swing.JCheckBox();
+        chb_SeccionesE = new javax.swing.JCheckBox();
+        chb_AsignaturaG = new javax.swing.JCheckBox();
+        chb_MatriculaG = new javax.swing.JCheckBox();
+        chb_NotasG = new javax.swing.JCheckBox();
+        chb_AsignaturaA = new javax.swing.JCheckBox();
+        chb_MatriculaA = new javax.swing.JCheckBox();
+        chb_NotasA = new javax.swing.JCheckBox();
+        chb_AsignaturaB = new javax.swing.JCheckBox();
+        chb_MatriculaB = new javax.swing.JCheckBox();
+        chb_NotasB = new javax.swing.JCheckBox();
+        chb_AsignaturaE = new javax.swing.JCheckBox();
+        chb_MatriculaE = new javax.swing.JCheckBox();
+        chb_NotasE = new javax.swing.JCheckBox();
+        chb_AulaG = new javax.swing.JCheckBox();
+        chb_CarreraG = new javax.swing.JCheckBox();
+        chb_AlumnoG = new javax.swing.JCheckBox();
+        chb_AulaA = new javax.swing.JCheckBox();
+        chb_CarreraA = new javax.swing.JCheckBox();
+        chb_AlumnoA = new javax.swing.JCheckBox();
+        chb_AulaB = new javax.swing.JCheckBox();
+        chb_CarreraB = new javax.swing.JCheckBox();
+        chb_AlumnoB = new javax.swing.JCheckBox();
+        chb_AulaE = new javax.swing.JCheckBox();
+        chb_CarreraE = new javax.swing.JCheckBox();
+        chb_AlumnoE = new javax.swing.JCheckBox();
+        chb_CancelarAsignaturaG = new javax.swing.JCheckBox();
+        chb_CancelarAsignaturaA = new javax.swing.JCheckBox();
+        chb_CancelarAsignaturaB = new javax.swing.JCheckBox();
+        chb_CancelarAsignaturaE = new javax.swing.JCheckBox();
         lbl_Empleados = new javax.swing.JLabel();
         lbl_Periodo = new javax.swing.JLabel();
         lbl_Secciones = new javax.swing.JLabel();
         lbl_Asignatura = new javax.swing.JLabel();
         lbl_Matricula = new javax.swing.JLabel();
-        lbl_CancelarMatricula = new javax.swing.JLabel();
+        lbl_CancelarAsignatura = new javax.swing.JLabel();
         lbl_Alumno = new javax.swing.JLabel();
         lbl_Carrera = new javax.swing.JLabel();
         lbl_Aula = new javax.swing.JLabel();
         lbl_Notas = new javax.swing.JLabel();
         btn_Limpiar = new javax.swing.JButton();
         btn_Guardar = new javax.swing.JButton();
+        lbl_usuario = new javax.swing.JLabel();
+        iconodeUsuario = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -131,84 +131,84 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Permisos de Pantallas "));
 
-        cbo_Empleados.setText("Empleados");
+        chb_Empleados.setText("Empleados");
 
-        cbo_Notas.setText("Notas");
+        chb_Notas.setText("Notas");
 
-        cbo_Periodo.setText("Periodo");
+        chb_Periodo.setText("Periodo");
 
-        cbo_Aula.setText("Aula");
+        chb_Aula.setText("Aula");
 
-        cbo_Secciones.setText("Secciones");
+        chb_Secciones.setText("Secciones");
 
-        cbo_Carrera.setText("Carrera");
+        chb_Carrera.setText("Carrera");
 
-        cbo_Asignatura.setText("Asignatura");
+        chb_Asignatura.setText("Asignatura");
 
-        cbo_Alumno.setText("Alumno");
+        chb_Alumno.setText("Alumno");
 
-        cbo_Matricula.setText("Matricula");
+        chb_Matricula.setText("Matricula");
 
-        cbo_CancelarAsignatura.setText("CancelarAsignatura");
+        chb_CancelarAsignatura.setText("CancelarAsignatura");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(cbo_Empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbo_Notas, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(chb_Empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chb_Notas, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(cbo_Periodo, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbo_Aula, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(chb_Periodo, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chb_Aula, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(cbo_Secciones, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbo_Carrera, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(chb_Secciones, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chb_Carrera, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(cbo_Asignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbo_Alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(chb_Asignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chb_Alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(cbo_Matricula, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbo_CancelarAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(chb_Matricula, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 20, Short.MAX_VALUE))
+                    .addComponent(chb_CancelarAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(cbo_Matricula)
+                        .addComponent(chb_Matricula)
                         .addGap(18, 18, 18)
-                        .addComponent(cbo_CancelarAsignatura))
+                        .addComponent(chb_CancelarAsignatura))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(cbo_Asignatura)
+                            .addComponent(chb_Asignatura)
                             .addGap(18, 18, 18)
-                            .addComponent(cbo_Alumno))
+                            .addComponent(chb_Alumno))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(cbo_Secciones)
+                                .addComponent(chb_Secciones)
                                 .addGap(18, 18, 18)
-                                .addComponent(cbo_Carrera))
+                                .addComponent(chb_Carrera))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(cbo_Periodo)
+                                .addComponent(chb_Periodo)
                                 .addGap(18, 18, 18)
-                                .addComponent(cbo_Aula))
+                                .addComponent(chb_Aula))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(cbo_Empleados)
+                                .addComponent(chb_Empleados)
                                 .addGap(18, 18, 18)
-                                .addComponent(cbo_Notas)))))
-                .addContainerGap(17, Short.MAX_VALUE))
+                                .addComponent(chb_Notas)))))
+                .addGap(15, 15, 15))
         );
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Empleado:");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Usuario:");
@@ -221,292 +221,285 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         cbo_NombreUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione el nombre usuario:" }));
 
-        cbo_NombreEmpleado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione el nombre del empleado:" }));
-        cbo_NombreEmpleado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbo_NombreEmpleadoActionPerformed(evt);
-            }
-        });
-
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Permisos de Funcionalidad"));
 
-        Guardar.setText("Guardar");
-        Guardar.addActionListener(new java.awt.event.ActionListener() {
+        chb_EmpleadosG.setText("Guardar");
+        chb_EmpleadosG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GuardarActionPerformed(evt);
+                chb_EmpleadosGActionPerformed(evt);
             }
         });
 
-        Buscar.setText("Buscar");
-        Buscar.addActionListener(new java.awt.event.ActionListener() {
+        chb_EmpleadosB.setText("Buscar");
+        chb_EmpleadosB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscarActionPerformed(evt);
+                chb_EmpleadosBActionPerformed(evt);
             }
         });
 
-        Actualizar.setText("Actualizar");
-        Actualizar.addActionListener(new java.awt.event.ActionListener() {
+        chb_EmpleadosA.setText("Actualizar");
+        chb_EmpleadosA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ActualizarActionPerformed(evt);
+                chb_EmpleadosAActionPerformed(evt);
             }
         });
 
-        Eliminar.setText("Eliminar");
-        Eliminar.addActionListener(new java.awt.event.ActionListener() {
+        chb_EmpleadosE.setText("Eliminar");
+        chb_EmpleadosE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EliminarActionPerformed(evt);
+                chb_EmpleadosEActionPerformed(evt);
             }
         });
 
-        Guardar1.setText("Guardar");
-        Guardar1.addActionListener(new java.awt.event.ActionListener() {
+        chb_PeriodoG.setText("Guardar");
+        chb_PeriodoG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Guardar1ActionPerformed(evt);
+                chb_PeriodoGActionPerformed(evt);
             }
         });
 
-        Actualizar1.setText("Actualizar");
-        Actualizar1.addActionListener(new java.awt.event.ActionListener() {
+        chb_PeriodoA.setText("Actualizar");
+        chb_PeriodoA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Actualizar1ActionPerformed(evt);
+                chb_PeriodoAActionPerformed(evt);
             }
         });
 
-        Buscar1.setText("Buscar");
-        Buscar1.addActionListener(new java.awt.event.ActionListener() {
+        chb_PeriodoB.setText("Buscar");
+        chb_PeriodoB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Buscar1ActionPerformed(evt);
+                chb_PeriodoBActionPerformed(evt);
             }
         });
 
-        Eliminar1.setText("Eliminar");
-        Eliminar1.addActionListener(new java.awt.event.ActionListener() {
+        chb_PeriodoE.setText("Eliminar");
+        chb_PeriodoE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Eliminar1ActionPerformed(evt);
+                chb_PeriodoEActionPerformed(evt);
             }
         });
 
-        Guardar2.setText("Guardar");
-        Guardar2.addActionListener(new java.awt.event.ActionListener() {
+        chb_SeccionesG.setText("Guardar");
+        chb_SeccionesG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Guardar2ActionPerformed(evt);
+                chb_SeccionesGActionPerformed(evt);
             }
         });
 
-        Actualizar2.setText("Actualizar");
-        Actualizar2.addActionListener(new java.awt.event.ActionListener() {
+        chb_SeccionesA.setText("Actualizar");
+        chb_SeccionesA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Actualizar2ActionPerformed(evt);
+                chb_SeccionesAActionPerformed(evt);
             }
         });
 
-        Buscar2.setText("Buscar");
-        Buscar2.addActionListener(new java.awt.event.ActionListener() {
+        chb_SeccionesB.setText("Buscar");
+        chb_SeccionesB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Buscar2ActionPerformed(evt);
+                chb_SeccionesBActionPerformed(evt);
             }
         });
 
-        Eliminar2.setText("Eliminar");
-        Eliminar2.addActionListener(new java.awt.event.ActionListener() {
+        chb_SeccionesE.setText("Eliminar");
+        chb_SeccionesE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Eliminar2ActionPerformed(evt);
+                chb_SeccionesEActionPerformed(evt);
             }
         });
 
-        Guardar3.setText("Guardar");
-        Guardar3.addActionListener(new java.awt.event.ActionListener() {
+        chb_AsignaturaG.setText("Guardar");
+        chb_AsignaturaG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Guardar3ActionPerformed(evt);
+                chb_AsignaturaGActionPerformed(evt);
             }
         });
 
-        Guardar4.setText("Guardar");
-        Guardar4.addActionListener(new java.awt.event.ActionListener() {
+        chb_MatriculaG.setText("Guardar");
+        chb_MatriculaG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Guardar4ActionPerformed(evt);
+                chb_MatriculaGActionPerformed(evt);
             }
         });
 
-        Guardar5.setText("Guardar");
-        Guardar5.addActionListener(new java.awt.event.ActionListener() {
+        chb_NotasG.setText("Guardar");
+        chb_NotasG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Guardar5ActionPerformed(evt);
+                chb_NotasGActionPerformed(evt);
             }
         });
 
-        Actualizar3.setText("Actualizar");
-        Actualizar3.addActionListener(new java.awt.event.ActionListener() {
+        chb_AsignaturaA.setText("Actualizar");
+        chb_AsignaturaA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Actualizar3ActionPerformed(evt);
+                chb_AsignaturaAActionPerformed(evt);
             }
         });
 
-        Actualizar4.setText("Actualizar");
-        Actualizar4.addActionListener(new java.awt.event.ActionListener() {
+        chb_MatriculaA.setText("Actualizar");
+        chb_MatriculaA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Actualizar4ActionPerformed(evt);
+                chb_MatriculaAActionPerformed(evt);
             }
         });
 
-        Actualizar5.setText("Actualizar");
-        Actualizar5.addActionListener(new java.awt.event.ActionListener() {
+        chb_NotasA.setText("Actualizar");
+        chb_NotasA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Actualizar5ActionPerformed(evt);
+                chb_NotasAActionPerformed(evt);
             }
         });
 
-        Buscar3.setText("Buscar");
-        Buscar3.addActionListener(new java.awt.event.ActionListener() {
+        chb_AsignaturaB.setText("Buscar");
+        chb_AsignaturaB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Buscar3ActionPerformed(evt);
+                chb_AsignaturaBActionPerformed(evt);
             }
         });
 
-        Buscar4.setText("Buscar");
-        Buscar4.addActionListener(new java.awt.event.ActionListener() {
+        chb_MatriculaB.setText("Buscar");
+        chb_MatriculaB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Buscar4ActionPerformed(evt);
+                chb_MatriculaBActionPerformed(evt);
             }
         });
 
-        Buscar5.setText("Buscar");
-        Buscar5.addActionListener(new java.awt.event.ActionListener() {
+        chb_NotasB.setText("Buscar");
+        chb_NotasB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Buscar5ActionPerformed(evt);
+                chb_NotasBActionPerformed(evt);
             }
         });
 
-        Eliminar3.setText("Eliminar");
-        Eliminar3.addActionListener(new java.awt.event.ActionListener() {
+        chb_AsignaturaE.setText("Eliminar");
+        chb_AsignaturaE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Eliminar3ActionPerformed(evt);
+                chb_AsignaturaEActionPerformed(evt);
             }
         });
 
-        Eliminar4.setText("Eliminar");
-        Eliminar4.addActionListener(new java.awt.event.ActionListener() {
+        chb_MatriculaE.setText("Eliminar");
+        chb_MatriculaE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Eliminar4ActionPerformed(evt);
+                chb_MatriculaEActionPerformed(evt);
             }
         });
 
-        Eliminar5.setText("Eliminar");
-        Eliminar5.addActionListener(new java.awt.event.ActionListener() {
+        chb_NotasE.setText("Eliminar");
+        chb_NotasE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Eliminar5ActionPerformed(evt);
+                chb_NotasEActionPerformed(evt);
             }
         });
 
-        Guardar6.setText("Guardar");
-        Guardar6.addActionListener(new java.awt.event.ActionListener() {
+        chb_AulaG.setText("Guardar");
+        chb_AulaG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Guardar6ActionPerformed(evt);
+                chb_AulaGActionPerformed(evt);
             }
         });
 
-        Guardar7.setText("Guardar");
-        Guardar7.addActionListener(new java.awt.event.ActionListener() {
+        chb_CarreraG.setText("Guardar");
+        chb_CarreraG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Guardar7ActionPerformed(evt);
+                chb_CarreraGActionPerformed(evt);
             }
         });
 
-        Guardar8.setText("Guardar");
-        Guardar8.addActionListener(new java.awt.event.ActionListener() {
+        chb_AlumnoG.setText("Guardar");
+        chb_AlumnoG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Guardar8ActionPerformed(evt);
+                chb_AlumnoGActionPerformed(evt);
             }
         });
 
-        Actualizar6.setText("Actualizar");
-        Actualizar6.addActionListener(new java.awt.event.ActionListener() {
+        chb_AulaA.setText("Actualizar");
+        chb_AulaA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Actualizar6ActionPerformed(evt);
+                chb_AulaAActionPerformed(evt);
             }
         });
 
-        Actualizar7.setText("Actualizar");
-        Actualizar7.addActionListener(new java.awt.event.ActionListener() {
+        chb_CarreraA.setText("Actualizar");
+        chb_CarreraA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Actualizar7ActionPerformed(evt);
+                chb_CarreraAActionPerformed(evt);
             }
         });
 
-        Actualizar8.setText("Actualizar");
-        Actualizar8.addActionListener(new java.awt.event.ActionListener() {
+        chb_AlumnoA.setText("Actualizar");
+        chb_AlumnoA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Actualizar8ActionPerformed(evt);
+                chb_AlumnoAActionPerformed(evt);
             }
         });
 
-        Buscar6.setText("Buscar");
-        Buscar6.addActionListener(new java.awt.event.ActionListener() {
+        chb_AulaB.setText("Buscar");
+        chb_AulaB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Buscar6ActionPerformed(evt);
+                chb_AulaBActionPerformed(evt);
             }
         });
 
-        Buscar7.setText("Buscar");
-        Buscar7.addActionListener(new java.awt.event.ActionListener() {
+        chb_CarreraB.setText("Buscar");
+        chb_CarreraB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Buscar7ActionPerformed(evt);
+                chb_CarreraBActionPerformed(evt);
             }
         });
 
-        Buscar8.setText("Buscar");
-        Buscar8.addActionListener(new java.awt.event.ActionListener() {
+        chb_AlumnoB.setText("Buscar");
+        chb_AlumnoB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Buscar8ActionPerformed(evt);
+                chb_AlumnoBActionPerformed(evt);
             }
         });
 
-        Eliminar6.setText("Eliminar");
-        Eliminar6.addActionListener(new java.awt.event.ActionListener() {
+        chb_AulaE.setText("Eliminar");
+        chb_AulaE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Eliminar6ActionPerformed(evt);
+                chb_AulaEActionPerformed(evt);
             }
         });
 
-        Eliminar7.setText("Eliminar");
-        Eliminar7.addActionListener(new java.awt.event.ActionListener() {
+        chb_CarreraE.setText("Eliminar");
+        chb_CarreraE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Eliminar7ActionPerformed(evt);
+                chb_CarreraEActionPerformed(evt);
             }
         });
 
-        Eliminar8.setText("Eliminar");
-        Eliminar8.addActionListener(new java.awt.event.ActionListener() {
+        chb_AlumnoE.setText("Eliminar");
+        chb_AlumnoE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Eliminar8ActionPerformed(evt);
+                chb_AlumnoEActionPerformed(evt);
             }
         });
 
-        Guardar9.setText("Guardar");
-        Guardar9.addActionListener(new java.awt.event.ActionListener() {
+        chb_CancelarAsignaturaG.setText("Guardar");
+        chb_CancelarAsignaturaG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Guardar9ActionPerformed(evt);
+                chb_CancelarAsignaturaGActionPerformed(evt);
             }
         });
 
-        Actualizar9.setText("Actualizar");
-        Actualizar9.addActionListener(new java.awt.event.ActionListener() {
+        chb_CancelarAsignaturaA.setText("Actualizar");
+        chb_CancelarAsignaturaA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Actualizar9ActionPerformed(evt);
+                chb_CancelarAsignaturaAActionPerformed(evt);
             }
         });
 
-        Buscar9.setText("Buscar");
-        Buscar9.addActionListener(new java.awt.event.ActionListener() {
+        chb_CancelarAsignaturaB.setText("Buscar");
+        chb_CancelarAsignaturaB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Buscar9ActionPerformed(evt);
+                chb_CancelarAsignaturaBActionPerformed(evt);
             }
         });
 
-        Eliminar9.setText("Eliminar");
-        Eliminar9.addActionListener(new java.awt.event.ActionListener() {
+        chb_CancelarAsignaturaE.setText("Eliminar");
+        chb_CancelarAsignaturaE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Eliminar9ActionPerformed(evt);
+                chb_CancelarAsignaturaEActionPerformed(evt);
             }
         });
 
@@ -518,97 +511,97 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(Guardar9, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(chb_CancelarAsignaturaG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
-                        .addComponent(Actualizar9, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(chb_CancelarAsignaturaA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
-                        .addComponent(Buscar9, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(chb_CancelarAsignaturaB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34)
-                        .addComponent(Eliminar9, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(chb_CancelarAsignaturaE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Guardar8, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(chb_AlumnoG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(36, 36, 36)
-                                .addComponent(Actualizar8, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(chb_AlumnoA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Guardar7, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(chb_CarreraG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(36, 36, 36)
-                                .addComponent(Actualizar7, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(chb_CarreraA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Guardar6, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(chb_AulaG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(36, 36, 36)
-                                .addComponent(Actualizar6, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(chb_AulaA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(27, 27, 27)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Buscar8, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(chb_AlumnoB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(34, 34, 34)
-                                .addComponent(Eliminar8, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(chb_AlumnoE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Buscar7, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(chb_CarreraB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(34, 34, 34)
-                                .addComponent(Eliminar7, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(chb_CarreraE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Buscar6, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(chb_AulaB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(34, 34, 34)
-                                .addComponent(Eliminar6, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(chb_AulaE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Guardar5, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(chb_NotasG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(36, 36, 36)
-                                .addComponent(Actualizar5, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(chb_NotasA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Guardar4, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(chb_MatriculaG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(36, 36, 36)
-                                .addComponent(Actualizar4, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(chb_MatriculaA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Guardar3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(chb_AsignaturaG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(36, 36, 36)
-                                .addComponent(Actualizar3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(chb_AsignaturaA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(27, 27, 27)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Buscar5, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(chb_NotasB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(34, 34, 34)
-                                .addComponent(Eliminar5, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(chb_NotasE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Buscar4, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(chb_MatriculaB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(34, 34, 34)
-                                .addComponent(Eliminar4, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(chb_MatriculaE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Buscar3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(chb_AsignaturaB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(34, 34, 34)
-                                .addComponent(Eliminar3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(chb_AsignaturaE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Guardar2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(chb_SeccionesG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(36, 36, 36)
-                                .addComponent(Actualizar2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(chb_SeccionesA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Guardar1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(chb_PeriodoG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(36, 36, 36)
-                                .addComponent(Actualizar1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(chb_PeriodoA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(chb_EmpleadosG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(36, 36, 36)
-                                .addComponent(Actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(chb_EmpleadosA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(27, 27, 27)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Buscar2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(chb_SeccionesB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(34, 34, 34)
-                                .addComponent(Eliminar2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(chb_SeccionesE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Buscar1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(chb_PeriodoB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(34, 34, 34)
-                                .addComponent(Eliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(chb_PeriodoE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(chb_EmpleadosB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(34, 34, 34)
-                                .addComponent(Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(chb_EmpleadosE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -616,71 +609,71 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Eliminar)
-                    .addComponent(Buscar)
-                    .addComponent(Actualizar)
-                    .addComponent(Guardar))
+                    .addComponent(chb_EmpleadosE)
+                    .addComponent(chb_EmpleadosB)
+                    .addComponent(chb_EmpleadosA)
+                    .addComponent(chb_EmpleadosG))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Eliminar1)
+                    .addComponent(chb_PeriodoE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(Buscar1)
-                        .addComponent(Actualizar1)
-                        .addComponent(Guardar1)))
+                        .addComponent(chb_PeriodoB)
+                        .addComponent(chb_PeriodoA)
+                        .addComponent(chb_PeriodoG)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Eliminar2)
+                    .addComponent(chb_SeccionesE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(Buscar2)
-                        .addComponent(Actualizar2)
-                        .addComponent(Guardar2)))
+                        .addComponent(chb_SeccionesB)
+                        .addComponent(chb_SeccionesA)
+                        .addComponent(chb_SeccionesG)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Eliminar3)
-                    .addComponent(Buscar3)
-                    .addComponent(Actualizar3)
-                    .addComponent(Guardar3))
+                    .addComponent(chb_AsignaturaE)
+                    .addComponent(chb_AsignaturaB)
+                    .addComponent(chb_AsignaturaA)
+                    .addComponent(chb_AsignaturaG))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Eliminar4)
+                    .addComponent(chb_MatriculaE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(Buscar4)
-                        .addComponent(Actualizar4)
-                        .addComponent(Guardar4)))
+                        .addComponent(chb_MatriculaB)
+                        .addComponent(chb_MatriculaA)
+                        .addComponent(chb_MatriculaG)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Eliminar5)
+                    .addComponent(chb_NotasE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(Buscar5)
-                        .addComponent(Actualizar5)
-                        .addComponent(Guardar5)))
+                        .addComponent(chb_NotasB)
+                        .addComponent(chb_NotasA)
+                        .addComponent(chb_NotasG)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Eliminar6)
-                    .addComponent(Buscar6)
-                    .addComponent(Actualizar6)
-                    .addComponent(Guardar6))
+                    .addComponent(chb_AulaE)
+                    .addComponent(chb_AulaB)
+                    .addComponent(chb_AulaA)
+                    .addComponent(chb_AulaG))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Eliminar7)
+                    .addComponent(chb_CarreraE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(Buscar7)
-                        .addComponent(Actualizar7)
-                        .addComponent(Guardar7)))
+                        .addComponent(chb_CarreraB)
+                        .addComponent(chb_CarreraA)
+                        .addComponent(chb_CarreraG)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Eliminar8)
+                    .addComponent(chb_AlumnoE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(Buscar8)
-                        .addComponent(Actualizar8)
-                        .addComponent(Guardar8)))
+                        .addComponent(chb_AlumnoB)
+                        .addComponent(chb_AlumnoA)
+                        .addComponent(chb_AlumnoG)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Eliminar9)
+                    .addComponent(chb_CancelarAsignaturaE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(Buscar9)
-                        .addComponent(Actualizar9)
-                        .addComponent(Guardar9)))
+                        .addComponent(chb_CancelarAsignaturaB)
+                        .addComponent(chb_CancelarAsignaturaA)
+                        .addComponent(chb_CancelarAsignaturaG)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -694,7 +687,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         lbl_Matricula.setText("Matricula");
 
-        lbl_CancelarMatricula.setText("Cancelar Matricula");
+        lbl_CancelarAsignatura.setText("Cancelar Asignatura");
 
         lbl_Alumno.setText("Alumno");
 
@@ -709,6 +702,11 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         btn_Guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Guardar.png"))); // NOI18N
         btn_Guardar.setText("Guardar");
+
+        lbl_usuario.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbl_usuario.setText("Nombre Usuario");
+
+        iconodeUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User.png"))); // NOI18N
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
         jMenu1.setText("Menu");
@@ -725,20 +723,34 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
+                .addComponent(iconodeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cbo_NombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cbo_NombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbl_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(38, 38, 38)
+                                .addComponent(cbo_NombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addContainerGap(278, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(fechaHoy1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fechaHoy, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(191, 191, 191)
+                        .addComponent(btn_Limpiar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_Guardar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -751,45 +763,38 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                                 .addComponent(lbl_Secciones, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lbl_Notas, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lbl_Aula, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(fechaHoy1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(fechaHoy, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(lbl_Asignatura, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(lbl_Matricula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGap(38, 38, 38))
-                                        .addComponent(lbl_CancelarMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(191, 191, 191)
-                        .addComponent(btn_Limpiar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_Guardar)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lbl_Asignatura, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lbl_Matricula, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(38, 38, 38))
+                                    .addComponent(lbl_CancelarAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(cbo_NombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(fechaHoy1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(fechaHoy, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(3, 3, 3)
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(iconodeUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fechaHoy1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(fechaHoy, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(14, 14, 14)
+                        .addComponent(lbl_usuario)))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(cbo_NombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
+                .addGap(32, 32, 32)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -813,7 +818,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lbl_Alumno)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lbl_CancelarMatricula)
+                        .addComponent(lbl_CancelarAsignatura)
                         .addGap(81, 81, 81))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -842,169 +847,165 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btn_AceptarActionPerformed
 
-    private void cbo_NombreEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_NombreEmpleadoActionPerformed
+    private void chb_EmpleadosGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_EmpleadosGActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbo_NombreEmpleadoActionPerformed
+    }//GEN-LAST:event_chb_EmpleadosGActionPerformed
 
-    private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
+    private void chb_EmpleadosBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_EmpleadosBActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_GuardarActionPerformed
+    }//GEN-LAST:event_chb_EmpleadosBActionPerformed
 
-    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
+    private void chb_EmpleadosAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_EmpleadosAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BuscarActionPerformed
+    }//GEN-LAST:event_chb_EmpleadosAActionPerformed
 
-    private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
+    private void chb_EmpleadosEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_EmpleadosEActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ActualizarActionPerformed
+    }//GEN-LAST:event_chb_EmpleadosEActionPerformed
 
-    private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
+    private void chb_PeriodoGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_PeriodoGActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_EliminarActionPerformed
+    }//GEN-LAST:event_chb_PeriodoGActionPerformed
 
-    private void Guardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Guardar1ActionPerformed
+    private void chb_PeriodoAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_PeriodoAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Guardar1ActionPerformed
+    }//GEN-LAST:event_chb_PeriodoAActionPerformed
 
-    private void Actualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Actualizar1ActionPerformed
+    private void chb_PeriodoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_PeriodoBActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Actualizar1ActionPerformed
+    }//GEN-LAST:event_chb_PeriodoBActionPerformed
 
-    private void Buscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar1ActionPerformed
+    private void chb_PeriodoEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_PeriodoEActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Buscar1ActionPerformed
+    }//GEN-LAST:event_chb_PeriodoEActionPerformed
 
-    private void Eliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Eliminar1ActionPerformed
+    private void chb_SeccionesGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_SeccionesGActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Eliminar1ActionPerformed
+    }//GEN-LAST:event_chb_SeccionesGActionPerformed
 
-    private void Guardar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Guardar2ActionPerformed
+    private void chb_SeccionesAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_SeccionesAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Guardar2ActionPerformed
+    }//GEN-LAST:event_chb_SeccionesAActionPerformed
 
-    private void Actualizar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Actualizar2ActionPerformed
+    private void chb_SeccionesBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_SeccionesBActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Actualizar2ActionPerformed
+    }//GEN-LAST:event_chb_SeccionesBActionPerformed
 
-    private void Buscar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar2ActionPerformed
+    private void chb_SeccionesEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_SeccionesEActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Buscar2ActionPerformed
+    }//GEN-LAST:event_chb_SeccionesEActionPerformed
 
-    private void Eliminar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Eliminar2ActionPerformed
+    private void chb_AsignaturaGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AsignaturaGActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Eliminar2ActionPerformed
+    }//GEN-LAST:event_chb_AsignaturaGActionPerformed
 
-    private void Guardar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Guardar3ActionPerformed
+    private void chb_MatriculaGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_MatriculaGActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Guardar3ActionPerformed
+    }//GEN-LAST:event_chb_MatriculaGActionPerformed
 
-    private void Guardar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Guardar4ActionPerformed
+    private void chb_NotasGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_NotasGActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Guardar4ActionPerformed
+    }//GEN-LAST:event_chb_NotasGActionPerformed
 
-    private void Guardar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Guardar5ActionPerformed
+    private void chb_AsignaturaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AsignaturaAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Guardar5ActionPerformed
+    }//GEN-LAST:event_chb_AsignaturaAActionPerformed
 
-    private void Actualizar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Actualizar3ActionPerformed
+    private void chb_MatriculaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_MatriculaAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Actualizar3ActionPerformed
+    }//GEN-LAST:event_chb_MatriculaAActionPerformed
 
-    private void Actualizar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Actualizar4ActionPerformed
+    private void chb_NotasAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_NotasAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Actualizar4ActionPerformed
+    }//GEN-LAST:event_chb_NotasAActionPerformed
 
-    private void Actualizar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Actualizar5ActionPerformed
+    private void chb_AsignaturaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AsignaturaBActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Actualizar5ActionPerformed
+    }//GEN-LAST:event_chb_AsignaturaBActionPerformed
 
-    private void Buscar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar3ActionPerformed
+    private void chb_MatriculaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_MatriculaBActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Buscar3ActionPerformed
+    }//GEN-LAST:event_chb_MatriculaBActionPerformed
 
-    private void Buscar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar4ActionPerformed
+    private void chb_NotasBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_NotasBActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Buscar4ActionPerformed
+    }//GEN-LAST:event_chb_NotasBActionPerformed
 
-    private void Buscar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar5ActionPerformed
+    private void chb_AsignaturaEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AsignaturaEActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Buscar5ActionPerformed
+    }//GEN-LAST:event_chb_AsignaturaEActionPerformed
 
-    private void Eliminar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Eliminar3ActionPerformed
+    private void chb_MatriculaEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_MatriculaEActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Eliminar3ActionPerformed
+    }//GEN-LAST:event_chb_MatriculaEActionPerformed
 
-    private void Eliminar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Eliminar4ActionPerformed
+    private void chb_NotasEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_NotasEActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Eliminar4ActionPerformed
+    }//GEN-LAST:event_chb_NotasEActionPerformed
 
-    private void Eliminar5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Eliminar5ActionPerformed
+    private void chb_AulaGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AulaGActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Eliminar5ActionPerformed
+    }//GEN-LAST:event_chb_AulaGActionPerformed
 
-    private void Guardar6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Guardar6ActionPerformed
+    private void chb_CarreraGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_CarreraGActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Guardar6ActionPerformed
+    }//GEN-LAST:event_chb_CarreraGActionPerformed
 
-    private void Guardar7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Guardar7ActionPerformed
+    private void chb_AlumnoGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AlumnoGActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Guardar7ActionPerformed
+    }//GEN-LAST:event_chb_AlumnoGActionPerformed
 
-    private void Guardar8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Guardar8ActionPerformed
+    private void chb_AulaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AulaAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Guardar8ActionPerformed
+    }//GEN-LAST:event_chb_AulaAActionPerformed
 
-    private void Actualizar6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Actualizar6ActionPerformed
+    private void chb_CarreraAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_CarreraAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Actualizar6ActionPerformed
+    }//GEN-LAST:event_chb_CarreraAActionPerformed
 
-    private void Actualizar7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Actualizar7ActionPerformed
+    private void chb_AlumnoAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AlumnoAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Actualizar7ActionPerformed
+    }//GEN-LAST:event_chb_AlumnoAActionPerformed
 
-    private void Actualizar8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Actualizar8ActionPerformed
+    private void chb_AulaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AulaBActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Actualizar8ActionPerformed
+    }//GEN-LAST:event_chb_AulaBActionPerformed
 
-    private void Buscar6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar6ActionPerformed
+    private void chb_CarreraBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_CarreraBActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Buscar6ActionPerformed
+    }//GEN-LAST:event_chb_CarreraBActionPerformed
 
-    private void Buscar7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar7ActionPerformed
+    private void chb_AlumnoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AlumnoBActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Buscar7ActionPerformed
+    }//GEN-LAST:event_chb_AlumnoBActionPerformed
 
-    private void Buscar8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar8ActionPerformed
+    private void chb_AulaEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AulaEActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Buscar8ActionPerformed
+    }//GEN-LAST:event_chb_AulaEActionPerformed
 
-    private void Eliminar6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Eliminar6ActionPerformed
+    private void chb_CarreraEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_CarreraEActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Eliminar6ActionPerformed
+    }//GEN-LAST:event_chb_CarreraEActionPerformed
 
-    private void Eliminar7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Eliminar7ActionPerformed
+    private void chb_AlumnoEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AlumnoEActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Eliminar7ActionPerformed
+    }//GEN-LAST:event_chb_AlumnoEActionPerformed
 
-    private void Eliminar8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Eliminar8ActionPerformed
+    private void chb_CancelarAsignaturaGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_CancelarAsignaturaGActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Eliminar8ActionPerformed
+    }//GEN-LAST:event_chb_CancelarAsignaturaGActionPerformed
 
-    private void Guardar9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Guardar9ActionPerformed
+    private void chb_CancelarAsignaturaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_CancelarAsignaturaAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Guardar9ActionPerformed
+    }//GEN-LAST:event_chb_CancelarAsignaturaAActionPerformed
 
-    private void Actualizar9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Actualizar9ActionPerformed
+    private void chb_CancelarAsignaturaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_CancelarAsignaturaBActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Actualizar9ActionPerformed
+    }//GEN-LAST:event_chb_CancelarAsignaturaBActionPerformed
 
-    private void Buscar9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Buscar9ActionPerformed
+    private void chb_CancelarAsignaturaEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_CancelarAsignaturaEActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Buscar9ActionPerformed
-
-    private void Eliminar9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Eliminar9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Eliminar9ActionPerformed
+    }//GEN-LAST:event_chb_CancelarAsignaturaEActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1042,64 +1043,63 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox Actualizar;
-    private javax.swing.JCheckBox Actualizar1;
-    private javax.swing.JCheckBox Actualizar2;
-    private javax.swing.JCheckBox Actualizar3;
-    private javax.swing.JCheckBox Actualizar4;
-    private javax.swing.JCheckBox Actualizar5;
-    private javax.swing.JCheckBox Actualizar6;
-    private javax.swing.JCheckBox Actualizar7;
-    private javax.swing.JCheckBox Actualizar8;
-    private javax.swing.JCheckBox Actualizar9;
-    private javax.swing.JCheckBox Buscar;
-    private javax.swing.JCheckBox Buscar1;
-    private javax.swing.JCheckBox Buscar2;
-    private javax.swing.JCheckBox Buscar3;
-    private javax.swing.JCheckBox Buscar4;
-    private javax.swing.JCheckBox Buscar5;
-    private javax.swing.JCheckBox Buscar6;
-    private javax.swing.JCheckBox Buscar7;
-    private javax.swing.JCheckBox Buscar8;
-    private javax.swing.JCheckBox Buscar9;
-    private javax.swing.JCheckBox Eliminar;
-    private javax.swing.JCheckBox Eliminar1;
-    private javax.swing.JCheckBox Eliminar2;
-    private javax.swing.JCheckBox Eliminar3;
-    private javax.swing.JCheckBox Eliminar4;
-    private javax.swing.JCheckBox Eliminar5;
-    private javax.swing.JCheckBox Eliminar6;
-    private javax.swing.JCheckBox Eliminar7;
-    private javax.swing.JCheckBox Eliminar8;
-    private javax.swing.JCheckBox Eliminar9;
-    private javax.swing.JCheckBox Guardar;
-    private javax.swing.JCheckBox Guardar1;
-    private javax.swing.JCheckBox Guardar2;
-    private javax.swing.JCheckBox Guardar3;
-    private javax.swing.JCheckBox Guardar4;
-    private javax.swing.JCheckBox Guardar5;
-    private javax.swing.JCheckBox Guardar6;
-    private javax.swing.JCheckBox Guardar7;
-    private javax.swing.JCheckBox Guardar8;
-    private javax.swing.JCheckBox Guardar9;
     private javax.swing.JButton btn_Guardar;
     private javax.swing.JButton btn_Limpiar;
-    private javax.swing.JCheckBox cbo_Alumno;
-    private javax.swing.JCheckBox cbo_Asignatura;
-    private javax.swing.JCheckBox cbo_Aula;
-    private javax.swing.JCheckBox cbo_CancelarAsignatura;
-    private javax.swing.JCheckBox cbo_Carrera;
-    private javax.swing.JCheckBox cbo_Empleados;
-    private javax.swing.JCheckBox cbo_Matricula;
-    private javax.swing.JComboBox<String> cbo_NombreEmpleado;
     private javax.swing.JComboBox<String> cbo_NombreUsuario;
-    private javax.swing.JCheckBox cbo_Notas;
-    private javax.swing.JCheckBox cbo_Periodo;
-    private javax.swing.JCheckBox cbo_Secciones;
+    private javax.swing.JCheckBox chb_Alumno;
+    private javax.swing.JCheckBox chb_AlumnoA;
+    private javax.swing.JCheckBox chb_AlumnoB;
+    private javax.swing.JCheckBox chb_AlumnoE;
+    private javax.swing.JCheckBox chb_AlumnoG;
+    private javax.swing.JCheckBox chb_Asignatura;
+    private javax.swing.JCheckBox chb_AsignaturaA;
+    private javax.swing.JCheckBox chb_AsignaturaB;
+    private javax.swing.JCheckBox chb_AsignaturaE;
+    private javax.swing.JCheckBox chb_AsignaturaG;
+    private javax.swing.JCheckBox chb_Aula;
+    private javax.swing.JCheckBox chb_AulaA;
+    private javax.swing.JCheckBox chb_AulaB;
+    private javax.swing.JCheckBox chb_AulaE;
+    private javax.swing.JCheckBox chb_AulaG;
+    private javax.swing.JCheckBox chb_CancelarAsignatura;
+    private javax.swing.JCheckBox chb_CancelarAsignaturaA;
+    private javax.swing.JCheckBox chb_CancelarAsignaturaB;
+    private javax.swing.JCheckBox chb_CancelarAsignaturaE;
+    private javax.swing.JCheckBox chb_CancelarAsignaturaG;
+    private javax.swing.JCheckBox chb_Carrera;
+    private javax.swing.JCheckBox chb_CarreraA;
+    private javax.swing.JCheckBox chb_CarreraB;
+    private javax.swing.JCheckBox chb_CarreraE;
+    private javax.swing.JCheckBox chb_CarreraG;
+    private javax.swing.JCheckBox chb_Empleados;
+    private javax.swing.JCheckBox chb_EmpleadosA;
+    private javax.swing.JCheckBox chb_EmpleadosB;
+    private javax.swing.JCheckBox chb_EmpleadosE;
+    private javax.swing.JCheckBox chb_EmpleadosG;
+    private javax.swing.JCheckBox chb_Matricula;
+    private javax.swing.JCheckBox chb_MatriculaA;
+    private javax.swing.JCheckBox chb_MatriculaB;
+    private javax.swing.JCheckBox chb_MatriculaE;
+    private javax.swing.JCheckBox chb_MatriculaG;
+    private javax.swing.JCheckBox chb_Notas;
+    private javax.swing.JCheckBox chb_NotasA;
+    private javax.swing.JCheckBox chb_NotasB;
+    private javax.swing.JCheckBox chb_NotasE;
+    private javax.swing.JCheckBox chb_NotasG;
+    private javax.swing.JCheckBox chb_Periodo;
+    private javax.swing.JCheckBox chb_PeriodoA;
+    private javax.swing.JCheckBox chb_PeriodoB;
+    private javax.swing.JCheckBox chb_PeriodoE;
+    private javax.swing.JCheckBox chb_PeriodoG;
+    private javax.swing.JCheckBox chb_Secciones;
+    private javax.swing.JCheckBox chb_SeccionesA;
+    private javax.swing.JCheckBox chb_SeccionesB;
+    private javax.swing.JCheckBox chb_SeccionesE;
+    private javax.swing.JCheckBox chb_SeccionesG;
     private javax.swing.JLabel fechaHoy;
     private javax.swing.JLabel fechaHoy1;
+    private javax.swing.JLabel iconodeUsuario;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -1109,12 +1109,13 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_Alumno;
     private javax.swing.JLabel lbl_Asignatura;
     private javax.swing.JLabel lbl_Aula;
-    private javax.swing.JLabel lbl_CancelarMatricula;
+    private javax.swing.JLabel lbl_CancelarAsignatura;
     private javax.swing.JLabel lbl_Carrera;
     private javax.swing.JLabel lbl_Empleados;
     private javax.swing.JLabel lbl_Matricula;
     private javax.swing.JLabel lbl_Notas;
     private javax.swing.JLabel lbl_Periodo;
     private javax.swing.JLabel lbl_Secciones;
+    private javax.swing.JLabel lbl_usuario;
     // End of variables declaration//GEN-END:variables
 }
