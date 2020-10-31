@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -48,7 +49,10 @@ public class Matricula extends javax.swing.JFrame {
     DefaultTableModel modelo =  new DefaultTableModel();
     Statement stmt = null;
     String var, var2;
-    
+     final Calendar calendar = Calendar.getInstance();
+    final java.util.Date  date = calendar.getTime();
+    String fecha = new SimpleDateFormat("d-MM-yyyy hh.mm.ss a ").format(date);
+    /**
     /**
      * Creates new form Matricula
      */
@@ -562,6 +566,8 @@ try{
 
     
     public boolean agregarMatricula(String nombre, String codigo){
+        
+     
         String numeroCuenta,id_periodo,estado,reposicion,nota1,nota2,nota3,promedio;
         ResultSet rs=null;
         numeroCuenta =txt_numeroCuenta.getText();
@@ -712,14 +718,24 @@ try{
             
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, e.getMessage());
+            try {
+                Log myLog;
+                String nombreArchivo = "src\\Logs\\Login " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
             return false;
         }
+        
+
         
     }
   
     private void btn_matricularAsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_matricularAsignaturaActionPerformed
-       try{
-           
+try{   
        
         for (int i = 0; i < tbl_asignaturas.getRowCount(); i++) {
             
@@ -731,16 +747,20 @@ try{
             }   
         }
          desactivar();
-       }catch(Exception e){
-             try {
-                Log myLog; 
-                myLog = new Log("src\\Logs\\Matricula.txt");
+         
+          } catch (Exception e) {
+              
+            try {
+                Log myLog;
+                String nombreArchivo = "src\\Logs\\Matricula " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
+                 
+        } 
         
     }//GEN-LAST:event_btn_matricularAsignaturaActionPerformed
 
@@ -785,16 +805,20 @@ try{
             JasperViewer view = new JasperViewer(jprint,false);
             view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
             view.setVisible(true);      
-          }catch(Exception e){
-             try {
-                Log myLog; 
-                myLog = new Log("src\\Logs\\ReporteMatricula.txt");
+             } catch (Exception e) {
+              
+            try {
+                Log myLog;
+                String nombreArchivo = "src\\Logs\\Matricula " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
+                 
         }
+
     }//GEN-LAST:event_btn_generarReporteActionPerformed
 
     private void jMenuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPrincipalActionPerformed

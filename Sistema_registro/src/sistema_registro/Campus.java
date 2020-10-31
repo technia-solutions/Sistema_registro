@@ -14,6 +14,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -39,7 +41,9 @@ public class Campus extends javax.swing.JFrame {
     Connection con = null;
     Statement stmt = null;
     String var, var2;
-
+ final Calendar calendar = Calendar.getInstance();
+    final java.util.Date  date = calendar.getTime();
+    String fecha = new SimpleDateFormat("d-MM-yyyy hh.mm.ss a ").format(date);
     /**
      * Creates new form Campus
      */
@@ -503,9 +507,10 @@ try{
             LimpiarCajas();
         }
               }catch(Exception e){
-             try {
-                Log myLog; 
-                myLog = new Log("src\\Logs\\Campus.txt");
+              try {
+                Log myLog;
+                String nombreArchivo = "src\\Logs\\Campus " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -515,8 +520,24 @@ try{
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
+try{
+    
+
         actualizarDatos();
-     
+         } catch (Exception e) {
+              
+            try {
+                Log myLog;
+                String nombreArchivo = "src\\Logs\\Campus " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                 
+        }
+
     }//GEN-LAST:event_btn_buscarActionPerformed
 
     private void btn_buscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_buscarMouseClicked
@@ -589,9 +610,10 @@ try{
             LimpiarCajas();
         }
              }catch(Exception e){
-             try {
-                Log myLog; 
-                myLog = new Log("src\\Logs\\Campus.txt");
+                      try {
+                Log myLog;
+                String nombreArchivo = "src\\Logs\\Campus " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -657,9 +679,11 @@ try{
         actualizarDatos();
         LimpiarCajas();
           }catch(Exception e){
-             try {
-                Log myLog; 
-                myLog = new Log("src\\Logs\\Campus.txt");
+        
+                         try {
+                Log myLog;
+                String nombreArchivo = "src\\Logs\\Notas " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {

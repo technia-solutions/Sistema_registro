@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -52,7 +53,9 @@ public class Notas extends javax.swing.JFrame {
      
      Statement stmt = null;
      
-     
+      final Calendar calendar = Calendar.getInstance();
+    final java.util.Date  date = calendar.getTime();
+    String fecha = new SimpleDateFormat("d-MM-yyyy hh.mm.ss a ").format(date);
     public Notas() throws SQLException {
          this.con = ConectorSQL.obtenerConexion();
          initComponents();
@@ -607,9 +610,10 @@ try{
       rad_reposicionParcialII.setEnabled(false);
      // LimpiarCajas();
         }catch(Exception e){
-             try {
-                Log myLog; 
-                myLog = new Log("src\\Logs\\Nota.txt");
+                      try {
+                Log myLog;
+                String nombreArchivo = "src\\Logs\\Notas " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -675,9 +679,10 @@ try{
          }
     }
         }catch(Exception e){
-             try {
-                Log myLog; 
-                myLog = new Log("src\\Logs\\Nota.txt");
+                 try {
+                Log myLog;
+                String nombreArchivo = "src\\Logs\\Notas " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
@@ -901,9 +906,10 @@ try{
             view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
             view.setVisible(true);      
      }catch(Exception e){
-             try {
-                Log myLog; 
-                myLog = new Log("src\\Logs\\Nota.txt");
+                      try {
+                Log myLog;
+                String nombreArchivo = "src\\Logs\\Notas " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
