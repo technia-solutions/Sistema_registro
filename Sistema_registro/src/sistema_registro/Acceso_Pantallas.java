@@ -138,7 +138,6 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         btn_Guardar = new javax.swing.JButton();
         lbl_usuario = new javax.swing.JLabel();
         iconodeUsuario = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         chb_EmpleadosG = new javax.swing.JCheckBox();
@@ -178,13 +177,14 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         chb_CancelarAsignaturaA = new javax.swing.JCheckBox();
         chb_CancelarAsignaturaB = new javax.swing.JCheckBox();
         chb_CancelarAsignaturaE = new javax.swing.JCheckBox();
+        jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        menu_MenuPrincipal = new javax.swing.JMenuItem();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -359,6 +359,11 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         getContentPane().add(fechaHoy, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 20, 130, 20));
 
         cbo_NombreUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione el nombre usuario." }));
+        cbo_NombreUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbo_NombreUsuarioActionPerformed(evt);
+            }
+        });
         getContentPane().add(cbo_NombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 132, 240, 30));
 
         lbl_Empleados.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -427,21 +432,6 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         iconodeUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/User.png"))); // NOI18N
         getContentPane().add(iconodeUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 50, 70));
-
-        jPanel3.setBackground(new java.awt.Color(232, 251, 249));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 350, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, -1, -1));
 
         jPanel4.setBackground(new java.awt.Color(232, 251, 249));
 
@@ -940,21 +930,39 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
+        jPanel3.setBackground(new java.awt.Color(232, 251, 249));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 130, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 350, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(178, Short.MAX_VALUE)
+                .addContainerGap(44, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(249, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(0, 220, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 640, 570));
@@ -994,14 +1002,17 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
         jMenu1.setText("Menu");
 
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio.png"))); // NOI18N
-        jMenu2.setText("Menu Principal ");
-        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+        menu_MenuPrincipal.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        menu_MenuPrincipal.setBackground(new java.awt.Color(255, 255, 255));
+        menu_MenuPrincipal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        menu_MenuPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/inicio.png"))); // NOI18N
+        menu_MenuPrincipal.setText("Menu Principal");
+        menu_MenuPrincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu2ActionPerformed(evt);
+                menu_MenuPrincipalActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenu2);
+        jMenu1.add(menu_MenuPrincipal);
 
         jMenuBar1.add(jMenu1);
 
@@ -1172,7 +1183,11 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
     }//GEN-LAST:event_chb_CancelarAsignaturaEActionPerformed
 
     private void chb_EmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_EmpleadosActionPerformed
-     if (chb_Empleados.isSelected()) {
+     habilitarEmpleado();
+    }//GEN-LAST:event_chb_EmpleadosActionPerformed
+
+    public void habilitarEmpleado(){
+        if (chb_Empleados.isSelected()) {
                 
           chb_EmpleadosG.setEnabled(true);
           chb_EmpleadosA.setEnabled(true);
@@ -1185,9 +1200,12 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
           chb_EmpleadosB.setEnabled(false);
           chb_EmpleadosE.setEnabled(false);
      }
-    }//GEN-LAST:event_chb_EmpleadosActionPerformed
-
+    }
     private void chb_PeriodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_PeriodoActionPerformed
+       habilitarPeriodo();
+    }//GEN-LAST:event_chb_PeriodoActionPerformed
+
+   public void habilitarPeriodo(){
         if (chb_Periodo.isSelected()) {
                 
          chb_PeriodoG.setEnabled(true);
@@ -1199,11 +1217,16 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
            chb_PeriodoG.setEnabled(false);
           chb_PeriodoA.setEnabled(false);
           chb_PeriodoB.setEnabled(false);
-          chb_PeriodoE.setEnabled(false);}
-    }//GEN-LAST:event_chb_PeriodoActionPerformed
+          chb_PeriodoE.setEnabled(false);
+        }
+   }
 
     private void chb_SeccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_SeccionesActionPerformed
-              if (chb_Secciones.isSelected()) {
+          habilitarSecciones();   
+    }//GEN-LAST:event_chb_SeccionesActionPerformed
+
+    public void habilitarSecciones(){
+         if (chb_Secciones.isSelected()) {
                 
          chb_SeccionesG.setEnabled(true);
           chb_SeccionesA.setEnabled(true);
@@ -1216,10 +1239,12 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
           chb_SeccionesB.setEnabled(false);
           chb_SeccionesE.setEnabled(false);
               }
-    }//GEN-LAST:event_chb_SeccionesActionPerformed
-
+    }
     private void chb_AsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AsignaturaActionPerformed
-      
+      habilitarAsignaturas();
+    }//GEN-LAST:event_chb_AsignaturaActionPerformed
+    public void habilitarAsignaturas(){
+        
              if (chb_Asignatura.isSelected()) {
                 
          chb_AsignaturaG.setEnabled(true);
@@ -1231,12 +1256,15 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
               chb_AsignaturaG.setEnabled(false);
           chb_AsignaturaA.setEnabled(false);
           chb_AsignaturaB.setEnabled(false);
-          chb_AsignaturaE.setEnabled(false);}
-    }//GEN-LAST:event_chb_AsignaturaActionPerformed
-
+          chb_AsignaturaE.setEnabled(false);
+             }
+    }
+    
     private void chb_MatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_MatriculaActionPerformed
-
-      if (chb_Matricula.isSelected()) {
+        habilitarMatricula();
+    }//GEN-LAST:event_chb_MatriculaActionPerformed
+    public void habilitarMatricula(){
+             if (chb_Matricula.isSelected()) {
                 
           chb_MatriculaG.setEnabled(true);
           chb_MatriculaR.setEnabled(true);
@@ -1246,12 +1274,16 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         }else{
           chb_MatriculaG.setEnabled(false);
           chb_MatriculaR.setEnabled(false);
-          chb_MatriculaC.setEnabled(false);}
-    }//GEN-LAST:event_chb_MatriculaActionPerformed
-
+          chb_MatriculaC.setEnabled(false);
+      } 
+    }
     private void chb_NotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_NotasActionPerformed
-        // TODO add your handling code here:
-           if (chb_Notas.isSelected()) {
+    habilitarNotas();
+      
+    }//GEN-LAST:event_chb_NotasActionPerformed
+
+    public void habilitarNotas(){
+        if (chb_Notas.isSelected()) {
                 
           
           chb_NotasG.setEnabled(true);
@@ -1264,11 +1296,15 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
           chb_NotasG.setEnabled(false);
           chb_NotasR.setEnabled(false);
           chb_NotasB.setEnabled(false);}
-      
-    }//GEN-LAST:event_chb_NotasActionPerformed
-
+    }
+    
     private void chb_AulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AulaActionPerformed
- if (chb_Aula.isSelected()) {
+        habilitarAula();
+          
+    }//GEN-LAST:event_chb_AulaActionPerformed
+
+    public void habilitarAula(){
+        if (chb_Aula.isSelected()) {
                 
           
              chb_AulaG.setEnabled(true);
@@ -1282,12 +1318,15 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
      chb_AulaG.setEnabled(false);
           chb_AulaA.setEnabled(false);
           chb_AulaB.setEnabled(false);
-          chb_AulaE.setEnabled(false);}
-          
-    }//GEN-LAST:event_chb_AulaActionPerformed
-
+          chb_AulaE.setEnabled(false);
+        }
+    }
     private void chb_CarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_CarreraActionPerformed
-   if (chb_Carrera.isSelected()) {
+        habilitarCarrera();
+    }//GEN-LAST:event_chb_CarreraActionPerformed
+
+    public void habilitarCarrera(){
+         if (chb_Carrera.isSelected()) {
                 
            chb_CarreraG.setEnabled(true);
           chb_CarreraA.setEnabled(true);
@@ -1301,9 +1340,12 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
           chb_CarreraA.setEnabled(false);
           chb_CarreraB.setEnabled(false);
           chb_CarreraE.setEnabled(false);}
-    }//GEN-LAST:event_chb_CarreraActionPerformed
-
+    }
     private void chb_AlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AlumnoActionPerformed
+        habilitarAlumno();
+    }//GEN-LAST:event_chb_AlumnoActionPerformed
+
+    public void habilitarAlumno(){
         if (chb_Alumno.isSelected()) {
             chb_AlumnoG.setEnabled(true);
           chb_AlumnoA.setEnabled(true);
@@ -1315,11 +1357,13 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
           chb_AlumnoB.setEnabled(false);
           chb_AlumnoE.setEnabled(false);
         }
-  
-    }//GEN-LAST:event_chb_AlumnoActionPerformed
-
+    }
     private void chb_CancelarAsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_CancelarAsignaturaActionPerformed
-           if (chb_CancelarAsignatura.isSelected()) {
+           habilitarCancelarAsignaturas();
+    }//GEN-LAST:event_chb_CancelarAsignaturaActionPerformed
+
+    public void habilitarCancelarAsignaturas(){
+        if (chb_CancelarAsignatura.isSelected()) {
             
             chb_CancelarAsignaturaE.setEnabled(true);
             chb_CancelarAsignaturaA.setEnabled(true);
@@ -1330,8 +1374,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
            chb_CancelarAsignaturaA.setEnabled(false);
            chb_CancelarAsignaturaB.setEnabled(false);
         }
-    }//GEN-LAST:event_chb_CancelarAsignaturaActionPerformed
-
+    }
     private void btn_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GuardarActionPerformed
         try {
             String usuario = (String) cbo_NombreUsuario.getSelectedItem();
@@ -1622,8 +1665,29 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
             PreparedStatement ps;
 
 
-            ps=con.prepareStatement("INSERT INTO Acceso_Pantallas ( nombre_usuario,Empleados,Secciones,Periodos,Asignatura,Matricula,Alumno,Notas,CancelarAsignatura,Aula,Carrera,EmpleadosFunciones,SeccionesFunciones,PeriodosFunciones,AsignaturaFunciones,MatriculaFunciones,AlumnoFunciones,NotasFunciones,CancelarAsignaturasFunciones,AulaFunciones,CarreraFunciones)"
-                + "                VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            ps=con.prepareStatement("Update Acceso_Pantallas \n" +
+                                    "set nombre_usuario = ?,\n" +
+                                    "Empleados = ?,\n" +
+                                    "Secciones = ?,\n" +
+                                    "Periodos = ?,\n" +
+                                    "Asignatura = ?,\n" +
+                                    "Matricula = ?,\n" +
+                                    "Alumno = ?,\n" +
+                                    "Notas = ?,\n" +
+                                    "CancelarAsignatura = ?,\n" +
+                                    "Aula = ?,\n" +
+                                    "Carrera = ?,\n" +
+                                    "EmpleadosFunciones = ?,\n" +
+                                    "SeccionesFunciones = ?,\n" +
+                                    "PeriodosFunciones = ?,\n" +
+                                    "AsignaturaFunciones = ?,\n" +
+                                    "MatriculaFunciones = ?,\n" +
+                                    "AlumnoFunciones = ?,\n" +
+                                    "NotasFunciones = ?,\n" +
+                                    "CancelarAsignaturasFunciones = ?,\n" +
+                                    "AulaFunciones = ?,\n" +
+                                    "CarreraFunciones  = ?\n" +
+                                    "where nombre_usuario = '"+usuario+"'");
             ps.setString(1,usuario);
             ps.setBoolean(2, empleados);
             ps.setBoolean(3,seccion);
@@ -1679,23 +1743,252 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         inhabilidado();
     }//GEN-LAST:event_btn_LimpiarActionPerformed
 
-    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
-           try {
+    private void cbo_NombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_NombreUsuarioActionPerformed
+       try{
+           deseleccionar();
+           String usuario = cbo_NombreUsuario.getSelectedItem().toString();
+           Statement st = con.createStatement();
+           String sql = "Select * from Acceso_Pantallas where nombre_usuario = '"+usuario+"'";
+           ResultSet rs = st.executeQuery(sql);
+           if(rs.next()){
+                if(rs.getString("Empleados").equals("1")){
+                    chb_Empleados.setSelected(true);
+                    habilitarEmpleado();
+                }
+                if(rs.getString("Secciones").equals("1")){
+                    chb_Secciones.setSelected(true);
+                    habilitarSecciones();
+                }
+                if(rs.getString("Periodos").equals("1")){
+                    chb_Periodo.setSelected(true);
+                    habilitarPeriodo();
+                }
+                if(rs.getString("Asignatura").equals("1")){
+                    chb_Asignatura.setSelected(true);
+                    habilitarAsignaturas();
+                }
+                if(rs.getString("Matricula").equals("1")){
+                    chb_Matricula.setSelected(true);
+                    habilitarMatricula();
+                }
+                
+                 if(rs.getString("Alumno").equals("1")){
+                    chb_Alumno.setSelected(true);
+                    habilitarAlumno();
+                }
+                if(rs.getString("Notas").equals("1")){
+                    chb_Notas.setSelected(true);
+                    habilitarNotas();
+                }
+                if(rs.getString("CancelarAsignatura").equals("1")){
+                    chb_CancelarAsignatura.setSelected(true);
+                    habilitarCancelarAsignaturas();
+                }
+                if(rs.getString("Aula").equals("1")){
+                    chb_Aula.setSelected(true);
+                    habilitarAula();
+                }
+                if(rs.getString("Carrera").equals("1")){
+                    chb_Carrera.setSelected(true);
+                    habilitarCarrera();
+                }
+                
+   
+                 //Funciones del empleado 
+                if(rs.getString("EmpleadosFunciones").contains("G")){
+                    chb_EmpleadosG.setSelected(true);
+                }
+
+                if(rs.getString("EmpleadosFunciones").contains("A")){
+                    chb_EmpleadosA.setSelected(true);
+                }
+
+                if(rs.getString("EmpleadosFunciones").contains("B")){
+                    chb_EmpleadosB.setSelected(true);
+                }
+
+                if(rs.getString("EmpleadosFunciones").contains("E")){
+                    chb_EmpleadosE.setSelected(true);
+                }
+
+                
+                 //Funciones de Secciones 
+                if(rs.getString("SeccionesFunciones").contains("G")){
+                    chb_SeccionesG.setSelected(true);
+                }
+
+                if(rs.getString("SeccionesFunciones").contains("A")){
+                    chb_SeccionesA.setSelected(true);
+                }
+
+                if(rs.getString("SeccionesFunciones").contains("B")){
+                    chb_SeccionesB.setSelected(true);
+                }
+
+                if(rs.getString("SeccionesFunciones").contains("E")){
+                    chb_SeccionesE.setSelected(true);
+                }
+               
+                
+                 //Funciones de Periodos
+                if(rs.getString("PeriodosFunciones").contains("G")){
+                    chb_PeriodoG.setSelected(true);
+                }
+
+                if(rs.getString("PeriodosFunciones").contains("A")){
+                    chb_PeriodoA.setSelected(true);
+                }
+
+                if(rs.getString("PeriodosFunciones").contains("B")){
+                    chb_PeriodoB.setSelected(true);
+                }
+
+                if(rs.getString("PeriodosFunciones").contains("E")){
+                    chb_PeriodoE.setSelected(true);
+                }
+               
+                
+                 //Funciones de Asignatura
+                if(rs.getString("AsignaturaFunciones").contains("G")){
+                    chb_AsignaturaG.setSelected(true);
+                }
+
+                if(rs.getString("AsignaturaFunciones").contains("A")){
+                    chb_AsignaturaA.setSelected(true);
+                }
+
+                if(rs.getString("AsignaturaFunciones").contains("B")){
+                    chb_AsignaturaB.setSelected(true);
+                }
+
+                if(rs.getString("AsignaturaFunciones").contains("E")){
+                    chb_AsignaturaE.setSelected(true);
+                }
+                
+                
+                 //Funciones de Matricula
+                if(rs.getString("MatriculaFunciones").contains("G")){
+                    chb_MatriculaG.setSelected(true);
+                }
+
+                if(rs.getString("MatriculaFunciones").contains("R")){
+                    chb_MatriculaR.setSelected(true);
+                }
+
+                if(rs.getString("MatriculaFunciones").contains("E")){
+                    chb_MatriculaC.setSelected(true);
+                }
+                
+                
+                //Funciones de Alumno
+                if(rs.getString("AlumnoFunciones").contains("G")){
+                    chb_AlumnoG.setSelected(true);
+                }
+
+                if(rs.getString("AlumnoFunciones").contains("A")){
+                    chb_AlumnoA.setSelected(true);
+                }
+
+                if(rs.getString("AlumnoFunciones").contains("B")){
+                    chb_AlumnoB.setSelected(true);
+                }
+
+                if(rs.getString("AlumnoFunciones").contains("E")){
+                    chb_AlumnoE.setSelected(true);
+                }
+                
+                
+                //Funciones de Notas
+                if(rs.getString("NotasFunciones").contains("G")){
+                    chb_NotasG.setSelected(true);
+                }
+
+                if(rs.getString("NotasFunciones").contains("R")){
+                    chb_NotasR.setSelected(true);
+                }
+
+                if(rs.getString("NotasFunciones").contains("B")){
+                    chb_NotasB.setSelected(true);
+                }
+                
+                
+                 
+                 //Funciones de Cancelar Asignatura
+                 
+                if(rs.getString("CancelarAsignaturasFunciones").contains("A")){
+                    chb_CancelarAsignaturaA.setSelected(true);
+                }
+
+                if(rs.getString("CancelarAsignaturasFunciones").contains("B")){
+                    chb_CancelarAsignaturaB.setSelected(true);
+                }
+
+                if(rs.getString("CancelarAsignaturasFunciones").contains("E")){
+                    chb_CancelarAsignaturaE.setSelected(true);
+                }
+                
+                 
+                  //Funciones de Aula
+                if(rs.getString("AulaFunciones").contains("G")){
+                    chb_AulaG.setSelected(true);
+                }
+
+                if(rs.getString("AulaFunciones").contains("A")){
+                    chb_AulaA.setSelected(true);
+                }
+
+                if(rs.getString("AulaFunciones").contains("B")){
+                    chb_AulaB.setSelected(true);
+                }
+
+                if(rs.getString("AulaFunciones").contains("E")){
+                    chb_AulaE.setSelected(true);
+                }
+                
+                
+                 //Funciones de Carrera
+                if(rs.getString("CarreraFunciones").contains("G")){
+                    chb_CarreraG.setSelected(true);
+                }
+
+                if(rs.getString("CarreraFunciones").contains("A")){
+                    chb_CarreraA.setSelected(true);
+                }
+
+                if(rs.getString("CarreraFunciones").contains("B")){
+                    chb_CarreraB.setSelected(true);
+                }
+
+                if(rs.getString("CarreraFunciones").contains("E")){
+                    chb_CarreraE.setSelected(true);
+                }
+                 
+           }
+       }
+       catch(Exception e){
+           
+       }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbo_NombreUsuarioActionPerformed
+
+    private void menu_MenuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_MenuPrincipalActionPerformed
+
+        try {
             String sql2 = "Select nombres_empleado + ' ' + apellido_empleado from Empleados where id_empleado = (select id_empleado from Acceso where nombre_usuario = '"+lbl_usuario.getText()+"')";
-                Statement st2 = con.createStatement();
-                ResultSet rs2 = st2.executeQuery(sql2);
-                if(rs2.next()){
+            Statement st2 = con.createStatement();
+            ResultSet rs2 = st2.executeQuery(sql2);
+            if(rs2.next()){
                 Principal principal = new Principal(lbl_usuario.getText(),rs2.getString(1));
-                principal.setVisible(true); 
+                principal.setVisible(true);
                 this.dispose();
-                }
-                else{
-                    JOptionPane.showMessageDialog(null, "Error");
-                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Error");
+            }
         } catch (SQLException e) {
             try {
-                Log myLog; 
-                String nombreArchivo = "src\\Logs\\Acceso_Pantallas " + fecha + ".txt";
+                Log myLog;
+                String nombreArchivo = "src\\Logs\\Acceso Pantallas " + fecha + ".txt";
                 myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
@@ -1703,8 +1996,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-       
-    }//GEN-LAST:event_jMenu2ActionPerformed
+    }//GEN-LAST:event_menu_MenuPrincipalActionPerformed
  private void inhabilidado(){
           chb_EmpleadosG.setEnabled(false);
           chb_EmpleadosA.setEnabled(false);
@@ -1851,7 +2143,6 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -1869,6 +2160,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_Periodo;
     private javax.swing.JLabel lbl_Secciones;
     private javax.swing.JLabel lbl_usuario;
+    private javax.swing.JMenuItem menu_MenuPrincipal;
     // End of variables declaration//GEN-END:variables
 
  private void limpiar(){
