@@ -74,6 +74,7 @@ public class Asignaturas extends javax.swing.JFrame {
      public Asignaturas(String nombreUsuario) throws SQLException {
         this.con = ConectorSQL.obtenerConexion ();
         initComponents();
+        noVisible();
         ArrayList<String> lista = new ArrayList<String>();
              lista = new Conexion_consulta().llenar_combo2();
             for(int i = 0; i<lista.size();i++){
@@ -93,7 +94,45 @@ public class Asignaturas extends javax.swing.JFrame {
             this.btn_actualizar.setEnabled(false);
             this.lbl_codigo.setVisible(false);
               this.setLocationRelativeTo(null);
+              habilitar(this.lbl_usuario.getText());
     }
+     
+      private void noVisible(){
+         btn_guardar.setVisible(false);
+         btn_actualizar.setVisible(false);
+         btn_buscar.setVisible(false);
+         btn_eliminar1.setVisible(false);
+         }
+        
+        private void habilitar(String nombreUsuario){
+     try {
+         Statement st = con.createStatement();
+         String sql = "select * from Acceso_Pantallas where nombre_usuario = '"+nombreUsuario+"'";
+         ResultSet rs = st.executeQuery(sql);
+         if(rs.next()){
+             
+         
+                if(rs.getString("AsignaturaFunciones").contains("G")){
+                    btn_guardar.setVisible(true);
+                }
+                if(rs.getString("AsignaturaFunciones").contains("A")){
+                    btn_actualizar.setVisible(true);
+                }
+            
+                       if(rs.getString("AsignaturaFunciones").contains("B")){
+                  btn_buscar.setVisible(true);
+                }
+                       if(rs.getString("AsignaturaFunciones").contains("E")){
+                  btn_eliminar1.setVisible(true);
+                }
+                
+         }
+         
+     } catch (SQLException ex) {
+         Logger.getLogger(Matricula.class.getName()).log(Level.SEVERE, null, ex);
+     }
+        }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -221,6 +260,11 @@ public class Asignaturas extends javax.swing.JFrame {
         lbl_Req2.setText("Requisito 2:");
 
         cbo_IdCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione una carrera" }));
+        cbo_IdCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbo_IdCarreraActionPerformed(evt);
+            }
+        });
 
         txt_UniVal.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txt_UniVal.addActionListener(new java.awt.event.ActionListener() {
@@ -1071,6 +1115,10 @@ public class Asignaturas extends javax.swing.JFrame {
     private void txt_UniValActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_UniValActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_UniValActionPerformed
+
+    private void cbo_IdCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_IdCarreraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbo_IdCarreraActionPerformed
 
     /**
      * @param args the command line arguments

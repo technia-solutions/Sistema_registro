@@ -59,25 +59,61 @@ public class Notas extends javax.swing.JFrame {
     public Notas() throws SQLException {
          this.con = ConectorSQL.obtenerConexion();
          initComponents();
+       
          this.lbl_idmatricula.setVisible(false);
          desactivar();
          this.Tabla_asignatura.setEnabled(true);
          this.setLocationRelativeTo(null);
          this.setTitle("Notas");
+         
          this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
     }
     
      public Notas(String nombreUsuario) throws SQLException {
          this.con = ConectorSQL.obtenerConexion();
          initComponents();
+           noVisible();
          this.lbl_idmatricula.setVisible(false);
          desactivar();
          this.lbl_usuario.setText(nombreUsuario);
          this.Tabla_asignatura.setEnabled(true);
          this.setLocationRelativeTo(null);
          this.setTitle("Notas");
+         habilitar(this.lbl_usuario.getText());
          this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
     }
+     private void noVisible(){
+         btn_guardar.setVisible(false);
+         btn_buscarClases.setVisible(false);
+          btn_generarReporte.setVisible(false);
+         }
+        
+        private void habilitar(String nombreUsuario){
+     try {
+         Statement st = con.createStatement();
+         String sql = "select * from Acceso_Pantallas where nombre_usuario = '"+nombreUsuario+"'";
+         ResultSet rs = st.executeQuery(sql);
+         if(rs.next()){
+             
+         
+                if(rs.getString("NotasFunciones").contains("G")){
+                    btn_guardar.setVisible(true);
+                }
+             
+                if(rs.getString("NotasFunciones").contains("R")){
+                  btn_generarReporte.setVisible(true);
+                }
+                 if(rs.getString("NotasFunciones").contains("B")){
+                  btn_buscarClases.setVisible(true);
+                }
+             
+                
+         }
+         
+     } catch (SQLException ex) {
+         Logger.getLogger(Matricula.class.getName()).log(Level.SEVERE, null, ex);
+     }
+        }
 
     
      private void LimpiarCajas(){

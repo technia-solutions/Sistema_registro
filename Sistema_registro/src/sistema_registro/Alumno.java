@@ -88,6 +88,7 @@ public class Alumno extends javax.swing.JFrame {
     public Alumno(String nombreUsuario) throws SQLException {
         initComponents();
         this.con = ConectorSQL.obtenerConexion();
+        noVisible();
          ArrayList<String> lista = new ArrayList<String>();
              lista = new Conexion_consulta().llenar_combo2();
             for(int i = 0; i<lista.size();i++){
@@ -131,7 +132,41 @@ public class Alumno extends javax.swing.JFrame {
         this.setTitle("Alumno");
         this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
           this.setLocationRelativeTo(null);
+          habilitar(lbl_usuario.getText());
     }
+          private void noVisible(){
+         btn_guardar.setVisible(false);
+         btn_actualizar.setVisible(false);
+         btn_buscar.setVisible(false);
+       
+         }
+        
+        private void habilitar(String nombreUsuario){
+     try {
+         Statement st = con.createStatement();
+         String sql = "select * from Acceso_Pantallas where nombre_usuario = '"+nombreUsuario+"'";
+         ResultSet rs = st.executeQuery(sql);
+         if(rs.next()){
+             
+         
+                if(rs.getString("AlumnoFunciones").contains("G")){
+                    btn_guardar.setVisible(true);
+                }
+                if(rs.getString("AlumnoFunciones").contains("A")){
+                    btn_actualizar.setVisible(true);
+                }
+            
+                       if(rs.getString("AlumnoFunciones").contains("B")){
+                  btn_buscar.setVisible(true);
+                }
+      
+                
+         }
+         
+     } catch (SQLException ex) {
+         Logger.getLogger(Matricula.class.getName()).log(Level.SEVERE, null, ex);
+     }
+        }
     
     public boolean existeAlumno(){
        try {
@@ -220,7 +255,7 @@ public class Alumno extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        btn_agregarAlumnos = new javax.swing.JButton();
+        btn_guardar = new javax.swing.JButton();
         btn_Limpiar = new javax.swing.JButton();
         btn_actualizar = new javax.swing.JButton();
         lbl_nombre = new javax.swing.JLabel();
@@ -281,17 +316,17 @@ public class Alumno extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(215, 236, 233));
 
-        btn_agregarAlumnos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btn_agregarAlumnos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Guardar.png"))); // NOI18N
-        btn_agregarAlumnos.setText("Guardar");
-        btn_agregarAlumnos.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_guardar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btn_guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Guardar.png"))); // NOI18N
+        btn_guardar.setText("Guardar");
+        btn_guardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_agregarAlumnosMouseClicked(evt);
+                btn_guardarMouseClicked(evt);
             }
         });
-        btn_agregarAlumnos.addActionListener(new java.awt.event.ActionListener() {
+        btn_guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_agregarAlumnosActionPerformed(evt);
+                btn_guardarActionPerformed(evt);
             }
         });
 
@@ -432,7 +467,7 @@ public class Alumno extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btn_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_agregarAlumnos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_guardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btn_actualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btn_Limpiar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -514,7 +549,7 @@ public class Alumno extends javax.swing.JFrame {
                             .addComponent(cld_fechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(90, 90, 90)
-                        .addComponent(btn_agregarAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -581,9 +616,9 @@ public class Alumno extends javax.swing.JFrame {
    
     }//GEN-LAST:event_txt_nombresActionPerformed
 
-    private void btn_agregarAlumnosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_agregarAlumnosMouseClicked
+    private void btn_guardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_guardarMouseClicked
       
-    }//GEN-LAST:event_btn_agregarAlumnosMouseClicked
+    }//GEN-LAST:event_btn_guardarMouseClicked
 
     public boolean validarIdentidad(String identidad){
         String id = identidad.substring(0, 1);
@@ -607,7 +642,7 @@ public class Alumno extends javax.swing.JFrame {
            return false; 
         }    
     }
-    private void btn_agregarAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarAlumnosActionPerformed
+    private void btn_guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardarActionPerformed
         try{
         String numeroDeCuenta,nombreAlumno, apellidoAlumno, telefonoAlumno, idCarrera, identidad;
         numeroDeCuenta = "";
@@ -893,7 +928,7 @@ public class Alumno extends javax.swing.JFrame {
         
           
         
-    }//GEN-LAST:event_btn_agregarAlumnosActionPerformed
+    }//GEN-LAST:event_btn_guardarActionPerformed
 
     private void btn_LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LimpiarActionPerformed
          limpiar();
@@ -992,7 +1027,7 @@ public class Alumno extends javax.swing.JFrame {
                       this.btn_actualizar.setEnabled(false); 
                       this.lbl_numeroCuenta.setVisible(false);
                       this.lbl_cuenta.setVisible(false);
-                      this.btn_agregarAlumnos.setEnabled(true);
+                      this.btn_guardar.setEnabled(true);
                       limpiar();
             } catch ( HeadlessException | SQLException e) {
                try {
@@ -1055,7 +1090,7 @@ public class Alumno extends javax.swing.JFrame {
                                 lbl_cuenta.setText(rs2.getString("numero_cuenta_alumno"));
                                 txt_identidad.setText(rs2.getString("numero_identidad"));
                                 this.btn_actualizar.setEnabled(true); 
-                                this.btn_agregarAlumnos.setEnabled(false);
+                                this.btn_guardar.setEnabled(false);
                             }
                             else{
                                JOptionPane.showMessageDialog(null,"¡No se encuentra el alumno! Por favor verifique sí, lo escribió correctamente");
@@ -1252,7 +1287,7 @@ public class Alumno extends javax.swing.JFrame {
         lbl_numeroCuenta.setVisible(false);
         lbl_cuenta.setVisible(false);
         this.btn_actualizar.setEnabled(false);
-        this.btn_agregarAlumnos.setEnabled(true);
+        this.btn_guardar.setEnabled(true);
         this.btn_buscar.setEnabled(true);
         this.cbo_periodo.setEnabled(true);
         cbo_periodo.removeAllItems();
@@ -1307,8 +1342,8 @@ public class Alumno extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Limpiar;
     private javax.swing.JButton btn_actualizar;
-    private javax.swing.JButton btn_agregarAlumnos;
     private javax.swing.JButton btn_buscar;
+    private javax.swing.JButton btn_guardar;
     private javax.swing.JComboBox<String> cbo_campus;
     private javax.swing.JComboBox<String> cbo_carrera;
     private javax.swing.JComboBox<String> cbo_periodo;

@@ -132,8 +132,8 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jButton1" max="32767" attributes="0"/>
                           <Component id="btn_consulta" alignment="0" max="32767" attributes="0"/>
-                          <Component id="btn_actualizar" alignment="0" pref="170" max="32767" attributes="0"/>
-                          <Component id="btn_agregarPeriodo" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btn_Actualizar" alignment="0" pref="170" max="32767" attributes="0"/>
+                          <Component id="btn_Guardar" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="32" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -176,9 +176,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
-                      <Component id="btn_agregarPeriodo" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_Guardar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btn_actualizar" min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="btn_Actualizar" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btn_consulta" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -254,7 +254,7 @@
                 <Property name="dateFormatString" type="java.lang.String" value="dd/MM/yyyy"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btn_agregarPeriodo">
+            <Component class="javax.swing.JButton" name="btn_Guardar">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="18" style="1"/>
@@ -265,7 +265,7 @@
                 <Property name="text" type="java.lang.String" value="Guardar"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_agregarPeriodoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_GuardarActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="cbo_periodo">
@@ -283,7 +283,7 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JButton" name="btn_actualizar">
+            <Component class="javax.swing.JButton" name="btn_Actualizar">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="18" style="1"/>
@@ -294,7 +294,7 @@
                 <Property name="text" type="java.lang.String" value="Actualizar"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_actualizarActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_ActualizarActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_consulta">

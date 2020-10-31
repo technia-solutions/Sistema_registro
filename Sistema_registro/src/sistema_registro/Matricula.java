@@ -52,10 +52,12 @@ public class Matricula extends javax.swing.JFrame {
      final Calendar calendar = Calendar.getInstance();
     final java.util.Date  date = calendar.getTime();
     String fecha = new SimpleDateFormat("d-MM-yyyy hh.mm.ss a ").format(date);
+   
     /**
     /**
      * Creates new form Matricula
      */
+            
     public Matricula()throws SQLException{
         this.con = ConectorSQL.obtenerConexion();
          initComponents();
@@ -68,6 +70,7 @@ public class Matricula extends javax.swing.JFrame {
         this.btn_generarReporte.setEnabled(false);
         this.lbl_codAsignatura.setVisible(false);
         this.setLocationRelativeTo(null);
+
     }
     
         public Matricula(String nombreUsuario)throws SQLException{
@@ -83,9 +86,41 @@ public class Matricula extends javax.swing.JFrame {
          this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
           this.lbl_codAsignatura.setVisible(false);
            this.setLocationRelativeTo(null);
+           noVisible();
+          habilitar(this.lbl_usuario.getText());
         
     }
-
+         private void noVisible(){
+         btn_matricularAsignatura.setVisible(false);
+         lbl_cancelarAsignatura.setVisible(false);
+          btn_generarReporte.setVisible(false);
+         }
+        
+        private void habilitar(String nombreUsuario){
+     try {
+         Statement st = con.createStatement();
+         String sql = "select * from Acceso_Pantallas where nombre_usuario = '"+nombreUsuario+"'";
+         ResultSet rs = st.executeQuery(sql);
+         if(rs.next()){
+             
+         
+                if(rs.getString("MatriculaFunciones").contains("G")){
+                    btn_matricularAsignatura.setVisible(true);
+                }
+                if(rs.getString("MatriculaFunciones").contains("CA")){
+                    lbl_cancelarAsignatura.setVisible(true);
+                }
+                if(rs.getString("MatriculaFunciones").contains("R")){
+                  btn_generarReporte.setVisible(true);
+                }
+             
+                
+         }
+         
+     } catch (SQLException ex) {
+         Logger.getLogger(Matricula.class.getName()).log(Level.SEVERE, null, ex);
+     }
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.

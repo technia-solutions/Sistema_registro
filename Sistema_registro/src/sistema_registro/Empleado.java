@@ -114,6 +114,8 @@ public class Empleado extends javax.swing.JFrame {
             for(int i = 0; i<lista2.size();i++){
                 cbo_tipoUsuario.addItem(lista2.get(i));
             }
+            noVisible();
+           
             Calendar f;
        
        f=Calendar.getInstance();
@@ -134,7 +136,44 @@ public class Empleado extends javax.swing.JFrame {
         this.btn_Eliminar.setEnabled(false);
         this.lbl_numeroIdentidad.setVisible(false);
         this.lbl_nombreU.setVisible(false);
+         habilitar(lbl_usuario.getText());
     } 
+     private void noVisible(){
+         btn_guardar.setVisible(false);
+         btn_Actualizar.setVisible(false);
+          btn_Eliminar.setVisible(false);
+             btn_consultar.setVisible(false);
+         }
+        
+        private void habilitar(String nombreUsuario){
+     try {
+         Statement st = con.createStatement();
+         String sql = "select * from Acceso_Pantallas where nombre_usuario = '"+nombreUsuario+"'";
+         ResultSet rs = st.executeQuery(sql);
+         if(rs.next()){
+             
+         
+                if(rs.getString("EmpleadosFunciones").contains("G")){
+                    btn_guardar.setVisible(true);
+                }
+                if(rs.getString("EmpleadosFunciones").contains("A")){
+                    btn_Actualizar.setVisible(true);
+                }
+                if(rs.getString("EmpleadosFunciones").contains("E")){
+                  btn_Eliminar.setVisible(true);
+                }
+                       if(rs.getString("EmpleadosFunciones").contains("B")){
+                  btn_consultar.setVisible(true);
+                }
+             
+                
+         }
+         
+     } catch (SQLException ex) {
+         Logger.getLogger(Matricula.class.getName()).log(Level.SEVERE, null, ex);
+     }
+        }
+
     
     
     /**
@@ -418,7 +457,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         btn_consultar.setBackground(new java.awt.Color(235, 250, 251));
         btn_consultar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btn_consultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Consulta.png"))); // NOI18N
-        btn_consultar.setText("Consultar");
+        btn_consultar.setText("Buscar");
         btn_consultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_consultarActionPerformed(evt);
@@ -447,7 +486,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(70, 380, 73, 23);
+        jButton2.setBounds(70, 380, 79, 25);
 
         chb_mostrarContraseña.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         chb_mostrarContraseña.setText("Mostrar contraseña");
@@ -458,7 +497,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jPanel1.add(chb_mostrarContraseña);
-        chb_mostrarContraseña.setBounds(940, 160, 147, 23);
+        chb_mostrarContraseña.setBounds(940, 160, 147, 25);
 
         lbl_nombres.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_nombres.setText("Nombres:");
@@ -629,7 +668,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
 
         lbl_nombreU.setText("jLabel4");
         jPanel1.add(lbl_nombreU);
-        lbl_nombreU.setBounds(890, 20, 140, 14);
+        lbl_nombreU.setBounds(890, 20, 140, 16);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 1240, 360));
 

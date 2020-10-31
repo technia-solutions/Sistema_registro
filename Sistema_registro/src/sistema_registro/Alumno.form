@@ -125,7 +125,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="btn_buscar" max="32767" attributes="0"/>
-                              <Component id="btn_agregarAlumnos" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btn_guardar" alignment="0" max="32767" attributes="0"/>
                               <Component id="btn_actualizar" alignment="0" max="32767" attributes="0"/>
                               <Component id="btn_Limpiar" alignment="1" max="32767" attributes="0"/>
                           </Group>
@@ -234,7 +234,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
-                          <Component id="btn_agregarAlumnos" min="-2" pref="41" max="-2" attributes="0"/>
+                          <Component id="btn_guardar" min="-2" pref="41" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btn_actualizar" min="-2" pref="41" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -249,7 +249,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="btn_agregarAlumnos">
+        <Component class="javax.swing.JButton" name="btn_guardar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="1"/>
@@ -260,8 +260,8 @@
             <Property name="text" type="java.lang.String" value="Guardar"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_agregarAlumnosMouseClicked"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_agregarAlumnosActionPerformed"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_guardarMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_guardarActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_Limpiar">

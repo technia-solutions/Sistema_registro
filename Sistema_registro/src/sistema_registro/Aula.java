@@ -65,6 +65,7 @@ public class Aula extends javax.swing.JFrame {
      public Aula(String nombreUsuario) throws SQLException {
          this.con = ConectorSQL.obtenerConexion();
         initComponents();
+        noVisible();
          ArrayList<String> lista = new ArrayList<String>();
              lista = new Conexion_consulta().llenar_edificio();
             for(int i = 0; i<lista.size();i++){
@@ -78,7 +79,43 @@ public class Aula extends javax.swing.JFrame {
             this.btn_actualizar.setEnabled(false);
             this.lbl_aula.setVisible(false);
             this.setLocationRelativeTo(null);
+            habilitar(this.lbl_usuario.getText());
      }
+      private void noVisible(){
+         btn_guardar.setVisible(false);
+         btn_actualizar.setVisible(false);
+         btn_buscar.setVisible(false);
+         btn_eliminar.setVisible(false);
+         }
+        
+        private void habilitar(String nombreUsuario){
+     try {
+         Statement st = con.createStatement();
+         String sql = "select * from Acceso_Pantallas where nombre_usuario = '"+nombreUsuario+"'";
+         ResultSet rs = st.executeQuery(sql);
+         if(rs.next()){
+             
+         
+                if(rs.getString("AulaFunciones").contains("G")){
+                    btn_guardar.setVisible(true);
+                }
+                if(rs.getString("AulaFunciones").contains("A")){
+                    btn_actualizar.setVisible(true);
+                }
+            
+                       if(rs.getString("AulaFunciones").contains("B")){
+                  btn_buscar.setVisible(true);
+                }
+                       if(rs.getString("AulaFunciones").contains("E")){
+                  btn_eliminar.setVisible(true);
+                }
+                
+         }
+         
+     } catch (SQLException ex) {
+         Logger.getLogger(Matricula.class.getName()).log(Level.SEVERE, null, ex);
+     }
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.

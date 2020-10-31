@@ -173,7 +173,6 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         chb_AlumnoB = new javax.swing.JCheckBox();
         chb_AulaE = new javax.swing.JCheckBox();
         chb_CarreraE = new javax.swing.JCheckBox();
-        chb_AlumnoE = new javax.swing.JCheckBox();
         chb_CancelarAsignaturaA = new javax.swing.JCheckBox();
         chb_CancelarAsignaturaB = new javax.swing.JCheckBox();
         chb_CancelarAsignaturaE = new javax.swing.JCheckBox();
@@ -735,16 +734,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
             }
         });
 
-        chb_AlumnoE.setText("Eliminar");
-        chb_AlumnoE.setContentAreaFilled(false);
-        chb_AlumnoE.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        chb_AlumnoE.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chb_AlumnoEActionPerformed(evt);
-            }
-        });
-
-        chb_CancelarAsignaturaA.setText("Actualizar");
+        chb_CancelarAsignaturaA.setText("Cancelar");
         chb_CancelarAsignaturaA.setContentAreaFilled(false);
         chb_CancelarAsignaturaA.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         chb_CancelarAsignaturaA.addActionListener(new java.awt.event.ActionListener() {
@@ -787,7 +777,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(chb_AsignaturaG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(36, 36, 36)
-                                .addComponent(chb_AsignaturaA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(chb_AsignaturaA))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(chb_MatriculaG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(36, 36, 36)
@@ -805,16 +795,17 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(chb_SeccionesG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(36, 36, 36)
-                                .addComponent(chb_SeccionesA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(chb_SeccionesA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(chb_PeriodoG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(36, 36, 36)
-                                .addComponent(chb_PeriodoA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(chb_PeriodoA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(chb_EmpleadosG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(36, 36, 36)
-                                .addComponent(chb_EmpleadosA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(27, 27, 27)
+                                .addComponent(chb_EmpleadosA, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(chb_SeccionesB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -831,10 +822,6 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(chb_AlumnoG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addComponent(chb_AlumnoA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(chb_CarreraG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(36, 36, 36)
                                 .addComponent(chb_CarreraA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -842,17 +829,18 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                                 .addComponent(chb_AulaG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(36, 36, 36)
                                 .addComponent(chb_AulaA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(chb_CancelarAsignaturaA, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(chb_AlumnoG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(chb_CancelarAsignaturaA))
+                                .addGap(32, 32, 32)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(chb_CancelarAsignaturaB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(chb_AlumnoA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(27, 27, 27)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(chb_CancelarAsignaturaB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(chb_CancelarAsignaturaE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(chb_AlumnoB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)
-                                .addComponent(chb_AlumnoE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chb_CancelarAsignaturaE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(chb_AlumnoB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(chb_CarreraB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(34, 34, 34)
@@ -861,7 +849,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                                 .addComponent(chb_AulaB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(34, 34, 34)
                                 .addComponent(chb_AulaE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -916,16 +904,15 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                         .addComponent(chb_CarreraA)
                         .addComponent(chb_CarreraG)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(chb_AlumnoE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(chb_AlumnoB)
-                        .addComponent(chb_AlumnoA)
-                        .addComponent(chb_AlumnoG)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(chb_AlumnoB)
+                    .addComponent(chb_AlumnoA)
+                    .addComponent(chb_AlumnoG))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chb_CancelarAsignaturaE)
-                    .addComponent(chb_CancelarAsignaturaB)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(chb_CancelarAsignaturaB)
+                        .addComponent(chb_CancelarAsignaturaE))
                     .addComponent(chb_CancelarAsignaturaA))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
@@ -1166,10 +1153,6 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_chb_CarreraEActionPerformed
 
-    private void chb_AlumnoEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AlumnoEActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_AlumnoEActionPerformed
-
     private void chb_CancelarAsignaturaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_CancelarAsignaturaAActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_chb_CancelarAsignaturaAActionPerformed
@@ -1350,12 +1333,12 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
             chb_AlumnoG.setEnabled(true);
           chb_AlumnoA.setEnabled(true);
           chb_AlumnoB.setEnabled(true);
-          chb_AlumnoE.setEnabled(true);
+        //  chb_AlumnoE.setEnabled(true);
         }else{
           chb_AlumnoG.setEnabled(false);
           chb_AlumnoA.setEnabled(false);
           chb_AlumnoB.setEnabled(false);
-          chb_AlumnoE.setEnabled(false);
+        //  chb_AlumnoE.setEnabled(false);
         }
     }
     private void chb_CancelarAsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_CancelarAsignaturaActionPerformed
@@ -1540,9 +1523,9 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                funcionesalumno += "B";
            }
            
-           if(chb_AlumnoE.isSelected()){
-               funcionesalumno += "E";
-           }
+        //   if(chb_AlumnoE.isSelected()){
+           //    funcionesalumno += "E";
+         //  }
            
            //Funciones Cancelar Asignatura
            
@@ -1728,7 +1711,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         } catch (Exception e) {
               try {
                 Log myLog; 
-                String nombreArchivo = "src\\Logs\\Empleado " + fecha + ".txt";
+                String nombreArchivo = "src\\Logs\\AccesoPantalla " + fecha + ".txt";
                 myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
@@ -1893,9 +1876,9 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                     chb_AlumnoB.setSelected(true);
                 }
 
-                if(rs.getString("AlumnoFunciones").contains("E")){
-                    chb_AlumnoE.setSelected(true);
-                }
+               // if(rs.getString("AlumnoFunciones").contains("E")){
+                 //   chb_AlumnoE.setSelected(true);
+             //   }
                 
                 
                 //Funciones de Notas
@@ -2037,7 +2020,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
           chb_AlumnoG.setEnabled(false);
           chb_AlumnoA.setEnabled(false);
           chb_AlumnoB.setEnabled(false);
-          chb_AlumnoE.setEnabled(false);
+//          chb_AlumnoE.setEnabled(false);
           
            chb_CancelarAsignaturaE.setEnabled(false);
            chb_CancelarAsignaturaA.setEnabled(false);
@@ -2090,7 +2073,6 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
     private javax.swing.JCheckBox chb_Alumno;
     private javax.swing.JCheckBox chb_AlumnoA;
     private javax.swing.JCheckBox chb_AlumnoB;
-    private javax.swing.JCheckBox chb_AlumnoE;
     private javax.swing.JCheckBox chb_AlumnoG;
     private javax.swing.JCheckBox chb_Asignatura;
     private javax.swing.JCheckBox chb_AsignaturaA;
@@ -2210,7 +2192,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
          chb_AlumnoG.setSelected(false);
          chb_AlumnoA.setSelected(false);
          chb_AlumnoB.setSelected(false);
-         chb_AlumnoE.setSelected(false);
+//         chb_AlumnoE.setSelected(false);
          chb_Alumno.setSelected(false);
          chb_CancelarAsignaturaA.setSelected(false);
          chb_CancelarAsignaturaB.setSelected(false);

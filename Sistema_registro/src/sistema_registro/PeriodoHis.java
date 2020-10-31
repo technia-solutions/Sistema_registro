@@ -56,15 +56,19 @@ DefaultTableModel modelo = new DefaultTableModel();
                 cbo_periodo.addItem(lista.get(i));
                 }
             
-           this.btn_actualizar.setEnabled(false); 
+           this.btn_Actualizar.setEnabled(false); 
            this.setTitle("Período Histórico");
            this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
             this.setLocationRelativeTo(null);
+            noVisible();
+            habilitar(lbl_usuario.getText());
     }
+    
     
      public PeriodoHis(String nombreUsuario) throws SQLException {
         this.con = ConectorSQL.obtenerConexion();
         initComponents();
+          noVisible();
         actualizarDatos();
         this.lbl_nombrePeriodo.setVisible(false);
         this.lbl_nombre.setVisible(false);
@@ -74,13 +78,49 @@ DefaultTableModel modelo = new DefaultTableModel();
                 cbo_periodo.addItem(lista.get(i));
                 }
             
-           this.btn_actualizar.setEnabled(false); 
+           this.btn_Actualizar.setEnabled(false); 
              this.setTitle("Período Histórico");
               this.lbl_usuario.setText(nombreUsuario);
+              habilitar(this.lbl_usuario.getText());
          this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
           this.setLocationRelativeTo(null);
           
+         
+          
+          
     }
+      private void noVisible(){
+         btn_Guardar.setVisible(false);
+         btn_Actualizar.setVisible(false);
+         btn_consulta.setVisible(false);
+         }
+        
+        private void habilitar(String nombreUsuario){
+     try {
+         Statement st = con.createStatement();
+         String sql = "select * from Acceso_Pantallas where nombre_usuario = '"+nombreUsuario+"'";
+         ResultSet rs = st.executeQuery(sql);
+         if(rs.next()){
+             
+         
+                if(rs.getString("PeriodosFunciones").contains("G")){
+                    btn_Guardar.setVisible(true);
+                }
+                if(rs.getString("PeriodosFunciones").contains("A")){
+                    btn_Actualizar.setVisible(true);
+                }
+            
+                       if(rs.getString("PeriodosFunciones").contains("B")){
+                  btn_consulta.setVisible(true);
+                }
+             
+                
+         }
+         
+     } catch (SQLException ex) {
+         Logger.getLogger(Matricula.class.getName()).log(Level.SEVERE, null, ex);
+     }
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -99,9 +139,9 @@ DefaultTableModel modelo = new DefaultTableModel();
         lbl_fechaFinal = new javax.swing.JLabel();
         cld_fechaInicial = new com.toedter.calendar.JDateChooser();
         cld_fechaFinal = new com.toedter.calendar.JDateChooser();
-        btn_agregarPeriodo = new javax.swing.JButton();
+        btn_Guardar = new javax.swing.JButton();
         cbo_periodo = new javax.swing.JComboBox<>();
-        btn_actualizar = new javax.swing.JButton();
+        btn_Actualizar = new javax.swing.JButton();
         btn_consulta = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_Periodo = new javax.swing.JTable();
@@ -140,24 +180,24 @@ DefaultTableModel modelo = new DefaultTableModel();
 
         cld_fechaFinal.setDateFormatString("dd/MM/yyyy");
 
-        btn_agregarPeriodo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_agregarPeriodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Guardar.png"))); // NOI18N
-        btn_agregarPeriodo.setText("Guardar");
-        btn_agregarPeriodo.addActionListener(new java.awt.event.ActionListener() {
+        btn_Guardar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_Guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Guardar.png"))); // NOI18N
+        btn_Guardar.setText("Guardar");
+        btn_Guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_agregarPeriodoActionPerformed(evt);
+                btn_GuardarActionPerformed(evt);
             }
         });
 
         cbo_periodo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cbo_periodo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un Período" }));
 
-        btn_actualizar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btn_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
-        btn_actualizar.setText("Actualizar");
-        btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
+        btn_Actualizar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btn_Actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Actualizar.png"))); // NOI18N
+        btn_Actualizar.setText("Actualizar");
+        btn_Actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_actualizarActionPerformed(evt);
+                btn_ActualizarActionPerformed(evt);
             }
         });
 
@@ -212,8 +252,8 @@ DefaultTableModel modelo = new DefaultTableModel();
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_consulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_actualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                    .addComponent(btn_agregarPeriodo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_Actualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                    .addComponent(btn_Guardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -244,9 +284,9 @@ DefaultTableModel modelo = new DefaultTableModel();
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(84, 84, 84)
-                .addComponent(btn_agregarPeriodo)
+                .addComponent(btn_Guardar)
                 .addGap(18, 18, 18)
-                .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_Actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn_consulta, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -358,7 +398,7 @@ DefaultTableModel modelo = new DefaultTableModel();
     
    
     
-    private void btn_agregarPeriodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarPeriodoActionPerformed
+    private void btn_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GuardarActionPerformed
 
             try {
             
@@ -471,9 +511,9 @@ DefaultTableModel modelo = new DefaultTableModel();
             }
                 
             }
-    }//GEN-LAST:event_btn_agregarPeriodoActionPerformed
+    }//GEN-LAST:event_btn_GuardarActionPerformed
 
-    private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
+    private void btn_ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ActualizarActionPerformed
      
         try {
         
@@ -521,8 +561,8 @@ DefaultTableModel modelo = new DefaultTableModel();
                 Limpiar();
                 this.lbl_nombre.setVisible(false);
                 this.lbl_nombrePeriodo.setVisible(false);
-                this.btn_actualizar.setEnabled(false);
-                this.btn_agregarPeriodo.setEnabled(true);
+                this.btn_Actualizar.setEnabled(false);
+                this.btn_Guardar.setEnabled(true);
             }else {
                 JOptionPane.showMessageDialog(null, "Error al Actualizar la información");
             }
@@ -553,7 +593,7 @@ DefaultTableModel modelo = new DefaultTableModel();
             
         }
         
-    }//GEN-LAST:event_btn_actualizarActionPerformed
+    }//GEN-LAST:event_btn_ActualizarActionPerformed
 
     public void rellenar(){
         
@@ -614,8 +654,8 @@ DefaultTableModel modelo = new DefaultTableModel();
         try {
         
         rellenar();
-        btn_agregarPeriodo.setEnabled(false);
-        this.btn_actualizar.setEnabled(true);
+        btn_Guardar.setEnabled(false);
+        this.btn_Actualizar.setEnabled(true);
         // TODO add your handling code here:
         
         } catch (Exception e) {
@@ -636,8 +676,8 @@ DefaultTableModel modelo = new DefaultTableModel();
     private void Tabla_PeriodoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_PeriodoMouseClicked
     try {
         llenarCampos();
-        this.btn_actualizar.setEnabled(true);
-        btn_agregarPeriodo.setEnabled(false);
+        this.btn_Actualizar.setEnabled(true);
+        btn_Guardar.setEnabled(false);
         // TODO add your handling code here:
     } catch (ParseException ex) {
         Logger.getLogger(PeriodoHis.class.getName()).log(Level.SEVERE, null, ex);
@@ -651,8 +691,8 @@ DefaultTableModel modelo = new DefaultTableModel();
         Limpiar();
         this.lbl_nombre.setVisible(false);
         this.lbl_nombrePeriodo.setVisible(false);
-          this.btn_actualizar.setEnabled(false);
-          this.btn_agregarPeriodo.setEnabled(true);
+          this.btn_Actualizar.setEnabled(false);
+          this.btn_Guardar.setEnabled(true);
           
         } catch (Exception e) {
             
@@ -858,8 +898,8 @@ DefaultTableModel modelo = new DefaultTableModel();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tabla_Periodo;
-    private javax.swing.JButton btn_actualizar;
-    private javax.swing.JButton btn_agregarPeriodo;
+    private javax.swing.JButton btn_Actualizar;
+    private javax.swing.JButton btn_Guardar;
     private javax.swing.JButton btn_consulta;
     private javax.swing.JComboBox<String> cbo_periodo;
     private com.toedter.calendar.JDateChooser cld_fechaFinal;

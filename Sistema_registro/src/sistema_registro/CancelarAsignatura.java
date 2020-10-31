@@ -70,6 +70,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         this.con = ConectorSQL.obtenerConexion();
         initComponents();
         obtenerPeriodo();
+        noVisible();
          this.setTitle("Cancelar Asignatura");
          this.lbl_usuario.setText(nombreUsuario);
           this.setIconImage(new ImageIcon(getClass().getResource("/Imagenes/Titulo.png")).getImage());
@@ -80,8 +81,41 @@ public class CancelarAsignatura extends javax.swing.JFrame {
         this.btn_CancelarAsig.setEnabled(false);
         this.btn_eliminarM.setEnabled(false); 
         this.setLocationRelativeTo(null);
+        habilitar(lbl_usuario.getText());
         
     }
+     private void noVisible(){
+          btn_CancelarAsig.setVisible(false);
+         btn_eliminarM.setVisible(false);
+         btn_buscar.setVisible(false);
+       
+         }
+        private void habilitar(String nombreUsuario){
+     try {
+         Statement st = con.createStatement();
+         String sql = "select * from Acceso_Pantallas where nombre_usuario = '"+nombreUsuario+"'";
+         ResultSet rs = st.executeQuery(sql);
+         if(rs.next()){
+             
+         
+                if(rs.getString("CancelarAsignaturasFunciones").contains("A")){
+                    btn_CancelarAsig.setVisible(true);
+                }
+                if(rs.getString("CancelarAsignaturasFunciones").contains("E")){
+                   btn_eliminarM.setVisible(true);
+                }
+            
+                       if(rs.getString("CancelarAsignaturasFunciones").contains("B")){
+                  btn_buscar.setVisible(true);
+                }
+      
+                
+         }
+         
+     } catch (SQLException ex) {
+         Logger.getLogger(Matricula.class.getName()).log(Level.SEVERE, null, ex);
+     }
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.

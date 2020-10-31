@@ -71,6 +71,7 @@ public class Carrera extends javax.swing.JFrame {
     public Carrera(String nombreUsuario) throws SQLException {
           this.con = ConectorSQL.obtenerConexion();
         initComponents();
+        noVisible();
         ArrayList<String> lista = new ArrayList<String>();
              lista = new Conexion_consulta().llenar_Facultad();
             for(int i = 0; i<lista.size();i++){
@@ -84,8 +85,44 @@ public class Carrera extends javax.swing.JFrame {
             this.btn_actualizar1.setEnabled(false);
             this.lbl_carrera.setVisible(false);
              this.setLocationRelativeTo(null);
+             habilitar(lbl_usuario.getText());
             
     }
+          private void noVisible(){
+         btn_guardar.setVisible(false);
+         btn_actualizar1.setVisible(false);
+         btn_buscar.setVisible(false);
+         btn_eliminar.setVisible(false);
+         }
+        
+        private void habilitar(String nombreUsuario){
+     try {
+         Statement st = con.createStatement();
+         String sql = "select * from Acceso_Pantallas where nombre_usuario = '"+nombreUsuario+"'";
+         ResultSet rs = st.executeQuery(sql);
+         if(rs.next()){
+             
+         
+                if(rs.getString("CarreraFunciones").contains("G")){
+                    btn_guardar.setVisible(true);
+                }
+                if(rs.getString("CarreraFunciones").contains("A")){
+                    btn_actualizar1.setVisible(true);
+                }
+            
+                       if(rs.getString("CarreraFunciones").contains("B")){
+                  btn_buscar.setVisible(true);
+                }
+                       if(rs.getString("CarreraFunciones").contains("E")){
+                  btn_eliminar.setVisible(true);
+                }
+                
+         }
+         
+     } catch (SQLException ex) {
+         Logger.getLogger(Matricula.class.getName()).log(Level.SEVERE, null, ex);
+     }
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -491,17 +528,18 @@ public class Carrera extends javax.swing.JFrame {
      
         actualizarDatos();
         LimpiarCajas();
-        } catch (Exception e) {
-             try {
-                Log myLog; 
-               String nombreArchivo = "src\\Logs\\Carrera " + fecha + ".txt";
+          } catch (Exception e) {
+              
+            try {
+                Log myLog;
+                String nombreArchivo = "src\\Logs\\Carrera " + fecha + ".txt";
                 myLog = new Log(nombreArchivo);
                 myLog.logger.setLevel(Level.SEVERE);
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+                 
         }
 
     }//GEN-LAST:event_btn_guardarActionPerformed
