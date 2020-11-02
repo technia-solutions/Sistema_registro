@@ -176,11 +176,19 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         chb_CancelarAsignaturaA = new javax.swing.JCheckBox();
         chb_CancelarAsignaturaB = new javax.swing.JCheckBox();
         chb_CancelarAsignaturaE = new javax.swing.JCheckBox();
-        jPanel3 = new javax.swing.JPanel();
+        chb_EmpleadosI = new javax.swing.JCheckBox();
+        chb_SeccionesI = new javax.swing.JCheckBox();
+        chb_PeriodoI = new javax.swing.JCheckBox();
+        chb_AsignaturaI = new javax.swing.JCheckBox();
+        chb_AulaI = new javax.swing.JCheckBox();
+        chb_CarreraI = new javax.swing.JCheckBox();
+        chb_AlumnoI = new javax.swing.JCheckBox();
+        chb_CancelarAsignaturaI = new javax.swing.JCheckBox();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menu_MenuPrincipal = new javax.swing.JMenuItem();
@@ -761,6 +769,30 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
             }
         });
 
+        chb_EmpleadosI.setBackground(new java.awt.Color(215, 236, 233));
+        chb_EmpleadosI.setText("Imprimir");
+
+        chb_SeccionesI.setBackground(new java.awt.Color(215, 236, 233));
+        chb_SeccionesI.setText("Imprimir");
+
+        chb_PeriodoI.setBackground(new java.awt.Color(215, 236, 233));
+        chb_PeriodoI.setText("Imprimir");
+
+        chb_AsignaturaI.setBackground(new java.awt.Color(215, 236, 233));
+        chb_AsignaturaI.setText("Imprimir");
+
+        chb_AulaI.setBackground(new java.awt.Color(215, 236, 233));
+        chb_AulaI.setText("Imprimir");
+
+        chb_CarreraI.setBackground(new java.awt.Color(215, 236, 233));
+        chb_CarreraI.setText("Imprimir");
+
+        chb_AlumnoI.setBackground(new java.awt.Color(215, 236, 233));
+        chb_AlumnoI.setText("Imprimir");
+
+        chb_CancelarAsignaturaI.setBackground(new java.awt.Color(215, 236, 233));
+        chb_CancelarAsignaturaI.setText("Imprimir");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -769,114 +801,140 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(chb_NotasG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addComponent(chb_NotasR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(chb_AsignaturaG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addComponent(chb_AsignaturaA))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(chb_MatriculaG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addComponent(chb_MatriculaR, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(chb_NotasB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(chb_MatriculaC)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(chb_AsignaturaB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)
-                                .addComponent(chb_AsignaturaE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(chb_SeccionesG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(chb_SeccionesA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(270, 270, 270))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(chb_PeriodoG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(chb_PeriodoA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(13, 13, 13)
+                        .addComponent(chb_PeriodoB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(189, 189, 189))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(chb_SeccionesG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addComponent(chb_SeccionesA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(chb_PeriodoG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addComponent(chb_PeriodoA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(chb_EmpleadosG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(36, 36, 36)
                                 .addComponent(chb_EmpleadosA, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(18, 18, 18)
+                                .addComponent(chb_EmpleadosB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(chb_SeccionesB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)
-                                .addComponent(chb_SeccionesE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(chb_PeriodoB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)
-                                .addComponent(chb_PeriodoE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(chb_EmpleadosB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)
-                                .addComponent(chb_EmpleadosE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(chb_CarreraG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addComponent(chb_CarreraA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(chb_AulaG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addComponent(chb_AulaA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(chb_NotasG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(36, 36, 36)
+                                        .addComponent(chb_NotasR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(chb_AsignaturaG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(36, 36, 36)
+                                        .addComponent(chb_AsignaturaA))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(chb_MatriculaG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(36, 36, 36)
+                                        .addComponent(chb_MatriculaR, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(chb_NotasB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(chb_MatriculaC)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(chb_AsignaturaB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(34, 34, 34)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(chb_EmpleadosE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(chb_EmpleadosI))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(chb_AsignaturaE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(chb_AsignaturaI))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(chb_PeriodoE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(chb_PeriodoI))
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(chb_SeccionesE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(chb_SeccionesI))))
+                                    .addComponent(chb_SeccionesB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(chb_AlumnoG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(chb_CancelarAsignaturaA))
-                                .addGap(32, 32, 32)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(chb_CancelarAsignaturaB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(chb_AlumnoA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(chb_CancelarAsignaturaE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(chb_AlumnoB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(chb_CarreraB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)
-                                .addComponent(chb_CarreraE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(chb_AulaB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)
-                                .addComponent(chb_AulaE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(chb_CarreraG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(36, 36, 36)
+                                        .addComponent(chb_CarreraA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(chb_AulaG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(36, 36, 36)
+                                        .addComponent(chb_AulaA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(chb_AlumnoG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(chb_CancelarAsignaturaA))
+                                        .addGap(32, 32, 32)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(chb_CancelarAsignaturaB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(chb_AlumnoA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(27, 27, 27)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(chb_AulaB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(34, 34, 34)
+                                        .addComponent(chb_AulaE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(chb_AulaI))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(chb_CarreraB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(chb_AlumnoB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(chb_CancelarAsignaturaE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(34, 34, 34)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(chb_CancelarAsignaturaI)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(chb_AlumnoI)
+                                                    .addComponent(chb_CarreraE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(chb_CarreraI)))))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chb_EmpleadosE)
-                    .addComponent(chb_EmpleadosB)
-                    .addComponent(chb_EmpleadosA)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(chb_EmpleadosA)
+                        .addComponent(chb_EmpleadosB)
+                        .addComponent(chb_EmpleadosE)
+                        .addComponent(chb_EmpleadosI))
                     .addComponent(chb_EmpleadosG))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(chb_PeriodoE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(chb_PeriodoB)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(chb_PeriodoA)
-                        .addComponent(chb_PeriodoG)))
+                        .addComponent(chb_PeriodoB)
+                        .addComponent(chb_PeriodoE)
+                        .addComponent(chb_PeriodoI))
+                    .addComponent(chb_PeriodoG))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(chb_SeccionesE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(chb_SeccionesE)
+                        .addComponent(chb_SeccionesI))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(chb_SeccionesB)
-                        .addComponent(chb_SeccionesA)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(chb_SeccionesA)
+                            .addComponent(chb_SeccionesB))
                         .addComponent(chb_SeccionesG)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chb_AsignaturaE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(chb_AsignaturaE)
+                        .addComponent(chb_AsignaturaI))
                     .addComponent(chb_AsignaturaB)
                     .addComponent(chb_AsignaturaA)
                     .addComponent(chb_AsignaturaG))
@@ -892,42 +950,36 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                     .addComponent(chb_NotasG))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chb_AulaE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(chb_AulaE)
+                        .addComponent(chb_AulaI))
                     .addComponent(chb_AulaB)
                     .addComponent(chb_AulaA)
                     .addComponent(chb_AulaG))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(chb_CarreraE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(chb_CarreraE)
+                        .addComponent(chb_CarreraI))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(chb_CarreraB)
                         .addComponent(chb_CarreraA)
                         .addComponent(chb_CarreraG)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chb_AlumnoB)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(chb_AlumnoB)
+                        .addComponent(chb_AlumnoI))
                     .addComponent(chb_AlumnoA)
                     .addComponent(chb_AlumnoG))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(chb_CancelarAsignaturaB)
-                        .addComponent(chb_CancelarAsignaturaE))
+                        .addComponent(chb_CancelarAsignaturaE)
+                        .addComponent(chb_CancelarAsignaturaI))
                     .addComponent(chb_CancelarAsignaturaA))
                 .addContainerGap(15, Short.MAX_VALUE))
-        );
-
-        jPanel3.setBackground(new java.awt.Color(232, 251, 249));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 350, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -935,24 +987,19 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(44, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(194, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(249, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 220, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 640, 570));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 720, 570));
 
         jPanel5.setBackground(new java.awt.Color(215, 236, 233));
 
@@ -985,6 +1032,21 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imagen 3.jpg"))); // NOI18N
         jLabel3.setText("jLabel1");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 770));
+
+        jPanel3.setBackground(new java.awt.Color(232, 251, 249));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 130, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 350, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, -1, -1));
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/menu.png"))); // NOI18N
         jMenu1.setText("Menu");
@@ -1390,6 +1452,9 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
            if(chb_EmpleadosE.isSelected()){
                funcionesempleado += "E";
            }
+             if(chb_EmpleadosI.isSelected()){
+               funcionesempleado += "I";
+           }
            
            //Funciones Periodo
            
@@ -1409,6 +1474,11 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                funcionesperiodo += "E";
            }
            
+            if(chb_PeriodoI.isSelected()){
+               funcionesperiodo += "I";
+           }
+           
+           
            //Funciones Secciones
            
             if(chb_SeccionesG.isSelected()){
@@ -1425,6 +1495,9 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
            
            if(chb_SeccionesE.isSelected()){
                funcionesseccion += "E";
+           }
+            if(chb_SeccionesI.isSelected()){
+               funcionesseccion += "I";
            }
            
            //Funciones Asigntaras
@@ -1443,6 +1516,10 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
            
            if(chb_AsignaturaE.isSelected()){
                funcionesasignatura += "E";
+           }
+           
+            if(chb_AsignaturaI.isSelected()){
+               funcionesasignatura += "I";
            }
            
            //Funciones Matricula
@@ -1492,6 +1569,12 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                funcionesaula += "E";
            }
            
+             if(chb_AulaI.isSelected()){
+               funcionesaula += "I";
+           }
+           
+           
+           
            //Funciones Carrera
            
            if(chb_CarreraG.isSelected()){
@@ -1523,6 +1606,10 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                funcionesalumno += "B";
            }
            
+            if(chb_AlumnoI.isSelected()){
+               funcionesalumno += "I";
+           }
+           
         //   if(chb_AlumnoE.isSelected()){
            //    funcionesalumno += "E";
          //  }
@@ -1542,6 +1629,11 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
            if(chb_CancelarAsignaturaE.isSelected()){
                funcionescancelarasignatura += "E";
            }
+           
+            if(chb_CancelarAsignaturaI.isSelected()){
+               funcionescancelarasignatura += "I";
+           }
+            
             
           
              
@@ -1703,7 +1795,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
              } catch ( Exception e) {
             System.out.println(e);
         
-             JOptionPane.showMessageDialog(null, e.getMessage());
+             JOptionPane.showMessageDialog(null,"Error al guardar información");
         }
            limpiar();
            inhabilidado();
@@ -1793,6 +1885,10 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                 if(rs.getString("EmpleadosFunciones").contains("E")){
                     chb_EmpleadosE.setSelected(true);
                 }
+                
+                 if(rs.getString("EmpleadosFunciones").contains("I")){
+                    chb_EmpleadosI.setSelected(true);
+                }
 
                 
                  //Funciones de Secciones 
@@ -1810,6 +1906,10 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
                 if(rs.getString("SeccionesFunciones").contains("E")){
                     chb_SeccionesE.setSelected(true);
+                }
+                
+                 if(rs.getString("SeccionesFunciones").contains("I")){
+                    chb_SeccionesI.setSelected(true);
                 }
                
                 
@@ -1829,6 +1929,10 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                 if(rs.getString("PeriodosFunciones").contains("E")){
                     chb_PeriodoE.setSelected(true);
                 }
+                
+                 if(rs.getString("PeriodosFunciones").contains("I")){
+                    chb_PeriodoI.setSelected(true);
+                }
                
                 
                  //Funciones de Asignatura
@@ -1846,6 +1950,10 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
                 if(rs.getString("AsignaturaFunciones").contains("E")){
                     chb_AsignaturaE.setSelected(true);
+                }
+                
+                 if(rs.getString("AsignaturaFunciones").contains("I")){
+                    chb_AsignaturaI.setSelected(true);
                 }
                 
                 
@@ -1874,6 +1982,10 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
                 if(rs.getString("AlumnoFunciones").contains("B")){
                     chb_AlumnoB.setSelected(true);
+                }
+                
+                 if(rs.getString("AlumnoFunciones").contains("I")){
+                    chb_AlumnoI.setSelected(true);
                 }
 
                // if(rs.getString("AlumnoFunciones").contains("E")){
@@ -1910,6 +2022,11 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                     chb_CancelarAsignaturaE.setSelected(true);
                 }
                 
+                   if(rs.getString("CancelarAsignaturasFunciones").contains("I")){
+                    chb_CancelarAsignaturaI.setSelected(true);
+                }
+                
+                
                  
                   //Funciones de Aula
                 if(rs.getString("AulaFunciones").contains("G")){
@@ -1928,6 +2045,10 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                     chb_AulaE.setSelected(true);
                 }
                 
+                if(rs.getString("AulaFunciones").contains("I")){
+                    chb_AulaI.setSelected(true);
+                }
+                
                 
                  //Funciones de Carrera
                 if(rs.getString("CarreraFunciones").contains("G")){
@@ -1944,6 +2065,10 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
                 if(rs.getString("CarreraFunciones").contains("E")){
                     chb_CarreraE.setSelected(true);
+                }
+                
+                  if(rs.getString("CarreraFunciones").contains("I")){
+                    chb_CarreraI.setSelected(true);
                 }
                  
            }
@@ -1989,6 +2114,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
           chb_PeriodoA.setEnabled(false);
           chb_PeriodoB.setEnabled(false);
           chb_PeriodoE.setEnabled(false);
+          chb_PeriodoI.setEnabled(false);
       
           chb_SeccionesG.setEnabled(false);
           chb_SeccionesA.setEnabled(false);
@@ -1998,6 +2124,8 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
           chb_AsignaturaA.setEnabled(false);
           chb_AsignaturaB.setEnabled(false);
           chb_AsignaturaE.setEnabled(false);
+          chb_AsignaturaI.setEnabled(false);
+          
           
           chb_MatriculaG.setEnabled(false);
           chb_MatriculaR.setEnabled(false);
@@ -2011,20 +2139,24 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
           chb_AulaA.setEnabled(false);
           chb_AulaB.setEnabled(false);
           chb_AulaE.setEnabled(false);
+           chb_AulaI.setEnabled(false);
           
            chb_CarreraG.setEnabled(false);
           chb_CarreraA.setEnabled(false);
           chb_CarreraB.setEnabled(false);
           chb_CarreraE.setEnabled(false);
+           chb_CarreraI.setEnabled(false);
           
           chb_AlumnoG.setEnabled(false);
           chb_AlumnoA.setEnabled(false);
           chb_AlumnoB.setEnabled(false);
+          chb_AlumnoI.setEnabled(false);
 //          chb_AlumnoE.setEnabled(false);
           
            chb_CancelarAsignaturaE.setEnabled(false);
            chb_CancelarAsignaturaA.setEnabled(false);
            chb_CancelarAsignaturaB.setEnabled(false);
+           chb_CancelarAsignaturaI.setEnabled(false);
   
       }
     /**
@@ -2074,30 +2206,36 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
     private javax.swing.JCheckBox chb_AlumnoA;
     private javax.swing.JCheckBox chb_AlumnoB;
     private javax.swing.JCheckBox chb_AlumnoG;
+    private javax.swing.JCheckBox chb_AlumnoI;
     private javax.swing.JCheckBox chb_Asignatura;
     private javax.swing.JCheckBox chb_AsignaturaA;
     private javax.swing.JCheckBox chb_AsignaturaB;
     private javax.swing.JCheckBox chb_AsignaturaE;
     private javax.swing.JCheckBox chb_AsignaturaG;
+    private javax.swing.JCheckBox chb_AsignaturaI;
     private javax.swing.JCheckBox chb_Aula;
     private javax.swing.JCheckBox chb_AulaA;
     private javax.swing.JCheckBox chb_AulaB;
     private javax.swing.JCheckBox chb_AulaE;
     private javax.swing.JCheckBox chb_AulaG;
+    private javax.swing.JCheckBox chb_AulaI;
     private javax.swing.JCheckBox chb_CancelarAsignatura;
     private javax.swing.JCheckBox chb_CancelarAsignaturaA;
     private javax.swing.JCheckBox chb_CancelarAsignaturaB;
     private javax.swing.JCheckBox chb_CancelarAsignaturaE;
+    private javax.swing.JCheckBox chb_CancelarAsignaturaI;
     private javax.swing.JCheckBox chb_Carrera;
     private javax.swing.JCheckBox chb_CarreraA;
     private javax.swing.JCheckBox chb_CarreraB;
     private javax.swing.JCheckBox chb_CarreraE;
     private javax.swing.JCheckBox chb_CarreraG;
+    private javax.swing.JCheckBox chb_CarreraI;
     private javax.swing.JCheckBox chb_Empleados;
     private javax.swing.JCheckBox chb_EmpleadosA;
     private javax.swing.JCheckBox chb_EmpleadosB;
     private javax.swing.JCheckBox chb_EmpleadosE;
     private javax.swing.JCheckBox chb_EmpleadosG;
+    private javax.swing.JCheckBox chb_EmpleadosI;
     private javax.swing.JCheckBox chb_Matricula;
     private javax.swing.JCheckBox chb_MatriculaC;
     private javax.swing.JCheckBox chb_MatriculaG;
@@ -2111,11 +2249,13 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
     private javax.swing.JCheckBox chb_PeriodoB;
     private javax.swing.JCheckBox chb_PeriodoE;
     private javax.swing.JCheckBox chb_PeriodoG;
+    private javax.swing.JCheckBox chb_PeriodoI;
     private javax.swing.JCheckBox chb_Secciones;
     private javax.swing.JCheckBox chb_SeccionesA;
     private javax.swing.JCheckBox chb_SeccionesB;
     private javax.swing.JCheckBox chb_SeccionesE;
     private javax.swing.JCheckBox chb_SeccionesG;
+    private javax.swing.JCheckBox chb_SeccionesI;
     private javax.swing.JLabel fechaHoy;
     private javax.swing.JLabel fechaHoy1;
     private javax.swing.JLabel iconodeUsuario;
@@ -2156,21 +2296,25 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
          chb_EmpleadosB.setSelected(false);
          chb_EmpleadosA.setSelected(false);
          chb_EmpleadosE.setSelected(false);
+         chb_EmpleadosI.setSelected(false);
          chb_Empleados.setSelected(false);
          chb_PeriodoG.setSelected(false);
          chb_PeriodoA.setSelected(false);
          chb_PeriodoB.setSelected(false);
          chb_PeriodoE.setSelected(false);
+         chb_PeriodoI.setSelected(false);
          chb_Periodo.setSelected(false);
          chb_SeccionesG.setSelected(false); 
          chb_SeccionesA.setSelected(false);
          chb_SeccionesB.setSelected(false);
          chb_SeccionesE.setSelected(false);
+         chb_SeccionesI.setSelected(false);
          chb_Secciones.setSelected(false);
          chb_AsignaturaG.setSelected(false); 
          chb_AsignaturaA.setSelected(false);
          chb_AsignaturaB.setSelected(false);       
          chb_AsignaturaE.setSelected(false);
+         chb_AsignaturaI.setSelected(false);
          chb_Asignatura.setSelected(false);
          chb_MatriculaG.setSelected(false);
          chb_MatriculaC.setSelected(false);
@@ -2183,20 +2327,25 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
          chb_AulaG.setSelected(false);
          chb_AulaA.setSelected(false);
          chb_AulaE.setSelected(false);
+         chb_AulaB.setSelected(false);
+         chb_AulaI.setSelected(false);
          chb_Aula.setSelected(false);
          chb_CarreraG.setSelected(false);
          chb_CarreraA.setSelected(false);
          chb_CarreraB.setSelected(false);
          chb_CarreraE.setSelected(false);
+         chb_CarreraI.setSelected(false);
          chb_Carrera.setSelected(false);
          chb_AlumnoG.setSelected(false);
          chb_AlumnoA.setSelected(false);
          chb_AlumnoB.setSelected(false);
+         chb_AlumnoI.setSelected(false);
 //         chb_AlumnoE.setSelected(false);
          chb_Alumno.setSelected(false);
          chb_CancelarAsignaturaA.setSelected(false);
          chb_CancelarAsignaturaB.setSelected(false);
          chb_CancelarAsignaturaE.setSelected(false);
+        chb_CancelarAsignaturaI.setSelected(false);
          chb_CancelarAsignatura.setSelected(false);
             
             
