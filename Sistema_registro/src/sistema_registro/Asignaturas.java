@@ -42,7 +42,7 @@ public class Asignaturas extends javax.swing.JFrame {
     String var, var2;
     final Calendar calendar = Calendar.getInstance();
     final java.util.Date  date = calendar.getTime();
-    String fecha = new SimpleDateFormat("d-MM-yyyy hh.mm.ss a ").format(date);
+    String fecha = new SimpleDateFormat("yyyyMMdd-hh.mm.ss").format(date);
      
    
 /**

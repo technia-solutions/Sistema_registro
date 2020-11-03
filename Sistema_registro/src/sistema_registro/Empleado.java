@@ -43,7 +43,7 @@ public class Empleado extends javax.swing.JFrame {
     NumberFormat nf;
     final Calendar calendar = Calendar.getInstance();
     final java.util.Date  date = calendar.getTime();
-    String fecha = new SimpleDateFormat("d-MM-yyyy hh.mm.ss a ").format(date);
+    String fecha = new SimpleDateFormat("yyyyMMdd-hh.mm.ss").format(date);
     
     
     private void LimpiarCajas(){
@@ -1071,45 +1071,6 @@ this.cbo_tipoUsuario.setSelectedItem("");
                 myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
             } catch (IOException ex) {
                 Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        if(tipoUsuario.equals("A")){
-            try{
-                Statement st = con.createStatement();
-                String sql = "insert into Acceso_Pantallas(nombre_usuario,Empleados,Secciones,Periodos,Asignatura,Matricula, Alumno, Notas,CancelarAsignatura,Aula,Carrera,\n" +
-"							EmpleadosFunciones,SeccionesFunciones,PeriodosFunciones,AsignaturaFunciones,MatriculaFunciones,\n" +
-"							AlumnoFunciones,NotasFunciones,CancelarAsignaturasFunciones, AulaFunciones,CarreraFunciones)\n" +
-"values ('"+txt_NombreUsuario.getText()+"',1,1,1,1,1,1,1,1,1,1,'GAEB','GAEB','GAEB','GAEB','GAEB','GAEB','GAEB','GAEB','GAEB','GAEB')";
-            }
-            catch(Exception e){
-                try {
-                    Log myLog; 
-                    String nombreArchivo = "src\\Logs\\Empleado " + fecha + ".txt";
-                    myLog = new Log(nombreArchivo);
-                    myLog.logger.setLevel(Level.SEVERE);
-                    myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
-                } catch (IOException ex) {
-                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }else{
-            try{
-                Statement st = con.createStatement();
-                String sql = "insert into Acceso_Pantallas(nombre_usuario,Empleados,Secciones,Periodos,Asignatura,Matricula, Alumno, Notas,CancelarAsignatura,Aula,Carrera,\n" +
-"							EmpleadosFunciones,SeccionesFunciones,PeriodosFunciones,AsignaturaFunciones,MatriculaFunciones,\n" +
-"							AlumnoFunciones,NotasFunciones,CancelarAsignaturasFunciones, AulaFunciones,CarreraFunciones)\n" +
-"values ('"+txt_NombreUsuario.getText()+"',0,1,0,1,1,1,1,1,0,1,'','GAEB','GAEB','GAEB','GAEB','GAEB','GAEB','GAEB','','GAEB')";
-            }
-            catch(Exception e){
-                try {
-                    Log myLog; 
-                    String nombreArchivo = "src\\Logs\\Empleado " + fecha + ".txt";
-                    myLog = new Log(nombreArchivo);
-                    myLog.logger.setLevel(Level.SEVERE);
-                    myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
-                } catch (IOException ex) {
-                    Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-                }
             }
         }
         limpiar();
