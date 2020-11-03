@@ -109,17 +109,6 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
     private void initComponents() {
 
         jCheckBox1 = new javax.swing.JCheckBox();
-        jPanel1 = new javax.swing.JPanel();
-        chb_Empleados = new javax.swing.JCheckBox();
-        chb_Notas = new javax.swing.JCheckBox();
-        chb_Periodo = new javax.swing.JCheckBox();
-        chb_Aula = new javax.swing.JCheckBox();
-        chb_Secciones = new javax.swing.JCheckBox();
-        chb_Carrera = new javax.swing.JCheckBox();
-        chb_Asignatura = new javax.swing.JCheckBox();
-        chb_Alumno = new javax.swing.JCheckBox();
-        chb_Matricula = new javax.swing.JCheckBox();
-        chb_CancelarAsignatura = new javax.swing.JCheckBox();
         jLabel2 = new javax.swing.JLabel();
         fechaHoy1 = new javax.swing.JLabel();
         fechaHoy = new javax.swing.JLabel();
@@ -184,6 +173,17 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         chb_CarreraI = new javax.swing.JCheckBox();
         chb_AlumnoI = new javax.swing.JCheckBox();
         chb_CancelarAsignaturaI = new javax.swing.JCheckBox();
+        jPanel1 = new javax.swing.JPanel();
+        chb_Empleados = new javax.swing.JCheckBox();
+        chb_Notas = new javax.swing.JCheckBox();
+        chb_Periodo = new javax.swing.JCheckBox();
+        chb_Aula = new javax.swing.JCheckBox();
+        chb_Secciones = new javax.swing.JCheckBox();
+        chb_Carrera = new javax.swing.JCheckBox();
+        chb_Asignatura = new javax.swing.JCheckBox();
+        chb_Alumno = new javax.swing.JCheckBox();
+        chb_Matricula = new javax.swing.JCheckBox();
+        chb_CancelarAsignatura = new javax.swing.JCheckBox();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -197,161 +197,6 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel1.setBackground(new java.awt.Color(215, 236, 233));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Permisos de Pantallas "));
-
-        chb_Empleados.setText("Empleados");
-        chb_Empleados.setContentAreaFilled(false);
-        chb_Empleados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        chb_Empleados.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chb_EmpleadosActionPerformed(evt);
-            }
-        });
-
-        chb_Notas.setText("Notas");
-        chb_Notas.setContentAreaFilled(false);
-        chb_Notas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        chb_Notas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chb_NotasActionPerformed(evt);
-            }
-        });
-
-        chb_Periodo.setText("Periodo");
-        chb_Periodo.setContentAreaFilled(false);
-        chb_Periodo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        chb_Periodo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chb_PeriodoActionPerformed(evt);
-            }
-        });
-
-        chb_Aula.setText("Aula");
-        chb_Aula.setContentAreaFilled(false);
-        chb_Aula.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        chb_Aula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chb_AulaActionPerformed(evt);
-            }
-        });
-
-        chb_Secciones.setText("Secciones");
-        chb_Secciones.setContentAreaFilled(false);
-        chb_Secciones.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        chb_Secciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chb_SeccionesActionPerformed(evt);
-            }
-        });
-
-        chb_Carrera.setText("Carrera");
-        chb_Carrera.setContentAreaFilled(false);
-        chb_Carrera.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        chb_Carrera.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chb_CarreraActionPerformed(evt);
-            }
-        });
-
-        chb_Asignatura.setText("Asignatura");
-        chb_Asignatura.setContentAreaFilled(false);
-        chb_Asignatura.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        chb_Asignatura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chb_AsignaturaActionPerformed(evt);
-            }
-        });
-
-        chb_Alumno.setText("Alumno");
-        chb_Alumno.setContentAreaFilled(false);
-        chb_Alumno.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        chb_Alumno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chb_AlumnoActionPerformed(evt);
-            }
-        });
-
-        chb_Matricula.setText("Matricula");
-        chb_Matricula.setContentAreaFilled(false);
-        chb_Matricula.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        chb_Matricula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chb_MatriculaActionPerformed(evt);
-            }
-        });
-
-        chb_CancelarAsignatura.setText("CancelarAsignatura");
-        chb_CancelarAsignatura.setContentAreaFilled(false);
-        chb_CancelarAsignatura.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        chb_CancelarAsignatura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chb_CancelarAsignaturaActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chb_Notas, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chb_Empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(chb_Periodo, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chb_Aula, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chb_Carrera, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chb_Secciones, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(chb_Asignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(chb_Alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(chb_Matricula, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 67, Short.MAX_VALUE))
-                    .addComponent(chb_CancelarAsignatura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(chb_Matricula)
-                        .addGap(18, 18, 18)
-                        .addComponent(chb_CancelarAsignatura))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(chb_Asignatura)
-                            .addGap(18, 18, 18)
-                            .addComponent(chb_Alumno))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(chb_Secciones)
-                                .addGap(18, 18, 18)
-                                .addComponent(chb_Carrera))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(chb_Periodo)
-                                .addGap(18, 18, 18)
-                                .addComponent(chb_Aula))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(chb_Empleados)
-                                .addGap(18, 18, 18)
-                                .addComponent(chb_Notas)))))
-                .addGap(15, 15, 15))
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 570, -1));
-        jPanel1.getAccessibleContext().setAccessibleName("");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Usuario:");
@@ -798,206 +643,357 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(chb_SeccionesG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(chb_SeccionesA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(270, 270, 270))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(chb_PeriodoG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(chb_PeriodoA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(13, 13, 13)
-                        .addComponent(chb_PeriodoB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(189, 189, 189))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(chb_EmpleadosG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addComponent(chb_EmpleadosA, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(chb_EmpleadosB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(chb_NotasG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(36, 36, 36)
-                                        .addComponent(chb_NotasR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(chb_AsignaturaG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(36, 36, 36)
-                                        .addComponent(chb_AsignaturaA))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(chb_MatriculaG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(36, 36, 36)
-                                        .addComponent(chb_MatriculaR, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(chb_NotasB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(chb_MatriculaC)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(chb_AsignaturaB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(34, 34, 34)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addComponent(chb_EmpleadosE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(chb_EmpleadosI))
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addComponent(chb_AsignaturaE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(chb_AsignaturaI))
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addComponent(chb_PeriodoE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(chb_PeriodoI))
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addComponent(chb_SeccionesE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(chb_SeccionesI))))
-                                    .addComponent(chb_SeccionesB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(105, 105, 105)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(chb_CarreraG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(36, 36, 36)
-                                        .addComponent(chb_CarreraA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(chb_AulaG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(36, 36, 36)
-                                        .addComponent(chb_AulaA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(chb_AlumnoG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(chb_CancelarAsignaturaA))
-                                        .addGap(32, 32, 32)
+                                            .addComponent(chb_NotasR, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(chb_AulaA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(chb_CarreraA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(chb_AlumnoA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(chb_CancelarAsignaturaB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(14, 14, 14)
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(chb_CancelarAsignaturaB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(chb_AlumnoA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(27, 27, 27)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(chb_AulaB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(34, 34, 34)
-                                        .addComponent(chb_AulaE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(chb_AulaI))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(chb_CarreraB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(chb_AlumnoB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(chb_CancelarAsignaturaE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(34, 34, 34)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(chb_CancelarAsignaturaI)
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                            .addComponent(chb_NotasB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(chb_CarreraB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(chb_CancelarAsignaturaE, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(4, 4, 4))))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(chb_MatriculaR, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(14, 14, 14)
+                                        .addComponent(chb_MatriculaC))))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGap(14, 14, 14)
+                                    .addComponent(chb_CancelarAsignaturaA)
+                                    .addGap(156, 156, 156))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                    .addComponent(chb_AlumnoG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(144, 144, 144)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(chb_AulaG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(chb_NotasG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(chb_MatriculaG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(chb_AsignaturaG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(chb_CarreraG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(chb_EmpleadosG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(chb_PeriodoA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(8, 8, 8))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(chb_EmpleadosA, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(chb_PeriodoB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(chb_PeriodoE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(chb_PeriodoI))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(chb_EmpleadosB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(chb_EmpleadosE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(chb_EmpleadosI))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(chb_SeccionesB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(chb_SeccionesE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(chb_AsignaturaB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(chb_AulaB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(chb_AlumnoB, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(chb_AulaE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(chb_AsignaturaE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(chb_CarreraE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(chb_AlumnoI)
-                                                    .addComponent(chb_CarreraE, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(chb_CarreraI)))))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                                    .addComponent(chb_CancelarAsignaturaI))))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(chb_AsignaturaI)
+                                            .addComponent(chb_SeccionesI)
+                                            .addComponent(chb_AulaI)
+                                            .addComponent(chb_CarreraI)))))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(chb_PeriodoG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(chb_SeccionesG, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(10, 10, 10)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(chb_SeccionesA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(chb_AsignaturaA))))))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(chb_EmpleadosA)
-                        .addComponent(chb_EmpleadosB)
-                        .addComponent(chb_EmpleadosE)
-                        .addComponent(chb_EmpleadosI))
-                    .addComponent(chb_EmpleadosG))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chb_EmpleadosG)
+                    .addComponent(chb_EmpleadosA)
+                    .addComponent(chb_EmpleadosB)
+                    .addComponent(chb_EmpleadosE)
+                    .addComponent(chb_EmpleadosI))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chb_PeriodoG)
+                    .addComponent(chb_PeriodoA)
+                    .addComponent(chb_PeriodoB)
+                    .addComponent(chb_PeriodoE)
+                    .addComponent(chb_PeriodoI))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chb_SeccionesA)
+                    .addComponent(chb_SeccionesB)
+                    .addComponent(chb_SeccionesG)
+                    .addComponent(chb_SeccionesE)
+                    .addComponent(chb_SeccionesI))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(chb_PeriodoA)
-                        .addComponent(chb_PeriodoB)
-                        .addComponent(chb_PeriodoE)
-                        .addComponent(chb_PeriodoI))
-                    .addComponent(chb_PeriodoG))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(chb_SeccionesE)
-                        .addComponent(chb_SeccionesI))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(chb_SeccionesA)
-                            .addComponent(chb_SeccionesB))
-                        .addComponent(chb_SeccionesG)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(chb_AsignaturaB)
                         .addComponent(chb_AsignaturaE)
                         .addComponent(chb_AsignaturaI))
-                    .addComponent(chb_AsignaturaB)
-                    .addComponent(chb_AsignaturaA)
-                    .addComponent(chb_AsignaturaG))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(chb_AsignaturaG)
+                        .addComponent(chb_AsignaturaA)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chb_MatriculaC)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chb_MatriculaG)
                     .addComponent(chb_MatriculaR)
-                    .addComponent(chb_MatriculaG))
+                    .addComponent(chb_MatriculaC))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chb_NotasB)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chb_NotasG)
                     .addComponent(chb_NotasR)
-                    .addComponent(chb_NotasG))
+                    .addComponent(chb_NotasB)
+                    .addComponent(chb_AulaI))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(chb_AulaE)
-                        .addComponent(chb_AulaI))
-                    .addComponent(chb_AulaB)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chb_AulaG)
                     .addComponent(chb_AulaA)
-                    .addComponent(chb_AulaG))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(chb_AulaB)
+                    .addComponent(chb_AulaE)
+                    .addComponent(chb_CarreraI))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(chb_CarreraG)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(chb_CarreraE)
-                        .addComponent(chb_CarreraI))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(chb_CarreraB)
                         .addComponent(chb_CarreraA)
-                        .addComponent(chb_CarreraG)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(chb_AlumnoB)
-                        .addComponent(chb_AlumnoI))
+                        .addComponent(chb_CarreraB)
+                        .addComponent(chb_CarreraE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chb_AlumnoG)
                     .addComponent(chb_AlumnoA)
-                    .addComponent(chb_AlumnoG))
+                    .addComponent(chb_AlumnoB)
+                    .addComponent(chb_AlumnoI))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(chb_CancelarAsignaturaB)
-                        .addComponent(chb_CancelarAsignaturaE)
-                        .addComponent(chb_CancelarAsignaturaI))
-                    .addComponent(chb_CancelarAsignaturaA))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(chb_CancelarAsignaturaA)
+                    .addComponent(chb_CancelarAsignaturaB)
+                    .addComponent(chb_CancelarAsignaturaE)
+                    .addComponent(chb_CancelarAsignaturaI))
                 .addContainerGap(15, Short.MAX_VALUE))
+        );
+
+        jPanel1.setBackground(new java.awt.Color(215, 236, 233));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Permisos de Pantallas "));
+
+        chb_Empleados.setText("Empleados");
+        chb_Empleados.setContentAreaFilled(false);
+        chb_Empleados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        chb_Empleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chb_EmpleadosActionPerformed(evt);
+            }
+        });
+
+        chb_Notas.setText("Notas");
+        chb_Notas.setContentAreaFilled(false);
+        chb_Notas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        chb_Notas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chb_NotasActionPerformed(evt);
+            }
+        });
+
+        chb_Periodo.setText("Periodo");
+        chb_Periodo.setContentAreaFilled(false);
+        chb_Periodo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        chb_Periodo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chb_PeriodoActionPerformed(evt);
+            }
+        });
+
+        chb_Aula.setText("Aula");
+        chb_Aula.setContentAreaFilled(false);
+        chb_Aula.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        chb_Aula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chb_AulaActionPerformed(evt);
+            }
+        });
+
+        chb_Secciones.setText("Secciones");
+        chb_Secciones.setContentAreaFilled(false);
+        chb_Secciones.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        chb_Secciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chb_SeccionesActionPerformed(evt);
+            }
+        });
+
+        chb_Carrera.setText("Carrera");
+        chb_Carrera.setContentAreaFilled(false);
+        chb_Carrera.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        chb_Carrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chb_CarreraActionPerformed(evt);
+            }
+        });
+
+        chb_Asignatura.setText("Asignatura");
+        chb_Asignatura.setContentAreaFilled(false);
+        chb_Asignatura.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        chb_Asignatura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chb_AsignaturaActionPerformed(evt);
+            }
+        });
+
+        chb_Alumno.setText("Alumno");
+        chb_Alumno.setContentAreaFilled(false);
+        chb_Alumno.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        chb_Alumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chb_AlumnoActionPerformed(evt);
+            }
+        });
+
+        chb_Matricula.setText("Matricula");
+        chb_Matricula.setContentAreaFilled(false);
+        chb_Matricula.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        chb_Matricula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chb_MatriculaActionPerformed(evt);
+            }
+        });
+
+        chb_CancelarAsignatura.setText("CancelarAsignatura");
+        chb_CancelarAsignatura.setContentAreaFilled(false);
+        chb_CancelarAsignatura.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        chb_CancelarAsignatura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chb_CancelarAsignaturaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(chb_Notas, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chb_Empleados, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(chb_Periodo, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chb_Aula, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(chb_Carrera, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chb_Secciones, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(chb_Asignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chb_Alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(chb_Matricula, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 67, Short.MAX_VALUE))
+                    .addComponent(chb_CancelarAsignatura, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(17, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(chb_Matricula)
+                        .addGap(18, 18, 18)
+                        .addComponent(chb_CancelarAsignatura))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(chb_Asignatura)
+                            .addGap(18, 18, 18)
+                            .addComponent(chb_Alumno))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(chb_Secciones)
+                                .addGap(18, 18, 18)
+                                .addComponent(chb_Carrera))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(chb_Periodo)
+                                .addGap(18, 18, 18)
+                                .addComponent(chb_Aula))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(chb_Empleados)
+                                .addGap(18, 18, 18)
+                                .addComponent(chb_Notas)))))
+                .addGap(15, 15, 15))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(83, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(194, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(20, 20, 20))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(249, Short.MAX_VALUE)
+                .addContainerGap(78, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
+
+        jPanel1.getAccessibleContext().setAccessibleName("");
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 720, 570));
 
@@ -1011,7 +1007,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(238, Short.MAX_VALUE)
+                .addContainerGap(239, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addGap(224, 224, 224))
         );
@@ -1082,150 +1078,6 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btn_AceptarActionPerformed
-
-    private void chb_EmpleadosGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_EmpleadosGActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_EmpleadosGActionPerformed
-
-    private void chb_EmpleadosBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_EmpleadosBActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_EmpleadosBActionPerformed
-
-    private void chb_EmpleadosAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_EmpleadosAActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_EmpleadosAActionPerformed
-
-    private void chb_EmpleadosEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_EmpleadosEActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_EmpleadosEActionPerformed
-
-    private void chb_PeriodoGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_PeriodoGActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_PeriodoGActionPerformed
-
-    private void chb_PeriodoAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_PeriodoAActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_PeriodoAActionPerformed
-
-    private void chb_PeriodoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_PeriodoBActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_PeriodoBActionPerformed
-
-    private void chb_PeriodoEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_PeriodoEActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_PeriodoEActionPerformed
-
-    private void chb_SeccionesGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_SeccionesGActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_SeccionesGActionPerformed
-
-    private void chb_SeccionesAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_SeccionesAActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_SeccionesAActionPerformed
-
-    private void chb_SeccionesBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_SeccionesBActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_SeccionesBActionPerformed
-
-    private void chb_SeccionesEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_SeccionesEActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_SeccionesEActionPerformed
-
-    private void chb_AsignaturaGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AsignaturaGActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_AsignaturaGActionPerformed
-
-    private void chb_MatriculaGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_MatriculaGActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_MatriculaGActionPerformed
-
-    private void chb_NotasGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_NotasGActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_NotasGActionPerformed
-
-    private void chb_AsignaturaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AsignaturaAActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_AsignaturaAActionPerformed
-
-    private void chb_MatriculaRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_MatriculaRActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_MatriculaRActionPerformed
-
-    private void chb_NotasRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_NotasRActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_NotasRActionPerformed
-
-    private void chb_AsignaturaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AsignaturaBActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_AsignaturaBActionPerformed
-
-    private void chb_MatriculaCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_MatriculaCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_MatriculaCActionPerformed
-
-    private void chb_NotasBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_NotasBActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_NotasBActionPerformed
-
-    private void chb_AsignaturaEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AsignaturaEActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_AsignaturaEActionPerformed
-
-    private void chb_AulaGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AulaGActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_AulaGActionPerformed
-
-    private void chb_CarreraGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_CarreraGActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_CarreraGActionPerformed
-
-    private void chb_AlumnoGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AlumnoGActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_AlumnoGActionPerformed
-
-    private void chb_AulaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AulaAActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_AulaAActionPerformed
-
-    private void chb_CarreraAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_CarreraAActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_CarreraAActionPerformed
-
-    private void chb_AlumnoAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AlumnoAActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_AlumnoAActionPerformed
-
-    private void chb_AulaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AulaBActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_AulaBActionPerformed
-
-    private void chb_CarreraBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_CarreraBActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_CarreraBActionPerformed
-
-    private void chb_AlumnoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AlumnoBActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_AlumnoBActionPerformed
-
-    private void chb_AulaEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AulaEActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_AulaEActionPerformed
-
-    private void chb_CarreraEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_CarreraEActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_CarreraEActionPerformed
-
-    private void chb_CancelarAsignaturaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_CancelarAsignaturaAActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_CancelarAsignaturaAActionPerformed
-
-    private void chb_CancelarAsignaturaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_CancelarAsignaturaBActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_CancelarAsignaturaBActionPerformed
-
-    private void chb_CancelarAsignaturaEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_CancelarAsignaturaEActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chb_CancelarAsignaturaEActionPerformed
 
     private void chb_EmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_EmpleadosActionPerformed
      habilitarEmpleado();
@@ -1825,6 +1677,27 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
            Statement st = con.createStatement();
            String sql = "Select * from Acceso_Pantallas where nombre_usuario = '"+usuario+"'";
            ResultSet rs = st.executeQuery(sql);
+           
+           
+                    // update dependiendo si el valor ya estaba en la tabla
+           try {
+              PreparedStatement ps;
+              
+              ps=con.prepareStatement("Update Acceso_Pantallas\n" +
+"                      set nombre_usuario = ?,\n" +
+"                      EmpleadosFunciones = ?,\n" +
+"                      SeccionesFunciones = ?,\n" +
+"                      PeriodosFunciones = ?,\n" +
+"                      AsignaturaFunciones = ?,\n" +
+"                      MatriculaFunciones= ?,\n" +
+"                      AlumnoFunciones =?,\n" +
+"                      NotasFunciones =?\n" +
+"                      CancelarAsignaturaFunciones = ?,\n" +
+"                      AulaFunciones = ?,\n" +
+"                      CarreraFunciones= ?,\n" +                   
+"                      where nombre_usuario = '"+cbo_NombreUsuario+"'\n" );
+      
+           
            if(rs.next()){
                 if(rs.getString("Empleados").equals("1")){
                     chb_Empleados.setSelected(true);
@@ -2076,6 +1949,19 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
        catch(Exception e){
            
        }
+           //Complemento del try agregado recientemente
+           } catch ( SQLException e) {
+               try {
+                Log myLog; 
+                String nombreArchivo = "src\\Logs\\Acceso_Pantallas " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                
+            }
         // TODO add your handling code here:
     }//GEN-LAST:event_cbo_NombreUsuarioActionPerformed
 
@@ -2105,6 +1991,150 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_menu_MenuPrincipalActionPerformed
+
+    private void chb_CancelarAsignaturaEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_CancelarAsignaturaEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_CancelarAsignaturaEActionPerformed
+
+    private void chb_CancelarAsignaturaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_CancelarAsignaturaBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_CancelarAsignaturaBActionPerformed
+
+    private void chb_CancelarAsignaturaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_CancelarAsignaturaAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_CancelarAsignaturaAActionPerformed
+
+    private void chb_CarreraEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_CarreraEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_CarreraEActionPerformed
+
+    private void chb_AulaEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AulaEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_AulaEActionPerformed
+
+    private void chb_AlumnoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AlumnoBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_AlumnoBActionPerformed
+
+    private void chb_CarreraBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_CarreraBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_CarreraBActionPerformed
+
+    private void chb_AulaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AulaBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_AulaBActionPerformed
+
+    private void chb_AlumnoAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AlumnoAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_AlumnoAActionPerformed
+
+    private void chb_CarreraAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_CarreraAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_CarreraAActionPerformed
+
+    private void chb_AulaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AulaAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_AulaAActionPerformed
+
+    private void chb_AlumnoGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AlumnoGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_AlumnoGActionPerformed
+
+    private void chb_CarreraGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_CarreraGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_CarreraGActionPerformed
+
+    private void chb_AulaGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AulaGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_AulaGActionPerformed
+
+    private void chb_AsignaturaEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AsignaturaEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_AsignaturaEActionPerformed
+
+    private void chb_NotasBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_NotasBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_NotasBActionPerformed
+
+    private void chb_MatriculaCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_MatriculaCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_MatriculaCActionPerformed
+
+    private void chb_AsignaturaBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AsignaturaBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_AsignaturaBActionPerformed
+
+    private void chb_NotasRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_NotasRActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_NotasRActionPerformed
+
+    private void chb_MatriculaRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_MatriculaRActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_MatriculaRActionPerformed
+
+    private void chb_AsignaturaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AsignaturaAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_AsignaturaAActionPerformed
+
+    private void chb_NotasGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_NotasGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_NotasGActionPerformed
+
+    private void chb_MatriculaGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_MatriculaGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_MatriculaGActionPerformed
+
+    private void chb_AsignaturaGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AsignaturaGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_AsignaturaGActionPerformed
+
+    private void chb_SeccionesEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_SeccionesEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_SeccionesEActionPerformed
+
+    private void chb_SeccionesBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_SeccionesBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_SeccionesBActionPerformed
+
+    private void chb_SeccionesAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_SeccionesAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_SeccionesAActionPerformed
+
+    private void chb_SeccionesGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_SeccionesGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_SeccionesGActionPerformed
+
+    private void chb_PeriodoEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_PeriodoEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_PeriodoEActionPerformed
+
+    private void chb_PeriodoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_PeriodoBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_PeriodoBActionPerformed
+
+    private void chb_PeriodoAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_PeriodoAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_PeriodoAActionPerformed
+
+    private void chb_PeriodoGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_PeriodoGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_PeriodoGActionPerformed
+
+    private void chb_EmpleadosEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_EmpleadosEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_EmpleadosEActionPerformed
+
+    private void chb_EmpleadosAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_EmpleadosAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_EmpleadosAActionPerformed
+
+    private void chb_EmpleadosBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_EmpleadosBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_EmpleadosBActionPerformed
+
+    private void chb_EmpleadosGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_EmpleadosGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chb_EmpleadosGActionPerformed
  private void inhabilidado(){
           chb_EmpleadosG.setEnabled(false);
           chb_EmpleadosA.setEnabled(false);
@@ -2292,6 +2322,39 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
  }
  
  private void deseleccionar(){
+     
+     //deshabilitar la parte de las funciones y borrarse
+     
+     try{
+              PreparedStatement ps;
+              ResultSet rs;
+              ps=con.prepareStatement("Delete Acceso_Pantallas\n" +
+"                      set nombre_usuario = ?,\n" +
+"                      EmpleadosFunciones = ?,\n" +
+"                      SeccionesFunciones = ?,\n" +
+"                      PeriodosFunciones = ?,\n" +
+"                      AsignaturaFunciones = ?,\n" +
+"                      MatriculaFunciones= ?,\n" +
+"                      AlumnoFunciones =?,\n" +
+"                      NotasFunciones =?\n" +
+"                      CancelarAsignaturaFunciones = ?,\n" +
+"                      AulaFunciones = ?,\n" +
+"                      CarreraFunciones= ?,\n" +                   
+"                      where nombre_usuario = '"+cbo_NombreUsuario+"'\n" );
+      } catch ( SQLException e) {
+               try {
+                Log myLog; 
+                String nombreArchivo = "src\\Logs\\Acceso_Pantallas " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                
+            }
+     
+     //Parte Original
          chb_EmpleadosG.setSelected(false);
          chb_EmpleadosB.setSelected(false);
          chb_EmpleadosA.setSelected(false);
