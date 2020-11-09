@@ -27,6 +27,20 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import org.apache.commons.codec.digest.DigestUtils;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.ResourceBundle;
+import net.sf.jasperreports.swing.JRViewerToolbar;
+import net.sf.jasperreports.view.JRSaveContributor;
+import net.sf.jasperreports.view.JRViewer;
+import net.sf.jasperreports.view.save.JRPdfSaveContributor;
 
 /**
  *
@@ -359,6 +373,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         txt_Salario = new javax.swing.JTextField();
         lbl_numeroIdentidad = new javax.swing.JLabel();
         lbl_nombreU = new javax.swing.JLabel();
+        btn_imprimir = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -486,7 +501,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(70, 380, 79, 25);
+        jButton2.setBounds(70, 380, 73, 23);
 
         chb_mostrarContraseña.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         chb_mostrarContraseña.setText("Mostrar contraseña");
@@ -497,7 +512,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jPanel1.add(chb_mostrarContraseña);
-        chb_mostrarContraseña.setBounds(940, 160, 147, 25);
+        chb_mostrarContraseña.setBounds(940, 160, 147, 23);
 
         lbl_nombres.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbl_nombres.setText("Nombres:");
@@ -668,7 +683,16 @@ this.cbo_tipoUsuario.setSelectedItem("");
 
         lbl_nombreU.setText("jLabel4");
         jPanel1.add(lbl_nombreU);
-        lbl_nombreU.setBounds(890, 20, 140, 16);
+        lbl_nombreU.setBounds(890, 20, 140, 14);
+
+        btn_imprimir.setText("jButton3");
+        btn_imprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_imprimirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_imprimir);
+        btn_imprimir.setBounds(190, 320, 73, 23);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 1240, 360));
 
@@ -1867,6 +1891,44 @@ char a=evt.getKeyChar();
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_SalarioKeyTyped
+    
+    private void btn_imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_imprimirActionPerformed
+     try {
+            JasperReport reporte = null;
+            String path = "src\\reportes\\Empleados.jasper";
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("nombreUsuario",lbl_usuario.getText());
+            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+            JasperPrint jprint;
+            jprint=JasperFillManager.fillReport(reporte,parameters,con);
+            JasperViewer view = new JasperViewer(jprint,false);
+            final JRViewer viewer = new JRViewer(jprint);
+            JRSaveContributor[] contrbs = viewer.getSaveContributors();
+
+            for (JRSaveContributor saveContributor : contrbs)
+            {
+                if (!(saveContributor instanceof net.sf.jasperreports.view.save.JRDocxSaveContributor || saveContributor instanceof net.sf.jasperreports.view.save.JRSingleSheetXlsSaveContributor 
+                        || saveContributor instanceof net.sf.jasperreports.view.save.JRPdfSaveContributor))
+                    viewer.removeSaveContributor(saveContributor);
+            }
+            view.setContentPane(viewer);
+            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            view.setVisible(true);
+             } catch (Exception e) {
+              
+            try {
+                Log myLog;
+                String nombreArchivo = "src\\Logs\\Empleado " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                 
+        }   
+// TODO add your handling code here:
+    }//GEN-LAST:event_btn_imprimirActionPerformed
 
    
     /**
@@ -1916,6 +1978,7 @@ char a=evt.getKeyChar();
     private javax.swing.JButton btn_Limpiar;
     private javax.swing.JButton btn_consultar;
     private javax.swing.JButton btn_guardar;
+    private javax.swing.JButton btn_imprimir;
     private javax.swing.JButton btn_rellenarCampos;
     private javax.swing.JComboBox<String> cbo_idCampus;
     private javax.swing.JComboBox<String> cbo_tipoUsuario;
