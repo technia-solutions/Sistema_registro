@@ -5,20 +5,36 @@
  */
 package pruebas;
 
+import pruebas.SeccionesTest;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import sistema_registro.SQL.ConectorSQL;
 
 /**
  *
- * @author asus
+ * @author wianp
  */
 public class SeccionesTestTest {
     
+    Connection con = null;
+    
     public SeccionesTestTest() {
+        
+            try{
+        this.con = ConectorSQL.obtenerConexion();
+    }catch(SQLException ex){
+        System.out.println(ex.getMessage());
+        
+    }
+        
     }
     
     @BeforeClass
@@ -55,17 +71,38 @@ public class SeccionesTestTest {
     @Test
     public void testGuardarSecciones() {
         System.out.println("GuardarSecciones");
-        String codigoAsignatura = "N";
-        String nombreSeccion = "CAL201";
-        String horaInicial = "12:30";
-        String horaFinal = "14:30";
-        String idPeriodo = "2";
+        String codigoAsignatura = "";
+        String nombreSeccion = "";
+        String horaInicial = "";
+        String horaFinal = "";
+        String idPeriodo = "";
         String idAula = "";
-        String cantidadMaxima = "38";
+        String cantidadMaxima = "";
         String dias = "";
         SeccionesTest instance = new SeccionesTest();
         instance.GuardarSecciones(codigoAsignatura, nombreSeccion, horaInicial, horaFinal, idPeriodo, idAula, cantidadMaxima, dias);
         // TODO review the generated test code and remove the default call to fail.
+         try {
+           Statement st = con.createStatement();
+           String sql = "Select * from Secciones where id_periodo = '"+nombreSeccion+"'";
+            ResultSet rs = st.executeQuery(sql);
+            if(rs.next()){
+               
+                assertEquals(codigoAsignatura,rs.getString("cod_asignaturas"));
+                assertEquals(nombreSeccion,rs.getString("Nombre_seccion"));
+                assertEquals(horaInicial,rs.getString("Hora_inicial"));
+                assertEquals(horaFinal,rs.getString("Hora_final"));
+                assertEquals(idPeriodo,rs.getString("id_periodo"));
+                assertEquals(idAula,rs.getString("id_aula"));
+                assertEquals(cantidadMaxima,rs.getString("cantidad_maxima"));
+                assertEquals(dias,rs.getString("dias"));
+            }
+                
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+
+        }
         
     }
 
@@ -75,8 +112,7 @@ public class SeccionesTestTest {
     @Test
     public void testActualizarSecciones() {
         System.out.println("ActualizarSecciones");
-       
-       String idPeriodo = "";
+        String idPeriodo = "";
         String idAula = "";
         String nombreSeccion = "";
         String codigoAsignatura = "";
@@ -85,9 +121,29 @@ public class SeccionesTestTest {
         String cantidadMaxima = "";
         String dias = "";
         SeccionesTest instance = new SeccionesTest();
-        instance.ActualizarSecciones( idPeriodo, idAula, codigoAsignatura, horaInicial, horaFinal, cantidadMaxima, dias, nombreSeccion);
+        instance.ActualizarSecciones(idPeriodo, idAula, nombreSeccion, codigoAsignatura, horaInicial, horaFinal, cantidadMaxima, dias);
         // TODO review the generated test code and remove the default call to fail.
-       
+        try {
+           Statement st = con.createStatement();
+           String sql = "Select * from Secciones where id_periodo = '"+nombreSeccion+"'";
+            ResultSet rs = st.executeQuery(sql);
+            if(rs.next()){
+               
+                assertEquals(codigoAsignatura,rs.getString("cod_asignaturas"));
+                assertEquals(nombreSeccion,rs.getString("Nombre_seccion"));
+                assertEquals(horaInicial,rs.getString("Hora_inicial"));
+                assertEquals(horaFinal,rs.getString("Hora_final"));
+                assertEquals(idPeriodo,rs.getString("id_periodo"));
+                assertEquals(idAula,rs.getString("id_aula"));
+                assertEquals(cantidadMaxima,rs.getString("cantidad_maxima"));
+                assertEquals(dias,rs.getString("dias"));
+            }
+                
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+
+        }
     }
 
     /**
@@ -99,7 +155,7 @@ public class SeccionesTestTest {
         SeccionesTest instance = new SeccionesTest();
         instance.BuscarSecciones();
         // TODO review the generated test code and remove the default call to fail.
-       
+        
     }
 
     /**
@@ -108,20 +164,16 @@ public class SeccionesTestTest {
     @Test
     public void testEliminarSecciones() {
         System.out.println("EliminarSecciones");
-        
-        
-        
-        String idPeriodo = "2";
-        String idAula = "A101";
-        String nombreSeccion = "Z";
-        String codigoAsignatura = "ESP520";
-        String horaInicial = "14:50";
-        String horaFinal = "17:40";
-        String cantidadMaxima = "60";
-        String dias = "LuMiVi";
-        
+        String idPeriodo = "";
+        String idAula = "";
+        String codigoAsignatura = "";
+        String horaInicial = "";
+        String horaFinal = "";
+        String cantidadMaxima = "";
+        String dias = "";
+        String nombreSeccion = "";
         SeccionesTest instance = new SeccionesTest();
-        instance.EliminarSecciones( idPeriodo, idAula, codigoAsignatura, horaInicial, horaFinal, cantidadMaxima, dias, nombreSeccion);
+        instance.EliminarSecciones(idPeriodo, idAula, codigoAsignatura, horaInicial, horaFinal, cantidadMaxima, dias, nombreSeccion);
         // TODO review the generated test code and remove the default call to fail.
        
     }
@@ -137,7 +189,7 @@ public class SeccionesTestTest {
         boolean result = instance.existeSeccion();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-
+      
     }
 
     /**
@@ -151,7 +203,7 @@ public class SeccionesTestTest {
         boolean result = instance.existeidSeccion();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        
+        fail("The test case is a prototype.");
     }
 
     /**
@@ -163,7 +215,7 @@ public class SeccionesTestTest {
         SeccionesTest instance = new SeccionesTest();
         instance.actualizarDatos();
         // TODO review the generated test code and remove the default call to fail.
-        
+       
     }
     
 }

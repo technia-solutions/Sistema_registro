@@ -5,6 +5,12 @@
  */
 package pruebas;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 import pruebas.PeriodoTest;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -12,6 +18,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import sistema_registro.SQL.ConectorSQL;
 
 /**
  *
@@ -19,7 +26,17 @@ import static org.junit.Assert.*;
  */
 public class PeriodoTestTest {
     
+    Connection con = null;
+    
+    
     public PeriodoTestTest() {
+        
+        try{
+        this.con = ConectorSQL.obtenerConexion();
+    }catch(SQLException ex){
+        System.out.println(ex.getMessage());
+        
+    }
     }
     
     @BeforeClass
@@ -51,6 +68,24 @@ public class PeriodoTestTest {
         instance.GuardarPeriodo(idPeriodo, nombrePeriodo, descripcion);
         // TODO review the generated test code and remove the default call to fail.
    
+        try {
+           Statement st = con.createStatement();
+           String sql = "Select * from Periodo where id_periodo = '"+idPeriodo+"'";
+            ResultSet rs = st.executeQuery(sql);
+            if(rs.next()){
+                assertEquals(idPeriodo,rs.getString("id_periodo"));
+                assertEquals(nombrePeriodo,rs.getString("periodo"));
+                assertEquals(descripcion,rs.getString("descripcion"));
+            }
+                
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+
+        }
+        
+     
+        
     }
 
     /**
@@ -66,6 +101,22 @@ public class PeriodoTestTest {
         instance.ActualizarPeriodo(nombrePeriodo, idPeriodo, descripcion);
         // TODO review the generated test code and remove the default call to fail.
       
+          try {
+           Statement st = con.createStatement();
+           String sql = "Select * from Periodo where id_periodo = '"+idPeriodo+"'";
+            ResultSet rs = st.executeQuery(sql);
+            if(rs.next()){
+                assertEquals(idPeriodo,rs.getString("id_periodo"));
+                assertEquals(nombrePeriodo,rs.getString("periodo"));
+                assertEquals(descripcion,rs.getString("descripcion"));
+            }
+                
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+
+        }
+        
     }
 
     /**

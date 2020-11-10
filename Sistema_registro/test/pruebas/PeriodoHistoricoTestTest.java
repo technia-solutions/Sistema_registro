@@ -5,6 +5,10 @@
  */
 package pruebas;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import pruebas.PeriodoHistoricoTest;
 import java.util.Date;
 import org.junit.After;
@@ -13,14 +17,25 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import sistema_registro.SQL.ConectorSQL;
 
 /**
  *
- * @author asus
+ * @author wianp
  */
 public class PeriodoHistoricoTestTest {
     
+        Connection con = null;
+    
     public PeriodoHistoricoTestTest() {
+        
+          try{
+        this.con = ConectorSQL.obtenerConexion();
+    }catch(SQLException ex){
+        System.out.println(ex.getMessage());
+        
+    }
+        
     }
     
     @BeforeClass
@@ -50,7 +65,7 @@ public class PeriodoHistoricoTestTest {
         int anio = 0;
         PeriodoHistoricoTest.cargarFecha(dia, mes, anio);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
     }
 
     /**
@@ -63,7 +78,7 @@ public class PeriodoHistoricoTestTest {
         Date result = PeriodoHistoricoTest.getDateCalendar();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -77,7 +92,7 @@ public class PeriodoHistoricoTestTest {
         String result = PeriodoHistoricoTest.DateAString(fecha);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -86,13 +101,30 @@ public class PeriodoHistoricoTestTest {
     @Test
     public void testAgregarPeriodoHistorico() {
         System.out.println("AgregarPeriodoHistorico");
-        String idPeriodo = "";
+         String idPeriodo = "";
         String nombrePeriodo = "";
         String fechaInicial = "";
         String fechaFinal = "";
         PeriodoHistoricoTest instance = new PeriodoHistoricoTest();
         instance.AgregarPeriodoHistorico(idPeriodo, nombrePeriodo, fechaInicial, fechaFinal);
         // TODO review the generated test code and remove the default call to fail.
+        
+         try {
+           Statement st = con.createStatement();
+           String sql = "Select * from Periodo_historico where nombre_periodo_historico = '"+nombrePeriodo+"'";
+            ResultSet rs = st.executeQuery(sql);
+            if(rs.next()){
+                assertEquals(idPeriodo,rs.getString("id_periodo"));
+                assertEquals(nombrePeriodo,rs.getString("nombre_periodo_historico"));
+                assertEquals(fechaInicial,rs.getString("fecha_inicial"));
+                assertEquals(fechaFinal,rs.getString("fecha_final"));
+            }
+                
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+
+        }
         
     }
 
@@ -102,14 +134,31 @@ public class PeriodoHistoricoTestTest {
     @Test
     public void testActualizarPriodoHistorico() {
         System.out.println("ActualizarPriodoHistorico");
-        String idPeriodo = "";
-        String nombrePeriodo = "";
-        String fechaInicial = "";
-        String fechaFinal = "";
+        String idPeriodo = "2";
+        String nombrePeriodo = "Quinto Periodo";
+        String fechaInicial = "21/04/2020";
+        String fechaFinal = "21/04/2020";
         PeriodoHistoricoTest instance = new PeriodoHistoricoTest();
         instance.ActualizarPriodoHistorico(idPeriodo, nombrePeriodo, fechaInicial, fechaFinal);
         // TODO review the generated test code and remove the default call to fail.
-       
+        
+        try {
+           Statement st = con.createStatement();
+           String sql = "Select * from Periodo_historico where nombre_periodo_historico= '"+nombrePeriodo+"'";
+            ResultSet rs = st.executeQuery(sql);
+            if(rs.next()){
+                assertEquals(idPeriodo,rs.getString("id_periodo"));
+                assertEquals(nombrePeriodo,rs.getString("nombre_periodo_historico"));
+                assertEquals(fechaInicial,rs.getString("fecha_inicial"));
+                assertEquals(fechaFinal,rs.getString("fecha_final"));
+            }
+                
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+
+        }
+        
     }
 
     /**
@@ -118,10 +167,10 @@ public class PeriodoHistoricoTestTest {
     @Test
     public void testConsultarPeriodoHistorico() {
         System.out.println("ConsultarPeriodoHistorico");
-        String idPeriodo = "1";
-        String nombrePeriodo = "2020-1";
-        String fechaInicial = "2020-05-15";
-        String fechaFinal = "2020-09-25";
+        String idPeriodo = "";
+        String nombrePeriodo = "";
+        String fechaInicial = "";
+        String fechaFinal = "";
         PeriodoHistoricoTest instance = new PeriodoHistoricoTest();
         instance.ConsultarPeriodoHistorico(idPeriodo, nombrePeriodo, fechaInicial, fechaFinal);
         // TODO review the generated test code and remove the default call to fail.

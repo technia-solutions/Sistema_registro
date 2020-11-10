@@ -12,6 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -50,8 +52,11 @@ System.out.println(fechaCadena);
             System.out.println(ex.getMessage());
             
         }
+        
+        
       
     }
+       
        
        public static void cargarFecha (int dia, int mes, int anio){
 
@@ -85,14 +90,109 @@ public static String DateAString (Date fecha){
           if( (getDateCalendar()== null)){
              javax.swing.JOptionPane.showMessageDialog(null,"Debe ingresar la fecha de inicio del período.","Fecha Inicial Requerida",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             
+               try {
+            SimpleDateFormat sdformat = new 
+                SimpleDateFormat("dd/MM/yyyy");
+            //Convierte de Date a String
+            //String fechaInicial = sdf.format(new Date());
+            //String fechaFinal = sdf.format(new Date());
+            Date date1 = sdformat.parse(
+               fechaInicial);
+      Date date2 = sdformat.parse(fechaFinal);
+      //System.out.println(
+          //"Date1: " + sdformat.format(date1));
+      //System.out.println(
+          //"Date2: " + sdformat.format(date2));
+        if(date1.compareTo(date2) > 0) {
+         System.out.println(
+             "Fecha Inicial es posterior a Fecha Final");
+         
+      } else if(date1.compareTo(date2) < 0) {
+         System.out.println(
+             "Fecha Inicial es previo a fecha Final");
+       
+      } else if(date1.compareTo(date2) == 0) {
+         System.out.println(
+             "Fecha Inicial  y Fecha Final tienen la misma Fecha");
+         
+      } 
+        } catch (ParseException ex) {
+        }
+             
             return;
         }
         
         if( (getDateCalendar()== null)){
             javax.swing.JOptionPane.showMessageDialog(null,"Debe ingresar la fecha final del período.","Fecha Final Requerida",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             
+           
+            
             return;
          }
+        
+        if(fechaInicial.equals(fechaFinal)){
+             try {
+            SimpleDateFormat sdformat = new 
+                SimpleDateFormat("dd/MM/yyyy");
+            //Convierte de Date a String
+            //String fechaInicial = sdf.format(new Date());
+            //String fechaFinal = sdf.format(new Date());
+            Date date1 = sdformat.parse(
+               fechaInicial);
+      Date date2 = sdformat.parse(fechaFinal);
+      //System.out.println(
+          //"Date1: " + sdformat.format(date1));
+      //System.out.println(
+          //"Date2: " + sdformat.format(date2));
+        if(date1.compareTo(date2) > 0) {
+        // System.out.println(
+            // "Fecha Inicial es posterior a Fecha Final");
+         
+      } else if(date1.compareTo(date2) < 0) {
+        // System.out.println(
+            // "Fecha Inicial es previo a fecha Final");
+       
+      } else if(date1.compareTo(date2) == 0) {
+       //  System.out.println(
+           //  "Fecha Inicial  y Fecha Final tienen la misma Fecha");
+         
+      } 
+        } catch (ParseException ex) {
+        }
+        javax.swing.JOptionPane.showMessageDialog(null,"Error al ingresar fecha de inicio del periodo.", "Fecha Inicial invalida", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+         if(fechaFinal.equals(fechaInicial)){
+               try {
+            SimpleDateFormat sdformat = new 
+                SimpleDateFormat("dd/MM/yyyy");
+            //Convierte de Date a String
+            //String fechaInicial = sdf.format(new Date());
+            //String fechaFinal = sdf.format(new Date());
+            Date date1 = sdformat.parse(
+               fechaInicial);
+      Date date2 = sdformat.parse(fechaFinal);
+      //System.out.println(
+          //"Date1: " + sdformat.format(date1));
+      //System.out.println(
+          //"Date2: " + sdformat.format(date2));
+        if(date1.compareTo(date2) > 0) {
+        // System.out.println(
+            // "Fecha Inicial es posterior a Fecha Final");
+         
+      } else if(date1.compareTo(date2) < 0) {
+        // System.out.println(
+            // "Fecha Inicial es previo a fecha Final");
+       
+      } else if(date1.compareTo(date2) == 0) {
+       //  System.out.println(
+           //  "Fecha Inicial  y Fecha Final tienen la misma Fecha");
+         
+      } 
+        } catch (ParseException ex) {
+        }
+        javax.swing.JOptionPane.showMessageDialog(null,"Error al ingresar fecha de inicio del periodo.", "Fecha Inicial invalida", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        }
           
               if(idPeriodo.equals(idPeriodo) ) {
                    javax.swing.JOptionPane.showMessageDialog(null,"Error al guardar el id del período","Id del período no valido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
@@ -104,11 +204,69 @@ public static String DateAString (Date fecha){
                }
                
                if(fechaInicial.equals(fechaInicial) ) {
+                     try {
+            SimpleDateFormat sdformat = new 
+                SimpleDateFormat("dd/MM/yyyy");
+            //Convierte de Date a String
+            //String fechaInicial = sdf.format(new Date());
+            //String fechaFinal = sdf.format(new Date());
+            Date date1 = sdformat.parse(
+               fechaInicial);
+      Date date2 = sdformat.parse(fechaFinal);
+      //System.out.println(
+          //"Date1: " + sdformat.format(date1));
+      //System.out.println(
+          //"Date2: " + sdformat.format(date2));
+        if(date1.compareTo(date2) > 0) {
+        // System.out.println(
+            // "Fecha Inicial es posterior a Fecha Final");
+         
+      } else if(date1.compareTo(date2) < 0) {
+        // System.out.println(
+            // "Fecha Inicial es previo a fecha Final");
+       
+      } else if(date1.compareTo(date2) == 0) {
+       //  System.out.println(
+           //  "Fecha Inicial  y Fecha Final tienen la misma Fecha");
+         
+      } 
+        } catch (ParseException ex) {
+        }
                    javax.swing.JOptionPane.showMessageDialog(null,"Error al guardar la fecha Inicial del período historico","Hora Inicial del período historico no valido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
                }
                
+                
+               
                 if(fechaFinal.equals(fechaFinal) ) {
+                      try {
+            SimpleDateFormat sdformat = new 
+                SimpleDateFormat("dd/MM/yyyy");
+            //Convierte de Date a String
+            //String fechaInicial = sdf.format(new Date());
+            //String fechaFinal = sdf.format(new Date());
+            Date date1 = sdformat.parse(
+               fechaInicial);
+      Date date2 = sdformat.parse(fechaFinal);
+      //System.out.println(
+          //"Date1: " + sdformat.format(date1));
+      //System.out.println(
+          //"Date2: " + sdformat.format(date2));
+        if(date1.compareTo(date2) > 0) {
+        // System.out.println(
+            // "Fecha Inicial es posterior a Fecha Final");
+         
+      } else if(date1.compareTo(date2) < 0) {
+        // System.out.println(
+            // "Fecha Inicial es previo a fecha Final");
+       
+      } else if(date1.compareTo(date2) == 0) {
+       //  System.out.println(
+           //  "Fecha Inicial  y Fecha Final tienen la misma Fecha");
+         
+      } 
+        } catch (ParseException ex) {
+        }
                    javax.swing.JOptionPane.showMessageDialog(null,"Error al guardar la fecha Final del período historico","Hora Final del período historico no valido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
                }
@@ -301,4 +459,40 @@ public static String DateAString (Date fecha){
         }
             
         }
-   }
+        
+        private void CompararFechas (){
+        
+          try {
+            SimpleDateFormat sdformat = new 
+                SimpleDateFormat("dd/MM/yyyy");
+            //Convierte de Date a String
+            String fechaInicial = sdf.format(new Date());
+            String fechaFinal = sdf.format(new Date());
+            Date date1 = sdformat.parse(
+               fechaInicial);
+      Date date2 = sdformat.parse(fechaFinal);
+      //System.out.println(
+          //"Date1: " + sdformat.format(date1));
+      //System.out.println(
+          //"Date2: " + sdformat.format(date2));
+        if(date1.compareTo(date2) > 0) {
+         System.out.println(
+             "Fecha Inicial es posterior a Fecha Final");
+         
+      } else if(date1.compareTo(date2) < 0) {
+         System.out.println(
+             "Fecha Inicial es previo a fecha Final");
+       
+      } else if(date1.compareTo(date2) == 0) {
+         System.out.println(
+             "Fecha Inicial  y Fecha Final tienen la misma Fecha");
+         
+      } 
+        } catch (ParseException ex) {
+        }
+    }
+    
+            
+        } 
+        
+   

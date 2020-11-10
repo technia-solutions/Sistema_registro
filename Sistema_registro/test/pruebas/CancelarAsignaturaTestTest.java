@@ -5,20 +5,34 @@
  */
 package pruebas;
 
+import pruebas.CancelarAsignaturaTest;
+import java.sql.Connection;
+import java.sql.SQLException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import sistema_registro.SQL.ConectorSQL;
 
 /**
  *
- * @author asus
+ * @author wianp
  */
 public class CancelarAsignaturaTestTest {
     
+    Connection con = null;
+    
     public CancelarAsignaturaTestTest() {
+        
+            try{
+        this.con = ConectorSQL.obtenerConexion();
+    }catch(SQLException ex){
+        System.out.println(ex.getMessage());
+        
+    }
+        
     }
     
     @BeforeClass
@@ -61,7 +75,7 @@ public class CancelarAsignaturaTestTest {
         CancelarAsignaturaTest instance = new CancelarAsignaturaTest();
         instance.EliminarMatricula(validar, numeroCuenta, idPeriodo);
         // TODO review the generated test code and remove the default call to fail.
-       
+        
     }
 
     /**
@@ -70,14 +84,14 @@ public class CancelarAsignaturaTestTest {
     @Test
     public void testCancelarAsignatura() {
         System.out.println("CancelarAsignatura");
-        String numeroCuenta = "20201202";
-        String idPeriodo = "3";
-        String idMatricula = "42";
-        String idSeccion = "ESP520-Z";
+        String numeroCuenta = "";
+        String idPeriodo = "";
+        String idMatricula = "";
+        String idSeccion = "";
         CancelarAsignaturaTest instance = new CancelarAsignaturaTest();
         instance.CancelarAsignatura(numeroCuenta, idPeriodo, idMatricula, idSeccion);
         // TODO review the generated test code and remove the default call to fail.
-       
+        
     }
 
     /**
@@ -89,7 +103,7 @@ public class CancelarAsignaturaTestTest {
         CancelarAsignaturaTest instance = new CancelarAsignaturaTest();
         instance.buscar();
         // TODO review the generated test code and remove the default call to fail.
-        
+     
     }
     
 }
