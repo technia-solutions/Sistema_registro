@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="44acf935-3418-4ee8-9b59-b0923c34b250">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="31"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -110,20 +110,20 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="42" splitType="Stretch">
+		<band height="54" splitType="Stretch">
 			<staticText>
-				<reportElement x="159" y="7" width="243" height="32" uuid="b455eaaa-1062-41ca-a5d0-439c5723633e"/>
+				<reportElement x="114" y="7" width="336" height="37" uuid="b455eaaa-1062-41ca-a5d0-439c5723633e"/>
 				<textElement textAlignment="Center">
-					<font size="20" isBold="true"/>
+					<font size="28" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Reporte de Carreras]]></text>
 			</staticText>
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="62" splitType="Stretch">
+		<band height="59" splitType="Stretch">
 			<componentElement>
-				<reportElement key="table 2" style="table 2" x="95" y="9" width="360" height="50" uuid="b5d0249d-2da4-40b1-9216-0bea34d2b857"/>
+				<reportElement key="table 2" style="table 2" x="71" y="9" width="421" height="50" uuid="b5d0249d-2da4-40b1-9216-0bea34d2b857"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="Carrera" uuid="7fb6f359-e222-45d4-bb96-a2ab63eb7538">
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
@@ -187,13 +187,13 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="5" splitType="Stretch"/>
+		<band height="1" splitType="Stretch"/>
 	</detail>
 	<columnFooter>
-		<band height="7" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch">
+		<band height="58" splitType="Stretch">
 			<textField>
 				<reportElement x="416" y="34" width="80" height="20" uuid="3363dbf9-18f2-4699-8d2e-6a3e6bc1f494"/>
 				<textElement textAlignment="Right"/>
@@ -206,6 +206,6 @@
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="5" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</summary>
 </jasperReport>

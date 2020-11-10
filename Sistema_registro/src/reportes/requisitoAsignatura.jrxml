@@ -84,11 +84,11 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch">
+		<band height="50" splitType="Stretch">
 			<staticText>
-				<reportElement x="143" y="5" width="288" height="29" uuid="9e0f14c6-87ab-4006-b942-ad5a920b7a6f"/>
+				<reportElement x="24" y="0" width="483" height="50" uuid="9e0f14c6-87ab-4006-b942-ad5a920b7a6f"/>
 				<textElement textAlignment="Center">
-					<font size="16" isBold="true"/>
+					<font size="28" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Reporte de Asignaturas Requisito]]></text>
 			</staticText>
@@ -97,7 +97,7 @@
 	<columnHeader>
 		<band height="61" splitType="Stretch">
 			<componentElement>
-				<reportElement key="table 1" style="table 1" x="64" y="7" width="408" height="50" uuid="833d783a-3d63-4328-868c-e94f9ccd32b7"/>
+				<reportElement key="table 1" style="table 1" x="45" y="7" width="488" height="50" uuid="833d783a-3d63-4328-868c-e94f9ccd32b7"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="Requisito_Asignatura" uuid="b3d27e1b-e638-4a00-84e8-4dc0b675f3cb">
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>

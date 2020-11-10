@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c22db073-01c7-4874-876c-3e01f5905c56">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="2"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -74,7 +74,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="85" splitType="Stretch">
+		<band height="73" splitType="Stretch">
 			<staticText>
 				<reportElement x="18" y="12" width="111" height="20" uuid="d0cbdc01-3e73-4a22-b283-361248c43616"/>
 				<text><![CDATA[Reporte generado por:]]></text>
@@ -90,11 +90,11 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch">
+		<band height="41" splitType="Stretch">
 			<staticText>
-				<reportElement x="346" y="7" width="213" height="24" uuid="cd5f8c99-bf53-4bdb-a94d-385a1c9702c9"/>
+				<reportElement x="204" y="0" width="355" height="41" uuid="cd5f8c99-bf53-4bdb-a94d-385a1c9702c9"/>
 				<textElement textAlignment="Center">
-					<font size="14" isBold="true"/>
+					<font size="28" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Reporte de Asignaturas]]></text>
 			</staticText>
@@ -103,7 +103,7 @@
 	<columnHeader>
 		<band height="61" splitType="Stretch">
 			<componentElement>
-				<reportElement key="table 1" style="table 1" x="79" y="8" width="634" height="50" uuid="97c8b434-d297-41c0-afec-e04a621fc5c1"/>
+				<reportElement key="table 1" style="table 1" x="66" y="8" width="736" height="50" uuid="97c8b434-d297-41c0-afec-e04a621fc5c1"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="Asignatura" uuid="97aebc32-162c-4c3d-8d2f-4cd0d3262550">
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
@@ -224,7 +224,7 @@
 		<band height="7" splitType="Stretch"/>
 	</detail>
 	<columnFooter>
-		<band height="2" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
 		<band height="54" splitType="Stretch">
@@ -240,6 +240,6 @@
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="8" splitType="Stretch"/>
+		<band height="1" splitType="Stretch"/>
 	</summary>
 </jasperReport>
