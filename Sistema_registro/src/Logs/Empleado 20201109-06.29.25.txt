@@ -1,0 +1,2 @@
+nov. 09, 2020 6:31:47 P. M. sistema_registro.Empleado btn_imprimirActionPerformed
+SEVERE: java.io.FileNotFoundException: src\reportes\Empleados.jasper La causa fue: java.io.FileNotFoundException: src\reportes\Empleados.jasper

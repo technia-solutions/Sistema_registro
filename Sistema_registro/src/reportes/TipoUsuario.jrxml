@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f66409c5-8b0c-41a0-b7d7-cae4c5ddf7c6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="TipoUsuarios" uuid="a9112a78-e996-4bde-b990-c9a30b611da7">
+		<queryString language="SQL">
+			<![CDATA[Select * from Tipo_Usuarios]]>
+		</queryString>
+		<field name="id_tipoUsuario" class="java.lang.String"/>
+		<field name="Tipo_Usuario" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="nombreUsuario" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[Select * from Tipo_Usuarios]]>
+	</queryString>
+	<field name="id_tipoUsuario" class="java.lang.String"/>
+	<field name="Tipo_Usuario" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="137" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="6" width="116" height="24" uuid="dfc5fa46-bc56-49f7-a6e2-2257288c78ec"/>
+				<text><![CDATA[Reporte generado por:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="472" y="6" width="100" height="24" uuid="9cbd4e45-43e2-4eee-98de-0731b974ae0b"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="126" y="6" width="100" height="24" uuid="a0c6890f-587d-4744-aa00-244f99b7b36a"/>
+				<textFieldExpression><![CDATA[$P{nombreUsuario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="126" y="63" width="329" height="74" uuid="b6b93162-83f2-4c0b-b7e4-9cbdf96a7c8c"/>
+				<textElement textAlignment="Center">
+					<font size="28" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte de Tipos de Usuario]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="5" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table" style="table" x="126" y="11" width="360" height="50" uuid="4f3344dd-e8df-41cf-b90c-b6cc39fc0b4d"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="TipoUsuarios" uuid="6ccb43d2-b491-4b1d-a9cf-d4a07cd994e8">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="134" uuid="ee338b54-f7df-4979-a057-61e6d70f75fa">
+						<jr:tableHeader style="table_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="134" height="30" uuid="ebb23918-2fd5-49b9-a042-d3573f57f77a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[ID del Tipo de Usuario]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="134" height="20" uuid="898eaa03-f300-4f26-9732-5ed94e4bc4ab"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{id_tipoUsuario}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="170" uuid="24f15c0a-2dd2-499f-81e4-246aada1ce7e">
+						<jr:tableHeader style="table_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="170" height="30" uuid="42bf34e8-2f2d-4190-8fe8-cc95a378b70f"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Nombre del Tipo de Usuario]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="170" height="20" uuid="3e8d1b59-7d1d-4651-8bab-17b0d1285aa9"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{Tipo_Usuario}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="5" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="5" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="36" splitType="Stretch">
+			<textField>
+				<reportElement x="445" y="16" width="80" height="20" uuid="91b2dea8-2cea-4a40-891a-5a4a85302458"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="525" y="16" width="40" height="20" uuid="f4b8ea09-9f10-43de-9f46-b5c626779e19"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="4" splitType="Stretch"/>
+	</summary>
+</jasperReport>

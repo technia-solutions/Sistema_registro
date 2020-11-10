@@ -25,8 +25,16 @@ import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import org.apache.commons.codec.digest.DigestUtils;
 import sistema_registro.SQL.ConectorSQL;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
+import java.util.HashMap;
+import java.util.Map;
+import net.sf.jasperreports.view.JRSaveContributor;
+import net.sf.jasperreports.view.JRViewer;
 
 /**
  *
@@ -285,6 +293,7 @@ public class Alumno extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
+        menu_Imprimir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -596,6 +605,16 @@ public class Alumno extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem2);
+
+        menu_Imprimir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
+        menu_Imprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/print-printer-tool-with-printed-paper-outlined-symbol_icon-icons.com_57772.png"))); // NOI18N
+        menu_Imprimir.setText("Imprimir");
+        menu_Imprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_ImprimirActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menu_Imprimir);
 
         jMenuBar1.add(jMenu1);
 
@@ -1275,6 +1294,45 @@ public class Alumno extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txt_identidadKeyTyped
 
+    private void menu_ImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_ImprimirActionPerformed
+        try {
+            JasperReport reporte = null;
+            String path = "src\\reportes\\Alumnos.jasper";
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("nombreUsuario",lbl_usuario.getText());
+            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+            JasperPrint jprint;
+            jprint=JasperFillManager.fillReport(reporte,parameters,con);
+            JasperViewer view = new JasperViewer(jprint,false);
+            final JRViewer viewer = new JRViewer(jprint);
+            JRSaveContributor[] contrbs = viewer.getSaveContributors();
+
+            for (JRSaveContributor saveContributor : contrbs)
+            {
+                if (!(saveContributor instanceof net.sf.jasperreports.view.save.JRDocxSaveContributor ||
+                    saveContributor instanceof net.sf.jasperreports.view.save.JRSingleSheetXlsSaveContributor
+                    || saveContributor instanceof net.sf.jasperreports.view.save.JRPdfSaveContributor))
+            viewer.removeSaveContributor(saveContributor);
+        }
+        view.setContentPane(viewer);
+        view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        view.setVisible(true);
+        } catch (Exception e) {
+
+            try {
+                Log myLog;
+                String nombreArchivo = "src\\Logs\\Alumnos " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menu_ImprimirActionPerformed
+
         private void limpiar(){
         txt_nombres.setText(null);
         txt_apellidos.setText(null);
@@ -1369,6 +1427,7 @@ public class Alumno extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_telefono;
     private javax.swing.JLabel lbl_titulo;
     private javax.swing.JLabel lbl_usuario;
+    private javax.swing.JMenuItem menu_Imprimir;
     private javax.swing.JTextField txt_apellidos;
     private javax.swing.JTextField txt_identidad;
     private javax.swing.JTextField txt_nombres;

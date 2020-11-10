@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f0c298b0-a521-4071-a1c7-3f09210587a7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Facultad" uuid="3827a996-14cf-4f11-abbc-c1128b0d554a">
+		<queryString language="SQL">
+			<![CDATA[Select * from Facultad
+]]>
+		</queryString>
+		<field name="id_facultad" class="java.lang.String"/>
+		<field name="nombre_facultad" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="nombreUsuario" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[Select * from Facultad]]>
+	</queryString>
+	<field name="id_facultad" class="java.lang.String"/>
+	<field name="nombre_facultad" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="114" splitType="Stretch">
+			<textField>
+				<reportElement x="126" y="10" width="100" height="20" uuid="ce630321-9f4f-4208-81e5-fe7b7224a54f"/>
+				<textFieldExpression><![CDATA[$P{nombreUsuario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="122" y="60" width="329" height="38" uuid="4b1b2a81-1f6b-46ae-89b5-f190ad29f66a"/>
+				<textElement textAlignment="Center">
+					<font size="28" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte de Facultades]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="472" y="10" width="100" height="20" uuid="50c89c48-a08b-4b5f-81ca-b717e0d8938f"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="10" width="116" height="20" uuid="bb4e31cc-9dac-4bed-af70-2cf9850a7c33"/>
+				<text><![CDATA[Reporte generado por:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="6" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="54" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table" style="table" x="122" y="0" width="360" height="50" uuid="d4a802fe-d57a-47f9-abbf-360d146ffcc6"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Facultad" uuid="bbaadce9-fc03-4245-8ddd-433d7ed287d2">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="131" uuid="5636531b-bf0f-44c3-ae13-c142413075be">
+						<jr:tableHeader style="table_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="131" height="30" uuid="faca2c66-6418-48fe-836a-d3543b30de7b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[ID de la Facultad]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="131" height="20" uuid="cf7c9441-eaea-4cd7-b39b-6d8388796ea5"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{id_facultad}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="182" uuid="526cc8b3-1bf0-4fcc-be5d-056d0f97de62">
+						<jr:tableHeader style="table_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="182" height="30" uuid="ae43d3a9-2c84-401d-997c-3fa54c822996"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Nombre de la Facultad]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="182" height="20" uuid="0aa3d969-c367-4a36-9068-8cab61491f83"/>
+								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[$F{nombre_facultad}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="4" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="4" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="39" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="531" y="19" width="40" height="20" uuid="8f87e8ba-fd3c-4045-963b-42a030fedebe"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="451" y="19" width="80" height="20" uuid="1834737a-4fa8-40b6-81cf-bb6c682ae349"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="6" splitType="Stretch"/>
+	</summary>
+</jasperReport>

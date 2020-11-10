@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2f075573-4740-4b0e-a514-2c23cb4234a8">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2f075573-4740-4b0e-a514-2c23cb4234a8">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -76,9 +76,9 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="60" splitType="Stretch">
+		<band height="108" splitType="Stretch">
 			<textField pattern="dd/MM/yyyy h.mm a">
-				<reportElement x="472" y="11" width="100" height="20" uuid="ab7a33be-772c-41c2-8240-da003b214edb"/>
+				<reportElement x="652" y="11" width="100" height="20" uuid="ab7a33be-772c-41c2-8240-da003b214edb"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -89,10 +89,17 @@
 				<reportElement x="6" y="11" width="116" height="20" uuid="63d52950-4d54-4e4e-88df-92d1cdc54370"/>
 				<text><![CDATA[Reporte generado por:]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="207" y="51" width="329" height="38" uuid="a94bb5c9-3ed2-4c5e-83c8-c4faef67568f"/>
+				<textElement textAlignment="Center">
+					<font size="28" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte de Empleados]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="4" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
 		<band height="50" splitType="Stretch">
@@ -102,28 +109,28 @@
 					<datasetRun subDataset="Empleados" uuid="9b4259cf-9017-427b-9545-bab00e44e7b2">
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:column width="128" uuid="a23b3fcb-f019-442c-a874-cc8ab46a7a23">
-						<jr:tableHeader style="table 1_TH" height="30" rowSpan="1">
+					<jr:column width="125" uuid="a23b3fcb-f019-442c-a874-cc8ab46a7a23">
+						<jr:tableHeader style="table 1_TH" height="44" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="128" height="30" uuid="8c59d5d8-e9d6-49fb-8ce4-f8db7bc6cfdb"/>
+								<reportElement x="0" y="0" width="125" height="44" uuid="8c59d5d8-e9d6-49fb-8ce4-f8db7bc6cfdb"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="12" isBold="true"/>
 								</textElement>
-								<text><![CDATA[Nombre de empleado]]></text>
+								<text><![CDATA[Nombre del  empleado]]></text>
 							</staticText>
 						</jr:tableHeader>
 						<jr:detailCell style="table 1_TD" height="37" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="128" height="37" uuid="99cbdb76-940d-4d5a-9bc0-11e893f1e0dc"/>
+								<reportElement x="0" y="0" width="125" height="37" uuid="99cbdb76-940d-4d5a-9bc0-11e893f1e0dc"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{nombres_empleado}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="133" uuid="db805849-c512-4372-8586-6b26846ac6d5">
-						<jr:tableHeader style="table 1_TH" height="30" rowSpan="1">
+					<jr:column width="120" uuid="db805849-c512-4372-8586-6b26846ac6d5">
+						<jr:tableHeader style="table 1_TH" height="44" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="133" height="30" uuid="2b728341-b31c-4d65-acbe-97ac695cfb33"/>
+								<reportElement x="0" y="0" width="119" height="44" uuid="2b728341-b31c-4d65-acbe-97ac695cfb33"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="12" isBold="true"/>
 								</textElement>
@@ -132,38 +139,38 @@
 						</jr:tableHeader>
 						<jr:detailCell style="table 1_TD" height="37" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="133" height="37" uuid="4e01847b-fd1f-4006-814a-64dd94118062"/>
+								<reportElement x="0" y="0" width="119" height="37" uuid="4e01847b-fd1f-4006-814a-64dd94118062"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{apellido_empleado}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="135" uuid="a8edd04f-2375-4a11-836e-3d80c858b2c6">
-						<jr:tableHeader style="table 1_TH" height="30" rowSpan="1">
+					<jr:column width="99" uuid="a8edd04f-2375-4a11-836e-3d80c858b2c6">
+						<jr:tableHeader style="table 1_TH" height="44" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="134" height="30" uuid="243983ec-7f24-450e-b436-16b3b66ab02c"/>
+								<reportElement x="0" y="0" width="98" height="44" uuid="243983ec-7f24-450e-b436-16b3b66ab02c"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="12" isBold="true"/>
 								</textElement>
-								<text><![CDATA[Teléfono de empleado]]></text>
+								<text><![CDATA[Teléfono del empleado]]></text>
 							</staticText>
 						</jr:tableHeader>
 						<jr:detailCell style="table 1_TD" height="37" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="134" height="37" uuid="9b3da6ae-4167-49b6-b26c-ad31f7da6291"/>
+								<reportElement x="0" y="0" width="98" height="37" uuid="9b3da6ae-4167-49b6-b26c-ad31f7da6291"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{telefono_empleado}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="bb4ff700-389f-4b5c-a707-047b5a425453">
-						<jr:tableHeader style="table 1_TH" height="30" rowSpan="1">
+						<jr:tableHeader style="table 1_TH" height="44" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="efba48e8-9ee0-47fe-b089-0df05abecfb0"/>
+								<reportElement x="0" y="0" width="90" height="44" uuid="efba48e8-9ee0-47fe-b089-0df05abecfb0"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="12" isBold="true"/>
 								</textElement>
-								<text><![CDATA[Static text]]></text>
+								<text><![CDATA[Id del Campus]]></text>
 							</staticText>
 						</jr:tableHeader>
 						<jr:detailCell style="table 1_TD" height="37" rowSpan="1">
@@ -175,7 +182,15 @@
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="90" uuid="3f9538a3-3800-4193-b1d7-bb986af243dc">
-						<jr:tableHeader style="table 1_TH" height="30" rowSpan="1"/>
+						<jr:tableHeader style="table 1_TH" height="44" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="44" uuid="a97b9ebf-6dac-495e-be99-bd19d9c5b441"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Salario]]></text>
+							</staticText>
+						</jr:tableHeader>
 						<jr:detailCell style="table 1_TD" height="37" rowSpan="1">
 							<textField>
 								<reportElement x="0" y="0" width="90" height="37" uuid="79b29dbe-ccb3-42e1-b821-f581a1a205dd"/>
@@ -184,21 +199,37 @@
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="68ff72d2-5f34-496c-9b86-0ed9e83b3b08">
-						<jr:tableHeader style="table 1_TH" height="30" rowSpan="1"/>
+					<jr:column width="67" uuid="68ff72d2-5f34-496c-9b86-0ed9e83b3b08">
+						<jr:tableHeader style="table 1_TH" height="44" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="66" height="44" uuid="84641c27-4a52-4a3a-b789-b8ec26736b96"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Id del Empleado]]></text>
+							</staticText>
+						</jr:tableHeader>
 						<jr:detailCell style="table 1_TD" height="37" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="37" uuid="1eaa5d28-8d1b-4ae3-9419-57e39e499200"/>
+								<reportElement x="0" y="0" width="66" height="37" uuid="1eaa5d28-8d1b-4ae3-9419-57e39e499200"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{id_empleado}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="118" uuid="11330428-0271-4ea3-9d53-2a29d2628c32">
-						<jr:tableHeader style="table 1_TH" height="30" rowSpan="1"/>
+					<jr:column width="161" uuid="11330428-0271-4ea3-9d53-2a29d2628c32">
+						<jr:tableHeader style="table 1_TH" height="44" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="161" height="44" uuid="dae1fc3c-24ef-4d57-b4d1-c43830ad0aed"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Número de Identidad]]></text>
+							</staticText>
+						</jr:tableHeader>
 						<jr:detailCell style="table 1_TD" height="37" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="118" height="37" uuid="909d1301-16f9-4629-8b72-3b05d6ef3c45"/>
+								<reportElement x="0" y="0" width="161" height="37" uuid="909d1301-16f9-4629-8b72-3b05d6ef3c45"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{numero_identidad}]]></textFieldExpression>
 							</textField>
@@ -209,20 +240,20 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="28" splitType="Stretch"/>
+		<band height="2" splitType="Stretch"/>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="5" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch">
+		<band height="44" splitType="Stretch">
 			<textField>
-				<reportElement x="423" y="20" width="80" height="20" uuid="fc2b96a9-1984-4cc9-91a6-69636fabc786"/>
+				<reportElement x="632" y="23" width="80" height="20" uuid="fc2b96a9-1984-4cc9-91a6-69636fabc786"/>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Página"+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
-				<reportElement x="503" y="20" width="40" height="20" uuid="ab997121-a87e-4ad7-97f5-efbb488e8bb6"/>
+				<reportElement x="712" y="23" width="40" height="20" uuid="ab997121-a87e-4ad7-97f5-efbb488e8bb6"/>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 		</band>

@@ -27,20 +27,15 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import org.apache.commons.codec.digest.DigestUtils;
-import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.ResourceBundle;
-import net.sf.jasperreports.swing.JRViewerToolbar;
 import net.sf.jasperreports.view.JRSaveContributor;
 import net.sf.jasperreports.view.JRViewer;
-import net.sf.jasperreports.view.save.JRPdfSaveContributor;
 
 /**
  *
@@ -385,6 +380,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         menu_desbloquearUsuario = new javax.swing.JMenuItem();
         menu_Campus = new javax.swing.JMenuItem();
         menu_tipoUsuario = new javax.swing.JMenuItem();
+        menu_Imprimir = new javax.swing.JMenuItem();
 
         jButton1.setText("jButton1");
 
@@ -782,6 +778,17 @@ this.cbo_tipoUsuario.setSelectedItem("");
             }
         });
         jMenu1.add(menu_tipoUsuario);
+
+        menu_Imprimir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
+        menu_Imprimir.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        menu_Imprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/print-printer-tool-with-printed-paper-outlined-symbol_icon-icons.com_57772.png"))); // NOI18N
+        menu_Imprimir.setText("Imprimir");
+        menu_Imprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_ImprimirActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menu_Imprimir);
 
         jMenuBar1.add(jMenu1);
 
@@ -1891,9 +1898,15 @@ char a=evt.getKeyChar();
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_SalarioKeyTyped
+
     
     private void btn_imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_imprimirActionPerformed
-     try {
+    
+// TODO add your handling code here:
+    }//GEN-LAST:event_btn_imprimirActionPerformed
+
+    private void menu_ImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_ImprimirActionPerformed
+      try {
             JasperReport reporte = null;
             String path = "src\\reportes\\Empleados.jasper";
             Map<String, Object> parameters = new HashMap<>();
@@ -1907,7 +1920,8 @@ char a=evt.getKeyChar();
 
             for (JRSaveContributor saveContributor : contrbs)
             {
-                if (!(saveContributor instanceof net.sf.jasperreports.view.save.JRDocxSaveContributor || saveContributor instanceof net.sf.jasperreports.view.save.JRSingleSheetXlsSaveContributor 
+                if (!(saveContributor instanceof net.sf.jasperreports.view.save.JRDocxSaveContributor || 
+                        saveContributor instanceof net.sf.jasperreports.view.save.JRSingleSheetXlsSaveContributor 
                         || saveContributor instanceof net.sf.jasperreports.view.save.JRPdfSaveContributor))
                     viewer.removeSaveContributor(saveContributor);
             }
@@ -1927,8 +1941,8 @@ char a=evt.getKeyChar();
             }
                  
         }   
-// TODO add your handling code here:
-    }//GEN-LAST:event_btn_imprimirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menu_ImprimirActionPerformed
 
    
     /**
@@ -2009,6 +2023,7 @@ char a=evt.getKeyChar();
     private javax.swing.JLabel lbl_titulo;
     private javax.swing.JLabel lbl_usuario;
     private javax.swing.JMenuItem menu_Campus;
+    private javax.swing.JMenuItem menu_Imprimir;
     private javax.swing.JMenuItem menu_MenuPrincipal;
     private javax.swing.JMenuItem menu_desbloquearUsuario;
     private javax.swing.JMenuItem menu_tipoUsuario;

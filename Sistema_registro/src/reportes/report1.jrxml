@@ -171,7 +171,7 @@ group by a.numero_cuenta_alumno, a.nombres_alumno, a.apellidos_alumno, c.nombre_
 	<title>
 		<band height="314" splitType="Stretch">
 			<staticText>
-				<reportElement style="Title" x="142" y="138" width="277" height="33" uuid="9d37d5af-6795-4727-8627-b31aa3006335"/>
+				<reportElement style="Title" x="150" y="138" width="277" height="33" uuid="9d37d5af-6795-4727-8627-b31aa3006335"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Historial Académico]]></text>
 			</staticText>

@@ -29,6 +29,15 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumn;
 import org.apache.commons.codec.digest.DigestUtils;
 import sistema_registro.SQL.ConectorSQL;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
+import java.util.HashMap;
+import java.util.Map;
+import net.sf.jasperreports.view.JRSaveContributor;
+import net.sf.jasperreports.view.JRViewer;
 
 /**
  *
@@ -105,6 +114,7 @@ public class TipoUsuario extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         cbo_menuprincipal = new javax.swing.JMenuItem();
+        menu_Imprimir = new javax.swing.JMenuItem();
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
@@ -340,6 +350,16 @@ public class TipoUsuario extends javax.swing.JFrame {
             }
         });
         jMenu1.add(cbo_menuprincipal);
+
+        menu_Imprimir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
+        menu_Imprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/print-printer-tool-with-printed-paper-outlined-symbol_icon-icons.com_57772.png"))); // NOI18N
+        menu_Imprimir.setText("Imprimir");
+        menu_Imprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_ImprimirActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menu_Imprimir);
 
         jMenuBar1.add(jMenu1);
 
@@ -844,6 +864,45 @@ public void consultarDatos(){
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_idTipoKeyTyped
 
+    private void menu_ImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_ImprimirActionPerformed
+        try {
+            JasperReport reporte = null;
+            String path = "src\\reportes\\TipoUsuario.jasper";
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("nombreUsuario",lbl_usuario.getText());
+            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+            JasperPrint jprint;
+            jprint=JasperFillManager.fillReport(reporte,parameters,con);
+            JasperViewer view = new JasperViewer(jprint,false);
+            final JRViewer viewer = new JRViewer(jprint);
+            JRSaveContributor[] contrbs = viewer.getSaveContributors();
+
+            for (JRSaveContributor saveContributor : contrbs)
+            {
+                if (!(saveContributor instanceof net.sf.jasperreports.view.save.JRDocxSaveContributor ||
+                    saveContributor instanceof net.sf.jasperreports.view.save.JRSingleSheetXlsSaveContributor
+                    || saveContributor instanceof net.sf.jasperreports.view.save.JRPdfSaveContributor))
+            viewer.removeSaveContributor(saveContributor);
+        }
+        view.setContentPane(viewer);
+        view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        view.setVisible(true);
+        } catch (Exception e) {
+
+            try {
+                Log myLog;
+                String nombreArchivo = "src\\Logs\\TipoUsuario " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menu_ImprimirActionPerformed
+
     
     private void limpiar(){
         txt_idTipo.setText(null);
@@ -910,6 +969,7 @@ public void consultarDatos(){
     private javax.swing.JLabel lbl_tipoU;
     private javax.swing.JLabel lbl_titulo;
     private javax.swing.JLabel lbl_usuario;
+    private javax.swing.JMenuItem menu_Imprimir;
     private javax.swing.JTextField txt_TipoUsuario;
     private javax.swing.JTextField txt_idTipo;
     // End of variables declaration//GEN-END:variables
