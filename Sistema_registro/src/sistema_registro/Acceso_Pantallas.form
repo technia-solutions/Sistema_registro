@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Component class="javax.swing.JCheckBox" name="jCheckBox1">
       <Properties>
@@ -60,7 +60,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,3,54,0,0,3,50"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,3,54,0,0,4,23"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
@@ -76,7 +76,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="554" y="24" width="80" height="16"/>
+          <AbsoluteConstraints x="810" y="20" width="80" height="16"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -89,137 +89,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="640" y="20" width="130" height="20"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lbl_Empleados">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="12" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Empleados"/>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="116" y="371" width="-1" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lbl_Periodo">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="12" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Periodo"/>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="116" y="400" width="65" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lbl_Secciones">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="12" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Secciones"/>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="116" y="429" width="65" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lbl_Asignatura">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="12" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Asignatura"/>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="116" y="459" width="80" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lbl_Matricula">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="12" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Matricula"/>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="116" y="488" width="65" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lbl_CancelarAsignatura">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="12" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Cancelar Asignatura"/>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="116" y="631" width="150" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lbl_Alumno">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="12" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Alumno"/>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="116" y="602" width="65" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lbl_Carrera">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="12" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Carrera"/>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="116" y="573" width="65" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lbl_Aula">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="12" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Aula"/>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="116" y="544" width="65" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lbl_Notas">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="12" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Notas"/>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="116" y="515" width="65" height="-1"/>
+          <AbsoluteConstraints x="900" y="20" width="130" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -238,7 +108,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="250" y="700" width="-1" height="-1"/>
+          <AbsoluteConstraints x="390" y="700" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -257,7 +127,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="390" y="700" width="-1" height="-1"/>
+          <AbsoluteConstraints x="510" y="700" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -294,7 +164,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="60" y="120" width="720" height="570"/>
+          <AbsoluteConstraints x="40" y="120" width="960" height="570"/>
         </Constraint>
       </Constraints>
 
@@ -303,42 +173,92 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
+                                      <Component id="lbl_Alumno" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lbl_Periodo" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbl_Empleados" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbl_Secciones" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbl_Asignatura" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbl_Matricula" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbl_Notas" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbl_Aula" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lbl_Carrera" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="lbl_CancelarAsignatura" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jPanel1" max="32767" attributes="0"/>
+                              <Component id="jPanel2" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="305" max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
                           <Component id="cbo_NombreUsuario" min="-2" pref="240" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="83" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                  <EmptySpace pref="128" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="cbo_NombreUsuario" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="38" max="32767" attributes="0"/>
-                  <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jPanel2" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="lbl_Empleados" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="lbl_Periodo" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="lbl_Secciones" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="lbl_Asignatura" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                          <Component id="lbl_Matricula" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="lbl_Notas" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="lbl_Aula" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="lbl_Carrera" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="lbl_Alumno" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="lbl_CancelarAsignatura" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -360,224 +280,193 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="105" pref="105" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="chb_NotasR" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
-                                          <Component id="chb_AulaA" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
-                                          <Component id="chb_CarreraA" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
-                                          <Component id="chb_AlumnoA" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
-                                          <Component id="chb_CancelarAsignaturaB" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="chb_NotasB" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="chb_CarreraB" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
-                                                  <Component id="chb_CancelarAsignaturaE" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace min="4" pref="4" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="chb_MatriculaR" min="-2" pref="90" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                                      <Component id="chb_MatriculaC" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                                  <Component id="chb_CancelarAsignaturaA" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="chb_AlumnoG" min="-2" pref="81" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="chb_AulaG" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
-                                  <Component id="chb_NotasG" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
-                                  <Component id="chb_MatriculaG" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
-                                  <Component id="chb_AsignaturaG" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
-                                  <Component id="chb_CarreraG" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="14" pref="14" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="chb_EmpleadosG" min="-2" pref="81" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="chb_PeriodoA" max="32767" attributes="0"/>
-                                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="chb_EmpleadosA" min="-2" pref="90" max="-2" attributes="0"/>
-                                              <EmptySpace pref="15" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="chb_PeriodoB" min="-2" pref="81" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="chb_PeriodoE" min="-2" pref="81" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="chb_PeriodoI" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="chb_EmpleadosB" min="-2" pref="81" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="chb_EmpleadosE" min="-2" pref="81" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="chb_EmpleadosI" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="chb_SeccionesB" min="-2" pref="81" max="-2" attributes="0"/>
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Component id="chb_SeccionesE" min="-2" pref="81" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="1" attributes="0">
-                                                      <Group type="103" groupAlignment="1" attributes="0">
-                                                          <Component id="chb_AsignaturaB" min="-2" pref="81" max="-2" attributes="0"/>
-                                                          <Component id="chb_AulaB" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
-                                                          <Component id="chb_AlumnoB" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="chb_AulaE" min="-2" pref="81" max="-2" attributes="0"/>
-                                                          <Component id="chb_AsignaturaE" min="-2" pref="81" max="-2" attributes="0"/>
-                                                          <Component id="chb_CarreraE" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
-                                                          <Component id="chb_AlumnoI" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                          <Component id="chb_CancelarAsignaturaI" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                              </Group>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="chb_AsignaturaI" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="chb_SeccionesI" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="chb_AulaI" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="chb_CarreraI" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="chb_PeriodoG" min="-2" pref="81" max="-2" attributes="0"/>
-                                          <Component id="chb_SeccionesG" min="-2" pref="81" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="chb_SeccionesA" max="32767" attributes="0"/>
-                                          <Component id="chb_AsignaturaA" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                          </Group>
+                          <Component id="chb_NotasG" max="32767" attributes="0"/>
+                          <Component id="chb_AulaG" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_EmpleadosG" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_PeriodoG" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_SeccionesG" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_AsignaturaG" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_MatriculaG" max="32767" attributes="0"/>
+                          <Component id="chb_AlumnoG" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_CancelarAsignaturaC" pref="89" max="32767" attributes="0"/>
+                          <Component id="chb_CarreraG" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="chb_EmpleadosA" alignment="0" pref="96" max="32767" attributes="0"/>
+                          <Component id="chb_PeriodoA" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_SeccionesA" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_AsignaturaA" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_MatriculaR" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_NotasR" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_AulaA" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_CarreraA" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_AlumnoA" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_CancelarAsignaturaB" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="chb_EmpleadosB" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_PeriodoB" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_SeccionesB" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_AsignaturaB" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_MatriculaI" alignment="0" pref="110" max="32767" attributes="0"/>
+                          <Component id="chb_NotasB" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_AulaB" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_CarreraB" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_AlumnoB" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_CancelarAsignaturaE" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="chb_CarreraE" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="chb_AlumnoI" max="32767" attributes="0"/>
+                                  <Component id="chb_CancelarAsignaturaI" max="32767" attributes="0"/>
+                                  <Component id="chb_AulaE" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="chb_NotasI" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="chb_EmpleadosE" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_PeriodoE" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_SeccionesE" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_AsignaturaE" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_MatriculaC" alignment="0" pref="160" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="chb_EmpleadosI" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_PeriodoI" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_SeccionesI" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_AsignaturaI" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_CarreraI" alignment="0" max="32767" attributes="0"/>
+                          <Component id="chb_AulaI" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="chb_EmpleadosG" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chb_EmpleadosA" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chb_EmpleadosB" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chb_EmpleadosE" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chb_EmpleadosI" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="chb_PeriodoG" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chb_PeriodoA" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chb_PeriodoB" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chb_PeriodoE" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chb_PeriodoI" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="chb_SeccionesA" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chb_SeccionesB" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chb_SeccionesG" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chb_SeccionesE" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chb_SeccionesI" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="33" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="chb_AsignaturaB" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="chb_AsignaturaE" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="chb_AsignaturaI" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="chb_EmpleadosI" linkSize="3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
+                              <Component id="chb_PeriodoI" linkSize="3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
+                              <Component id="chb_SeccionesI" linkSize="3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
+                              <Component id="chb_AsignaturaI" linkSize="3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                              <Component id="chb_CarreraI" linkSize="3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                              <Component id="chb_AulaI" linkSize="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="chb_AsignaturaG" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="chb_AsignaturaA" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="chb_EmpleadosG" linkSize="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="chb_EmpleadosA" linkSize="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="chb_EmpleadosB" linkSize="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="chb_EmpleadosE" linkSize="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="chb_PeriodoG" linkSize="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="chb_PeriodoA" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="chb_PeriodoB" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="chb_PeriodoE" linkSize="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="chb_SeccionesG" linkSize="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="chb_SeccionesA" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="chb_SeccionesB" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="chb_SeccionesE" linkSize="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="chb_AsignaturaG" linkSize="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="chb_AsignaturaA" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="chb_AsignaturaB" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="chb_AsignaturaE" linkSize="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="chb_MatriculaG" linkSize="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="chb_MatriculaI" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="chb_MatriculaC" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="chb_MatriculaR" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="chb_CarreraE" linkSize="3" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                      <Component id="chb_AlumnoI" linkSize="3" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                      <Component id="chb_CancelarAsignaturaI" linkSize="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="chb_NotasG" linkSize="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chb_NotasR" linkSize="3" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="chb_NotasB" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="chb_NotasI" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="chb_AulaA" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chb_AulaB" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chb_AulaG" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chb_AulaE" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                                              <Component id="chb_AlumnoG" linkSize="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="chb_CarreraA" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="chb_CarreraB" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="chb_CarreraG" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="chb_AlumnoA" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="chb_AlumnoB" linkSize="3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="chb_CancelarAsignaturaC" linkSize="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chb_CancelarAsignaturaE" linkSize="3" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="chb_CancelarAsignaturaB" linkSize="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
                           </Group>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="chb_MatriculaG" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chb_MatriculaR" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chb_MatriculaC" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="chb_NotasG" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chb_NotasR" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chb_NotasB" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chb_AulaI" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="chb_AulaG" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chb_AulaA" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chb_AulaB" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chb_AulaE" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chb_CarreraI" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="chb_CarreraG" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="chb_CarreraA" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="chb_CarreraB" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="chb_CarreraE" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="chb_AlumnoG" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chb_AlumnoA" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chb_AlumnoB" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chb_AlumnoI" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="chb_CancelarAsignaturaA" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chb_CancelarAsignaturaB" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chb_CancelarAsignaturaE" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="chb_CancelarAsignaturaI" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="15" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -588,7 +477,7 @@
                 <Property name="text" type="java.lang.String" value="Guardar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -600,7 +489,7 @@
                 <Property name="text" type="java.lang.String" value="Buscar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -612,7 +501,7 @@
                 <Property name="text" type="java.lang.String" value="Actualizar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -624,7 +513,7 @@
                 <Property name="text" type="java.lang.String" value="Eliminar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -636,7 +525,7 @@
                 <Property name="text" type="java.lang.String" value="Guardar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -648,7 +537,7 @@
                 <Property name="text" type="java.lang.String" value="Actualizar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -660,7 +549,7 @@
                 <Property name="text" type="java.lang.String" value="Buscar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -672,7 +561,7 @@
                 <Property name="text" type="java.lang.String" value="Eliminar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -684,7 +573,7 @@
                 <Property name="text" type="java.lang.String" value="Guardar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -696,7 +585,7 @@
                 <Property name="text" type="java.lang.String" value="Actualizar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -708,7 +597,7 @@
                 <Property name="text" type="java.lang.String" value="Buscar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -720,7 +609,7 @@
                 <Property name="text" type="java.lang.String" value="Eliminar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -732,7 +621,7 @@
                 <Property name="text" type="java.lang.String" value="Guardar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -744,7 +633,7 @@
                 <Property name="text" type="java.lang.String" value="Guardar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -756,7 +645,7 @@
                 <Property name="text" type="java.lang.String" value="Guardar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -768,7 +657,7 @@
                 <Property name="text" type="java.lang.String" value="Actualizar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -780,7 +669,7 @@
                 <Property name="text" type="java.lang.String" value="Reporte"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -792,7 +681,7 @@
                 <Property name="text" type="java.lang.String" value="Reporte"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -804,23 +693,11 @@
                 <Property name="text" type="java.lang.String" value="Buscar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_AsignaturaBActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="chb_MatriculaC">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Cancelar Matricula"/>
-                <Property name="contentAreaFilled" type="boolean" value="false"/>
-                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_MatriculaCActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="chb_NotasB">
@@ -828,7 +705,7 @@
                 <Property name="text" type="java.lang.String" value="Buscar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -840,7 +717,7 @@
                 <Property name="text" type="java.lang.String" value="Eliminar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -852,7 +729,7 @@
                 <Property name="text" type="java.lang.String" value="Guardar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -864,7 +741,7 @@
                 <Property name="text" type="java.lang.String" value="Guardar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -876,7 +753,7 @@
                 <Property name="text" type="java.lang.String" value="Guardar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -888,7 +765,7 @@
                 <Property name="text" type="java.lang.String" value="Actualizar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -900,7 +777,7 @@
                 <Property name="text" type="java.lang.String" value="Actualizar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -912,7 +789,7 @@
                 <Property name="text" type="java.lang.String" value="Actualizar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -924,7 +801,7 @@
                 <Property name="text" type="java.lang.String" value="Buscar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -936,7 +813,7 @@
                 <Property name="text" type="java.lang.String" value="Buscar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -948,7 +825,7 @@
                 <Property name="text" type="java.lang.String" value="Buscar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -960,7 +837,7 @@
                 <Property name="text" type="java.lang.String" value="Eliminar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -972,23 +849,23 @@
                 <Property name="text" type="java.lang.String" value="Eliminar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_CarreraEActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="chb_CancelarAsignaturaA">
+            <Component class="javax.swing.JCheckBox" name="chb_CancelarAsignaturaC">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cancelar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_CancelarAsignaturaAActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_CancelarAsignaturaCActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="chb_CancelarAsignaturaB">
@@ -996,7 +873,7 @@
                 <Property name="text" type="java.lang.String" value="Buscar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -1008,7 +885,7 @@
                 <Property name="text" type="java.lang.String" value="Eliminar"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Hand Cursor"/>
                 </Property>
               </Properties>
               <Events>
@@ -1021,6 +898,10 @@
                   <Color blue="e9" green="ec" red="d7" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Imprimir"/>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="chb_SeccionesI">
@@ -1029,6 +910,10 @@
                   <Color blue="e9" green="ec" red="d7" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Imprimir"/>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="chb_PeriodoI">
@@ -1037,6 +922,10 @@
                   <Color blue="e9" green="ec" red="d7" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Imprimir"/>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="chb_AsignaturaI">
@@ -1045,14 +934,10 @@
                   <Color blue="e9" green="ec" red="d7" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Imprimir"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="chb_AulaI">
-              <Properties>
-                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="e9" green="ec" red="d7" type="rgb"/>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Imprimir"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="chb_CarreraI">
@@ -1061,6 +946,10 @@
                   <Color blue="e9" green="ec" red="d7" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Imprimir"/>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JCheckBox" name="chb_AlumnoI">
@@ -1069,7 +958,14 @@
                   <Color blue="e9" green="ec" red="d7" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Imprimir"/>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_AlumnoIActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JCheckBox" name="chb_CancelarAsignaturaI">
               <Properties>
@@ -1077,6 +973,64 @@
                   <Color blue="e9" green="ec" red="d7" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Imprimir"/>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="chb_MatriculaI">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="e9" green="ec" red="d7" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Imprimir"/>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_MatriculaIActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="chb_NotasI">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="e9" green="ec" red="d7" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Imprimir"/>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_NotasIActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="chb_MatriculaC">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cancelar Matr&#xed;cula"/>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chb_MatriculaCActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="chb_AulaI">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="e9" green="ec" red="d7" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Imprimir"/>
+                <Property name="contentAreaFilled" type="boolean" value="false"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Hand Cursor"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
@@ -1124,9 +1078,9 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="chb_Matricula" min="-2" pref="81" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="67" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="chb_CancelarAsignatura" pref="156" max="32767" attributes="0"/>
+                          <Component id="chb_CancelarAsignatura" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -1199,7 +1153,7 @@
             </Component>
             <Component class="javax.swing.JCheckBox" name="chb_Periodo">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Periodo"/>
+                <Property name="text" type="java.lang.String" value="Per&#xed;odo"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Default Cursor"/>
@@ -1271,7 +1225,7 @@
             </Component>
             <Component class="javax.swing.JCheckBox" name="chb_Matricula">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Matricula"/>
+                <Property name="text" type="java.lang.String" value="Matr&#xed;cula"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Default Cursor"/>
@@ -1318,6 +1272,86 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
+        <Component class="javax.swing.JLabel" name="lbl_Empleados">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Empleados"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_Periodo">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Per&#xed;odo"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_Secciones">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Secciones"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_Asignatura">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Asignatura"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_Matricula">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Matr&#xed;cula"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_Notas">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Notas"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_Aula">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Aula"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_Carrera">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Carrera"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_Alumno">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Alumno"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lbl_CancelarAsignatura">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Cancelar Asignatura"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel5">
@@ -1328,26 +1362,26 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="60" y="60" width="640" height="200"/>
+          <AbsoluteConstraints x="40" y="60" width="960" height="200"/>
         </Constraint>
       </Constraints>
 
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="239" max="32767" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="386" max="-2" attributes="0"/>
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="224" max="-2" attributes="0"/>
+                  <EmptySpace pref="396" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="157" max="32767" attributes="0"/>
+                  <EmptySpace pref="159" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -1372,7 +1406,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="0" width="820" height="770"/>
+          <AbsoluteConstraints x="0" y="0" width="1050" height="770"/>
         </Constraint>
       </Constraints>
     </Component>
