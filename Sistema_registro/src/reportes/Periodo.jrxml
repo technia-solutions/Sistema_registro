@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="28795d53-9d82-4fd6-97e7-933370efc00f">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="114"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -64,12 +64,12 @@
 	<title>
 		<band height="79" splitType="Stretch">
 			<textField>
-				<reportElement x="55" y="5" width="100" height="20" uuid="d405d7c3-3854-4e45-ae02-fec78b66144e"/>
+				<reportElement x="124" y="5" width="100" height="20" uuid="d405d7c3-3854-4e45-ae02-fec78b66144e"/>
 				<textFieldExpression><![CDATA[$P{NombreUsuario}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="5" width="55" height="20" uuid="0c5b39e7-cfc3-4d50-8284-5b05d1b3b004"/>
-				<text><![CDATA[Usuario:]]></text>
+				<reportElement x="0" y="5" width="124" height="20" uuid="0c5b39e7-cfc3-4d50-8284-5b05d1b3b004"/>
+				<text><![CDATA[Reporte generado por:]]></text>
 			</staticText>
 			<textField pattern="EEE, d MMM yyyy HH:mm:ss Z">
 				<reportElement x="613" y="5" width="100" height="20" uuid="1e621623-067f-43c6-a690-ab6751558a2f"/>
@@ -78,12 +78,20 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="52" splitType="Stretch">
+			<staticText>
+				<reportElement x="224" y="0" width="321" height="52" uuid="af41f6f7-de4e-42a1-84ba-0305b5e0f2cc"/>
+				<textElement textAlignment="Center">
+					<font size="28" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte de Período]]></text>
+			</staticText>
+		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="57" splitType="Stretch">
 			<componentElement>
-				<reportElement key="table 1" style="table 1" x="87" y="7" width="264" height="50" uuid="f30f610d-f8c0-40be-80a0-8f353959b8aa"/>
+				<reportElement key="table 1" style="table 1" x="252" y="7" width="264" height="50" uuid="f30f610d-f8c0-40be-80a0-8f353959b8aa"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="Technia" uuid="d53c8fa0-9ec5-486d-8fa5-3ef147ae7f36">
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
@@ -92,13 +100,16 @@
 						<jr:tableHeader style="table 1_TH" height="30">
 							<staticText>
 								<reportElement x="0" y="0" width="90" height="30" uuid="305d8abf-d6b5-445b-9a1c-c69f80f64761"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
 								<text><![CDATA[Id Periodo]]></text>
 							</staticText>
 						</jr:tableHeader>
 						<jr:detailCell style="table 1_TD" height="20">
 							<textField>
 								<reportElement x="0" y="0" width="90" height="20" uuid="fb8c340f-4504-41e3-b318-425bdc938887"/>
+								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[$F{id_periodo}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -107,13 +118,16 @@
 						<jr:tableHeader style="table 1_TH" height="30">
 							<staticText>
 								<reportElement x="0" y="0" width="90" height="30" uuid="35287fc4-1ba3-4473-9b50-46e1cf48dd18"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
 								<text><![CDATA[Periodo]]></text>
 							</staticText>
 						</jr:tableHeader>
 						<jr:detailCell style="table 1_TD" height="20">
 							<textField>
 								<reportElement x="0" y="0" width="90" height="20" uuid="62da3472-22e2-4978-8009-5f73a1aca0b4"/>
+								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[$F{periodo}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -122,13 +136,16 @@
 						<jr:tableHeader style="table 1_TH" height="30">
 							<staticText>
 								<reportElement x="0" y="0" width="90" height="30" uuid="975384b4-c435-4cc7-87d1-66606268ce74"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
 								<text><![CDATA[Descripcion]]></text>
 							</staticText>
 						</jr:tableHeader>
 						<jr:detailCell style="table 1_TD" height="20">
 							<textField>
 								<reportElement x="0" y="0" width="90" height="20" uuid="42e1efef-4155-482f-8fb9-7f452c239e0d"/>
+								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -138,10 +155,10 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="95" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
 		<band height="54" splitType="Stretch">
@@ -157,6 +174,6 @@
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band height="1" splitType="Stretch"/>
 	</summary>
 </jasperReport>
