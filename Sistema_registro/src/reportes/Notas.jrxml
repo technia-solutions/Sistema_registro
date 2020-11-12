@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="92c414cd-56cc-45c5-98ca-6e22f8dfed16">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="New Dataset 1" uuid="2a018c14-6c61-4b0f-a227-3fd46b90921e">
+		<queryString language="SQL">
+			<![CDATA[select * from Notas;]]>
+		</queryString>
+		<field name="numero_cuenta" class="java.lang.String"/>
+		<field name="id_periodo" class="java.lang.String"/>
+		<field name="estado" class="java.lang.String"/>
+		<field name="id_notas" class="java.lang.Integer"/>
+		<field name="id_matricula" class="java.lang.Integer"/>
+		<field name="reposicion" class="java.lang.String"/>
+		<field name="nota1" class="java.math.BigDecimal"/>
+		<field name="nota2" class="java.math.BigDecimal"/>
+		<field name="nota3" class="java.math.BigDecimal"/>
+		<field name="promedio" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="New Dataset 2" uuid="57c5ba88-d737-4403-a239-0348162aaa7a">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+     *,
+     Notas."numero_cuenta" AS Notas_numero_cuenta,
+     Notas."id_periodo" AS Notas_id_periodo,
+     Notas."estado" AS Notas_estado,
+     Notas."id_notas" AS Notas_id_notas,
+     Notas."id_matricula" AS Notas_id_matricula,
+     Notas."reposicion" AS Notas_reposicion,
+     Notas."nota1" AS Notas_nota1,
+     Notas."nota2" AS Notas_nota2,
+     Notas."nota3" AS Notas_nota3,
+     Notas."promedio" AS Notas_promedio
+FROM
+     "Notas" Notas]]>
+		</queryString>
+		<field name="Notas_numero_cuenta" class="java.lang.String"/>
+		<field name="Notas_id_periodo" class="java.lang.String"/>
+		<field name="Notas_estado" class="java.lang.String"/>
+		<field name="Notas_id_notas" class="java.lang.Integer"/>
+		<field name="Notas_id_matricula" class="java.lang.Integer"/>
+		<field name="Notas_reposicion" class="java.lang.String"/>
+		<field name="Notas_nota1" class="java.math.BigDecimal"/>
+		<field name="Notas_nota2" class="java.math.BigDecimal"/>
+		<field name="Notas_nota3" class="java.math.BigDecimal"/>
+		<field name="Notas_promedio" class="java.math.BigDecimal"/>
+	</subDataset>
+	<subDataset name="New Dataset 3" uuid="9fe99cd0-91e7-4e37-bd98-91ebc0ea1416">
+		<queryString language="SQL">
+			<![CDATA[SELECT
+     *,
+     Notas."numero_cuenta" AS Notas_numero_cuenta,
+     Notas."id_periodo" AS Notas_id_periodo,
+     Notas."promedio" AS Notas_promedio,
+     Notas."nota3" AS Notas_nota3,
+     Notas."nota2" AS Notas_nota2,
+     Notas."nota1" AS Notas_nota1,
+     Notas."reposicion" AS Notas_reposicion,
+     Notas."id_matricula" AS Notas_id_matricula,
+     Notas."id_notas" AS Notas_id_notas,
+     Notas."estado" AS Notas_estado
+FROM
+     "Notas" Notas]]>
+		</queryString>
+		<field name="Notas_id_notas" class="java.lang.Integer"/>
+		<field name="Notas_numero_cuenta" class="java.lang.String"/>
+		<field name="Notas_id_periodo" class="java.lang.String"/>
+		<field name="Notas_nota1" class="java.math.BigDecimal"/>
+		<field name="Notas_nota2" class="java.math.BigDecimal"/>
+		<field name="Notas_nota3" class="java.math.BigDecimal"/>
+		<field name="Notas_promedio" class="java.math.BigDecimal"/>
+		<field name="Notas_reposicion" class="java.lang.String"/>
+		<field name="Notas_estado" class="java.lang.String"/>
+		<field name="Notas_id_matricula" class="java.lang.Integer"/>
+	</subDataset>
+	<subDataset name="Notas" uuid="2b7c894a-5565-4197-8048-67932063c0a9">
+		<queryString language="SQL">
+			<![CDATA[Select * from Notas]]>
+		</queryString>
+		<field name="numero_cuenta" class="java.lang.String"/>
+		<field name="id_periodo" class="java.lang.String"/>
+		<field name="estado" class="java.lang.String"/>
+		<field name="id_notas" class="java.lang.Integer"/>
+		<field name="id_matricula" class="java.lang.Integer"/>
+		<field name="reposicion" class="java.lang.String"/>
+		<field name="nota1" class="java.math.BigDecimal"/>
+		<field name="nota2" class="java.math.BigDecimal"/>
+		<field name="nota3" class="java.math.BigDecimal"/>
+		<field name="promedio" class="java.math.BigDecimal"/>
+	</subDataset>
+	<parameter name="nombreUsuario" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     Empleados."nombres_empleado",
+     *,
+     Empleados."nombres_empleado",
+     Notas."numero_cuenta" AS Notas_numero_cuenta,
+     Notas."id_periodo" AS Notas_id_periodo,
+     Notas."estado" AS Notas_estado,
+     Notas."id_notas" AS Notas_id_notas,
+     Notas."id_matricula" AS Notas_id_matricula,
+     Notas."reposicion" AS Notas_reposicion,
+     Notas."nota1" AS Notas_nota1,
+     Notas."nota2" AS Notas_nota2,
+     Notas."nota3" AS Notas_nota3,
+     Notas."promedio" AS Notas_promedio
+FROM
+     "Empleados" Empleados,
+     "Notas" Notas]]>
+	</queryString>
+	<field name="nombres_empleado" class="java.lang.String"/>
+	<field name="apellido_empleado" class="java.lang.String"/>
+	<field name="telefono_empleado" class="java.lang.String"/>
+	<field name="id_campus" class="java.lang.String"/>
+	<field name="salario" class="java.math.BigDecimal"/>
+	<field name="id_empleado" class="java.lang.Integer"/>
+	<field name="numero_identidad" class="java.lang.String"/>
+	<field name="numero_cuenta" class="java.lang.String"/>
+	<field name="id_periodo" class="java.lang.String"/>
+	<field name="estado" class="java.lang.String"/>
+	<field name="id_notas" class="java.lang.Integer"/>
+	<field name="id_matricula" class="java.lang.Integer"/>
+	<field name="reposicion" class="java.lang.String"/>
+	<field name="nota1" class="java.math.BigDecimal"/>
+	<field name="nota2" class="java.math.BigDecimal"/>
+	<field name="nota3" class="java.math.BigDecimal"/>
+	<field name="promedio" class="java.math.BigDecimal"/>
+	<field name="Notas_numero_cuenta" class="java.lang.String"/>
+	<field name="Notas_id_periodo" class="java.lang.String"/>
+	<field name="Notas_estado" class="java.lang.String"/>
+	<field name="Notas_id_notas" class="java.lang.Integer"/>
+	<field name="Notas_id_matricula" class="java.lang.Integer"/>
+	<field name="Notas_reposicion" class="java.lang.String"/>
+	<field name="Notas_nota1" class="java.math.BigDecimal"/>
+	<field name="Notas_nota2" class="java.math.BigDecimal"/>
+	<field name="Notas_nota3" class="java.math.BigDecimal"/>
+	<field name="Notas_promedio" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="113" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="10" width="116" height="20" uuid="8ab37f54-6a5c-4d71-9c8d-5b055a863b31"/>
+				<text><![CDATA[Reporte generado por:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="690" y="10" width="100" height="20" uuid="0a96c67b-5f8f-4ef9-b70e-c3c3c99dfa71"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="201" y="57" width="338" height="41" uuid="0cb07b31-d5ad-4a4c-8303-74c9ed80a2ea"/>
+				<textElement textAlignment="Center">
+					<font size="28" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte Notas]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="126" y="10" width="100" height="20" uuid="eb7cb4af-7498-4be8-a8b1-5cc4817106c5"/>
+				<textFieldExpression><![CDATA[$P{nombreUsuario}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="60" splitType="Stretch">
+			<componentElement>
+				<reportElement key="table 5" style="table 5" x="67" y="0" width="360" height="50" uuid="8a132ce4-e5ca-4c84-ba58-172cb7615c8f"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Notas" uuid="fc38d227-d117-4089-857e-410948550494">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="90" uuid="e7f37cb4-4574-46b6-b740-cb46a7370d54">
+						<jr:tableHeader style="table 5_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="90" height="30" uuid="3527938a-ba17-4793-941f-41507de52030"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="11" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Numero de cuenta]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 5_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="90" height="20" uuid="23e19fd6-dcee-4398-ba70-598d73043fdc"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{numero_cuenta}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="61" uuid="ba7dd087-bb68-40c9-b6c9-70a68cc7e5cb">
+						<jr:tableHeader style="table 5_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="61" height="30" uuid="d8bd47e2-01c1-4566-b26a-a3f7e1863258"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[ID Periodo]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 5_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="61" height="20" uuid="cbd982dc-2284-4df6-b3b9-05d0da73d2bd"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{id_periodo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="67" uuid="aa50976b-641b-47ea-9e0b-8ef38d00e28f">
+						<jr:tableHeader style="table 5_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="67" height="30" uuid="6652bc03-a637-4dec-980c-09d34c9e3488"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Estado]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 5_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="62" height="20" uuid="038a00e8-4cb7-4656-90ff-52008844dbf0"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{estado}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="57" uuid="e8906a36-5cb0-4c9f-9130-6a4d6b1ec985">
+						<jr:tableHeader style="table 5_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="57" height="30" uuid="a4772612-af28-4ce5-aea3-0ee6d993df5e"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[ID Notas]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 5_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="51" height="20" uuid="5ded76fa-4819-4fa6-b615-472507a7dd7a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{id_notas}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="57" uuid="9687b5d2-2975-45d4-b88d-b2eabd0801b1">
+						<jr:tableHeader style="table 5_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="54" height="30" uuid="86e0affb-4d44-460d-bc7c-55d9c30923fe"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[ID Matrícula]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 5_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="44" height="20" uuid="24532e67-efa6-45c4-b039-5502cb5f4740"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{id_matricula}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="59" uuid="f61e3f4b-6925-4de8-9b50-40c2f6fb5101">
+						<jr:tableHeader style="table 5_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="59" height="30" uuid="9a063617-20bc-4d66-9188-5282629b4105"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Reposición]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 5_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="50" height="20" uuid="eb0bb0c1-caa9-4a07-8ed3-01206138291a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{reposicion}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="44" uuid="cb9ac11e-e2f1-4ab4-820c-e8e7000e825a">
+						<jr:tableHeader style="table 5_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="44" height="30" uuid="5780ecf7-ee17-4003-86d2-d0c3ac1ed4e8"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Nota I]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 5_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="28" height="20" uuid="e5b9e192-189a-406b-a338-0c710a762aec"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{nota1}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="43" uuid="0dc160e3-f594-4011-8d15-47cba6a62fd1">
+						<jr:tableHeader style="table 5_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="43" height="30" uuid="785d2f00-9cc6-4487-b8ab-945b657890cb"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Nota II]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 5_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="26" height="20" uuid="fa21f582-1bee-4818-a45a-9fec440ac9fc"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{nota2}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="52" uuid="1e4af417-4d28-41b5-8e44-27dbe87fa826">
+						<jr:tableHeader style="table 5_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="41" height="30" uuid="038ada38-ac2e-46cf-9d10-c53eaacffc66"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Nota III]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 5_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="28" height="20" uuid="50b7cac3-9e22-4cd5-9749-dbc6e71395ce"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{nota3}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="68" uuid="748bd0c7-36c6-470b-bae0-f64d1ea1820e">
+						<jr:tableHeader style="table 5_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="68" height="30" uuid="126e7b03-2bb6-4cf4-94a3-76e241c3988e"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Promedio]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="table 5_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="27" height="20" uuid="ff0999db-6598-4c9f-9aa0-6ce60e25b8c0"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{promedio}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="675" y="34" width="80" height="20" uuid="9c63819d-be0c-4a51-bccc-0ff22bdaa21f"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="755" y="34" width="40" height="20" uuid="d4363c68-11ce-49c1-b316-298c9a2d90f7"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
