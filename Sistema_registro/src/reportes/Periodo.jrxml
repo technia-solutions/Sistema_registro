@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="28795d53-9d82-4fd6-97e7-933370efc00f">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="114"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -103,7 +103,7 @@
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="12" isBold="true"/>
 								</textElement>
-								<text><![CDATA[Id Periodo]]></text>
+								<text><![CDATA[Id Período]]></text>
 							</staticText>
 						</jr:tableHeader>
 						<jr:detailCell style="table 1_TD" height="20">
@@ -121,7 +121,7 @@
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="12" isBold="true"/>
 								</textElement>
-								<text><![CDATA[Periodo]]></text>
+								<text><![CDATA[Período]]></text>
 							</staticText>
 						</jr:tableHeader>
 						<jr:detailCell style="table 1_TD" height="20">
@@ -139,7 +139,7 @@
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="12" isBold="true"/>
 								</textElement>
-								<text><![CDATA[Descripcion]]></text>
+								<text><![CDATA[Descripción]]></text>
 							</staticText>
 						</jr:tableHeader>
 						<jr:detailCell style="table 1_TD" height="20">
