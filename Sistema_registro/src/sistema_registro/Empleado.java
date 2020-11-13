@@ -152,6 +152,7 @@ public class Empleado extends javax.swing.JFrame {
          btn_Actualizar.setVisible(false);
           btn_Eliminar.setVisible(false);
              btn_consultar.setVisible(false);
+             menu_Imprimir.setVisible(false);
          }
         
         private void habilitar(String nombreUsuario){
@@ -173,6 +174,10 @@ public class Empleado extends javax.swing.JFrame {
                 }
                        if(rs.getString("EmpleadosFunciones").contains("B")){
                   btn_consultar.setVisible(true);
+                }
+             
+                           if(rs.getString("MatriculaFunciones").contains("I")){
+                 menu_Imprimir.setVisible(true);
                 }
              
                 

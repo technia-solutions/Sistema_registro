@@ -103,6 +103,8 @@ DefaultTableModel modelo = new DefaultTableModel();
          btn_Guardar.setVisible(false);
          btn_Actualizar.setVisible(false);
          btn_consulta.setVisible(false);
+         jMenuItem1.setVisible(false);
+         
          }
         
         private void habilitar(String nombreUsuario){
@@ -122,9 +124,11 @@ DefaultTableModel modelo = new DefaultTableModel();
             
                        if(rs.getString("PeriodosFunciones").contains("B")){
                   btn_consulta.setVisible(true);
-                }
-             
-                
+                       }
+                       
+                     if(rs.getString("PeriodosFunciones").contains("I")){
+                  jMenuItem1.setVisible(true);
+                       }
          }
          
      } catch (SQLException ex) {

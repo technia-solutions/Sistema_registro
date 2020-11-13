@@ -89,6 +89,7 @@ public class Notas extends javax.swing.JFrame {
          btn_guardar.setVisible(false);
          btn_buscarClases.setVisible(false);
           btn_generarReporte.setVisible(false);
+            jMenuItem2.setVisible(false);
          }
         
         private void habilitar(String nombreUsuario){
@@ -109,6 +110,11 @@ public class Notas extends javax.swing.JFrame {
                  if(rs.getString("NotasFunciones").contains("B")){
                   btn_buscarClases.setVisible(true);
                 }
+                 if(rs.getString("NotasFunciones").contains("I")){
+                 jMenuItem2.setVisible(true);
+                }
+             
+                 
              
                 
          }
@@ -459,7 +465,7 @@ public class Notas extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem1);
 
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/print-printer-tool-with-printed-paper-outlined-symbol_icon-icons.com_57772.png"))); // NOI18N
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imprimir.png"))); // NOI18N
         jMenuItem2.setText("Imprimir Reporte");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

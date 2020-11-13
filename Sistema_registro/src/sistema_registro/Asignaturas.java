@@ -113,6 +113,7 @@ public class Asignaturas extends javax.swing.JFrame {
          btn_actualizar.setVisible(false);
          btn_buscar.setVisible(false);
          btn_eliminar1.setVisible(false);
+          jMenuItem3.setVisible(false);
          }
         
         private void habilitar(String nombreUsuario){
@@ -136,6 +137,9 @@ public class Asignaturas extends javax.swing.JFrame {
                        if(rs.getString("AsignaturaFunciones").contains("E")){
                   btn_eliminar1.setVisible(true);
                 }
+                           if(rs.getString("SeccionesFunciones").contains("I")){
+                           jMenuItem3.setVisible(true);
+                       }
                 
          }
          

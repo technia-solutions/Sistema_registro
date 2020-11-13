@@ -98,7 +98,7 @@ public class CancelarAsignatura extends javax.swing.JFrame {
           btn_CancelarAsig.setVisible(false);
          btn_eliminarM.setVisible(false);
          btn_buscar.setVisible(false);
-       
+        jMenuItem3.setVisible(false);
          }
         private void habilitar(String nombreUsuario){
      try {
@@ -117,6 +117,9 @@ public class CancelarAsignatura extends javax.swing.JFrame {
             
                        if(rs.getString("CancelarAsignaturasFunciones").contains("B")){
                   btn_buscar.setVisible(true);
+                }
+                               if(rs.getString("MatriculaFunciones").contains("I")){
+                 jMenuItem3.setVisible(true);
                 }
       
                 

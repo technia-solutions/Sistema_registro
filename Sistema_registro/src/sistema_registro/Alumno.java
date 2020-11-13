@@ -146,7 +146,7 @@ public class Alumno extends javax.swing.JFrame {
          btn_guardar.setVisible(false);
          btn_actualizar.setVisible(false);
          btn_buscar.setVisible(false);
-       
+       menu_Imprimir.setVisible(false);
          }
         
         private void habilitar(String nombreUsuario){
@@ -168,7 +168,10 @@ public class Alumno extends javax.swing.JFrame {
                   btn_buscar.setVisible(true);
                 }
       
-                
+                         if(rs.getString("AlumnoFunciones").contains("I")){
+                 menu_Imprimir.setVisible(true);
+                }
+      
          }
          
      } catch (SQLException ex) {

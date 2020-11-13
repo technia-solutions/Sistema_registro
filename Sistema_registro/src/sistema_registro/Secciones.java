@@ -145,6 +145,7 @@ public class Secciones extends javax.swing.JFrame {
          btn_actualizar.setVisible(false);
          btn_buscar.setVisible(false);
          btn_eliminar.setVisible(false);
+         jMenuItem2.setVisible(false);
          }
         
         private void habilitar(String nombreUsuario){
@@ -168,6 +169,10 @@ public class Secciones extends javax.swing.JFrame {
                        if(rs.getString("SeccionesFunciones").contains("E")){
                   btn_eliminar.setVisible(true);
                 }
+                 
+                       if(rs.getString("SeccionesFunciones").contains("I")){
+                           jMenuItem2.setVisible(true);
+                       }
                 
          }
          
@@ -284,10 +289,10 @@ public class Secciones extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbl_titulo)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 1320, 70));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 1320, 80));
 
         jPanel2.setBackground(new java.awt.Color(215, 236, 233));
 

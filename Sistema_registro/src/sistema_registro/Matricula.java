@@ -72,6 +72,7 @@ public class Matricula extends javax.swing.JFrame {
         this.btn_generarReporte.setEnabled(false);
         this.lbl_codAsignatura.setVisible(false);
         this.setLocationRelativeTo(null);
+        
 
     }
     
@@ -82,6 +83,7 @@ public class Matricula extends javax.swing.JFrame {
          obtenerPeriodo();
           this.setTitle("Matricula");
           this.lbl_periodo.setVisible(false);
+          // jMenuItem1.setVisible(false);
           this.lbl_usuario.setText(nombreUsuario);
           this.btn_matricularAsignatura.setEnabled(false);
           this.btn_generarReporte.setEnabled(false);
@@ -96,6 +98,8 @@ public class Matricula extends javax.swing.JFrame {
          btn_matricularAsignatura.setVisible(false);
          lbl_cancelarAsignatura.setVisible(false);
           btn_generarReporte.setVisible(false);
+          jMenuItem1.setVisible(false);
+          
          }
         
         private void habilitar(String nombreUsuario){
@@ -114,6 +118,9 @@ public class Matricula extends javax.swing.JFrame {
                 }
                 if(rs.getString("MatriculaFunciones").contains("R")){
                   btn_generarReporte.setVisible(true);
+                }
+                  if(rs.getString("MatriculaFunciones").contains("I")){
+                 jMenuItem1.setVisible(true);
                 }
              
                 
@@ -351,7 +358,7 @@ public class Matricula extends javax.swing.JFrame {
         });
         jMenu.add(jMenuPrincipal);
 
-        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/print-printer-tool-with-printed-paper-outlined-symbol_icon-icons.com_57772.png"))); // NOI18N
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/imprimir.png"))); // NOI18N
         jMenuItem1.setText("Imprimir Reporte");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

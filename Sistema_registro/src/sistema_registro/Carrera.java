@@ -103,6 +103,9 @@ public class Carrera extends javax.swing.JFrame {
          btn_actualizar1.setVisible(false);
          btn_buscar.setVisible(false);
          btn_eliminar.setVisible(false);
+        btn_eliminar.setVisible(false);
+         jMenuItem4.setVisible(false);
+        
          }
         
         private void habilitar(String nombreUsuario){
@@ -125,6 +128,9 @@ public class Carrera extends javax.swing.JFrame {
                 }
                        if(rs.getString("CarreraFunciones").contains("E")){
                   btn_eliminar.setVisible(true);
+                }
+                               if(rs.getString("MatriculaFunciones").contains("I")){
+                 jMenuItem4.setVisible(true);
                 }
                 
          }
