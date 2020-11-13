@@ -373,7 +373,6 @@ this.cbo_tipoUsuario.setSelectedItem("");
         txt_Salario = new javax.swing.JTextField();
         lbl_numeroIdentidad = new javax.swing.JLabel();
         lbl_nombreU = new javax.swing.JLabel();
-        btn_imprimir = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -685,15 +684,6 @@ this.cbo_tipoUsuario.setSelectedItem("");
         lbl_nombreU.setText("jLabel4");
         jPanel1.add(lbl_nombreU);
         lbl_nombreU.setBounds(890, 20, 140, 14);
-
-        btn_imprimir.setText("jButton3");
-        btn_imprimir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_imprimirActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btn_imprimir);
-        btn_imprimir.setBounds(190, 320, 73, 23);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 1240, 360));
 
@@ -1905,11 +1895,6 @@ char a=evt.getKeyChar();
     }//GEN-LAST:event_txt_SalarioKeyTyped
 
     
-    private void btn_imprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_imprimirActionPerformed
-    
-// TODO add your handling code here:
-    }//GEN-LAST:event_btn_imprimirActionPerformed
-
     private void menu_ImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_ImprimirActionPerformed
       try {
             JasperReport reporte = null;
@@ -1997,7 +1982,6 @@ char a=evt.getKeyChar();
     private javax.swing.JButton btn_Limpiar;
     private javax.swing.JButton btn_consultar;
     private javax.swing.JButton btn_guardar;
-    private javax.swing.JButton btn_imprimir;
     private javax.swing.JButton btn_rellenarCampos;
     private javax.swing.JComboBox<String> cbo_idCampus;
     private javax.swing.JComboBox<String> cbo_tipoUsuario;
