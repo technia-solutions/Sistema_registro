@@ -133,6 +133,15 @@ public class Principal extends javax.swing.JFrame {
     public void activarPermisos(String nombreUsuario){
         
         try {
+                Statement st2 = con.createStatement();
+                String sql2 = "select id_tipoUsuario from Acceso where nombre_usuario = '"+nombreUsuario+"'";
+                ResultSet rs2 = st2.executeQuery(sql2);
+                if(rs2.next()){
+                    if(rs2.getString("id_tipoUsuario").equals("A")){
+                        this.btn_accesoPantallas.setVisible(true);
+                    }
+                }
+                
             Statement st = con.createStatement();
             String sql = "select * from Acceso_Pantallas where nombre_usuario = '"+nombreUsuario+"'";
             ResultSet rs = st.executeQuery(sql);
@@ -169,14 +178,7 @@ public class Principal extends javax.swing.JFrame {
                     btn_Carrera.setEnabled(true);
                 }
                 
-                Statement st2 = con.createStatement();
-                String sql2 = "select id_tipoUsuario from Acceso where nombre_usuario = '"+nombreUsuario+"'";
-                ResultSet rs2 = st2.executeQuery(sql2);
-                if(rs2.next()){
-                    if(rs2.getString("id_tipoUsuario").equals("A")){
-                        this.btn_accesoPantallas.setVisible(true);
-                    }
-                }
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);

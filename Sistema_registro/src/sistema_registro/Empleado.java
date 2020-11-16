@@ -176,7 +176,7 @@ public class Empleado extends javax.swing.JFrame {
                   btn_consultar.setVisible(true);
                 }
              
-                           if(rs.getString("MatriculaFunciones").contains("I")){
+                           if(rs.getString("EmpleadosFunciones").contains("I")){
                  menu_Imprimir.setVisible(true);
                 }
              
@@ -858,7 +858,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         }
         else{
             JOptionPane.showMessageDialog(null, "La contraseña es muy pequeña debe ser de al menos 8 caracteres.", "Longitud de contraseña menor al requerido", JOptionPane.ERROR_MESSAGE); 
-           return false; 
+           return false;
         }    
     }
     
@@ -912,6 +912,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         char c;
         
         for(int i=0; i<contraseña.length();i++){
+            
             c = contraseña.charAt(i);
             if(Character.isDigit(c)){
                 tieneNumero = true;
@@ -1051,6 +1052,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         if(!validarContraseñas(cadena9)){
             return;
         }
+        
           PreparedStatement ps;
           ResultSet rs;
         

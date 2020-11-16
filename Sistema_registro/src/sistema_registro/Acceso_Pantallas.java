@@ -158,13 +158,13 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         chb_SeccionesI = new javax.swing.JCheckBox();
         chb_PeriodoI = new javax.swing.JCheckBox();
         chb_AsignaturaI = new javax.swing.JCheckBox();
-        chb_AulaI = new javax.swing.JCheckBox();
+        chb_CarreraI = new javax.swing.JCheckBox();
         chb_AlumnoI = new javax.swing.JCheckBox();
         chb_CancelarAsignaturaI = new javax.swing.JCheckBox();
         chb_MatriculaI = new javax.swing.JCheckBox();
         chb_NotasI = new javax.swing.JCheckBox();
         chb_MatriculaC = new javax.swing.JCheckBox();
-        chb_CarreraI = new javax.swing.JCheckBox();
+        chb_AulaI = new javax.swing.JCheckBox();
         jPanel1 = new javax.swing.JPanel();
         chb_Empleados = new javax.swing.JCheckBox();
         chb_Notas = new javax.swing.JCheckBox();
@@ -577,10 +577,10 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         chb_AsignaturaI.setContentAreaFilled(false);
         chb_AsignaturaI.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        chb_AulaI.setBackground(new java.awt.Color(215, 236, 233));
-        chb_AulaI.setText("Imprimir");
-        chb_AulaI.setContentAreaFilled(false);
-        chb_AulaI.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_CarreraI.setBackground(new java.awt.Color(215, 236, 233));
+        chb_CarreraI.setText("Imprimir");
+        chb_CarreraI.setContentAreaFilled(false);
+        chb_CarreraI.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         chb_AlumnoI.setBackground(new java.awt.Color(215, 236, 233));
         chb_AlumnoI.setText("Imprimir");
@@ -626,10 +626,10 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
             }
         });
 
-        chb_CarreraI.setBackground(new java.awt.Color(215, 236, 233));
-        chb_CarreraI.setText("Imprimir");
-        chb_CarreraI.setContentAreaFilled(false);
-        chb_CarreraI.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        chb_AulaI.setBackground(new java.awt.Color(215, 236, 233));
+        chb_AulaI.setText("Imprimir");
+        chb_AulaI.setContentAreaFilled(false);
+        chb_AulaI.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -690,8 +690,8 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                     .addComponent(chb_PeriodoI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(chb_SeccionesI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(chb_AsignaturaI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(chb_AulaI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(chb_CarreraI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(chb_CarreraI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(chb_AulaI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(132, 132, 132))
         );
         jPanel2Layout.setVerticalGroup(
@@ -708,9 +708,9 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                         .addGap(3, 3, 3)
                         .addComponent(chb_AsignaturaI)
                         .addGap(34, 34, 34)
-                        .addComponent(chb_AulaI)
+                        .addComponent(chb_CarreraI)
                         .addGap(0, 0, 0)
-                        .addComponent(chb_CarreraI))
+                        .addComponent(chb_AulaI))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(chb_EmpleadosG)
@@ -796,6 +796,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         chb_Empleados.setText("Empleados");
         chb_Empleados.setContentAreaFilled(false);
         chb_Empleados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        chb_Empleados.setEnabled(false);
         chb_Empleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_EmpleadosActionPerformed(evt);
@@ -805,6 +806,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         chb_Notas.setText("Notas");
         chb_Notas.setContentAreaFilled(false);
         chb_Notas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        chb_Notas.setEnabled(false);
         chb_Notas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_NotasActionPerformed(evt);
@@ -814,6 +816,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         chb_Periodo.setText("Período");
         chb_Periodo.setContentAreaFilled(false);
         chb_Periodo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        chb_Periodo.setEnabled(false);
         chb_Periodo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_PeriodoActionPerformed(evt);
@@ -823,6 +826,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         chb_Aula.setText("Aula");
         chb_Aula.setContentAreaFilled(false);
         chb_Aula.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        chb_Aula.setEnabled(false);
         chb_Aula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_AulaActionPerformed(evt);
@@ -832,6 +836,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         chb_Secciones.setText("Secciones");
         chb_Secciones.setContentAreaFilled(false);
         chb_Secciones.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        chb_Secciones.setEnabled(false);
         chb_Secciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_SeccionesActionPerformed(evt);
@@ -841,6 +846,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         chb_Carrera.setText("Carrera");
         chb_Carrera.setContentAreaFilled(false);
         chb_Carrera.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        chb_Carrera.setEnabled(false);
         chb_Carrera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_CarreraActionPerformed(evt);
@@ -850,6 +856,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         chb_Asignatura.setText("Asignatura");
         chb_Asignatura.setContentAreaFilled(false);
         chb_Asignatura.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        chb_Asignatura.setEnabled(false);
         chb_Asignatura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_AsignaturaActionPerformed(evt);
@@ -859,6 +866,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         chb_Alumno.setText("Alumno");
         chb_Alumno.setContentAreaFilled(false);
         chb_Alumno.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        chb_Alumno.setEnabled(false);
         chb_Alumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_AlumnoActionPerformed(evt);
@@ -868,6 +876,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         chb_Matricula.setText("Matrícula");
         chb_Matricula.setContentAreaFilled(false);
         chb_Matricula.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        chb_Matricula.setEnabled(false);
         chb_Matricula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_MatriculaActionPerformed(evt);
@@ -877,6 +886,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
         chb_CancelarAsignatura.setText("CancelarAsignatura");
         chb_CancelarAsignatura.setContentAreaFilled(false);
         chb_CancelarAsignatura.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        chb_CancelarAsignatura.setEnabled(false);
         chb_CancelarAsignatura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chb_CancelarAsignaturaActionPerformed(evt);
@@ -904,13 +914,11 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(chb_Asignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(chb_Alumno, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(44, 44, 44)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(chb_Matricula, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(chb_CancelarAsignatura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(chb_Matricula, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chb_CancelarAsignatura, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1307,18 +1315,18 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
           chb_AulaA.setEnabled(true);
           chb_AulaB.setEnabled(true);
           chb_AulaE.setEnabled(true);
-          chb_CarreraI.setEnabled(true);
+          chb_AulaI.setEnabled(true);
         }else{
           chb_AulaG.setSelected(false);
           chb_AulaA.setSelected(false);
           chb_AulaB.setSelected(false);
           chb_AulaE.setSelected(false);
-          chb_CarreraI.setSelected(false);
+          chb_AulaI.setSelected(false);
           chb_AulaG.setEnabled(false);
           chb_AulaA.setEnabled(false);
           chb_AulaB.setEnabled(false);
           chb_AulaE.setEnabled(false);
-          chb_CarreraI.setEnabled(false);
+          chb_AulaI.setEnabled(false);
         }
     }
     private void chb_CarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_CarreraActionPerformed
@@ -1332,18 +1340,18 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
           chb_CarreraA.setEnabled(true);
           chb_CarreraB.setEnabled(true);
           chb_CarreraE.setEnabled(true); 
-          chb_AulaI.setEnabled(true);
+          chb_CarreraI.setEnabled(true);
         }else{
           chb_CarreraG.setSelected(false);
           chb_CarreraA.setSelected(false);
           chb_CarreraB.setSelected(false);
           chb_CarreraE.setSelected(false);
-          chb_AulaI.setSelected(false);
+          chb_CarreraI.setSelected(false);
           chb_CarreraG.setEnabled(false);
           chb_CarreraA.setEnabled(false);
           chb_CarreraB.setEnabled(false);
           chb_CarreraE.setEnabled(false);
-          chb_AulaI.setEnabled(false);
+          chb_CarreraI.setEnabled(false);
          }
     }
     private void chb_AlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chb_AlumnoActionPerformed
@@ -1392,7 +1400,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
     private void btn_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GuardarActionPerformed
         try {
             String usuario = (String) cbo_NombreUsuario.getSelectedItem();
-            String funcionesempleado = " ";
+            String funcionesempleado = "";
             String funcionesseccion = "";
             String funcionesperiodo = "";
             String funcionesasignatura = "";
@@ -1498,7 +1506,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
            }
            
            if(chb_MatriculaC.isSelected()){
-               funcionesmatricula += "CA";
+               funcionesmatricula += "C";
            }
            
            if(chb_MatriculaR.isSelected()){
@@ -1546,7 +1554,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                funcionesaula += "E";
            }
            
-             if(chb_CarreraI.isSelected()){
+             if(chb_AulaI.isSelected()){
                funcionesaula += "I";
            }
            
@@ -1568,6 +1576,10 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
            
            if(chb_CarreraE.isSelected()){
                funcionescarrera += "E";
+           }
+           
+           if(chb_CarreraI.isSelected()){
+               funcionescarrera += "I";
            }
            
            //Funciones Alumno 
@@ -1672,7 +1684,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
              
              //Pantalla Aula
              boolean aula;
-             if(chb_Asignatura.isSelected()){
+             if(chb_Aula.isSelected()){
               aula = true;
               }
               else{
@@ -1700,7 +1712,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
              //Cancelar Asignatura
              
              boolean cancelarAsignatura;
-             if(chb_Asignatura.isSelected()){
+             if(chb_CancelarAsignatura.isSelected()){
               cancelarAsignatura = true;
               }
               else{
@@ -1879,11 +1891,38 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
     private void btn_LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LimpiarActionPerformed
         limpiar();
+        deshabilitar();
         inhabilitado();
     }//GEN-LAST:event_btn_LimpiarActionPerformed
 
+    private void habilitar(){
+       chb_Empleados.setEnabled(true);
+       chb_Periodo.setEnabled(true);
+       chb_Secciones.setEnabled(true);
+       chb_Asignatura.setEnabled(true);
+       chb_Matricula.setEnabled(true);
+       chb_Notas.setEnabled(true);
+       chb_Aula.setEnabled(true);
+       chb_Carrera.setEnabled(true);
+       chb_Alumno.setEnabled(true);
+       chb_CancelarAsignatura.setEnabled(true);
+    }
+    
+    private void deshabilitar(){
+       chb_Empleados.setEnabled(false);
+       chb_Periodo.setEnabled(false);
+       chb_Secciones.setEnabled(false);
+       chb_Asignatura.setEnabled(false);
+       chb_Matricula.setEnabled(false);
+       chb_Notas.setEnabled(false);
+       chb_Aula.setEnabled(false);
+       chb_Carrera.setEnabled(false);
+       chb_Alumno.setEnabled(false);
+       chb_CancelarAsignatura.setEnabled(false);
+    }
     private void cbo_NombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbo_NombreUsuarioActionPerformed
        try{
+           habilitar();
            deseleccionar();
            inhabilitado();
            String usuario = cbo_NombreUsuario.getSelectedItem().toString();
@@ -2034,8 +2073,12 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                     chb_MatriculaR.setSelected(true);
                 }
 
-                if(rs.getString("MatriculaFunciones").contains("E")){
+                if(rs.getString("MatriculaFunciones").contains("C")){
                     chb_MatriculaC.setSelected(true);
+                }
+                
+                if(rs.getString("MatriculaFunciones").contains("I")){
+                    chb_MatriculaI.setSelected(true);
                 }
                 
                 
@@ -2072,6 +2115,10 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
 
                 if(rs.getString("NotasFunciones").contains("B")){
                     chb_NotasB.setSelected(true);
+                }
+                
+                if(rs.getString("NotasFunciones").contains("I")){
+                    chb_NotasI.setSelected(true);
                 }
                 
                 
@@ -2114,7 +2161,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                 }
                 
                 if(rs.getString("AulaFunciones").contains("I")){
-                    chb_CarreraI.setSelected(true);
+                    chb_AulaI.setSelected(true);
                 }
                 
                 
@@ -2136,7 +2183,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                 }
                 
                   if(rs.getString("CarreraFunciones").contains("I")){
-                    chb_AulaI.setSelected(true);
+                    chb_CarreraI.setSelected(true);
                 }
                  
            }
@@ -2382,13 +2429,13 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
           chb_AulaA.setEnabled(false);
           chb_AulaB.setEnabled(false);
           chb_AulaE.setEnabled(false);
-           chb_CarreraI.setEnabled(false);
+           chb_AulaI.setEnabled(false);
           
            chb_CarreraG.setEnabled(false);
           chb_CarreraA.setEnabled(false);
           chb_CarreraB.setEnabled(false);
           chb_CarreraE.setEnabled(false);
-           chb_AulaI.setEnabled(false);
+           chb_CarreraI.setEnabled(false);
           
           chb_AlumnoG.setEnabled(false);
           chb_AlumnoA.setEnabled(false);
@@ -2594,7 +2641,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                    if(chb_AulaE.isSelected()){
                       contador++;
                    }
-                     if(chb_CarreraI.isSelected()){
+                     if(chb_AulaI.isSelected()){
                        contador++;
                    }
                  
@@ -2624,7 +2671,7 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
                    if(chb_CarreraE.isSelected()){
                       contador++;
                    }
-                     if(chb_AulaI.isSelected()){
+                     if(chb_CarreraI.isSelected()){
                        contador++;
                    }
                  
@@ -2865,13 +2912,13 @@ public class Acceso_Pantallas extends javax.swing.JFrame {
          chb_AulaA.setSelected(false);
          chb_AulaE.setSelected(false);
          chb_AulaB.setSelected(false);
-         chb_CarreraI.setSelected(false);
+         chb_AulaI.setSelected(false);
          chb_Aula.setSelected(false);
          chb_CarreraG.setSelected(false);
          chb_CarreraA.setSelected(false);
          chb_CarreraB.setSelected(false);
          chb_CarreraE.setSelected(false);
-         chb_AulaI.setSelected(false);
+         chb_CarreraI.setSelected(false);
          chb_Carrera.setSelected(false);
          chb_AlumnoG.setSelected(false);
          chb_AlumnoA.setSelected(false);
