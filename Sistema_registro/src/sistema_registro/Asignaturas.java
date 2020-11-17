@@ -631,15 +631,12 @@ public class Asignaturas extends javax.swing.JFrame {
             return;
          }
         
-          if(!validarVacio(cbo_Req1.getSelectedItem().toString(),cbo_Req2.getSelectedItem().toString())){
-            JOptionPane.showMessageDialog(null, "El requisito 1 y el requisito 2 están vacíos.", "Requisitos vacíos", JOptionPane.INFORMATION_MESSAGE);
-            return;
-            }
+        
            else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de la asignatura " +nombreAsignatura + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
          ) == JOptionPane.YES_OPTION) {
             String id_carrera = cbo_IdCarrera.getSelectedItem().toString().substring(0, 4);
-            String requisito1 = cbo_Req1.getSelectedItem().toString().substring(0, 5);
-            String requisito2 = cbo_Req2.getSelectedItem().toString().substring(0, 5);
+            String requisito1 = cbo_Req1.getSelectedItem().toString().substring(0, 6);
+            String requisito2 = cbo_Req2.getSelectedItem().toString().substring(0, 6);
             try {
                 PreparedStatement ps;
                 ResultSet rs;
@@ -771,8 +768,8 @@ public class Asignaturas extends javax.swing.JFrame {
         cadena2 = txa_NombreA.getText();
         cadena3 = txt_UniVal.getText();
         String id_carrera = cbo_IdCarrera.getSelectedItem().toString().substring(0, 4);
-        String requisito1= cbo_Req1.getSelectedItem().toString().substring(0,5);
-        String requisito2= cbo_Req2.getSelectedItem().toString().substring(0,5);
+        String requisito1= cbo_Req1.getSelectedItem().toString().substring(0,6);
+        String requisito2= cbo_Req2.getSelectedItem().toString().substring(0,6);
   
         
         if((txt_codA.getText().equals(""))){
