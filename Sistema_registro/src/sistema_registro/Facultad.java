@@ -381,11 +381,11 @@ public class Facultad extends javax.swing.JFrame {
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
        try{
-            String nombreFacultad = txa_NombreFacultad.getText() + " " + txt_idfacultad.getText();
+            String nombreFacultad = txa_NombreFacultad.getText();
              if ((txt_idfacultad.getText().equals("") || (txa_NombreFacultad.getText().equals("")))) {
                 JOptionPane.showMessageDialog(this, "¡Debe seleccionar la facultad que desea eliminar!");
             }
-             else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de facultad " + nombreFacultad + "", "Confirmación de eliminación",
+             else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea eliminar el registro de la facultad: " + nombreFacultad + "?", "Confirmación de eliminación",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
             ) == JOptionPane.YES_OPTION) {
 
@@ -528,13 +528,13 @@ public class Facultad extends javax.swing.JFrame {
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
         try{
-            String nombreCampus = txa_NombreFacultad.getText() + " ";
+            String nombreFacultad = txa_NombreFacultad.getText() + " ";
 
             if ((txt_idfacultad.getText().equals("") || (txa_NombreFacultad.getText().equals("")))) {
                 JOptionPane.showMessageDialog(this, "¡Debe seleccionar la facultad que desea actualizar!");
             }
 
-           else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de facultad " + nombreCampus + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
+           else if (JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de la facultad: " + nombreFacultad + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
             ) == JOptionPane.YES_OPTION) {
                 try {
                     PreparedStatement ps;
@@ -549,6 +549,7 @@ public class Facultad extends javax.swing.JFrame {
                 this.btn_eliminar.setEnabled(false);
                 this.btn_actualizar.setEnabled(false);
                 this.btn_guardar.setEnabled(true);
+                JOptionPane.showMessageDialog(null, "Se ha actualizado la información de la facultad: " + nombreFacultad + " exitosamente.");
                     int res = ps.executeUpdate();
                 } catch (Exception e) {
                     System.out.println(e);

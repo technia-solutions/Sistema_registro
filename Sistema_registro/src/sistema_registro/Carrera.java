@@ -1052,7 +1052,7 @@ public class Carrera extends javax.swing.JFrame {
                 String[] datos = new String[4];
                 datos[0] = rs.getString("id_carrera");
                 datos[1] = rs.getString("nombre_carrera");
-                datos[2] =rs.getString("id_facultade");
+                datos[2] =rs.getString("id_facultad");
                 datos[3] =rs.getString("nombre_facultad");
                 modelo.addRow(datos);
             }

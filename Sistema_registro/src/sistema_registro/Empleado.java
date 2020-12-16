@@ -105,7 +105,7 @@ public class Empleado extends javax.swing.JFrame {
           fechaHoy.setText(d+"/"+mes+"/"+año); 
        }
        nf = NumberFormat.getInstance(new Locale("en", "US"));
-       this.lbl_numeroIdentidad.setVisible(false);
+       this.lbl_numeroIdentidad.setVisible(true);
        this.lbl_nombreU.setVisible(false);
     } 
     
@@ -472,7 +472,7 @@ this.cbo_tipoUsuario.setSelectedItem("");
         btn_consultar.setBackground(new java.awt.Color(235, 250, 251));
         btn_consultar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btn_consultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/botton_Consulta.png"))); // NOI18N
-        btn_consultar.setText("Buscar");
+        btn_consultar.setText("Consultar");
         btn_consultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_consultarActionPerformed(evt);
@@ -1645,7 +1645,10 @@ this.cbo_tipoUsuario.setSelectedItem("");
      String id_campus = cbo_idCampus.getSelectedItem().toString().substring(0, 4);
        try{
              Statement st2=con.createStatement();
-              String sql ="Delete Acceso "
+             Statement st3 = con.createStatement();
+             String consulta = "Delete from Acceso_Pantallas where nombre_usuario ='"+lbl_nombreU.getText()+"'";
+             int rs3 = st3.executeUpdate(consulta);
+              String sql ="Delete from Acceso "
                       + "where id_empleado = (Select id_empleado from Acceso where nombre_usuario = '"+lbl_nombreU.getText()+"')";
                int rs2 = st2.executeUpdate(sql);
           }catch ( Exception e) {
@@ -1655,8 +1658,8 @@ this.cbo_tipoUsuario.setSelectedItem("");
           PreparedStatement ps;
           ResultSet rs;
          Statement st=con.createStatement();
-         String sql ="Delete Empleados "
-                      + "where numero_identidad = "+lbl_identidad.getText()+"";
+         String sql ="Delete from Empleados "
+                      + "where numero_identidad = "+lbl_numeroIdentidad.getText()+"";
                   int res=st.executeUpdate(sql);
                   this.btn_guardar.setEnabled(true);
                   this.btn_Actualizar.setEnabled(false);
@@ -1807,6 +1810,20 @@ this.cbo_tipoUsuario.setSelectedItem("");
                                     }
                 else{
                     try {
+                        String consulta = "Select * from Acceso where nombre_usuario = '"+var+"'";
+                        Statement st3 = con.createStatement();
+                        ResultSet rs3 = st3.executeQuery(consulta);
+                        if(rs3.next()){
+                            if(rs3.getString("id_tipoUsuario").equals("A")){
+                                 JOptionPane.showMessageDialog(this,"El usuario "+var+" es una cuenta de administración.");
+                                return;
+                            }
+                            if(!rs3.getString("estado").equals("Bloqueado")){
+                                JOptionPane.showMessageDialog(this,"El usuario "+var+" no se encuentra bloqueado.");
+                                return;
+                            }
+                            
+                        }
                         String sql = "update Acceso \n" +
                                      "set estado ='Activo',\n" +
                                      "intentos = 0"

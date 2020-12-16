@@ -265,7 +265,6 @@ public class Login extends javax.swing.JFrame {
                                         String sql2 = "Update Acceso set estado = 'Bloqueado' where nombre_usuario ='"+usuario+"'";
                                         int columnas = st2.executeUpdate(sql2);
                                         JOptionPane.showMessageDialog(null, "El usuario: "+usuario+" ha sido bloqueado por favor comuníquese con el administrador.", "Usuario bloqueado", JOptionPane.INFORMATION_MESSAGE);
-                                        this.dispose();
                                         return;
                                     }
                                     int intentosRestantes = intentos - Integer.parseInt(rs3.getString("intentos"));
