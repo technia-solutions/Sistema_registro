@@ -550,7 +550,7 @@ public class Asignaturas extends javax.swing.JFrame {
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
             try{
-             actualizarDatos();
+             rellenar();
         }
         catch(Exception e){
              try {
@@ -595,12 +595,12 @@ public class Asignaturas extends javax.swing.JFrame {
             return;
          }
          
-         if((cbo_Req1.getSelectedItem().equals("Seleccione requsito1"))){
+         if((cbo_Req1.getSelectedItem().equals("Seleccione la asignatura 1:"))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un requisito para la asignatura","Requisito1 de la asignatura requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
             }
         
-         if((cbo_Req2.getSelectedItem().equals("Seleccione requsito2"))){
+         if((cbo_Req2.getSelectedItem().equals("Seleccione la asignatura 2:"))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un requisito para la asignatura","Requisito2 de la asignatura requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
             }
@@ -631,7 +631,7 @@ public class Asignaturas extends javax.swing.JFrame {
             return;
          }
             
-         if(!validarVacio(cbo_Req1.getSelectedItem().toString(),cbo_Req2.getSelectedItem().toString())){
+         if(validarVacio(cbo_Req1.getSelectedItem().toString(),cbo_Req2.getSelectedItem().toString())){
             JOptionPane.showMessageDialog(null, "El requisito 1 y el requisito 2 están vacíos.", "Requisitos vacíos", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
@@ -721,12 +721,10 @@ public class Asignaturas extends javax.swing.JFrame {
     }
     
     private boolean validarVacio(String RequisitoA, String RequisitoB){
-     if(RequisitoA.equals("Seleccione la asignatura 1")|| RequisitoB.equals("Seleccione la asignatura 2")){
+     if(RequisitoA.equals("Seleccione la asignatura 1:")|| RequisitoB.equals("Seleccione la asignatura 2:")){
          return true;
      }
-         if(RequisitoA.equals("Sin requisito")|| RequisitoB.equals("Sin requisito")){
-            return true;
-     }else{
+   else{
     return false;
         
     }
@@ -805,12 +803,12 @@ public class Asignaturas extends javax.swing.JFrame {
             return;
         }
          
-         if((cbo_Req1.getSelectedItem().equals("Seleccione requsito 1"))){
+         if((cbo_Req1.getSelectedItem().equals("Seleccione la asignatura 1:"))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un requisito para la asignatura","Requisito1 de la asignatura requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
         }
         
-        if((cbo_Req2.getSelectedItem().equals("Seleccione requsito 2"))){
+        if((cbo_Req2.getSelectedItem().equals("Seleccione la asignatura 2:"))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un requisito para la asignatura","Requisito2 de la asignatura requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             return;
         }
@@ -849,7 +847,7 @@ public class Asignaturas extends javax.swing.JFrame {
             return;
         }
         
-          if(!validarVacio(cbo_Req1.getSelectedItem().toString(),cbo_Req2.getSelectedItem().toString())){
+          if(validarVacio(cbo_Req1.getSelectedItem().toString(),cbo_Req2.getSelectedItem().toString())){
             JOptionPane.showMessageDialog(null, "El requisito 1 y el requisito 2 están vacíos.", "Requisitos vacíos", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
@@ -1393,10 +1391,10 @@ public boolean existeidAsignatura(){
                                 cbo_IdCarrera.setSelectedItem(rs2.getString("id_carrera")+ " - " + rs2.getString("nombre_carrera"));
                                 String requisito1 = rs2.getString("requisito1");
                                 String requisito2 = rs2.getString("requisito2");
-                                if(requisito1.equals("Sin r")){
+                                if(requisito1.equals("Sin re")){
                                     requisito1 = "Sin requisito";
                                 }
-                                if(requisito2.equals("Sin r")){
+                                if(requisito2.equals("Sin re")){
                                     requisito2 = "Sin requisito";
                                 }
                                 cbo_Req1.setSelectedItem(requisito1);
@@ -1464,11 +1462,11 @@ public boolean existeidAsignatura(){
                                 if(rs4.next()){
                                     cbo_Req2.setSelectedItem(rs4.getString("id_asignatura") + " - " + rs4.getString("RequisitoAsignatura"));
                                 }
-                                if(requisito1.equals("Sin r")){
+                                if(requisito1.equals("Sin re")){
                                     requisito1 = "Sin requisito";
                                     cbo_Req1.setSelectedItem(requisito1);
                                 }
-                                if(requisito2.equals("Sin r")){
+                                if(requisito2.equals("Sin re")){
                                     requisito2 = "Sin requisito";
                                     cbo_Req2.setSelectedItem(requisito2);
                                 }

@@ -69,6 +69,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
           this.btn_eliminar.setEnabled(false);
           this.btn_actualizar1.setEnabled(false);
           this.lbl_ReqA.setVisible(false);
+          this.lbl_carrera2.setVisible(false);
            this.setLocationRelativeTo(null);
                
          
@@ -92,9 +93,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
           this.btn_actualizar1.setEnabled(false);
           this.setLocationRelativeTo(null);
            this.lbl_ReqA.setVisible(false);
-          
-         
-         
+           this.lbl_carrera2.setVisible(false);
     }
 
     /**
@@ -124,6 +123,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
         lbl_ReqA = new javax.swing.JLabel();
+        lbl_carrera2 = new javax.swing.JLabel();
         lbl_usuario = new javax.swing.JLabel();
         iconodeUsuario = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -328,16 +328,21 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
 
         lbl_ReqA.setText("jLabel2");
 
+        lbl_carrera2.setText("jLabel2");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(316, 316, 316)
-                .addComponent(lbl_titulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
-                .addComponent(lbl_ReqA)
-                .addGap(146, 146, 146))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lbl_carrera2)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(lbl_titulo)
+                        .addGap(79, 79, 79)
+                        .addComponent(lbl_ReqA)))
+                .addContainerGap(225, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -346,7 +351,8 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_titulo)
                     .addComponent(lbl_ReqA))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(lbl_carrera2))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 104, -1, -1));
@@ -782,6 +788,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbl_NombreReqAs;
     private javax.swing.JLabel lbl_ReqA;
+    private javax.swing.JLabel lbl_carrera2;
     private javax.swing.JLabel lbl_idCarrera;
     private javax.swing.JLabel lbl_idReqAs;
     private javax.swing.JLabel lbl_titulo;
@@ -843,14 +850,34 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
     }
 
     private void llenarCampos() {
-        int i = Tabla_ReqAsignatura.getSelectedRow();
+        try{
+          int i = Tabla_ReqAsignatura.getSelectedRow();
         txt_idReqAsig.setText(Tabla_ReqAsignatura.getValueAt(i, 0).toString());
         txtA_NombreReqAsig.setText(Tabla_ReqAsignatura.getValueAt(i, 1).toString());
-        cbo_idCarrera.setSelectedItem(Tabla_ReqAsignatura.getValueAt(i, 2).toString());
-         lbl_ReqA.setText(Tabla_ReqAsignatura.getValueAt(i, 0).toString());
+        lbl_ReqA.setText(Tabla_ReqAsignatura.getValueAt(i, 0).toString());
+        lbl_carrera2.setText(Tabla_ReqAsignatura.getValueAt(i, 2).toString());
+        Statement st = con.createStatement();
+        String sql = "Select * from Carrera where id_carrera='"+lbl_carrera2.getText()+"'";
+        ResultSet rs = st.executeQuery(sql);
+        if(rs.next()){
+            JOptionPane.showMessageDialog(null,"prueba");
+            cbo_idCarrera.setSelectedItem(rs.getString("id_carrera")+" - "+rs.getString("nombre_carrera"));
+        }
         this.btn_eliminar.setEnabled(true);
         this.btn_actualizar1.setEnabled(true);
-        this.btn_guardar.setEnabled(false);
+        this.btn_guardar.setEnabled(false);  
+        }catch(Exception e){
+            try {
+                Log myLog; 
+                String nombreArchivo = "src\\Logs\\RequisitoAsignatura " + fecha + ".txt";
+                myLog = new Log(nombreArchivo);
+                myLog.logger.setLevel(Level.SEVERE);
+                myLog.logger.severe(e.getMessage() + " La causa fue: " + e.getCause());
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+   
 
     }
   
