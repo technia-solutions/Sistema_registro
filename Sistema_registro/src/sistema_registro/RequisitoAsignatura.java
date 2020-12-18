@@ -70,10 +70,7 @@ public class RequisitoAsignatura extends javax.swing.JFrame {
           this.btn_actualizar1.setEnabled(false);
           this.lbl_ReqA.setVisible(false);
           this.lbl_carrera2.setVisible(false);
-           this.setLocationRelativeTo(null);
-               
-         
-         
+           this.setLocationRelativeTo(null);  
     }
     
     public RequisitoAsignatura(String nombreUsuario) throws SQLException {

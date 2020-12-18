@@ -757,8 +757,8 @@ public class Secciones extends javax.swing.JFrame {
             
         else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de la sección" +Seccion + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
         ) == JOptionPane.YES_OPTION) {
-            String id_seccion = cbo_Asignaturas.getSelectedItem().toString().substring(0, 4) + "-" +  txt_NombreSeccion.getText();
-            String id_asignatura = cbo_Asignaturas.getSelectedItem().toString().substring(0, 4);
+            String id_seccion = cbo_Asignaturas.getSelectedItem().toString().substring(0, 6) + "-" +  txt_NombreSeccion.getText();
+            String id_asignatura = cbo_Asignaturas.getSelectedItem().toString().substring(0, 6);
             String id_periodo = cbo_IdPeriodo.getSelectedItem().toString().substring(5, 6);
             //Correcion para aceptar el idperiodo
             //String id_periodo= cbo_IdPeriodo.getSelectedItem().toString().substring(0,6);
@@ -965,9 +965,9 @@ public class Secciones extends javax.swing.JFrame {
   
         String cadena2, cadena5, cadena4, cadena8, cadena9;
         //Id Seccion
-        String id_seccion = cbo_Asignaturas.getSelectedItem().toString().substring(0, 4) + "-" +  txt_NombreSeccion.getText();
+        String id_seccion = cbo_Asignaturas.getSelectedItem().toString().substring(0, 6) + "-" +  txt_NombreSeccion.getText();
         cadena2 = txt_NombreSeccion.getText();
-        String codigo_asignatura = cbo_Asignaturas.getSelectedItem().toString().substring(0, 4);
+        String codigo_asignatura = cbo_Asignaturas.getSelectedItem().toString().substring(0, 6);
         cadena4 = txt_HoraInicial.getText();
         cadena5 = txt_HoraFinal.getText();
         String id_periodo= cbo_IdPeriodo.getSelectedItem().toString().substring(5,6);

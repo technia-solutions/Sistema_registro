@@ -640,7 +640,7 @@ public class Asignaturas extends javax.swing.JFrame {
         
            else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de la asignatura " +nombreAsignatura + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
          ) == JOptionPane.YES_OPTION) {
-            String id_carrera = cbo_IdCarrera.getSelectedItem().toString().substring(0, 4);
+            String id_carrera = cbo_IdCarrera.getSelectedItem().toString().substring(0, 6);
             String requisito1 = cbo_Req1.getSelectedItem().toString().substring(0, 6);
             String requisito2 = cbo_Req2.getSelectedItem().toString().substring(0, 6);
             try {
@@ -775,7 +775,7 @@ public class Asignaturas extends javax.swing.JFrame {
         cadena1 = txt_codA.getText();
         cadena2 = txa_NombreA.getText();
         cadena3 = txt_UniVal.getText();
-        String id_carrera = cbo_IdCarrera.getSelectedItem().toString().substring(0, 4);
+        String id_carrera = cbo_IdCarrera.getSelectedItem().toString().substring(0, 6);
         String requisito1= cbo_Req1.getSelectedItem().toString().substring(0,6);
         String requisito2= cbo_Req2.getSelectedItem().toString().substring(0,6);
   
