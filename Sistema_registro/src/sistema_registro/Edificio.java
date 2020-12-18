@@ -505,6 +505,7 @@ public class Edificio extends javax.swing.JFrame {
             this.btn_actualizar.setEnabled(false);
             this.btn_guardar.setEnabled(true);
              int res = ps.executeUpdate();
+             JOptionPane.showMessageDialog(null, "Se ha actualizado la información  del edificio: " + txt_nombreEdificio.getText());
             } catch (Exception e) {
                 System.out.println(e);
                 JOptionPane.showMessageDialog(null, "Error al actualizar la informacion del edificio, podria ser por: \n 1.El edificio ya está en uso."
