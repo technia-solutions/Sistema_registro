@@ -1081,7 +1081,7 @@ public class Carrera extends javax.swing.JFrame {
         }
     }
       
-      private void LimpiarCajas(){
+    private void LimpiarCajas(){
         jtxt_NombreCarrera.setText(null);
         txt_idCarrera.setText(null);
         cbo_idfacultad.setSelectedIndex(0);

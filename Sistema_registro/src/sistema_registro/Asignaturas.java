@@ -630,6 +630,12 @@ public class Asignaturas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "El requisito 1 no puede ser igual al requisito 2", "Requisitos iguales", JOptionPane.INFORMATION_MESSAGE);
             return;
          }
+            
+         if(!validarVacio(cbo_Req1.getSelectedItem().toString(),cbo_Req2.getSelectedItem().toString())){
+            JOptionPane.showMessageDialog(null, "El requisito 1 y el requisito 2 están vacíos.", "Requisitos vacíos", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        
         
         
            else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de la asignatura " +nombreAsignatura + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
@@ -714,12 +720,16 @@ public class Asignaturas extends javax.swing.JFrame {
        
     }
     
-     private boolean validarVacio(String RequisitoA, String RequisitoB){
-     if(RequisitoA.equals("Seleccione la asignatura 1:")|| RequisitoB.equals("Seleccione la asignatura 2:")){
-         return false;
+    private boolean validarVacio(String RequisitoA, String RequisitoB){
+     if(RequisitoA.equals("Seleccione la asignatura 1")|| RequisitoB.equals("Seleccione la asignatura 2")){
+         return true;
      }
+         if(RequisitoA.equals("Sin requisito")|| RequisitoB.equals("Sin requisito")){
+            return true;
+     }else{
     return false;
         
+    }
     }
     
    
@@ -815,7 +825,7 @@ public class Asignaturas extends javax.swing.JFrame {
         
 
         if(!validarLongitud(txt_codA,3)){
-            JOptionPane.showMessageDialog(null, "El codigo de asignaturas tiene que ser minimo de 3 caracteres", "Longitud de codigo de asignatura", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "El código de asignaturas tiene que ser mínimo de 3 caracteres", "Longitud de código de asignatura", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 
