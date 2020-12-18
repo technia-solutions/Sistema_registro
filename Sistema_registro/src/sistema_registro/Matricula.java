@@ -656,7 +656,7 @@ try{
             Statement cantidast = con.createStatement();
             String cantidadAlumno = "";
             String maximaAlumno="";
-            String cantidadsql = "select  cantidad_alumnos, cantidad_maxima from Secciones where id_seccion='"+idseccion+"'";
+            String cantidadsql = "select cantidad_alumnos, cantidad_maxima from Secciones where id_seccion='"+idseccion+"'";
              ResultSet rs5 = stat.executeQuery(cantidadsql);
                   if (rs5.next()) {
                         cantidadAlumno = rs5.getString("cantidad_alumnos");
