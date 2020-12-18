@@ -835,7 +835,7 @@ public class Secciones extends javax.swing.JFrame {
             try {
         
          String Seccion = txt_NombreSeccion.getText();
-           String id_seccion = cbo_Asignaturas.getSelectedItem().toString().substring(0, 4) + "-" +  txt_NombreSeccion.getText();
+           String id_seccion = cbo_Asignaturas.getSelectedItem().toString().substring(0, 6) + "-" +  txt_NombreSeccion.getText();
                       if((txt_NombreSeccion.getText().equals(""))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre de la sección.","Nombre sección requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_NombreSeccion.requestFocus();
