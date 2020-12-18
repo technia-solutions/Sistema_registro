@@ -1065,16 +1065,16 @@
                           <Component id="chb_Secciones" min="-2" pref="95" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="chb_Asignatura" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
-                          <Component id="chb_Alumno" alignment="1" min="-2" pref="81" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="chb_Asignatura" pref="107" max="32767" attributes="0"/>
+                          <Component id="chb_Alumno" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="chb_Matricula" min="-2" pref="81" max="-2" attributes="0"/>
                           <Component id="chb_CancelarAsignatura" min="-2" pref="246" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="16" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

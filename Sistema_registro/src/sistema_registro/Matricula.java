@@ -17,6 +17,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -113,7 +114,7 @@ public class Matricula extends javax.swing.JFrame {
                 if(rs.getString("MatriculaFunciones").contains("G")){
                     btn_matricularAsignatura.setVisible(true);
                 }
-                if(rs.getString("MatriculaFunciones").contains("CA")){
+                if(rs.getString("MatriculaFunciones").contains("C")){
                     lbl_cancelarAsignatura.setVisible(true);
                 }
                 if(rs.getString("MatriculaFunciones").contains("R")){
@@ -486,17 +487,19 @@ public class Matricula extends javax.swing.JFrame {
         try{
             DefaultTableModel modelo = new DefaultTableModel();
             tbl_asignaturas.setModel(modelo);
-            
+            java.util.Date fecha = new Date();
+            String fechaHoy = fecha.getDate()+"/"+(fecha.getMonth()+1) + "/" + (fecha.getYear()+1900);    
             PreparedStatement ps=null;
             ResultSet rs=null;
-            
            /* String sql="select A.cod_asignaturas, A.nombre_asignaturas, S.Nombre_seccion, S.Hora_inicial, S.Hora_final, S.id_periodo,S.id_aula, A.UV from Secciones as S\n" +
                         "join Asignaturas as A on S.cod_asignaturas=A.cod_asignaturas join Matricula as m on m.id_seccion = s.id_seccion \n" +
                         "join notas as n on n.id_matricula = m.id_matricula\n" +
                         "where n.estado = 'S/C' or n.estado = 'RPB' and m.numero_cuenta_alumno = '"+txt_numeroCuenta.getText()+"' and a.id_carrera = 'INFO'";*/
            
            String sql="select A.cod_asignaturas, A.nombre_asignaturas, S.Nombre_seccion, S.Hora_inicial, S.Hora_final, S.id_periodo,S.id_aula, A.UV from Secciones as S\n" +
-"join Asignaturas as A on S.cod_asignaturas=A.cod_asignaturas ";
+"            join Asignaturas as A on S.cod_asignaturas=A.cod_asignaturas\n" +
+"           where id_periodo = (Select id_periodo from Periodo_historico\n" +
+"           where fecha_inicial < '"+fechaHoy+"' and fecha_final > '"+fechaHoy+"')";
            
             ps= con.prepareStatement(sql);
             rs= ps.executeQuery(); 
@@ -679,7 +682,7 @@ try{
          
         Statement stdoble2 = con.createStatement();
                String sqldoble2 = "select * from matricula as m join secciones as s on s.id_seccion = m.id_seccion join Asignaturas as a on a.cod_asignaturas = s.cod_asignaturas \n" +
-                           "where numero_cuenta_alumno='"+numeroCuenta+"' and s.cod_asignaturas='"+lbl_codAsignatura.getText()+"'";
+                           "where numero_cuenta_alumno='"+numeroCuenta+"' and s.cod_asignaturas='"+lbl_codAsignatura.getText()+"' and id_periodo = '"+id_periodo+"'";
                ResultSet rsdoble2 = stdoble2.executeQuery(sqldoble2);
                if (rsdoble2.next()) {
 
