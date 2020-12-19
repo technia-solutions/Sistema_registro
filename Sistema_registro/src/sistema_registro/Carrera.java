@@ -673,7 +673,7 @@ public class Carrera extends javax.swing.JFrame {
             }
                 else if(JOptionPane.showConfirmDialog(null, "¿Está seguro que desea actualizar el registro de carrera" + nombreCarrera + "?", "Confirmación de actualización", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE
             ) == JOptionPane.YES_OPTION) {
-               String id_facultad = cbo_idfacultad.getSelectedItem().toString().substring(0, 2);
+               String id_facultad = cbo_idfacultad.getSelectedItem().toString().substring(0, 5);
                 try {
                     PreparedStatement ps;
                     ResultSet rs;
