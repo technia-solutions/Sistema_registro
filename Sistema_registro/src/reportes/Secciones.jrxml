@@ -271,7 +271,7 @@
 						<jr:tableHeader style="table_TH" height="30" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="105" height="30" uuid="5e460095-b7b5-4648-a27b-a980f1322ac9"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
+								<textElement textAlignment="Center" verticalAlignment="Top">
 									<font size="12" isBold="true"/>
 								</textElement>
 								<text><![CDATA[Cantidad Máxima]]></text>
@@ -280,6 +280,7 @@
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField>
 								<reportElement x="0" y="0" width="105" height="20" uuid="e1c24da0-35da-4612-afb6-9c2720845dd0"/>
+								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[$F{cantidad_maxima}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>

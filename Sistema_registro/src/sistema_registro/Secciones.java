@@ -981,8 +981,7 @@ public class Secciones extends javax.swing.JFrame {
       // makeLabel(Mensaje);
         cadena9 = txt_CantidadM.getText();
         
-        int cantidad=Integer.parseInt(cadena9);
-        
+       
          if(chb_Lunes.isSelected()){
            Mensaje +=  "Lu";
 
@@ -1007,24 +1006,22 @@ public class Secciones extends javax.swing.JFrame {
             Mensaje +=  "Do";
         }
        
-      //  lbl_MensajeDias.setText(Mensaje);
-       
-      
+     
         
-        /*if((txt_IdSeccion.getText().equals(""))){
-            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el id de la sección.","Id sección requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            txt_IdSeccion.requestFocus();
-            return;
-        }*/
-        
-            if((txt_NombreSeccion.getText().equals(""))){
+        if((txt_NombreSeccion.getText().equals(""))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar el nombre de la sección.","Nombre sección requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
             txt_NombreSeccion.requestFocus();
             return;
         }
             
+        if((txt_CantidadM.getText().equals(""))){
+            javax.swing.JOptionPane.showMessageDialog(this,"Debe ingresar la cantidad máxima de alumnos en la sección.","Cantidad máxima sección requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            txt_CantidadM.requestFocus();
+            return;
+        }
          if((cbo_Asignaturas.getSelectedItem().equals("Seleccione una asignatura"))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar una asignatura para la sección.","Asignatura de la sección requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            cbo_Asignaturas.requestFocus();
             return;
         }
          
@@ -1042,11 +1039,13 @@ public class Secciones extends javax.swing.JFrame {
            
          if((cbo_IdPeriodo.getSelectedItem().equals(":"))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar un período para la sección.","Período de la sección requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            cbo_IdPeriodo.requestFocus();
             return;
         }
          
            if((cbo_IdAula.getSelectedItem().equals("Seleccione un aula"))){
             javax.swing.JOptionPane.showMessageDialog(this,"Debe seleccionar una aula para la sección.","Aula de la sección requerido",javax.swing.JOptionPane.INFORMATION_MESSAGE);
+           cbo_IdAula.requestFocus();
             return;
         }
            
@@ -1629,7 +1628,7 @@ public void actualizarDatos(){
                  while(rs.next()) {
                      
                      //Registro Anterior (Posible Error)//
-                       String []datos= new String[11];
+                       String []datos= new String[10];
                       datos[0] =rs.getString("id_seccion");
                       datos[1] =rs.getString("Nombre_seccion");
                       datos[2] =rs.getString("cod_asignaturas");
